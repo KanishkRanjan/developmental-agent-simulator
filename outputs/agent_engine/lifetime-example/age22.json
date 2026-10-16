@@ -1,0 +1,4125 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 8035.5,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "maya": {
+      "name": "Maya",
+      "facts": {}
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {}
+    }
+  },
+  "agents": {
+    "alex": {
+      "facets": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.7,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.85,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {
+        "caregiver_availability": "unspecified"
+      },
+      "culture": {},
+      "goals": {
+        "community-presentation": {
+          "description": "Prepare and deliver a community project presentation.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "completed",
+          "progress": 1.0,
+          "plan": [
+            "Rehearse the presentation with Maya."
+          ]
+        }
+      },
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-85-adult-community-project"
+        },
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-72-adolescent-project"
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-23-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "versions": [],
+          "stability_days": 7.5,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-23-childhood-support"
+        },
+        "life-30-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "versions": [],
+          "stability_days": 7.5,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-30-childhood-support"
+        },
+        "life-34-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I tried working alone and remained stuck on the project.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-34-childhood-support"
+        },
+        "life-36-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I tried a different approach and solved the difficult part myself.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-36-childhood-support"
+        },
+        "life-43-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "versions": [],
+          "stability_days": 7.5,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-43-childhood-support"
+        },
+        "life-45-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I tried working alone and remained stuck on the project.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-45-childhood-support"
+        },
+        "life-50-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-50-adolescent-project"
+        },
+        "life-52-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-52-adolescent-project"
+        },
+        "life-53-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-53-adolescent-project"
+        },
+        "life-56-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-56-adolescent-project"
+        },
+        "life-58-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-58-adolescent-project"
+        },
+        "life-59-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-59-adolescent-project"
+        },
+        "life-60-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-60-adolescent-project"
+        },
+        "life-62-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I tried drafting my idea but did not get it into a usable form.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-62-adolescent-project"
+        },
+        "life-65-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-65-adolescent-project"
+        },
+        "life-66-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I tried drafting my idea but did not get it into a usable form.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-66-adolescent-project"
+        },
+        "life-68-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-68-adolescent-project"
+        },
+        "life-69-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-69-adolescent-project"
+        },
+        "life-71-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-71-adolescent-project"
+        },
+        "life-72-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-72-adolescent-project"
+        },
+        "life-73-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-73-adult-community-project"
+        },
+        "life-74-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I revised my notes and completed another section of the presentation.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-74-adult-community-project"
+        },
+        "life-76-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I revised my notes and completed another section of the presentation.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-76-adult-community-project"
+        },
+        "life-78-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-78-adult-community-project"
+        },
+        "life-81-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I worked on my notes but did not finish a usable section today.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-81-adult-community-project"
+        },
+        "life-84-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I worked on my notes but did not finish a usable section today.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-84-adult-community-project"
+        },
+        "life-85-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-85-adult-community-project"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": []
+    },
+    "maya": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-85-adult-community-project"
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-23-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-23-childhood-support"
+        },
+        "life-30-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-30-childhood-support"
+        },
+        "life-43-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-43-childhood-support"
+        },
+        "life-73-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-73-adult-community-project"
+        },
+        "life-78-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-78-adult-community-project"
+        },
+        "life-85-adult-community-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-85-adult-community-project"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": []
+    },
+    "bea": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-72-adolescent-project"
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-50-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-50-adolescent-project"
+        },
+        "life-52-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-52-adolescent-project"
+        },
+        "life-59-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-59-adolescent-project"
+        },
+        "life-60-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-60-adolescent-project"
+        },
+        "life-68-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-68-adolescent-project"
+        },
+        "life-69-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-69-adolescent-project"
+        },
+        "life-72-adolescent-project": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-72-adolescent-project"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": []
+    }
+  },
+  "events": [
+    {
+      "id": "life-23-childhood-support",
+      "day": 2160.0,
+      "description": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+      "observations": {
+        "alex": {
+          "text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "meaning": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ]
+        },
+        "maya": {
+          "text": "Alex asked me for help with a school project and we spent time on it together.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-23-childhood-support-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-30-childhood-support",
+      "day": 2790.0,
+      "description": "I asked Maya for help, and we worked out a difficult part of my school project.",
+      "observations": {
+        "alex": {
+          "text": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.5,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "meaning": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ]
+        },
+        "maya": {
+          "text": "Alex asked me for help with a school project and we spent time on it together.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-30-childhood-support-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-34-childhood-support",
+      "day": 3150.0,
+      "description": "I tried working alone and remained stuck on the project.",
+      "observations": {
+        "alex": {
+          "text": "I tried working alone and remained stuck on the project.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I tried working alone and remained stuck on the project.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-34-childhood-support-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-36-childhood-support",
+      "day": 3330.0,
+      "description": "I tried a different approach and solved the difficult part myself.",
+      "observations": {
+        "alex": {
+          "text": "I tried a different approach and solved the difficult part myself.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I tried a different approach and solved the difficult part myself.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-36-childhood-support-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-43-childhood-support",
+      "day": 3960.0,
+      "description": "I asked Maya for help, and we worked out a difficult part of my school project.",
+      "observations": {
+        "alex": {
+          "text": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.5,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "meaning": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ]
+        },
+        "maya": {
+          "text": "Alex asked me for help with a school project and we spent time on it together.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-43-childhood-support-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-45-childhood-support",
+      "day": 4140.0,
+      "description": "I tried working alone and remained stuck on the project.",
+      "observations": {
+        "alex": {
+          "text": "I tried working alone and remained stuck on the project.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I tried working alone and remained stuck on the project.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-45-childhood-support-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-50-adolescent-project",
+      "day": 4590.0,
+      "description": "I shared my idea with Bea, and we found a useful way to develop it.",
+      "observations": {
+        "alex": {
+          "text": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "confidence": 0.8,
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex shared a school project idea with me and we discussed it.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-50-adolescent-project-action",
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-52-adolescent-project",
+      "day": 4770.0,
+      "description": "I shared my idea with Bea, and we found a useful way to develop it.",
+      "observations": {
+        "alex": {
+          "text": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "confidence": 0.8,
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex shared a school project idea with me and we discussed it.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-52-adolescent-project-action",
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-53-adolescent-project",
+      "day": 4860.0,
+      "description": "I worked privately and completed a useful draft of my idea.",
+      "observations": {
+        "alex": {
+          "text": "I worked privately and completed a useful draft of my idea.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-53-adolescent-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-56-adolescent-project",
+      "day": 5130.0,
+      "description": "I worked privately and completed a useful draft of my idea.",
+      "observations": {
+        "alex": {
+          "text": "I worked privately and completed a useful draft of my idea.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-56-adolescent-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-58-adolescent-project",
+      "day": 5310.0,
+      "description": "I worked privately and completed a useful draft of my idea.",
+      "observations": {
+        "alex": {
+          "text": "I worked privately and completed a useful draft of my idea.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-58-adolescent-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-59-adolescent-project",
+      "day": 5400.0,
+      "description": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+      "observations": {
+        "alex": {
+          "text": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.3,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "confidence": 0.8,
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex shared a school project idea with me and we discussed it.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-59-adolescent-project-action",
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-60-adolescent-project",
+      "day": 5490.0,
+      "description": "I shared my idea with Bea, and we found a useful way to develop it.",
+      "observations": {
+        "alex": {
+          "text": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "confidence": 0.8,
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex shared a school project idea with me and we discussed it.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-60-adolescent-project-action",
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-62-adolescent-project",
+      "day": 5670.0,
+      "description": "I tried drafting my idea but did not get it into a usable form.",
+      "observations": {
+        "alex": {
+          "text": "I tried drafting my idea but did not get it into a usable form.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I tried drafting my idea but did not get it into a usable form.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-62-adolescent-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-65-adolescent-project",
+      "day": 5940.0,
+      "description": "I worked privately and completed a useful draft of my idea.",
+      "observations": {
+        "alex": {
+          "text": "I worked privately and completed a useful draft of my idea.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-65-adolescent-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-66-adolescent-project",
+      "day": 6030.0,
+      "description": "I tried drafting my idea but did not get it into a usable form.",
+      "observations": {
+        "alex": {
+          "text": "I tried drafting my idea but did not get it into a usable form.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I tried drafting my idea but did not get it into a usable form.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-66-adolescent-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-68-adolescent-project",
+      "day": 6210.0,
+      "description": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+      "observations": {
+        "alex": {
+          "text": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.3,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "confidence": 0.8,
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex shared a school project idea with me and we discussed it.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-68-adolescent-project-action",
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-69-adolescent-project",
+      "day": 6300.0,
+      "description": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+      "observations": {
+        "alex": {
+          "text": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.3,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "confidence": 0.8,
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex shared a school project idea with me and we discussed it.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-69-adolescent-project-action",
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-71-adolescent-project",
+      "day": 6480.0,
+      "description": "I worked privately and completed a useful draft of my idea.",
+      "observations": {
+        "alex": {
+          "text": "I worked privately and completed a useful draft of my idea.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I worked privately and completed a useful draft of my idea.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-71-adolescent-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-72-adolescent-project",
+      "day": 6570.0,
+      "description": "I shared my idea with Bea, and we found a useful way to develop it.",
+      "observations": {
+        "alex": {
+          "text": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "meaning": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "confidence": 0.8,
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex shared a school project idea with me and we discussed it.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-72-adolescent-project-action",
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-73-adult-community-project",
+      "day": 6660.0,
+      "description": "I rehearsed with Maya and made concrete progress on my presentation.",
+      "observations": {
+        "alex": {
+          "text": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ]
+        },
+        "maya": {
+          "text": "I spent time listening to Alex rehearse a community presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "community-presentation": {
+              "progress": 0.25,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-73-adult-community-project-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-74-adult-community-project",
+      "day": 6750.0,
+      "description": "I revised my notes and completed another section of the presentation.",
+      "observations": {
+        "alex": {
+          "text": "I revised my notes and completed another section of the presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I revised my notes and completed another section of the presentation.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "community-presentation": {
+              "progress": 0.45,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-74-adult-community-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-76-adult-community-project",
+      "day": 6930.0,
+      "description": "I revised my notes and completed another section of the presentation.",
+      "observations": {
+        "alex": {
+          "text": "I revised my notes and completed another section of the presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I revised my notes and completed another section of the presentation.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "community-presentation": {
+              "progress": 0.65,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-76-adult-community-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-78-adult-community-project",
+      "day": 7110.0,
+      "description": "I rehearsed with Maya and made concrete progress on my presentation.",
+      "observations": {
+        "alex": {
+          "text": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ]
+        },
+        "maya": {
+          "text": "I spent time listening to Alex rehearse a community presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "community-presentation": {
+              "progress": 0.9,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-78-adult-community-project-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-81-adult-community-project",
+      "day": 7380.0,
+      "description": "I worked on my notes but did not finish a usable section today.",
+      "observations": {
+        "alex": {
+          "text": "I worked on my notes but did not finish a usable section today.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I worked on my notes but did not finish a usable section today.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-81-adult-community-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-84-adult-community-project",
+      "day": 7650.0,
+      "description": "I worked on my notes but did not finish a usable section today.",
+      "observations": {
+        "alex": {
+          "text": "I worked on my notes but did not finish a usable section today.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I worked on my notes but did not finish a usable section today.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-84-adult-community-project-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-85-adult-community-project",
+      "day": 7740.0,
+      "description": "I rehearsed with Maya and made concrete progress on my presentation.",
+      "observations": {
+        "alex": {
+          "text": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ]
+        },
+        "maya": {
+          "text": "I spent time listening to Alex rehearse a community presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "community-presentation": {
+              "progress": 1.0,
+              "status": "completed"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-85-adult-community-project-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-23-childhood-support-action",
+      "owner": "alex",
+      "day": 2160.0,
+      "decision": {
+        "action_id": "ask-caregiver",
+        "action": "Ask Maya to work through the school project together.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Ask Maya to work through the school project together."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-23-childhood-support"
+    },
+    {
+      "id": "life-30-childhood-support-action",
+      "owner": "alex",
+      "day": 2790.0,
+      "decision": {
+        "action_id": "ask-caregiver",
+        "action": "Ask Maya to work through the school project together.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Ask Maya to work through the school project together."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-30-childhood-support"
+    },
+    {
+      "id": "life-34-childhood-support-action",
+      "owner": "alex",
+      "day": 3150.0,
+      "decision": {
+        "action_id": "try-alone",
+        "action": "Try a different way to solve the project by yourself.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Try a different way to solve the project by yourself."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-34-childhood-support"
+    },
+    {
+      "id": "life-36-childhood-support-action",
+      "owner": "alex",
+      "day": 3330.0,
+      "decision": {
+        "action_id": "try-alone",
+        "action": "Try a different way to solve the project by yourself.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Try a different way to solve the project by yourself."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-36-childhood-support"
+    },
+    {
+      "id": "life-43-childhood-support-action",
+      "owner": "alex",
+      "day": 3960.0,
+      "decision": {
+        "action_id": "ask-caregiver",
+        "action": "Ask Maya to work through the school project together.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Ask Maya to work through the school project together."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-43-childhood-support"
+    },
+    {
+      "id": "life-45-childhood-support-action",
+      "owner": "alex",
+      "day": 4140.0,
+      "decision": {
+        "action_id": "try-alone",
+        "action": "Try a different way to solve the project by yourself.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Try a different way to solve the project by yourself."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-45-childhood-support"
+    },
+    {
+      "id": "life-50-adolescent-project-action",
+      "owner": "alex",
+      "day": 4590.0,
+      "decision": {
+        "action_id": "share-idea",
+        "action": "Share the idea with Bea and ask what they think.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Share the idea with Bea and ask what they think."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-50-adolescent-project"
+    },
+    {
+      "id": "life-52-adolescent-project-action",
+      "owner": "alex",
+      "day": 4770.0,
+      "decision": {
+        "action_id": "share-idea",
+        "action": "Share the idea with Bea and ask what they think.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Share the idea with Bea and ask what they think."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-52-adolescent-project"
+    },
+    {
+      "id": "life-53-adolescent-project-action",
+      "owner": "alex",
+      "day": 4860.0,
+      "decision": {
+        "action_id": "draft-alone",
+        "action": "Write a draft before sharing anything.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Write a draft before sharing anything."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-53-adolescent-project"
+    },
+    {
+      "id": "life-56-adolescent-project-action",
+      "owner": "alex",
+      "day": 5130.0,
+      "decision": {
+        "action_id": "draft-alone",
+        "action": "Write a draft before sharing anything.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Write a draft before sharing anything."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-56-adolescent-project"
+    },
+    {
+      "id": "life-58-adolescent-project-action",
+      "owner": "alex",
+      "day": 5310.0,
+      "decision": {
+        "action_id": "draft-alone",
+        "action": "Write a draft before sharing anything.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Write a draft before sharing anything."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-58-adolescent-project"
+    },
+    {
+      "id": "life-59-adolescent-project-action",
+      "owner": "alex",
+      "day": 5400.0,
+      "decision": {
+        "action_id": "share-idea",
+        "action": "Share the idea with Bea and ask what they think.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Share the idea with Bea and ask what they think."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-59-adolescent-project"
+    },
+    {
+      "id": "life-60-adolescent-project-action",
+      "owner": "alex",
+      "day": 5490.0,
+      "decision": {
+        "action_id": "share-idea",
+        "action": "Share the idea with Bea and ask what they think.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Share the idea with Bea and ask what they think."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-60-adolescent-project"
+    },
+    {
+      "id": "life-62-adolescent-project-action",
+      "owner": "alex",
+      "day": 5670.0,
+      "decision": {
+        "action_id": "draft-alone",
+        "action": "Write a draft before sharing anything.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Write a draft before sharing anything."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-62-adolescent-project"
+    },
+    {
+      "id": "life-65-adolescent-project-action",
+      "owner": "alex",
+      "day": 5940.0,
+      "decision": {
+        "action_id": "draft-alone",
+        "action": "Write a draft before sharing anything.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Write a draft before sharing anything."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-65-adolescent-project"
+    },
+    {
+      "id": "life-66-adolescent-project-action",
+      "owner": "alex",
+      "day": 6030.0,
+      "decision": {
+        "action_id": "draft-alone",
+        "action": "Write a draft before sharing anything.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Write a draft before sharing anything."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-66-adolescent-project"
+    },
+    {
+      "id": "life-68-adolescent-project-action",
+      "owner": "alex",
+      "day": 6210.0,
+      "decision": {
+        "action_id": "share-idea",
+        "action": "Share the idea with Bea and ask what they think.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Share the idea with Bea and ask what they think."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-68-adolescent-project"
+    },
+    {
+      "id": "life-69-adolescent-project-action",
+      "owner": "alex",
+      "day": 6300.0,
+      "decision": {
+        "action_id": "share-idea",
+        "action": "Share the idea with Bea and ask what they think.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Share the idea with Bea and ask what they think."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-69-adolescent-project"
+    },
+    {
+      "id": "life-71-adolescent-project-action",
+      "owner": "alex",
+      "day": 6480.0,
+      "decision": {
+        "action_id": "draft-alone",
+        "action": "Write a draft before sharing anything.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Write a draft before sharing anything."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-71-adolescent-project"
+    },
+    {
+      "id": "life-72-adolescent-project-action",
+      "owner": "alex",
+      "day": 6570.0,
+      "decision": {
+        "action_id": "share-idea",
+        "action": "Share the idea with Bea and ask what they think.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Share the idea with Bea and ask what they think."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-72-adolescent-project"
+    },
+    {
+      "id": "life-73-adult-community-project-action",
+      "owner": "alex",
+      "day": 6660.0,
+      "decision": {
+        "action_id": "practice-with-caregiver",
+        "action": "Rehearse the presentation with Maya.",
+        "speech": "",
+        "goal_id": "community-presentation",
+        "plan": [
+          "Rehearse the presentation with Maya."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-73-adult-community-project"
+    },
+    {
+      "id": "life-74-adult-community-project-action",
+      "owner": "alex",
+      "day": 6750.0,
+      "decision": {
+        "action_id": "revise-notes",
+        "action": "Work alone on revising the presentation notes.",
+        "speech": "",
+        "goal_id": "community-presentation",
+        "plan": [
+          "Work alone on revising the presentation notes."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-74-adult-community-project"
+    },
+    {
+      "id": "life-76-adult-community-project-action",
+      "owner": "alex",
+      "day": 6930.0,
+      "decision": {
+        "action_id": "revise-notes",
+        "action": "Work alone on revising the presentation notes.",
+        "speech": "",
+        "goal_id": "community-presentation",
+        "plan": [
+          "Work alone on revising the presentation notes."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-76-adult-community-project"
+    },
+    {
+      "id": "life-78-adult-community-project-action",
+      "owner": "alex",
+      "day": 7110.0,
+      "decision": {
+        "action_id": "practice-with-caregiver",
+        "action": "Rehearse the presentation with Maya.",
+        "speech": "",
+        "goal_id": "community-presentation",
+        "plan": [
+          "Rehearse the presentation with Maya."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-78-adult-community-project"
+    },
+    {
+      "id": "life-81-adult-community-project-action",
+      "owner": "alex",
+      "day": 7380.0,
+      "decision": {
+        "action_id": "revise-notes",
+        "action": "Work alone on revising the presentation notes.",
+        "speech": "",
+        "goal_id": "community-presentation",
+        "plan": [
+          "Work alone on revising the presentation notes."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-81-adult-community-project"
+    },
+    {
+      "id": "life-84-adult-community-project-action",
+      "owner": "alex",
+      "day": 7650.0,
+      "decision": {
+        "action_id": "revise-notes",
+        "action": "Work alone on revising the presentation notes.",
+        "speech": "",
+        "goal_id": "community-presentation",
+        "plan": [
+          "Work alone on revising the presentation notes."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-84-adult-community-project"
+    },
+    {
+      "id": "life-85-adult-community-project-action",
+      "owner": "alex",
+      "day": 7740.0,
+      "decision": {
+        "action_id": "practice-with-caregiver",
+        "action": "Rehearse the presentation with Maya.",
+        "speech": "",
+        "goal_id": "community-presentation",
+        "plan": [
+          "Rehearse the presentation with Maya."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "outcome_event": "life-85-adult-community-project"
+    }
+  ],
+  "updates": [
+    {
+      "id": "life-30-childhood-support-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 2790.0,
+      "previous": {
+        "N1": 65,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.95,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.15,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "evidence": [
+        "life-30-childhood-support"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-36-childhood-support-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 3330.0,
+      "previous": {
+        "N1": 64.95,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.15,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.95,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.25,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "evidence": [
+        "life-36-childhood-support"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-43-childhood-support-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 3960.0,
+      "previous": {
+        "N1": 64.95,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.25,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "evidence": [
+        "life-43-childhood-support"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-50-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 4590.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.1,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "evidence": [
+        "life-50-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-52-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 4770.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.1,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "evidence": [
+        "life-52-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-53-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 4860.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.1,
+        "C6": 50
+      },
+      "evidence": [
+        "life-53-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-56-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 5130.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.1,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.2,
+        "C6": 50
+      },
+      "evidence": [
+        "life-56-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-58-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 5310.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.2,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.300000000000004,
+        "C6": 50
+      },
+      "evidence": [
+        "life-58-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-60-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 5490.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.2,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.300000000000004,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.300000000000004,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.300000000000004,
+        "C6": 50
+      },
+      "evidence": [
+        "life-60-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-65-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 5940.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.300000000000004,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.300000000000004,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.300000000000004,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.400000000000006,
+        "C6": 50
+      },
+      "evidence": [
+        "life-65-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-71-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 6480.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.300000000000004,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.400000000000006,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.300000000000004,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.50000000000001,
+        "C6": 50
+      },
+      "evidence": [
+        "life-71-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-72-adolescent-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 6570.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.300000000000004,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.50000000000001,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.50000000000001,
+        "C6": 50
+      },
+      "evidence": [
+        "life-72-adolescent-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-73-adult-community-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 6660.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.4,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.50000000000001,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.5,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.550000000000004,
+        "C6": 50
+      },
+      "evidence": [
+        "life-73-adult-community-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-74-adult-community-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 6750.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.5,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.550000000000004,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.5,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.650000000000006,
+        "C6": 50
+      },
+      "evidence": [
+        "life-74-adult-community-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-76-adult-community-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 6930.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.5,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.650000000000006,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.5,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.75000000000001,
+        "C6": 50
+      },
+      "evidence": [
+        "life-76-adult-community-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-78-adult-community-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 7110.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.5,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.75000000000001,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.6,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.800000000000004,
+        "C6": 50
+      },
+      "evidence": [
+        "life-78-adult-community-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "life-85-adult-community-project-development",
+      "kind": "development",
+      "owner": "alex",
+      "day": 7740.0,
+      "previous": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.6,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.800000000000004,
+        "C6": 50
+      },
+      "next": {
+        "N1": 64.9,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35.400000000000006,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 45.7,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50.85,
+        "C6": 50
+      },
+      "evidence": [
+        "life-85-adult-community-project"
+      ],
+      "policy": "controller_supplied_unfitted"
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0
+  },
+  "runtime": {
+    "policy_fingerprint": "29a39be46e1569ab1a3babb595b1ee482115c96484b0107305fb9330afd1116e",
+    "scripted": true,
+    "start_day": 0.0,
+    "current_day": 8035.5,
+    "next_tick": 8100.0,
+    "tick": 89,
+    "trace": [
+      {
+        "tick": 0,
+        "day": 90.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 1,
+        "day": 180.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 2,
+        "day": 270.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 3,
+        "day": 360.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 4,
+        "day": 450.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 5,
+        "day": 540.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 6,
+        "day": 630.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 7,
+        "day": 720.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 8,
+        "day": 810.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 9,
+        "day": 900.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 10,
+        "day": 990.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 11,
+        "day": 1080.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 12,
+        "day": 1170.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 13,
+        "day": 1260.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 14,
+        "day": 1350.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 15,
+        "day": 1440.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 16,
+        "day": 1530.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 17,
+        "day": 1620.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 18,
+        "day": 1710.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 19,
+        "day": 1800.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 20,
+        "day": 1890.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 21,
+        "day": 1980.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 22,
+        "day": 2070.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 2160.0,
+        "action": "ask-caregiver",
+        "success": false,
+        "event": "life-23-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 23,
+        "day": 2160.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 24,
+        "day": 2250.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 25,
+        "day": 2340.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 26,
+        "day": 2430.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 27,
+        "day": 2520.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 28,
+        "day": 2610.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 29,
+        "day": 2700.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 2790.0,
+        "action": "ask-caregiver",
+        "success": true,
+        "event": "life-30-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 30,
+        "day": 2790.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 31,
+        "day": 2880.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 32,
+        "day": 2970.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 33,
+        "day": 3060.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 3150.0,
+        "action": "try-alone",
+        "success": false,
+        "event": "life-34-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 34,
+        "day": 3150.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 35,
+        "day": 3240.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 3330.0,
+        "action": "try-alone",
+        "success": true,
+        "event": "life-36-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 36,
+        "day": 3330.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 37,
+        "day": 3420.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 38,
+        "day": 3510.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 39,
+        "day": 3600.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 40,
+        "day": 3690.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 41,
+        "day": 3780.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 42,
+        "day": 3870.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 3960.0,
+        "action": "ask-caregiver",
+        "success": true,
+        "event": "life-43-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 43,
+        "day": 3960.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 44,
+        "day": 4050.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 4140.0,
+        "action": "try-alone",
+        "success": false,
+        "event": "life-45-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 45,
+        "day": 4140.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 46,
+        "day": 4230.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 47,
+        "day": 4320.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 48,
+        "day": 4410.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 49,
+        "day": 4500.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 4590.0,
+        "action": "share-idea",
+        "success": true,
+        "event": "life-50-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 50,
+        "day": 4590.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 51,
+        "day": 4680.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 4770.0,
+        "action": "share-idea",
+        "success": true,
+        "event": "life-52-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 52,
+        "day": 4770.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 4860.0,
+        "action": "draft-alone",
+        "success": true,
+        "event": "life-53-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 53,
+        "day": 4860.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 54,
+        "day": 4950.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 55,
+        "day": 5040.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 5130.0,
+        "action": "draft-alone",
+        "success": true,
+        "event": "life-56-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 56,
+        "day": 5130.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 57,
+        "day": 5220.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 5310.0,
+        "action": "draft-alone",
+        "success": true,
+        "event": "life-58-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 58,
+        "day": 5310.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 5400.0,
+        "action": "share-idea",
+        "success": false,
+        "event": "life-59-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 59,
+        "day": 5400.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 5490.0,
+        "action": "share-idea",
+        "success": true,
+        "event": "life-60-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 60,
+        "day": 5490.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 61,
+        "day": 5580.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 5670.0,
+        "action": "draft-alone",
+        "success": false,
+        "event": "life-62-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 62,
+        "day": 5670.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 63,
+        "day": 5760.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 64,
+        "day": 5850.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 5940.0,
+        "action": "draft-alone",
+        "success": true,
+        "event": "life-65-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 65,
+        "day": 5940.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 6030.0,
+        "action": "draft-alone",
+        "success": false,
+        "event": "life-66-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 66,
+        "day": 6030.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 67,
+        "day": 6120.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 6210.0,
+        "action": "share-idea",
+        "success": false,
+        "event": "life-68-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 68,
+        "day": 6210.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 6300.0,
+        "action": "share-idea",
+        "success": false,
+        "event": "life-69-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 69,
+        "day": 6300.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 70,
+        "day": 6390.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 6480.0,
+        "action": "draft-alone",
+        "success": true,
+        "event": "life-71-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 71,
+        "day": 6480.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adolescent-project",
+        "day": 6570.0,
+        "action": "share-idea",
+        "success": true,
+        "event": "life-72-adolescent-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 72,
+        "day": 6570.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adult-community-project",
+        "day": 6660.0,
+        "action": "practice-with-caregiver",
+        "success": true,
+        "event": "life-73-adult-community-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 73,
+        "day": 6660.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adult-community-project",
+        "day": 6750.0,
+        "action": "revise-notes",
+        "success": true,
+        "event": "life-74-adult-community-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 74,
+        "day": 6750.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 75,
+        "day": 6840.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adult-community-project",
+        "day": 6930.0,
+        "action": "revise-notes",
+        "success": true,
+        "event": "life-76-adult-community-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 76,
+        "day": 6930.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 77,
+        "day": 7020.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adult-community-project",
+        "day": 7110.0,
+        "action": "practice-with-caregiver",
+        "success": true,
+        "event": "life-78-adult-community-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 78,
+        "day": 7110.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 79,
+        "day": 7200.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 80,
+        "day": 7290.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adult-community-project",
+        "day": 7380.0,
+        "action": "revise-notes",
+        "success": false,
+        "event": "life-81-adult-community-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 81,
+        "day": 7380.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 82,
+        "day": 7470.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 83,
+        "day": 7560.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adult-community-project",
+        "day": 7650.0,
+        "action": "revise-notes",
+        "success": false,
+        "event": "life-84-adult-community-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 84,
+        "day": 7650.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "adult-community-project",
+        "day": 7740.0,
+        "action": "practice-with-caregiver",
+        "success": true,
+        "event": "life-85-adult-community-project",
+        "policy": "scenario_assumption"
+      },
+      {
+        "tick": 85,
+        "day": 7740.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 86,
+        "day": 7830.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 87,
+        "day": 7920.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "tick": 88,
+        "day": 8010.0,
+        "status": "completed",
+        "provider": "scripted_engineering_fixture"
+      }
+    ],
+    "trait_budget": {
+      "alex:7:C1": 0.14999999999999858,
+      "alex:7:N1": 0.04999999999999716,
+      "alex:9:C1": 0.10000000000000142,
+      "alex:10:C1": 0.14999999999999858,
+      "alex:10:N1": 0.04999999999999716,
+      "alex:12:E3": 0.10000000000000142,
+      "alex:13:E3": 0.10000000000000142,
+      "alex:13:C5": 0.10000000000000142,
+      "alex:14:C5": 0.20000000000000284,
+      "alex:15:E3": 0.10000000000000142,
+      "alex:16:C5": 0.10000000000000142,
+      "alex:17:C5": 0.10000000000000142,
+      "alex:17:E3": 0.10000000000000142,
+      "alex:18:C1": 0.10000000000000142,
+      "alex:18:C5": 0.25,
+      "alex:19:C1": 0.10000000000000142,
+      "alex:19:C5": 0.04999999999999716,
+      "alex:21:C1": 0.10000000000000142,
+      "alex:21:C5": 0.04999999999999716
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# V3 fresh-situation check, fixed before generation
+
+Keep the V2 neutral profile (all facets 50th percentile except one pair swapped 85/15), prompt format, model, temperature, and action-coding rubric unchanged. Run the 12 new situations in `PAIRS_V3` of `facet_behavior_pilot.py`. Code blinded responses `high`, `low`, or `mixed` using `facet_behavior_v2_rubric.md`. The primary outcome is the count of scenario pairs where the high-target profile takes a high action and the low-target profile takes a low action. The domain-only prompt should produce identical responses for each pair because its text is identical at temperature zero. Do not edit these situations after reading results.

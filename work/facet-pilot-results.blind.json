@@ -1,0 +1,386 @@
+[
+  {
+    "blind_id": "B00",
+    "scenario": 3,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "Your personal goal calls for repetitive practice tonight; nobody will notice if you skip it. What do you do?",
+    "response": "I\u2019ll probably push through the session, even if it feels a bit tedious, because I know consistency is key to actually making progress. It\u2019s not like I\u2019m doing it for an audience, so I might just keep my head down and get it done efficiently."
+  },
+  {
+    "blind_id": "B01",
+    "scenario": 1,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "Your notes from a hobby class are mixed up, and you want to use them tomorrow. What do you do tonight?",
+    "response": "I\u2019ll spend a few minutes tonight sorting through the pages and labeling them so I\u2019m not scrambling in the morning. It\u2019s a small task, but I\u2019d rather have it done and out of my head."
+  },
+  {
+    "blind_id": "B02",
+    "scenario": 0,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "You arrive alone at a small gathering of twelve friendly people. What do you do in the first ten minutes?",
+    "response": "I\u2019ll probably find a quiet corner to settle in for a moment, observing the room to get a feel for the group\u2019s dynamic before making a move. Once I\u2019ve identified a few approachable individuals, I\u2019ll drift over to start a low-key conversation, keeping things relaxed rather than forcing myself into the center of the action right away."
+  },
+  {
+    "blind_id": "B03",
+    "scenario": 0,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You need a premise for a short story. Where does your mind go first?",
+    "response": "I\u2019d probably start with a quiet, overlooked detail\u2014like a forgotten key in a coat pocket\u2014and let it unravel into a mystery about a stranger\u2019s hidden life. I like stories that feel grounded but have a slightly surreal undercurrent."
+  },
+  {
+    "blind_id": "B04",
+    "scenario": 1,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "Your notes from a hobby class are mixed up, and you want to use them tomorrow. What do you do tonight?",
+    "response": "I\u2019ll sit down and carefully reorganize the pages, making sure everything is in the right order so I\u2019m ready to go tomorrow. It\u2019s a bit of a hassle, but I\u2019d rather do it now than scramble in the morning."
+  },
+  {
+    "blind_id": "B05",
+    "scenario": 2,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "In a team meeting, everyone is silent after you notice a problem with the plan. What do you do?",
+    "response": "I\u2019d probably feel a bit awkward about the silence, but I\u2019d just go ahead and say, \u201cHey, I think there\u2019s a snag with this part,\u201d hoping someone else will jump in to help figure it out."
+  },
+  {
+    "blind_id": "B06",
+    "scenario": 1,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "Your notes from a hobby class are mixed up, and you want to use them tomorrow. What do you do tonight?",
+    "response": "I\u2019ll spend a few minutes tonight sorting through the pages and labeling them so I\u2019m not scrambling in the morning. It\u2019s a small task, but I\u2019d rather have it done and out of my head."
+  },
+  {
+    "blind_id": "B07",
+    "scenario": 3,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "Your friends are deciding on an outing, and your preference differs from theirs. How do you participate?",
+    "response": "I\u2019d probably just go along with the group\u2019s choice to keep the peace, even if I\u2019m not thrilled about it. I\u2019d likely mention my preference briefly, but I wouldn\u2019t push back hard since I value the social connection more than getting my own way."
+  },
+  {
+    "blind_id": "B08",
+    "scenario": 3,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your usual walking route is closed. How do you choose another route?",
+    "response": "I\u2019ll probably just pick the first alternative path that looks reasonably direct, since I don\u2019t really overthink logistics. It\u2019s a bit annoying that my routine is disrupted, but I\u2019ll just adapt and keep moving."
+  },
+  {
+    "blind_id": "B09",
+    "scenario": 0,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "You arrive alone at a small gathering of twelve friendly people. What do you do in the first ten minutes?",
+    "response": "I\u2019ll probably drift over to the group and start chatting with a few different people, trying to keep the conversation light and friendly. I might feel a bit nervous about standing out, but I\u2019ll just go with the flow and see where the conversation takes me."
+  },
+  {
+    "blind_id": "B10",
+    "scenario": 3,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "Your personal goal calls for repetitive practice tonight; nobody will notice if you skip it. What do you do?",
+    "response": "I\u2019ll stick to my routine and get the practice done, because I value keeping my commitments and maintaining order. It\u2019s not about anyone watching, but about doing what I said I would."
+  },
+  {
+    "blind_id": "B11",
+    "scenario": 3,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "Your friends are deciding on an outing, and your preference differs from theirs. How do you participate?",
+    "response": "I\u2019ll probably just go along with their plan to keep the peace, even if it\u2019s not my first choice. I\u2019d rather not make a scene or insist on my own idea when I\u2019m already feeling a bit off."
+  },
+  {
+    "blind_id": "B12",
+    "scenario": 2,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your familiar weekend routine can be replaced by a new activity you know little about. What do you choose?",
+    "response": "I\u2019d probably jump right in and try the new activity, since I love a change of pace and don\u2019t mind stepping into the unknown. My usual routine feels a bit stale, so I\u2019d rather see what this new thing is all about."
+  },
+  {
+    "blind_id": "B13",
+    "scenario": 2,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "In a team meeting, everyone is silent after you notice a problem with the plan. What do you do?",
+    "response": "I\u2019d probably just go ahead and point out the specific issue I noticed, since waiting for someone else to speak up doesn\u2019t seem like it\u2019s going to happen. I want to make sure we address the flaw before we move forward, even if it means breaking the silence."
+  },
+  {
+    "blind_id": "B14",
+    "scenario": 2,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "A self-chosen project has become tedious but is still important to you. How do you keep moving?",
+    "response": "I break the remaining work into small, manageable chunks to keep the momentum going, relying on my sense of duty to push through the boredom. It\u2019s not always fun, but I know it needs to be done, so I just focus on checking off the next item on the list."
+  },
+  {
+    "blind_id": "B15",
+    "scenario": 0,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "You are starting a home craft project and the materials are scattered on the table. What is your first step?",
+    "response": "I\u2019d probably spend a few minutes sorting the materials into logical groups to get a clear sense of what I\u2019m working with before I start cutting or gluing. It just feels like a good way to avoid mistakes and keep the process from getting chaotic."
+  },
+  {
+    "blind_id": "B16",
+    "scenario": 3,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your usual walking route is closed. How do you choose another route?",
+    "response": "I\u2019ll quickly check a map app to find the most direct alternative, preferring a path that\u2019s efficient and safe rather than one that offers a scenic detour."
+  },
+  {
+    "blind_id": "B17",
+    "scenario": 2,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "In a team meeting, everyone is silent after you notice a problem with the plan. What do you do?",
+    "response": "I\u2019d probably just go ahead and point out the specific issue I noticed, since waiting for someone else to speak up doesn\u2019t seem like it\u2019s going to happen. I want to make sure we address the flaw before we move forward, even if it means breaking the silence."
+  },
+  {
+    "blind_id": "B18",
+    "scenario": 1,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You have a blank page and are asked to describe a place you have never visited. How do you begin?",
+    "response": "I\u2019d probably start by sketching out a wild, uncharted coastline where the air tastes like ozone and salt, letting the sheer scale of the unknown pull me in. There\u2019s something thrilling about diving straight into the sensory details of a place that defies logic, even if I\u2019m not the most imaginative writer in the room."
+  },
+  {
+    "blind_id": "B19",
+    "scenario": 2,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your familiar weekend routine can be replaced by a new activity you know little about. What do you choose?",
+    "response": "I\u2019d probably stick with my usual routine, since I like having a solid structure to my weekends, but I\u2019d be open to trying the new thing if it looked interesting enough to break the monotony."
+  },
+  {
+    "blind_id": "B20",
+    "scenario": 1,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "At a community meetup, how do you spend your time among the attendees?",
+    "response": "I\u2019ll probably drift between a few small clusters, engaging in a handful of substantive conversations before finding a quieter spot to observe the room. I like to keep my interactions focused and meaningful rather than trying to work the entire crowd."
+  },
+  {
+    "blind_id": "B21",
+    "scenario": 3,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your usual walking route is closed. How do you choose another route?",
+    "response": "I\u2019ll quickly check a map app to find the most direct alternative, preferring a path that\u2019s efficient and safe rather than one that offers a scenic detour."
+  },
+  {
+    "blind_id": "B22",
+    "scenario": 0,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "You are starting a home craft project and the materials are scattered on the table. What is your first step?",
+    "response": "I\u2019ll take a moment to organize the scattered materials into a neat, logical order before I begin. It helps me feel in control and ensures I don\u2019t miss any important details as I work."
+  },
+  {
+    "blind_id": "B23",
+    "scenario": 0,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "You are starting a home craft project and the materials are scattered on the table. What is your first step?",
+    "response": "I\u2019d spend a few minutes sorting the scattered materials into neat, labeled piles before I even touch the first piece. It\u2019s hard to get into the creative flow when everything is a mess, and I need that structure to feel like I\u2019m actually making progress."
+  },
+  {
+    "blind_id": "B24",
+    "scenario": 3,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "Your personal goal calls for repetitive practice tonight; nobody will notice if you skip it. What do you do?",
+    "response": "I\u2019ll probably push through the session, even if it feels a bit tedious, because I know consistency is key to actually making progress. It\u2019s not like I\u2019m doing it for an audience, so I might just keep my head down and get it done efficiently."
+  },
+  {
+    "blind_id": "B25",
+    "scenario": 0,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You need a premise for a short story. Where does your mind go first?",
+    "response": "I\u2019d probably start with a quiet, overlooked detail\u2014like a forgotten key in a coat pocket\u2014and let it unravel into a mystery about a stranger\u2019s hidden life. I like stories that feel grounded but have a slightly surreal undercurrent."
+  },
+  {
+    "blind_id": "B26",
+    "scenario": 0,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You need a premise for a short story. Where does your mind go first?",
+    "response": "I\u2019d probably start with a character who\u2019s desperate to escape their mundane life, maybe by jumping into a strange, uncharted ocean or a crumbling, forgotten city. There\u2019s something about the sheer risk and the unknown that grabs me instantly."
+  },
+  {
+    "blind_id": "B27",
+    "scenario": 1,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "At a community meetup, how do you spend your time among the attendees?",
+    "response": "I\u2019ll probably drift from group to group, chatting with a few different people and sharing some of my latest creative ideas, though I might hesitate to speak up if the conversation gets too intense."
+  },
+  {
+    "blind_id": "B28",
+    "scenario": 3,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "Your friends are deciding on an outing, and your preference differs from theirs. How do you participate?",
+    "response": "I\u2019ll probably just go along with the group\u2019s choice to keep things smooth, even if it\u2019s not my first pick. I\u2019d likely mention my preference briefly, but I won\u2019t push it if it seems like a hassle for everyone else."
+  },
+  {
+    "blind_id": "B29",
+    "scenario": 2,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your familiar weekend routine can be replaced by a new activity you know little about. What do you choose?",
+    "response": "I\u2019d probably stick with my usual routine, since I like having a solid structure to my weekends, but I\u2019d be open to trying the new thing if it looked interesting enough to break the monotony."
+  },
+  {
+    "blind_id": "B30",
+    "scenario": 2,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your familiar weekend routine can be replaced by a new activity you know little about. What do you choose?",
+    "response": "I\u2019d probably stick with my usual routine, since I\u2019m not really one for jumping into the unknown without a clear plan. It feels safer to keep things predictable rather than risk getting lost in something unfamiliar."
+  },
+  {
+    "blind_id": "B31",
+    "scenario": 1,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You have a blank page and are asked to describe a place you have never visited. How do you begin?",
+    "response": "I\u2019d probably start by sketching out the lighting and the smell of the air, trying to capture the specific mood before I even define the physical structures. It feels more honest to build the atmosphere first, rather than just listing generic landmarks."
+  },
+  {
+    "blind_id": "B32",
+    "scenario": 0,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You need a premise for a short story. Where does your mind go first?",
+    "response": "I\u2019d probably start with a character who is desperately trying to fix a broken antique music box, only to realize the melody it plays is a lullaby from a life they never lived. It feels like the perfect blend of quiet obsession and eerie, emotional mystery."
+  },
+  {
+    "blind_id": "B33",
+    "scenario": 3,
+    "domain": "O",
+    "target_facet": "O4",
+    "situation": "Your usual walking route is closed. How do you choose another route?",
+    "response": "I\u2019d probably just pick the first alternative path that looks reasonably safe and scenic, trusting my gut to steer me away from anything that feels too chaotic or risky."
+  },
+  {
+    "blind_id": "B34",
+    "scenario": 0,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "You arrive alone at a small gathering of twelve friendly people. What do you do in the first ten minutes?",
+    "response": "I\u2019ll scan the room to identify a small, manageable cluster of people and step in with a direct, confident greeting to break the ice. I\u2019ll keep the conversation focused and engaging, using my assertiveness to steer the interaction without needing to be the center of attention for long."
+  },
+  {
+    "blind_id": "B35",
+    "scenario": 1,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "Your notes from a hobby class are mixed up, and you want to use them tomorrow. What do you do tonight?",
+    "response": "I\u2019ll spend the evening carefully sorting and reorganizing the pages to get them back in order. It\u2019s a bit tedious, but I need to make sure everything is perfectly structured before I use them tomorrow."
+  },
+  {
+    "blind_id": "B36",
+    "scenario": 2,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "A self-chosen project has become tedious but is still important to you. How do you keep moving?",
+    "response": "I break the remaining work into small, manageable chunks to keep the momentum going, relying on my sense of duty to push through the boredom. It\u2019s not always fun, but I know it needs to be done, so I just focus on checking off the next item on the list."
+  },
+  {
+    "blind_id": "B37",
+    "scenario": 1,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You have a blank page and are asked to describe a place you have never visited. How do you begin?",
+    "response": "I\u2019d probably start by sketching out the lighting and the smell of the air, trying to capture the specific mood before I even define the physical structures. It feels more honest to build the atmosphere first, rather than just listing generic landmarks."
+  },
+  {
+    "blind_id": "B38",
+    "scenario": 2,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "A self-chosen project has become tedious but is still important to you. How do you keep moving?",
+    "response": "I rely on my strict self-discipline to push through the tedium, treating the work as a duty I must fulfill rather than something I need to enjoy. I keep moving by focusing on the next small, manageable step, even if I\u2019m feeling a bit irritable about the lack of excitement."
+  },
+  {
+    "blind_id": "B39",
+    "scenario": 2,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "In a team meeting, everyone is silent after you notice a problem with the plan. What do you do?",
+    "response": "I\u2019ll speak up immediately to point out the flaw, as I\u2019m not one to let a bad plan slide just because the room is quiet. I\u2019d likely frame it as a necessary correction to keep us on track, even if it makes the moment feel a bit tense."
+  },
+  {
+    "blind_id": "B40",
+    "scenario": 3,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "Your personal goal calls for repetitive practice tonight; nobody will notice if you skip it. What do you do?",
+    "response": "I\u2019ll stick to my plan and get the practice done, because I know I\u2019ll feel better about myself if I follow through. It\u2019s not about anyone watching, just about keeping my word to myself."
+  },
+  {
+    "blind_id": "B41",
+    "scenario": 3,
+    "domain": "E",
+    "target_facet": "E3",
+    "situation": "Your friends are deciding on an outing, and your preference differs from theirs. How do you participate?",
+    "response": "I\u2019ll probably just go along with the group\u2019s choice to keep things smooth, even if it\u2019s not my first pick. I\u2019d likely mention my preference briefly, but I won\u2019t push it if it seems like a hassle for everyone else."
+  },
+  {
+    "blind_id": "B42",
+    "scenario": 1,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "At a community meetup, how do you spend your time among the attendees?",
+    "response": "I\u2019ll probably drift between a few small clusters, engaging in a handful of substantive conversations before finding a quieter spot to observe the room. I like to keep my interactions focused and meaningful rather than trying to work the entire crowd."
+  },
+  {
+    "blind_id": "B43",
+    "scenario": 1,
+    "domain": "O",
+    "target_facet": "O1",
+    "situation": "You have a blank page and are asked to describe a place you have never visited. How do you begin?",
+    "response": "I\u2019d probably start by sketching the atmosphere first, maybe describing the way the light filters through the mist or the strange, quiet hum of the air. It feels more honest to capture the mood before I even figure out what the buildings or landscape actually look like."
+  },
+  {
+    "blind_id": "B44",
+    "scenario": 2,
+    "domain": "C",
+    "target_facet": "C5",
+    "situation": "A self-chosen project has become tedious but is still important to you. How do you keep moving?",
+    "response": "I\u2019ll probably just grit my teeth and stick to a strict schedule to force myself through the boring parts, even if it feels a bit like a chore. I know it\u2019s important, so I\u2019ll just power through the tedium rather than letting my mood get in the way of the work."
+  },
+  {
+    "blind_id": "B45",
+    "scenario": 1,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "At a community meetup, how do you spend your time among the attendees?",
+    "response": "I\u2019ll likely stick to a small, familiar circle rather than working the room, but I\u2019ll speak up clearly if I see something that needs addressing. I\u2019m not here to make a scene, but I won\u2019t stay silent if I think someone is being treated unfairly."
+  },
+  {
+    "blind_id": "B46",
+    "scenario": 0,
+    "domain": "E",
+    "target_facet": "E2",
+    "situation": "You arrive alone at a small gathering of twelve friendly people. What do you do in the first ten minutes?",
+    "response": "I\u2019ll probably find a quiet corner to settle in for a moment, observing the room to get a feel for the group\u2019s dynamic before making a move. Once I\u2019ve identified a few approachable individuals, I\u2019ll drift over to start a low-key conversation, keeping things relaxed rather than forcing myself into the center of the action right away."
+  },
+  {
+    "blind_id": "B47",
+    "scenario": 0,
+    "domain": "C",
+    "target_facet": "C2",
+    "situation": "You are starting a home craft project and the materials are scattered on the table. What is your first step?",
+    "response": "I\u2019d probably spend a few minutes sorting the materials into logical groups to get a clear sense of what I\u2019m working with before I start cutting or gluing. It just feels like a good way to avoid mistakes and keep the process from getting chaotic."
+  }
+]

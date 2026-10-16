@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "software correctness only",
+  "checks": [
+    "private information isolation",
+    "heard teasing changes mood",
+    "firsthand encounter provenance",
+    "source-linked reinterpretation",
+    "action-linked outcome",
+    "read-only inspection",
+    "duplicate and backwards-time rejection",
+    "family consistency and cycle rejection",
+    "rehearsal and affect repetition gates",
+    "checkpoint round trip",
+    "time-skip consistency",
+    "no post-death live observations or actions"
+  ]
+}

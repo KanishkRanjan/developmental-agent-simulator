@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "scope": "one actual model proposal using final context compaction and tokenizer guard; no action committed",
+  "seconds": 9.441,
+  "decision": {
+    "action": "Accept the invitation and ask the friend to bring the drawing supplies so they can be organized.",
+    "speech": "Yes, I'd like that. Let's get the paper and pencils ready first so we have a good space to work.",
+    "goal_id": null,
+    "plan": [
+      "Agree to draw with the friend.",
+      "Ensure the drawing materials are accessible and orderly.",
+      "Begin the drawing activity."
+    ],
+    "memory_ids": [
+      "life-2-cleanup",
+      "life-1-cleanup",
+      "life-0-cleanup"
+    ]
+  },
+  "context_view": {
+    "policy": "bounded_view_v1",
+    "omitted": {},
+    "original_records_preserved": true
+  }
+}

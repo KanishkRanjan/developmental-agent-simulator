@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "scope": "synthetic engineering checks; no calibrated human or demographic prediction",
+  "checks": [
+    "query expansion searches full available corpus beyond salience shortlist",
+    "index excludes inaccessible original detail",
+    "gist semantic selection cannot restore detail",
+    "ambiguous names retain all known candidates without global identity leakage",
+    "unknown mentions do not spawn people or fabricate acquaintance",
+    "received identification binds a reference and only actual encounter creates firsthand edge",
+    "open biography values reach own context without invented observations",
+    "history rejects pre-birth and conflicting overlapping eras transactionally",
+    "correlated temporary variation is seeded and does not change baseline traits",
+    "explicit cultural rules and separate constructs use language without invented Big Five mapping",
+    "invalid covariance rejected",
+    "elapsed activities preserve intended state until completion",
+    "pending activity and later outcome resume identically",
+    "time is reserved in actual intervals rather than instantaneous outcomes",
+    "intervening death cancels unfinished action without future success or memory",
+    "self-set evidence-linked goals become canonical scheduled opportunities without claiming achievements",
+    "conserved transfer ledger and overdraw rollback",
+    "relationship decay uses elapsed time and context remains pure",
+    "SQLite graph checkpoint restores identical state and immutable observations",
+    "normalized graph audits are owner-scoped and preserve provenance",
+    "completion failure retries saved intention without duplicate decisions or charges",
+    "age-window world hazards persist and resume without resampling",
+    "model-inferred heard reminders trigger gist-safe recall without fabricated meetings",
+    "repeated ambiguous mentions preserve explicit binding provenance and versions",
+    "missing selected model fails before tokenization or inference with no fallback"
+  ]
+}

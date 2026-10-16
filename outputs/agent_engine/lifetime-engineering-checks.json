@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "engineering only; scripted and stubbed providers",
+  "checks": [
+    "automatic age-eligible events",
+    "action-dependent outcomes and goals",
+    "bounded automatic trait development",
+    "identical checkpoint/resume history",
+    "API failure rolls back entire tick",
+    "model appraisal/decision path with stub"
+  ]
+}

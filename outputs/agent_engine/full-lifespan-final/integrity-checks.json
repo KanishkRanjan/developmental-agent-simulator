@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "provider": "scripted_engineering_fixture",
+  "scope": "85-year deterministic software lifecycle; model-only stages skipped",
+  "day": 31046.25,
+  "resolved_actions": 209,
+  "pending_activities": 0,
+  "agents": 5,
+  "newborns": [
+    "alex-next"
+  ],
+  "dead_agents": [
+    "maya",
+    "rowan",
+    "bea"
+  ],
+  "dynamic_opportunities": 10,
+  "dynamic_hazards": 3,
+  "json_sqlite_equivalence": true,
+  "recorded_source_hashes": "source-hashes.json"
+}

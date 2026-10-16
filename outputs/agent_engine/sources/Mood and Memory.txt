@@ -1,0 +1,379 @@
+﻿Unifying Short-Timescale Affect Dynamics and Long-Timescale Memory Consolidation in Large-Scale Multi-Agent Social Simulations
+Executive Summary
+The structural unification of a short-timescale affective state (mood) with a long-timescale memory system (power-law forgetting) is an architectural necessity for producing biologically plausible agents in large-scale social simulations. Relying on Large Language Models (LLMs) to infer affective states from raw text logs produces unacceptable persona drift, lacks temporal continuity, and fails to support arbitrary simulation time-skips. The analysis evaluates the integration of these two temporal domains within the constraints of lazy evaluation and event-driven architectures.
+The evaluation of the proposed design hypotheses (H1-H8) yields the following determinations, utilizing evidence from affective chronometry, psychometrics, and computational cognitive modeling.
+Hypothesis
+	Status
+	Justification
+	H1. Intensity-dependent recovery
+	Confirmed
+	Empirical affective chronometry demonstrates that initial emotional intensity strictly predicts emotion duration and alters the hazard rate of decay.
+	H2. Sum of decaying impulses
+	Modified
+	While continuous autoregressive models are standard, a heavy-tailed decaying impulse summation is mathematically required to support exact closed-form lazy evaluation without background ticks.
+	H3. Personality-dependent recovery
+	Confirmed
+	Emotional inertia (resistance to affective change) is highly correlated with Neuroticism and maladjustment, acting as a distinct parameter from initial reactivity.
+	H4. Mood-congruent retrieval
+	Confirmed
+	Meta-analyses establish mood-congruent memory as a powerful retrieval bias, distinct from the structural degradation of the memory trace itself.
+	H5. Arousal-driven encoding
+	Confirmed
+	Amygdala-driven modulation of memory consolidation dictates that physiological arousal scales the initial stability of episodic memory traces.
+	H6. Retrieval triggers mood
+	Confirmed
+	The reactivation of salient memories serves as an internal event trigger, extending emotion duration through rumination pathways.
+	H7. Memory-driven appraisal
+	Confirmed
+	Appraisal theories position memory-driven relevance and coping potential as the primary antecedents to subsequent emotion elicitation.
+	H8. Shared decay family
+	Modified
+	Both mechanisms require heavy-tailed decay, but memory conforms to the FSRS specific power-law, whereas mood requires bounded, saturating functions to prevent divergence.
+	Evidence Review
+Q1. Temporal Dynamics of Affect
+(Confidence: Strong)
+The temporal unfolding of emotions, formally termed affective chronometry, contradicts the assumption that emotional states decay exponentially back to a baseline. Discrete-time survival analyses of emotion duration reveal that the hazard rate of emotions—defined as the conditional probability that an emotional episode will end in a given time interval—is highly variable across emotion types and durations1. The hazard rate of fear drops steeply and linearly, resulting in a short median lifetime of approximately 16 minutes1. Conversely, emotions such as anger and joy exhibit a distinct hazard function that rises slightly before undergoing a steep drop after one hour, yielding longer median lifetimes of 22 and 26 minutes, respectively1.
+Crucially, the survivor functions indicate a heavy-tailed distribution. Emotions that survive the initial hourly intervals are disproportionately likely to endure for significantly longer periods1. This heavy-tailed nature implies that affect recovery is mathematically better modeled by power-law dynamics rather than the memoryless exponential decay commonly implemented in naive computational agents. Furthermore, the duration of an emotional episode is heavily modulated by the initial intensity of the event and the presence of rumination1.
+In computational psychology, continuous-time affective modeling frequently relies on the Ornstein-Uhlenbeck (OU) process, which is the continuous analogue of a first-order autoregressive AR(1) model3. While AR(1) models successfully capture the tendency of a system to revert to a mean baseline, the heavy-tailed real-world data and the compounding effect of rumination imply that acute emotional impulses persist longer than a standard exponential AR(1) process predicts. To capture both the mean-reverting nature of the OU process and the heavy-tailed survival data from affective chronometry, the computational model must utilize dynamic, intensity-dependent time constants governed by power-law impulse formulations.
+Q2. Individual Differences
+(Confidence: Strong)
+Personality traits systematically govern affective dynamics. The Cybernetic Big Five Theory (CB5T) provides a mechanistic framework, positioning traits as parameters of evolved cybernetic mechanisms regulating entropy and goal-directed behavior6. Within CB5T, the meta-trait of Stability (representing the shared variance of Conscientiousness, Agreeableness, and inverse Neuroticism) governs the protection of existing behavioral policies from disruption, while Plasticity (Extraversion and Openness) governs exploration7.
+Empirical research on emotional inertia—defined as the degree to which emotional states resist change and carry over from one moment to the next—demonstrates a profound correlation with Neuroticism and psychological maladjustment9. High Neuroticism correlates with high emotional inertia, meaning affective states persist longer and are more self-predictive over time. This inertia is independent of the initial reactivity to a stimulus9. Individuals with high Extraversion exhibit heightened reactivity (initial response amplitude) to positive stimuli, while highly neurotic individuals exhibit heightened reactivity to negative stimuli and systemic uncertainty12. Consequently, reactivity (the amplitude of the emotional impulse) and inertia (the decay rate of the impulse) are distinct, separable mathematical parameters, though both are heavily modulated by the agent's Big Five profile. Furthermore, the cybernetic framework supports co-fluctuation under stress, where acute adversity increases entropy, driving Neuroticism up while suppressing Extraversion and Conscientiousness6.
+Q3. Mood and Memory Interaction
+(Confidence: Strong for Mood-Congruent and Arousal; Contested for Mood-Dependent)
+The interaction between affect and memory operates primarily through two independent, neurobiologically distinct pathways: encoding enhancement and retrieval bias. Regarding encoding, extensive neurobiological literature establishes that emotional arousal activates the basolateral amygdala via noradrenergic pathways, which subsequently modulates memory consolidation in regions such as the hippocampus13. This consolidation modulation mechanism implies that the initial structural stability of a memory trace is a direct mathematical function of the organism's physiological arousal at the exact time of encoding or shortly thereafter. Experiences accompanied by significant adrenal stress hormone release are consolidated into more durable traces16.
+Regarding retrieval, a strict distinction must be drawn between mood-dependent memory and mood-congruent memory. Mood-dependent memory (the hypothesis that recall is superior if the retrieval mood matches the encoding mood, regardless of the memory's intrinsic valence) has repeatedly failed rigorous replication and proved highly unreliable in laboratory settings18. It represents folklore that should not be encoded into the architecture. Conversely, mood-congruent memory (the hypothesis that current mood biases the retrieval of memories matching that specific mood valence) is a highly robust phenomenon. Meta-analyses demonstrate a baseline positive bias (  ) in healthy individuals, which severely inverts to a negative bias (  ) in clinically depressed individuals18. This bias operates as a transient filter in healthy individuals but locks into place in maladaptive states. The depressed brain does not merely retrieve negative memories; it actively constructs them, filling gaps with mood-congruent material18. Therefore, current mood must act as a continuous modifier on the retrievability of similarly valenced memories during the querying phase, without altering the underlying consolidated stability.
+Q4. Appraisal and Construal
+(Confidence: Moderate)
+Appraisal theories dictate that emotions are not elicited directly by raw stimuli, but by the subjective appraisal of the stimulus regarding its relevance, implications, and coping potential. Scherer’s Component Process Model positions this appraisal as a sequential, memory-dependent operation20. The construal of a situation relies entirely on the retrieval of episodic precedents to estimate predictability, threat, and goal-congruence.
+While the DIAMONDS framework successfully categorizes situations into eight discrete dimensions (Duty, Intellect, Adversity, Mating, pOsitivity, Negativity, Deception, Sociality)22, driving cybernetic mood dynamics exclusively through discrete categories results in a loss of continuous valuation. A continuous appraisal dimension representation—specifically mapping Valence, Arousal, and Controllability—aligns more accurately with the cybernetic parameters of CB5T. To operationalize appraisal, the event classification must query the agent's memory for relevant past experiences; if past betrayals are retrieved during a neutral event, the appraised threat level increases, directly modulating the intensity of the resulting emotional impulse.
+Q5. Computational Models
+(Confidence: Moderate)
+Existing formal models of affect dynamics provide frameworks for coupling cognition and emotion. Reinforcement-learning models, notably the "mood-as-momentum" model proposed by Eldar and Niv, conceptualize mood as an aggregate of recent reward prediction errors25. In these models, positive prediction errors elevate mood, which in turn acts as a ubiquitous bias on future expected values. This bidirectional coupling creates a mathematical feedback loop where mood alters environmental perception, and perception iteratively alters mood.
+Cognitive architectures such as ACT-R and affective frameworks like FAtiMA implement PAD-based (Pleasure, Arousal, Dominance) emotional states, typically utilizing linear or standard exponential decay functions. However, none of these standard architectures inherently account for the power-law forgetting curves observed in human memory consolidation, nor are they optimized for the lazy evaluation required by asynchronous, multi-agent LLM simulations. The proposed design must therefore adapt the bidirectional feedback loop of the mood-as-momentum model while replacing exponential decay with heavy-tailed power-law decay.
+Q6. LLM-Agent Literature
+(Confidence: Moderate)
+The simulation of society using LLMs, exemplified by Generative Agents, relies heavily on text-based memory streams, spatial distance heuristics, and periodic reflective consolidation27. While these agents exhibit plausible emergent social behaviors, their emotional states are typically tracked via prompt engineering rather than underlying mathematical formalisms. Relying purely on an LLM to infer its mood from a text log of retrieved memories leads to severe persona drift and a total lack of emotional inertia. The LLM has no temporal decay function native to its context window; a memory from ten years ago and a memory from ten seconds ago carry identical affective weight unless explicitly timestamp-engineered.
+Introducing a quantitative, cybernetic mood tracker external to the LLM stabilizes the agent's baseline and ensures biologically plausible affective chronometry. Empirical validation of LLM-simulated affect indicates that while LLMs can accurately classify discrete emotions, they fail to natively simulate the temporal decay of those emotions over simulated time-skips. Grounding the LLM's generative output in strict mathematical constraints provided by an external state vector ensures realistic behavior.
+Q7. Lazy and Time-Skip Compatibility
+(Confidence: Strong)
+The architectural requirement for lazy evaluation—computing the current state only at query time without continuous background clock ticks—necessitates strictly closed-form mathematical functions. The FSRS (Free Spaced Repetition Scheduler) algorithm achieves this for memory via a power-law retrievability function:
+  
+
+Specifically, FSRS-4.5 utilizes   29.
+To align mood with lazy evaluation, mood cannot be a tick-based autoregressive update. It must be modeled as a sum of historical mood impulses. Given that human emotion hazard rates drop and then flatten out1, an exponential decay    approaches zero too rapidly at large   . A power-law impulse function    allows for an exact, closed-form summation at any arbitrary time   .
+Lazy evaluation is mathematically exact for the mood state itself. However, the coupling—where mood influences memory encoding in the background—requires an approximation. Because the system is event-driven, the mood is only evaluated at the exact timestamp of an event. A time-skip of 40 simulated years implies   . Under a power-law formulation, the summation mathematically decays to zero, and the agent's mood gracefully regresses to its static personality baseline without requiring computationally expensive background tick updates.
+Q8. Failure Modes and Safeguards
+(Confidence: Strong)
+Coupled dynamical systems of mood and memory are highly susceptible to runaway feedback loops. If an agent retrieves a sad memory, it generates a negative affective impulse; this negative mood biases subsequent retrievals toward further sad memories, infinitely amplifying the state. While this reflects the clinical reality of depressive rumination18, it leads to mathematical divergence (saturation) in a simulation.
+Safeguards require specific boundary conditions grounded in cybernetic theory. First, a bounding function, such as the hyperbolic tangent (  ), must strictly limit absolute mood. Second, an adaptation mechanism must be introduced where repeated retrieval of the exact same memory yields diminishing affective impulses, simulating neurological habituation31. Third, an integration ceiling or affective refractory period is required to prevent infinite loops during highly active event clusters.
+Q9. Classifier Reliability
+(Confidence: Moderate)
+Utilizing an LLM to classify every micro-event into eight DIAMONDS dimensions is computationally expensive and highly prone to categorization hallucinations. While DIAMONDS maps robustly to behavioral outcomes in human experience sampling23, reducing event classification to continuous embedding-based classifiers or simpler Valence-Arousal regressions is computationally cheaper and mathematically more reliable. If LLM classification is maintained, constraining the output to a normalized dimensional vector    via strictly typed output formats (e.g., JSON schema enforcement) minimizes parser failures and ensures the mood equations receive bounded, predictable inputs. A continuous appraisal dimension representation (Valence, Arousal, Controllability) is vastly superior for driving cybernetic mood dynamics compared to discrete categorical tags.
+Q10. Validation
+(Confidence: Strong)
+Validation of the unified system must be grounded in Whole Trait Theory (WTT), which posits that personality traits are essentially the means of density distributions of momentary states, with approximately 80% of total behavioral variance occurring within-person across situations32. The simulation is successfully validated if, over thousands of varied events, the density distribution of a specific agent's mood states matches the expected mean and standard deviation of their assigned Big Five profile. Furthermore, the autocorrelation of the agent's simulated mood series must match human empirical inertia bounds—typically    to    at lag-1 depending on the agent's Neuroticism parameter9.
+The Unified Formulation
+The system operates via two interacting layers: the long-timescale FSRS Memory layer and the short-timescale Mood layer. Both utilize closed-form equations to guarantee compatibility with event-driven architectures and arbitrary time-skips.
+Core Equations and Lazy Evaluation
+Memory Retrievability (FSRS-4.5 Based) The retrievability    of memory node   , evaluated at current time   , is a closed-form power-law derived from the DSR (Difficulty, Stability, Retrievability) model29.
+  
+
+where    is the memory's structural stability, representing the time required for retrievability to drop to 90%.
+Mood State (Closed-Form Lazy Summation)
+To compute mood at time    without tick updates, the state is the sum of a baseline and all historical impulses, passed through a hyperbolic tangent saturation function to prevent divergence.
+  
+
+*   : Trait baseline mood (derived from Extraversion and Neuroticism).
+*   : Intensity of event    (influenced by event severity and agent reactivity).
+*   : Valence of event    (  ).
+*   : Emotion duration parameter (mood stability), determined by agent inertia and event importance1.
+*   : Global decay shape parameter. Setting    aligns the affective hazard rate with the memory decay shape, producing the heavy-tailed survival function observed in empirical chronometry1.
+The Memory-Mood Coupling
+The interaction between the systems occurs via three mathematically defined pathways.
+1. Mood to Memory Encoding (Arousal-Modulated Consolidation) Upon encoding a new episodic memory at time   , the initial FSRS stability    is scaled by the absolute intensity of the agent's current mood, which acts as a proxy for physiological arousal15.
+  
+
+This ensures that events occurring during highly emotional states are consolidated into more durable traces.
+2. Mood to Memory Retrieval (Mood-Congruent Bias) When querying memory, the objective retrievability    is modified by the agent's current mood to produce a final contextual retrieval score. This implements the meta-analytic findings of Matt & Vazquez18 without altering the underlying FSRS structure.
+  
+
+If the memory valence    matches the current mood   , the retrieval score increases, creating a transient filter that favors mood-congruent recall.
+3. Memory to Mood (Rumination) When a highly salient memory    is retrieved, it acts as an internal event, generating a new mood impulse at time   . The intensity of this impulse is a fraction of the memory's original arousal, scaled by the agent's rumination trait2.
+  
+
+Personality Parameter Sampling
+Trait parameters are sampled directly from the agent's Big Five profile to individualize the cybernetic equations.
+
+
+Trait / Facet
+	Modulated Parameter
+	Direction
+	Evidence Strength
+	Neuroticism
+	Emotional Inertia (  )
+	Positive
+	Strong9
+	Neuroticism
+	Rumination coefficient (  )
+	Positive
+	Strong2
+	Neuroticism
+	Reactivity to Negative Events
+	Positive
+	Strong7
+	Extraversion
+	Reactivity to Positive Events
+	Positive
+	Strong7
+	Extraversion
+	Baseline Mood (  )
+	Positive
+	Moderate
+	Conscientiousness
+	Mood-Congruent Bias (  )
+	Negative (Damping)
+	Weak
+	Openness
+	Appraisal Complexity
+	Positive
+	Unverified
+	Graph Schema Changes
+To support this unified architecture, the Neo4j/Graphiti-style database requires specific modifications. Storing individual mood impulses as graph nodes allows the system to seamlessly cull decayed impulses during standard graph maintenance operations.
+
+
+
+
+
+
+Cypher
+// New Node: MoodImpulse (linked to the Agent)
+CREATE (m:MoodImpulse {
+   intensity: Float,      // I_j (Amplitude of the event)
+   valence: Float,        // v_j (Range: -1.0 to 1.0)
+   tau: Float,            // tau_j (Inertia/Stability of the impulse)
+   timestamp: Integer,    // t_j (Simulation tick)
+   event_ref: String      // Optional UUID link to triggering event/memory
+})
+
+// Modified Node: Memory (Adding valence and arousal for coupling)
+CREATE (mem:Memory {
+   stability: Float,      // S parameter in FSRS
+   difficulty: Float,     // D parameter in FSRS
+   valence: Float,        // Event valence [-1.0, 1.0]
+   arousal: Float,        // Event arousal [0.0, 1.0]
+   valid_at: Integer,     // Encoding timestamp
+   last_retrieved: Integer // Updates upon successful recall
+})
+
+// Edge: Agent to MoodImpulse
+CREATE (a:Agent)-[:EXPERIENCED]->(m:MoodImpulse)
+
+Optimization Note: During simulation runtime, a background maintenance job must delete MoodImpulse nodes where    (where    is a near-zero threshold) to prevent the agent's impulse history from expanding infinitely.
+Python Pseudocode
+The following pseudocode outlines the implementation of the lazy evaluation and coupled dynamics. It is designed for integration into event-driven simulation environments.
+
+
+
+
+
+
+Python
+import math
+from typing import List
+
+class MoodImpulse:
+   def __init__(self, intensity: float, valence: float, tau: float, timestamp: float):
+       self.intensity = intensity
+       self.valence = valence
+       self.tau = tau
+       self.timestamp = timestamp
+
+class Agent:
+   def __init__(self, n_score: float, e_score: float):
+       self.neuroticism = n_score
+       self.extraversion = e_score
+       self.impulses: List[MoodImpulse] = []
+       
+       # Cybernetic trait mappings
+       self.m_base = (e_score - 0.5) * 0.5 
+       self.inertia_mult = 1.0 + (n_score * 2.0)
+       self.reactivity_pos = 1.0 + (e_score * 1.5)
+       self.reactivity_neg = 1.0 + (n_score * 1.5)
+       self.rumination_mult = n_score
+
+   def compute_mood_lazily(self, current_time: float) -> float:
+       """
+       Computes current mood exactly at query time (no ticks).
+       Utilizes power-law summation and tanh bounding.
+       """
+       decay_shape_alpha = 0.5
+       active_sum = 0.0
+       alive_impulses = []
+       
+       for imp in self.impulses:
+           delta_t = current_time - imp.timestamp
+           if delta_t < 0:
+               continue
+           
+           # Power-law decay mimicking heavy-tail affective chronometry
+           decay_factor = math.pow(1.0 + (delta_t / imp.tau), -decay_shape_alpha)
+           impulse_val = imp.intensity * imp.valence * decay_factor
+           
+           # Culling threshold to prevent array growth
+           if abs(impulse_val) > 0.01:
+               active_sum += impulse_val
+               alive_impulses.append(imp)
+               
+       self.impulses = alive_impulses # State cleanup
+       
+       # Tanh bounds the mood to [-1, 1] to prevent runaway divergence
+       return math.tanh(self.m_base + active_sum)
+
+   def process_event(self, event_valence: float, event_intensity: float, current_time: float):
+       """Creates a new mood impulse based on an external event."""
+       # Modulate reactivity by traits
+       if event_valence > 0:
+           adjusted_intensity = event_intensity * self.reactivity_pos
+       else:
+           adjusted_intensity = event_intensity * self.reactivity_neg
+           
+       # Tau (stability) determined by event intensity and agent inertia
+       tau = max(1.0, adjusted_intensity * 100.0 * self.inertia_mult)
+       
+       new_impulse = MoodImpulse(
+           intensity=adjusted_intensity,
+           valence=event_valence,
+           tau=tau,
+           timestamp=current_time
+       )
+       self.impulses.append(new_impulse)
+
+def score_memory_retrieval(agent: Agent, memory, current_time: float) -> float:
+   """
+   Scores memory retrievability using FSRS and mood-congruent bias.
+   Memory object expects attributes: stability, last_retrieved, valence
+   """
+   delta_t = current_time - memory.last_retrieved
+   
+   # FSRS 4.5 baseline retrievability
+   retrievability = math.pow(1.0 + (19.0/81.0) * (delta_t / memory.stability), -0.5)
+   
+   current_mood = agent.compute_mood_lazily(current_time)
+   
+   # Mood-congruent memory bias (Matt & Vazquez, 1992)
+   mood_bias_weight = 0.2
+   bias = mood_bias_weight * (current_mood * memory.valence)
+   
+   return max(0.0, min(1.0, retrievability + bias))
+
+def retrieve_and_ruminate(agent: Agent, memory, current_time: float):
+   """Retrieving a memory creates a rumination impulse."""
+   ret_score = score_memory_retrieval(agent, memory, current_time)
+   if ret_score > 0.5: # Threshold for successful retrieval
+       rumination_intensity = memory.arousal * agent.rumination_mult * 0.5
+       agent.process_event(
+           event_valence=memory.valence,
+           event_intensity=rumination_intensity,
+           current_time=current_time
+       )
+       memory.last_retrieved = current_time
+
+Safeguards and Failure Modes
+Because the system implements mathematically rigorous feedback loops (memory affects mood via rumination; mood affects memory via congruent retrieval), dynamical instability is a severe risk in isolated multi-agent systems.
+
+
+Failure Mode
+	Detection
+	Mitigation / Safeguard
+	Literature Grounding
+	Depressive Attractor
+	Agent repeatedly recalls negative memories, generating negative rumination impulses, trapping mood at -1.0 permanently.
+	Implement    bounding function on total mood. Integrate an affective refractory period (impulses from rumination capped per hour).
+	Clinical depression features runaway mood-congruent memory18, but healthy brains utilize inhibitory control.
+	Array Explosion
+	Agent impulses array grows infinitely over simulation steps, causing memory leaks.
+	Memory cleanup loop: strictly cull impulses when   .
+	Emulates absolute affective forgetting and baseline return.
+	Mood Saturation
+	Extreme external events stack up rapidly, pegging mood to 1.0 instantly.
+	Non-linear impulse addition or    saturation prevents linear combinations from breaking logic bounds.
+	Corresponds to the Weber-Fechner law of diminishing psychophysical sensitivity.
+	Time-Skip Errors
+	Skipping 40 simulation years results in division by zero or infinite retrievability.
+	Strict type bounding in Python. The power-law formulation safely evaluates to    as   .
+	Asymptotically safe mathematical limits.
+	Validation Plan
+To scientifically validate that the simulated agents exhibit realistic psychological behavior, the simulation outputs must be measured against established psychometric baselines:
+   1. Whole Trait Theory (WTT) Variance Check: Run the simulation for 30 in-game days. Measure the mood of agents at random intervals. The resulting density distributions must demonstrate that within-person variance accounts for approximately 50% to 80% of total variance, directly matching Fleeson's experience sampling findings32.
+   2. Emotional Inertia Targets: Calculate the lag-1 autocorrelation of the mood time series. Agents possessing high Neuroticism must display an autocorrelation of   , while low Neuroticism agents must drop to   , matching Kuppens' clinical baseline parameters9.
+   3. Mood-Congruent Memory Ablation: Measure the ratio of positive to negative memories retrieved during simulation queries. A healthy agent in a neutral state should exhibit a slight positive bias (  ). When the agent is mathematically forced into a negative mood state, the retrieval ratio must invert to favor negative memories (  )18.
+   4. Arousal-Consolidation Check: Compare the FSRS stability (  ) of memories encoded during a neutral state versus an extreme mood state. The    values for high-arousal memories should statistically survive longer retention intervals, confirming the operationalization of the McGaugh amygdala mechanism15.
+Open Problems
+The literature and this formulation leave specific computational parameters unresolved, which must be calibrated empirically during simulation tuning:
+The optimal power-law shape parameter (  ) for affective hazard rates is not mathematically standardized in the literature. While memory decay in FSRS-4.5 utilizes   29, applying this directly to mood impulses may cause emotions to last artificially long in highly volatile environments. Empirical tuning is required to align the parameter with Verduyn's median emotion lifetimes.
+Furthermore, using LLMs to continuously determine event valence and intensity introduces latency and LLM bias. It remains entirely untested whether an LLM can consistently output normalized continuous valence/intensity values across thousands of diverse edge cases without artificially drifting toward a "neutral" safe baseline due to RLHF safety training.
+Finally, cross-trait interactions remain theoretically complex. The CB5T literature maps traits to broad cybernetic parameters, but precisely how Conscientiousness dampens emotional impulses (regulatory control) versus how Agreeableness alters the valence of social events is theoretically sound but computationally unquantified in current open-source agent frameworks.
+Literature Annotations
+The foundational evidence dictating this architecture is sourced directly from primary psychological and computational literature.
+
+
+Source Identification
+	Relevance to System Architecture
+	Verduyn, P. et al. (2012). Emotion.1
+	Demonstrates that emotion duration is highly variable, relies on event importance and rumination, and that the hazard function of emotions is non-linear, requiring heavy-tailed decay over simple exponential functions.
+	Kuppens, P. et al. (2010). Psychological Science.9
+	Establishes the concept of emotional inertia (resistance to affective change) and links it strongly to psychological maladjustment and Neuroticism, dictating the decay parameter   .
+	DeYoung, C. G. (2015). Journal of Research in Personality.6
+	Provides the Cybernetic Big Five Theory (CB5T) framework linking Big Five traits (Stability, Plasticity) to dynamic cybernetic responses like entropy regulation and reward sensitivity.
+	Matt, G. E., Vazquez, C., et al. (1992). Clinical Psychology Review.18
+	Provides the definitive effect sizes for mood-congruent memory biases, proving positive baseline biases and negative depression filters, while discrediting mood-dependent memory.
+	McGaugh, J. L. (2000). Science.13
+	Proves that post-training emotional arousal activates the basolateral amygdala to modulate the consolidation and long-term stability of memories, dictating the encoding multiplier.
+	Eldar, E., & Niv, Y. (2015). Nature Communications.25
+	Provides a reinforcement learning framework where mood is shaped by reward prediction errors and subsequently biases expected values, inspiring the bidirectional coupling architecture.
+	Fleeson, W. (2001). Journal of Personality and Social Psychology.32
+	Establishes Whole Trait Theory, demonstrating that the vast majority of behavioral and state variance occurs within-person over time, providing the core variance validation target.
+	Scherer, K. R. (2005). Social Science Information.20
+	Outlines the Component Process Model, emphasizing that memory-dependent appraisal is the triggering mechanism for emotional episodes.
+	Open Spaced Repetition (2024). GitHub Wiki.29
+	Provides the exact closed-form math for power-law memory retrievability via the DSR (Difficulty, Stability, Retrievability) model, crucial for the lazy evaluation framework.
+	Rauthmann, J. F., et al. (2014). Journal of Personality and Social Psychology.22
+	Provides the categorization dimensions for situational construal (DIAMONDS), representing the interface between environmental events and internal appraisal.
+	Works cited
+      1. Predicting the Duration of Emotional Experience - ResearchGate, https://www.researchgate.net/publication/259656043_Predicting_the_Duration_of_Emotional_Experience_Two_Experience_Sampling_Studies
+      2. Which emotions last longest and why: The role of event importance, https://www.researchgate.net/publication/273116021_Which_emotions_last_longest_and_why_The_role_of_event_importance_and_rumination
+      3. Graphical representation of the DynAffect processes that drive, https://www.researchgate.net/figure/Graphical-representation-of-the-DynAffect-processes-that-drive-affective-change-a_fig2_46379499
+      4. A Hierarchical Ornstein–Uhlenbeck Model for Continuous Repeated, https://www.cambridge.org/core/journals/psychometrika/article/hierarchical-ornsteinuhlenbeck-model-for-continuous-repeated-measurement-data/68FE70D713E24865B848DF75E8303C77
+      5. A Hierarchical Latent Stochastic Differential Equation Model for, https://sites.socsci.uci.edu/~zoravecz/bayes/data/Articles/Oravecz2011AHLSD.pdf
+      6. (PDF) Cybernetic Big Five Theory - ResearchGate, https://www.researchgate.net/publication/264050796_Cybernetic_Big_Five_Theory
+      7. Towards Understanding Persons and their Personalities with ... - OSF, https://osf.io/download/kjzf7/
+      8. Brain Network Flexibility Predicts Openness/Intellect and Intel - bioRxiv, https://www.biorxiv.org/content/10.1101/2024.01.05.574386v1.full.pdf
+      9. Emotional inertia and psychological maladjustment - PubMed - NIH, https://pubmed.ncbi.nlm.nih.gov/20501521/
+      10. (PDF) Emotional Inertia and Psychological Maladjustment, https://www.researchgate.net/publication/44629432_Emotional_Inertia_and_Psychological_Maladjustment
+      11. Emotional inertia and psychological maladjustment - PMC - NIH, https://pmc.ncbi.nlm.nih.gov/articles/PMC2901421/
+      12. Dynamics of personality: The Zurich model of motivation ... - CNR-IRIS, https://iris.cnr.it/retrieve/52e459e4-ea5b-449d-894d-d3b489b6a68b/QuirinEtAl_2022_JournalOfPersonalityDynamicsOfPersonality.pdf
+      13. How the amygdala affects emotional memory by altering brain, https://repository.ubn.ru.nl/bitstream/handle/2066/135914/1/135914.pdf
+      14. Making lasting memories: Remembering the significant - PNAS, https://www.pnas.org/doi/10.1073/pnas.1301209110
+      15. Making lasting memories: Remembering the significant - PNAS, https://www.pnas.org/doi/pdf/10.1073/pnas.1301209110
+      16. (PDF) Consolidating Memories - ResearchGate, https://www.researchgate.net/publication/270765874_Consolidating_Memories
+      17. Memory Modulation : Behavioral Neuroscience - Ovid, https://www.ovid.com/00001975-201112000-00001
+      18. Mood Congruent Memory - Mindomax, https://www.mindomax.com/mood-congruent-memory
+      19. UCLA Electronic Theses and Dissertations - eScholarship.org, https://escholarship.org/content/qt33m547fv/qt33m547fv.pdf?v=lg
+      20. Klaus Scherer's Component Process Model - Psychology Fanatic, https://psychologyfanatic.com/klaus-scherers-component-process-model/
+      21. Emotions are emergent processes: they require a dynamic ... - PMC, https://pmc.ncbi.nlm.nih.gov/articles/PMC2781886/
+      22. Situating Smartphones in Daily Life: Big Five Traits and Contexts, https://www.researchgate.net/publication/375609114_Situating_smartphones_in_daily_life_Big_Five_traits_and_contexts_associated_with_young_adults'_smartphone_use
+      23. ADVANCES IN FLOW RESEARCH [second ed.] 9783030534677, https://dokumen.pub/advances-in-flow-research-secondnbsped-9783030534677-3030534677.html
+      24. Mental Health at the Intersection of Person, Situation, and Large, https://arxiv.org/pdf/2603.05953
+      25. Self-esteem depends on beliefs about the rate of change of social, https://pmc.ncbi.nlm.nih.gov/articles/PMC9033861/
+      26. What Can Reinforcement Learning Models of Dopamine and ... - PMC, https://pmc.ncbi.nlm.nih.gov/articles/PMC11104395/
+      27. WWW 2024 Tutorial, https://www2024.thewebconf.org/docs/tutorial-slides/simulating-human-society-with-llm.pdf
+      28. A Multi-Agent Simulation of Students Consulting AI - arXiv, https://arxiv.org/pdf/2609.05018
+      29. The Algorithm · open-spaced-repetition/awesome-fsrs Wiki - GitHub, https://github.com/open-spaced-repetition/awesome-fsrs/wiki/The-Algorithm
+      30. A technical explanation of FSRS | Expertium's Blog, https://expertium.github.io/Algorithm.html
+      31. Temporal dynamics of affect in the brain - MANATEE Lab, http://www.manateelab.org/wp-content/uploads/Puccetti_NBBR_2021.pdf
+      32. Using Whole Trait Theory to Unite Trait and State Mindfulness, https://www.researchgate.net/publication/370218233_Using_Whole_Trait_Theory_to_Unite_Trait_and_State_Mindfulness
+      33. The Different Meanings of Response Variability: A Preregistered, https://www.researchgate.net/publication/415149636_The_Different_Meanings_of_Response_Variability_A_Preregistered_Replication_and_Extension
+      34. Do Self-Reported Traits and Aggregated States Capture the Same, https://d-nb.info/1225308046/34
+      35. FSRS-5 vs SM-2: Spaced Repetition Algorithm Comparison | Diane AI, https://www.diane.app/en/guides/fsrs-vs-sm2
+      36. Personality Pathology as a Self-regulating Dynamical System, https://digitalcommons.usf.edu/cgi/viewcontent.cgi?article=12423&context=etd

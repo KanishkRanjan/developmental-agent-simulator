@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "actual local 27B integration only",
+  "requests": 6,
+  "signatures": 5,
+  "actions_resolved": 1,
+  "offered_actions": 2,
+  "active_rules": 0,
+  "no_forced_shift_for_nonmatching_trigger": true,
+  "enduring_traits_unchanged": true,
+  "checkpoint_restored": true
+}

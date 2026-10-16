@@ -1,0 +1,73 @@
+{
+  "description": "Controlled engineering fixture: one eligible action per stage, successful outcomes guaranteed to exercise step completion; no personality-choice or realism claim.",
+  "sampling": "event_driven",
+  "planning": {
+    "calendar_mode": "elapsed",
+    "grounded_plans": true,
+    "hours_per_day": 8
+  },
+  "cognition": {
+    "reflection": true,
+    "semantic_recall": true,
+    "indexed_retrieval": true
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "opportunities": [
+    {
+      "id": "paragraph",
+      "actor": "maya",
+      "goal_id": "draft-review",
+      "min_age": 18,
+      "max_age": 100,
+      "rate_per_year": 365,
+      "situation": "Take the next available step toward drafting and reviewing a short paragraph.",
+      "options": [
+        {
+          "id": "draft",
+          "label": "Draft one short paragraph.",
+          "duration_hours": 0.5,
+          "success_probability": 1,
+          "progress_gain": 0.5,
+          "success_text": "I drafted a short paragraph.",
+          "failure_text": "The step remains unfinished.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1,
+          "requires": {
+            "facts": {
+              "maya": {
+                "paragraph_drafted": false
+              }
+            }
+          },
+          "effects_success": {
+            "facts": {
+              "maya": {
+                "paragraph_drafted": true
+              }
+            }
+          }
+        },
+        {
+          "id": "review",
+          "label": "Review the drafted paragraph.",
+          "duration_hours": 0.5,
+          "success_probability": 1,
+          "progress_gain": 0.5,
+          "success_text": "I reviewed the paragraph I previously drafted.",
+          "failure_text": "The step remains unfinished.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1,
+          "requires": {
+            "facts": {
+              "maya": {
+                "paragraph_drafted": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

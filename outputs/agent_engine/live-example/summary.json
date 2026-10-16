@@ -1,0 +1,14 @@
+{
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "started_utc": "2026-10-16T10:02:06.080282+00:00",
+  "provider": "local_model_api",
+  "status": "completed",
+  "seconds": 426.886,
+  "requests": {
+    "action": 30,
+    "appraisal": 36
+  },
+  "final_day": 8035.5,
+  "ticks": 89,
+  "new_actions": 30
+}

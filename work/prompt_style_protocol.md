@@ -1,0 +1,5 @@
+# Prompt-style comparison, fixed before generation
+
+Compare the existing 30-facet prompt with a sectioned prompt inspired by the OASIS agent template used by MiroFish. Both use the same 30 trait scores and short meanings, the same model, temperature zero, and 12 new situations from `personality_prompt_style_pilot.py`. Each situation is answered by a high-target and low-target profile under both prompts: 48 responses total.
+
+Code responses from the shuffled file using `facet_behavior_v2_rubric.md`: `high`, `low`, or `mixed` for concrete action on the target facet. Primary descriptive outcome: how many of the 12 scenario pairs produce opposite expected actions under each prompt. Secondary: concordant responses out of 24 per prompt. Do not edit the prompt or situations after seeing generations. The same analyst will code both conditions, so this is an exploratory comparison, not an independent blinded validation. A higher score would support using this prompt structure for controllability only; it would not show better human prediction.

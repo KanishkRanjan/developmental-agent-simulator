@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "software plan execution with canonical scenario actions; no validated life-planning claim",
+  "checks": [
+    "a plan and a committed intention award no progress",
+    "checkpointed binding completes only after received elapsed outcome",
+    "duplicate outcome cannot award a second step completion",
+    "replans archive prior steps and reject stale version bindings",
+    "invented action bindings are rejected without partial plan mutation",
+    "no suitable action leaves the goal unachieved without inventing a task",
+    "completion failure rolls back and retries exactly once with saved binding",
+    "later steps cannot bypass unfinished prerequisites",
+    "failed received attempt preserves unfinished steps and requests replanning",
+    "controller resolves an off-plan alternative without skipping steps or awarding goal progress"
+  ]
+}

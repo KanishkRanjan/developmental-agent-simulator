@@ -1,0 +1,1519 @@
+{
+  "description": "Complete runnable accepted-mechanism scaffold; all rates, thresholds and outcomes are scenario choices, not fitted science.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "alex:infancy",
+      "actor": "alex",
+      "min_age": 0,
+      "max_age": 2,
+      "rate_per_year": 2,
+      "situation": "You feel discomfort in a familiar caregiving setting. Use a nonverbal response.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Signal discomfort or seek familiar attention.",
+          "contact": "maya",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "alex:early-childhood",
+      "actor": "alex",
+      "min_age": 2,
+      "max_age": 5,
+      "rate_per_year": 2,
+      "situation": "You encounter a small frustrating activity near a caregiver.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Ask for attention or help with the small activity.",
+          "contact": "maya",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "alex:school-learning",
+      "actor": "alex",
+      "min_age": 5,
+      "max_age": 12,
+      "rate_per_year": 2,
+      "situation": "You are finding a school activity difficult and a caregiver may help.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Ask your caregiver to work through the difficult part.",
+          "contact": "maya",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "alex:adolescent-project",
+      "actor": "alex",
+      "min_age": 12,
+      "max_age": 18,
+      "rate_per_year": 2,
+      "situation": "You have an idea for a project and a familiar person is available to discuss it.",
+      "cues": [
+        "social",
+        "school"
+      ],
+      "options": [
+        {
+          "id": "share",
+          "label": "Discuss the idea with the familiar person.",
+          "contact": "bea",
+          "duration_hours": 1,
+          "success_probability": 0.7,
+          "success_text": "We developed a useful part of the idea.",
+          "failure_text": "The idea needed more work.",
+          "contact_text": "We discussed a project idea.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "contact_responses": [
+            {
+              "id": "discuss",
+              "label": "Listen and discuss the idea.",
+              "success_text": "We discussed the idea constructively.",
+              "failure_text": "We listened but could not solve the difficulty.",
+              "contact_text": "I listened and discussed the project."
+            },
+            {
+              "id": "decline",
+              "label": "Explain that you cannot discuss it now.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "We arranged another time.",
+              "failure_text": "A discussion was not possible now.",
+              "contact_text": "I could not discuss the idea now."
+            }
+          ]
+        },
+        {
+          "id": "draft",
+          "label": "Develop a small draft alone.",
+          "duration_hours": 1,
+          "success_probability": 0.6,
+          "success_text": "I developed a useful small draft.",
+          "failure_text": "The draft remained incomplete.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2
+        }
+      ]
+    },
+    {
+      "id": "alex:adult-project",
+      "actor": "alex",
+      "min_age": 18,
+      "max_age": 100,
+      "rate_per_year": 1.5,
+      "goal_id": "small-community-task",
+      "new_goal": {
+        "description": "Prepare a small useful contribution to a community project.",
+        "priority": 0.7
+      },
+      "situation": "You have an opportunity to work on your small community contribution.",
+      "cues": [
+        "work",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "prepare",
+          "label": "Spend one hour preparing a small usable part.",
+          "duration_hours": 1,
+          "success_probability": 0.65,
+          "success_text": "I prepared a small usable part of my contribution.",
+          "failure_text": "My preparation needed more work.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "requires": {
+            "facts": {
+              "alex": {
+                "health_status": "well"
+              }
+            }
+          }
+        },
+        {
+          "id": "consult",
+          "label": "Discuss a small next step with a familiar person.",
+          "contact": "bea",
+          "duration_hours": 1,
+          "contact_text": "We discussed a small community contribution.",
+          "success_probability": 0.75,
+          "success_text": "We identified a practical next step.",
+          "failure_text": "We did not settle on a next step.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "requires": {
+            "facts": {
+              "alex": {
+                "health_status": "well"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "bea:infancy",
+      "actor": "bea",
+      "min_age": 0,
+      "max_age": 2,
+      "rate_per_year": 2,
+      "situation": "You feel discomfort in a familiar caregiving setting. Use a nonverbal response.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Signal discomfort or seek familiar attention.",
+          "contact": "rowan",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "bea:early-childhood",
+      "actor": "bea",
+      "min_age": 2,
+      "max_age": 5,
+      "rate_per_year": 2,
+      "situation": "You encounter a small frustrating activity near a caregiver.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Ask for attention or help with the small activity.",
+          "contact": "rowan",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "bea:school-learning",
+      "actor": "bea",
+      "min_age": 5,
+      "max_age": 12,
+      "rate_per_year": 2,
+      "situation": "You are finding a school activity difficult and a caregiver may help.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Ask your caregiver to work through the difficult part.",
+          "contact": "rowan",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "bea:adolescent-project",
+      "actor": "bea",
+      "min_age": 12,
+      "max_age": 18,
+      "rate_per_year": 2,
+      "situation": "You have an idea for a project and a familiar person is available to discuss it.",
+      "cues": [
+        "social",
+        "school"
+      ],
+      "options": [
+        {
+          "id": "share",
+          "label": "Discuss the idea with the familiar person.",
+          "contact": "alex",
+          "duration_hours": 1,
+          "success_probability": 0.7,
+          "success_text": "We developed a useful part of the idea.",
+          "failure_text": "The idea needed more work.",
+          "contact_text": "We discussed a project idea.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "contact_responses": [
+            {
+              "id": "discuss",
+              "label": "Listen and discuss the idea.",
+              "success_text": "We discussed the idea constructively.",
+              "failure_text": "We listened but could not solve the difficulty.",
+              "contact_text": "I listened and discussed the project."
+            },
+            {
+              "id": "decline",
+              "label": "Explain that you cannot discuss it now.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "We arranged another time.",
+              "failure_text": "A discussion was not possible now.",
+              "contact_text": "I could not discuss the idea now."
+            }
+          ]
+        },
+        {
+          "id": "draft",
+          "label": "Develop a small draft alone.",
+          "duration_hours": 1,
+          "success_probability": 0.6,
+          "success_text": "I developed a useful small draft.",
+          "failure_text": "The draft remained incomplete.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2
+        }
+      ]
+    },
+    {
+      "id": "bea:adult-project",
+      "actor": "bea",
+      "min_age": 18,
+      "max_age": 100,
+      "rate_per_year": 1.5,
+      "goal_id": "small-community-task",
+      "new_goal": {
+        "description": "Prepare a small useful contribution to a community project.",
+        "priority": 0.7
+      },
+      "situation": "You have an opportunity to work on your small community contribution.",
+      "cues": [
+        "work",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "prepare",
+          "label": "Spend one hour preparing a small usable part.",
+          "duration_hours": 1,
+          "success_probability": 0.65,
+          "success_text": "I prepared a small usable part of my contribution.",
+          "failure_text": "My preparation needed more work.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "requires": {
+            "facts": {
+              "bea": {
+                "health_status": "well"
+              }
+            }
+          }
+        },
+        {
+          "id": "consult",
+          "label": "Discuss a small next step with a familiar person.",
+          "contact": "alex",
+          "duration_hours": 1,
+          "contact_text": "We discussed a small community contribution.",
+          "success_probability": 0.75,
+          "success_text": "We identified a practical next step.",
+          "failure_text": "We did not settle on a next step.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "requires": {
+            "facts": {
+              "bea": {
+                "health_status": "well"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "world_events": [],
+  "cognition": {
+    "graphiti_retrieval": false,
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "reference_resolution": true,
+    "reflection": true,
+    "autonomous_goals": true,
+    "semantic_candidates": 24,
+    "detail_threshold": 0.45,
+    "fan_weight": 0.15,
+    "rumination_per_year": 4,
+    "rumination_minimum_gap_days": 1
+  },
+  "planning": {
+    "calendar_mode": "elapsed",
+    "grounded_plans": true,
+    "hours_per_day": 12,
+    "habit_half_life_days": 30,
+    "habit_gain": 0.1,
+    "habit_max": 1
+  },
+  "expression": {
+    "std_by_domain": {
+      "N": 1,
+      "E": 1,
+      "O": 1,
+      "A": 1,
+      "C": 1
+    },
+    "half_life_days": 1,
+    "age_appropriate_actions": true
+  },
+  "society": {
+    "closeness_half_life_days": 365.25
+  },
+  "background_expansion": {
+    "default": {
+      "mode": "generative",
+      "id": "personal-history-v1",
+      "min_age": 18,
+      "fields": [
+        "education",
+        "residence",
+        "interests"
+      ]
+    }
+  },
+  "situational_personality": {
+    "recovery_half_life_days": 1
+  },
+  "consolidation_batch_size": 8,
+  "development": {
+    "maturation": {
+      "N": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          -2
+        ],
+        [
+          65,
+          -3
+        ]
+      ],
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ],
+      "C": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    "crystallization": {
+      "rate": 0.005,
+      "minimum_days": 3,
+      "max_change_per_year": 0.5
+    }
+  },
+  "goal_opportunity": {
+    "id": "goal-step",
+    "actor": "$actor",
+    "goal_id": "$goal",
+    "min_age": 2,
+    "max_age": 120,
+    "rate_per_year": 1.5,
+    "situation": "You can take a small practical step toward your self-set intention: $goal_description",
+    "cues": [
+      "challenge"
+    ],
+    "options": [
+      {
+        "id": "small-step",
+        "label": "Spend half an hour on a small practical step appropriate to your age.",
+        "duration_hours": 0.5,
+        "success_probability": 0.6,
+        "success_text": "I completed a small useful step on my intention.",
+        "failure_text": "The small step remained difficult.",
+        "valence_success": 0.2,
+        "valence_failure": -0.1,
+        "progress_gain": 0.25
+      },
+      {
+        "id": "reflect",
+        "label": "Take half an hour to consider a different approach.",
+        "duration_hours": 0.5,
+        "success_probability": 0.6,
+        "success_text": "I identified a clearer next step.",
+        "failure_text": "I remained unsure of my next step.",
+        "valence_success": 0.1,
+        "valence_failure": -0.1,
+        "progress_gain": 0.1
+      }
+    ]
+  },
+  "world_hazards": [
+    {
+      "id": "maya:illness",
+      "actor": "maya",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 0.15,
+      "description": "A temporary illness begins.",
+      "requires": {
+        "facts": {
+          "maya": {
+            "health_status": "well"
+          }
+        }
+      },
+      "observations": {
+        "maya": {
+          "text": "I feel temporarily unwell.",
+          "source": "direct",
+          "importance": 0.5
+        }
+      },
+      "effects": {
+        "facts": {
+          "maya": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      }
+    },
+    {
+      "id": "maya:recovery",
+      "actor": "maya",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 4,
+      "description": "A temporary illness resolves.",
+      "requires": {
+        "facts": {
+          "maya": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      },
+      "observations": {
+        "maya": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "effects": {
+        "facts": {
+          "maya": {
+            "health_status": "well"
+          }
+        }
+      }
+    },
+    {
+      "id": "maya:later-life-death",
+      "actor": "maya",
+      "min_age": 75,
+      "max_age": 120,
+      "rate_per_year": 0.08,
+      "once": true,
+      "description": "A person dies.",
+      "observations": {},
+      "effects": {
+        "deaths": [
+          "maya"
+        ]
+      }
+    },
+    {
+      "id": "alex:illness",
+      "actor": "alex",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 0.15,
+      "description": "A temporary illness begins.",
+      "requires": {
+        "facts": {
+          "alex": {
+            "health_status": "well"
+          }
+        }
+      },
+      "observations": {
+        "alex": {
+          "text": "I feel temporarily unwell.",
+          "source": "direct",
+          "importance": 0.5
+        }
+      },
+      "effects": {
+        "facts": {
+          "alex": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      }
+    },
+    {
+      "id": "alex:recovery",
+      "actor": "alex",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 4,
+      "description": "A temporary illness resolves.",
+      "requires": {
+        "facts": {
+          "alex": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      },
+      "observations": {
+        "alex": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "effects": {
+        "facts": {
+          "alex": {
+            "health_status": "well"
+          }
+        }
+      }
+    },
+    {
+      "id": "alex:later-life-death",
+      "actor": "alex",
+      "min_age": 75,
+      "max_age": 120,
+      "rate_per_year": 0.08,
+      "once": true,
+      "description": "A person dies.",
+      "observations": {},
+      "effects": {
+        "deaths": [
+          "alex"
+        ]
+      }
+    },
+    {
+      "id": "rowan:illness",
+      "actor": "rowan",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 0.15,
+      "description": "A temporary illness begins.",
+      "requires": {
+        "facts": {
+          "rowan": {
+            "health_status": "well"
+          }
+        }
+      },
+      "observations": {
+        "rowan": {
+          "text": "I feel temporarily unwell.",
+          "source": "direct",
+          "importance": 0.5
+        }
+      },
+      "effects": {
+        "facts": {
+          "rowan": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      }
+    },
+    {
+      "id": "rowan:recovery",
+      "actor": "rowan",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 4,
+      "description": "A temporary illness resolves.",
+      "requires": {
+        "facts": {
+          "rowan": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      },
+      "observations": {
+        "rowan": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "effects": {
+        "facts": {
+          "rowan": {
+            "health_status": "well"
+          }
+        }
+      }
+    },
+    {
+      "id": "rowan:later-life-death",
+      "actor": "rowan",
+      "min_age": 75,
+      "max_age": 120,
+      "rate_per_year": 0.08,
+      "once": true,
+      "description": "A person dies.",
+      "observations": {},
+      "effects": {
+        "deaths": [
+          "rowan"
+        ]
+      }
+    },
+    {
+      "id": "bea:illness",
+      "actor": "bea",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 0.15,
+      "description": "A temporary illness begins.",
+      "requires": {
+        "facts": {
+          "bea": {
+            "health_status": "well"
+          }
+        }
+      },
+      "observations": {
+        "bea": {
+          "text": "I feel temporarily unwell.",
+          "source": "direct",
+          "importance": 0.5
+        }
+      },
+      "effects": {
+        "facts": {
+          "bea": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      }
+    },
+    {
+      "id": "bea:recovery",
+      "actor": "bea",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 4,
+      "description": "A temporary illness resolves.",
+      "requires": {
+        "facts": {
+          "bea": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      },
+      "observations": {
+        "bea": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "effects": {
+        "facts": {
+          "bea": {
+            "health_status": "well"
+          }
+        }
+      }
+    },
+    {
+      "id": "bea:later-life-death",
+      "actor": "bea",
+      "min_age": 75,
+      "max_age": 120,
+      "rate_per_year": 0.08,
+      "once": true,
+      "description": "A person dies.",
+      "observations": {},
+      "effects": {
+        "deaths": [
+          "bea"
+        ]
+      }
+    },
+    {
+      "id": "alex:new-dependent",
+      "actor": "alex",
+      "min_age": 25,
+      "max_age": 40,
+      "rate_per_year": 0.1,
+      "once": true,
+      "description": "A newborn joins the household.",
+      "requires": {
+        "facts": {
+          "alex": {
+            "health_status": "well"
+          }
+        }
+      },
+      "observations": {
+        "alex": {
+          "text": "A newborn has joined my household and depends on my care.",
+          "source": "direct",
+          "importance": 0.9
+        }
+      },
+      "effects": {
+        "births": [
+          {
+            "id": "alex-next",
+            "name": "Ari",
+            "biological_parents": [],
+            "caregivers": [
+              "alex"
+            ],
+            "facts": {
+              "health_status": "well"
+            }
+          }
+        ],
+        "facts": {}
+      }
+    }
+  ],
+  "newborn_opportunities": [
+    {
+      "id": "$actor:infancy",
+      "actor": "$actor",
+      "min_age": 0,
+      "max_age": 2,
+      "rate_per_year": 2,
+      "situation": "You feel discomfort in a familiar caregiving setting. Use a nonverbal response.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Signal discomfort or seek familiar attention.",
+          "contact": "$caregiver",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "$actor:early-childhood",
+      "actor": "$actor",
+      "min_age": 2,
+      "max_age": 5,
+      "rate_per_year": 2,
+      "situation": "You encounter a small frustrating activity near a caregiver.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Ask for attention or help with the small activity.",
+          "contact": "$caregiver",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "$actor:school-learning",
+      "actor": "$actor",
+      "min_age": 5,
+      "max_age": 12,
+      "rate_per_year": 2,
+      "situation": "You are finding a school activity difficult and a caregiver may help.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Ask your caregiver to work through the difficult part.",
+          "contact": "$caregiver",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    },
+    {
+      "id": "$actor:adolescent-project",
+      "actor": "$actor",
+      "min_age": 12,
+      "max_age": 18,
+      "rate_per_year": 2,
+      "situation": "You have an idea for a project and a familiar person is available to discuss it.",
+      "cues": [
+        "social",
+        "school"
+      ],
+      "options": [
+        {
+          "id": "share",
+          "label": "Discuss the idea with the familiar person.",
+          "contact": "$caregiver",
+          "duration_hours": 1,
+          "success_probability": 0.7,
+          "success_text": "We developed a useful part of the idea.",
+          "failure_text": "The idea needed more work.",
+          "contact_text": "We discussed a project idea.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "contact_responses": [
+            {
+              "id": "discuss",
+              "label": "Listen and discuss the idea.",
+              "success_text": "We discussed the idea constructively.",
+              "failure_text": "We listened but could not solve the difficulty.",
+              "contact_text": "I listened and discussed the project."
+            },
+            {
+              "id": "decline",
+              "label": "Explain that you cannot discuss it now.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "We arranged another time.",
+              "failure_text": "A discussion was not possible now.",
+              "contact_text": "I could not discuss the idea now."
+            }
+          ]
+        },
+        {
+          "id": "draft",
+          "label": "Develop a small draft alone.",
+          "duration_hours": 1,
+          "success_probability": 0.6,
+          "success_text": "I developed a useful small draft.",
+          "failure_text": "The draft remained incomplete.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2
+        }
+      ]
+    },
+    {
+      "id": "$actor:adult-project",
+      "actor": "$actor",
+      "min_age": 18,
+      "max_age": 100,
+      "rate_per_year": 1.5,
+      "goal_id": "small-community-task",
+      "new_goal": {
+        "description": "Prepare a small useful contribution to a community project.",
+        "priority": 0.7
+      },
+      "situation": "You have an opportunity to work on your small community contribution.",
+      "cues": [
+        "work",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "prepare",
+          "label": "Spend one hour preparing a small usable part.",
+          "duration_hours": 1,
+          "success_probability": 0.65,
+          "success_text": "I prepared a small usable part of my contribution.",
+          "failure_text": "My preparation needed more work.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "requires": {
+            "facts": {
+              "$actor": {
+                "health_status": "well"
+              }
+            }
+          }
+        },
+        {
+          "id": "consult",
+          "label": "Discuss a small next step with a familiar person.",
+          "contact": "$caregiver",
+          "duration_hours": 1,
+          "contact_text": "We discussed a small community contribution.",
+          "success_probability": 0.75,
+          "success_text": "We identified a practical next step.",
+          "failure_text": "We did not settle on a next step.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "requires": {
+            "facts": {
+              "$actor": {
+                "health_status": "well"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "newborn_hazards": [
+    {
+      "id": "$actor:illness",
+      "actor": "$actor",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 0.15,
+      "description": "A temporary illness begins.",
+      "requires": {
+        "facts": {
+          "$actor": {
+            "health_status": "well"
+          }
+        }
+      },
+      "observations": {
+        "$actor": {
+          "text": "I feel temporarily unwell.",
+          "source": "direct",
+          "importance": 0.5
+        }
+      },
+      "effects": {
+        "facts": {
+          "$actor": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      }
+    },
+    {
+      "id": "$actor:recovery",
+      "actor": "$actor",
+      "min_age": 0,
+      "max_age": 120,
+      "rate_per_year": 4,
+      "description": "A temporary illness resolves.",
+      "requires": {
+        "facts": {
+          "$actor": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      },
+      "observations": {
+        "$actor": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "effects": {
+        "facts": {
+          "$actor": {
+            "health_status": "well"
+          }
+        }
+      }
+    },
+    {
+      "id": "$actor:later-life-death",
+      "actor": "$actor",
+      "min_age": 75,
+      "max_age": 120,
+      "rate_per_year": 0.08,
+      "once": true,
+      "description": "A person dies.",
+      "observations": {},
+      "effects": {
+        "deaths": [
+          "$actor"
+        ]
+      }
+    }
+  ]
+}

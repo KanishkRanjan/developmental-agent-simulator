@@ -1,0 +1,338 @@
+{
+  "version": 1,
+  "seed": 93,
+  "day": 1,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "birth_day": -9131.25
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {
+        "birth_day": -9131.25
+      }
+    }
+  },
+  "agents": {
+    "alex": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "presentation": {
+          "description": "Prepare a short presentation.",
+          "priority": 0.5,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "encouragement",
+          "last_interaction_day": 0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "dismissal": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0.8,
+          "meaning": "I lost a job and worried about being judged.",
+          "versions": [],
+          "stability_days": 7.800000000000001,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "dismissal"
+        },
+        "encouragement": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "I felt supported after explaining a difficulty.",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "encouragement"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "bea": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "encouragement",
+          "last_interaction_day": 0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "bea-private": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "bea-private"
+        },
+        "encouragement": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "encouragement"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    }
+  },
+  "events": [
+    {
+      "id": "bea-private",
+      "day": 0,
+      "description": "Bea privately considers an unrelated event.",
+      "observations": {
+        "bea": {
+          "text": "I privately made a plan involving a violet observatory.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "dismissal",
+      "day": 0,
+      "description": "Alex receives an employment outcome.",
+      "observations": {
+        "alex": {
+          "text": "My employer ended my contract. I felt embarrassed telling Bea.",
+          "source": "direct",
+          "meaning": "I lost a job and worried about being judged.",
+          "importance": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "encouragement",
+      "day": 0,
+      "description": "Both receive an actual conversation.",
+      "observations": {
+        "alex": {
+          "text": "Bea listened when I mentioned the job loss and encouraged a small next step.",
+          "source": "direct",
+          "encountered": [
+            "bea"
+          ],
+          "meaning": "I felt supported after explaining a difficulty."
+        },
+        "bea": {
+          "text": "Alex told me about losing a job and I listened.",
+          "source": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [],
+  "updates": [],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0
+  }
+}

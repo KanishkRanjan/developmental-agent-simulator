@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "status": "completed",
+  "requests": 5,
+  "new_actions": 1,
+  "seconds": 65.186,
+  "repairs": 0,
+  "json_sqlite_equivalence": true,
+  "earlier_history_preserved": true,
+  "no_pending_activities": true,
+  "elapsed_outcomes": true,
+  "requests_by_purpose": {
+    "action": 1,
+    "appraisal": 1,
+    "consolidation": 0,
+    "signatures": 1,
+    "situation": 1,
+    "semantic_recall": 0,
+    "reflection": 1,
+    "background": 0,
+    "retrieval_query": 0
+  },
+  "source_files_changed_since_launch": [
+    "situation.py",
+    "check_situation.py",
+    "engine.py"
+  ]
+}

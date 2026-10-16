@@ -1,0 +1,583 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 6574.5,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "biological_parents": [
+          "maya"
+        ],
+        "birth_day": 0,
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "maya": {
+      "name": "Maya",
+      "facts": {}
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {}
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "initial_facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.3830034525020996,
+          1.4028694510641286,
+          -0.3905994125332013,
+          -0.6711883972735928,
+          0.93614618361995,
+          1.0441600549052343,
+          0.5574964018919111,
+          0.3274008760796736,
+          0.3328475333825997,
+          -0.7683236539145113,
+          1.228670670027051,
+          0.9586564233554301,
+          1.7291942413318073,
+          2.321023915692227,
+          0.6613039520724006,
+          -0.24591241137849873,
+          0.5281014123464178,
+          0.5649513657314105,
+          0.8179302263844332,
+          -1.4285038323800467,
+          2.000804069025171,
+          -0.8135290499072897,
+          -0.5734037142536089,
+          1.7488232453324573,
+          0.0029354547362000494,
+          -1.0951317034624553,
+          -1.7839442966710328,
+          -1.4422385602087857,
+          -1.1359544479019577,
+          -0.5214317665134227
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      }
+    },
+    "alex": {
+      "facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "initial_facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "work": {
+          "description": "Prepare useful project material.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        },
+        "friendship": {
+          "description": "Make room for friendship.",
+          "priority": 0.7,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        }
+      },
+      "references": {
+        "bea": [
+          "seed-school",
+          "seed-explanation",
+          "seed-recent"
+        ]
+      },
+      "beliefs": {},
+      "memory_meta": {
+        "seed-school": {
+          "kind": "direct",
+          "confidence": 0.6,
+          "importance": 0.8,
+          "meaning": "I worried silence meant my work was unwanted.",
+          "versions": [],
+          "stability_days": 7.800000000000001,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "seed-school",
+          "summary": "I worried silence meant my work was unwanted.",
+          "topics": [
+            "work",
+            "relationships",
+            "evaluation"
+          ]
+        },
+        "seed-explanation": {
+          "kind": "direct",
+          "confidence": 0.6,
+          "importance": 0.8,
+          "meaning": "Silence may have other explanations.",
+          "versions": [],
+          "stability_days": 7.800000000000001,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "seed-explanation",
+          "summary": "Silence may have other explanations.",
+          "topics": [
+            "work",
+            "relationships",
+            "evaluation"
+          ]
+        },
+        "seed-recent": {
+          "kind": "direct",
+          "confidence": 0.6,
+          "importance": 0.8,
+          "meaning": "Work and relationships both matter to me.",
+          "versions": [],
+          "stability_days": 7.800000000000001,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "seed-recent",
+          "summary": "Work and relationships both matter to me.",
+          "topics": [
+            "work",
+            "relationships",
+            "evaluation"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.23594890875662042,
+          2.204420323820903,
+          -0.6265388857294751,
+          -0.9401158170664725,
+          -1.0843576892391307,
+          0.9471488789350636,
+          0.21572482413069305,
+          -0.1601045804267867,
+          2.102162000943369,
+          0.020887616192721226,
+          -0.8969943152761913,
+          0.5192373091242993,
+          0.1397675558069248,
+          2.2025628926409366,
+          -0.5660936783788852,
+          -1.1153140984733823,
+          1.0609607527091973,
+          -0.7015042040271896,
+          0.3473233393921183,
+          -0.3735969176868006,
+          0.6086167353840881,
+          0.5970586628888059,
+          -0.641285804999365,
+          1.6691633854274976,
+          0.9721932071733506,
+          0.16236826230393142,
+          0.1756109815100434,
+          0.31209299818426617,
+          0.8741322116464711,
+          0.7068063381236804
+        ],
+        "nonshared_latent": [
+          -0.22145488831475038,
+          0.2380719757825447,
+          0.06117348294822844,
+          1.2479665337817227,
+          0.5009510226140108,
+          0.35697298678586886,
+          -1.1181505850267195,
+          -0.896827886196598,
+          -0.2412974322601349,
+          0.09562418467844819,
+          -0.31107152972489627,
+          0.6352776516906533,
+          0.20283025457276516,
+          -0.11100608441261395,
+          0.14139874576954264,
+          0.403697199699508,
+          0.8794854413720177,
+          0.7735013215199855,
+          -0.7804004507698558,
+          1.1794629648697312,
+          -0.17585034142495348,
+          0.07715474324365451,
+          0.9157191529329053,
+          1.067091083408792,
+          0.570941067209825,
+          0.8825819890069784,
+          0.9013219522897673,
+          1.1322135820401205,
+          0.024034238006481634,
+          0.18025620679205978
+        ],
+        "parents": [
+          "maya"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 20
+      }
+    },
+    "bea": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    }
+  },
+  "events": [
+    {
+      "id": "seed-school",
+      "day": 5844.0,
+      "description": "Explicit synthetic prior experience.",
+      "observations": {
+        "alex": {
+          "text": "Bea gave no response when I shared a draft.",
+          "source": "direct",
+          "meaning": "I worried silence meant my work was unwanted.",
+          "importance": 0.8,
+          "confidence": 0.6,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "seed-explanation",
+      "day": 6209.25,
+      "description": "Explicit synthetic prior experience.",
+      "observations": {
+        "alex": {
+          "text": "Bea explained being busy that day and asked to read my next draft.",
+          "source": "direct",
+          "meaning": "Silence may have other explanations.",
+          "importance": 0.8,
+          "confidence": 0.6,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "seed-recent",
+      "day": 6574.5,
+      "description": "Explicit synthetic prior experience.",
+      "observations": {
+        "alex": {
+          "text": "I am preparing material and want to make time for friendships too.",
+          "source": "direct",
+          "meaning": "Work and relationships both matter to me.",
+          "importance": 0.8,
+          "confidence": 0.6,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [],
+  "updates": [],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "semantic_recall": true,
+      "reflection": true,
+      "rumination_per_year": 365,
+      "semantic_candidates": 12
+    },
+    "planning": {
+      "hours_per_day": 4
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "3738de6636b98660ceb99965357c8198868bf3c44840394c6e2313270190c9dc",
+    "scripted": false,
+    "start_day": 6574.5,
+    "current_day": 6574.5,
+    "next_tick": null,
+    "tick": 0,
+    "trace": [],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "competing-priorities": 0
+    },
+    "next_opportunities": {
+      "competing-priorities": 6575.4527798737745
+    },
+    "next_world_events": {
+      "paid-task": 6574.6
+    },
+    "background_counts": {
+      "alex": 0
+    },
+    "next_background": {
+      "alex": 6574.874571098933
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "scope": "engineering only; stubbed transport",
+  "checks": [
+    "bounded optional context without modifying original state",
+    "current personality and offered actions retained",
+    "omissions explicit and stable",
+    "optional history reduced using actual rendered-token count",
+    "smaller transport view preserves proposal staleness checks",
+    "actual template and tokenizer used for window check",
+    "output-token reserve included",
+    "overflow stops before inference",
+    "malformed fields repaired before mutation",
+    "permanently malformed responses stop after two repairs without changing state",
+    "closed connections become explicit model-request failures"
+  ]
+}

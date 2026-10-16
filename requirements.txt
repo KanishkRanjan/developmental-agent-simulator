@@ -1,0 +1,5 @@
+# Main engine/profile runtime; Graphiti uses its separate pinned environment.
+numpy==2.5.4
+pandas==3.0.6
+pyarrow==26.0.0
+scipy==1.18.1

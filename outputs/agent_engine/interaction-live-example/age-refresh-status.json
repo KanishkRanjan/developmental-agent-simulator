@@ -1,0 +1,6 @@
+{
+  "status": "separate_probe_incomplete",
+  "scope": "separate caregiver-role/age-refresh probe failed to connect after the completed main continuation; no successful probe artifact exists",
+  "adult_signature_refresh_verified_elsewhere": "../development-lifetime-live/continued-run/integrity-checks.json",
+  "formal_caregiving_role_context": "local checks only"
+}

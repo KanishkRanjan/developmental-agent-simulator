@@ -1,0 +1,2466 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 1.4246621316068944,
+  "entities": {
+    "maya": {
+      "name": "Maya",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well",
+        "education": "No formal education recorded",
+        "residence": "Nomadic",
+        "interests": "Observation of natural surroundings"
+      },
+      "generated_biography": {
+        "personal-history-v1": {
+          "current_facts": {
+            "education": "No formal education recorded",
+            "residence": "Nomadic",
+            "interests": "Observation of natural surroundings"
+          },
+          "timeline": [
+            {
+              "field": "residence",
+              "value": "Nomadic",
+              "start_day": -9131.25,
+              "end_day": 1.3829954649402276
+            },
+            {
+              "field": "education",
+              "value": "No formal education recorded",
+              "start_day": -9131.25,
+              "end_day": 1.3829954649402276
+            },
+            {
+              "field": "interests",
+              "value": "Observation of natural surroundings",
+              "start_day": -9131.25,
+              "end_day": 1.3829954649402276
+            }
+          ],
+          "overview": "Maya was born on day -9131.25 and has lived a sparse life up to the current simulated day of 1.38. With no prior timeline events or specific commitments beyond being in good health, her background is minimal. She has not pursued formal education and remains a nomad, spending her time observing the natural world around her.",
+          "day": 1.3829954649402276,
+          "policy": "open_values_structured_synthetic_initialization",
+          "invented_private_observations": false
+        }
+      }
+    },
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "maya"
+        ],
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "rowan": {
+      "name": "Rowan",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well"
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "rowan"
+        ],
+        "caregivers": [
+          "rowan"
+        ]
+      }
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 88.71964540796924,
+        "N2": 98.61964540796924,
+        "N3": 80.53964540796925,
+        "N4": 71.31964540796923,
+        "N5": 95.41964540796924,
+        "N6": 95.79964540796924,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.70035459203077,
+        "A2": 3.3703545920307656,
+        "A3": 66.31035459203076,
+        "A4": 6.380354592030765,
+        "A5": 16.780354592030765,
+        "A6": 59.830354592030766,
+        "C1": 27.330354592030762,
+        "C2": 41.970354592030766,
+        "C3": 11.530354592030765,
+        "C4": 6.020354592030765,
+        "C5": 7.930354592030765,
+        "C6": 35.09035459203077
+      },
+      "initial_facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": [
+            "Return to my current routine."
+          ],
+          "plan_versions": [
+            {
+              "day": 1.385078798273561,
+              "plan": [
+                "Signal that I am unavailable to Alex.",
+                "Return to my current routine."
+              ],
+              "evidence": "life-0-alex:infancy"
+            }
+          ]
+        }
+      },
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0,
+          "firsthand": true,
+          "evidence": "life-0-alex:infancy",
+          "last_interaction_day": 1.385078798273561,
+          "versions": [
+            {
+              "day": 1.385078798273561,
+              "trust": 0.5,
+              "closeness": 0.0,
+              "evidence": [
+                "life-0-alex:infancy"
+              ],
+              "reason": "The interaction was neutral and practical; no new information was gained to shift trust or closeness."
+            }
+          ]
+        }
+      },
+      "references": {
+        "alex": [
+          "life-0-alex:infancy-request"
+        ]
+      },
+      "beliefs": {},
+      "memory_meta": {
+        "life-0-alex:infancy-request": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.4,
+          "meaning": "Alex approached me with a request for attention or comfort, but I was unable to attend immediately. This confirms the interaction was managed through a practical boundary rather than direct engagement, consistent with my current focus on routine and concrete possibilities.",
+          "versions": [
+            {
+              "day": 1.385078798273561,
+              "meaning": "Alex is approaching me with a non-verbal or vague request to signal discomfort or seek familiar attention, which feels intrusive given my current neutral mood and lack of established relationship context.",
+              "confidence": 0.6,
+              "replaced_by": "maya:reflection:life-0-alex:infancy:life-0-alex:infancy-request"
+            }
+          ],
+          "stability_days": 6.9300000000000015,
+          "encoding_stability_days": 6.300000000000001,
+          "last_recall_day": 1.3829954649402276,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-0-alex:infancy-request",
+          "summary": "Alex approached me with a request for attention or comfort, but I was unable to attend immediately. This confirms the interaction was managed through a practical boundary rather than direct engagement, consistent with my current focus on routine and concrete possibilities."
+        },
+        "life-0-alex:infancy": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.4,
+          "meaning": "A statement of unavailability or delay in response to a request or presence, likely directed at Alex given the context of the recent interaction and the active goal to signal unavailability. It reflects a practical constraint rather than an emotional rejection, aligning with the tendency to focus on concrete possibilities and maintain routine.",
+          "versions": [],
+          "stability_days": 6.300000000000001,
+          "encoding_stability_days": 6.300000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-0-alex:infancy",
+          "summary": "I was unable to attend to Alex immediately, which aligns with my need to maintain my routine and practical constraints.",
+          "topics": [
+            "unavailability",
+            "routine",
+            "alex",
+            "practical_constraints"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 1.3829954649402276,
+          "valence": -0.05,
+          "arousal": 0.075,
+          "memory": "life-0-alex:infancy-request"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "maya:semantic:e52f888452faa061:life-0-alex:infancy-request",
+          "day": 1.3829954649402276,
+          "memory": "life-0-alex:infancy-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-0-alex:infancy-contact-action:used-memory:life-0-alex:infancy-request",
+          "day": 1.3829954649402276,
+          "memory": "life-0-alex:infancy-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-alex:infancy:reminder:maya:life-0-alex:infancy-request",
+          "day": 1.385078798273561,
+          "memory": "life-0-alex:infancy-request",
+          "rehearsed": false
+        }
+      ],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.3830034525020996,
+          1.4028694510641286,
+          -0.3905994125332013,
+          -0.6711883972735928,
+          0.93614618361995,
+          1.0441600549052343,
+          0.5574964018919111,
+          0.3274008760796736,
+          0.3328475333825997,
+          -0.7683236539145113,
+          1.228670670027051,
+          0.9586564233554301,
+          1.7291942413318073,
+          2.321023915692227,
+          0.6613039520724006,
+          -0.24591241137849873,
+          0.5281014123464178,
+          0.5649513657314105,
+          0.8179302263844332,
+          -1.4285038323800467,
+          2.000804069025171,
+          -0.8135290499072897,
+          -0.5734037142536089,
+          1.7488232453324573,
+          0.0029354547362000494,
+          -1.0951317034624553,
+          -1.7839442966710328,
+          -1.4422385602087857,
+          -1.1359544479019577,
+          -0.5214317665134227
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 88.72,
+          "N2": 98.62,
+          "N3": 80.54,
+          "N4": 71.32,
+          "N5": 95.42,
+          "N6": 95.8,
+          "E1": 13.63,
+          "E2": 37.33,
+          "E3": 31.92,
+          "E4": 8.06,
+          "E5": 54.05,
+          "E6": 15.67,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 57.04,
+          "O4": 4.98,
+          "O5": 11.16,
+          "O6": 1.71,
+          "A1": 58.7,
+          "A2": 3.37,
+          "A3": 66.31,
+          "A4": 6.38,
+          "A5": 16.78,
+          "A6": 59.83,
+          "C1": 27.33,
+          "C2": 41.97,
+          "C3": 11.53,
+          "C4": 6.02,
+          "C5": 7.93,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "unresolved_references": {
+        "mention-b2dba2ddb5234c2e9ff9": {
+          "reference_id": "mention-b2dba2ddb5234c2e9ff9",
+          "span": "Alex",
+          "candidate_ids": [
+            "alex"
+          ],
+          "resolved_id": "alex",
+          "resolution": "named_known_identity",
+          "speaker_id": "alex",
+          "evidence": [
+            "life-0-alex:infancy-request"
+          ]
+        }
+      },
+      "retrieval_focus": {
+        "day": 1.3829954649402276,
+        "situation": "Alex approaches you:  Request: Signal discomfort or seek familiar attention.",
+        "ids": [
+          "life-0-alex:infancy-request"
+        ],
+        "policy": "local_llm_semantic_selection",
+        "candidate_count": 1,
+        "omitted_candidates": 0,
+        "retrieval_queries": [
+          "Times when someone unfamiliar sought comfort or attention without clear words",
+          "Experiences of feeling intruded upon by vague emotional requests from acquaintances",
+          "Past instances of needing to balance personal tasks with unexpected caregiving demands",
+          "Memories of reacting with irritation to sudden demands for familiar reassurance"
+        ],
+        "indexed_corpus": true
+      },
+      "caps_rules": [
+        {
+          "id": "maya_duty_routine",
+          "dimension": "Duty",
+          "trigger_context": "When asked to perform a caregiving task for Alex that deviates from a previously established routine or familiar method.",
+          "narrative_shift": "Maya becomes rigidly procedural, explicitly stating the standard way the task should be done to avoid improvisation, while internally feeling a low-grade irritation at the disruption of order.",
+          "state_modifiers": {
+            "N": 2,
+            "E": -1,
+            "O": -3,
+            "A": -2,
+            "C": 4
+          }
+        },
+        {
+          "id": "maya_intellect_guard",
+          "dimension": "Intellect",
+          "trigger_context": "When engaged in a detailed discussion about natural surroundings or personal observations where others probe for specific details or motivations.",
+          "narrative_shift": "Maya shifts to vague, generalized statements, withholding specific insights or personal anecdotes to maintain strategic distance and avoid over-disclosure.",
+          "state_modifiers": {
+            "N": 0,
+            "E": -2,
+            "O": 1,
+            "A": -1,
+            "C": 2
+          }
+        },
+        {
+          "id": "maya_adversity_overload",
+          "dimension": "Adversity",
+          "trigger_context": "When facing a sudden, high-pressure demand to resolve a practical problem with limited resources (e.g., money or time) while already feeling mildly negative.",
+          "narrative_shift": "Maya experiences a sharp spike in overwhelm, leading to a temporary withdrawal from the immediate pressure source to seek a quiet, familiar environment to reset.",
+          "state_modifiers": {
+            "N": 5,
+            "E": -3,
+            "O": 0,
+            "A": -2,
+            "C": -1
+          }
+        },
+        {
+          "id": "maya_mating_temptation",
+          "dimension": "Mating",
+          "trigger_context": "When presented with an immediate, low-effort social or romantic opportunity that conflicts with a long-term, low-demand goal.",
+          "narrative_shift": "Maya leans into the immediate gratification, ignoring the long-term plan in favor of the present moment's comfort, without feeling significant guilt.",
+          "state_modifiers": {
+            "N": 1,
+            "E": 3,
+            "O": 1,
+            "A": 2,
+            "C": -4
+          }
+        },
+        {
+          "id": "maya_negativity_stance",
+          "dimension": "Negativity",
+          "trigger_context": "When a preference regarding a shared activity or space is challenged by another person, particularly in a low-stakes social setting.",
+          "narrative_shift": "Maya firmly holds their ground, refusing to compromise or explain further, prioritizing the preservation of their preferred state over social harmony.",
+          "state_modifiers": {
+            "N": 3,
+            "E": 0,
+            "O": -1,
+            "A": -3,
+            "C": 2
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 1.3829954649402276,
+        "stage": 2,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 88.71965577861616,
+          "N2": 98.61965577861616,
+          "N3": 80.53965577861617,
+          "N4": 71.31965577861615,
+          "N5": 95.41965577861616,
+          "N6": 95.79965577861616,
+          "E1": 13.63,
+          "E2": 37.33,
+          "E3": 31.92,
+          "E4": 8.06,
+          "E5": 54.05,
+          "E6": 15.67,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 57.04,
+          "O4": 4.98,
+          "O5": 11.16,
+          "O6": 1.71,
+          "A1": 58.700344221383844,
+          "A2": 3.3703442213838444,
+          "A3": 66.31034422138384,
+          "A4": 6.380344221383845,
+          "A5": 16.780344221383846,
+          "A6": 59.83034422138384,
+          "C1": 27.330344221383843,
+          "C2": 41.97034422138384,
+          "C3": 11.530344221383844,
+          "C4": 6.020344221383844,
+          "C5": 7.930344221383844,
+          "C6": 35.090344221383845
+        },
+        "evidence": [
+          "life-0-alex:infancy-request"
+        ]
+      },
+      "situational_state": {
+        "day": 1.3829954649402276,
+        "offsets": {
+          "N1": 0.8175599674711407,
+          "N2": 0.8175599674711407,
+          "N3": 0.8175599674711407,
+          "N4": 0.8175599674711407,
+          "N5": 0.8175599674711407,
+          "N6": 0.8175599674711407,
+          "E1": -0.7009700648515675,
+          "E2": -0.7009700648515675,
+          "E3": -0.7009700648515675,
+          "E4": -0.7009700648515675,
+          "E5": -0.7009700648515675,
+          "E6": -0.7009700648515675,
+          "O1": -2.543920308319205,
+          "O2": -2.5439203083192012,
+          "O3": -2.5439203083192083,
+          "O4": -2.5439203083192052,
+          "O5": -2.543920308319205,
+          "O6": -1.71,
+          "A1": -0.1494411631953625,
+          "A2": -0.14944116319536294,
+          "A3": -0.1494411631953625,
+          "A4": -0.1494411631953625,
+          "A5": -0.1494411631953625,
+          "A6": -0.1494411631953625,
+          "C1": -1.6833563601492862,
+          "C2": -1.6833563601492898,
+          "C3": -1.6833563601492862,
+          "C4": -1.6833563601492862,
+          "C5": -1.6833563601492862,
+          "C6": -1.6833563601492898
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Alex is approaching me with a vague, non-verbal request for comfort or attention. Given our lack of established closeness and my current neutral-to-negative mood, this feels intrusive and ambiguous. I interpret it as an attempt to seek familiar attention, which conflicts with my preference for guarded interactions and established routines. I am uncertain of their specific intent, but I feel a low-grade irritation at the disruption of my personal space and the demand for emotional labor I am not prepared to give.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.1,
+            "Adversity": 0.3,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.5,
+            "Deception": 0.0,
+            "Sociality": 0.4
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 0.8175599674711415,
+          "E": -0.7009700648515678,
+          "O": -2.5439203083192052,
+          "A": -0.1494411631953629,
+          "C": -1.6833563601492862
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-alex:infancy-contact-situation",
+        "situation": "Alex approaches you:  Request: Signal discomfort or seek familiar attention.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "calendar": [
+        {
+          "activity": "life-0-alex:infancy",
+          "start_day": 1.3829954649402276,
+          "end_day": 1.385078798273561,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "1": 0.05000000000000249
+      },
+      "developmental_exposures": [
+        {
+          "day": 1.385078798273561,
+          "action": "life-0-alex:infancy-contact-action",
+          "evidence": "life-0-alex:infancy",
+          "offsets": {
+            "N1": 0.8175599674711407,
+            "N2": 0.8175599674711407,
+            "N3": 0.8175599674711407,
+            "N4": 0.8175599674711407,
+            "N5": 0.8175599674711407,
+            "N6": 0.8175599674711407,
+            "E1": -0.7009700648515675,
+            "E2": -0.7009700648515675,
+            "E3": -0.7009700648515675,
+            "E4": -0.7009700648515675,
+            "E5": -0.7009700648515675,
+            "E6": -0.7009700648515675,
+            "O1": -2.543920308319205,
+            "O2": -2.5439203083192012,
+            "O3": -2.5439203083192083,
+            "O4": -2.5439203083192052,
+            "O5": -2.543920308319205,
+            "O6": -1.71,
+            "A1": -0.1494411631953625,
+            "A2": -0.14944116319536294,
+            "A3": -0.1494411631953625,
+            "A4": -0.1494411631953625,
+            "A5": -0.1494411631953625,
+            "A6": -0.1494411631953625,
+            "C1": -1.6833563601492862,
+            "C2": -1.6833563601492898,
+            "C3": -1.6833563601492862,
+            "C4": -1.6833563601492862,
+            "C5": -1.6833563601492862,
+            "C6": -1.6833563601492898
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "reinterpretation_queue": [],
+      "social_update_budget": {
+        "1:alex:trust": 0.0,
+        "1:alex:closeness": 0.0
+      }
+    },
+    "alex": {
+      "facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "initial_facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "trust": 0.48,
+          "closeness": 0,
+          "firsthand": true,
+          "evidence": "life-0-alex:infancy",
+          "last_interaction_day": 1.385078798273561,
+          "versions": [
+            {
+              "day": 1.385078798273561,
+              "trust": 0.5,
+              "closeness": 0.0,
+              "evidence": [
+                "life-0-alex:infancy"
+              ],
+              "reason": "Maya's explicit refusal to provide immediate attention during a moment of distress slightly lowers the expectation of reliable responsiveness."
+            }
+          ]
+        }
+      },
+      "references": {
+        "maya": [
+          "life-0-alex:infancy-request",
+          "life-0-alex:infancy"
+        ]
+      },
+      "beliefs": {},
+      "memory_meta": {
+        "life-0-alex:infancy-request": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.6,
+          "meaning": "I sought Maya's attention to signal discomfort, but she declined to engage immediately, stating she could not deal with it. This left me unsettled and without the expected reassurance.",
+          "versions": [
+            {
+              "day": 1.385078798273561,
+              "meaning": "I initiated contact with Maya to signal my discomfort and seek familiar attention, acting on a direct request for reassurance.",
+              "confidence": 0.9,
+              "replaced_by": "alex:reflection:life-0-alex:infancy:life-0-alex:infancy-request"
+            }
+          ],
+          "stability_days": 8.580000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 1.385078798273561,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-0-alex:infancy-request",
+          "summary": "I sought Maya's attention to signal discomfort, but she declined to engage immediately, stating she could not deal with it. This left me unsettled and without the expected reassurance."
+        },
+        "life-0-alex:infancy": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.8,
+          "meaning": "Maya explicitly declined to provide immediate attention, stating she cannot deal with the situation right now. This follows a period where my request for comfort was delayed, leaving me in a state of continued distress. The interaction confirms a lack of immediate responsiveness to my need for reassurance.",
+          "versions": [],
+          "stability_days": 9.75,
+          "encoding_stability_days": 9.75,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-0-alex:infancy",
+          "summary": "Maya said she cannot deal with this right now after I signaled discomfort. The delay and refusal left me unsettled.",
+          "topics": [
+            "caregiver_unavailability",
+            "distress",
+            "delayed_attention"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 1.385078798273561,
+          "valence": 0.025,
+          "arousal": 0.1,
+          "memory": "life-0-alex:infancy-request"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "life-0-alex:infancy:reminder:alex:life-0-alex:infancy-request",
+          "day": 1.385078798273561,
+          "memory": "life-0-alex:infancy-request",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.23594890875662042,
+          2.204420323820903,
+          -0.6265388857294751,
+          -0.9401158170664725,
+          -1.0843576892391307,
+          0.9471488789350636,
+          0.21572482413069305,
+          -0.1601045804267867,
+          2.102162000943369,
+          0.020887616192721226,
+          -0.8969943152761913,
+          0.5192373091242993,
+          0.1397675558069248,
+          2.2025628926409366,
+          -0.5660936783788852,
+          -1.1153140984733823,
+          1.0609607527091973,
+          -0.7015042040271896,
+          0.3473233393921183,
+          -0.3735969176868006,
+          0.6086167353840881,
+          0.5970586628888059,
+          -0.641285804999365,
+          1.6691633854274976,
+          0.9721932071733506,
+          0.16236826230393142,
+          0.1756109815100434,
+          0.31209299818426617,
+          0.8741322116464711,
+          0.7068063381236804
+        ],
+        "nonshared_latent": [
+          -0.22145488831475038,
+          0.2380719757825447,
+          0.06117348294822844,
+          1.2479665337817227,
+          0.5009510226140108,
+          0.35697298678586886,
+          -1.1181505850267195,
+          -0.896827886196598,
+          -0.2412974322601349,
+          0.09562418467844819,
+          -0.31107152972489627,
+          0.6352776516906533,
+          0.20283025457276516,
+          -0.11100608441261395,
+          0.14139874576954264,
+          0.403697199699508,
+          0.8794854413720177,
+          0.7735013215199855,
+          -0.7804004507698558,
+          1.1794629648697312,
+          -0.17585034142495348,
+          0.07715474324365451,
+          0.9157191529329053,
+          1.067091083408792,
+          0.570941067209825,
+          0.8825819890069784,
+          0.9013219522897673,
+          1.1322135820401205,
+          0.024034238006481634,
+          0.18025620679205978
+        ],
+        "parents": [
+          "maya"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 30.64,
+          "N2": 96.02,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 40.54,
+          "N6": 83.48,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 66.31,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 73.07,
+          "C6": 77.49
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "caps_rules": [
+        {
+          "id": "sig_01",
+          "dimension": "Adversity",
+          "trigger_context": "Witnessing a peer or caregiver experiencing visible distress or physical pain.",
+          "narrative_shift": "Alex's attention narrows intensely on the source of distress, leading to a temporary suspension of self-focused needs and a heightened, almost physical empathy that may manifest as clinginess or mirroring the distress.",
+          "state_modifiers": {
+            "N": 5,
+            "E": -2,
+            "O": 0,
+            "A": 8,
+            "C": -3
+          }
+        },
+        {
+          "id": "sig_02",
+          "dimension": "Intellect",
+          "trigger_context": "Encountering a novel object or pattern that defies immediate categorization or expectation.",
+          "narrative_shift": "A surge of curiosity overrides immediate sensory preferences, causing Alex to stare intently or attempt to manipulate the object to understand its mechanism, displaying a focused, abstract engagement with the environment.",
+          "state_modifiers": {
+            "N": -1,
+            "E": 2,
+            "O": 7,
+            "A": 1,
+            "C": 4
+          }
+        },
+        {
+          "id": "sig_03",
+          "dimension": "Negativity",
+          "trigger_context": "Experiencing a sudden, unexpected interruption of a preferred sensory input or routine.",
+          "narrative_shift": "A rapid escalation of irritation occurs, expressed through sharp vocalizations or physical resistance, as the frustration of the blocked preference triggers a strong, immediate negative emotional response.",
+          "state_modifiers": {
+            "N": 8,
+            "E": -3,
+            "O": -1,
+            "A": -5,
+            "C": -2
+          }
+        },
+        {
+          "id": "sig_04",
+          "dimension": "Positivity",
+          "trigger_context": "Observing a visually striking or aesthetically pleasing arrangement of colors or shapes.",
+          "narrative_shift": "A calm, appreciative focus emerges, reducing general restlessness and increasing stillness as Alex absorbs the aesthetic experience, showing a temporary preference for passive observation over active exploration.",
+          "state_modifiers": {
+            "N": -3,
+            "E": 1,
+            "O": 5,
+            "A": 3,
+            "C": 2
+          }
+        },
+        {
+          "id": "sig_05",
+          "dimension": "Sociality",
+          "trigger_context": "Perceiving a mismatch between their own preference and the immediate social environment or caregiver's direction.",
+          "narrative_shift": "Alex actively attempts to assert their preference through vocalization or physical movement, displaying a strong drive to advocate for their desired state even if it causes minor social friction.",
+          "state_modifiers": {
+            "N": 2,
+            "E": 4,
+            "O": 1,
+            "A": -2,
+            "C": 3
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 1.3829954649402276,
+        "stage": 0,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 30.64,
+          "N2": 96.02,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 40.54,
+          "N6": 83.48,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 66.31,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 73.07,
+          "C6": 77.49
+        },
+        "evidence": []
+      },
+      "situational_state": {
+        "day": 1.3829954649402276,
+        "offsets": {
+          "N1": -0.08537451716659916,
+          "N2": -0.08537451716659916,
+          "N3": -0.08537451716659916,
+          "N4": -0.08537451716659916,
+          "N5": -0.08537451716659916,
+          "N6": -0.08537451716659916,
+          "E1": 0.9710633025263924,
+          "E2": 0.9710633025263924,
+          "E3": 0.9710633025263888,
+          "E4": 0.9710633025263959,
+          "E5": 0.9710633025263924,
+          "E6": 0.9710633025263888,
+          "O1": -0.48268373822635624,
+          "O2": -0.48268373822635624,
+          "O3": -0.48268373822635624,
+          "O4": -0.48268373822635624,
+          "O5": -0.48268373822635624,
+          "O6": -0.48268373822635624,
+          "A1": -1.1836539010161218,
+          "A2": -1.1836539010161147,
+          "A3": -1.1836539010161147,
+          "A4": -1.1836539010161147,
+          "A5": -1.1836539010161147,
+          "A6": -1.1836539010161147,
+          "C1": -1.1540872868482381,
+          "C2": -1.1540872868482381,
+          "C3": -1.1540872868482381,
+          "C4": -1.1540872868482381,
+          "C5": -1.1540872868482381,
+          "C6": -1.1540872868482381
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "A sense of physical unease arises within a familiar caregiving context, marked by a subtle challenge to comfort or routine. The discomfort is internal and nonverbal, reflecting a mild disruption in the expected sensory or social flow of the environment.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.1,
+            "Adversity": 0.4,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.6,
+            "Deception": 0.0,
+            "Sociality": 0.3
+          },
+          "controllability": 0.4,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": -0.08537451716660062,
+          "E": 0.9710633025263927,
+          "O": -0.48268373822635385,
+          "A": -1.1836539010161207,
+          "C": -1.1540872868482401
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-alex:infancy-situation",
+        "situation": "You feel discomfort in a familiar caregiving setting. Use a nonverbal response.",
+        "cues": [
+          "family",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "unresolved_references": {
+        "mention-199ac10a58983bb203fb": {
+          "reference_id": "mention-199ac10a58983bb203fb",
+          "span": "Maya",
+          "candidate_ids": [
+            "maya"
+          ],
+          "resolved_id": "maya",
+          "resolution": "named_known_identity",
+          "speaker_id": null,
+          "evidence": [
+            "life-0-alex:infancy-request",
+            "life-0-alex:infancy"
+          ]
+        }
+      },
+      "calendar": [
+        {
+          "activity": "life-0-alex:infancy",
+          "start_day": 1.3829954649402276,
+          "end_day": 1.385078798273561,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "1": 0.05000000000000249
+      },
+      "caregiving_experiences": [
+        {
+          "caregiver": "maya",
+          "responsiveness": 0.1,
+          "acceptance": 0.2,
+          "event": "life-0-alex:infancy",
+          "day": 1.385078798273561
+        }
+      ],
+      "habits": {
+        "challenge:family:seek-support": {
+          "strength": 0.1,
+          "day": 1.385078798273561,
+          "cues": [
+            "family",
+            "challenge"
+          ],
+          "evidence": [
+            "life-0-alex:infancy"
+          ],
+          "days": [
+            1
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-0-alex:infancy"
+      ],
+      "developmental_exposures": [
+        {
+          "day": 1.385078798273561,
+          "action": "life-0-alex:infancy-action",
+          "evidence": "life-0-alex:infancy",
+          "offsets": {
+            "N1": -0.08537451716659916,
+            "N2": -0.08537451716659916,
+            "N3": -0.08537451716659916,
+            "N4": -0.08537451716659916,
+            "N5": -0.08537451716659916,
+            "N6": -0.08537451716659916,
+            "E1": 0.9710633025263924,
+            "E2": 0.9710633025263924,
+            "E3": 0.9710633025263888,
+            "E4": 0.9710633025263959,
+            "E5": 0.9710633025263924,
+            "E6": 0.9710633025263888,
+            "O1": -0.48268373822635624,
+            "O2": -0.48268373822635624,
+            "O3": -0.48268373822635624,
+            "O4": -0.48268373822635624,
+            "O5": -0.48268373822635624,
+            "O6": -0.48268373822635624,
+            "A1": -1.1836539010161218,
+            "A2": -1.1836539010161147,
+            "A3": -1.1836539010161147,
+            "A4": -1.1836539010161147,
+            "A5": -1.1836539010161147,
+            "A6": -1.1836539010161147,
+            "C1": -1.1540872868482381,
+            "C2": -1.1540872868482381,
+            "C3": -1.1540872868482381,
+            "C4": -1.1540872868482381,
+            "C5": -1.1540872868482381,
+            "C6": -1.1540872868482381
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "reinterpretation_queue": [],
+      "social_update_budget": {
+        "1:maya:trust": 0.02,
+        "1:maya:closeness": 0.02
+      }
+    },
+    "rowan": {
+      "facets": {
+        "N1": 15.659645407969235,
+        "N2": 23.489645407969235,
+        "N3": 21.099645407969238,
+        "N4": 5.679645407969234,
+        "N5": 99.26964540796924,
+        "N6": 30.659645407969236,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 91.27,
+        "E4": 30.23,
+        "E5": 22.35,
+        "E6": 88.97,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 80.59,
+        "O4": 76.66,
+        "O5": 87.8,
+        "O6": 65.84,
+        "A1": 72.84035459203076,
+        "A2": 3.3703545920307656,
+        "A3": 36.660354592030764,
+        "A4": 86.67035459203076,
+        "A5": 5.480354592030766,
+        "A6": 46.31035459203077,
+        "C1": 63.24035459203077,
+        "C2": 96.32035459203075,
+        "C3": 59.74035459203077,
+        "C4": 48.43035459203077,
+        "C5": 83.16035459203076,
+        "C6": 35.09035459203077
+      },
+      "initial_facets": {
+        "N1": 15.66,
+        "N2": 23.49,
+        "N3": 21.1,
+        "N4": 5.68,
+        "N5": 99.27,
+        "N6": 30.66,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 91.27,
+        "E4": 30.23,
+        "E5": 22.35,
+        "E6": 88.97,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 80.59,
+        "O4": 76.66,
+        "O5": 87.8,
+        "O6": 65.84,
+        "A1": 72.84,
+        "A2": 3.37,
+        "A3": 36.66,
+        "A4": 86.67,
+        "A5": 5.48,
+        "A6": 46.31,
+        "C1": 63.24,
+        "C2": 96.32,
+        "C3": 59.74,
+        "C4": 48.43,
+        "C5": 83.16,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.6834513632362134,
+          -1.6011248469005488,
+          -0.48914489911982284,
+          -0.03656172187570306,
+          2.3104468968678473,
+          0.30087847758651665,
+          1.6425844361863111,
+          1.5094385517797564,
+          0.4744218069107717,
+          -0.42088374022739666,
+          -0.16067934312630272,
+          1.5792914547406458,
+          0.07253253813208099,
+          1.373153316858442,
+          0.6688063390476466,
+          0.1519571454671506,
+          1.149511599346135,
+          -0.02498368564095993,
+          1.7889572521493773,
+          -0.9437575935585567,
+          1.1922350496724199,
+          1.8950147386700953,
+          -1.642041509461298,
+          1.0073803788637516,
+          -0.20246877099644986,
+          0.22814146990968043,
+          0.6289176964081831,
+          -0.09049119073314953,
+          -0.1043770980292098,
+          -0.13855148502467352
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 15.66,
+          "N2": 23.49,
+          "N3": 21.1,
+          "N4": 5.68,
+          "N5": 99.27,
+          "N6": 30.66,
+          "E1": 97.13,
+          "E2": 86.33,
+          "E3": 91.27,
+          "E4": 30.23,
+          "E5": 22.35,
+          "E6": 88.97,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 80.59,
+          "O4": 76.66,
+          "O5": 87.8,
+          "O6": 65.84,
+          "A1": 72.84,
+          "A2": 3.37,
+          "A3": 36.66,
+          "A4": 86.67,
+          "A5": 5.48,
+          "A6": 46.31,
+          "C1": 63.24,
+          "C2": 96.32,
+          "C3": 59.74,
+          "C4": 48.43,
+          "C5": 83.16,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "bea": {
+      "facets": {
+        "N1": 5.78,
+        "N2": 15.85,
+        "N3": 21.1,
+        "N4": 9.94,
+        "N5": 92.06,
+        "N6": 83.48,
+        "E1": 83.23,
+        "E2": 91.94,
+        "E3": 31.92,
+        "E4": 84.77,
+        "E5": 94.02,
+        "E6": 78.07,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 9.53,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 82.81,
+        "A1": 72.84,
+        "A2": 28.42,
+        "A3": 14.63,
+        "A4": 77.21,
+        "A5": 10.02,
+        "A6": 34.39,
+        "C1": 6.37,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 9.29,
+        "C5": 20.0,
+        "C6": 2.35
+      },
+      "initial_facets": {
+        "N1": 5.78,
+        "N2": 15.85,
+        "N3": 21.1,
+        "N4": 9.94,
+        "N5": 92.06,
+        "N6": 83.48,
+        "E1": 83.23,
+        "E2": 91.94,
+        "E3": 31.92,
+        "E4": 84.77,
+        "E5": 94.02,
+        "E6": 78.07,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 9.53,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 82.81,
+        "A1": 72.84,
+        "A2": 28.42,
+        "A3": 14.63,
+        "A4": 77.21,
+        "A5": 10.02,
+        "A6": 34.39,
+        "C1": 6.37,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 9.29,
+        "C5": 20.0,
+        "C6": 2.35
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "rowan": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -1.453675370310486,
+          -0.576336621988087,
+          -0.9951018538751623,
+          -0.6649003697028824,
+          0.6638294847582409,
+          0.13316673326174355,
+          0.9428678469163176,
+          1.5322973854645656,
+          -0.2897716053981809,
+          0.6772354657208207,
+          1.3221892397806987,
+          0.9942293910086375,
+          1.2274147280063759,
+          0.9306897663520052,
+          -0.9901001493524825,
+          0.7172503353510422,
+          1.3052816462429364,
+          0.407399871661108,
+          0.5727221193271754,
+          -1.6403492748189372,
+          -1.3465814985435656,
+          -0.05580088263927563,
+          -2.4960867232562376,
+          -0.9035937682379199,
+          -1.980107106488757,
+          -0.20461648697574325,
+          -1.3283327690268663,
+          -1.2440405447712017,
+          -1.0796357173315707,
+          -1.770577679858056
+        ],
+        "nonshared_latent": [
+          -0.6939808175581539,
+          -0.565998444815311,
+          -0.05567855331458538,
+          -0.700065434409594,
+          0.9736968431509334,
+          0.8050973029367243,
+          0.25697241476278954,
+          0.22376768558779236,
+          -0.2509526144695917,
+          0.7128611630191677,
+          0.6634573916276131,
+          0.2230286776132281,
+          1.1774789008335516,
+          2.059420332382708,
+          -0.594772316716627,
+          0.18898639691645025,
+          1.629887614026925,
+          0.797998852145283,
+          0.019373472588950336,
+          0.6113711705002947,
+          -0.1686499426032877,
+          0.8888717185137409,
+          0.5572795480579564,
+          0.35491866370604425,
+          -0.20100180794319722,
+          -0.07517578136333952,
+          -0.21850285858612928,
+          -0.34090863471710886,
+          -0.17835009564764703,
+          -0.8230346975099716
+        ],
+        "parents": [
+          "rowan"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 5.78,
+          "N2": 15.85,
+          "N3": 21.1,
+          "N4": 9.94,
+          "N5": 92.06,
+          "N6": 83.48,
+          "E1": 83.23,
+          "E2": 91.94,
+          "E3": 31.92,
+          "E4": 84.77,
+          "E5": 94.02,
+          "E6": 78.07,
+          "O1": 95.88,
+          "O2": 96.27,
+          "O3": 9.53,
+          "O4": 76.66,
+          "O5": 95.96,
+          "O6": 82.81,
+          "A1": 72.84,
+          "A2": 28.42,
+          "A3": 14.63,
+          "A4": 77.21,
+          "A5": 10.02,
+          "A6": 34.39,
+          "C1": 6.37,
+          "C2": 41.97,
+          "C3": 11.53,
+          "C4": 9.29,
+          "C5": 20.0,
+          "C6": 2.35
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "life-0-alex:infancy-request",
+      "day": 1.3829954649402276,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "alex": {
+          "text": "I approached Maya. I said:  Request: Signal discomfort or seek familiar attention.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "meaning": "I initiated contact with Maya to signal my discomfort and seek familiar attention, acting on a direct request for reassurance.",
+          "valence": 0.1,
+          "arousal": 0.4,
+          "importance": 0.6,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-199ac10a58983bb203fb",
+              "span": "Maya",
+              "candidate_ids": [
+                "maya"
+              ],
+              "resolved_id": "maya",
+              "resolution": "named_known_identity",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": []
+        },
+        "maya": {
+          "text": "Alex approached me and said:  Request: Signal discomfort or seek familiar attention.",
+          "source": "alex",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "Alex is approaching me with a non-verbal or vague request to signal discomfort or seek familiar attention, which feels intrusive given my current neutral mood and lack of established relationship context.",
+          "valence": -0.2,
+          "arousal": 0.3,
+          "importance": 0.4,
+          "confidence": 0.6,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-b2dba2ddb5234c2e9ff9",
+              "span": "Alex",
+              "candidate_ids": [
+                "alex"
+              ],
+              "resolved_id": "alex",
+              "resolution": "named_known_identity",
+              "speaker_id": "alex"
+            }
+          ],
+          "cued_memories": []
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-0-alex:infancy",
+      "day": 1.385078798273561,
+      "description": "Attention was delayed and I remained unsettled. Maya said: I can't deal with this right now.",
+      "observations": {
+        "alex": {
+          "text": "Attention was delayed and I remained unsettled. Maya said: I can't deal with this right now.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.6,
+          "arousal": 0.65,
+          "importance": 0.8,
+          "meaning": "Maya explicitly declined to provide immediate attention, stating she cannot deal with the situation right now. This follows a period where my request for comfort was delayed, leaving me in a state of continued distress. The interaction confirms a lack of immediate responsiveness to my need for reassurance.",
+          "confidence": 0.95,
+          "encountered": [
+            "maya"
+          ],
+          "caregiving": {
+            "caregiver": "maya",
+            "responsiveness": 0.1,
+            "acceptance": 0.2
+          },
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-199ac10a58983bb203fb",
+              "span": "Maya",
+              "candidate_ids": [
+                "maya"
+              ],
+              "resolved_id": "maya",
+              "resolution": "named_known_identity",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": [
+            "life-0-alex:infancy-request"
+          ]
+        },
+        "maya": {
+          "text": "I could not attend immediately.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "A statement of unavailability or delay in response to a request or presence, likely directed at Alex given the context of the recent interaction and the active goal to signal unavailability. It reflects a practical constraint rather than an emotional rejection, aligning with the tendency to focus on concrete possibilities and maintain routine.",
+          "valence": -0.1,
+          "arousal": 0.3,
+          "importance": 0.4,
+          "confidence": 0.8,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [],
+          "cued_memories": [
+            "life-0-alex:infancy-request"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-0-alex:infancy-action",
+        "alive": [
+          "alex",
+          "maya"
+        ],
+        "actions": [
+          "life-0-alex:infancy-contact-action"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-alex:infancy-action",
+      "owner": "alex",
+      "day": 1.3829954649402276,
+      "decision": {
+        "action": "Signal discomfort or seek familiar attention.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [],
+        "memory_ids": [],
+        "action_id": "seek-support"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": -0.08537451716659916,
+        "N2": -0.08537451716659916,
+        "N3": -0.08537451716659916,
+        "N4": -0.08537451716659916,
+        "N5": -0.08537451716659916,
+        "N6": -0.08537451716659916,
+        "E1": 0.9710633025263924,
+        "E2": 0.9710633025263924,
+        "E3": 0.9710633025263888,
+        "E4": 0.9710633025263959,
+        "E5": 0.9710633025263924,
+        "E6": 0.9710633025263888,
+        "O1": -0.48268373822635624,
+        "O2": -0.48268373822635624,
+        "O3": -0.48268373822635624,
+        "O4": -0.48268373822635624,
+        "O5": -0.48268373822635624,
+        "O6": -0.48268373822635624,
+        "A1": -1.1836539010161218,
+        "A2": -1.1836539010161147,
+        "A3": -1.1836539010161147,
+        "A4": -1.1836539010161147,
+        "A5": -1.1836539010161147,
+        "A6": -1.1836539010161147,
+        "C1": -1.1540872868482381,
+        "C2": -1.1540872868482381,
+        "C3": -1.1540872868482381,
+        "C4": -1.1540872868482381,
+        "C5": -1.1540872868482381,
+        "C6": -1.1540872868482381
+      },
+      "outcome_event": "life-0-alex:infancy"
+    },
+    {
+      "id": "life-0-alex:infancy-contact-action",
+      "owner": "maya",
+      "day": 1.3829954649402276,
+      "decision": {
+        "action": "delay",
+        "speech": "I can't deal with this right now.",
+        "goal_id": "personal-task",
+        "plan": [
+          "Signal that I am unavailable to Alex.",
+          "Return to my current routine."
+        ],
+        "memory_ids": [
+          "life-0-alex:infancy-request"
+        ],
+        "action_id": "delay"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.8175599674711407,
+        "N2": 0.8175599674711407,
+        "N3": 0.8175599674711407,
+        "N4": 0.8175599674711407,
+        "N5": 0.8175599674711407,
+        "N6": 0.8175599674711407,
+        "E1": -0.7009700648515675,
+        "E2": -0.7009700648515675,
+        "E3": -0.7009700648515675,
+        "E4": -0.7009700648515675,
+        "E5": -0.7009700648515675,
+        "E6": -0.7009700648515675,
+        "O1": -2.543920308319205,
+        "O2": -2.5439203083192012,
+        "O3": -2.5439203083192083,
+        "O4": -2.5439203083192052,
+        "O5": -2.543920308319205,
+        "O6": -1.71,
+        "A1": -0.1494411631953625,
+        "A2": -0.14944116319536294,
+        "A3": -0.1494411631953625,
+        "A4": -0.1494411631953625,
+        "A5": -0.1494411631953625,
+        "A6": -0.1494411631953625,
+        "C1": -1.6833563601492862,
+        "C2": -1.6833563601492898,
+        "C3": -1.6833563601492862,
+        "C4": -1.6833563601492862,
+        "C5": -1.6833563601492862,
+        "C6": -1.6833563601492898
+      },
+      "outcome_event": "life-0-alex:infancy"
+    }
+  ],
+  "updates": [
+    {
+      "id": "life-0-alex:infancy-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 1.3829954649402276,
+      "state": {
+        "day": 1.3829954649402276,
+        "offsets": {
+          "N1": -0.08537451716659916,
+          "N2": -0.08537451716659916,
+          "N3": -0.08537451716659916,
+          "N4": -0.08537451716659916,
+          "N5": -0.08537451716659916,
+          "N6": -0.08537451716659916,
+          "E1": 0.9710633025263924,
+          "E2": 0.9710633025263924,
+          "E3": 0.9710633025263888,
+          "E4": 0.9710633025263959,
+          "E5": 0.9710633025263924,
+          "E6": 0.9710633025263888,
+          "O1": -0.48268373822635624,
+          "O2": -0.48268373822635624,
+          "O3": -0.48268373822635624,
+          "O4": -0.48268373822635624,
+          "O5": -0.48268373822635624,
+          "O6": -0.48268373822635624,
+          "A1": -1.1836539010161218,
+          "A2": -1.1836539010161147,
+          "A3": -1.1836539010161147,
+          "A4": -1.1836539010161147,
+          "A5": -1.1836539010161147,
+          "A6": -1.1836539010161147,
+          "C1": -1.1540872868482381,
+          "C2": -1.1540872868482381,
+          "C3": -1.1540872868482381,
+          "C4": -1.1540872868482381,
+          "C5": -1.1540872868482381,
+          "C6": -1.1540872868482381
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "A sense of physical unease arises within a familiar caregiving context, marked by a subtle challenge to comfort or routine. The discomfort is internal and nonverbal, reflecting a mild disruption in the expected sensory or social flow of the environment.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.1,
+            "Adversity": 0.4,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.6,
+            "Deception": 0.0,
+            "Sociality": 0.3
+          },
+          "controllability": 0.4,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": -0.08537451716660062,
+          "E": 0.9710633025263927,
+          "O": -0.48268373822635385,
+          "A": -1.1836539010161207,
+          "C": -1.1540872868482401
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-alex:infancy-situation",
+        "situation": "You feel discomfort in a familiar caregiving setting. Use a nonverbal response.",
+        "cues": [
+          "family",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "maya:semantic:e52f888452faa061:life-0-alex:infancy-request",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 1.3829954649402276
+    },
+    {
+      "id": "life-0-alex:infancy-contact-situation",
+      "kind": "situation_state",
+      "owner": "maya",
+      "day": 1.3829954649402276,
+      "state": {
+        "day": 1.3829954649402276,
+        "offsets": {
+          "N1": 0.8175599674711407,
+          "N2": 0.8175599674711407,
+          "N3": 0.8175599674711407,
+          "N4": 0.8175599674711407,
+          "N5": 0.8175599674711407,
+          "N6": 0.8175599674711407,
+          "E1": -0.7009700648515675,
+          "E2": -0.7009700648515675,
+          "E3": -0.7009700648515675,
+          "E4": -0.7009700648515675,
+          "E5": -0.7009700648515675,
+          "E6": -0.7009700648515675,
+          "O1": -2.543920308319205,
+          "O2": -2.5439203083192012,
+          "O3": -2.5439203083192083,
+          "O4": -2.5439203083192052,
+          "O5": -2.543920308319205,
+          "O6": -1.71,
+          "A1": -0.1494411631953625,
+          "A2": -0.14944116319536294,
+          "A3": -0.1494411631953625,
+          "A4": -0.1494411631953625,
+          "A5": -0.1494411631953625,
+          "A6": -0.1494411631953625,
+          "C1": -1.6833563601492862,
+          "C2": -1.6833563601492898,
+          "C3": -1.6833563601492862,
+          "C4": -1.6833563601492862,
+          "C5": -1.6833563601492862,
+          "C6": -1.6833563601492898
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Alex is approaching me with a vague, non-verbal request for comfort or attention. Given our lack of established closeness and my current neutral-to-negative mood, this feels intrusive and ambiguous. I interpret it as an attempt to seek familiar attention, which conflicts with my preference for guarded interactions and established routines. I am uncertain of their specific intent, but I feel a low-grade irritation at the disruption of my personal space and the demand for emotional labor I am not prepared to give.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.1,
+            "Adversity": 0.3,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.5,
+            "Deception": 0.0,
+            "Sociality": 0.4
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 0.8175599674711415,
+          "E": -0.7009700648515678,
+          "O": -2.5439203083192052,
+          "A": -0.1494411631953629,
+          "C": -1.6833563601492862
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-alex:infancy-contact-situation",
+        "situation": "Alex approaches you:  Request: Signal discomfort or seek familiar attention.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-0-alex:infancy-contact-action:used-memory:life-0-alex:infancy-request",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 1.3829954649402276
+    },
+    {
+      "id": "life-0-alex:infancy:reminder:alex:life-0-alex:infancy-request",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1.385078798273561
+    },
+    {
+      "id": "life-0-alex:infancy:reminder:maya:life-0-alex:infancy-request",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 1.385078798273561
+    },
+    {
+      "id": "alex:reflection:life-0-alex:infancy:life-0-alex:infancy-request",
+      "kind": "revision",
+      "owner": "alex",
+      "day": 1.385078798273561,
+      "memory": "life-0-alex:infancy-request",
+      "evidence": [
+        "life-0-alex:infancy-request",
+        "life-0-alex:infancy"
+      ]
+    },
+    {
+      "id": "alex:reflection:life-0-alex:infancy",
+      "kind": "reflection",
+      "owner": "alex",
+      "day": 1.385078798273561,
+      "evidence": [
+        "life-0-alex:infancy"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "life-0-alex:infancy-request",
+          "decision": "revise",
+          "reason": "The request for attention was met with explicit refusal and delay, changing the outcome from a neutral initiation to a failed attempt at reassurance.",
+          "meaning": "I sought Maya's attention to signal discomfort, but she declined to engage immediately, stating she could not deal with it. This left me unsettled and without the expected reassurance.",
+          "confidence": 0.95,
+          "evidence": [
+            "life-0-alex:infancy-request",
+            "life-0-alex:infancy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maya:reflection:life-0-alex:infancy:life-0-alex:infancy-request",
+      "kind": "revision",
+      "owner": "maya",
+      "day": 1.385078798273561,
+      "memory": "life-0-alex:infancy-request",
+      "evidence": [
+        "life-0-alex:infancy-request",
+        "life-0-alex:infancy"
+      ]
+    },
+    {
+      "id": "maya:reflection:life-0-alex:infancy",
+      "kind": "reflection",
+      "owner": "maya",
+      "day": 1.385078798273561,
+      "evidence": [
+        "life-0-alex:infancy"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "life-0-alex:infancy-request",
+          "decision": "revise",
+          "reason": "The new evidence provides the immediate outcome of the previous request, confirming that the interaction was handled by signaling unavailability rather than engaging directly, which resolves the ambiguity of the initial approach.",
+          "meaning": "Alex approached me with a request for attention or comfort, but I was unable to attend immediately. This confirms the interaction was managed through a practical boundary rather than direct engagement, consistent with my current focus on routine and concrete possibilities.",
+          "confidence": 0.9,
+          "evidence": [
+            "life-0-alex:infancy-request",
+            "life-0-alex:infancy"
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "semantic_recall": true,
+      "indexed_retrieval": true,
+      "reference_resolution": true,
+      "reflection": true,
+      "autonomous_goals": true,
+      "semantic_candidates": 24,
+      "detail_threshold": 0.45,
+      "fan_weight": 0.15,
+      "rumination_per_year": 0,
+      "rumination_minimum_gap_days": 1
+    },
+    "planning": {
+      "calendar_mode": "elapsed",
+      "hours_per_day": 12,
+      "habit_half_life_days": 30,
+      "habit_gain": 0.1,
+      "habit_max": 1
+    },
+    "expression": {
+      "std_by_domain": {
+        "N": 1,
+        "E": 1,
+        "O": 1,
+        "A": 1,
+        "C": 1
+      },
+      "half_life_days": 1,
+      "age_appropriate_actions": true
+    },
+    "society": {
+      "closeness_half_life_days": 365.25
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "e27b0238daf5926c70d789f11996807a96dd021f3d6618daabe9f3c97e69128f",
+    "scripted": false,
+    "start_day": 0.0,
+    "current_day": 1.4246621316068944,
+    "next_tick": null,
+    "tick": 1,
+    "trace": [
+      {
+        "event_index": 0,
+        "day": 1.3829954649402276,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "alex:infancy",
+        "day": 1.385078798273561,
+        "action": "seek-support",
+        "success": false,
+        "event": "life-0-alex:infancy",
+        "policy": "scenario_assumption",
+        "contact_action": "delay"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "alex:infancy": 1
+    },
+    "next_opportunities": {
+      "alex:infancy": 2.8981948011415177
+    },
+    "next_world_events": {},
+    "background_counts": {},
+    "next_background": {},
+    "pending_activities": {},
+    "hazard_counts": {},
+    "next_hazards": {}
+  }
+}

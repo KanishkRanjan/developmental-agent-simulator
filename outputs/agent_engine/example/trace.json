@@ -1,0 +1,367 @@
+{
+  "profile_source": "synthetic hand-set example",
+  "before_hearing": {
+    "identity": {
+      "id": "alex",
+      "name": "Alex",
+      "age_years": 20.0
+    },
+    "facets_percentiles": {
+      "N1 anxiety": 70,
+      "N2 anger": 50,
+      "N3 depression": 50,
+      "N4 self_consciousness": 50,
+      "N5 immoderation": 50,
+      "N6 vulnerability": 50,
+      "E1 friendliness": 50,
+      "E2 gregariousness": 50,
+      "E3 assertiveness": 35,
+      "E4 activity_level": 50,
+      "E5 excitement_seeking": 50,
+      "E6 cheerfulness": 50,
+      "O1 imagination": 50,
+      "O2 artistic_interests": 50,
+      "O3 emotionality": 50,
+      "O4 adventurousness": 50,
+      "O5 intellect": 50,
+      "O6 liberalism": 50,
+      "A1 trust": 50,
+      "A2 morality": 50,
+      "A3 altruism": 50,
+      "A4 cooperation": 50,
+      "A5 modesty": 50,
+      "A6 sympathy": 50,
+      "C1 self_efficacy": 55,
+      "C2 orderliness": 50,
+      "C3 dutifulness": 50,
+      "C4 achievement_striving": 50,
+      "C5 self_discipline": 50,
+      "C6 cautiousness": 50
+    },
+    "attachment_expectations": {
+      "caregiver_availability": "uncertain"
+    },
+    "culture": {},
+    "simulated_day": 7305.0,
+    "mood": {
+      "valence": 0.009922792333569715,
+      "arousal": 0.006615315513329199
+    },
+    "goals": {
+      "presentation": {
+        "description": "Prepare and deliver a community project presentation.",
+        "priority": 0.8,
+        "deadline": 7312.0,
+        "status": "active",
+        "progress": 0.0,
+        "plan": []
+      }
+    },
+    "relationships": {
+      "maya": {
+        "role": "caregiver",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "childhood-support"
+      }
+    },
+    "heard_about": {},
+    "beliefs": {},
+    "active_situation_rules": [],
+    "memories": [
+      {
+        "event": "childhood-support",
+        "day": 3650,
+        "text": "Maya sat with me and helped me practice my presentation.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I can ask Maya for help.",
+        "confidence": 0.5,
+        "availability": 0.42486231313926043,
+        "provenance": "childhood-support",
+        "score": 4.226053048219288
+      }
+    ],
+    "situation": "How do you feel about the upcoming presentation?",
+    "situation_cues": []
+  },
+  "after_hearing": {
+    "identity": {
+      "id": "alex",
+      "name": "Alex",
+      "age_years": 20.00273785078713
+    },
+    "facets_percentiles": {
+      "N1 anxiety": 70,
+      "N2 anger": 50,
+      "N3 depression": 50,
+      "N4 self_consciousness": 50,
+      "N5 immoderation": 50,
+      "N6 vulnerability": 50,
+      "E1 friendliness": 50,
+      "E2 gregariousness": 50,
+      "E3 assertiveness": 35,
+      "E4 activity_level": 50,
+      "E5 excitement_seeking": 50,
+      "E6 cheerfulness": 50,
+      "O1 imagination": 50,
+      "O2 artistic_interests": 50,
+      "O3 emotionality": 50,
+      "O4 adventurousness": 50,
+      "O5 intellect": 50,
+      "O6 liberalism": 50,
+      "A1 trust": 50,
+      "A2 morality": 50,
+      "A3 altruism": 50,
+      "A4 cooperation": 50,
+      "A5 modesty": 50,
+      "A6 sympathy": 50,
+      "C1 self_efficacy": 55,
+      "C2 orderliness": 50,
+      "C3 dutifulness": 50,
+      "C4 achievement_striving": 50,
+      "C5 self_discipline": 50,
+      "C6 cautiousness": 50
+    },
+    "attachment_expectations": {
+      "caregiver_availability": "uncertain"
+    },
+    "culture": {},
+    "simulated_day": 7306.0,
+    "mood": {
+      "valence": -0.5299518753704601,
+      "arousal": 0.6085494890985231
+    },
+    "goals": {
+      "presentation": {
+        "description": "Prepare and deliver a community project presentation.",
+        "priority": 0.8,
+        "deadline": 7312.0,
+        "status": "active",
+        "progress": 0.0,
+        "plan": []
+      }
+    },
+    "relationships": {
+      "maya": {
+        "role": "caregiver",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "childhood-support"
+      },
+      "bea": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      },
+      "cam": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      }
+    },
+    "heard_about": {},
+    "beliefs": {},
+    "active_situation_rules": [
+      {
+        "id": "public-criticism",
+        "cues": [
+          "social",
+          "criticism"
+        ],
+        "tendency": "May hesitate and ask what was meant before deciding how to respond."
+      }
+    ],
+    "memories": [
+      {
+        "event": "heard-teasing",
+        "day": 7306.0,
+        "text": "At lunch, Bea joked about me freezing during rehearsal. Cam was there.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I felt exposed and was unsure whether Bea meant to hurt me.",
+        "confidence": 0.5,
+        "availability": 1.0,
+        "provenance": "heard-teasing",
+        "score": 10.863594225044455
+      },
+      {
+        "event": "childhood-support",
+        "day": 3650,
+        "text": "Maya sat with me and helped me practice my presentation.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I can ask Maya for help.",
+        "confidence": 0.5,
+        "availability": 0.42479546884833236,
+        "provenance": "childhood-support",
+        "score": 1.1612012438038772
+      }
+    ],
+    "situation": "Bea has just teased you at lunch. What do you do?",
+    "situation_cues": [
+      "social",
+      "criticism"
+    ]
+  },
+  "after_rehearsal": {
+    "identity": {
+      "id": "alex",
+      "name": "Alex",
+      "age_years": 20.008213552361397
+    },
+    "facets_percentiles": {
+      "N1 anxiety": 70,
+      "N2 anger": 50,
+      "N3 depression": 50,
+      "N4 self_consciousness": 50,
+      "N5 immoderation": 50,
+      "N6 vulnerability": 50,
+      "E1 friendliness": 50,
+      "E2 gregariousness": 50,
+      "E3 assertiveness": 35,
+      "E4 activity_level": 50,
+      "E5 excitement_seeking": 50,
+      "E6 cheerfulness": 50,
+      "O1 imagination": 50,
+      "O2 artistic_interests": 50,
+      "O3 emotionality": 50,
+      "O4 adventurousness": 50,
+      "O5 intellect": 50,
+      "O6 liberalism": 50,
+      "A1 trust": 50,
+      "A2 morality": 50,
+      "A3 altruism": 50,
+      "A4 cooperation": 50,
+      "A5 modesty": 50,
+      "A6 sympathy": 50,
+      "C1 self_efficacy": 55,
+      "C2 orderliness": 50,
+      "C3 dutifulness": 50,
+      "C4 achievement_striving": 50,
+      "C5 self_discipline": 50,
+      "C6 cautiousness": 50
+    },
+    "attachment_expectations": {
+      "caregiver_availability": "uncertain"
+    },
+    "culture": {},
+    "simulated_day": 7308.0,
+    "mood": {
+      "valence": 0.2688658749636821,
+      "arousal": 0.6922062432849968
+    },
+    "goals": {
+      "presentation": {
+        "description": "Prepare and deliver a community project presentation.",
+        "priority": 0.8,
+        "deadline": 7312.0,
+        "status": "active",
+        "progress": 0.4,
+        "plan": [
+          "Ask Maya for help",
+          "Practice the opening",
+          "Revise notes"
+        ]
+      }
+    },
+    "relationships": {
+      "maya": {
+        "role": "caregiver",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "practice-outcome"
+      },
+      "bea": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      },
+      "cam": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      }
+    },
+    "heard_about": {},
+    "beliefs": {},
+    "active_situation_rules": [],
+    "memories": [
+      {
+        "event": "childhood-support",
+        "day": 3650,
+        "text": "Maya sat with me and helped me practice my presentation.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I can ask Maya for help.",
+        "confidence": 0.5,
+        "availability": 0.42466184334696444,
+        "provenance": "childhood-support",
+        "score": 7.2569257483426055
+      },
+      {
+        "event": "practice-outcome",
+        "day": 7308.0,
+        "text": "I practiced my opening with Maya for an hour.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "",
+        "confidence": 0.5,
+        "availability": 1.0,
+        "provenance": "practice-outcome",
+        "score": 4.6215092699970945
+      },
+      {
+        "event": "heard-teasing",
+        "day": 7306.0,
+        "text": "At lunch, Bea joked about me freezing during rehearsal. Cam was there.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "Bea says the joke was affectionate. I am less sure it was hostile.",
+        "confidence": 0.6,
+        "availability": 0.9780461031833151,
+        "provenance": "heard-teasing",
+        "score": 1.745782198187673
+      },
+      {
+        "event": "clarification",
+        "day": 7307.0,
+        "text": "Bea apologized and said the joke was meant affectionately.",
+        "source": "Bea",
+        "kind": "testimony",
+        "meaning": "",
+        "confidence": 0.5,
+        "availability": 0.970059880239521,
+        "provenance": "bea-apology",
+        "score": 0.986191832737342
+      }
+    ],
+    "situation": "You still want to prepare for your presentation. What is your next step?",
+    "situation_cues": []
+  },
+  "scripted_action": {
+    "action": "Practice the opening with Maya.",
+    "speech": "Could we rehearse the first minute?",
+    "goal_id": "presentation",
+    "plan": [
+      "Ask Maya for help",
+      "Practice the opening",
+      "Revise notes"
+    ],
+    "memory_ids": [
+      "childhood-support"
+    ]
+  },
+  "model_called": false
+}

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "scope": "actual local Graphiti/Neo4j/BGE plus stubbed selection for runtime assertions; no measured human improvement",
+  "health": {
+    "ready": true,
+    "backend": "Graphiti 0.31.1 / Neo4j",
+    "local_embeddings": true
+  },
+  "checks": [
+    "private snapshot contains only this agent received representations",
+    "actual Graphiti BM25 vector and BFS retrieval returns private event ids without state mutation",
+    "duplicate snapshots reuse completed deterministic ingestion without duplicate work",
+    "graph topics and received-reference links remain namespaced by owner and immutable view",
+    "aging changes the indexed snapshot and old graph detail cannot reappear through gist retrieval",
+    "checkpoint publication uses a durable idempotent outbox and leaves canonical state unchanged",
+    "quick and historical-interpretation researcher inspection are read-only",
+    "runtime semantic recall uses Graphiti but gist-only recall cannot rehearse original detail",
+    "graph outage falls back only to private FTS and records the downgrade",
+    "deep researcher search combines scoped subqueries without creating a recall event",
+    "engine rechecks candidate membership even when an index returns a foreign event id",
+    "temporary startup 503 waits within the indexing deadline rather than degrading immediately"
+  ]
+}

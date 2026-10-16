@@ -1,0 +1,1646 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 6576.6602373487385,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "biological_parents": [
+          "maya"
+        ],
+        "birth_day": 0,
+        "caregivers": [
+          "maya"
+        ],
+        "employment": "project-worker",
+        "education": "vocational-school"
+      },
+      "background_versions": {
+        "education-v1": {
+          "day": 6575.4527798737745,
+          "summary": "Alex, born to and raised by Maya, completed vocational training to support their current role as a project-worker. Recent days have been marked by receiving payment for a completed task and engaging in recent shared experiences.",
+          "choices": {
+            "education": 1
+          },
+          "milestones": [],
+          "policy": "controller_alternatives_synthetic_generation",
+          "invented_private_memories": false
+        }
+      }
+    },
+    "maya": {
+      "name": "Maya",
+      "facts": {}
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {}
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "initial_facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.3830034525020996,
+          1.4028694510641286,
+          -0.3905994125332013,
+          -0.6711883972735928,
+          0.93614618361995,
+          1.0441600549052343,
+          0.5574964018919111,
+          0.3274008760796736,
+          0.3328475333825997,
+          -0.7683236539145113,
+          1.228670670027051,
+          0.9586564233554301,
+          1.7291942413318073,
+          2.321023915692227,
+          0.6613039520724006,
+          -0.24591241137849873,
+          0.5281014123464178,
+          0.5649513657314105,
+          0.8179302263844332,
+          -1.4285038323800467,
+          2.000804069025171,
+          -0.8135290499072897,
+          -0.5734037142536089,
+          1.7488232453324573,
+          0.0029354547362000494,
+          -1.0951317034624553,
+          -1.7839442966710328,
+          -1.4422385602087857,
+          -1.1359544479019577,
+          -0.5214317665134227
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      }
+    },
+    "alex": {
+      "facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "initial_facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "work": {
+          "description": "Prepare useful project material.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        },
+        "friendship": {
+          "description": "Make room for friendship.",
+          "priority": 0.7,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.5,
+          "plan": [
+            "Meet with Bea for two hours this afternoon.",
+            "Engage in social conversation to catch up.",
+            "Use the remaining available time to prepare project material."
+          ],
+          "plan_versions": [
+            {
+              "day": 6575.4527798737745,
+              "plan": [
+                "Accept Bea's invitation to meet.",
+                "Spend two hours socializing with Bea.",
+                "Use the remaining two hours to prepare project material."
+              ],
+              "evidence": "life-0-competing-priorities"
+            }
+          ]
+        }
+      },
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        },
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-0-competing-priorities"
+        }
+      },
+      "references": {
+        "bea": [
+          "seed-school",
+          "seed-explanation",
+          "seed-recent"
+        ]
+      },
+      "beliefs": {},
+      "memory_meta": {
+        "seed-school": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.8,
+          "meaning": "The previous silence was due to Bea's busyness, not a rejection of my work. This alleviates the anxiety that my contributions were unwanted.",
+          "versions": [
+            {
+              "day": 6575.4527798737745,
+              "meaning": "I worried silence meant my work was unwanted.",
+              "confidence": 0.6,
+              "replaced_by": "alex:reflection:life-0-competing-priorities:seed-school"
+            }
+          ],
+          "stability_days": 7.800000000000001,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "seed-school",
+          "summary": "The previous silence was due to Bea's busyness, not a rejection of my work. This alleviates the anxiety that my contributions were unwanted.",
+          "topics": [
+            "work",
+            "relationships",
+            "evaluation"
+          ]
+        },
+        "seed-explanation": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.8,
+          "meaning": "It is confirmed that Bea's silence had a benign explanation (busyness), validating the earlier intuition that silence does not necessarily equate to rejection.",
+          "versions": [
+            {
+              "day": 6575.4527798737745,
+              "meaning": "Silence may have other explanations.",
+              "confidence": 0.6,
+              "replaced_by": "alex:reflection:life-0-competing-priorities:seed-explanation"
+            }
+          ],
+          "stability_days": 7.800000000000001,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "seed-explanation",
+          "summary": "It is confirmed that Bea's silence had a benign explanation (busyness), validating the earlier intuition that silence does not necessarily equate to rejection.",
+          "topics": [
+            "work",
+            "relationships",
+            "evaluation"
+          ]
+        },
+        "seed-recent": {
+          "kind": "direct",
+          "confidence": 0.6,
+          "importance": 0.8,
+          "meaning": "Work and relationships both matter to me.",
+          "versions": [],
+          "stability_days": 8.580000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 6574.874571098933,
+          "encountered": [],
+          "provenance": "seed-recent",
+          "summary": "Work and relationships both matter to me.",
+          "topics": [
+            "work",
+            "relationships",
+            "evaluation"
+          ]
+        },
+        "@world:paid-task": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.4,
+          "meaning": "A small, concrete confirmation that my previous effort had value and resulted in tangible resources. It provides a minor boost to my sense of agency and financial stability, allowing me to feel slightly more secure in pursuing my other goals like friendship and abstract exploration.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.0,
+          "last_recall_day": 6575.4527798737745,
+          "encountered": [],
+          "provenance": "@world:paid-task",
+          "summary": "Received five units of payment for a previously completed task, confirming the value of my effort and providing a small boost to financial stability and agency.",
+          "topics": [
+            "work",
+            "financials",
+            "agency"
+          ]
+        },
+        "life-0-competing-priorities": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.9,
+          "meaning": "Bea has explicitly clarified that her previous silence was due to busyness rather than rejection, directly alleviating my past anxiety about my work being unwanted. Her enthusiastic invitation to meet for two hours to 'catch up' validates my desire for friendship and suggests a mutual interest in connecting. The offer to delay project work implies a prioritization of our social time, which aligns with my goal to make room for friendship without feeling guilty about neglecting my work.",
+          "versions": [],
+          "stability_days": 11.22,
+          "encoding_stability_days": 10.2,
+          "last_recall_day": 6576.6602373487385,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-0-competing-priorities",
+          "summary": "Bea clarified that her previous silence was due to busyness, not rejection, and invited me to meet for two hours this afternoon to catch up, offering to delay project work.",
+          "topics": [
+            "friendship",
+            "work",
+            "validation",
+            "scheduling"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 6574.874571098933,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "seed-recent"
+        },
+        {
+          "day": 6575.4527798737745,
+          "valence": 0.075,
+          "arousal": 0.05,
+          "memory": "@world:paid-task"
+        },
+        {
+          "day": 6576.6602373487385,
+          "valence": 0.2125,
+          "arousal": 0.15,
+          "memory": "life-0-competing-priorities"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "alex:autonomous:0",
+          "day": 6574.874571098933,
+          "memory": "seed-recent",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:bf298500e26e6d7d:seed-recent",
+          "day": 6575.4527798737745,
+          "memory": "seed-recent",
+          "rehearsed": false
+        },
+        {
+          "id": "alex:semantic:bf298500e26e6d7d:@world:paid-task",
+          "day": 6575.4527798737745,
+          "memory": "@world:paid-task",
+          "rehearsed": true
+        },
+        {
+          "id": "life-0-competing-priorities-action:used-memory:seed-recent",
+          "day": 6575.4527798737745,
+          "memory": "seed-recent",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-competing-priorities-action:used-memory:@world:paid-task",
+          "day": 6575.4527798737745,
+          "memory": "@world:paid-task",
+          "rehearsed": false
+        },
+        {
+          "id": "alex:autonomous:1",
+          "day": 6576.6602373487385,
+          "memory": "life-0-competing-priorities",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.23594890875662042,
+          2.204420323820903,
+          -0.6265388857294751,
+          -0.9401158170664725,
+          -1.0843576892391307,
+          0.9471488789350636,
+          0.21572482413069305,
+          -0.1601045804267867,
+          2.102162000943369,
+          0.020887616192721226,
+          -0.8969943152761913,
+          0.5192373091242993,
+          0.1397675558069248,
+          2.2025628926409366,
+          -0.5660936783788852,
+          -1.1153140984733823,
+          1.0609607527091973,
+          -0.7015042040271896,
+          0.3473233393921183,
+          -0.3735969176868006,
+          0.6086167353840881,
+          0.5970586628888059,
+          -0.641285804999365,
+          1.6691633854274976,
+          0.9721932071733506,
+          0.16236826230393142,
+          0.1756109815100434,
+          0.31209299818426617,
+          0.8741322116464711,
+          0.7068063381236804
+        ],
+        "nonshared_latent": [
+          -0.22145488831475038,
+          0.2380719757825447,
+          0.06117348294822844,
+          1.2479665337817227,
+          0.5009510226140108,
+          0.35697298678586886,
+          -1.1181505850267195,
+          -0.896827886196598,
+          -0.2412974322601349,
+          0.09562418467844819,
+          -0.31107152972489627,
+          0.6352776516906533,
+          0.20283025457276516,
+          -0.11100608441261395,
+          0.14139874576954264,
+          0.403697199699508,
+          0.8794854413720177,
+          0.7735013215199855,
+          -0.7804004507698558,
+          1.1794629648697312,
+          -0.17585034142495348,
+          0.07715474324365451,
+          0.9157191529329053,
+          1.067091083408792,
+          0.570941067209825,
+          0.8825819890069784,
+          0.9013219522897673,
+          1.1322135820401205,
+          0.024034238006481634,
+          0.18025620679205978
+        ],
+        "parents": [
+          "maya"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 25
+      },
+      "last_autonomous_recall": 6576.6602373487385,
+      "retrieval_focus": {
+        "day": 6575.4527798737745,
+        "situation": "Bea asks whether you want to meet, and you also have project work to do. What should you do?",
+        "ids": [
+          "seed-recent",
+          "@world:paid-task"
+        ],
+        "policy": "local_llm_semantic_selection",
+        "candidate_count": 4,
+        "omitted_candidates": 0
+      },
+      "caps_rules": [
+        {
+          "id": "sig_duty_01",
+          "dimension": "Duty",
+          "trigger_context": "Alex is in the middle of a complex project preparation and realizes a critical detail was overlooked, threatening the quality of the work.",
+          "narrative_shift": "Alex temporarily suppresses their usual openness to new ideas to rigidly enforce their high standards, becoming hyper-focused and slightly dismissive of shortcuts to ensure the output meets their demanding goals.",
+          "state_modifiers": {
+            "N": 3,
+            "E": -2,
+            "O": 1,
+            "A": -3,
+            "C": 8
+          }
+        },
+        {
+          "id": "sig_intel_01",
+          "dimension": "Intellect",
+          "trigger_context": "During a casual conversation, a friend poses a vague, abstract philosophical question that lacks a clear practical answer.",
+          "narrative_shift": "Alex\u2019s engagement spikes as they dive deep into the theoretical implications, potentially losing track of the social flow or time constraints to fully explore the complexity of the idea.",
+          "state_modifiers": {
+            "N": -1,
+            "E": 4,
+            "O": 9,
+            "A": 2,
+            "C": -2
+          }
+        },
+        {
+          "id": "sig_adv_01",
+          "dimension": "Adversity",
+          "trigger_context": "Alex witnesses a peer struggling visibly with a failure or setback, showing signs of distress.",
+          "narrative_shift": "Alex\u2019s own irritability fades as they become intensely empathetic, shifting their focus entirely to comforting the other person and validating their difficulty, even if it delays their own tasks.",
+          "state_modifiers": {
+            "N": 2,
+            "E": -3,
+            "O": 1,
+            "A": 8,
+            "C": -1
+          }
+        },
+        {
+          "id": "sig_soci_01",
+          "dimension": "Sociality",
+          "trigger_context": "Alex is in a group setting where a decision is being made that conflicts with their strong preference or aesthetic sense.",
+          "narrative_shift": "Alex speaks up assertively to advocate for their viewpoint, prioritizing their preference over social harmony, which may create a moment of tension but reflects their need to be heard.",
+          "state_modifiers": {
+            "N": 4,
+            "E": 5,
+            "O": 2,
+            "A": -4,
+            "C": 1
+          }
+        },
+        {
+          "id": "sig_posi_01",
+          "dimension": "Positivity",
+          "trigger_context": "Alex encounters an unexpected piece of beautiful art or a well-crafted object in their daily environment.",
+          "narrative_shift": "Alex pauses their current activity to fully appreciate the aesthetic experience, feeling a surge of positive emotion and inspiration that temporarily lifts their mood and reduces their urgency to complete tasks.",
+          "state_modifiers": {
+            "N": -4,
+            "E": 6,
+            "O": 7,
+            "A": 3,
+            "C": -1
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 6575.4527798737745,
+        "stage": 2,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 30.64,
+          "N2": 96.02,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 40.54,
+          "N6": 83.48,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 66.31,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 73.07,
+          "C6": 77.49
+        },
+        "evidence": [
+          "seed-explanation",
+          "seed-recent",
+          "@world:paid-task"
+        ]
+      },
+      "situational_state": {
+        "day": 6575.4527798737745,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "A gentle pull between two important parts of my life: the need to make concrete progress on my project and the desire to nurture a connection with Bea. It feels like a small, manageable choice rather than a crisis, but I want to be intentional about how I spend my limited hours.",
+          "dimensions": {
+            "Duty": 0.6,
+            "Intellect": 0.2,
+            "Adversity": 0.1,
+            "Mating": 0.0,
+            "Positivity": 0.3,
+            "Negativity": 0.1,
+            "Deception": 0.0,
+            "Sociality": 0.7
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-competing-priorities-situation",
+        "situation": "Bea asks whether you want to meet, and you also have project work to do. What should you do?",
+        "cues": [
+          "work",
+          "social"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "time_use": {
+        "6575": 2
+      },
+      "habits": {
+        "social:work:meet": {
+          "strength": 0.1,
+          "day": 6575.4527798737745,
+          "cues": [
+            "work",
+            "social"
+          ],
+          "evidence": [
+            "life-0-competing-priorities"
+          ],
+          "days": [
+            6575
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-0-competing-priorities"
+      ],
+      "reinterpretation_queue": [],
+      "narrative_versions": [
+        null
+      ],
+      "narrative_identity": {
+        "text": "I had been carrying a quiet worry that my work was being ignored or rejected, interpreting Bea's silence as a sign of disinterest. Today, that weight lifted. Bea explicitly told me she had just been busy, not dismissive. Her enthusiasm to meet up and her willingness to push project work aside to spend time together felt like a genuine validation. It feels good to know I can make room for friendship without it being a zero-sum game with my work, and that my connection with Bea is reciprocal and valued.",
+        "confidence": 0.9,
+        "evidence": [
+          "life-0-competing-priorities",
+          "seed-school"
+        ],
+        "day": 6575.4527798737745,
+        "policy": "subjective_evidence_linked_model_inference"
+      }
+    },
+    "bea": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-0-competing-priorities"
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-0-competing-priorities": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.3,
+          "meaning": "A neutral social clarification where I provided a reason for my previous lack of communication to Alex, likely to maintain the relationship or avoid misunderstanding.",
+          "versions": [],
+          "stability_days": 5.940000000000001,
+          "encoding_stability_days": 5.4,
+          "last_recall_day": 6575.537129895652,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-0-competing-priorities",
+          "summary": "I clarified to Alex that my earlier silence was due to being busy, a neutral social explanation to maintain the relationship.",
+          "topics": [
+            "alex",
+            "communication",
+            "clarification"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 6575.537129895652,
+          "valence": 0.025,
+          "arousal": 0.05,
+          "memory": "life-0-competing-priorities"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "bea:autonomous:0",
+          "day": 6575.537129895652,
+          "memory": "life-0-competing-priorities",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "caps_rules": [
+        {
+          "id": "bea_duty_01",
+          "dimension": "Duty",
+          "trigger_context": "Bea is responsible for a small, vulnerable pet or plant that requires immediate, hands-on care while she is in a public setting.",
+          "narrative_shift": "Her focus narrows sharply to the immediate physical needs of the dependent, causing her to become slightly rigid and less responsive to social cues from peers to ensure the task is completed correctly.",
+          "state_modifiers": {
+            "N": 2,
+            "E": -3,
+            "O": 0,
+            "A": 1,
+            "C": 5
+          }
+        },
+        {
+          "id": "bea_intellect_01",
+          "dimension": "Intellect",
+          "trigger_context": "Bea encounters a complex puzzle or a new piece of technology that requires troubleshooting without external help.",
+          "narrative_shift": "She enters a state of quiet, intense concentration, becoming less aware of her surroundings and more willing to experiment with unconventional solutions, even if it risks minor failure.",
+          "state_modifiers": {
+            "N": -2,
+            "E": 1,
+            "O": 6,
+            "A": 0,
+            "C": 2
+          }
+        },
+        {
+          "id": "bea_adversity_01",
+          "dimension": "Adversity",
+          "trigger_context": "Bea faces an unexpected, minor logistical failure, such as missing a bus or losing a set of keys, in a situation where she has limited time.",
+          "narrative_shift": "She experiences a brief spike in frustration but quickly shifts to a pragmatic, problem-solving mode, suppressing emotional expression to focus on finding the most efficient workaround.",
+          "state_modifiers": {
+            "N": 4,
+            "E": -2,
+            "O": 0,
+            "A": -1,
+            "C": 3
+          }
+        },
+        {
+          "id": "bea_sociality_01",
+          "dimension": "Sociality",
+          "trigger_context": "Bea is placed in a small group setting where a friend is sharing a personal story or seeking validation.",
+          "narrative_shift": "Her empathy is activated, leading her to become more attentive and supportive, mirroring the friend's emotional tone and offering gentle, non-judgmental encouragement.",
+          "state_modifiers": {
+            "N": -1,
+            "E": 2,
+            "O": 1,
+            "A": 6,
+            "C": 0
+          }
+        },
+        {
+          "id": "bea_positivity_01",
+          "dimension": "Positivity",
+          "trigger_context": "Bea witnesses an act of genuine, unselfish kindness from a stranger or a peer.",
+          "narrative_shift": "Her mood lifts noticeably, making her more open to social interaction and slightly more optimistic about her current environment, leading to a more relaxed and approachable demeanor.",
+          "state_modifiers": {
+            "N": -3,
+            "E": 3,
+            "O": 1,
+            "A": 4,
+            "C": 0
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 6575.4527798737745,
+        "stage": 2,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 50,
+          "N2": 50,
+          "N3": 50,
+          "N4": 50,
+          "N5": 50,
+          "N6": 50,
+          "E1": 50,
+          "E2": 50,
+          "E3": 50,
+          "E4": 50,
+          "E5": 50,
+          "E6": 50,
+          "O1": 50,
+          "O2": 50,
+          "O3": 50,
+          "O4": 50,
+          "O5": 50,
+          "O6": 50,
+          "A1": 50,
+          "A2": 50,
+          "A3": 50,
+          "A4": 50,
+          "A5": 50,
+          "A6": 50,
+          "C1": 50,
+          "C2": 50,
+          "C3": 50,
+          "C4": 50,
+          "C5": 50,
+          "C6": 50
+        },
+        "evidence": []
+      },
+      "situational_state": {
+        "day": 6575.4527798737745,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Alex is initiating a social connection, expressing a desire to prioritize our relationship over their work schedule. This feels like a warm, low-stakes invitation to reconnect, which is generally positive and engaging, though it does require a small commitment of my limited free time.",
+          "dimensions": {
+            "Duty": 0.1,
+            "Intellect": 0.05,
+            "Adversity": 0.0,
+            "Mating": 0.0,
+            "Positivity": 0.6,
+            "Negativity": 0.0,
+            "Deception": 0.0,
+            "Sociality": 0.8
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-competing-priorities-contact-situation",
+        "situation": "Alex approaches you: I'd love to meet up. I've been wanting to catch up properly, and I can fit the project work in later today. What time works for you? Request: Spend two hours catching up with Bea.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "last_autonomous_recall": 6575.537129895652
+    }
+  },
+  "events": [
+    {
+      "id": "seed-school",
+      "day": 5844.0,
+      "description": "Explicit synthetic prior experience.",
+      "observations": {
+        "alex": {
+          "text": "Bea gave no response when I shared a draft.",
+          "source": "direct",
+          "meaning": "I worried silence meant my work was unwanted.",
+          "importance": 0.8,
+          "confidence": 0.6,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "seed-explanation",
+      "day": 6209.25,
+      "description": "Explicit synthetic prior experience.",
+      "observations": {
+        "alex": {
+          "text": "Bea explained being busy that day and asked to read my next draft.",
+          "source": "direct",
+          "meaning": "Silence may have other explanations.",
+          "importance": 0.8,
+          "confidence": 0.6,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "seed-recent",
+      "day": 6574.5,
+      "description": "Explicit synthetic prior experience.",
+      "observations": {
+        "alex": {
+          "text": "I am preparing material and want to make time for friendships too.",
+          "source": "direct",
+          "meaning": "Work and relationships both matter to me.",
+          "importance": 0.8,
+          "confidence": 0.6,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "@world:paid-task",
+      "day": 6574.6,
+      "description": "Alex receives payment for a completed task.",
+      "observations": {
+        "alex": {
+          "text": "I received five units of payment for an earlier completed task.",
+          "source": "direct",
+          "importance": 0.4,
+          "meaning": "A small, concrete confirmation that my previous effort had value and resulted in tangible resources. It provides a minor boost to my sense of agency and financial stability, allowing me to feel slightly more secure in pursuing my other goals like friendship and abstract exploration.",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "life-0-competing-priorities",
+      "day": 6575.4527798737745,
+      "description": "Bea and I talked. Bea said that an earlier silence was due to being busy, not rejection of my work. Bea said: That sounds great. I'd love to catch up too. How about we meet up for a couple of hours this afternoon? I can work on the project later if I need to.",
+      "observations": {
+        "alex": {
+          "text": "Bea and I talked. Bea said that an earlier silence was due to being busy, not rejection of my work. Bea said: That sounds great. I'd love to catch up too. How about we meet up for a couple of hours this afternoon? I can work on the project later if I need to.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.85,
+          "arousal": 0.6,
+          "importance": 0.9,
+          "meaning": "Bea has explicitly clarified that her previous silence was due to busyness rather than rejection, directly alleviating my past anxiety about my work being unwanted. Her enthusiastic invitation to meet for two hours to 'catch up' validates my desire for friendship and suggests a mutual interest in connecting. The offer to delay project work implies a prioritization of our social time, which aligns with my goal to make room for friendship without feeling guilty about neglecting my work.",
+          "confidence": 0.95,
+          "encountered": [
+            "bea"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "bea": {
+          "text": "I explained to Alex that being busy had caused my earlier silence.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "A neutral social clarification where I provided a reason for my previous lack of communication to Alex, likely to maintain the relationship or avoid misunderstanding.",
+          "valence": 0.1,
+          "arousal": 0.2,
+          "importance": 0.3,
+          "confidence": 0.8,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "friendship": {
+              "progress": 0.5,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-0-competing-priorities-action",
+        "alive": [
+          "alex",
+          "bea"
+        ],
+        "actions": [
+          "life-0-competing-priorities-contact-action"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-competing-priorities-action",
+      "owner": "alex",
+      "day": 6575.4527798737745,
+      "decision": {
+        "action": "Spend two hours catching up with Bea.",
+        "speech": "I'd love to meet up. I've been wanting to catch up properly, and I can fit the project work in later today. What time works for you?",
+        "goal_id": "friendship",
+        "plan": [
+          "Accept Bea's invitation to meet.",
+          "Spend two hours socializing with Bea.",
+          "Use the remaining two hours to prepare project material."
+        ],
+        "memory_ids": [
+          "seed-recent",
+          "@world:paid-task"
+        ],
+        "action_id": "meet"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-0-competing-priorities"
+    },
+    {
+      "id": "life-0-competing-priorities-contact-action",
+      "owner": "bea",
+      "day": 6575.4527798737745,
+      "decision": {
+        "action": "Talk with Alex about balancing friendship and work.",
+        "speech": "That sounds great. I'd love to catch up too. How about we meet up for a couple of hours this afternoon? I can work on the project later if I need to.",
+        "goal_id": null,
+        "plan": [
+          "Accept Alex's invitation to meet up.",
+          "Propose a specific time frame (two hours) to ensure a proper catch-up.",
+          "Confirm that work can be handled later to prioritize the social interaction."
+        ],
+        "memory_ids": [],
+        "action_id": "talk"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-0-competing-priorities"
+    }
+  ],
+  "updates": [
+    {
+      "id": "@world:paid-task:world-effects",
+      "kind": "world_consequences",
+      "day": 6574.6,
+      "effects": {
+        "resources": {
+          "alex": {
+            "money": 5
+          }
+        },
+        "facts": {
+          "alex": {
+            "employment": "project-worker"
+          }
+        }
+      }
+    },
+    {
+      "id": "alex:reflection:@world:paid-task",
+      "kind": "reflection",
+      "owner": "alex",
+      "day": 6574.6,
+      "evidence": [
+        "@world:paid-task"
+      ],
+      "revision_decisions": []
+    },
+    {
+      "id": "alex:autonomous:0",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6574.874571098933
+    },
+    {
+      "id": "alex:semantic:bf298500e26e6d7d:seed-recent",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6575.4527798737745
+    },
+    {
+      "id": "alex:semantic:bf298500e26e6d7d:@world:paid-task",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6575.4527798737745
+    },
+    {
+      "id": "life-0-competing-priorities-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 6575.4527798737745,
+      "state": {
+        "day": 6575.4527798737745,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "A gentle pull between two important parts of my life: the need to make concrete progress on my project and the desire to nurture a connection with Bea. It feels like a small, manageable choice rather than a crisis, but I want to be intentional about how I spend my limited hours.",
+          "dimensions": {
+            "Duty": 0.6,
+            "Intellect": 0.2,
+            "Adversity": 0.1,
+            "Mating": 0.0,
+            "Positivity": 0.3,
+            "Negativity": 0.1,
+            "Deception": 0.0,
+            "Sociality": 0.7
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-competing-priorities-situation",
+        "situation": "Bea asks whether you want to meet, and you also have project work to do. What should you do?",
+        "cues": [
+          "work",
+          "social"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-0-competing-priorities-action:used-memory:seed-recent",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6575.4527798737745
+    },
+    {
+      "id": "life-0-competing-priorities-action:used-memory:@world:paid-task",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6575.4527798737745
+    },
+    {
+      "id": "life-0-competing-priorities-contact-situation",
+      "kind": "situation_state",
+      "owner": "bea",
+      "day": 6575.4527798737745,
+      "state": {
+        "day": 6575.4527798737745,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Alex is initiating a social connection, expressing a desire to prioritize our relationship over their work schedule. This feels like a warm, low-stakes invitation to reconnect, which is generally positive and engaging, though it does require a small commitment of my limited free time.",
+          "dimensions": {
+            "Duty": 0.1,
+            "Intellect": 0.05,
+            "Adversity": 0.0,
+            "Mating": 0.0,
+            "Positivity": 0.6,
+            "Negativity": 0.0,
+            "Deception": 0.0,
+            "Sociality": 0.8
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-competing-priorities-contact-situation",
+        "situation": "Alex approaches you: I'd love to meet up. I've been wanting to catch up properly, and I can fit the project work in later today. What time works for you? Request: Spend two hours catching up with Bea.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "alex:reflection:life-0-competing-priorities:seed-school",
+      "kind": "revision",
+      "owner": "alex",
+      "day": 6575.4527798737745,
+      "memory": "seed-school",
+      "evidence": [
+        "seed-school",
+        "life-0-competing-priorities"
+      ]
+    },
+    {
+      "id": "alex:reflection:life-0-competing-priorities:seed-explanation",
+      "kind": "revision",
+      "owner": "alex",
+      "day": 6575.4527798737745,
+      "memory": "seed-explanation",
+      "evidence": [
+        "seed-explanation",
+        "life-0-competing-priorities"
+      ]
+    },
+    {
+      "id": "alex:reflection:life-0-competing-priorities",
+      "kind": "reflection",
+      "owner": "alex",
+      "day": 6575.4527798737745,
+      "evidence": [
+        "life-0-competing-priorities"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "seed-school",
+          "decision": "revise",
+          "reason": "Bea's direct explanation that the silence was due to busyness rather than rejection directly contradicts and resolves the earlier worry that the silence meant my work was unwanted.",
+          "meaning": "The previous silence was due to Bea's busyness, not a rejection of my work. This alleviates the anxiety that my contributions were unwanted.",
+          "confidence": 0.95,
+          "evidence": [
+            "seed-school",
+            "life-0-competing-priorities"
+          ]
+        },
+        {
+          "memory_id": "seed-explanation",
+          "decision": "revise",
+          "reason": "The general hypothesis that silence might have other explanations is now confirmed by specific evidence from Bea, making the abstract thought a resolved fact.",
+          "meaning": "It is confirmed that Bea's silence had a benign explanation (busyness), validating the earlier intuition that silence does not necessarily equate to rejection.",
+          "confidence": 0.95,
+          "evidence": [
+            "seed-explanation",
+            "life-0-competing-priorities"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bea:reflection:life-0-competing-priorities",
+      "kind": "reflection",
+      "owner": "bea",
+      "day": 6575.4527798737745,
+      "evidence": [
+        "life-0-competing-priorities"
+      ],
+      "revision_decisions": []
+    },
+    {
+      "id": "bea:autonomous:0",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6575.537129895652
+    },
+    {
+      "id": "alex:autonomous:1",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.6602373487385
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "semantic_recall": true,
+      "reflection": true,
+      "rumination_per_year": 365,
+      "semantic_candidates": 12
+    },
+    "planning": {
+      "hours_per_day": 4
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "3738de6636b98660ceb99965357c8198868bf3c44840394c6e2313270190c9dc",
+    "scripted": false,
+    "start_day": 6574.5,
+    "current_day": 6576.6602373487385,
+    "next_tick": null,
+    "tick": 1,
+    "trace": [
+      {
+        "kind": "world_transition",
+        "id": "paid-task",
+        "day": 6574.6,
+        "applied": true
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "alex",
+        "day": 6574.874571098933,
+        "memory": "seed-recent"
+      },
+      {
+        "opportunity": "competing-priorities",
+        "day": 6575.4527798737745,
+        "action": "meet",
+        "success": true,
+        "event": "life-0-competing-priorities",
+        "policy": "scenario_assumption",
+        "contact_action": "talk"
+      },
+      {
+        "event_index": 0,
+        "day": 6575.4527798737745,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "bea",
+        "day": 6575.537129895652,
+        "memory": "life-0-competing-priorities"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "bea",
+        "day": 6576.06578323003,
+        "memory": null
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "alex",
+        "day": 6576.6602373487385,
+        "memory": "life-0-competing-priorities"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "competing-priorities": 1
+    },
+    "next_opportunities": {
+      "competing-priorities": 6577.282972654715
+    },
+    "next_world_events": {
+      "paid-task": null
+    },
+    "background_counts": {
+      "alex": 2,
+      "bea": 2
+    },
+    "next_background": {
+      "alex": 6579.0571602469845,
+      "bea": 6577.668747763671
+    }
+  }
+}

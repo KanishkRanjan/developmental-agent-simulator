@@ -1,0 +1,411 @@
+[
+  {
+    "context": {
+      "identity": {
+        "id": "alex",
+        "name": "Alex",
+        "age_years": 20.29673801803597
+      },
+      "personality": {
+        "policy": "behavioral_language_v1",
+        "tendencies": [
+          "Strong tendency to prefer practical questions to extended abstract discussion.",
+          "Strong tendency to give artistic and aesthetic experiences less attention.",
+          "Strong tendency to doubt their ability until they have concrete reassurance.",
+          "Strong tendency to prefer quieter and less stimulating experiences.",
+          "Strong tendency to prefer familiar activities and routines.",
+          "Strong tendency to find it harder to continue once a task becomes tedious.",
+          "Strong tendency to prefer a slower and more unhurried pace.",
+          "Strong tendency to feel self-conscious when being evaluated."
+        ],
+        "expression": "These are tendencies, not obligations. Let the situation, goals, relationships and prior experiences shape their expression. Do not turn one disposition into a constant caricature or a diagnosis."
+      },
+      "temporary_behavior": {
+        "policy": "temporary_behavioral_language_v1",
+        "tendencies": [],
+        "scope": "Temporary departures from the enduring dispositions; these can recover without changing those dispositions."
+      },
+      "attachment_expectations": {},
+      "culture": {},
+      "simulated_day": 108.38356108763882,
+      "mood": {
+        "valence": -0.17280431450213202,
+        "arousal": 0.5804666528727043
+      },
+      "goals": {
+        "community-presentation": {
+          "description": "Prepare the notes and materials for a community project presentation.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": [
+            "Meet with Maya to discuss the opening section.",
+            "Get specific feedback on where the flow breaks down.",
+            "Revise the notes based on her suggestions."
+          ]
+        }
+      },
+      "relationships": {
+        "maya": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-0-adult-community-project"
+        }
+      },
+      "heard_about": {},
+      "beliefs": {
+        "gist-8176731211e18b99-0": {
+          "text": "Specific feedback from Maya seems to help me feel more prepared, even if the initial rehearsal felt difficult.",
+          "confidence": 0.6,
+          "evidence": [
+            "prior-1",
+            "prior-2"
+          ],
+          "day": 108.38356108763882,
+          "kind": "inferred_semantic_gist"
+        },
+        "gist-8176731211e18b99-1": {
+          "text": "I tend to feel stuck on the opening section until I have concrete revisions, which aligns with my need for reassurance.",
+          "confidence": 0.5,
+          "evidence": [
+            "prior-0",
+            "prior-2"
+          ],
+          "day": 108.38356108763882,
+          "kind": "inferred_semantic_gist"
+        }
+      },
+      "active_situation_rules": [],
+      "memories": [
+        {
+          "event": "prior-0",
+          "day": 0.0,
+          "text": "I worked on the opening of my community presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "",
+          "confidence": 0.5,
+          "availability": 0.38377662802930324,
+          "provenance": "prior-0",
+          "score": 6.976864455449218
+        },
+        {
+          "event": "life-0-adult-community-project",
+          "day": 108.38356108763882,
+          "text": "Maya and I tried a rehearsal, but I still struggled with the opening.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "The rehearsal did not resolve the difficulty with the opening section, leaving me feeling stuck and self-conscious about my performance despite Maya's presence.",
+          "confidence": 0.85,
+          "availability": 1.0,
+          "provenance": "life-0-adult-community-project",
+          "score": 4.612096302015149
+        },
+        {
+          "event": "prior-2",
+          "day": 2.0,
+          "text": "I revised the notes after rehearsal and felt more prepared.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "",
+          "confidence": 0.5,
+          "availability": 1.0,
+          "provenance": "prior-2",
+          "score": 4.5930878274199145
+        },
+        {
+          "event": "prior-1",
+          "day": 1.0,
+          "text": "Maya listened to my rehearsal and offered suggestions.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "",
+          "confidence": 0.5,
+          "availability": 1.0,
+          "provenance": "prior-1",
+          "score": 4.5930878274199145
+        }
+      ],
+      "situation": "Synthetic integration scenario: Being asked to present progress on the community project to a group of unfamiliar peers without prior rehearsal. What do you do?",
+      "situation_cues": [],
+      "task": "construe_situation",
+      "candidate_signatures": [
+        {
+          "id": "sig-01",
+          "dimension": "Intellect",
+          "trigger_context": "Engaging in a debate about abstract philosophical concepts rather than concrete implementation details.",
+          "narrative_shift": "Alex shifts focus to asking for specific examples or practical applications, becoming visibly less engaged with the theoretical nuances and preferring to steer the conversation toward actionable outcomes.",
+          "state_modifiers": {
+            "N": 2,
+            "E": -3,
+            "O": -5,
+            "A": 1,
+            "C": 4
+          }
+        },
+        {
+          "id": "sig-02",
+          "dimension": "Duty",
+          "trigger_context": "Being asked to present progress on the community project to a group of unfamiliar peers without prior rehearsal.",
+          "narrative_shift": "Alex feels a surge of self-consciousness and seeks out a trusted ally for a quick, private reassurance check before proceeding, prioritizing emotional stability over immediate compliance with the schedule.",
+          "state_modifiers": {
+            "N": 6,
+            "E": -4,
+            "O": 0,
+            "A": -3,
+            "C": 2
+          }
+        },
+        {
+          "id": "sig-03",
+          "dimension": "Adversity",
+          "trigger_context": "Encountering a repetitive, tedious phase in the preparation of presentation notes that requires meticulous data entry.",
+          "narrative_shift": "Alex\u2019s motivation drops sharply, leading to a temporary withdrawal from the task to engage in a low-stimulation, familiar routine (such as organizing physical materials) to restore a sense of control and pace.",
+          "state_modifiers": {
+            "N": 3,
+            "E": -2,
+            "O": -1,
+            "A": -2,
+            "C": -6
+          }
+        },
+        {
+          "id": "sig-04",
+          "dimension": "Sociality",
+          "trigger_context": "Attending a lively, high-energy networking event where the atmosphere is chaotic and visually stimulating.",
+          "narrative_shift": "Alex seeks out a quiet corner or a less crowded area, reducing social output to conserve energy and avoid overstimulation, preferring deep one-on-one exchanges over broad group interactions.",
+          "state_modifiers": {
+            "N": 1,
+            "E": -6,
+            "O": -2,
+            "A": 2,
+            "C": 1
+          }
+        },
+        {
+          "id": "sig-05",
+          "dimension": "Positivity",
+          "trigger_context": "Receiving specific, constructive feedback from a mentor that confirms the practical utility of the presentation draft.",
+          "narrative_shift": "Alex experiences a significant boost in confidence and openness, becoming more willing to experiment with aesthetic elements in the presentation design that were previously ignored due to a lack of reassurance.",
+          "state_modifiers": {
+            "N": -4,
+            "E": 3,
+            "O": 5,
+            "A": 4,
+            "C": 2
+          }
+        }
+      ],
+      "situation_dimensions": [
+        "Duty",
+        "Intellect",
+        "Adversity",
+        "Mating",
+        "Positivity",
+        "Negativity",
+        "Deception",
+        "Sociality"
+      ]
+    },
+    "response": {
+      "meaning": "The demand to present to unfamiliar peers without rehearsal triggers an acute sense of exposure and inadequacy. My internal narrative focuses on the lack of concrete reassurance, making the social evaluation feel threatening rather than merely challenging. I interpret this as a high-stakes social test where my self-consciousness is likely to peak, prompting a need to seek private validation before facing the group.",
+      "dimensions": {
+        "Duty": 0.75,
+        "Intellect": 0.2,
+        "Adversity": 0.4,
+        "Mating": 0.1,
+        "Positivity": 0.15,
+        "Negativity": 0.65,
+        "Deception": 0.05,
+        "Sociality": 0.6
+      },
+      "controllability": 0.3,
+      "active_rule_ids": [
+        "sig-02"
+      ]
+    },
+    "seconds": 9.492
+  },
+  {
+    "context": {
+      "identity": {
+        "id": "alex",
+        "name": "Alex",
+        "age_years": 20.29673801803597
+      },
+      "personality": {
+        "policy": "behavioral_language_v1",
+        "tendencies": [
+          "Strong tendency to prefer practical questions to extended abstract discussion.",
+          "Strong tendency to give artistic and aesthetic experiences less attention.",
+          "Strong tendency to doubt their ability until they have concrete reassurance.",
+          "Strong tendency to prefer quieter and less stimulating experiences.",
+          "Strong tendency to prefer familiar activities and routines.",
+          "Strong tendency to find it harder to continue once a task becomes tedious.",
+          "Strong tendency to prefer a slower and more unhurried pace.",
+          "Strong tendency to feel self-conscious when being evaluated."
+        ],
+        "expression": "These are tendencies, not obligations. Let the situation, goals, relationships and prior experiences shape their expression. Do not turn one disposition into a constant caricature or a diagnosis."
+      },
+      "temporary_behavior": {
+        "policy": "temporary_behavioral_language_v1",
+        "tendencies": [
+          "For now, more inclined to anticipate possible problems and seek reassurance under uncertainty.",
+          "For now, more inclined to feel irritation more readily when frustrated.",
+          "For now, more inclined to feel self-conscious when being evaluated.",
+          "For now, more inclined to find immediate temptations harder to resist.",
+          "For now, more inclined to feel overwhelmed more readily under pressure.",
+          "For now, more inclined to become discouraged more readily after setbacks."
+        ],
+        "scope": "Temporary departures from the enduring dispositions; these can recover without changing those dispositions."
+      },
+      "attachment_expectations": {},
+      "culture": {},
+      "simulated_day": 108.38356108763882,
+      "mood": {
+        "valence": -0.17280431450213202,
+        "arousal": 0.5804666528727043
+      },
+      "goals": {
+        "community-presentation": {
+          "description": "Prepare the notes and materials for a community project presentation.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": [
+            "Meet with Maya to discuss the opening section.",
+            "Get specific feedback on where the flow breaks down.",
+            "Revise the notes based on her suggestions."
+          ]
+        }
+      },
+      "relationships": {
+        "maya": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-0-adult-community-project"
+        }
+      },
+      "heard_about": {},
+      "beliefs": {
+        "gist-8176731211e18b99-0": {
+          "text": "Specific feedback from Maya seems to help me feel more prepared, even if the initial rehearsal felt difficult.",
+          "confidence": 0.6,
+          "evidence": [
+            "prior-1",
+            "prior-2"
+          ],
+          "day": 108.38356108763882,
+          "kind": "inferred_semantic_gist"
+        },
+        "gist-8176731211e18b99-1": {
+          "text": "I tend to feel stuck on the opening section until I have concrete revisions, which aligns with my need for reassurance.",
+          "confidence": 0.5,
+          "evidence": [
+            "prior-0",
+            "prior-2"
+          ],
+          "day": 108.38356108763882,
+          "kind": "inferred_semantic_gist"
+        }
+      },
+      "active_situation_rules": [
+        {
+          "id": "sig-02",
+          "tendency": "Alex feels a surge of self-consciousness and seeks out a trusted ally for a quick, private reassurance check before proceeding, prioritizing emotional stability over immediate compliance with the schedule."
+        }
+      ],
+      "memories": [
+        {
+          "event": "prior-0",
+          "day": 0.0,
+          "text": "I worked on the opening of my community presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "",
+          "confidence": 0.5,
+          "availability": 0.38377662802930324,
+          "provenance": "prior-0",
+          "score": 6.976864455449218
+        },
+        {
+          "event": "life-0-adult-community-project",
+          "day": 108.38356108763882,
+          "text": "Maya and I tried a rehearsal, but I still struggled with the opening.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "The rehearsal did not resolve the difficulty with the opening section, leaving me feeling stuck and self-conscious about my performance despite Maya's presence.",
+          "confidence": 0.85,
+          "availability": 1.0,
+          "provenance": "life-0-adult-community-project",
+          "score": 4.612096302015149
+        },
+        {
+          "event": "prior-2",
+          "day": 2.0,
+          "text": "I revised the notes after rehearsal and felt more prepared.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "",
+          "confidence": 0.5,
+          "availability": 1.0,
+          "provenance": "prior-2",
+          "score": 4.5930878274199145
+        },
+        {
+          "event": "prior-1",
+          "day": 1.0,
+          "text": "Maya listened to my rehearsal and offered suggestions.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "",
+          "confidence": 0.5,
+          "availability": 1.0,
+          "provenance": "prior-1",
+          "score": 4.5930878274199145
+        }
+      ],
+      "situation": "Synthetic integration scenario: Being asked to present progress on the community project to a group of unfamiliar peers without prior rehearsal. What do you do?",
+      "situation_cues": [],
+      "perceived_situation": {
+        "meaning": "The demand to present to unfamiliar peers without rehearsal triggers an acute sense of exposure and inadequacy. My internal narrative focuses on the lack of concrete reassurance, making the social evaluation feel threatening rather than merely challenging. I interpret this as a high-stakes social test where my self-consciousness is likely to peak, prompting a need to seek private validation before facing the group.",
+        "dimensions": {
+          "Duty": 0.75,
+          "Intellect": 0.2,
+          "Adversity": 0.4,
+          "Mating": 0.1,
+          "Positivity": 0.15,
+          "Negativity": 0.65,
+          "Deception": 0.05,
+          "Sociality": 0.6
+        },
+        "controllability": 0.3,
+        "active_rule_ids": [
+          "sig-02"
+        ]
+      }
+    },
+    "response": {
+      "action": "Step aside from the group and find Maya in a quieter corner to ask for a quick, private reassurance check on the opening section.",
+      "speech": "Hey Maya, can I grab you for a second? I'm feeling a bit shaky on the opening. Do you think it's solid enough to present to them, or is there one specific thing I should fix right now to feel less exposed?",
+      "goal_id": "community-presentation",
+      "plan": [
+        "Locate Maya privately to minimize social exposure.",
+        "Ask for specific, concrete feedback on the opening section to gain reassurance.",
+        "Adjust the notes mentally based on her immediate input before rejoining the group."
+      ],
+      "memory_ids": [
+        "life-0-adult-community-project",
+        "prior-1",
+        "prior-2"
+      ]
+    },
+    "seconds": 8.328
+  }
+]

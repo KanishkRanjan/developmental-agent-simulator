@@ -1,0 +1,691 @@
+{
+  "version": 1,
+  "seed": 93,
+  "day": 2.0,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "birth_day": -9131.25
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {
+        "birth_day": -9131.25
+      }
+    }
+  },
+  "agents": {
+    "alex": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "presentation": {
+          "description": "Prepare a short presentation.",
+          "priority": 0.5,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.5,
+          "plan": [
+            "Draft one paragraph for the short presentation."
+          ],
+          "execution_plan": {
+            "version": 1,
+            "day": 1.819754040276392,
+            "catalog_hash": "247f22406c4e47838186c900b700999a77c77be8d933a26060cb43f7cb3b55e6",
+            "needs_replan": false,
+            "provider": "local_model_api",
+            "received_episode_count": 2,
+            "steps": [
+              {
+                "description": "Draft one paragraph for the short presentation.",
+                "action_id": "draft",
+                "status": "completed",
+                "attempts": [
+                  {
+                    "event": "life-0-presentation",
+                    "day": 1.8405873736097254,
+                    "success": true
+                  }
+                ],
+                "completed_event": "life-0-presentation"
+              }
+            ]
+          }
+        }
+      },
+      "relationships": {
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "encouragement",
+          "last_interaction_day": 0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "dismissal": {
+          "kind": "direct",
+          "confidence": 0.6,
+          "importance": 0.8,
+          "meaning": "I lost a job, but I am actively taking steps to rebuild my professional footing.",
+          "versions": [
+            {
+              "day": 1.8405873736097254,
+              "meaning": "I lost a job and worried about being judged.",
+              "confidence": 0.5,
+              "replaced_by": "alex:reflection:life-0-presentation:dismissal"
+            }
+          ],
+          "stability_days": 8.580000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 1.819754040276392,
+          "encountered": [],
+          "provenance": "dismissal",
+          "summary": "I lost a job, but I am actively taking steps to rebuild my professional footing."
+        },
+        "encouragement": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "I felt supported after explaining a difficulty.",
+          "versions": [],
+          "stability_days": 3.3000000000000003,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": 1.819754040276392,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "encouragement"
+        },
+        "life-0-presentation": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.6,
+          "meaning": "I successfully completed the first step of my active goal by drafting a paragraph for the presentation. This feels like a small, concrete win that moves me forward from the recent stress of job loss.",
+          "versions": [],
+          "stability_days": 7.5,
+          "encoding_stability_days": 7.5,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-0-presentation",
+          "summary": "I successfully drafted the first paragraph for my presentation, which feels like a small, concrete win that helps move me forward from the recent stress of job loss.",
+          "topics": [
+            "work",
+            "progress",
+            "self-efficacy",
+            "recovery"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 1.819754040276392,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "encouragement"
+        },
+        {
+          "day": 1.819754040276392,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "dismissal"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "alex:semantic:63cc05cb0da6c98d:encouragement",
+          "day": 1.819754040276392,
+          "memory": "encouragement",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:63cc05cb0da6c98d:dismissal",
+          "day": 1.819754040276392,
+          "memory": "dismissal",
+          "rehearsed": true
+        },
+        {
+          "id": "life-0-presentation-action:used-memory:encouragement",
+          "day": 1.819754040276392,
+          "memory": "encouragement",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-presentation-action:used-memory:dismissal",
+          "day": 1.819754040276392,
+          "memory": "dismissal",
+          "rehearsed": false
+        }
+      ],
+      "affect_parameters": {},
+      "retrieval_focus": {
+        "day": 1.819754040276392,
+        "situation": "Prepare a small presentation after an employment setback; consider what prior experiences mean for seeking support.",
+        "ids": [
+          "encouragement",
+          "dismissal"
+        ],
+        "policy": "local_llm_semantic_selection",
+        "candidate_count": 2,
+        "omitted_candidates": 0,
+        "retrieval_queries": [],
+        "indexed_corpus": true,
+        "graph_retrieval": {
+          "backend": "graphiti_neo4j_local_bge_rrf",
+          "status": "ready",
+          "snapshot": "private_c97097f7c2c20e7c435b259003270946af3fb590cf0b70355abb3e8b6d593612",
+          "chains": [
+            {
+              "event": "encouragement",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "545af29d-d80c-570f-9cbd-88de96ab284b",
+              "target": "026a1785-1b11-5356-999d-809cd6100e80"
+            },
+            {
+              "event": "dismissal",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "545af29d-d80c-570f-9cbd-88de96ab284b",
+              "target": "9e4826e0-ea24-5d23-bdc6-1f3972192c57"
+            },
+            {
+              "event": "encouragement",
+              "relation": "KNOWN_REFERENCE",
+              "source": "026a1785-1b11-5356-999d-809cd6100e80",
+              "target": "30637f8e-b391-5777-bc94-e4bcf6d2d17b"
+            }
+          ]
+        }
+      },
+      "calendar": [
+        {
+          "activity": "life-0-presentation",
+          "start_day": 1.819754040276392,
+          "end_day": 1.8405873736097254,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "1": 0.4999999999999982
+      },
+      "habits": {
+        "draft": {
+          "strength": 0.1,
+          "day": 1.8405873736097254,
+          "cues": [],
+          "evidence": [
+            "life-0-presentation"
+          ],
+          "days": [
+            1
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-0-presentation"
+      ],
+      "reinterpretation_queue": []
+    },
+    "bea": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "encouragement",
+          "last_interaction_day": 0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "bea-private": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "bea-private"
+        },
+        "encouragement": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "encouragement"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    }
+  },
+  "events": [
+    {
+      "id": "bea-private",
+      "day": 0,
+      "description": "Bea privately considers an unrelated event.",
+      "observations": {
+        "bea": {
+          "text": "I privately made a plan involving a violet observatory.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "dismissal",
+      "day": 0,
+      "description": "Alex receives an employment outcome.",
+      "observations": {
+        "alex": {
+          "text": "My employer ended my contract. I felt embarrassed telling Bea.",
+          "source": "direct",
+          "meaning": "I lost a job and worried about being judged.",
+          "importance": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "encouragement",
+      "day": 0,
+      "description": "Both receive an actual conversation.",
+      "observations": {
+        "alex": {
+          "text": "Bea listened when I mentioned the job loss and encouraged a small next step.",
+          "source": "direct",
+          "encountered": [
+            "bea"
+          ],
+          "meaning": "I felt supported after explaining a difficulty."
+        },
+        "bea": {
+          "text": "Alex told me about losing a job and I listened.",
+          "source": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "life-0-presentation",
+      "day": 1.8405873736097254,
+      "description": "I drafted one useful paragraph for my presentation.",
+      "observations": {
+        "alex": {
+          "text": "I drafted one useful paragraph for my presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.4,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "meaning": "I successfully completed the first step of my active goal by drafting a paragraph for the presentation. This feels like a small, concrete win that moves me forward from the recent stress of job loss.",
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "presentation": {
+              "progress": 0.5,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-0-presentation-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-presentation-action",
+      "owner": "alex",
+      "day": 1.819754040276392,
+      "decision": {
+        "action": "Draft one paragraph for the short presentation.",
+        "speech": "",
+        "goal_id": "presentation",
+        "plan": [
+          "Draft one paragraph for the short presentation."
+        ],
+        "memory_ids": [
+          "encouragement",
+          "dismissal"
+        ],
+        "action_id": "draft"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-0-presentation"
+    }
+  ],
+  "updates": [
+    {
+      "id": "alex:semantic:63cc05cb0da6c98d:encouragement",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1.819754040276392
+    },
+    {
+      "id": "alex:semantic:63cc05cb0da6c98d:dismissal",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1.819754040276392
+    },
+    {
+      "id": "life-0-presentation-action:used-memory:encouragement",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1.819754040276392
+    },
+    {
+      "id": "life-0-presentation-action:used-memory:dismissal",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1.819754040276392
+    },
+    {
+      "id": "alex:reflection:life-0-presentation:dismissal",
+      "kind": "revision",
+      "owner": "alex",
+      "day": 1.8405873736097254,
+      "memory": "dismissal",
+      "evidence": [
+        "dismissal",
+        "life-0-presentation"
+      ]
+    },
+    {
+      "id": "alex:reflection:life-0-presentation",
+      "kind": "reflection",
+      "owner": "alex",
+      "day": 1.8405873736097254,
+      "evidence": [
+        "life-0-presentation"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "dismissal",
+          "decision": "revise",
+          "reason": "The successful completion of a work task provides a counter-narrative to the helplessness associated with the job loss, shifting the meaning from pure embarrassment to a step toward stability.",
+          "meaning": "I lost a job, but I am actively taking steps to rebuild my professional footing.",
+          "confidence": 0.6,
+          "evidence": [
+            "dismissal",
+            "life-0-presentation"
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "graphiti_retrieval": true,
+      "indexed_retrieval": true,
+      "semantic_recall": true,
+      "reflection": true
+    },
+    "graphiti_namespace": "bc90708f22a94eb385a4e3d5df929024",
+    "planning": {
+      "calendar_mode": "elapsed",
+      "grounded_plans": true,
+      "hours_per_day": 8
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "adb10cda798f3876bb70bca16df381c4c29604631b3c5b6c3e87c0964deeb409",
+    "scripted": false,
+    "start_day": 1,
+    "current_day": 2.0,
+    "next_tick": null,
+    "tick": 1,
+    "trace": [
+      {
+        "event_index": 0,
+        "day": 1.819754040276392,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "presentation",
+        "day": 1.8405873736097254,
+        "action": "draft",
+        "success": true,
+        "event": "life-0-presentation",
+        "policy": "scenario_assumption"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "presentation": 1
+    },
+    "next_opportunities": {
+      "presentation": 3.3934710705041717
+    },
+    "next_world_events": {},
+    "background_counts": {},
+    "next_background": {},
+    "pending_activities": {},
+    "hazard_counts": {},
+    "next_hazards": {}
+  }
+}

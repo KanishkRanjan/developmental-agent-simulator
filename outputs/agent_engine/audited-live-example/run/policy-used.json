@@ -1,0 +1,44 @@
+{
+  "description": "Illustrative childhood-to-adult controller policy. All rates, probabilities and trait effects are scenario assumptions, not fitted estimates.",
+  "step_days": 90,
+  "max_trait_change_per_year": 0.5,
+  "opportunities": [
+    {
+      "id": "adult-community-project",
+      "actor": "alex",
+      "min_age": 18,
+      "max_age": 100,
+      "rate_per_year": 4,
+      "goal_id": "community-presentation",
+      "new_goal": {
+        "description": "Prepare the notes and materials for a community project presentation.",
+        "priority": 0.8
+      },
+      "situation": "You want to finish your community presentation. You have time today to prepare. What will you do next?",
+      "cues": [
+        "work",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "practice-with-caregiver",
+          "label": "Rehearse the presentation with Maya.",
+          "contact": "maya",
+          "contact_text": "I spent time listening to Alex rehearse a community presentation.",
+          "success_probability": 0.8,
+          "success_text": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "failure_text": "Maya and I tried a rehearsal, but I still struggled with the opening.",
+          "valence_success": 0.4,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "development_success": {
+            "C1": 0.1,
+            "C5": 0.05
+          }
+        }
+      ]
+    }
+  ],
+  "sampling": "event_driven",
+  "consolidation_batch_size": 3
+}

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "synthetic engineering checks, not psychological validation",
+  "checks": [
+    "received caregiver evidence only",
+    "task failure is not caregiver rejection",
+    "same-day learning weight bounded",
+    "early anchor with recovering adult working state",
+    "independent enacted experiences required for crystallization",
+    "intention alone cannot change traits",
+    "annual and daily trait-change bounds",
+    "maturation and learned changes remain separate",
+    "elapsed-age maturation invariant across checkpoints",
+    "no post-death maturation",
+    "read-only context",
+    "actual controller/appraisal wiring with stub"
+  ]
+}

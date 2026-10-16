@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "scope": "one actual-model appraisal without controller score hints; no event committed",
+  "seconds": 9.23,
+  "controller_scores_omitted_from_model_input": true,
+  "appraisal": {
+    "text": "Maya sat beside me, listened while I explained why I was upset, and said it was okay to be stuck. We still did not solve the project.",
+    "source": "direct",
+    "kind": "direct",
+    "encountered": [
+      "maya"
+    ],
+    "valence": 0.15,
+    "arousal": 0.3,
+    "importance": 0.6,
+    "confidence": 0.85,
+    "caregiving": {
+      "caregiver": "maya",
+      "responsiveness": 0.85,
+      "acceptance": 0.95
+    },
+    "meaning": "Maya provided physical presence and verbal validation of my frustration, explicitly normalizing my state of being stuck. While the project remains unsolved, her behavior aligns with my expectation of warm, attentive support, distinguishing her emotional responsiveness from the lack of a practical solution.",
+    "appraisal_policy": "local_llm_unfitted"
+  },
+  "context": {
+    "identity": {
+      "id": "alex",
+      "name": "Alex",
+      "age_years": 5.293628214752381
+    },
+    "personality": {
+      "policy": "behavioral_language_v1",
+      "tendencies": [
+        "Strong tendency to be moved by others' difficulties.",
+        "Strong tendency to enjoy exploring abstract ideas and complex questions.",
+        "Strong tendency to set demanding goals and invest in achievement.",
+        "Strong tendency to communicate candidly and straightforwardly.",
+        "Strong tendency to speak up and advocate their preferences."
+      ],
+      "expression": "These are tendencies, not obligations. Let the situation, goals, relationships and prior experiences shape their expression. Do not turn one disposition into a constant caricature or a diagnosis."
+    },
+    "temporary_behavior": {
+      "policy": "temporary_behavioral_language_v1",
+      "tendencies": [],
+      "scope": "Temporary departures from the enduring dispositions; these can recover without changing those dispositions."
+    },
+    "attachment_expectations": {
+      "learned_caregiver_models": [
+        {
+          "caregiver": "maya",
+          "expectations": [
+            "Usually expects this caregiver to respond when support is needed.",
+            "Usually feels able to seek comfort or disclose difficulty to this caregiver."
+          ],
+          "basis": "repeated received experiences",
+          "evidence": [
+            "life-0-childhood-support",
+            "life-1-childhood-support",
+            "life-2-childhood-support"
+          ]
+        }
+      ]
+    },
+    "culture": {},
+    "simulated_day": 1933.497705438307,
+    "mood": {
+      "valence": -0.28238888472959517,
+      "arousal": 0.4304216543482207
+    },
+    "goals": {},
+    "relationships": {
+      "maya": {
+        "role": "caregiver",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "life-2-childhood-support"
+      }
+    },
+    "heard_about": {},
+    "beliefs": {
+      "gist-84189ea11e8f2e89-0": {
+        "text": "Reaching out to Maya for help often feels like a shared effort that doesn't fully resolve the underlying difficulty, leaving a sense of lingering stagnation.",
+        "confidence": 0.85,
+        "evidence": [
+          "life-0-childhood-support",
+          "life-1-childhood-support",
+          "life-2-childhood-support"
+        ],
+        "day": 1933.497705438307,
+        "kind": "inferred_semantic_gist"
+      },
+      "gist-84189ea11e8f2e89-1": {
+        "text": "Despite the repeated frustration of remaining stuck, I continue to perceive Maya's engagement as attentive and warm, suggesting a distinction between the effectiveness of the solution and the quality of the support.",
+        "confidence": 0.7,
+        "evidence": [
+          "life-2-childhood-support"
+        ],
+        "day": 1933.497705438307,
+        "kind": "inferred_semantic_gist"
+      }
+    },
+    "active_situation_rules": [],
+    "memories": [
+      {
+        "event": "life-2-childhood-support",
+        "day": 1933.497705438307,
+        "text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I reached out to Maya for assistance and we engaged in a collaborative effort, yet the fundamental difficulty remains unresolved. While I perceive Maya\u2019s engagement as attentive and warm, the persistence of the problem creates a sense of lingering frustration and stagnation.",
+        "confidence": 0.8,
+        "availability": 1.0,
+        "provenance": "life-2-childhood-support",
+        "score": 16.608471666541888
+      },
+      {
+        "event": "life-1-childhood-support",
+        "day": 1904.8347428634554,
+        "text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I sought assistance from Maya and we collaborated, but the issue remains unresolved. The effort was made, yet the outcome is still a state of being stuck.",
+        "confidence": 0.8,
+        "availability": 1.0,
+        "provenance": "life-1-childhood-support",
+        "score": 13.611295555389184
+      },
+      {
+        "event": "life-0-childhood-support",
+        "day": 1827.9304454886246,
+        "text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I sought assistance from Maya and we collaborated, but the issue remains unresolved. The effort was made, yet the outcome is still a state of being stuck.",
+        "confidence": 0.8,
+        "availability": 1.0,
+        "provenance": "life-0-childhood-support",
+        "score": 13.611295555389184
+      }
+    ],
+    "situation": "Maya sat beside me, listened while I explained why I was upset, and said it was okay to be stuck. We still did not solve the project.",
+    "situation_cues": [],
+    "context_view": {
+      "policy": "bounded_view_v1",
+      "omitted": {},
+      "original_records_preserved": true
+    },
+    "new_observation": {
+      "text": "Maya sat beside me, listened while I explained why I was upset, and said it was okay to be stuck. We still did not solve the project.",
+      "source": "direct",
+      "kind": "direct",
+      "encountered": [
+        "maya"
+      ],
+      "caregiving": {
+        "caregiver": "maya"
+      }
+    }
+  }
+}

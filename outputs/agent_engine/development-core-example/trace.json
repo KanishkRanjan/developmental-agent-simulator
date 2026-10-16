@@ -1,0 +1,313 @@
+{
+  "profile_source": "synthetic hand-set example",
+  "before_hearing": {
+    "identity": {
+      "id": "alex",
+      "name": "Alex",
+      "age_years": 20.0
+    },
+    "personality": {
+      "policy": "behavioral_language_v1",
+      "tendencies": [
+        "Somewhat inclined to anticipate possible problems and seek reassurance under uncertainty.",
+        "Somewhat inclined to hold back or defer before voicing their preferences."
+      ],
+      "expression": "These are tendencies, not obligations. Let the situation, goals, relationships and prior experiences shape their expression. Do not turn one disposition into a constant caricature or a diagnosis."
+    },
+    "temporary_behavior": {
+      "policy": "temporary_behavioral_language_v1",
+      "tendencies": [],
+      "scope": "Temporary departures from the enduring dispositions; these can recover without changing those dispositions."
+    },
+    "attachment_expectations": {
+      "caregiver_availability": "uncertain",
+      "learned_caregiver_models": []
+    },
+    "culture": {},
+    "simulated_day": 7305.0,
+    "mood": {
+      "valence": 0.009922792333569715,
+      "arousal": 0.006615315513329199
+    },
+    "goals": {
+      "presentation": {
+        "description": "Prepare and deliver a community project presentation.",
+        "priority": 0.8,
+        "deadline": 7312.0,
+        "status": "active",
+        "progress": 0.0,
+        "plan": []
+      }
+    },
+    "relationships": {
+      "maya": {
+        "role": "caregiver",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "childhood-support"
+      }
+    },
+    "heard_about": {},
+    "beliefs": {},
+    "active_situation_rules": [],
+    "memories": [
+      {
+        "event": "childhood-support",
+        "day": 3650,
+        "text": "Maya sat with me and helped me practice my presentation.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I can ask Maya for help.",
+        "confidence": 0.5,
+        "availability": 0.42486231313926043,
+        "provenance": "childhood-support",
+        "score": 4.226053048219288
+      }
+    ],
+    "situation": "How do you feel about the upcoming presentation?",
+    "situation_cues": []
+  },
+  "after_hearing": {
+    "identity": {
+      "id": "alex",
+      "name": "Alex",
+      "age_years": 20.00273785078713
+    },
+    "personality": {
+      "policy": "behavioral_language_v1",
+      "tendencies": [
+        "Somewhat inclined to anticipate possible problems and seek reassurance under uncertainty.",
+        "Somewhat inclined to hold back or defer before voicing their preferences."
+      ],
+      "expression": "These are tendencies, not obligations. Let the situation, goals, relationships and prior experiences shape their expression. Do not turn one disposition into a constant caricature or a diagnosis."
+    },
+    "temporary_behavior": {
+      "policy": "temporary_behavioral_language_v1",
+      "tendencies": [],
+      "scope": "Temporary departures from the enduring dispositions; these can recover without changing those dispositions."
+    },
+    "attachment_expectations": {
+      "caregiver_availability": "uncertain",
+      "learned_caregiver_models": []
+    },
+    "culture": {},
+    "simulated_day": 7306.0,
+    "mood": {
+      "valence": -0.5299518753704601,
+      "arousal": 0.6085494890985231
+    },
+    "goals": {
+      "presentation": {
+        "description": "Prepare and deliver a community project presentation.",
+        "priority": 0.8,
+        "deadline": 7312.0,
+        "status": "active",
+        "progress": 0.0,
+        "plan": []
+      }
+    },
+    "relationships": {
+      "maya": {
+        "role": "caregiver",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "childhood-support"
+      },
+      "bea": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      },
+      "cam": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      }
+    },
+    "heard_about": {},
+    "beliefs": {},
+    "active_situation_rules": [
+      {
+        "id": "public-criticism",
+        "cues": [
+          "social",
+          "criticism"
+        ],
+        "tendency": "May hesitate and ask what was meant before deciding how to respond."
+      }
+    ],
+    "memories": [
+      {
+        "event": "heard-teasing",
+        "day": 7306.0,
+        "text": "At lunch, Bea joked about me freezing during rehearsal. Cam was there.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I felt exposed and was unsure whether Bea meant to hurt me.",
+        "confidence": 0.5,
+        "availability": 1.0,
+        "provenance": "heard-teasing",
+        "score": 10.863594225044455
+      },
+      {
+        "event": "childhood-support",
+        "day": 3650,
+        "text": "Maya sat with me and helped me practice my presentation.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I can ask Maya for help.",
+        "confidence": 0.5,
+        "availability": 0.42479546884833236,
+        "provenance": "childhood-support",
+        "score": 1.1612012438038772
+      }
+    ],
+    "situation": "Bea has just teased you at lunch. What do you do?",
+    "situation_cues": [
+      "social",
+      "criticism"
+    ]
+  },
+  "after_rehearsal": {
+    "identity": {
+      "id": "alex",
+      "name": "Alex",
+      "age_years": 20.008213552361397
+    },
+    "personality": {
+      "policy": "behavioral_language_v1",
+      "tendencies": [
+        "Somewhat inclined to anticipate possible problems and seek reassurance under uncertainty.",
+        "Somewhat inclined to hold back or defer before voicing their preferences."
+      ],
+      "expression": "These are tendencies, not obligations. Let the situation, goals, relationships and prior experiences shape their expression. Do not turn one disposition into a constant caricature or a diagnosis."
+    },
+    "temporary_behavior": {
+      "policy": "temporary_behavioral_language_v1",
+      "tendencies": [],
+      "scope": "Temporary departures from the enduring dispositions; these can recover without changing those dispositions."
+    },
+    "attachment_expectations": {
+      "caregiver_availability": "uncertain",
+      "learned_caregiver_models": []
+    },
+    "culture": {},
+    "simulated_day": 7308.0,
+    "mood": {
+      "valence": 0.3641889288786696,
+      "arousal": 0.7272616931211318
+    },
+    "goals": {
+      "presentation": {
+        "description": "Prepare and deliver a community project presentation.",
+        "priority": 0.8,
+        "deadline": 7312.0,
+        "status": "active",
+        "progress": 0.4,
+        "plan": [
+          "Ask Maya for help",
+          "Practice the opening",
+          "Revise notes"
+        ]
+      }
+    },
+    "relationships": {
+      "maya": {
+        "role": "caregiver",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "practice-outcome"
+      },
+      "bea": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      },
+      "cam": {
+        "role": "acquaintance",
+        "trust": 0.5,
+        "closeness": 0.0,
+        "firsthand": true,
+        "evidence": "heard-teasing"
+      }
+    },
+    "heard_about": {},
+    "beliefs": {},
+    "active_situation_rules": [],
+    "memories": [
+      {
+        "event": "childhood-support",
+        "day": 3650,
+        "text": "Maya sat with me and helped me practice my presentation.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "I can ask Maya for help.",
+        "confidence": 0.5,
+        "availability": 0.9996634129922586,
+        "provenance": "childhood-support",
+        "score": 4.843366084457699
+      },
+      {
+        "event": "heard-teasing",
+        "day": 7306.0,
+        "text": "At lunch, Bea joked about me freezing during rehearsal. Cam was there.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "Bea says the joke was affectionate. I am less sure it was hostile.",
+        "confidence": 0.6,
+        "availability": 0.9780461031833151,
+        "provenance": "heard-teasing",
+        "score": 1.7343434317178748
+      },
+      {
+        "event": "practice-outcome",
+        "day": 7308.0,
+        "text": "I practiced my opening with Maya for an hour.",
+        "source": "direct",
+        "kind": "direct",
+        "meaning": "",
+        "confidence": 0.5,
+        "availability": 1.0,
+        "provenance": "practice-outcome",
+        "score": 1.6291351143102937
+      },
+      {
+        "event": "clarification",
+        "day": 7307.0,
+        "text": "Bea apologized and said the joke was meant affectionately.",
+        "source": "Bea",
+        "kind": "testimony",
+        "meaning": "",
+        "confidence": 0.5,
+        "availability": 0.970059880239521,
+        "provenance": "bea-apology",
+        "score": 0.9919112159722412
+      }
+    ],
+    "situation": "You still want to prepare for your presentation. What is your next step?",
+    "situation_cues": []
+  },
+  "scripted_action": {
+    "action": "Practice the opening with Maya.",
+    "speech": "Could we rehearse the first minute?",
+    "goal_id": "presentation",
+    "plan": [
+      "Ask Maya for help",
+      "Practice the opening",
+      "Revise notes"
+    ],
+    "memory_ids": [
+      "childhood-support"
+    ]
+  },
+  "model_called": false
+}

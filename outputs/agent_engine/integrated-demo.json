@@ -1,0 +1,397 @@
+{
+  "description": "Integrated developmental scenario with cognition, constrained histories, planning and world transitions. All probabilities, coefficients, budgets and canonical biographies are provisional scenario policies. First childhood opportunities still begin at age five.",
+  "step_days": 90,
+  "max_trait_change_per_year": 0.5,
+  "opportunities": [
+    {
+      "id": "childhood-support",
+      "actor": "alex",
+      "min_age": 5,
+      "max_age": 12,
+      "rate_per_year": 2,
+      "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+      "cues": [
+        "school",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "ask-caregiver",
+          "label": "Ask Maya to work through the school project together.",
+          "contact": "maya",
+          "caregiving": {
+            "responsiveness": 0.85,
+            "acceptance": 0.85
+          },
+          "contact_responses": [
+            {
+              "id": "help",
+              "label": "Sit with Alex and work through the project together.",
+              "success_multiplier": 1.0,
+              "success_text": "I asked Maya for help. Maya sat with me, listened, and we solved a difficult part together.",
+              "failure_text": "I asked Maya for help. Maya sat with me and listened warmly, but we still could not solve the difficult part.",
+              "contact_text": "Alex asked me for help. I sat with Alex, listened, and we worked through the project together.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "unavailable",
+              "label": "Explain gently that you cannot help now and encourage Alex to try another approach.",
+              "success_multiplier": 0.0,
+              "success_text": "Maya said gently that help was unavailable now, and I found a solution independently.",
+              "failure_text": "I asked Maya for help. Maya said gently that help was unavailable now and encouraged me to try another approach. The difficult part remained unsolved.",
+              "contact_text": "Alex asked for help. I explained gently that I could not help now and encouraged another approach.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.8
+              }
+            }
+          ],
+          "contact_text": "Alex asked me for help with a school project and we spent time on it together.",
+          "success_probability": 0.8,
+          "success_text": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "failure_text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "valence_success": 0.5,
+          "valence_failure": -0.2,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "development_success": {
+            "C1": 0.15,
+            "N1": -0.05
+          },
+          "duration_hours": 2
+        },
+        {
+          "id": "try-alone",
+          "label": "Try a different way to solve the project by yourself.",
+          "success_probability": 0.5,
+          "success_text": "I tried a different approach and solved the difficult part myself.",
+          "failure_text": "I tried working alone and remained stuck on the project.",
+          "valence_success": 0.4,
+          "valence_failure": -0.3,
+          "development_success": {
+            "C1": 0.1
+          },
+          "duration_hours": 2
+        }
+      ]
+    },
+    {
+      "id": "adolescent-project",
+      "actor": "alex",
+      "min_age": 12,
+      "max_age": 18,
+      "rate_per_year": 2,
+      "situation": "A school group is preparing a project. You have an idea but are unsure how it will be received. What will you do?",
+      "cues": [
+        "social",
+        "school"
+      ],
+      "options": [
+        {
+          "id": "share-idea",
+          "label": "Share the idea with Bea and ask what they think.",
+          "contact": "bea",
+          "contact_text": "Alex shared a school project idea with me and we discussed it.",
+          "success_probability": 0.65,
+          "success_text": "I shared my idea with Bea, and we found a useful way to develop it.",
+          "failure_text": "I shared my idea with Bea, but we could not find a way to use it for the project.",
+          "valence_success": 0.4,
+          "valence_failure": -0.3,
+          "importance": 0.6,
+          "development_success": {
+            "E3": 0.1
+          },
+          "duration_hours": 2
+        },
+        {
+          "id": "draft-alone",
+          "label": "Write a draft before sharing anything.",
+          "success_probability": 0.6,
+          "success_text": "I worked privately and completed a useful draft of my idea.",
+          "failure_text": "I tried drafting my idea but did not get it into a usable form.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "development_success": {
+            "C5": 0.1
+          },
+          "duration_hours": 2
+        }
+      ]
+    },
+    {
+      "id": "adult-community-project",
+      "actor": "alex",
+      "min_age": 18,
+      "max_age": 100,
+      "rate_per_year": 4,
+      "situation": "You want to finish your community presentation. You have time today to prepare. What will you do next?",
+      "cues": [
+        "work",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "practice-with-caregiver",
+          "label": "Rehearse the presentation with Maya.",
+          "contact": "maya",
+          "contact_text": "I spent time listening to Alex rehearse a community presentation.",
+          "success_probability": 0.8,
+          "success_text": "I rehearsed with Maya and made concrete progress on my presentation.",
+          "failure_text": "Maya and I tried a rehearsal, but I still struggled with the opening.",
+          "valence_success": 0.4,
+          "valence_failure": -0.2,
+          "progress_gain": 0.25,
+          "development_success": {
+            "C1": 0.1,
+            "C5": 0.05
+          },
+          "duration_hours": 2,
+          "goal_id": "community-presentation",
+          "requires": {
+            "facts": {
+              "alex": {
+                "health_status": "well"
+              }
+            }
+          }
+        },
+        {
+          "id": "revise-notes",
+          "label": "Work alone on revising the presentation notes.",
+          "success_probability": 0.6,
+          "success_text": "I revised my notes and completed another section of the presentation.",
+          "failure_text": "I worked on my notes but did not finish a usable section today.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "progress_gain": 0.2,
+          "development_success": {
+            "C5": 0.1
+          },
+          "duration_hours": 2,
+          "goal_id": "community-presentation",
+          "requires": {
+            "facts": {
+              "alex": {
+                "health_status": "well"
+              }
+            }
+          }
+        },
+        {
+          "id": "make-time-for-friend",
+          "label": "Spend time catching up with Bea.",
+          "goal_id": "friendship",
+          "duration_hours": 2,
+          "contact": "bea",
+          "contact_text": "Alex and I spent time catching up.",
+          "success_probability": 0.8,
+          "success_text": "Bea and I made time to catch up.",
+          "failure_text": "We could not find a good time to talk.",
+          "valence_success": 0.4,
+          "valence_failure": -0.1,
+          "progress_gain": 0.1,
+          "requires": {
+            "facts": {
+              "alex": {
+                "health_status": "well"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sampling": "event_driven",
+  "consolidation_batch_size": 8,
+  "situational_personality": {
+    "recovery_half_life_days": 1.0
+  },
+  "development": {
+    "maturation": {
+      "N": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          -2
+        ],
+        [
+          65,
+          -3
+        ]
+      ],
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ],
+      "C": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    "crystallization": {
+      "rate": 0.005,
+      "minimum_days": 3,
+      "max_change_per_year": 0.5
+    }
+  },
+  "cognition": {
+    "semantic_recall": true,
+    "reflection": true,
+    "semantic_candidates": 24,
+    "detail_threshold": 0.45,
+    "fan_weight": 0.15,
+    "rumination_per_year": 12,
+    "rumination_minimum_gap_days": 1
+  },
+  "planning": {
+    "hours_per_day": 12,
+    "habit_half_life_days": 30,
+    "habit_gain": 0.1,
+    "habit_max": 1
+  },
+  "background_expansion": {
+    "alex": {
+      "id": "school-context-v1",
+      "slots": {
+        "school_setting": [
+          "local-school",
+          "small-community-school"
+        ]
+      },
+      "milestones": []
+    },
+    "maya": {
+      "id": "caregiver-context-v1",
+      "slots": {
+        "occupation_context": [
+          "shift-work",
+          "office-work",
+          "self-employed"
+        ]
+      },
+      "milestones": []
+    }
+  },
+  "world_events": [
+    {
+      "id": "employment-offer",
+      "day": 6575.5,
+      "description": "Alex receives a small paid project role.",
+      "requires": {
+        "alive": [
+          "alex"
+        ]
+      },
+      "observations": {
+        "alex": {
+          "text": "I received an offer of a paid project role with a small advance.",
+          "source": "direct",
+          "importance": 0.6
+        }
+      },
+      "effects": {
+        "facts": {
+          "alex": {
+            "employment": "project-worker"
+          }
+        },
+        "resources": {
+          "alex": {
+            "money": 25
+          }
+        }
+      }
+    },
+    {
+      "id": "temporary-illness",
+      "day": 7670.25,
+      "description": "Alex has a temporary illness.",
+      "requires": {
+        "alive": [
+          "alex"
+        ]
+      },
+      "observations": {
+        "alex": {
+          "text": "I have a temporary illness and need to rest.",
+          "source": "direct",
+          "importance": 0.6
+        }
+      },
+      "effects": {
+        "facts": {
+          "alex": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      }
+    },
+    {
+      "id": "recovery",
+      "day": 7677.25,
+      "description": "Alex recovers from the temporary illness.",
+      "requires": {
+        "alive": [
+          "alex"
+        ],
+        "facts": {
+          "alex": {
+            "health_status": "temporarily-ill"
+          }
+        }
+      },
+      "observations": {
+        "alex": {
+          "text": "I recovered from the temporary illness.",
+          "source": "direct",
+          "importance": 0.4
+        }
+      },
+      "effects": {
+        "facts": {
+          "alex": {
+            "health_status": "well"
+          }
+        }
+      }
+    }
+  ]
+}

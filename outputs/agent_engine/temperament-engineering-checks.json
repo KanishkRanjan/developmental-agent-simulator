@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "synthetic generation and algebra only; not calibrated childhood/genetic prediction",
+  "checks": [
+    "expansion-order invariance",
+    "caregiving independent of biological parentage",
+    "bounded correlated facet generation",
+    "nonidentical siblings",
+    "unknown parent integrated without identity creation",
+    "zero inherited variance share removes parental contribution",
+    "duplicate child leaves state unchanged",
+    "acquired changes do not alter lazily generated founder genotype",
+    "unit-variance inheritance and residual weights",
+    "report weighting yields 80 percent rather than 50 percent variance"
+  ]
+}

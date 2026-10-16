@@ -1,0 +1,976 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 7308.0,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {}
+    },
+    "cam": {
+      "name": "Cam",
+      "facts": {}
+    },
+    "maya": {
+      "name": "Maya",
+      "facts": {}
+    }
+  },
+  "agents": {
+    "alex": {
+      "facets": {
+        "N1": 70,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 55,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 70,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {
+        "caregiver_availability": "uncertain"
+      },
+      "culture": {},
+      "goals": {
+        "presentation": {
+          "description": "Prepare and deliver a community project presentation.",
+          "priority": 0.8,
+          "deadline": 7312.0,
+          "status": "active",
+          "progress": 0.4,
+          "plan": [
+            "Ask Maya for help",
+            "Practice the opening",
+            "Revise notes"
+          ]
+        }
+      },
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "practice-outcome",
+          "last_interaction_day": 7308.0
+        },
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "heard-teasing",
+          "last_interaction_day": 7306.0
+        },
+        "cam": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "heard-teasing",
+          "last_interaction_day": 7306.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "childhood-support": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0.8,
+          "meaning": "I can ask Maya for help.",
+          "versions": [],
+          "stability_days": 330.0,
+          "encoding_stability_days": 300,
+          "last_recall_day": 7307.0,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "childhood-support"
+        },
+        "heard-teasing": {
+          "kind": "direct",
+          "confidence": 0.6,
+          "importance": 0.8,
+          "meaning": "Bea says the joke was affectionate. I am less sure it was hostile.",
+          "versions": [
+            {
+              "day": 7307.0,
+              "meaning": "I felt exposed and was unsure whether Bea meant to hurt me.",
+              "confidence": 0.5,
+              "replaced_by": "reinterpret-teasing"
+            }
+          ],
+          "stability_days": 10.889999999999999,
+          "encoding_stability_days": 9.899999999999999,
+          "last_recall_day": 7308.0,
+          "encountered": [
+            "bea",
+            "cam"
+          ],
+          "provenance": "heard-teasing"
+        },
+        "clarification": {
+          "kind": "testimony",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.5999999999999996,
+          "encoding_stability_days": 3.5999999999999996,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "bea-apology"
+        },
+        "practice-outcome": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 7.5,
+          "encoding_stability_days": 7.5,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "practice-outcome"
+        }
+      },
+      "rules": [
+        {
+          "id": "public-criticism",
+          "cues": [
+            "social",
+            "criticism"
+          ],
+          "tendency": "May hesitate and ask what was meant before deciding how to respond."
+        }
+      ],
+      "affect_events": [
+        {
+          "day": 7307.0,
+          "valence": 0.15,
+          "arousal": 0.1,
+          "memory": "childhood-support"
+        },
+        {
+          "day": 7308.0,
+          "valence": -0.15,
+          "arousal": 0.175,
+          "memory": "heard-teasing"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "practice-intention:used-memory:childhood-support",
+          "day": 7307.0,
+          "memory": "childhood-support",
+          "rehearsed": true
+        },
+        {
+          "id": "recall-once",
+          "day": 7308.0,
+          "memory": "heard-teasing",
+          "rehearsed": true
+        },
+        {
+          "id": "recall-again",
+          "day": 7308.0,
+          "memory": "heard-teasing",
+          "rehearsed": false
+        }
+      ],
+      "affect_parameters": {}
+    },
+    "bea": {
+      "facets": {
+        "N1": 40,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 65,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 40,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 65,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "cam": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "heard-teasing",
+          "last_interaction_day": 7306.0
+        },
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "heard-teasing",
+          "last_interaction_day": 7306.0
+        }
+      },
+      "references": {
+        "alex": [
+          "private-gossip"
+        ]
+      },
+      "beliefs": {},
+      "memory_meta": {
+        "private-gossip": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "cam"
+          ],
+          "provenance": "private-gossip"
+        },
+        "heard-teasing": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex",
+            "cam"
+          ],
+          "provenance": "heard-teasing"
+        },
+        "clarification": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "clarification"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "cam": {
+      "facets": {
+        "N1": 40,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 65,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 40,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 65,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "heard-teasing",
+          "last_interaction_day": 7306.0
+        },
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "heard-teasing",
+          "last_interaction_day": 7306.0
+        }
+      },
+      "references": {
+        "alex": [
+          "private-gossip"
+        ]
+      },
+      "beliefs": {
+        "alex-nervous": {
+          "text": "Bea thinks Alex was nervous.",
+          "confidence": 0.5,
+          "evidence": [
+            "private-gossip"
+          ],
+          "day": 7305.0
+        }
+      },
+      "memory_meta": {
+        "private-gossip": {
+          "kind": "testimony",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "bea-impression"
+        },
+        "heard-teasing": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex",
+            "bea"
+          ],
+          "provenance": "heard-teasing"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "maya": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "practice-outcome",
+          "last_interaction_day": 7308.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "practice-outcome": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "practice-outcome"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    }
+  },
+  "events": [
+    {
+      "id": "childhood-support",
+      "day": 3650,
+      "description": "Maya helps Alex prepare a school presentation.",
+      "observations": {
+        "alex": {
+          "text": "Maya sat with me and helped me practice my presentation.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.6,
+          "arousal": 0.4,
+          "importance": 0.8,
+          "encountered": [
+            "maya"
+          ],
+          "meaning": "I can ask Maya for help.",
+          "stability_days": 300
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "private-gossip",
+      "day": 7305.0,
+      "description": "Bea and Cam privately discuss Alex; Alex is absent.",
+      "observations": {
+        "bea": {
+          "text": "I told Cam that Alex seemed nervous at rehearsal.",
+          "source": "direct",
+          "encountered": [
+            "cam"
+          ],
+          "references": [
+            "alex"
+          ]
+        },
+        "cam": {
+          "text": "Bea said Alex seemed nervous at rehearsal.",
+          "source": "Bea",
+          "kind": "testimony",
+          "references": [
+            "alex"
+          ],
+          "provenance": "bea-impression"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "heard-teasing",
+      "day": 7306.0,
+      "description": "All three meet. Alex hears Bea tease them about rehearsal.",
+      "observations": {
+        "alex": {
+          "text": "At lunch, Bea joked about me freezing during rehearsal. Cam was there.",
+          "source": "direct",
+          "encountered": [
+            "bea",
+            "cam"
+          ],
+          "valence": -0.6,
+          "arousal": 0.7,
+          "importance": 0.8,
+          "meaning": "I felt exposed and was unsure whether Bea meant to hurt me."
+        },
+        "bea": {
+          "text": "I joked about Alex freezing at rehearsal, with Alex and Cam present.",
+          "source": "direct",
+          "encountered": [
+            "alex",
+            "cam"
+          ]
+        },
+        "cam": {
+          "text": "I heard Bea joke about Alex freezing; Alex was listening.",
+          "source": "direct",
+          "encountered": [
+            "alex",
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "clarification",
+      "day": 7307.0,
+      "description": "Bea apologizes and clarifies the joke to Alex.",
+      "observations": {
+        "alex": {
+          "text": "Bea apologized and said the joke was meant affectionately.",
+          "source": "Bea",
+          "kind": "testimony",
+          "valence": 0.3,
+          "arousal": 0.2,
+          "provenance": "bea-apology"
+        },
+        "bea": {
+          "text": "I apologized to Alex for the joke.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "practice-outcome",
+      "day": 7308.0,
+      "description": "Alex and Maya complete an hour of rehearsal.",
+      "observations": {
+        "alex": {
+          "text": "I practiced my opening with Maya for an hour.",
+          "source": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "valence": 0.4,
+          "arousal": 0.3,
+          "importance": 0.6
+        },
+        "maya": {
+          "text": "I helped Alex rehearse their presentation opening.",
+          "source": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "alex": {
+          "goals": {
+            "presentation": {
+              "progress": 0.4
+            }
+          }
+        }
+      },
+      "requires": {
+        "alive": [
+          "alex",
+          "maya"
+        ],
+        "action": "practice-intention"
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "practice-intention",
+      "owner": "alex",
+      "day": 7307.0,
+      "decision": {
+        "action": "Practice the opening with Maya.",
+        "speech": "Could we rehearse the first minute?",
+        "goal_id": "presentation",
+        "plan": [
+          "Ask Maya for help",
+          "Practice the opening",
+          "Revise notes"
+        ],
+        "memory_ids": [
+          "childhood-support"
+        ]
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "practice-outcome"
+    }
+  ],
+  "updates": [
+    {
+      "id": "confidence-growth-example",
+      "kind": "development",
+      "owner": "alex",
+      "day": 3650,
+      "previous": {
+        "N1": 70,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "next": {
+        "N1": 70,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 55,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "evidence": [
+        "childhood-support"
+      ],
+      "policy": "controller_supplied_unfitted"
+    },
+    {
+      "id": "cam-heard-impression",
+      "kind": "belief",
+      "owner": "cam",
+      "day": 7305.0,
+      "key": "alex-nervous",
+      "previous": null
+    },
+    {
+      "id": "reinterpret-teasing",
+      "kind": "revision",
+      "owner": "alex",
+      "day": 7307.0,
+      "memory": "heard-teasing",
+      "evidence": [
+        "clarification"
+      ]
+    },
+    {
+      "id": "practice-intention:used-memory:childhood-support",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 7307.0
+    },
+    {
+      "id": "recall-once",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 7308.0
+    },
+    {
+      "id": "recall-again",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 7308.0
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0
+  }
+}

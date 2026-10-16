@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "scope": "synthetic engineering checks; no calibrated event-rate claim",
+  "checks": [
+    "chosen interaction activates only committed identity",
+    "failed activation event rolls back",
+    "no invented historical memories",
+    "direct encounter required for firsthand edge",
+    "bounded action-history-dependent rates",
+    "thinning rejects candidate events",
+    "state-dependent scheduler checkpoint equivalence",
+    "mention and inspection do not activate agents",
+    "unborn lightweight contacts are not offered or activated"
+  ]
+}

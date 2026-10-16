@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "seconds": 133.303,
+  "requests": 23,
+  "repairs": 0,
+  "resolved_conversation_turns": 4,
+  "speakers": [
+    "alex",
+    "maya",
+    "alex",
+    "maya"
+  ],
+  "bystander_received": true,
+  "closed_room_excluded": true,
+  "private_absent_agent_episode_excluded_from_model_contexts": true,
+  "numeric_facet_table_not_sent": true,
+  "subsequent_reply_has_received_prior_turn": true,
+  "no_canonical_claim_promotion": true,
+  "original_episodes_preserved": true,
+  "json_sqlite_equivalence": true,
+  "no_pending_conversation_reservations": true,
+  "graph_backend": "graphiti_neo4j_local_bge_rrf",
+  "no_graph_fallback": true,
+  "source_files_changed_after_live_load": [
+    "full_scenario.py",
+    "check_household.py",
+    "household.py"
+  ],
+  "source_version_boundary": "The live trace used its preserved source hashes. Subsequent edits added only the optional crystallization hook in household.py (disabled in this live policy), corrected illustrative full_scenario.py conversation clock times (not imported by run_live.py), and extended check_household.py. Final-version household/legacy regressions and the seven-year scripted combined run passed separately.",
+  "scope": "Synthetic adolescent/caregiver dialogue wiring, manually initialized dispositions and omitted childhood; no measured realism or predictive advantage."
+}

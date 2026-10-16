@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "actual local 27B interaction integration; one forced child request and two offered caregiver responses, not predictive validation",
+  "requests": 8,
+  "actions_resolved": 2,
+  "shared_outcomes": 1,
+  "child_caregiving_experiences": 1,
+  "caregiver_chosen_response": "help",
+  "checkpoint_restored": true
+}

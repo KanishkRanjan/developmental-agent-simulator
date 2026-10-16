@@ -1,0 +1,1548 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 1836.3326729317478,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "biological_parents": [
+          "maya"
+        ],
+        "birth_day": 0,
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "maya": {
+      "name": "Maya",
+      "facts": {}
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {}
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 88.71749046781613,
+        "N2": 98.61749046781614,
+        "N3": 80.53749046781614,
+        "N4": 71.31749046781613,
+        "N5": 95.41749046781614,
+        "N6": 95.79749046781613,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.702509532183875,
+        "A2": 3.372509532183871,
+        "A3": 66.31250953218387,
+        "A4": 6.382509532183871,
+        "A5": 16.782509532183873,
+        "A6": 59.83250953218387,
+        "C1": 27.33250953218387,
+        "C2": 41.97250953218387,
+        "C3": 11.532509532183871,
+        "C4": 6.022509532183871,
+        "C5": 7.932509532183871,
+        "C6": 35.092509532183875
+      },
+      "initial_facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-0-childhood-support"
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-0-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.4,
+          "meaning": "A collaborative session with Alex where I provided assistance and worked through a project together. The interaction was direct and functional, involving active listening and joint problem-solving. It aligns with my preference for established, familiar ways of handling tasks, though the specific dynamics of the request are not detailed.",
+          "versions": [],
+          "stability_days": 6.300000000000001,
+          "encoding_stability_days": 6.300000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-0-childhood-support"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.3830034525020996,
+          1.4028694510641286,
+          -0.3905994125332013,
+          -0.6711883972735928,
+          0.93614618361995,
+          1.0441600549052343,
+          0.5574964018919111,
+          0.3274008760796736,
+          0.3328475333825997,
+          -0.7683236539145113,
+          1.228670670027051,
+          0.9586564233554301,
+          1.7291942413318073,
+          2.321023915692227,
+          0.6613039520724006,
+          -0.24591241137849873,
+          0.5281014123464178,
+          0.5649513657314105,
+          0.8179302263844332,
+          -1.4285038323800467,
+          2.000804069025171,
+          -0.8135290499072897,
+          -0.5734037142536089,
+          1.7488232453324573,
+          0.0029354547362000494,
+          -1.0951317034624553,
+          -1.7839442966710328,
+          -1.4422385602087857,
+          -1.1359544479019577,
+          -0.5214317665134227
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 1826.25,
+        "initial_facets": {
+          "N1": 88.72,
+          "N2": 98.62,
+          "N3": 80.54,
+          "N4": 71.32,
+          "N5": 95.42,
+          "N6": 95.8,
+          "E1": 13.63,
+          "E2": 37.33,
+          "E3": 31.92,
+          "E4": 8.06,
+          "E5": 54.05,
+          "E6": 15.67,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 57.04,
+          "O4": 4.98,
+          "O5": 11.16,
+          "O6": 1.71,
+          "A1": 58.7,
+          "A2": 3.37,
+          "A3": 66.31,
+          "A4": 6.38,
+          "A5": 16.78,
+          "A6": 59.83,
+          "C1": 27.33,
+          "C2": 41.97,
+          "C3": 11.53,
+          "C4": 6.02,
+          "C5": 7.93,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "caps_rules": [
+        {
+          "id": "sig_duty_routine",
+          "dimension": "Duty",
+          "trigger_context": "A supervisor introduces a new, untested workflow that disrupts Maya's established daily schedule without adequate explanation.",
+          "narrative_shift": "Maya becomes visibly rigid, adhering strictly to the old protocol despite its inefficiency, and withdraws from collaborative discussions to protect her sense of order.",
+          "state_modifiers": {
+            "N": 5,
+            "E": -2,
+            "O": -5,
+            "A": -3,
+            "C": 8
+          }
+        },
+        {
+          "id": "sig_adversity_overwhelm",
+          "dimension": "Adversity",
+          "trigger_context": "Maya is faced with a sudden deadline requiring her to process complex data while simultaneously managing a personal crisis.",
+          "narrative_shift": "Her cognitive load exceeds her capacity, leading to a temporary shutdown where she avoids making decisions and seeks isolation to reduce sensory and mental input.",
+          "state_modifiers": {
+            "N": 9,
+            "E": -6,
+            "O": -2,
+            "A": -4,
+            "C": -5
+          }
+        },
+        {
+          "id": "sig_intellect_guarded",
+          "dimension": "Intellect",
+          "trigger_context": "In a team brainstorming session, a colleague challenges Maya's long-held assumption with a logical argument that threatens her preferred status quo.",
+          "narrative_shift": "Maya shifts from open discussion to strategic defensiveness, withholding her full reasoning to avoid appearing vulnerable while subtly reinforcing her original position.",
+          "state_modifiers": {
+            "N": 3,
+            "E": -3,
+            "O": 2,
+            "A": -5,
+            "C": 4
+          }
+        },
+        {
+          "id": "sig_positivity_temptation",
+          "dimension": "Positivity",
+          "trigger_context": "After a stressful week, Maya is offered an easy, immediate reward (such as a high-calorie treat or a leisure activity) that conflicts with her long-term health or productivity goals.",
+          "narrative_shift": "She succumbs to the immediate pleasure, prioritizing short-term comfort over long-term discipline, and feels a fleeting sense of satisfaction rather than guilt.",
+          "state_modifiers": {
+            "N": -2,
+            "E": 4,
+            "O": -1,
+            "A": 3,
+            "C": -6
+          }
+        },
+        {
+          "id": "sig_negativity_irritation",
+          "dimension": "Negativity",
+          "trigger_context": "A minor administrative error by a coworker causes a slight delay in Maya's task, disrupting her preferred flow.",
+          "narrative_shift": "Maya experiences a sharp spike in irritation disproportionate to the event's severity, leading to a curt and cold response that signals her boundary has been crossed.",
+          "state_modifiers": {
+            "N": 8,
+            "E": -1,
+            "O": -2,
+            "A": -7,
+            "C": 2
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 1836.3326729317478,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 88.71749046781613,
+          "N2": 98.61749046781614,
+          "N3": 80.53749046781614,
+          "N4": 71.31749046781613,
+          "N5": 95.41749046781614,
+          "N6": 95.79749046781613,
+          "E1": 13.63,
+          "E2": 37.33,
+          "E3": 31.92,
+          "E4": 8.06,
+          "E5": 54.05,
+          "E6": 15.67,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 57.04,
+          "O4": 4.98,
+          "O5": 11.16,
+          "O6": 1.71,
+          "A1": 58.702509532183875,
+          "A2": 3.372509532183871,
+          "A3": 66.31250953218387,
+          "A4": 6.382509532183871,
+          "A5": 16.782509532183873,
+          "A6": 59.83250953218387,
+          "C1": 27.33250953218387,
+          "C2": 41.97250953218387,
+          "C3": 11.532509532183871,
+          "C4": 6.022509532183871,
+          "C5": 7.932509532183871,
+          "C6": 35.092509532183875
+        },
+        "evidence": []
+      },
+      "situational_state": {
+        "day": 1836.3326729317478,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "Alex is asking me to co-pilot a school project they are struggling with. While I understand their frustration, I am hesitant to commit to a collaborative effort that might disrupt my preferred routine or require me to disclose my own thought processes. I want to help, but I am guarded about how much I reveal and wary of the potential for the task to become overwhelming if it doesn't go smoothly.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.4,
+            "Adversity": 0.3,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.2,
+            "Deception": 0.1,
+            "Sociality": 0.5
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-childhood-support-contact-situation",
+        "situation": "Alex approaches you: Maya, can you help me? I'm really stuck and it's making me so frustrated. I want to get it right, but I can't figure it out by myself. Request: Ask Maya to work through the school project together.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "developmental_exposures": [
+        {
+          "day": 1836.3326729317478,
+          "action": "life-0-childhood-support-contact-action",
+          "evidence": "life-0-childhood-support",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {}
+    },
+    "alex": {
+      "facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "initial_facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-0-childhood-support"
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-0-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "Maya is present and attentive, offering a structured approach to the problem by narrowing the scope to the specific point of failure. While the immediate goal of solving the issue remains unmet, the interaction feels safe and collaborative rather than dismissive.",
+          "versions": [],
+          "stability_days": 7.5,
+          "encoding_stability_days": 7.5,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-0-childhood-support"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.23594890875662042,
+          2.204420323820903,
+          -0.6265388857294751,
+          -0.9401158170664725,
+          -1.0843576892391307,
+          0.9471488789350636,
+          0.21572482413069305,
+          -0.1601045804267867,
+          2.102162000943369,
+          0.020887616192721226,
+          -0.8969943152761913,
+          0.5192373091242993,
+          0.1397675558069248,
+          2.2025628926409366,
+          -0.5660936783788852,
+          -1.1153140984733823,
+          1.0609607527091973,
+          -0.7015042040271896,
+          0.3473233393921183,
+          -0.3735969176868006,
+          0.6086167353840881,
+          0.5970586628888059,
+          -0.641285804999365,
+          1.6691633854274976,
+          0.9721932071733506,
+          0.16236826230393142,
+          0.1756109815100434,
+          0.31209299818426617,
+          0.8741322116464711,
+          0.7068063381236804
+        ],
+        "nonshared_latent": [
+          -0.22145488831475038,
+          0.2380719757825447,
+          0.06117348294822844,
+          1.2479665337817227,
+          0.5009510226140108,
+          0.35697298678586886,
+          -1.1181505850267195,
+          -0.896827886196598,
+          -0.2412974322601349,
+          0.09562418467844819,
+          -0.31107152972489627,
+          0.6352776516906533,
+          0.20283025457276516,
+          -0.11100608441261395,
+          0.14139874576954264,
+          0.403697199699508,
+          0.8794854413720177,
+          0.7735013215199855,
+          -0.7804004507698558,
+          1.1794629648697312,
+          -0.17585034142495348,
+          0.07715474324365451,
+          0.9157191529329053,
+          1.067091083408792,
+          0.570941067209825,
+          0.8825819890069784,
+          0.9013219522897673,
+          1.1322135820401205,
+          0.024034238006481634,
+          0.18025620679205978
+        ],
+        "parents": [
+          "maya"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "developmental_model": {
+        "origin_day": 1826.25,
+        "initial_facets": {
+          "N1": 30.64,
+          "N2": 96.02,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 40.54,
+          "N6": 83.48,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 66.31,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 73.07,
+          "C6": 77.49
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "caps_rules": [
+        {
+          "id": "sig_01",
+          "dimension": "Intellect",
+          "trigger_context": "Encountering a complex mechanical puzzle or a story with an intricate plot twist during quiet play time.",
+          "narrative_shift": "Alex becomes intensely focused, ignoring surrounding distractions to mentally map out the logic, showing a temporary drop in social responsiveness in favor of deep cognitive engagement.",
+          "state_modifiers": {
+            "N": -2,
+            "E": 3,
+            "O": 8,
+            "A": -1,
+            "C": 5
+          }
+        },
+        {
+          "id": "sig_02",
+          "dimension": "Adversity",
+          "trigger_context": "A favorite toy breaks unexpectedly or a carefully built block tower collapses due to a sibling's bump.",
+          "narrative_shift": "Alex experiences a sharp spike in frustration and irritability, leading to a brief, loud outburst or a pout, before seeking comfort or attempting a quick repair.",
+          "state_modifiers": {
+            "N": 9,
+            "E": -2,
+            "O": -1,
+            "A": -4,
+            "C": -3
+          }
+        },
+        {
+          "id": "sig_03",
+          "dimension": "Sociality",
+          "trigger_context": "Noticing a peer sitting alone and looking distressed during a group activity or playground interaction.",
+          "narrative_shift": "Alex\u2019s assertiveness shifts toward advocacy; they approach the peer to offer help or include them, prioritizing the peer's emotional state over their own immediate play goals.",
+          "state_modifiers": {
+            "N": -3,
+            "E": 2,
+            "O": 1,
+            "A": 8,
+            "C": 2
+          }
+        },
+        {
+          "id": "sig_04",
+          "dimension": "Positivity",
+          "trigger_context": "Being exposed to a vibrant piece of art, a beautiful sunset, or a creative performance that highlights aesthetic detail.",
+          "narrative_shift": "Alex enters a state of quiet wonder, pausing to observe details and express delight, showing a temporary increase in openness and a decrease in goal-directed urgency.",
+          "state_modifiers": {
+            "N": -4,
+            "E": 4,
+            "O": 9,
+            "A": 3,
+            "C": -2
+          }
+        },
+        {
+          "id": "sig_05",
+          "dimension": "Duty",
+          "trigger_context": "Being assigned a specific task with a clear standard for success, such as cleaning up a specific area or completing a drawing to a certain level of detail.",
+          "narrative_shift": "Alex exhibits heightened conscientiousness and persistence, refusing to stop until the task meets their internal standard of achievement, even if it requires extra effort.",
+          "state_modifiers": {
+            "N": -1,
+            "E": 1,
+            "O": 2,
+            "A": -2,
+            "C": 9
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 1836.3326729317478,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 30.64,
+          "N2": 96.02,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 40.54,
+          "N6": 83.48,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 66.31,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 73.07,
+          "C6": 77.49
+        },
+        "evidence": []
+      },
+      "situational_state": {
+        "day": 1836.3326729317478,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "I am stuck on this school project and it's really frustrating because I want to do it perfectly. Maya is there, so I should probably ask her for help, but I'm also annoyed that I can't figure it out on my own.",
+          "dimensions": {
+            "Duty": 0.8,
+            "Intellect": 0.6,
+            "Adversity": 0.5,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.4,
+            "Deception": 0.0,
+            "Sociality": 0.3
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-childhood-support-situation",
+        "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+        "cues": [
+          "school",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "caregiving_experiences": [
+        {
+          "caregiver": "maya",
+          "responsiveness": 0.8,
+          "acceptance": 0.7,
+          "event": "life-0-childhood-support",
+          "day": 1836.3326729317478
+        }
+      ],
+      "developmental_exposures": [
+        {
+          "day": 1836.3326729317478,
+          "action": "life-0-childhood-support-action",
+          "evidence": "life-0-childhood-support",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {}
+    },
+    "bea": {
+      "facets": {
+        "N1": 50.0,
+        "N2": 50.0,
+        "N3": 50.0,
+        "N4": 50.0,
+        "N5": 50.0,
+        "N6": 50.0,
+        "E1": 50.0,
+        "E2": 50.0,
+        "E3": 50.0,
+        "E4": 50.0,
+        "E5": 50.0,
+        "E6": 50.0,
+        "O1": 50.0,
+        "O2": 50.0,
+        "O3": 50.0,
+        "O4": 50.0,
+        "O5": 50.0,
+        "O6": 50.0,
+        "A1": 50.0,
+        "A2": 50.0,
+        "A3": 50.0,
+        "A4": 50.0,
+        "A5": 50.0,
+        "A6": 50.0,
+        "C1": 50.0,
+        "C2": 50.0,
+        "C3": 50.0,
+        "C4": 50.0,
+        "C5": 50.0,
+        "C6": 50.0
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "developmental_model": {
+        "origin_day": 1826.25,
+        "initial_facets": {
+          "N1": 50,
+          "N2": 50,
+          "N3": 50,
+          "N4": 50,
+          "N5": 50,
+          "N6": 50,
+          "E1": 50,
+          "E2": 50,
+          "E3": 50,
+          "E4": 50,
+          "E5": 50,
+          "E6": 50,
+          "O1": 50,
+          "O2": 50,
+          "O3": 50,
+          "O4": 50,
+          "O5": 50,
+          "O6": 50,
+          "A1": 50,
+          "A2": 50,
+          "A3": 50,
+          "A4": 50,
+          "A5": 50,
+          "A6": 50,
+          "C1": 50,
+          "C2": 50,
+          "C3": 50,
+          "C4": 50,
+          "C5": 50,
+          "C6": 50
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "life-0-childhood-support",
+      "day": 1836.3326729317478,
+      "description": "I asked Maya for help. Maya sat with me and listened warmly, but we still could not solve the difficult part. Maya said: I can help, but I need to keep this focused. Let's just look at the specific part that's stuck for you. I don't want to get bogged down in the whole thing if we can avoid it.",
+      "observations": {
+        "alex": {
+          "text": "I asked Maya for help. Maya sat with me and listened warmly, but we still could not solve the difficult part. Maya said: I can help, but I need to keep this focused. Let's just look at the specific part that's stuck for you. I don't want to get bogged down in the whole thing if we can avoid it.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.2,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "meaning": "Maya is present and attentive, offering a structured approach to the problem by narrowing the scope to the specific point of failure. While the immediate goal of solving the issue remains unmet, the interaction feels safe and collaborative rather than dismissive.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ],
+          "caregiving": {
+            "caregiver": "maya",
+            "responsiveness": 0.8,
+            "acceptance": 0.7
+          },
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "maya": {
+          "text": "Alex asked me for help. I sat with Alex, listened, and we worked through the project together.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "A collaborative session with Alex where I provided assistance and worked through a project together. The interaction was direct and functional, involving active listening and joint problem-solving. It aligns with my preference for established, familiar ways of handling tasks, though the specific dynamics of the request are not detailed.",
+          "valence": 0.2,
+          "arousal": 0.3,
+          "importance": 0.4,
+          "confidence": 0.8,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-0-childhood-support-action",
+        "alive": [
+          "alex",
+          "maya"
+        ],
+        "actions": [
+          "life-0-childhood-support-contact-action"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-childhood-support-action",
+      "owner": "alex",
+      "day": 1836.3326729317478,
+      "decision": {
+        "action": "Ask Maya to work through the school project together.",
+        "speech": "Maya, can you help me? I'm really stuck and it's making me so frustrated. I want to get it right, but I can't figure it out by myself.",
+        "goal_id": null,
+        "plan": [
+          "Express frustration about being stuck",
+          "Ask Maya for assistance to achieve the perfect result",
+          "Collaborate on the project"
+        ],
+        "memory_ids": [],
+        "action_id": "ask-caregiver"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-0-childhood-support"
+    },
+    {
+      "id": "life-0-childhood-support-contact-action",
+      "owner": "maya",
+      "day": 1836.3326729317478,
+      "decision": {
+        "action": "Sit with Alex and work through the project together.",
+        "speech": "I can help, but I need to keep this focused. Let's just look at the specific part that's stuck for you. I don't want to get bogged down in the whole thing if we can avoid it.",
+        "goal_id": null,
+        "plan": [
+          "Assess the specific point of failure in the project.",
+          "Provide targeted guidance to resolve the immediate blockage.",
+          "Minimize personal disclosure and maintain boundaries on the scope of assistance."
+        ],
+        "memory_ids": [],
+        "action_id": "help"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-0-childhood-support"
+    }
+  ],
+  "updates": [
+    {
+      "id": "life-0-childhood-support-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 1836.3326729317478,
+      "state": {
+        "day": 1836.3326729317478,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "I am stuck on this school project and it's really frustrating because I want to do it perfectly. Maya is there, so I should probably ask her for help, but I'm also annoyed that I can't figure it out on my own.",
+          "dimensions": {
+            "Duty": 0.8,
+            "Intellect": 0.6,
+            "Adversity": 0.5,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.4,
+            "Deception": 0.0,
+            "Sociality": 0.3
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-childhood-support-situation",
+        "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+        "cues": [
+          "school",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-0-childhood-support-contact-situation",
+      "kind": "situation_state",
+      "owner": "maya",
+      "day": 1836.3326729317478,
+      "state": {
+        "day": 1836.3326729317478,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "Alex is asking me to co-pilot a school project they are struggling with. While I understand their frustration, I am hesitant to commit to a collaborative effort that might disrupt my preferred routine or require me to disclose my own thought processes. I want to help, but I am guarded about how much I reveal and wary of the potential for the task to become overwhelming if it doesn't go smoothly.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.4,
+            "Adversity": 0.3,
+            "Mating": 0.0,
+            "Positivity": 0.1,
+            "Negativity": 0.2,
+            "Deception": 0.1,
+            "Sociality": 0.5
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-childhood-support-contact-situation",
+        "situation": "Alex approaches you: Maya, can you help me? I'm really stuck and it's making me so frustrated. I want to get it right, but I can't figure it out by myself. Request: Ask Maya to work through the school project together.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0
+  },
+  "runtime": {
+    "policy_fingerprint": "650923fdb8a803905df269f3ce68b8f727708f8646423e959e0e53a5472ecf56",
+    "scripted": false,
+    "start_day": 1826.25,
+    "current_day": 1836.3326729317478,
+    "next_tick": null,
+    "tick": 1,
+    "trace": [
+      {
+        "opportunity": "childhood-support",
+        "day": 1836.3326729317478,
+        "action": "ask-caregiver",
+        "success": false,
+        "event": "life-0-childhood-support",
+        "policy": "scenario_assumption",
+        "contact_action": "help"
+      },
+      {
+        "event_index": 0,
+        "day": 1836.3326729317478,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "childhood-support": 1
+    },
+    "next_opportunities": {
+      "childhood-support": 2297.758457180733
+    }
+  }
+}

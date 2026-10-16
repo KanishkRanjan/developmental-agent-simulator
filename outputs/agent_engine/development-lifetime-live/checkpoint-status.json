@@ -1,0 +1,46 @@
+{
+  "status": "age22_scenario_completed",
+  "passed": true,
+  "checkpoint": "continued-run/world.json",
+  "last_saved_age_years": 22.0,
+  "last_saved_day": 8035.5,
+  "resolved_actions": 31,
+  "new_actions": 4,
+  "observations_by_agent": {
+    "maya": 12,
+    "alex": 31,
+    "bea": 7
+  },
+  "caregiving_episodes": 12,
+  "gists_by_agent": {
+    "maya": 2,
+    "alex": 9,
+    "bea": 0
+  },
+  "recall_events": 90,
+  "output_repair_requests": 3,
+  "continuation_output_repair_requests": 0,
+  "current_goal": {
+    "description": "Prepare the notes and materials for a community project presentation.",
+    "priority": 0.8,
+    "deadline": null,
+    "status": "completed",
+    "progress": 1.0,
+    "plan": [
+      "Isolate myself to minimize social pressure and distraction.",
+      "Focus intensely on refining the language of the current section to ensure clarity and impact.",
+      "Review the drafted arguments to ensure they meet my high standards for the community presentation."
+    ]
+  },
+  "checkpoint_restored": true,
+  "prior_actions_preserved": true,
+  "archived_policy_preserved": true,
+  "age22_completed": true,
+  "archived_signature_versions": 1,
+  "refreshed_signature_stage": 2,
+  "continuation_requests": 13,
+  "token_budget_guard_live": true,
+  "overflow_reduction_branch_live": false,
+  "scope": "limited archived three-phase scenario; first events start at age five; independent caregiver replies verified separately; token guard ran but no overflow reduction was needed; no comparative predictive validation",
+  "connection_after_completion": "SSH socket disappeared again after successful final save; separate caregiver-role probe could not connect"
+}

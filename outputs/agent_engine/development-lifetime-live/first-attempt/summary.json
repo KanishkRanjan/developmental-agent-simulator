@@ -1,0 +1,20 @@
+{
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "started_utc": "2026-10-16T11:16:03.449070+00:00",
+  "provider": "local_model_api",
+  "sampling": "event_driven",
+  "personality_expression": "behavioral_language_v1",
+  "status": "failed",
+  "error": "ValueError: arousal must be finite and in [0, 1]",
+  "seconds": 61.31,
+  "requests": {
+    "action": 1,
+    "appraisal": 2,
+    "consolidation": 0,
+    "signatures": 1,
+    "situation": 1
+  },
+  "final_day": 0.0,
+  "ticks": 0,
+  "new_actions": 0
+}

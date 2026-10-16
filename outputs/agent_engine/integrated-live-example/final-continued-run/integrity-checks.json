@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "scope": "short actual HauhauCS 27B integration with seeded prior history; not predictive validation or a full live lifetime",
+  "final_day": 6577.292972654715,
+  "resolved_actions": 4,
+  "initial_actions_preserved": true,
+  "original_episodes_preserved": true,
+  "model_requests_successful_segments": 22,
+  "received_evidence_revisions": 3,
+  "semantic_recall_calls": 3,
+  "reflection_calls": 4,
+  "narrative_present": true,
+  "habits_and_time_accounting_present": true,
+  "background_choice_committed": true,
+  "checkpoint_restored": true,
+  "final_runtime_sources_match_recorded_hashes": true,
+  "failed_attempts_preserved": [
+    "run",
+    "final-run"
+  ],
+  "late_branched_features_locally_checked": [
+    "multi-generation scheduling",
+    "new caregiver creation",
+    "daily social budgets",
+    "illness/death branch"
+  ]
+}

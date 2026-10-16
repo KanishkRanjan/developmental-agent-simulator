@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "scope": "synthetic stubbed interaction engineering only",
+  "checks": [
+    "caregiver chooses independently from own context",
+    "private child thought not shared with caregiver",
+    "committed caregiving role is available without private child history",
+    "caregiver receives only transmitted request",
+    "declining response changes outcome probability and observed behavior",
+    "one shared outcome resolves both intentions",
+    "child learns from response, not task success alone",
+    "contact API failure rolls back both actors",
+    "checkpoint restores interaction state"
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "description": "Complete runnable accepted-mechanism scaffold; all rates, thresholds and outcomes are scenario choices, not fitted science.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "alex:infancy",
+      "actor": "alex",
+      "min_age": 0,
+      "max_age": 2,
+      "rate_per_year": 365,
+      "situation": "You feel discomfort in a familiar caregiving setting. Use a nonverbal response.",
+      "cues": [
+        "family",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "seek-support",
+          "label": "Signal discomfort or seek familiar attention.",
+          "contact": "maya",
+          "duration_hours": 0.25,
+          "success_probability": 0.85,
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "importance": 0.7,
+          "success_text": "I received responsive attention and comfort.",
+          "failure_text": "My need remained unresolved.",
+          "contact_text": "I responded to a need for attention.",
+          "caregiving": {
+            "responsiveness": 0.8,
+            "acceptance": 0.8
+          },
+          "contact_responses": [
+            {
+              "id": "attend",
+              "label": "Offer attention and comfort.",
+              "duration_hours": 0.25,
+              "success_text": "I received attentive care and felt more settled.",
+              "failure_text": "I received attention but remained unsettled.",
+              "contact_text": "I attended to a need for comfort.",
+              "caregiving": {
+                "responsiveness": 0.9,
+                "acceptance": 0.9
+              }
+            },
+            {
+              "id": "delay",
+              "label": "Signal that you cannot attend immediately.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "Attention was delayed.",
+              "failure_text": "Attention was delayed and I remained unsettled.",
+              "contact_text": "I could not attend immediately.",
+              "caregiving": {
+                "responsiveness": 0.2,
+                "acceptance": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "id": "settle",
+          "label": "Try settling or exploring quietly.",
+          "duration_hours": 0.25,
+          "success_probability": 0.5,
+          "success_text": "I settled after a quiet interval.",
+          "failure_text": "I remained unsettled.",
+          "valence_success": 0.2,
+          "valence_failure": -0.1
+        }
+      ]
+    }
+  ],
+  "world_events": [],
+  "cognition": {
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "reference_resolution": true,
+    "reflection": true,
+    "autonomous_goals": true,
+    "semantic_candidates": 24,
+    "detail_threshold": 0.45,
+    "fan_weight": 0.15,
+    "rumination_per_year": 0,
+    "rumination_minimum_gap_days": 1
+  },
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 12,
+    "habit_half_life_days": 30,
+    "habit_gain": 0.1,
+    "habit_max": 1
+  },
+  "expression": {
+    "std_by_domain": {
+      "N": 1,
+      "E": 1,
+      "O": 1,
+      "A": 1,
+      "C": 1
+    },
+    "half_life_days": 1,
+    "age_appropriate_actions": true
+  },
+  "society": {
+    "closeness_half_life_days": 365.25
+  },
+  "background_expansion": {
+    "default": {
+      "mode": "generative",
+      "id": "personal-history-v1",
+      "min_age": 18,
+      "fields": [
+        "education",
+        "residence",
+        "interests"
+      ]
+    }
+  },
+  "situational_personality": {
+    "recovery_half_life_days": 1
+  },
+  "consolidation_batch_size": 8,
+  "development": {
+    "maturation": {
+      "N": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          -2
+        ],
+        [
+          65,
+          -3
+        ]
+      ],
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ],
+      "C": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    "crystallization": {
+      "rate": 0.005,
+      "minimum_days": 3,
+      "max_change_per_year": 0.5
+    }
+  },
+  "world_hazards": [],
+  "newborn_opportunities": [],
+  "newborn_hazards": []
+}

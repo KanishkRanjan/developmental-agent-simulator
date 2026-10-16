@@ -1,0 +1,177 @@
+{
+  "description": "Complete runnable accepted-mechanism scaffold; all rates, thresholds and outcomes are scenario choices, not fitted science.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "live-joint-task",
+      "actor": "alex",
+      "min_age": 18,
+      "max_age": 19,
+      "rate_per_year": 365,
+      "situation": "Bea is available to discuss a project. Decide whether to discuss it together or work alone.",
+      "cues": [
+        "social",
+        "school"
+      ],
+      "options": [
+        {
+          "id": "share",
+          "label": "Discuss the idea with the familiar person.",
+          "contact": "bea",
+          "duration_hours": 1,
+          "success_probability": 0.7,
+          "success_text": "We developed a useful part of the idea.",
+          "failure_text": "The idea needed more work.",
+          "contact_text": "We discussed a project idea.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2,
+          "contact_responses": [
+            {
+              "id": "discuss",
+              "label": "Listen and discuss the idea.",
+              "success_text": "We discussed the idea constructively.",
+              "failure_text": "We listened but could not solve the difficulty.",
+              "contact_text": "I listened and discussed the project."
+            },
+            {
+              "id": "decline",
+              "label": "Explain that you cannot discuss it now.",
+              "duration_hours": 0.05,
+              "activity_duration_hours": 0.05,
+              "success_multiplier": 0,
+              "success_text": "We arranged another time.",
+              "failure_text": "A discussion was not possible now.",
+              "contact_text": "I could not discuss the idea now."
+            }
+          ]
+        },
+        {
+          "id": "draft",
+          "label": "Develop a small draft alone.",
+          "duration_hours": 1,
+          "success_probability": 0.6,
+          "success_text": "I developed a useful small draft.",
+          "failure_text": "The draft remained incomplete.",
+          "valence_success": 0.3,
+          "valence_failure": -0.2
+        }
+      ]
+    }
+  ],
+  "world_events": [],
+  "cognition": {
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "reference_resolution": true,
+    "reflection": true,
+    "autonomous_goals": true,
+    "semantic_candidates": 24,
+    "detail_threshold": 0.45,
+    "fan_weight": 0.15,
+    "rumination_per_year": 0,
+    "rumination_minimum_gap_days": 1
+  },
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 12,
+    "habit_half_life_days": 30,
+    "habit_gain": 0.1,
+    "habit_max": 1
+  },
+  "expression": {
+    "std_by_domain": {
+      "N": 1,
+      "E": 1,
+      "O": 1,
+      "A": 1,
+      "C": 1
+    },
+    "half_life_days": 1,
+    "age_appropriate_actions": true
+  },
+  "society": {
+    "closeness_half_life_days": 365.25
+  },
+  "background_expansion": {
+    "default": {
+      "mode": "generative",
+      "id": "personal-history-v1",
+      "min_age": 18,
+      "fields": [
+        "education",
+        "residence",
+        "interests"
+      ]
+    }
+  },
+  "situational_personality": {
+    "recovery_half_life_days": 1
+  },
+  "consolidation_batch_size": 8,
+  "development": {
+    "maturation": {
+      "N": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          -2
+        ],
+        [
+          65,
+          -3
+        ]
+      ],
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ],
+      "C": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    "crystallization": {
+      "rate": 0.005,
+      "minimum_days": 3,
+      "max_change_per_year": 0.5
+    }
+  },
+  "world_hazards": [],
+  "newborn_opportunities": [],
+  "newborn_hazards": []
+}

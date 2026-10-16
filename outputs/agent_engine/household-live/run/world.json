@@ -1,0 +1,1848 @@
+{
+  "version": 1,
+  "seed": 184,
+  "day": 0.8,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "birth_day": -5844.0,
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "maya": {
+      "name": "Maya",
+      "facts": {
+        "birth_day": -14975.25
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {
+        "birth_day": -5113.5,
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "noor": {
+      "name": "Noor",
+      "facts": {
+        "birth_day": -15705.75
+      }
+    }
+  },
+  "agents": {
+    "alex": {
+      "facets": {
+        "N1": 65,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 65,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 35,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5844.0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "@conversation:homework:3",
+          "last_interaction_day": 0.7523702281474924
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "alex-early": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.8,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 8.580000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 0.7503688479542732,
+          "encountered": [],
+          "provenance": "alex-early"
+        },
+        "@conversation:homework:opening": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "The conversation is starting with a broad, open-ended prompt about school projects and support needs. Given my recent hesitation about asking for help, this direct invitation to express needs creates a moment of uncertainty. I am aware of Maya and Bea in the room, but my primary focus is on how to navigate this request without feeling exposed or inadequate.",
+          "versions": [],
+          "stability_days": 7.920000000000002,
+          "encoding_stability_days": 7.200000000000001,
+          "last_recall_day": 0.7503688479542732,
+          "encountered": [],
+          "provenance": "@conversation:homework:opening"
+        },
+        "@conversation:homework:0": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.6,
+          "meaning": "I voiced a tentative status update, masking my underlying hesitation with a claim of being 'mostly on track.' By framing my question around missing deadlines rather than asking for help, I maintained a safe distance while still seeking reassurance. The ellipsis in my speech reflects my internal conflict between the desire to appear competent and the fear of being perceived as inadequate. I am now waiting to see if Maya or Bea will probe deeper or simply accept my deflection.",
+          "versions": [],
+          "stability_days": 8.415000000000001,
+          "encoding_stability_days": 7.65,
+          "last_recall_day": 0.7518268809691523,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:0"
+        },
+        "@conversation:homework:1": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "meaning": "Maya has directly addressed the tension I tried to mask, validating my stress without judging me. By offering to review the deadlines 'together,' she is shifting the dynamic from me proving my competence to us collaboratively managing the load. This reduces the pressure to answer perfectly and invites me to be specific, which feels both risky and relieving. I am waiting to see if this invitation will actually lower my anxiety or if I will still hesitate to share the specific details that worry me.",
+          "versions": [],
+          "stability_days": 10.065000000000001,
+          "encoding_stability_days": 9.15,
+          "last_recall_day": 0.7518268809691523,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:1"
+        },
+        "@conversation:homework:2": {
+          "kind": "direct",
+          "confidence": 0.92,
+          "importance": 0.75,
+          "meaning": "I have finally voiced the specific conflict that was weighing on me: the collision between the history project and the biology lab report. By explicitly stating my fear of 'dropping the ball' on the biology assignment, I have moved from vague deflection to concrete vulnerability. This admission feels risky because it exposes my anxiety about time management and competence, but it is a necessary step to get the reassurance and collaborative support Maya offered. I am now waiting to see if this honesty will be met with practical help or judgment, while feeling a mix of relief at being understood and heightened anxiety about the actual workload.",
+          "versions": [],
+          "stability_days": 10.14,
+          "encoding_stability_days": 10.14,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:2"
+        },
+        "@conversation:homework:3": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.8,
+          "meaning": "Maya is shifting from emotional validation to concrete problem-solving. By asking for the earliest possible completion time for the biology lab, she is testing if a specific schedule can resolve my anxiety. This feels both relieving because she is taking my concern seriously and slightly pressuring because I now have to commit to a timeline I am not 100% sure I can hit. I am waiting to see if this plan feels manageable or if it just highlights how tight the schedule is.",
+          "versions": [],
+          "stability_days": 10.350000000000001,
+          "encoding_stability_days": 10.350000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:3"
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 0.7503688479542732,
+          "valence": -0.025,
+          "arousal": 0.05,
+          "memory": "@conversation:homework:opening"
+        },
+        {
+          "day": 0.7503688479542732,
+          "valence": -0.075,
+          "arousal": 0.0,
+          "memory": "alex-early"
+        },
+        {
+          "day": 0.7518268809691523,
+          "valence": 0.0875,
+          "arousal": 0.1125,
+          "memory": "@conversation:homework:1"
+        },
+        {
+          "day": 0.7518268809691523,
+          "valence": -0.05,
+          "arousal": 0.0875,
+          "memory": "@conversation:homework:0"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "alex:semantic:7ee1b768e5f06b69:@conversation:homework:opening",
+          "day": 0.7503688479542732,
+          "memory": "@conversation:homework:opening",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:7ee1b768e5f06b69:alex-early",
+          "day": 0.7503688479542732,
+          "memory": "alex-early",
+          "rehearsed": true
+        },
+        {
+          "id": "@conversation:homework:0:action:used-memory:@conversation:homework:opening",
+          "day": 0.7503688479542732,
+          "memory": "@conversation:homework:opening",
+          "rehearsed": false
+        },
+        {
+          "id": "@conversation:homework:0:action:used-memory:alex-early",
+          "day": 0.7503688479542732,
+          "memory": "alex-early",
+          "rehearsed": false
+        },
+        {
+          "id": "alex:semantic:53c0946910eec839:@conversation:homework:1",
+          "day": 0.7518268809691523,
+          "memory": "@conversation:homework:1",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:53c0946910eec839:@conversation:homework:0",
+          "day": 0.7518268809691523,
+          "memory": "@conversation:homework:0",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:53c0946910eec839:alex-early",
+          "day": 0.7518268809691523,
+          "memory": "alex-early",
+          "rehearsed": false
+        },
+        {
+          "id": "@conversation:homework:2:action:used-memory:@conversation:homework:1",
+          "day": 0.7518268809691523,
+          "memory": "@conversation:homework:1",
+          "rehearsed": false
+        },
+        {
+          "id": "@conversation:homework:2:action:used-memory:@conversation:homework:0",
+          "day": 0.7518268809691523,
+          "memory": "@conversation:homework:0",
+          "rehearsed": false
+        },
+        {
+          "id": "@conversation:homework:2:action:used-memory:alex-early",
+          "day": 0.7518268809691523,
+          "memory": "alex-early",
+          "rehearsed": false
+        }
+      ],
+      "affect_parameters": {},
+      "calendar": [
+        {
+          "activity": "@conversation:homework:0",
+          "start_day": 0.75,
+          "end_day": 0.7503688479542732,
+          "status": "completed"
+        },
+        {
+          "activity": "@conversation:homework:1",
+          "start_day": 0.7503688479542732,
+          "end_day": 0.7510792415035539,
+          "status": "completed"
+        },
+        {
+          "activity": "@conversation:homework:2",
+          "start_day": 0.7510792415035539,
+          "end_day": 0.7518268809691523,
+          "status": "completed"
+        },
+        {
+          "activity": "@conversation:homework:3",
+          "start_day": 0.7518268809691523,
+          "end_day": 0.7523702281474924,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "0": 0.056885475539818486
+      },
+      "retrieval_focus": {
+        "day": 0.7518268809691523,
+        "situation": "You are in a conversation. The public opening topic was: Discuss how school projects are going and what support would be useful. Each person can express their own needs. Choose your next turn using only what you have personally perceived. Other people may overhear normal room speech. Listening or leaving must have empty speech. Speech is a claim, not proof that its content happened.",
+        "ids": [
+          "@conversation:homework:1",
+          "@conversation:homework:0",
+          "alex-early"
+        ],
+        "policy": "local_llm_semantic_selection",
+        "candidate_count": 4,
+        "omitted_candidates": 0,
+        "retrieval_queries": [],
+        "indexed_corpus": true,
+        "graph_retrieval": {
+          "backend": "graphiti_neo4j_local_bge_rrf",
+          "status": "ready",
+          "snapshot": "private_29a7374dbdda0b82d31eb70d7fa93eb9e434efbd01d70ca0795c048383845b78",
+          "chains": [
+            {
+              "event": "@conversation:homework:opening",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "898ffccd-1c7f-5277-ae85-0bb6a7a13dac",
+              "target": "4215b63a-530c-5d5c-a4fa-7e94dddc5be6"
+            },
+            {
+              "event": "@conversation:homework:0",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "898ffccd-1c7f-5277-ae85-0bb6a7a13dac",
+              "target": "3e295992-ea24-5fc2-a74b-5c8fd316a041"
+            },
+            {
+              "event": "@conversation:homework:1",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "898ffccd-1c7f-5277-ae85-0bb6a7a13dac",
+              "target": "11937d7c-2f49-5b8e-8733-4389f59e361a"
+            },
+            {
+              "event": "@conversation:homework:0",
+              "relation": "KNOWN_REFERENCE",
+              "source": "3e295992-ea24-5fc2-a74b-5c8fd316a041",
+              "target": "6d3f6bf0-ae8b-5477-a4c8-2ee984c6611f"
+            },
+            {
+              "event": "@conversation:homework:1",
+              "relation": "KNOWN_REFERENCE",
+              "source": "11937d7c-2f49-5b8e-8733-4389f59e361a",
+              "target": "6d3f6bf0-ae8b-5477-a4c8-2ee984c6611f"
+            },
+            {
+              "event": "alex-early",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "898ffccd-1c7f-5277-ae85-0bb6a7a13dac",
+              "target": "76e0076a-36e4-54f5-a9a4-393d5cb4f5e6"
+            }
+          ]
+        }
+      }
+    },
+    "maya": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 75,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 65,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 75,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 65,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -14975.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "@conversation:homework:3",
+          "last_interaction_day": 0.7523702281474924
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "@conversation:homework:opening": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.6,
+          "meaning": "The conversation is initiated with a structured focus on school projects and support needs, allowing each participant to voice their requirements. This aligns with my role as a caregiver to Alex and Bea, prompting me to assess their current academic status and identify where my assistance is needed.",
+          "versions": [],
+          "stability_days": 8.25,
+          "encoding_stability_days": 7.5,
+          "last_recall_day": 0.7510792415035539,
+          "encountered": [],
+          "provenance": "@conversation:homework:opening"
+        },
+        "@conversation:homework:0": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.6,
+          "meaning": "Alex is expressing mild anxiety about workload management, specifically regarding the history project and potential hidden deadlines. The hesitation ('I'm... doing okay?') suggests a need for reassurance or validation rather than just factual information. As a caregiver, this triggers a supportive response to check in on their stress levels and offer help if needed.",
+          "versions": [],
+          "stability_days": 8.580000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 0.7510792415035539,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:0"
+        },
+        "@conversation:homework:1": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.7,
+          "meaning": "I am actively engaging in my caregiving role by offering a concrete, collaborative solution to Alex's expressed anxiety. By suggesting we review deadlines together, I am fulfilling my inclination to follow through on commitments and assist, while also seeking to reduce the ambiguity in Alex's situation. The act of asking for the next due date serves to ground the conversation in specifics, moving from emotional validation to practical problem-solving.",
+          "versions": [],
+          "stability_days": 9.9,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": 0.7523702281474924,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:1"
+        },
+        "@conversation:homework:2": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.7,
+          "meaning": "Alex is responding to my offer to review deadlines by providing specific details: the history project is due Friday, and there is an impending biology lab report. Alex expresses a specific fear of neglecting the biology work due to the intensity of the history task, indicating a concern about time management and quality control rather than just a simple list of dates. The hesitation ('It's...') suggests some anxiety or uncertainty about how to balance these conflicting demands.",
+          "versions": [],
+          "stability_days": 9.9,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": 0.7523702281474924,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:2"
+        },
+        "@conversation:homework:3": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.7,
+          "meaning": "I am actively structuring the solution to Alex's anxiety by converting vague worry into a concrete timeline. By proposing a specific milestone (Wednesday) for the biology lab, I am attempting to reduce the cognitive load and validate their fear of 'dropping the ball.' This reflects my tendency to follow through on commitments and my desire to provide tangible assistance, moving the interaction from emotional support to practical planning.",
+          "versions": [],
+          "stability_days": 9.75,
+          "encoding_stability_days": 9.75,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:3"
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 0.7510792415035539,
+          "valence": 0.0375,
+          "arousal": 0.1,
+          "memory": "@conversation:homework:0"
+        },
+        {
+          "day": 0.7510792415035539,
+          "valence": 0.025,
+          "arousal": 0.075,
+          "memory": "@conversation:homework:opening"
+        },
+        {
+          "day": 0.7523702281474924,
+          "valence": 0.05,
+          "arousal": 0.15,
+          "memory": "@conversation:homework:2"
+        },
+        {
+          "day": 0.7523702281474924,
+          "valence": 0.1,
+          "arousal": 0.15,
+          "memory": "@conversation:homework:1"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "maya:semantic:37509d98ae8167f4:@conversation:homework:0",
+          "day": 0.7510792415035539,
+          "memory": "@conversation:homework:0",
+          "rehearsed": true
+        },
+        {
+          "id": "maya:semantic:37509d98ae8167f4:@conversation:homework:opening",
+          "day": 0.7510792415035539,
+          "memory": "@conversation:homework:opening",
+          "rehearsed": true
+        },
+        {
+          "id": "@conversation:homework:1:action:used-memory:@conversation:homework:opening",
+          "day": 0.7510792415035539,
+          "memory": "@conversation:homework:opening",
+          "rehearsed": false
+        },
+        {
+          "id": "@conversation:homework:1:action:used-memory:@conversation:homework:0",
+          "day": 0.7510792415035539,
+          "memory": "@conversation:homework:0",
+          "rehearsed": false
+        },
+        {
+          "id": "maya:semantic:0d483af06ed39bf4:@conversation:homework:2",
+          "day": 0.7523702281474924,
+          "memory": "@conversation:homework:2",
+          "rehearsed": true
+        },
+        {
+          "id": "maya:semantic:0d483af06ed39bf4:@conversation:homework:1",
+          "day": 0.7523702281474924,
+          "memory": "@conversation:homework:1",
+          "rehearsed": true
+        },
+        {
+          "id": "maya:semantic:0d483af06ed39bf4:@conversation:homework:0",
+          "day": 0.7523702281474924,
+          "memory": "@conversation:homework:0",
+          "rehearsed": false
+        },
+        {
+          "id": "@conversation:homework:3:action:used-memory:@conversation:homework:2",
+          "day": 0.7523702281474924,
+          "memory": "@conversation:homework:2",
+          "rehearsed": false
+        },
+        {
+          "id": "@conversation:homework:3:action:used-memory:@conversation:homework:1",
+          "day": 0.7523702281474924,
+          "memory": "@conversation:homework:1",
+          "rehearsed": false
+        }
+      ],
+      "affect_parameters": {},
+      "calendar": [
+        {
+          "activity": "@conversation:homework:0",
+          "start_day": 0.75,
+          "end_day": 0.7503688479542732,
+          "status": "completed"
+        },
+        {
+          "activity": "@conversation:homework:1",
+          "start_day": 0.7503688479542732,
+          "end_day": 0.7510792415035539,
+          "status": "completed"
+        },
+        {
+          "activity": "@conversation:homework:2",
+          "start_day": 0.7510792415035539,
+          "end_day": 0.7518268809691523,
+          "status": "completed"
+        },
+        {
+          "activity": "@conversation:homework:3",
+          "start_day": 0.7518268809691523,
+          "end_day": 0.7523702281474924,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "0": 0.056885475539818486
+      },
+      "retrieval_focus": {
+        "day": 0.7523702281474924,
+        "situation": "You are in a conversation. The public opening topic was: Discuss how school projects are going and what support would be useful. Each person can express their own needs. Choose your next turn using only what you have personally perceived. Other people may overhear normal room speech. Listening or leaving must have empty speech. Speech is a claim, not proof that its content happened.",
+        "ids": [
+          "@conversation:homework:2",
+          "@conversation:homework:1",
+          "@conversation:homework:0"
+        ],
+        "policy": "local_llm_semantic_selection",
+        "candidate_count": 4,
+        "omitted_candidates": 0,
+        "retrieval_queries": [],
+        "indexed_corpus": true,
+        "graph_retrieval": {
+          "backend": "graphiti_neo4j_local_bge_rrf",
+          "status": "ready",
+          "snapshot": "private_7e0a3ab6f8fc3938dd3180dd5af8db7fa72e840d87982d0884cc3d42e59db3c0",
+          "chains": [
+            {
+              "event": "@conversation:homework:opening",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "309be9a8-7387-54bf-80a5-85f7a7d18afa",
+              "target": "479fa561-2fca-5c72-af01-e238efe2052e"
+            },
+            {
+              "event": "@conversation:homework:0",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "309be9a8-7387-54bf-80a5-85f7a7d18afa",
+              "target": "02ce015f-d2bc-528c-a4a2-9384418ccfb2"
+            },
+            {
+              "event": "@conversation:homework:1",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "309be9a8-7387-54bf-80a5-85f7a7d18afa",
+              "target": "60b92c83-3101-5aff-8178-d16cc1baf71a"
+            },
+            {
+              "event": "@conversation:homework:0",
+              "relation": "KNOWN_REFERENCE",
+              "source": "02ce015f-d2bc-528c-a4a2-9384418ccfb2",
+              "target": "afdb7d5f-0bd4-5d2e-8663-522057a418db"
+            },
+            {
+              "event": "@conversation:homework:1",
+              "relation": "KNOWN_REFERENCE",
+              "source": "60b92c83-3101-5aff-8178-d16cc1baf71a",
+              "target": "afdb7d5f-0bd4-5d2e-8663-522057a418db"
+            },
+            {
+              "event": "@conversation:homework:2",
+              "relation": "RECEIVED_ACCOUNT",
+              "source": "309be9a8-7387-54bf-80a5-85f7a7d18afa",
+              "target": "7b34ad6a-a82f-5e83-865d-1f207369f110"
+            },
+            {
+              "event": "@conversation:homework:2",
+              "relation": "KNOWN_REFERENCE",
+              "source": "7b34ad6a-a82f-5e83-865d-1f207369f110",
+              "target": "afdb7d5f-0bd4-5d2e-8663-522057a418db"
+            }
+          ]
+        }
+      }
+    },
+    "bea": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5113.5,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "@conversation:homework:3",
+          "last_interaction_day": 0.7523702281474924
+        },
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "@conversation:homework:2",
+          "last_interaction_day": 0.7518268809691523
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "@conversation:homework:opening": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.2,
+          "meaning": "The conversation is opening with a neutral, structured prompt to discuss school projects and needs. Bea perceives this as a standard social interaction in the living room with Alex and Maya. There is no specific emotional charge or personal threat detected, just the initiation of a topic.",
+          "versions": [],
+          "stability_days": 4.5,
+          "encoding_stability_days": 4.5,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "@conversation:homework:opening"
+        },
+        "@conversation:homework:0": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.3,
+          "meaning": "Alex is reporting on their academic status, specifically noting that a history project is consuming significant time but they feel generally on track. The hesitation in 'I'm... doing okay?' suggests a slight uncertainty or a desire for validation, while the request to check for other deadlines indicates a practical need for reassurance regarding their overall schedule. Bea perceives this as a standard peer interaction within the structured homework discussion, noting Alex's mild anxiety but no immediate threat or emotional crisis.",
+          "versions": [],
+          "stability_days": 5.25,
+          "encoding_stability_days": 5.25,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:0"
+        },
+        "@conversation:homework:1": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.3,
+          "meaning": "Maya is offering practical support to Alex by suggesting they review deadlines together, interpreting Alex's previous statement as a sign of being overwhelmed. Bea perceives this as a helpful, low-stakes intervention that shifts the focus from general anxiety to a concrete task, maintaining the neutral, structured tone of the homework discussion.",
+          "versions": [],
+          "stability_days": 5.550000000000001,
+          "encoding_stability_days": 5.550000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:1"
+        },
+        "@conversation:homework:2": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.3,
+          "meaning": "Alex is elaborating on their academic stress, specifically identifying a conflict between a Friday history deadline and an upcoming biology lab report. The hesitation ('It's...') and the phrase 'drop the ball' suggest genuine anxiety about time management and performance, rather than just a factual update. Bea perceives this as a continuation of the previous topic, where Alex is seeking validation or a solution to a specific logistical problem. There is no perceived hostility or hidden agenda, just a peer sharing a relatable struggle.",
+          "versions": [],
+          "stability_days": 6.0,
+          "encoding_stability_days": 6.0,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:2"
+        },
+        "@conversation:homework:3": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.3,
+          "meaning": "Maya is continuing the structured problem-solving approach, shifting from general support to specific logistical planning. She is asking Alex to define a manageable intermediate milestone (Wednesday) to alleviate the pressure of the Friday deadline. Bea perceives this as a practical, low-emotion continuation of the homework discussion, consistent with Maya's role as a helpful caregiver and the established neutral tone of the group interaction.",
+          "versions": [],
+          "stability_days": 6.0,
+          "encoding_stability_days": 6.0,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:3"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "noor": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -15705.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "noor-private": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.7,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 7.199999999999999,
+          "encoding_stability_days": 7.199999999999999,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "noor-private"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    }
+  },
+  "events": [
+    {
+      "id": "alex-early",
+      "day": 0,
+      "description": "Alex has a seeded private experience.",
+      "observations": {
+        "alex": {
+          "text": "I struggled with a school project and feel hesitant to ask for help.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.8,
+          "valence": -0.3
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "noor-private",
+      "day": 0,
+      "description": "Noor has an unrelated private thought.",
+      "observations": {
+        "noor": {
+          "text": "PRIVATE_VIOLET_OBSERVATORY: I am thinking about a telescope.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.7
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "@conversation:homework:opening",
+      "day": 0.75,
+      "description": "A public conversation topic is introduced.",
+      "observations": {
+        "alex": {
+          "text": "A conversation begins on this topic: Discuss how school projects are going and what support would be useful. Each person can express their own needs.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "The conversation is starting with a broad, open-ended prompt about school projects and support needs. Given my recent hesitation about asking for help, this direct invitation to express needs creates a moment of uncertainty. I am aware of Maya and Bea in the room, but my primary focus is on how to navigate this request without feeling exposed or inadequate.",
+          "valence": -0.1,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "confidence": 0.8,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "maya": {
+          "text": "A conversation begins on this topic: Discuss how school projects are going and what support would be useful. Each person can express their own needs.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "The conversation is initiated with a structured focus on school projects and support needs, allowing each participant to voice their requirements. This aligns with my role as a caregiver to Alex and Bea, prompting me to assess their current academic status and identify where my assistance is needed.",
+          "valence": 0.1,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "bea": {
+          "text": "A conversation begins on this topic: Discuss how school projects are going and what support would be useful. Each person can express their own needs.",
+          "source": "direct",
+          "kind": "direct",
+          "meaning": "The conversation is opening with a neutral, structured prompt to discuss school projects and needs. Bea perceives this as a standard social interaction in the living room with Alex and Maya. There is no specific emotional charge or personal threat detected, just the initiation of a topic.",
+          "valence": 0.0,
+          "arousal": 0.1,
+          "importance": 0.2,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "alex",
+          "maya",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@conversation:homework:0",
+      "day": 0.7503688479542732,
+      "description": "A conversation turn is observed; spoken claims are not world facts.",
+      "observations": {
+        "alex": {
+          "text": "I said: I'm... doing okay? The history project is taking up a lot of time, but I think I'm mostly on track. I just wanted to make sure I'm not missing any big deadlines for the other stuff.",
+          "source": "self",
+          "kind": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "meaning": "I voiced a tentative status update, masking my underlying hesitation with a claim of being 'mostly on track.' By framing my question around missing deadlines rather than asking for help, I maintained a safe distance while still seeking reassurance. The ellipsis in my speech reflects my internal conflict between the desire to appear competent and the fear of being perceived as inadequate. I am now waiting to see if Maya or Bea will probe deeper or simply accept my deflection.",
+          "valence": -0.2,
+          "arousal": 0.35,
+          "importance": 0.6,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "maya": {
+          "text": "Alex said: I'm... doing okay? The history project is taking up a lot of time, but I think I'm mostly on track. I just wanted to make sure I'm not missing any big deadlines for the other stuff.",
+          "source": "alex",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:0",
+          "meaning": "Alex is expressing mild anxiety about workload management, specifically regarding the history project and potential hidden deadlines. The hesitation ('I'm... doing okay?') suggests a need for reassurance or validation rather than just factual information. As a caregiver, this triggers a supportive response to check in on their stress levels and offer help if needed.",
+          "valence": 0.15,
+          "arousal": 0.4,
+          "importance": 0.6,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "bea": {
+          "text": "Alex said: I'm... doing okay? The history project is taking up a lot of time, but I think I'm mostly on track. I just wanted to make sure I'm not missing any big deadlines for the other stuff.",
+          "source": "alex",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:0",
+          "meaning": "Alex is reporting on their academic status, specifically noting that a history project is consuming significant time but they feel generally on track. The hesitation in 'I'm... doing okay?' suggests a slight uncertainty or a desire for validation, while the request to check for other deadlines indicates a practical need for reassurance regarding their overall schedule. Bea perceives this as a standard peer interaction within the structured homework discussion, noting Alex's mild anxiety but no immediate threat or emotional crisis.",
+          "valence": 0.1,
+          "arousal": 0.15,
+          "importance": 0.3,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "alex",
+          "maya",
+          "bea"
+        ],
+        "action": "@conversation:homework:0:action"
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@conversation:homework:1",
+      "day": 0.7510792415035539,
+      "description": "A conversation turn is observed; spoken claims are not world facts.",
+      "observations": {
+        "maya": {
+          "text": "I said: You sound like you're carrying a lot. Let's look at those other deadlines together so you can see exactly where you stand. What's the next big due date on your mind?",
+          "source": "self",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "I am actively engaging in my caregiving role by offering a concrete, collaborative solution to Alex's expressed anxiety. By suggesting we review deadlines together, I am fulfilling my inclination to follow through on commitments and assist, while also seeking to reduce the ambiguity in Alex's situation. The act of asking for the next due date serves to ground the conversation in specifics, moving from emotional validation to practical problem-solving.",
+          "valence": 0.4,
+          "arousal": 0.6,
+          "importance": 0.7,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "alex": {
+          "text": "Maya said: You sound like you're carrying a lot. Let's look at those other deadlines together so you can see exactly where you stand. What's the next big due date on your mind?",
+          "source": "maya",
+          "kind": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:1",
+          "meaning": "Maya has directly addressed the tension I tried to mask, validating my stress without judging me. By offering to review the deadlines 'together,' she is shifting the dynamic from me proving my competence to us collaboratively managing the load. This reduces the pressure to answer perfectly and invites me to be specific, which feels both risky and relieving. I am waiting to see if this invitation will actually lower my anxiety or if I will still hesitate to share the specific details that worry me.",
+          "valence": 0.35,
+          "arousal": 0.45,
+          "importance": 0.8,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "bea": {
+          "text": "Maya said: You sound like you're carrying a lot. Let's look at those other deadlines together so you can see exactly where you stand. What's the next big due date on your mind?",
+          "source": "maya",
+          "kind": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:1",
+          "meaning": "Maya is offering practical support to Alex by suggesting they review deadlines together, interpreting Alex's previous statement as a sign of being overwhelmed. Bea perceives this as a helpful, low-stakes intervention that shifts the focus from general anxiety to a concrete task, maintaining the neutral, structured tone of the homework discussion.",
+          "valence": 0.15,
+          "arousal": 0.25,
+          "importance": 0.3,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "maya",
+          "alex",
+          "bea"
+        ],
+        "action": "@conversation:homework:1:action"
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@conversation:homework:2",
+      "day": 0.7518268809691523,
+      "description": "A conversation turn is observed; spoken claims are not world facts.",
+      "observations": {
+        "alex": {
+          "text": "I said: It's... the history one is due Friday. But I also have that biology lab report coming up soon, and I'm not sure if I have enough time to do both properly. I just don't want to drop the ball on the biology one because I'm so focused on the history stuff.",
+          "source": "self",
+          "kind": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "meaning": "I have finally voiced the specific conflict that was weighing on me: the collision between the history project and the biology lab report. By explicitly stating my fear of 'dropping the ball' on the biology assignment, I have moved from vague deflection to concrete vulnerability. This admission feels risky because it exposes my anxiety about time management and competence, but it is a necessary step to get the reassurance and collaborative support Maya offered. I am now waiting to see if this honesty will be met with practical help or judgment, while feeling a mix of relief at being understood and heightened anxiety about the actual workload.",
+          "valence": -0.15,
+          "arousal": 0.88,
+          "importance": 0.75,
+          "confidence": 0.92,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "maya": {
+          "text": "Alex said: It's... the history one is due Friday. But I also have that biology lab report coming up soon, and I'm not sure if I have enough time to do both properly. I just don't want to drop the ball on the biology one because I'm so focused on the history stuff.",
+          "source": "alex",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:2",
+          "meaning": "Alex is responding to my offer to review deadlines by providing specific details: the history project is due Friday, and there is an impending biology lab report. Alex expresses a specific fear of neglecting the biology work due to the intensity of the history task, indicating a concern about time management and quality control rather than just a simple list of dates. The hesitation ('It's...') suggests some anxiety or uncertainty about how to balance these conflicting demands.",
+          "valence": 0.2,
+          "arousal": 0.6,
+          "importance": 0.7,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "bea": {
+          "text": "Alex said: It's... the history one is due Friday. But I also have that biology lab report coming up soon, and I'm not sure if I have enough time to do both properly. I just don't want to drop the ball on the biology one because I'm so focused on the history stuff.",
+          "source": "alex",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "@conversation:homework:2",
+          "meaning": "Alex is elaborating on their academic stress, specifically identifying a conflict between a Friday history deadline and an upcoming biology lab report. The hesitation ('It's...') and the phrase 'drop the ball' suggest genuine anxiety about time management and performance, rather than just a factual update. Bea perceives this as a continuation of the previous topic, where Alex is seeking validation or a solution to a specific logistical problem. There is no perceived hostility or hidden agenda, just a peer sharing a relatable struggle.",
+          "valence": 0.1,
+          "arousal": 0.4,
+          "importance": 0.3,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "alex",
+          "maya",
+          "bea"
+        ],
+        "action": "@conversation:homework:2:action"
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@conversation:homework:3",
+      "day": 0.7523702281474924,
+      "description": "A conversation turn is observed; spoken claims are not world facts.",
+      "observations": {
+        "maya": {
+          "text": "I said: Okay, so Friday is the hard stop for history. For the bio lab, what's the earliest you could get the data or the first draft done? If you can knock that out by Wednesday, does that take the pressure off?",
+          "source": "self",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "I am actively structuring the solution to Alex's anxiety by converting vague worry into a concrete timeline. By proposing a specific milestone (Wednesday) for the biology lab, I am attempting to reduce the cognitive load and validate their fear of 'dropping the ball.' This reflects my tendency to follow through on commitments and my desire to provide tangible assistance, moving the interaction from emotional support to practical planning.",
+          "valence": 0.65,
+          "arousal": 0.85,
+          "importance": 0.7,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "alex": {
+          "text": "Maya said: Okay, so Friday is the hard stop for history. For the bio lab, what's the earliest you could get the data or the first draft done? If you can knock that out by Wednesday, does that take the pressure off?",
+          "source": "maya",
+          "kind": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:3",
+          "meaning": "Maya is shifting from emotional validation to concrete problem-solving. By asking for the earliest possible completion time for the biology lab, she is testing if a specific schedule can resolve my anxiety. This feels both relieving because she is taking my concern seriously and slightly pressuring because I now have to commit to a timeline I am not 100% sure I can hit. I am waiting to see if this plan feels manageable or if it just highlights how tight the schedule is.",
+          "valence": 0.15,
+          "arousal": 0.85,
+          "importance": 0.8,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "bea": {
+          "text": "Maya said: Okay, so Friday is the hard stop for history. For the bio lab, what's the earliest you could get the data or the first draft done? If you can knock that out by Wednesday, does that take the pressure off?",
+          "source": "maya",
+          "kind": "direct",
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "@conversation:homework:3",
+          "meaning": "Maya is continuing the structured problem-solving approach, shifting from general support to specific logistical planning. She is asking Alex to define a manageable intermediate milestone (Wednesday) to alleviate the pressure of the Friday deadline. Bea perceives this as a practical, low-emotion continuation of the homework discussion, consistent with Maya's role as a helpful caregiver and the established neutral tone of the group interaction.",
+          "valence": 0.2,
+          "arousal": 0.4,
+          "importance": 0.3,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "maya",
+          "alex",
+          "bea"
+        ],
+        "action": "@conversation:homework:3:action"
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "@conversation:homework:0:action",
+      "owner": "alex",
+      "day": 0.7503688479542732,
+      "decision": {
+        "action": "speak",
+        "speech": "I'm... doing okay? The history project is taking up a lot of time, but I think I'm mostly on track. I just wanted to make sure I'm not missing any big deadlines for the other stuff.",
+        "goal_id": null,
+        "plan": [
+          "Acknowledge the question without over-committing",
+          "Mention the history project as the main stressor",
+          "Ask a vague question about other deadlines to gauge if help is expected"
+        ],
+        "memory_ids": [
+          "@conversation:homework:opening",
+          "alex-early"
+        ],
+        "action_id": "speak"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "@conversation:homework:0"
+    },
+    {
+      "id": "@conversation:homework:1:action",
+      "owner": "maya",
+      "day": 0.7510792415035539,
+      "decision": {
+        "action": "speak",
+        "speech": "You sound like you're carrying a lot. Let's look at those other deadlines together so you can see exactly where you stand. What's the next big due date on your mind?",
+        "goal_id": null,
+        "plan": [
+          "Validate Alex's feelings about the workload.",
+          "Offer to collaborate on reviewing the schedule.",
+          "Ask for specific upcoming deadlines to identify potential conflicts."
+        ],
+        "memory_ids": [
+          "@conversation:homework:opening",
+          "@conversation:homework:0"
+        ],
+        "action_id": "speak"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "@conversation:homework:1"
+    },
+    {
+      "id": "@conversation:homework:2:action",
+      "owner": "alex",
+      "day": 0.7518268809691523,
+      "decision": {
+        "action_id": "speak",
+        "action": "Alex looks down at their hands, fidgeting slightly with a sleeve, before looking up at Maya. They take a breath, deciding to answer the question but keeping the details somewhat vague to avoid feeling overwhelmed.",
+        "speech": "It's... the history one is due Friday. But I also have that biology lab report coming up soon, and I'm not sure if I have enough time to do both properly. I just don't want to drop the ball on the biology one because I'm so focused on the history stuff.",
+        "goal_id": null,
+        "plan": [
+          "Identify the specific upcoming deadlines that are causing stress.",
+          "Share the specific dates with Maya to get a clearer picture of the workload.",
+          "Assess if Maya's offer to review deadlines together feels safe enough to accept fully."
+        ],
+        "memory_ids": [
+          "@conversation:homework:1",
+          "@conversation:homework:0",
+          "alex-early"
+        ]
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "@conversation:homework:2"
+    },
+    {
+      "id": "@conversation:homework:3:action",
+      "owner": "maya",
+      "day": 0.7523702281474924,
+      "decision": {
+        "action": "speak",
+        "speech": "Okay, so Friday is the hard stop for history. For the bio lab, what's the earliest you could get the data or the first draft done? If you can knock that out by Wednesday, does that take the pressure off?",
+        "goal_id": null,
+        "plan": [
+          "Identify the specific deadline for the biology lab report.",
+          "Suggest a timeline that separates the two tasks to reduce overlap."
+        ],
+        "memory_ids": [
+          "@conversation:homework:2",
+          "@conversation:homework:1"
+        ],
+        "action_id": "speak"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "@conversation:homework:3"
+    }
+  ],
+  "updates": [
+    {
+      "id": "alex:semantic:7ee1b768e5f06b69:@conversation:homework:opening",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7503688479542732
+    },
+    {
+      "id": "alex:semantic:7ee1b768e5f06b69:alex-early",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7503688479542732
+    },
+    {
+      "id": "@conversation:homework:0:action:used-memory:@conversation:homework:opening",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7503688479542732
+    },
+    {
+      "id": "@conversation:homework:0:action:used-memory:alex-early",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7503688479542732
+    },
+    {
+      "id": "maya:semantic:37509d98ae8167f4:@conversation:homework:0",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7510792415035539
+    },
+    {
+      "id": "maya:semantic:37509d98ae8167f4:@conversation:homework:opening",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7510792415035539
+    },
+    {
+      "id": "@conversation:homework:1:action:used-memory:@conversation:homework:opening",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7510792415035539
+    },
+    {
+      "id": "@conversation:homework:1:action:used-memory:@conversation:homework:0",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7510792415035539
+    },
+    {
+      "id": "alex:semantic:53c0946910eec839:@conversation:homework:1",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7518268809691523
+    },
+    {
+      "id": "alex:semantic:53c0946910eec839:@conversation:homework:0",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7518268809691523
+    },
+    {
+      "id": "alex:semantic:53c0946910eec839:alex-early",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7518268809691523
+    },
+    {
+      "id": "@conversation:homework:2:action:used-memory:@conversation:homework:1",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7518268809691523
+    },
+    {
+      "id": "@conversation:homework:2:action:used-memory:@conversation:homework:0",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7518268809691523
+    },
+    {
+      "id": "@conversation:homework:2:action:used-memory:alex-early",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 0.7518268809691523
+    },
+    {
+      "id": "maya:semantic:0d483af06ed39bf4:@conversation:homework:2",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7523702281474924
+    },
+    {
+      "id": "maya:semantic:0d483af06ed39bf4:@conversation:homework:1",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7523702281474924
+    },
+    {
+      "id": "maya:semantic:0d483af06ed39bf4:@conversation:homework:0",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7523702281474924
+    },
+    {
+      "id": "@conversation:homework:3:action:used-memory:@conversation:homework:2",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7523702281474924
+    },
+    {
+      "id": "@conversation:homework:3:action:used-memory:@conversation:homework:1",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 0.7523702281474924
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "semantic_recall": true,
+      "graphiti_retrieval": true,
+      "indexed_retrieval": true
+    },
+    "graphiti_namespace": "9f107d00366d404baaed3a0c7b469cf3",
+    "planning": {
+      "calendar_mode": "elapsed",
+      "hours_per_day": 8
+    },
+    "expression": {
+      "age_appropriate_actions": true
+    },
+    "household": {
+      "rooms": {
+        "living": {
+          "label": "the household living room"
+        },
+        "bedroom": {
+          "label": "a closed bedroom"
+        }
+      },
+      "locations": {
+        "alex": "living",
+        "maya": "living",
+        "bea": "living",
+        "noor": "bedroom"
+      },
+      "routines": {
+        "alex": {
+          "available_hours": [
+            [
+              7,
+              22
+            ]
+          ],
+          "response_minutes": [
+            0.5,
+            1.5
+          ]
+        },
+        "maya": {
+          "available_hours": [
+            [
+              7,
+              22
+            ]
+          ],
+          "response_minutes": [
+            0.5,
+            1.5
+          ]
+        },
+        "bea": {
+          "available_hours": [
+            [
+              7,
+              22
+            ]
+          ],
+          "response_minutes": [
+            0.5,
+            1.5
+          ]
+        },
+        "noor": {
+          "available_hours": [
+            [
+              7,
+              22
+            ]
+          ],
+          "response_minutes": [
+            0.5,
+            1.5
+          ]
+        }
+      },
+      "conversations": [
+        {
+          "id": "homework",
+          "day": 0.75,
+          "room": "living",
+          "participants": [
+            "alex",
+            "maya"
+          ],
+          "topic": "Discuss how school projects are going and what support would be useful. Each person can express their own needs.",
+          "max_turns": 4,
+          "exit_room": "bedroom"
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "e4423ed6a16261ab86d27b8b8640996dba73a4af92b3295fb7be43d873164c0b",
+    "scripted": false,
+    "start_day": 0,
+    "current_day": 0.8,
+    "next_tick": null,
+    "tick": 0,
+    "trace": [],
+    "trait_budget": {},
+    "opportunity_counts": {},
+    "next_opportunities": {},
+    "household_moves": {},
+    "conversations": {
+      "homework": {
+        "spec": {
+          "id": "homework",
+          "day": 0.75,
+          "room": "living",
+          "participants": [
+            "alex",
+            "maya"
+          ],
+          "topic": "Discuss how school projects are going and what support would be useful. Each person can express their own needs.",
+          "max_turns": 4,
+          "exit_room": "bedroom"
+        },
+        "status": "closed",
+        "next_day": null,
+        "turns": [
+          {
+            "event": "@conversation:homework:0",
+            "action": "@conversation:homework:0:action",
+            "speaker": "alex",
+            "day": 0.7503688479542732,
+            "choice": "speak",
+            "recipients": [
+              "alex",
+              "maya",
+              "bea"
+            ]
+          },
+          {
+            "event": "@conversation:homework:1",
+            "action": "@conversation:homework:1:action",
+            "speaker": "maya",
+            "day": 0.7510792415035539,
+            "choice": "speak",
+            "recipients": [
+              "maya",
+              "alex",
+              "bea"
+            ]
+          },
+          {
+            "event": "@conversation:homework:2",
+            "action": "@conversation:homework:2:action",
+            "speaker": "alex",
+            "day": 0.7518268809691523,
+            "choice": "speak",
+            "recipients": [
+              "alex",
+              "maya",
+              "bea"
+            ]
+          },
+          {
+            "event": "@conversation:homework:3",
+            "action": "@conversation:homework:3:action",
+            "speaker": "maya",
+            "day": 0.7523702281474924,
+            "choice": "speak",
+            "recipients": [
+              "maya",
+              "alex",
+              "bea"
+            ]
+          }
+        ],
+        "active": [
+          "alex",
+          "maya"
+        ],
+        "cursor": 2,
+        "reservations": {},
+        "speaker": "maya",
+        "reservation_id": "@conversation:homework:3",
+        "closed_reason": "turn limit"
+      }
+    },
+    "next_world_events": {},
+    "background_counts": {},
+    "next_background": {},
+    "pending_activities": {},
+    "hazard_counts": {},
+    "next_hazards": {}
+  },
+  "household": {
+    "locations": {
+      "alex": "living",
+      "maya": "living",
+      "bea": "living",
+      "noor": "bedroom"
+    }
+  }
+}

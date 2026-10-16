@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "years": 7,
+  "provider": "scripted_engineering_fixture",
+  "resolved_actions": 61,
+  "completed_conversations": 4,
+  "conversation_turns": 16,
+  "retained_agents": 6,
+  "json_sqlite_equivalence": true,
+  "no_pending_activities": true,
+  "developmental_exposure_hook": true,
+  "scope": "Combined two-caregiver integration; model-only paths skipped; no birth in this fixture."
+}

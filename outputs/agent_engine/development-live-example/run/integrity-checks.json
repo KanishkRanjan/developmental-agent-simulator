@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "actual 27B wiring only, one offered action, synthetic childhood with omitted early years",
+  "requests": 15,
+  "actions_resolved": 3,
+  "appraisals": 6,
+  "consolidations": 2,
+  "received_caregiving_experiences": 3,
+  "uninvolved_agents_unchanged": true,
+  "no_crystallization_without_matching_states": true,
+  "childhood_norms_validated": false
+}

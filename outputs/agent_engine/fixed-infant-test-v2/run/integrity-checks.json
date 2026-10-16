@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "status": "completed",
+  "requests": 15,
+  "new_actions": 2,
+  "seconds": 148.609,
+  "repairs": 0,
+  "json_sqlite_equivalence": true,
+  "earlier_history_preserved": true,
+  "no_pending_activities": true,
+  "elapsed_outcomes": true,
+  "requests_by_purpose": {
+    "action": 2,
+    "appraisal": 4,
+    "consolidation": 0,
+    "signatures": 2,
+    "situation": 2,
+    "semantic_recall": 1,
+    "reflection": 2,
+    "background": 1,
+    "retrieval_query": 1
+  },
+  "source_files_changed_since_launch": []
+}

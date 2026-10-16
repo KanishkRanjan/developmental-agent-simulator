@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scope": "synthetic household engineering checks, not psychological validation",
+  "checks": [
+    "multiple independent private-context replies use previously received speech",
+    "elapsed response intervals resolve intended turns and account both participants",
+    "same-room bystanders overhear and acquire received affect",
+    "explicit adjoining-room audibility does not establish firsthand acquaintance",
+    "closed-room person receives no conversation memory or mood update",
+    "spoken allegations never become canonical facts",
+    "agent environment context reveals only same-room presence, never private profiles or remote locations",
+    "JSON and SQLite restore locations, received turns, calendar and conversation state",
+    "mid-response checkpoint resumes identically without replaying completed events or time accounting",
+    "failed bystander appraisal rolls back turn, action, calendars and all recipients; retry commits once",
+    "unavailable invited participant cannot be forced into a conversation",
+    "response interval cannot cross the end of a waking window",
+    "calendar commitments prevent double-booked conversation participation",
+    "movement during a response cancels speech before it is delivered",
+    "death during a response prevents posthumous speech",
+    "independently chosen departure changes physical routing and ends an undersized conversation",
+    "infant conversation participation is nonverbal with no adult plan",
+    "invalid physical policy is rejected before runtime mutation",
+    "archived policies remain free of implicit rooms or invented conversations",
+    "daily availability also gates ordinary elapsed activity reservations",
+    "silent action contracts reject contradictory model speech",
+    "resolved dialogue actions feed existing developmental exposure gates; overhearing alone does not count as enacted behavior",
+    "explicit room contact cannot begin with a remotely located person",
+    "physical contact activity cannot resolve after a participant leaves its room"
+  ]
+}

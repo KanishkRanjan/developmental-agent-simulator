@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "scope": "actual HauhauCS 27B integration; scenario fixture, no human predictive claim",
+  "requests": 17,
+  "resolved_actions": 2,
+  "pending_activities": 0,
+  "elapsed_outcomes": true,
+  "json_sqlite_equivalence": true,
+  "earlier_episodes_preserved": true,
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "seconds": 173.771,
+  "repair_requests": 2,
+  "generated_biographies": [
+    "maya"
+  ],
+  "infant_nonverbal": true,
+  "infant_narrative_absent": true,
+  "caregiving_episodes": 1,
+  "caregiver_chosen_response": "delay",
+  "later_modified_source_files": [
+    "references.py",
+    "check_complete.py"
+  ]
+}

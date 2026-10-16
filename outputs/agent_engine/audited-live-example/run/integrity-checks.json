@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "provider": "actual local 27B model",
+  "profile_initialization": "existing fitted correlated adult sampler",
+  "all_four_contexts_use_behavioral_language": true,
+  "recall_events": 3,
+  "inferred_gists": 2,
+  "original_observations_preserved": true,
+  "scope": "One offered action; integration correctness only, not a behavioral quality comparison."
+}

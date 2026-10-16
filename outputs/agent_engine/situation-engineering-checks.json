@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "scope": "engineering only; stubbed API",
+  "checks": [
+    "generated signatures reused",
+    "age-stage refresh archives prior signatures",
+    "subjective situation and specific rule selection",
+    "temporary state separate from enduring traits",
+    "elapsed-time recovery and checkpoint equivalence",
+    "bounded simultaneous domain shifts",
+    "language-only personality and temporary behavior",
+    "context inspection is read-only",
+    "invalid output cannot partially mutate state",
+    "controller prepares state before action",
+    "failed construal rolls back entire event",
+    "infant signatures use bounded sensory trigger and nonverbal reaction catalogs",
+    "invalid infant competence is rejected before state mutation",
+    "capability transitions refresh at ages two and five after checkpoint restore"
+  ]
+}

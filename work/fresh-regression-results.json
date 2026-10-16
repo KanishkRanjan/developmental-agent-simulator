@@ -1,0 +1,72 @@
+[
+  {
+    "suite": "context",
+    "exit_code": 0,
+    "seconds": 0.106,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"engineering only; stubbed transport\",\n  \"checks\": [\n    \"bounded optional context without modifying original state\",\n    \"current personality and offered actions retained\",\n    \"omissions explicit and stable\",\n    \"optional history reduced using actual rendered-token count\",\n    \"smaller transport view preserves proposal staleness checks\",\n    \"actual template and tokenizer used for window check\",\n    \"output-token reserve included\",\n    \"overflow stops before inference\",\n    \"malformed fields repaired before mutation\",\n    \"permanently malformed responses stop after two repairs without changing state\",\n    \"closed connections become explicit model-request failures\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "fidelity",
+    "exit_code": 0,
+    "seconds": 0.101,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"engineering and implementation fidelity only\",\n  \"checks\": [\n    \"facet-specific language without numeric personality table\",\n    \"distinct facets retained without broad-trait conflation\",\n    \"balanced profile fallback\",\n    \"read-only inspection\",\n    \"listener-only social reminders\",\n    \"actual model-cited memories trigger recall\",\n    \"recalled-affect habituation\",\n    \"original encoding stability preserved across resume and rollback\",\n    \"individual recovery parameters\",\n    \"source-linked gist without episode rewriting\",\n    \"events cannot silently rewrite committed birth or family identity\",\n    \"both action and appraisal use language compiler\",\n    \"aged details need retrieval cues\",\n    \"empty 40-year jump requires zero opportunity ticks\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "situation",
+    "exit_code": 0,
+    "seconds": 0.105,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"engineering only; stubbed API\",\n  \"checks\": [\n    \"generated signatures reused\",\n    \"age-stage refresh archives prior signatures\",\n    \"subjective situation and specific rule selection\",\n    \"temporary state separate from enduring traits\",\n    \"elapsed-time recovery and checkpoint equivalence\",\n    \"bounded simultaneous domain shifts\",\n    \"language-only personality and temporary behavior\",\n    \"context inspection is read-only\",\n    \"invalid output cannot partially mutate state\",\n    \"controller prepares state before action\",\n    \"failed construal rolls back entire event\",\n    \"infant signatures use bounded sensory trigger and nonverbal reaction catalogs\",\n    \"invalid infant competence is rejected before state mutation\",\n    \"capability transitions refresh at ages two and five after checkpoint restore\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "lifetime",
+    "exit_code": 0,
+    "seconds": 0.198,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"engineering only; scripted and stubbed providers\",\n  \"checks\": [\n    \"automatic age-eligible events\",\n    \"action-dependent outcomes and goals\",\n    \"bounded automatic trait development\",\n    \"identical checkpoint/resume history\",\n    \"API failure rolls back entire tick\",\n    \"model appraisal/decision path with stub\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "development",
+    "exit_code": 0,
+    "seconds": 0.126,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"synthetic engineering checks, not psychological validation\",\n  \"checks\": [\n    \"received caregiver evidence only\",\n    \"task failure is not caregiver rejection\",\n    \"same-day learning weight bounded\",\n    \"early anchor with recovering adult working state\",\n    \"independent enacted experiences required for crystallization\",\n    \"intention alone cannot change traits\",\n    \"annual and daily trait-change bounds\",\n    \"maturation and learned changes remain separate\",\n    \"elapsed-age maturation invariant across checkpoints\",\n    \"no post-death maturation\",\n    \"read-only context\",\n    \"actual controller/appraisal wiring with stub\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "temperament",
+    "exit_code": 0,
+    "seconds": 0.309,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"synthetic generation and algebra only; not calibrated childhood/genetic prediction\",\n  \"checks\": [\n    \"expansion-order invariance\",\n    \"caregiving independent of biological parentage\",\n    \"bounded correlated facet generation\",\n    \"nonidentical siblings\",\n    \"unknown parent integrated without identity creation\",\n    \"zero inherited variance share removes parental contribution\",\n    \"duplicate child leaves state unchanged\",\n    \"acquired changes do not alter lazily generated founder genotype\",\n    \"unit-variance inheritance and residual weights\",\n    \"report weighting yields 80 percent rather than 50 percent variance\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "world_growth",
+    "exit_code": 0,
+    "seconds": 0.947,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"synthetic engineering checks; no calibrated event-rate claim\",\n  \"checks\": [\n    \"chosen interaction activates only committed identity\",\n    \"failed activation event rolls back\",\n    \"no invented historical memories\",\n    \"direct encounter required for firsthand edge\",\n    \"bounded action-history-dependent rates\",\n    \"thinning rejects candidate events\",\n    \"state-dependent scheduler checkpoint equivalence\",\n    \"mention and inspection do not activate agents\",\n    \"unborn lightweight contacts are not offered or activated\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "interaction",
+    "exit_code": 0,
+    "seconds": 0.146,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"synthetic stubbed interaction engineering only\",\n  \"checks\": [\n    \"caregiver chooses independently from own context\",\n    \"private child thought not shared with caregiver\",\n    \"committed caregiving role is available without private child history\",\n    \"caregiver receives only transmitted request\",\n    \"declining response changes outcome probability and observed behavior\",\n    \"one shared outcome resolves both intentions\",\n    \"child learns from response, not task success alone\",\n    \"contact API failure rolls back both actors\",\n    \"checkpoint restores interaction state\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "extended",
+    "exit_code": 0,
+    "seconds": 1.945,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"synthetic integration checks; model responses stubbed, coefficients and world rules are provisional\",\n  \"checks\": [\n    \"semantic selection before decisions from own available representations\",\n    \"gist-only recall cannot restore original detail or reset encoding clock\",\n    \"inspection remains read-only\",\n    \"evidence-linked narrative and replanning\",\n    \"fan overload lowers retrieval accessibility without destroying storage\",\n    \"conditional reinterpretation preserves original event and prior meaning\",\n    \"unreceived narrative evidence rejected before mutation\",\n    \"need-driven canonical biography commits shared history without invented memories\",\n    \"later expansion cannot overwrite committed facts\",\n    \"autonomous recall is event-driven and checkpoint reproducible\",\n    \"competing-goal actions honor time and resource budgets\",\n    \"resolved actions build bounded habits\",\n    \"world consequences and all new state survive resume\",\n    \"multiple same-day opportunities cannot exceed available hours\",\n    \"reflection failure rolls back action, world effect, budget and habit updates\",\n    \"joint demographic transitions require actual shared observation\",\n    \"birth respects separate biological parents/caregivers without ancestry recursion\",\n    \"illness/death are explicit world transitions and checkpointed\",\n    \"unresolved reinterpretation is deferred without overwriting meaning\",\n    \"curiosity sends a question only through a selected real interaction\",\n    \"asking does not validate testimony or fabricate acquaintance\",\n    \"necessary single-parent context precedes child generation with no fabricated ancestry\",\n    \"newborns acquire declared age-eligible opportunities automatically\",\n    \"multi-generation scheduler resumes identically without duplicate registration\",\n    \"malformed new-generation policy rolls back birth and dynamic scheduling\",\n    \"trust and closeness update separately from direct evidence with retained provenance\",\n    \"reflection separates new evidence from eligible earlier revision targets\",\n    \"simultaneous death precedes action eligibility\",\n    \"same-day trust/closeness changes share an absolute budget\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "suite": "complete",
+    "exit_code": 0,
+    "seconds": 0.237,
+    "stdout": "{\n  \"passed\": true,\n  \"scope\": \"synthetic engineering checks; no calibrated human or demographic prediction\",\n  \"checks\": [\n    \"query expansion searches full available corpus beyond salience shortlist\",\n    \"index excludes inaccessible original detail\",\n    \"gist semantic selection cannot restore detail\",\n    \"ambiguous names retain all known candidates without global identity leakage\",\n    \"unknown mentions do not spawn people or fabricate acquaintance\",\n    \"received identification binds a reference and only actual encounter creates firsthand edge\",\n    \"open biography values reach own context without invented observations\",\n    \"history rejects pre-birth and conflicting overlapping eras transactionally\",\n    \"correlated temporary variation is seeded and does not change baseline traits\",\n    \"explicit cultural rules and separate constructs use language without invented Big Five mapping\",\n    \"invalid covariance rejected\",\n    \"elapsed activities preserve intended state until completion\",\n    \"pending activity and later outcome resume identically\",\n    \"time is reserved in actual intervals rather than instantaneous outcomes\",\n    \"intervening death cancels unfinished action without future success or memory\",\n    \"self-set evidence-linked goals become canonical scheduled opportunities without claiming achievements\",\n    \"conserved transfer ledger and overdraw rollback\",\n    \"relationship decay uses elapsed time and context remains pure\",\n    \"SQLite graph checkpoint restores identical state and immutable observations\",\n    \"normalized graph audits are owner-scoped and preserve provenance\",\n    \"completion failure retries saved intention without duplicate decisions or charges\",\n    \"age-window world hazards persist and resume without resampling\",\n    \"model-inferred heard reminders trigger gist-safe recall without fabricated meetings\",\n    \"repeated ambiguous mentions preserve explicit binding provenance and versions\",\n    \"missing selected model fails before tokenization or inference with no fallback\"\n  ]\n}\n",
+    "stderr": ""
+  }
+]

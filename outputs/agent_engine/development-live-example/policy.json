@@ -1,0 +1,110 @@
+{
+  "description": "Synthetic integration fixture: three received caregiving episodes despite unsolved tasks. One offered action deliberately tests wiring. Rates, maturity curves and genetic variance share are unfitted. Empty years before age five were not developed.",
+  "step_days": 90,
+  "max_trait_change_per_year": 0.5,
+  "opportunities": [
+    {
+      "id": "childhood-support",
+      "actor": "alex",
+      "min_age": 5,
+      "max_age": 12,
+      "rate_per_year": 12,
+      "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+      "cues": [
+        "school",
+        "challenge"
+      ],
+      "options": [
+        {
+          "id": "ask-caregiver",
+          "label": "Ask Maya to work through the school project together.",
+          "contact": "maya",
+          "caregiving": {
+            "responsiveness": 0.85,
+            "acceptance": 0.85
+          },
+          "contact_text": "Alex asked me for help with a school project and we spent time on it together.",
+          "success_probability": 0,
+          "success_text": "I asked Maya for help, and we worked out a difficult part of my school project.",
+          "failure_text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "valence_success": 0.5,
+          "valence_failure": -0.2,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "development_success": {
+            "C1": 0.15,
+            "N1": -0.05
+          }
+        }
+      ]
+    }
+  ],
+  "sampling": "event_driven",
+  "consolidation_batch_size": 3,
+  "situational_personality": {
+    "recovery_half_life_days": 1.0
+  },
+  "development": {
+    "maturation": {
+      "N": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          -2
+        ],
+        [
+          65,
+          -3
+        ]
+      ],
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ],
+      "C": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    "crystallization": {
+      "rate": 0.005,
+      "minimum_days": 3,
+      "max_change_per_year": 0.5
+    }
+  }
+}

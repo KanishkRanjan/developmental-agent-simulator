@@ -1,0 +1,8 @@
+{
+  "years": 7.0,
+  "seed": 42,
+  "caregivers": 2,
+  "provider": "scripted_engineering_fixture",
+  "graphiti_enabled": false,
+  "household_enabled": true
+}

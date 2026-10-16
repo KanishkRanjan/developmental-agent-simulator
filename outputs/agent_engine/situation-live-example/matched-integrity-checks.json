@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "synthetic trigger matched to generated rule; integration only, not evidence of realism",
+  "active_rule_ids": [
+    "sig-02"
+  ],
+  "temporary_behavior": {
+    "policy": "temporary_behavioral_language_v1",
+    "tendencies": [
+      "For now, more inclined to anticipate possible problems and seek reassurance under uncertainty.",
+      "For now, more inclined to feel irritation more readily when frustrated.",
+      "For now, more inclined to feel self-conscious when being evaluated.",
+      "For now, more inclined to find immediate temptations harder to resist.",
+      "For now, more inclined to feel overwhelmed more readily under pressure.",
+      "For now, more inclined to become discouraged more readily after setbacks."
+    ],
+    "scope": "Temporary departures from the enduring dispositions; these can recover without changing those dispositions."
+  },
+  "enduring_traits_unchanged": true,
+  "action": "Step aside from the group and find Maya in a quieter corner to ask for a quick, private reassurance check on the opening section.",
+  "status": "intention only; no world outcome awarded"
+}

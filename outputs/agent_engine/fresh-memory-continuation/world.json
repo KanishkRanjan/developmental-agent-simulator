@@ -1,0 +1,3845 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 6577.63,
+  "entities": {
+    "maya": {
+      "name": "Maya",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well"
+      }
+    },
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "maya"
+        ],
+        "caregivers": [
+          "maya"
+        ],
+        "education": "Completed secondary education",
+        "residence": "Lives with Maya",
+        "interests": "Reading and outdoor walks"
+      },
+      "generated_biography": {
+        "personal-history-v1": {
+          "current_facts": {
+            "education": "Completed secondary education",
+            "residence": "Lives with Maya",
+            "interests": "Reading and outdoor walks"
+          },
+          "timeline": [
+            {
+              "field": "residence",
+              "value": "Lives with Maya",
+              "start_day": 0,
+              "end_day": 6576.357417778332
+            },
+            {
+              "field": "education",
+              "value": "Completed secondary education",
+              "start_day": 0,
+              "end_day": 6576.357417778332
+            },
+            {
+              "field": "interests",
+              "value": "Reading and outdoor walks",
+              "start_day": 0,
+              "end_day": 6576.357417778332
+            }
+          ],
+          "overview": "Alex was born on day 0 and has resided with their biological parent and caregiver, Maya, for their entire life. They have completed secondary education and maintain a consistent interest in reading and outdoor walks. Their health status is well, and they have no other recorded commitments or timeline events.",
+          "day": 6576.357417778332,
+          "policy": "open_values_structured_synthetic_initialization",
+          "invented_private_observations": false
+        }
+      }
+    },
+    "rowan": {
+      "name": "Rowan",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well"
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "rowan"
+        ],
+        "caregivers": [
+          "rowan"
+        ],
+        "education": "Completed primary schooling at a local community center.",
+        "residence": "Lives in a small cottage on the outskirts of town.",
+        "interests": "Gardening and reading"
+      },
+      "generated_biography": {
+        "personal-history-v1": {
+          "current_facts": {
+            "education": "Completed primary schooling at a local community center.",
+            "residence": "Lives in a small cottage on the outskirts of town.",
+            "interests": "Gardening and reading"
+          },
+          "timeline": [
+            {
+              "field": "education",
+              "value": "Enrolled in primary school",
+              "start_day": 365,
+              "end_day": 1825
+            },
+            {
+              "field": "residence",
+              "value": "Lived in a small cottage on the outskirts of town",
+              "start_day": 0,
+              "end_day": 6576
+            },
+            {
+              "field": "interests",
+              "value": "Developed a passion for gardening and reading",
+              "start_day": 1825,
+              "end_day": 6576
+            }
+          ],
+          "overview": "Bea was born into a simple life, raised by Rowan in a quiet cottage on the outskirts of town. After completing primary education, she settled into a routine centered around gardening and reading, maintaining a peaceful existence in her familiar surroundings.",
+          "day": 6576.357417778332,
+          "policy": "open_values_structured_synthetic_initialization",
+          "invented_private_observations": false
+        }
+      }
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 88.71965722108145,
+        "N2": 98.61965722108145,
+        "N3": 80.53965722108146,
+        "N4": 71.31965722108144,
+        "N5": 95.41965722108145,
+        "N6": 95.79965722108145,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.700342778918554,
+        "A2": 3.370342778918549,
+        "A3": 66.31034277891855,
+        "A4": 6.380342778918549,
+        "A5": 16.780342778918552,
+        "A6": 59.83034277891855,
+        "C1": 27.33034277891855,
+        "C2": 41.97034277891855,
+        "C3": 11.530342778918548,
+        "C4": 6.020342778918549,
+        "C5": 7.930342778918549,
+        "C6": 35.090342778918554
+      },
+      "initial_facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.3830034525020996,
+          1.4028694510641286,
+          -0.3905994125332013,
+          -0.6711883972735928,
+          0.93614618361995,
+          1.0441600549052343,
+          0.5574964018919111,
+          0.3274008760796736,
+          0.3328475333825997,
+          -0.7683236539145113,
+          1.228670670027051,
+          0.9586564233554301,
+          1.7291942413318073,
+          2.321023915692227,
+          0.6613039520724006,
+          -0.24591241137849873,
+          0.5281014123464178,
+          0.5649513657314105,
+          0.8179302263844332,
+          -1.4285038323800467,
+          2.000804069025171,
+          -0.8135290499072897,
+          -0.5734037142536089,
+          1.7488232453324573,
+          0.0029354547362000494,
+          -1.0951317034624553,
+          -1.7839442966710328,
+          -1.4422385602087857,
+          -1.1359544479019577,
+          -0.5214317665134227
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 6574.5,
+        "initial_facets": {
+          "N1": 88.72,
+          "N2": 98.62,
+          "N3": 80.54,
+          "N4": 71.32,
+          "N5": 95.42,
+          "N6": 95.8,
+          "E1": 13.63,
+          "E2": 37.33,
+          "E3": 31.92,
+          "E4": 8.06,
+          "E5": 54.05,
+          "E6": 15.67,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 57.04,
+          "O4": 4.98,
+          "O5": 11.16,
+          "O6": 1.71,
+          "A1": 58.7,
+          "A2": 3.37,
+          "A3": 66.31,
+          "A4": 6.38,
+          "A5": 16.78,
+          "A6": 59.83,
+          "C1": 27.33,
+          "C2": 41.97,
+          "C3": 11.53,
+          "C4": 6.02,
+          "C5": 7.93,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "alex": {
+      "facets": {
+        "N1": 30.6392209570033,
+        "N2": 96.0192209570033,
+        "N3": 30.539220957003298,
+        "N4": 71.3192209570033,
+        "N5": 40.539220957003295,
+        "N6": 83.4792209570033,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.4907790429967,
+        "A2": 76.71077904299669,
+        "A3": 66.3107790429967,
+        "A4": 66.8307790429967,
+        "A5": 68.8607790429967,
+        "A6": 96.7707790429967,
+        "C1": 87.7907790429967,
+        "C2": 84.71077904299669,
+        "C3": 85.3107790429967,
+        "C4": 94.32077904299669,
+        "C5": 73.07077904299669,
+        "C6": 77.49077904299669
+      },
+      "initial_facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "self-goal-23ec9376ec0690b9": {
+          "description": "Draft a specific weekly schedule based on Bea's proposal to finalize our project/social time balance.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": [
+            "Allocate time to draft the specific weekly schedule based on the agreed-upon principles.",
+            "Review the draft to ensure it balances project work and social time as discussed.",
+            "Send the draft to Bea for her review and feedback."
+          ],
+          "origin": "self_set_intention",
+          "evidence": [
+            "life-0-live-joint-task"
+          ],
+          "plan_versions": [
+            {
+              "day": 6577.621546523862,
+              "plan": [],
+              "evidence": "life-1-live-joint-task"
+            }
+          ]
+        }
+      },
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        },
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.55,
+          "closeness": 0.059907311263991694,
+          "firsthand": true,
+          "evidence": "life-1-live-joint-task",
+          "last_interaction_day": 6577.621546523862,
+          "versions": [
+            {
+              "day": 6576.399084444999,
+              "trust": 0.5,
+              "closeness": 0.0,
+              "evidence": [
+                "life-0-live-joint-task"
+              ],
+              "reason": "Bea responded constructively and collaboratively to my proposal, validating my feelings and offering a thoughtful solution. This demonstrates reliability and shared values, increasing trust and closeness."
+            },
+            {
+              "day": 6577.621546523862,
+              "trust": 0.53,
+              "closeness": 0.0399073112639917,
+              "evidence": [
+                "life-1-live-joint-task"
+              ],
+              "reason": "Bea's expression of trust in my judgment and her collaborative invitation to review the details together further solidifies our working dynamic and mutual respect."
+            }
+          ]
+        }
+      },
+      "references": {
+        "bea": [
+          "seed-rejection",
+          "seed-context",
+          "seed-meeting",
+          "life-0-live-joint-task-request",
+          "life-0-live-joint-task",
+          "life-1-live-joint-task-request",
+          "life-1-live-joint-task"
+        ]
+      },
+      "beliefs": {},
+      "memory_meta": {
+        "seed-rejection": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0.7,
+          "meaning": "I felt uncertain about sharing ideas.",
+          "versions": [],
+          "stability_days": 7.199999999999999,
+          "encoding_stability_days": 7.199999999999999,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "seed-rejection",
+          "summary": "I felt uncertain about sharing ideas.",
+          "topics": [
+            "relationships",
+            "projects",
+            "sharing"
+          ]
+        },
+        "seed-context": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0.7,
+          "meaning": "A delayed reply can have explanations besides rejection.",
+          "versions": [],
+          "stability_days": 7.199999999999999,
+          "encoding_stability_days": 7.199999999999999,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "seed-context",
+          "summary": "A delayed reply can have explanations besides rejection.",
+          "topics": [
+            "relationships",
+            "projects",
+            "sharing"
+          ]
+        },
+        "seed-meeting": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0.7,
+          "meaning": "I care about both shared projects and friendship.",
+          "versions": [],
+          "stability_days": 8.712,
+          "encoding_stability_days": 7.199999999999999,
+          "last_recall_day": 6577.579879857195,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "seed-meeting",
+          "summary": "I care about both shared projects and friendship.",
+          "topics": [
+            "relationships",
+            "projects",
+            "sharing"
+          ]
+        },
+        "life-0-live-joint-task-request": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.6,
+          "meaning": "I successfully initiated a conversation with Bea that resulted in a constructive, collaborative agreement. Bea validated my concerns about feeling stretched thin and proposed a balanced schedule (specific work days, free weekends) with room for creative flexibility, confirming our shared commitment to both projects and friendship.",
+          "versions": [
+            {
+              "day": 6576.399084444999,
+              "meaning": "I am initiating a conversation with Bea to negotiate a balance between our collaborative projects and social time. I feel confident in my ability to handle this task and am motivated to find a solution that respects both our goals and our friendship.",
+              "confidence": 0.8,
+              "replaced_by": "alex:reflection:life-0-live-joint-task:life-0-live-joint-task-request"
+            }
+          ],
+          "stability_days": 9.438000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 6577.579879857195,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-0-live-joint-task-request",
+          "summary": "I successfully initiated a conversation with Bea that resulted in a constructive, collaborative agreement. Bea validated my concerns about feeling stretched thin and proposed a balanced schedule (specific work days, free weekends) with room for creative flexibility, confirming our shared commitment to both projects and friendship."
+        },
+        "life-0-live-joint-task": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.7,
+          "meaning": "Bea is responding positively to my proposal, validating my concern about time management by admitting she feels stretched thin as well. She is offering a concrete, structured solution (separating work and social time) while leaving room for creative flexibility. Her question invites me to co-create the final arrangement, signaling a collaborative rather than directive tone.",
+          "versions": [],
+          "stability_days": 9.405000000000001,
+          "encoding_stability_days": 8.55,
+          "last_recall_day": 6577.579879857195,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-0-live-joint-task",
+          "summary": "Bea responded positively to my proposal, validating my concern by admitting she feels stretched thin. She suggested separating project days from weekends and offered creative flexibility, inviting me to co-create the final arrangement.",
+          "topics": [
+            "collaboration",
+            "time_management",
+            "friendship",
+            "planning",
+            "validation"
+          ]
+        },
+        "life-1-live-joint-task-request": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.8,
+          "meaning": "I proactively took ownership of the next step by proposing to draft a schedule. Bea responded with trust and enthusiasm, validating my initiative and establishing a clear, collaborative next step to review the draft together. This reinforces my sense of reliability and shared commitment.",
+          "versions": [
+            {
+              "day": 6577.621546523862,
+              "meaning": "I am proactively taking ownership of the next step in our agreement by drafting a concrete schedule. I feel a mix of satisfaction from the previous positive interaction and a slight pressure to execute this well, driven by my desire to be reliable and my current tendency to anticipate problems. I am seeking validation not just for the plan, but for my commitment to follow through.",
+              "confidence": 0.95,
+              "replaced_by": "alex:reflection:life-1-live-joint-task:life-1-live-joint-task-request"
+            }
+          ],
+          "stability_days": 10.889999999999999,
+          "encoding_stability_days": 9.899999999999999,
+          "last_recall_day": 6577.621546523862,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-1-live-joint-task-request",
+          "summary": "I proactively took ownership of the next step by proposing to draft a schedule. Bea responded with trust and enthusiasm, validating my initiative and establishing a clear, collaborative next step to review the draft together. This reinforces my sense of reliability and shared commitment."
+        },
+        "life-1-live-joint-task": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.7,
+          "meaning": "Bea is affirming my initiative to draft the schedule and expressing genuine interest in the outcome. Her tone is supportive and collaborative, emphasizing trust in my judgment while welcoming a joint review to ensure the plan feels balanced for both of us. This validates my effort to be reliable and provides a clear next step: finalize the draft and share it with her.",
+          "versions": [],
+          "stability_days": 8.55,
+          "encoding_stability_days": 8.55,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-1-live-joint-task",
+          "summary": "Bea affirmed my plan to draft the schedule, expressing trust in my judgment while inviting a collaborative review to ensure the details align with our shared agreement.",
+          "topics": [
+            "collaboration",
+            "trust",
+            "planning",
+            "validation",
+            "friendship"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 6576.357417778332,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "seed-meeting"
+        },
+        {
+          "day": 6576.357417778332,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "seed-rejection"
+        },
+        {
+          "day": 6576.357417778332,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "seed-context"
+        },
+        {
+          "day": 6576.399084444999,
+          "valence": 0.075,
+          "arousal": 0.1,
+          "memory": "life-0-live-joint-task-request"
+        },
+        {
+          "day": 6577.579879857195,
+          "valence": 0.1625,
+          "arousal": 0.1125,
+          "memory": "life-0-live-joint-task"
+        },
+        {
+          "day": 6577.579879857195,
+          "valence": 0.0375,
+          "arousal": 0.05,
+          "memory": "life-0-live-joint-task-request"
+        },
+        {
+          "day": 6577.579879857195,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "seed-meeting"
+        },
+        {
+          "day": 6577.621546523862,
+          "valence": 0.1625,
+          "arousal": 0.175,
+          "memory": "life-1-live-joint-task-request"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "alex:semantic:ffaadf7cfd9aa266:seed-meeting",
+          "day": 6576.357417778332,
+          "memory": "seed-meeting",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:ffaadf7cfd9aa266:seed-rejection",
+          "day": 6576.357417778332,
+          "memory": "seed-rejection",
+          "rehearsed": false
+        },
+        {
+          "id": "alex:semantic:ffaadf7cfd9aa266:seed-context",
+          "day": 6576.357417778332,
+          "memory": "seed-context",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task-action:used-memory:seed-meeting",
+          "day": 6576.357417778332,
+          "memory": "seed-meeting",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task-action:used-memory:seed-context",
+          "day": 6576.357417778332,
+          "memory": "seed-context",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task-request:reminder:alex:seed-meeting",
+          "day": 6576.357417778332,
+          "memory": "seed-meeting",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task:reminder:alex:life-0-live-joint-task-request",
+          "day": 6576.399084444999,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-0-live-joint-task:reminder:alex:seed-meeting",
+          "day": 6576.399084444999,
+          "memory": "seed-meeting",
+          "rehearsed": false
+        },
+        {
+          "id": "alex:semantic:8d9e038d0ecba6a1:life-0-live-joint-task",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:8d9e038d0ecba6a1:life-0-live-joint-task-request",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": true
+        },
+        {
+          "id": "alex:semantic:8d9e038d0ecba6a1:seed-meeting",
+          "day": 6577.579879857195,
+          "memory": "seed-meeting",
+          "rehearsed": true
+        },
+        {
+          "id": "life-1-live-joint-task-action:used-memory:life-0-live-joint-task",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task-action:used-memory:life-0-live-joint-task-request",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task-request:reminder:alex:life-0-live-joint-task",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task-request:reminder:alex:life-0-live-joint-task-request",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task:reminder:alex:life-1-live-joint-task-request",
+          "day": 6577.621546523862,
+          "memory": "life-1-live-joint-task-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-1-live-joint-task:reminder:alex:life-0-live-joint-task",
+          "day": 6577.621546523862,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": false
+        }
+      ],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.23594890875662042,
+          2.204420323820903,
+          -0.6265388857294751,
+          -0.9401158170664725,
+          -1.0843576892391307,
+          0.9471488789350636,
+          0.21572482413069305,
+          -0.1601045804267867,
+          2.102162000943369,
+          0.020887616192721226,
+          -0.8969943152761913,
+          0.5192373091242993,
+          0.1397675558069248,
+          2.2025628926409366,
+          -0.5660936783788852,
+          -1.1153140984733823,
+          1.0609607527091973,
+          -0.7015042040271896,
+          0.3473233393921183,
+          -0.3735969176868006,
+          0.6086167353840881,
+          0.5970586628888059,
+          -0.641285804999365,
+          1.6691633854274976,
+          0.9721932071733506,
+          0.16236826230393142,
+          0.1756109815100434,
+          0.31209299818426617,
+          0.8741322116464711,
+          0.7068063381236804
+        ],
+        "nonshared_latent": [
+          -0.22145488831475038,
+          0.2380719757825447,
+          0.06117348294822844,
+          1.2479665337817227,
+          0.5009510226140108,
+          0.35697298678586886,
+          -1.1181505850267195,
+          -0.896827886196598,
+          -0.2412974322601349,
+          0.09562418467844819,
+          -0.31107152972489627,
+          0.6352776516906533,
+          0.20283025457276516,
+          -0.11100608441261395,
+          0.14139874576954264,
+          0.403697199699508,
+          0.8794854413720177,
+          0.7735013215199855,
+          -0.7804004507698558,
+          1.1794629648697312,
+          -0.17585034142495348,
+          0.07715474324365451,
+          0.9157191529329053,
+          1.067091083408792,
+          0.570941067209825,
+          0.8825819890069784,
+          0.9013219522897673,
+          1.1322135820401205,
+          0.024034238006481634,
+          0.18025620679205978
+        ],
+        "parents": [
+          "maya"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 6574.5,
+        "initial_facets": {
+          "N1": 30.64,
+          "N2": 96.02,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 40.54,
+          "N6": 83.48,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 66.31,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 73.07,
+          "C6": 77.49
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "retrieval_focus": {
+        "day": 6577.579879857195,
+        "situation": "Bea is available to discuss a project. Decide whether to discuss it together or work alone.",
+        "ids": [
+          "life-0-live-joint-task",
+          "life-0-live-joint-task-request",
+          "seed-meeting"
+        ],
+        "policy": "local_llm_semantic_selection",
+        "candidate_count": 5,
+        "omitted_candidates": 0,
+        "retrieval_queries": [
+          "past experiences balancing collaborative project work with personal social time",
+          "moments of feeling stretched thin by competing commitments and seeking a structured schedule",
+          "previous instances of co-creating a plan with a peer to manage workload and friendship dynamics",
+          "times when I prioritized organizing materials and setting demanding goals for a joint creative task"
+        ],
+        "indexed_corpus": true
+      },
+      "caps_rules": [
+        {
+          "id": "sig_01",
+          "dimension": "Intellect",
+          "trigger_context": "During a quiet evening walk, Alex encounters a complex philosophical paradox in a book that challenges their previous understanding of ethics.",
+          "narrative_shift": "Alex becomes deeply absorbed in the abstract problem, temporarily neglecting physical comfort or social obligations to mentally dissect the logic, showing heightened focus and reduced awareness of immediate surroundings.",
+          "state_modifiers": {
+            "N": -2,
+            "E": 3,
+            "O": 8,
+            "A": 1,
+            "C": 4
+          }
+        },
+        {
+          "id": "sig_02",
+          "dimension": "Adversity",
+          "trigger_context": "Alex hears that a peer has been publicly criticized for a minor mistake in a group project, causing visible distress.",
+          "narrative_shift": "Alex feels a sharp surge of empathy and irritation at the unfairness, leading them to immediately intervene to defend the peer, speaking up with more intensity than usual to mitigate the other's discomfort.",
+          "state_modifiers": {
+            "N": 5,
+            "E": 2,
+            "O": 1,
+            "A": 6,
+            "C": -1
+          }
+        },
+        {
+          "id": "sig_03",
+          "dimension": "Duty",
+          "trigger_context": "Alex is tasked with organizing a detailed schedule for a collaborative project with Bea, which requires strict adherence to deadlines and specific formatting.",
+          "narrative_shift": "Alex approaches the task with rigorous precision, setting high standards for themselves and the output, and may show mild impatience if the process feels inefficient or if others are not meeting the same level of effort.",
+          "state_modifiers": {
+            "N": 3,
+            "E": 1,
+            "O": 2,
+            "A": -2,
+            "C": 9
+          }
+        },
+        {
+          "id": "sig_04",
+          "dimension": "Positivity",
+          "trigger_context": "Alex visits a local art gallery and encounters a piece of visual art that resonates deeply with their aesthetic sensibilities.",
+          "narrative_shift": "Alex experiences a moment of profound aesthetic appreciation, becoming quiet and reflective, allowing the beauty of the experience to lower their usual drive for achievement and social interaction in favor of pure contemplation.",
+          "state_modifiers": {
+            "N": -4,
+            "E": 2,
+            "O": 7,
+            "A": 3,
+            "C": -2
+          }
+        },
+        {
+          "id": "sig_05",
+          "dimension": "Sociality",
+          "trigger_context": "In a casual group setting, Alex notices that their preferences for a specific activity are being overlooked in favor of a more popular but less interesting option.",
+          "narrative_shift": "Alex asserts their preference clearly and directly, advocating for their choice without hesitation, prioritizing their own enjoyment over the immediate social harmony of the group.",
+          "state_modifiers": {
+            "N": 2,
+            "E": 5,
+            "O": 1,
+            "A": -3,
+            "C": 2
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 6576.357417778332,
+        "stage": 2,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 30.63953769702487,
+          "N2": 96.01953769702486,
+          "N3": 30.53953769702487,
+          "N4": 71.31953769702486,
+          "N5": 40.53953769702487,
+          "N6": 83.47953769702487,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49046230297513,
+          "A2": 76.71046230297513,
+          "A3": 66.31046230297514,
+          "A4": 66.83046230297514,
+          "A5": 68.86046230297514,
+          "A6": 96.77046230297513,
+          "C1": 87.79046230297514,
+          "C2": 84.71046230297513,
+          "C3": 85.31046230297514,
+          "C4": 94.32046230297513,
+          "C5": 73.07046230297513,
+          "C6": 77.49046230297513
+        },
+        "evidence": [
+          "seed-meeting"
+        ]
+      },
+      "situational_state": {
+        "day": 6577.579879857195,
+        "offsets": {
+          "N1": 1.219579022001522,
+          "N2": 1.2195790220015255,
+          "N3": 1.219579022001522,
+          "N4": 1.2195790220015255,
+          "N5": 1.2195790220015255,
+          "N6": 1.2195790220015255,
+          "E1": 0.5277527537344682,
+          "E2": 0.5277527537344682,
+          "E3": 0.5277527537344753,
+          "E4": 0.5277527537344611,
+          "E5": 0.5277527537344664,
+          "E6": 0.5277527537344753,
+          "O1": 0.9516234516107431,
+          "O2": 0.9516234516107431,
+          "O3": 0.9516234516107431,
+          "O4": 0.9516234516107431,
+          "O5": 0.9516234516107431,
+          "O6": 0.9516234516107431,
+          "A1": -1.0210928195506206,
+          "A2": -1.021092819550617,
+          "A3": -1.021092819550617,
+          "A4": -1.021092819550617,
+          "A5": -1.021092819550617,
+          "A6": -1.021092819550617,
+          "C1": 1.179815472879767,
+          "C2": 1.179815472879767,
+          "C3": 1.179815472879767,
+          "C4": 1.179815472879767,
+          "C5": 1.179815472879767,
+          "C6": 1.179815472879767
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Bea is ready to collaborate on the project, and I feel a strong pull to work together to honor our recent agreement and my commitment to following through. The social aspect of the interaction aligns with my current confidence in handling tasks and my desire to maintain the balance we discussed.",
+          "dimensions": {
+            "Duty": 0.85,
+            "Intellect": 0.4,
+            "Adversity": 0.1,
+            "Mating": 0.0,
+            "Positivity": 0.6,
+            "Negativity": 0.1,
+            "Deception": 0.0,
+            "Sociality": 0.75
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 1.2195790220015208,
+          "E": 0.5277527537344663,
+          "O": 0.9516234516107412,
+          "A": -1.0210928195506193,
+          "C": 1.1798154728797619
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-1-live-joint-task-situation",
+        "situation": "Bea is available to discuss a project. Decide whether to discuss it together or work alone.",
+        "cues": [
+          "social",
+          "school"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "unresolved_references": {
+        "mention-306f8964fcb1d42d7957": {
+          "reference_id": "mention-306f8964fcb1d42d7957",
+          "span": "Bea",
+          "candidate_ids": [
+            "bea"
+          ],
+          "resolved_id": "bea",
+          "resolution": "named_known_identity",
+          "speaker_id": null,
+          "evidence": [
+            "life-0-live-joint-task-request",
+            "life-0-live-joint-task",
+            "life-1-live-joint-task-request",
+            "life-1-live-joint-task"
+          ]
+        }
+      },
+      "calendar": [
+        {
+          "activity": "life-0-live-joint-task",
+          "start_day": 6576.357417778332,
+          "end_day": 6576.399084444999,
+          "status": "completed"
+        },
+        {
+          "activity": "life-1-live-joint-task",
+          "start_day": 6577.579879857195,
+          "end_day": 6577.621546523862,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "6576": 1.000000000007276,
+        "6577": 1.000000000007276
+      },
+      "habits": {
+        "school:social:share": {
+          "strength": 0.19721502858090245,
+          "day": 6577.621546523862,
+          "cues": [
+            "social",
+            "school"
+          ],
+          "evidence": [
+            "life-0-live-joint-task",
+            "life-1-live-joint-task"
+          ],
+          "days": [
+            6576,
+            6577
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-0-live-joint-task",
+        "life-1-live-joint-task"
+      ],
+      "developmental_exposures": [
+        {
+          "day": 6576.399084444999,
+          "action": "life-0-live-joint-task-action",
+          "evidence": "life-0-live-joint-task",
+          "offsets": {
+            "N1": 0.6717927365416791,
+            "N2": 0.6717927365416756,
+            "N3": 0.6717927365416791,
+            "N4": 0.6717927365416756,
+            "N5": 0.6717927365416827,
+            "N6": 0.6717927365416756,
+            "E1": -0.36569979947634934,
+            "E2": -0.36569979947634934,
+            "E3": -0.3656997994763458,
+            "E4": -0.3656997994763458,
+            "E5": -0.36569979947634934,
+            "E6": -0.3656997994763458,
+            "O1": -0.05127052388900921,
+            "O2": -0.05127052388901632,
+            "O3": -0.05127052388900921,
+            "O4": -0.05127052388900921,
+            "O5": -0.05127052388901632,
+            "O6": -0.05127052388900921,
+            "A1": -1.2489836706716133,
+            "A2": -1.2489836706716062,
+            "A3": -1.2489836706716062,
+            "A4": -1.2489836706716062,
+            "A5": -1.2489836706716062,
+            "A6": -1.2489836706716062,
+            "C1": 2.6017871257986513,
+            "C2": 2.6017871257986513,
+            "C3": 2.6017871257986513,
+            "C4": 2.6017871257986513,
+            "C5": 2.6017871257986513,
+            "C6": 2.6017871257986513
+          }
+        },
+        {
+          "day": 6577.621546523862,
+          "action": "life-1-live-joint-task-action",
+          "evidence": "life-1-live-joint-task",
+          "offsets": {
+            "N1": 1.219579022001522,
+            "N2": 1.2195790220015255,
+            "N3": 1.219579022001522,
+            "N4": 1.2195790220015255,
+            "N5": 1.2195790220015255,
+            "N6": 1.2195790220015255,
+            "E1": 0.5277527537344682,
+            "E2": 0.5277527537344682,
+            "E3": 0.5277527537344753,
+            "E4": 0.5277527537344611,
+            "E5": 0.5277527537344664,
+            "E6": 0.5277527537344753,
+            "O1": 0.9516234516107431,
+            "O2": 0.9516234516107431,
+            "O3": 0.9516234516107431,
+            "O4": 0.9516234516107431,
+            "O5": 0.9516234516107431,
+            "O6": 0.9516234516107431,
+            "A1": -1.0210928195506206,
+            "A2": -1.021092819550617,
+            "A3": -1.021092819550617,
+            "A4": -1.021092819550617,
+            "A5": -1.021092819550617,
+            "A6": -1.021092819550617,
+            "C1": 1.179815472879767,
+            "C2": 1.179815472879767,
+            "C3": 1.179815472879767,
+            "C4": 1.179815472879767,
+            "C5": 1.179815472879767,
+            "C6": 1.179815472879767
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "reinterpretation_queue": [],
+      "social_update_budget": {
+        "6576:bea:trust": 0.03,
+        "6576:bea:closeness": 0.04,
+        "6577:bea:trust": 0.02,
+        "6577:bea:closeness": 0.02
+      }
+    },
+    "rowan": {
+      "facets": {
+        "N1": 15.659657221081451,
+        "N2": 23.48965722108145,
+        "N3": 21.09965722108145,
+        "N4": 5.679657221081451,
+        "N5": 99.26965722108145,
+        "N6": 30.659657221081453,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 91.27,
+        "E4": 30.23,
+        "E5": 22.35,
+        "E6": 88.97,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 80.59,
+        "O4": 76.66,
+        "O5": 87.8,
+        "O6": 65.84,
+        "A1": 72.84034277891855,
+        "A2": 3.370342778918549,
+        "A3": 36.66034277891855,
+        "A4": 86.67034277891855,
+        "A5": 5.4803427789185495,
+        "A6": 46.31034277891855,
+        "C1": 63.24034277891855,
+        "C2": 96.32034277891854,
+        "C3": 59.74034277891855,
+        "C4": 48.43034277891855,
+        "C5": 83.16034277891855,
+        "C6": 35.090342778918554
+      },
+      "initial_facets": {
+        "N1": 15.66,
+        "N2": 23.49,
+        "N3": 21.1,
+        "N4": 5.68,
+        "N5": 99.27,
+        "N6": 30.66,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 91.27,
+        "E4": 30.23,
+        "E5": 22.35,
+        "E6": 88.97,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 80.59,
+        "O4": 76.66,
+        "O5": 87.8,
+        "O6": 65.84,
+        "A1": 72.84,
+        "A2": 3.37,
+        "A3": 36.66,
+        "A4": 86.67,
+        "A5": 5.48,
+        "A6": 46.31,
+        "C1": 63.24,
+        "C2": 96.32,
+        "C3": 59.74,
+        "C4": 48.43,
+        "C5": 83.16,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.6834513632362134,
+          -1.6011248469005488,
+          -0.48914489911982284,
+          -0.03656172187570306,
+          2.3104468968678473,
+          0.30087847758651665,
+          1.6425844361863111,
+          1.5094385517797564,
+          0.4744218069107717,
+          -0.42088374022739666,
+          -0.16067934312630272,
+          1.5792914547406458,
+          0.07253253813208099,
+          1.373153316858442,
+          0.6688063390476466,
+          0.1519571454671506,
+          1.149511599346135,
+          -0.02498368564095993,
+          1.7889572521493773,
+          -0.9437575935585567,
+          1.1922350496724199,
+          1.8950147386700953,
+          -1.642041509461298,
+          1.0073803788637516,
+          -0.20246877099644986,
+          0.22814146990968043,
+          0.6289176964081831,
+          -0.09049119073314953,
+          -0.1043770980292098,
+          -0.13855148502467352
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 6574.5,
+        "initial_facets": {
+          "N1": 15.66,
+          "N2": 23.49,
+          "N3": 21.1,
+          "N4": 5.68,
+          "N5": 99.27,
+          "N6": 30.66,
+          "E1": 97.13,
+          "E2": 86.33,
+          "E3": 91.27,
+          "E4": 30.23,
+          "E5": 22.35,
+          "E6": 88.97,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 80.59,
+          "O4": 76.66,
+          "O5": 87.8,
+          "O6": 65.84,
+          "A1": 72.84,
+          "A2": 3.37,
+          "A3": 36.66,
+          "A4": 86.67,
+          "A5": 5.48,
+          "A6": 46.31,
+          "C1": 63.24,
+          "C2": 96.32,
+          "C3": 59.74,
+          "C4": 48.43,
+          "C5": 83.16,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "bea": {
+      "facets": {
+        "N1": 5.779220957003298,
+        "N2": 15.849220957003297,
+        "N3": 21.0992209570033,
+        "N4": 9.939220957003297,
+        "N5": 92.0592209570033,
+        "N6": 83.4792209570033,
+        "E1": 83.23,
+        "E2": 91.94,
+        "E3": 31.92,
+        "E4": 84.77,
+        "E5": 94.02,
+        "E6": 78.07,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 9.53,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 82.81,
+        "A1": 72.8407790429967,
+        "A2": 28.420779042996703,
+        "A3": 14.630779042996704,
+        "A4": 77.21077904299669,
+        "A5": 10.020779042996702,
+        "A6": 34.390779042996705,
+        "C1": 6.370779042996702,
+        "C2": 41.9707790429967,
+        "C3": 11.530779042996702,
+        "C4": 9.290779042996702,
+        "C5": 20.0007790429967,
+        "C6": 2.3507790429967024
+      },
+      "initial_facets": {
+        "N1": 5.78,
+        "N2": 15.85,
+        "N3": 21.1,
+        "N4": 9.94,
+        "N5": 92.06,
+        "N6": 83.48,
+        "E1": 83.23,
+        "E2": 91.94,
+        "E3": 31.92,
+        "E4": 84.77,
+        "E5": 94.02,
+        "E6": 78.07,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 9.53,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 82.81,
+        "A1": 72.84,
+        "A2": 28.42,
+        "A3": 14.63,
+        "A4": 77.21,
+        "A5": 10.02,
+        "A6": 34.39,
+        "C1": 6.37,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 9.29,
+        "C5": 20.0,
+        "C6": 2.35
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "rowan": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        },
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.53,
+          "closeness": 0.03995365563199585,
+          "firsthand": true,
+          "evidence": "life-1-live-joint-task",
+          "last_interaction_day": 6577.621546523862,
+          "versions": [
+            {
+              "day": 6576.399084444999,
+              "trust": 0.5,
+              "closeness": 0.0,
+              "evidence": [
+                "life-0-live-joint-task"
+              ],
+              "reason": "Successfully engaged in the requested collaborative discussion, reinforcing the cooperative dynamic."
+            },
+            {
+              "day": 6577.621546523862,
+              "trust": 0.51,
+              "closeness": 0.01995365563199585,
+              "evidence": [
+                "life-1-live-joint-task"
+              ],
+              "reason": "Successfully engaged in the requested collaborative discussion, reinforcing the cooperative dynamic."
+            }
+          ]
+        }
+      },
+      "references": {
+        "alex": [
+          "life-0-live-joint-task-request",
+          "life-1-live-joint-task-request"
+        ],
+        "mention-19404278bcae7b671814": [
+          "life-0-live-joint-task",
+          "life-1-live-joint-task"
+        ]
+      },
+      "beliefs": {},
+      "memory_meta": {
+        "seed-meeting": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.3000000000000003,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": 6576.357417778332,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "seed-meeting"
+        },
+        "life-0-live-joint-task-request": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.6,
+          "meaning": "Alex initiated a collaborative conversation, which I subsequently engaged in, discussing our projects and finding a balance.",
+          "versions": [
+            {
+              "day": 6576.399084444999,
+              "meaning": "Alex is initiating a collaborative conversation to balance project work and social time, indicating a desire to maintain the friendship established in our recent meeting.",
+              "confidence": 0.9,
+              "replaced_by": "bea:reflection:life-0-live-joint-task:life-0-live-joint-task-request"
+            }
+          ],
+          "stability_days": 9.075000000000001,
+          "encoding_stability_days": 7.5,
+          "last_recall_day": 6577.579879857195,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-0-live-joint-task-request",
+          "summary": "Alex initiated a collaborative conversation, which I subsequently engaged in, discussing our projects and finding a balance."
+        },
+        "life-0-live-joint-task": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.6,
+          "meaning": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "versions": [],
+          "stability_days": 8.580000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 6577.579879857195,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-0-live-joint-task",
+          "summary": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "topics": [
+            "project_discussion",
+            "alex_interaction",
+            "work_life_balance"
+          ]
+        },
+        "life-1-live-joint-task-request": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.5,
+          "meaning": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "versions": [
+            {
+              "day": 6577.621546523862,
+              "meaning": "Alex is following up on our previous conversation about balancing projects and social time. They have accepted the idea of keeping weekends free and are taking the initiative to draft a specific weekly schedule based on my earlier proposal. They are asking for permission to share this draft with me later to ensure it feels balanced. This feels like a constructive step toward making our arrangement work, and I am curious to see how they structured it.",
+              "confidence": 0.95,
+              "replaced_by": "bea:reflection:life-1-live-joint-task:life-1-live-joint-task-request"
+            }
+          ],
+          "stability_days": 7.92,
+          "encoding_stability_days": 7.199999999999999,
+          "last_recall_day": 6577.579879857195,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-1-live-joint-task-request",
+          "summary": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time."
+        },
+        "life-1-live-joint-task": {
+          "kind": "direct",
+          "confidence": 0.95,
+          "importance": 0.6,
+          "meaning": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "versions": [],
+          "stability_days": 8.850000000000001,
+          "encoding_stability_days": 8.850000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-1-live-joint-task",
+          "summary": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "topics": [
+            "alex_interaction",
+            "project_discussion",
+            "work_life_balance"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 6576.357417778332,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "seed-meeting"
+        },
+        {
+          "day": 6576.357417778332,
+          "valence": 0.1,
+          "arousal": 0.075,
+          "memory": "life-0-live-joint-task-request"
+        },
+        {
+          "day": 6577.579879857195,
+          "valence": 0.05,
+          "arousal": 0.0375,
+          "memory": "life-0-live-joint-task-request"
+        },
+        {
+          "day": 6577.579879857195,
+          "valence": 0.075,
+          "arousal": 0.1,
+          "memory": "life-0-live-joint-task"
+        },
+        {
+          "day": 6577.579879857195,
+          "valence": 0.1625,
+          "arousal": 0.1,
+          "memory": "life-1-live-joint-task-request"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "life-0-live-joint-task-request:reminder:bea:seed-meeting",
+          "day": 6576.357417778332,
+          "memory": "seed-meeting",
+          "rehearsed": true
+        },
+        {
+          "id": "bea:semantic:6b0acee5d8e2bb56:life-0-live-joint-task-request",
+          "day": 6576.357417778332,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": true
+        },
+        {
+          "id": "bea:semantic:6b0acee5d8e2bb56:seed-meeting",
+          "day": 6576.357417778332,
+          "memory": "seed-meeting",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task-contact-action:used-memory:life-0-live-joint-task-request",
+          "day": 6576.357417778332,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task-contact-action:used-memory:seed-meeting",
+          "day": 6576.357417778332,
+          "memory": "seed-meeting",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task:reminder:bea:life-0-live-joint-task-request",
+          "day": 6576.399084444999,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-0-live-joint-task:reminder:bea:seed-meeting",
+          "day": 6576.399084444999,
+          "memory": "seed-meeting",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task-request:reminder:bea:life-0-live-joint-task-request",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-1-live-joint-task-request:reminder:bea:life-0-live-joint-task",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": true
+        },
+        {
+          "id": "bea:semantic:88e5986e93daa58c:life-0-live-joint-task-request",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": false
+        },
+        {
+          "id": "bea:semantic:88e5986e93daa58c:life-0-live-joint-task",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task-contact-action:used-memory:life-1-live-joint-task-request",
+          "day": 6577.579879857195,
+          "memory": "life-1-live-joint-task-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-1-live-joint-task-contact-action:used-memory:life-0-live-joint-task-request",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task-contact-action:used-memory:life-0-live-joint-task",
+          "day": 6577.579879857195,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task:reminder:bea:life-0-live-joint-task",
+          "day": 6577.621546523862,
+          "memory": "life-0-live-joint-task",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task:reminder:bea:life-0-live-joint-task-request",
+          "day": 6577.621546523862,
+          "memory": "life-0-live-joint-task-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-1-live-joint-task:reminder:bea:life-1-live-joint-task-request",
+          "day": 6577.621546523862,
+          "memory": "life-1-live-joint-task-request",
+          "rehearsed": false
+        }
+      ],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -1.453675370310486,
+          -0.576336621988087,
+          -0.9951018538751623,
+          -0.6649003697028824,
+          0.6638294847582409,
+          0.13316673326174355,
+          0.9428678469163176,
+          1.5322973854645656,
+          -0.2897716053981809,
+          0.6772354657208207,
+          1.3221892397806987,
+          0.9942293910086375,
+          1.2274147280063759,
+          0.9306897663520052,
+          -0.9901001493524825,
+          0.7172503353510422,
+          1.3052816462429364,
+          0.407399871661108,
+          0.5727221193271754,
+          -1.6403492748189372,
+          -1.3465814985435656,
+          -0.05580088263927563,
+          -2.4960867232562376,
+          -0.9035937682379199,
+          -1.980107106488757,
+          -0.20461648697574325,
+          -1.3283327690268663,
+          -1.2440405447712017,
+          -1.0796357173315707,
+          -1.770577679858056
+        ],
+        "nonshared_latent": [
+          -0.6939808175581539,
+          -0.565998444815311,
+          -0.05567855331458538,
+          -0.700065434409594,
+          0.9736968431509334,
+          0.8050973029367243,
+          0.25697241476278954,
+          0.22376768558779236,
+          -0.2509526144695917,
+          0.7128611630191677,
+          0.6634573916276131,
+          0.2230286776132281,
+          1.1774789008335516,
+          2.059420332382708,
+          -0.594772316716627,
+          0.18898639691645025,
+          1.629887614026925,
+          0.797998852145283,
+          0.019373472588950336,
+          0.6113711705002947,
+          -0.1686499426032877,
+          0.8888717185137409,
+          0.5572795480579564,
+          0.35491866370604425,
+          -0.20100180794319722,
+          -0.07517578136333952,
+          -0.21850285858612928,
+          -0.34090863471710886,
+          -0.17835009564764703,
+          -0.8230346975099716
+        ],
+        "parents": [
+          "rowan"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 6574.5,
+        "initial_facets": {
+          "N1": 5.78,
+          "N2": 15.85,
+          "N3": 21.1,
+          "N4": 9.94,
+          "N5": 92.06,
+          "N6": 83.48,
+          "E1": 83.23,
+          "E2": 91.94,
+          "E3": 31.92,
+          "E4": 84.77,
+          "E5": 94.02,
+          "E6": 78.07,
+          "O1": 95.88,
+          "O2": 96.27,
+          "O3": 9.53,
+          "O4": 76.66,
+          "O5": 95.96,
+          "O6": 82.81,
+          "A1": 72.84,
+          "A2": 28.42,
+          "A3": 14.63,
+          "A4": 77.21,
+          "A5": 10.02,
+          "A6": 34.39,
+          "C1": 6.37,
+          "C2": 41.97,
+          "C3": 11.53,
+          "C4": 9.29,
+          "C5": 20.0,
+          "C6": 2.35
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "unresolved_references": {
+        "mention-710c832d69b27f780e0a": {
+          "reference_id": "mention-710c832d69b27f780e0a",
+          "span": "Alex",
+          "candidate_ids": [
+            "alex"
+          ],
+          "resolved_id": "alex",
+          "resolution": "named_known_identity",
+          "speaker_id": "alex",
+          "evidence": [
+            "life-0-live-joint-task-request",
+            "life-1-live-joint-task-request"
+          ]
+        },
+        "mention-19404278bcae7b671814": {
+          "reference_id": "mention-19404278bcae7b671814",
+          "span": "project",
+          "candidate_ids": [],
+          "resolved_id": null,
+          "resolution": "unresolved",
+          "speaker_id": null,
+          "evidence": [
+            "life-0-live-joint-task",
+            "life-1-live-joint-task"
+          ]
+        }
+      },
+      "retrieval_focus": {
+        "day": 6577.579879857195,
+        "situation": "Alex approaches you: Hey, I've been thinking about our last chat. I really like the idea of keeping weekends free. I want to make sure I actually follow through on my end, so I'm going to draft a specific weekly schedule based on your proposal. Can I run it by you later to see if it feels balanced to you too? Request: Discuss the idea with the familiar person.",
+        "ids": [
+          "life-0-live-joint-task-request",
+          "life-0-live-joint-task"
+        ],
+        "policy": "local_llm_semantic_selection",
+        "candidate_count": 4,
+        "omitted_candidates": 0,
+        "retrieval_queries": [
+          "Past experiences balancing work projects with social time",
+          "Collaborative scheduling discussions with acquaintances",
+          "Reactions to others drafting plans based on my suggestions",
+          "Feelings of uncertainty when waiting for concrete details from a friend"
+        ],
+        "indexed_corpus": true
+      },
+      "caps_rules": [
+        {
+          "id": "sig-01",
+          "dimension": "Intellect",
+          "trigger_context": "Engaging in a deep philosophical debate with Alex about the nature of reality, where the conversation moves away from practical project logistics into abstract territory.",
+          "narrative_shift": "Bea becomes intensely focused on the conceptual elegance of the arguments, momentarily losing track of time and practical constraints, and speaks with heightened enthusiasm about hypothetical scenarios.",
+          "state_modifiers": {
+            "N": -2,
+            "E": 5,
+            "O": 8,
+            "A": 3,
+            "C": -4
+          }
+        },
+        {
+          "id": "sig-02",
+          "dimension": "Duty",
+          "trigger_context": "Alex suggests a rigid, long-term schedule for their collaborative projects that requires daily check-ins and strict adherence to deadlines.",
+          "narrative_shift": "Bea feels a sudden urge to reject the structure, proposing instead a loose, spontaneous approach to work, but hesitates to commit fully until Alex explicitly validates that flexibility is acceptable.",
+          "state_modifiers": {
+            "N": 4,
+            "E": -2,
+            "O": 2,
+            "A": -3,
+            "C": -6
+          }
+        },
+        {
+          "id": "sig-03",
+          "dimension": "Positivity",
+          "trigger_context": "While tending to the garden, Bea notices a rare, vibrant flower blooming unexpectedly near the cottage path.",
+          "narrative_shift": "Bea pauses her gardening to sketch the flower in a notebook, experiencing a surge of aesthetic appreciation that temporarily overrides any anxiety about her upcoming tasks with Alex.",
+          "state_modifiers": {
+            "N": -5,
+            "E": 4,
+            "O": 7,
+            "A": 2,
+            "C": 1
+          }
+        },
+        {
+          "id": "sig-04",
+          "dimension": "Adversity",
+          "trigger_context": "Alex expresses disappointment that Bea missed a casual social invitation last week, implying a lack of interest in the friendship.",
+          "narrative_shift": "Bea\u2019s confidence plummets, and she becomes overly apologetic and eager to please, quickly agreeing to any new plan Alex proposes without questioning the logistics, driven by a need for immediate reassurance.",
+          "state_modifiers": {
+            "N": 8,
+            "E": -3,
+            "O": -1,
+            "A": -5,
+            "C": 2
+          }
+        },
+        {
+          "id": "sig-05",
+          "dimension": "Sociality",
+          "trigger_context": "Alex invites Bea to a lively, crowded local festival instead of a quiet study session, promising it will be an exciting way to bond.",
+          "narrative_shift": "Bea accepts the invitation impulsively, drawn to the promise of stimulation, but feels a low-level undercurrent of worry about navigating the crowd, which she suppresses by focusing on the sensory details of the environment.",
+          "state_modifiers": {
+            "N": 3,
+            "E": 6,
+            "O": 4,
+            "A": 1,
+            "C": -2
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 6576.357417778332,
+        "stage": 2,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 5.779537697024869,
+          "N2": 15.849537697024868,
+          "N3": 21.09953769702487,
+          "N4": 9.939537697024868,
+          "N5": 92.05953769702487,
+          "N6": 83.47953769702487,
+          "E1": 83.23,
+          "E2": 91.94,
+          "E3": 31.92,
+          "E4": 84.77,
+          "E5": 94.02,
+          "E6": 78.07,
+          "O1": 95.88,
+          "O2": 96.27,
+          "O3": 9.53,
+          "O4": 76.66,
+          "O5": 95.96,
+          "O6": 82.81,
+          "A1": 72.84046230297514,
+          "A2": 28.42046230297513,
+          "A3": 14.630462302975133,
+          "A4": 77.21046230297513,
+          "A5": 10.020462302975131,
+          "A6": 34.39046230297513,
+          "C1": 6.370462302975131,
+          "C2": 41.97046230297513,
+          "C3": 11.530462302975131,
+          "C4": 9.290462302975131,
+          "C5": 20.00046230297513,
+          "C6": 2.350462302975131
+        },
+        "evidence": [
+          "life-0-live-joint-task-request",
+          "seed-meeting"
+        ]
+      },
+      "situational_state": {
+        "day": 6577.579879857195,
+        "offsets": {
+          "N1": -0.1378213000067703,
+          "N2": -0.1378213000067703,
+          "N3": -0.1378213000067703,
+          "N4": -0.1378213000067703,
+          "N5": -0.13782130000676318,
+          "N6": -0.13782130000676318,
+          "E1": 0.38987344548196745,
+          "E2": 0.38987344548196745,
+          "E3": 0.38987344548196745,
+          "E4": 0.38987344548196745,
+          "E5": 0.38987344548196745,
+          "E6": 0.38987344548196745,
+          "O1": 1.2022262235855834,
+          "O2": 1.2022262235855834,
+          "O3": 1.202226223585578,
+          "O4": 1.2022262235855834,
+          "O5": 1.2022262235855834,
+          "O6": 1.2022262235855834,
+          "A1": -0.38861716148575454,
+          "A2": -0.38861716148574743,
+          "A3": -0.38861716148574743,
+          "A4": -0.38861716148575454,
+          "A5": -0.38861716148574743,
+          "A6": -0.38861716148574743,
+          "C1": 0.5058300050833786,
+          "C2": 0.5058300050833751,
+          "C3": 0.5058300050833786,
+          "C4": 0.5058300050833786,
+          "C5": 0.5058300050833822,
+          "C6": 0.505830005083379
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Alex is following through on our previous discussion about balancing work and social time. They have accepted the idea of keeping weekends free and are taking the initiative to draft a specific weekly schedule based on my earlier proposal. They are asking for permission to share this draft with me later to ensure it feels balanced. This feels like a constructive step toward making our arrangement work, and I am curious to see how they structured it.",
+          "dimensions": {
+            "Duty": 0.4,
+            "Intellect": 0.3,
+            "Adversity": 0.1,
+            "Mating": 0.0,
+            "Positivity": 0.6,
+            "Negativity": 0.1,
+            "Deception": 0.0,
+            "Sociality": 0.5
+          },
+          "controllability": 0.8,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": -0.13782130000677045,
+          "E": 0.38987344548196734,
+          "O": 1.2022262235855765,
+          "A": -0.38861716148574654,
+          "C": 0.5058300050833793
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-1-live-joint-task-contact-situation",
+        "situation": "Alex approaches you: Hey, I've been thinking about our last chat. I really like the idea of keeping weekends free. I want to make sure I actually follow through on my end, so I'm going to draft a specific weekly schedule based on your proposal. Can I run it by you later to see if it feels balanced to you too? Request: Discuss the idea with the familiar person.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "calendar": [
+        {
+          "activity": "life-0-live-joint-task",
+          "start_day": 6576.357417778332,
+          "end_day": 6576.399084444999,
+          "status": "completed"
+        },
+        {
+          "activity": "life-1-live-joint-task",
+          "start_day": 6577.579879857195,
+          "end_day": 6577.621546523862,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "6576": 1.000000000007276,
+        "6577": 1.000000000007276
+      },
+      "developmental_exposures": [
+        {
+          "day": 6576.399084444999,
+          "action": "life-0-live-joint-task-contact-action",
+          "evidence": "life-0-live-joint-task",
+          "offsets": {
+            "N1": 0.04082346905606471,
+            "N2": 0.04082346905606471,
+            "N3": 0.04082346905606471,
+            "N4": 0.04082346905606471,
+            "N5": 0.04082346905606471,
+            "N6": 0.04082346905606471,
+            "E1": -1.8715851105442027,
+            "E2": -1.8715851105442027,
+            "E3": -1.8715851105441992,
+            "E4": -1.8715851105442027,
+            "E5": -1.8715851105442027,
+            "E6": -1.8715851105442027,
+            "O1": 1.3798055459145786,
+            "O2": 1.3798055459145786,
+            "O3": 1.3798055459145768,
+            "O4": 1.3798055459145786,
+            "O5": 1.3798055459145786,
+            "O6": 1.3798055459145786,
+            "A1": 1.9339332532971412,
+            "A2": 1.9339332532971447,
+            "A3": 1.9339332532971447,
+            "A4": 1.9339332532971412,
+            "A5": 1.933933253297143,
+            "A6": 1.9339332532971412,
+            "C1": -0.6509579762389084,
+            "C2": -0.6509579762389066,
+            "C3": -0.6509579762389084,
+            "C4": -0.6509579762389084,
+            "C5": -0.6509579762389066,
+            "C6": -0.6509579762389079
+          }
+        },
+        {
+          "day": 6577.621546523862,
+          "action": "life-1-live-joint-task-contact-action",
+          "evidence": "life-1-live-joint-task",
+          "offsets": {
+            "N1": -0.1378213000067703,
+            "N2": -0.1378213000067703,
+            "N3": -0.1378213000067703,
+            "N4": -0.1378213000067703,
+            "N5": -0.13782130000676318,
+            "N6": -0.13782130000676318,
+            "E1": 0.38987344548196745,
+            "E2": 0.38987344548196745,
+            "E3": 0.38987344548196745,
+            "E4": 0.38987344548196745,
+            "E5": 0.38987344548196745,
+            "E6": 0.38987344548196745,
+            "O1": 1.2022262235855834,
+            "O2": 1.2022262235855834,
+            "O3": 1.202226223585578,
+            "O4": 1.2022262235855834,
+            "O5": 1.2022262235855834,
+            "O6": 1.2022262235855834,
+            "A1": -0.38861716148575454,
+            "A2": -0.38861716148574743,
+            "A3": -0.38861716148574743,
+            "A4": -0.38861716148575454,
+            "A5": -0.38861716148574743,
+            "A6": -0.38861716148574743,
+            "C1": 0.5058300050833786,
+            "C2": 0.5058300050833751,
+            "C3": 0.5058300050833786,
+            "C4": 0.5058300050833786,
+            "C5": 0.5058300050833822,
+            "C6": 0.505830005083379
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "reinterpretation_queue": [],
+      "social_update_budget": {
+        "6576:alex:trust": 0.01,
+        "6576:alex:closeness": 0.02,
+        "6577:alex:trust": 0.02,
+        "6577:alex:closeness": 0.02
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "seed-rejection",
+      "day": 5844.0,
+      "description": "Explicitly seeded synthetic history.",
+      "observations": {
+        "alex": {
+          "text": "Bea did not reply when I shared an idea.",
+          "source": "direct",
+          "meaning": "I felt uncertain about sharing ideas.",
+          "importance": 0.7,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "seed-context",
+      "day": 6209.25,
+      "description": "Explicitly seeded synthetic history.",
+      "observations": {
+        "alex": {
+          "text": "Bea said being busy had delayed a reply.",
+          "source": "direct",
+          "meaning": "A delayed reply can have explanations besides rejection.",
+          "importance": 0.7,
+          "references": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "seed-meeting",
+      "day": 6574.5,
+      "description": "Explicitly seeded synthetic history.",
+      "observations": {
+        "alex": {
+          "text": "Bea and I met to discuss making time for projects and friendship.",
+          "source": "direct",
+          "meaning": "I care about both shared projects and friendship.",
+          "importance": 0.7,
+          "references": [
+            "bea"
+          ],
+          "encountered": [
+            "bea"
+          ]
+        },
+        "bea": {
+          "text": "Alex and I met to discuss our projects and friendship.",
+          "source": "direct",
+          "encountered": [
+            "alex"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "life-0-live-joint-task-request",
+      "day": 6576.357417778332,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "alex": {
+          "text": "I approached Bea. I said: Hey, I've been thinking about how we can make time for both our projects and hanging out. I'd love to bounce some ideas off you and see if we can find a balance that works for us. Request: Discuss the idea with the familiar person.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "bea"
+          ],
+          "meaning": "I am initiating a conversation with Bea to negotiate a balance between our collaborative projects and social time. I feel confident in my ability to handle this task and am motivated to find a solution that respects both our goals and our friendship.",
+          "valence": 0.3,
+          "arousal": 0.4,
+          "importance": 0.6,
+          "confidence": 0.8,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-306f8964fcb1d42d7957",
+              "span": "Bea",
+              "candidate_ids": [
+                "bea"
+              ],
+              "resolved_id": "bea",
+              "resolution": "named_known_identity",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": [
+            "seed-meeting"
+          ]
+        },
+        "bea": {
+          "text": "Alex approached me and said: Hey, I've been thinking about how we can make time for both our projects and hanging out. I'd love to bounce some ideas off you and see if we can find a balance that works for us. Request: Discuss the idea with the familiar person.",
+          "source": "alex",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "Alex is initiating a collaborative conversation to balance project work and social time, indicating a desire to maintain the friendship established in our recent meeting.",
+          "valence": 0.4,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-710c832d69b27f780e0a",
+              "span": "Alex",
+              "candidate_ids": [
+                "alex"
+              ],
+              "resolved_id": "alex",
+              "resolution": "named_known_identity",
+              "speaker_id": "alex"
+            }
+          ],
+          "cued_memories": [
+            "seed-meeting"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-0-live-joint-task",
+      "day": 6576.399084444999,
+      "description": "We discussed the idea constructively. Bea said: Oh, that sounds like a great idea. I've been feeling a bit stretched thin too. Let's brainstorm\u2014maybe we could set aside specific days for project work and keep weekends free for just hanging out? Or we could combine them if we're working on something creative together. What do you think?",
+      "observations": {
+        "alex": {
+          "text": "We discussed the idea constructively. Bea said: Oh, that sounds like a great idea. I've been feeling a bit stretched thin too. Let's brainstorm\u2014maybe we could set aside specific days for project work and keep weekends free for just hanging out? Or we could combine them if we're working on something creative together. What do you think?",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.65,
+          "arousal": 0.45,
+          "importance": 0.7,
+          "meaning": "Bea is responding positively to my proposal, validating my concern about time management by admitting she feels stretched thin as well. She is offering a concrete, structured solution (separating work and social time) while leaving room for creative flexibility. Her question invites me to co-create the final arrangement, signaling a collaborative rather than directive tone.",
+          "confidence": 0.9,
+          "encountered": [
+            "bea"
+          ],
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-306f8964fcb1d42d7957",
+              "span": "Bea",
+              "candidate_ids": [
+                "bea"
+              ],
+              "resolved_id": "bea",
+              "resolution": "named_known_identity",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": [
+            "life-0-live-joint-task-request",
+            "seed-meeting"
+          ]
+        },
+        "bea": {
+          "text": "I listened and discussed the project.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "valence": 0.3,
+          "arousal": 0.4,
+          "importance": 0.6,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-19404278bcae7b671814",
+              "span": "project",
+              "candidate_ids": [],
+              "resolved_id": null,
+              "resolution": "unresolved",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": [
+            "life-0-live-joint-task-request",
+            "seed-meeting"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-0-live-joint-task-action",
+        "alive": [
+          "alex",
+          "bea"
+        ],
+        "actions": [
+          "life-0-live-joint-task-contact-action"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-1-live-joint-task-request",
+      "day": 6577.579879857195,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "alex": {
+          "text": "I approached Bea. I said: Hey, I've been thinking about our last chat. I really like the idea of keeping weekends free. I want to make sure I actually follow through on my end, so I'm going to draft a specific weekly schedule based on your proposal. Can I run it by you later to see if it feels balanced to you too? Request: Discuss the idea with the familiar person.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "bea"
+          ],
+          "meaning": "I am proactively taking ownership of the next step in our agreement by drafting a concrete schedule. I feel a mix of satisfaction from the previous positive interaction and a slight pressure to execute this well, driven by my desire to be reliable and my current tendency to anticipate problems. I am seeking validation not just for the plan, but for my commitment to follow through.",
+          "valence": 0.65,
+          "arousal": 0.7,
+          "importance": 0.8,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-306f8964fcb1d42d7957",
+              "span": "Bea",
+              "candidate_ids": [
+                "bea"
+              ],
+              "resolved_id": "bea",
+              "resolution": "named_known_identity",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": [
+            "life-0-live-joint-task",
+            "life-0-live-joint-task-request"
+          ]
+        },
+        "bea": {
+          "text": "Alex approached me and said: Hey, I've been thinking about our last chat. I really like the idea of keeping weekends free. I want to make sure I actually follow through on my end, so I'm going to draft a specific weekly schedule based on your proposal. Can I run it by you later to see if it feels balanced to you too? Request: Discuss the idea with the familiar person.",
+          "source": "alex",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "Alex is following up on our previous conversation about balancing projects and social time. They have accepted the idea of keeping weekends free and are taking the initiative to draft a specific weekly schedule based on my earlier proposal. They are asking for permission to share this draft with me later to ensure it feels balanced. This feels like a constructive step toward making our arrangement work, and I am curious to see how they structured it.",
+          "valence": 0.65,
+          "arousal": 0.4,
+          "importance": 0.5,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-710c832d69b27f780e0a",
+              "span": "Alex",
+              "candidate_ids": [
+                "alex"
+              ],
+              "resolved_id": "alex",
+              "resolution": "named_known_identity",
+              "speaker_id": "alex"
+            }
+          ],
+          "cued_memories": [
+            "life-0-live-joint-task-request",
+            "life-0-live-joint-task"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "alex",
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-1-live-joint-task",
+      "day": 6577.621546523862,
+      "description": "We listened but could not solve the difficulty. Bea said: That sounds like a great plan. I'm really curious to see how you've structured it. I trust you'll keep the spirit of what we talked about, but it's always good to double-check the details. Let me know when you've got the draft ready, and we can look it over together. I'm happy to help make sure it feels right for both of us.",
+      "observations": {
+        "alex": {
+          "text": "We listened but could not solve the difficulty. Bea said: That sounds like a great plan. I'm really curious to see how you've structured it. I trust you'll keep the spirit of what we talked about, but it's always good to double-check the details. Let me know when you've got the draft ready, and we can look it over together. I'm happy to help make sure it feels right for both of us.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.85,
+          "arousal": 0.45,
+          "importance": 0.7,
+          "meaning": "Bea is affirming my initiative to draft the schedule and expressing genuine interest in the outcome. Her tone is supportive and collaborative, emphasizing trust in my judgment while welcoming a joint review to ensure the plan feels balanced for both of us. This validates my effort to be reliable and provides a clear next step: finalize the draft and share it with her.",
+          "confidence": 0.95,
+          "encountered": [
+            "bea"
+          ],
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-306f8964fcb1d42d7957",
+              "span": "Bea",
+              "candidate_ids": [
+                "bea"
+              ],
+              "resolved_id": "bea",
+              "resolution": "named_known_identity",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": [
+            "life-1-live-joint-task-request",
+            "life-0-live-joint-task"
+          ]
+        },
+        "bea": {
+          "text": "I listened and discussed the project.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "valence": 0.85,
+          "arousal": 0.75,
+          "importance": 0.6,
+          "confidence": 0.95,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [
+            {
+              "reference_id": "mention-19404278bcae7b671814",
+              "span": "project",
+              "candidate_ids": [],
+              "resolved_id": null,
+              "resolution": "unresolved",
+              "speaker_id": null
+            }
+          ],
+          "cued_memories": [
+            "life-0-live-joint-task",
+            "life-0-live-joint-task-request",
+            "life-1-live-joint-task-request"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-1-live-joint-task-action",
+        "alive": [
+          "alex",
+          "bea"
+        ],
+        "actions": [
+          "life-1-live-joint-task-contact-action"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-live-joint-task-action",
+      "owner": "alex",
+      "day": 6576.357417778332,
+      "decision": {
+        "action": "Discuss the idea with the familiar person.",
+        "speech": "Hey, I've been thinking about how we can make time for both our projects and hanging out. I'd love to bounce some ideas off you and see if we can find a balance that works for us.",
+        "goal_id": null,
+        "plan": [
+          "Meet with Bea to discuss project logistics.",
+          "Explore how to integrate friendship into the project timeline.",
+          "Agree on a shared schedule or next steps."
+        ],
+        "memory_ids": [
+          "seed-meeting",
+          "seed-context"
+        ],
+        "action_id": "share"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.6717927365416791,
+        "N2": 0.6717927365416756,
+        "N3": 0.6717927365416791,
+        "N4": 0.6717927365416756,
+        "N5": 0.6717927365416827,
+        "N6": 0.6717927365416756,
+        "E1": -0.36569979947634934,
+        "E2": -0.36569979947634934,
+        "E3": -0.3656997994763458,
+        "E4": -0.3656997994763458,
+        "E5": -0.36569979947634934,
+        "E6": -0.3656997994763458,
+        "O1": -0.05127052388900921,
+        "O2": -0.05127052388901632,
+        "O3": -0.05127052388900921,
+        "O4": -0.05127052388900921,
+        "O5": -0.05127052388901632,
+        "O6": -0.05127052388900921,
+        "A1": -1.2489836706716133,
+        "A2": -1.2489836706716062,
+        "A3": -1.2489836706716062,
+        "A4": -1.2489836706716062,
+        "A5": -1.2489836706716062,
+        "A6": -1.2489836706716062,
+        "C1": 2.6017871257986513,
+        "C2": 2.6017871257986513,
+        "C3": 2.6017871257986513,
+        "C4": 2.6017871257986513,
+        "C5": 2.6017871257986513,
+        "C6": 2.6017871257986513
+      },
+      "outcome_event": "life-0-live-joint-task"
+    },
+    {
+      "id": "life-0-live-joint-task-contact-action",
+      "owner": "bea",
+      "day": 6576.357417778332,
+      "decision": {
+        "action": "Listen and discuss the idea.",
+        "speech": "Oh, that sounds like a great idea. I've been feeling a bit stretched thin too. Let's brainstorm\u2014maybe we could set aside specific days for project work and keep weekends free for just hanging out? Or we could combine them if we're working on something creative together. What do you think?",
+        "goal_id": null,
+        "plan": [
+          "Acknowledge Alex's proposal positively.",
+          "Suggest a tentative structure like separating work and social time.",
+          "Ask for Alex's thoughts to refine the plan."
+        ],
+        "memory_ids": [
+          "life-0-live-joint-task-request",
+          "seed-meeting"
+        ],
+        "action_id": "discuss"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.04082346905606471,
+        "N2": 0.04082346905606471,
+        "N3": 0.04082346905606471,
+        "N4": 0.04082346905606471,
+        "N5": 0.04082346905606471,
+        "N6": 0.04082346905606471,
+        "E1": -1.8715851105442027,
+        "E2": -1.8715851105442027,
+        "E3": -1.8715851105441992,
+        "E4": -1.8715851105442027,
+        "E5": -1.8715851105442027,
+        "E6": -1.8715851105442027,
+        "O1": 1.3798055459145786,
+        "O2": 1.3798055459145786,
+        "O3": 1.3798055459145768,
+        "O4": 1.3798055459145786,
+        "O5": 1.3798055459145786,
+        "O6": 1.3798055459145786,
+        "A1": 1.9339332532971412,
+        "A2": 1.9339332532971447,
+        "A3": 1.9339332532971447,
+        "A4": 1.9339332532971412,
+        "A5": 1.933933253297143,
+        "A6": 1.9339332532971412,
+        "C1": -0.6509579762389084,
+        "C2": -0.6509579762389066,
+        "C3": -0.6509579762389084,
+        "C4": -0.6509579762389084,
+        "C5": -0.6509579762389066,
+        "C6": -0.6509579762389079
+      },
+      "outcome_event": "life-0-live-joint-task"
+    },
+    {
+      "id": "life-1-live-joint-task-action",
+      "owner": "alex",
+      "day": 6577.579879857195,
+      "decision": {
+        "action": "Discuss the idea with the familiar person.",
+        "speech": "Hey, I've been thinking about our last chat. I really like the idea of keeping weekends free. I want to make sure I actually follow through on my end, so I'm going to draft a specific weekly schedule based on your proposal. Can I run it by you later to see if it feels balanced to you too?",
+        "goal_id": null,
+        "plan": [
+          "Confirm with Bea that she is ready to finalize the schedule details.",
+          "Outline the specific days for project work versus social time.",
+          "Draft the schedule to ensure it respects the 'free weekends' constraint.",
+          "Share the draft with Bea for final approval."
+        ],
+        "memory_ids": [
+          "life-0-live-joint-task",
+          "life-0-live-joint-task-request"
+        ],
+        "action_id": "share"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 1.219579022001522,
+        "N2": 1.2195790220015255,
+        "N3": 1.219579022001522,
+        "N4": 1.2195790220015255,
+        "N5": 1.2195790220015255,
+        "N6": 1.2195790220015255,
+        "E1": 0.5277527537344682,
+        "E2": 0.5277527537344682,
+        "E3": 0.5277527537344753,
+        "E4": 0.5277527537344611,
+        "E5": 0.5277527537344664,
+        "E6": 0.5277527537344753,
+        "O1": 0.9516234516107431,
+        "O2": 0.9516234516107431,
+        "O3": 0.9516234516107431,
+        "O4": 0.9516234516107431,
+        "O5": 0.9516234516107431,
+        "O6": 0.9516234516107431,
+        "A1": -1.0210928195506206,
+        "A2": -1.021092819550617,
+        "A3": -1.021092819550617,
+        "A4": -1.021092819550617,
+        "A5": -1.021092819550617,
+        "A6": -1.021092819550617,
+        "C1": 1.179815472879767,
+        "C2": 1.179815472879767,
+        "C3": 1.179815472879767,
+        "C4": 1.179815472879767,
+        "C5": 1.179815472879767,
+        "C6": 1.179815472879767
+      },
+      "outcome_event": "life-1-live-joint-task"
+    },
+    {
+      "id": "life-1-live-joint-task-contact-action",
+      "owner": "bea",
+      "day": 6577.579879857195,
+      "decision": {
+        "action": "Listen and discuss the idea.",
+        "speech": "That sounds like a great plan. I'm really curious to see how you've structured it. I trust you'll keep the spirit of what we talked about, but it's always good to double-check the details. Let me know when you've got the draft ready, and we can look it over together. I'm happy to help make sure it feels right for both of us.",
+        "goal_id": null,
+        "plan": [
+          "Acknowledge Alex's initiative to draft the schedule.",
+          "Express interest in seeing the specific details.",
+          "Agree to review the draft when it is ready."
+        ],
+        "memory_ids": [
+          "life-1-live-joint-task-request",
+          "life-0-live-joint-task-request",
+          "life-0-live-joint-task"
+        ],
+        "action_id": "discuss"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": -0.1378213000067703,
+        "N2": -0.1378213000067703,
+        "N3": -0.1378213000067703,
+        "N4": -0.1378213000067703,
+        "N5": -0.13782130000676318,
+        "N6": -0.13782130000676318,
+        "E1": 0.38987344548196745,
+        "E2": 0.38987344548196745,
+        "E3": 0.38987344548196745,
+        "E4": 0.38987344548196745,
+        "E5": 0.38987344548196745,
+        "E6": 0.38987344548196745,
+        "O1": 1.2022262235855834,
+        "O2": 1.2022262235855834,
+        "O3": 1.202226223585578,
+        "O4": 1.2022262235855834,
+        "O5": 1.2022262235855834,
+        "O6": 1.2022262235855834,
+        "A1": -0.38861716148575454,
+        "A2": -0.38861716148574743,
+        "A3": -0.38861716148574743,
+        "A4": -0.38861716148575454,
+        "A5": -0.38861716148574743,
+        "A6": -0.38861716148574743,
+        "C1": 0.5058300050833786,
+        "C2": 0.5058300050833751,
+        "C3": 0.5058300050833786,
+        "C4": 0.5058300050833786,
+        "C5": 0.5058300050833822,
+        "C6": 0.505830005083379
+      },
+      "outcome_event": "life-1-live-joint-task"
+    }
+  ],
+  "updates": [
+    {
+      "id": "alex:semantic:ffaadf7cfd9aa266:seed-meeting",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "alex:semantic:ffaadf7cfd9aa266:seed-rejection",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "alex:semantic:ffaadf7cfd9aa266:seed-context",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "life-0-live-joint-task-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 6576.357417778332,
+      "state": {
+        "day": 6576.357417778332,
+        "offsets": {
+          "N1": 0.6717927365416791,
+          "N2": 0.6717927365416756,
+          "N3": 0.6717927365416791,
+          "N4": 0.6717927365416756,
+          "N5": 0.6717927365416827,
+          "N6": 0.6717927365416756,
+          "E1": -0.36569979947634934,
+          "E2": -0.36569979947634934,
+          "E3": -0.3656997994763458,
+          "E4": -0.3656997994763458,
+          "E5": -0.36569979947634934,
+          "E6": -0.3656997994763458,
+          "O1": -0.05127052388900921,
+          "O2": -0.05127052388901632,
+          "O3": -0.05127052388900921,
+          "O4": -0.05127052388900921,
+          "O5": -0.05127052388901632,
+          "O6": -0.05127052388900921,
+          "A1": -1.2489836706716133,
+          "A2": -1.2489836706716062,
+          "A3": -1.2489836706716062,
+          "A4": -1.2489836706716062,
+          "A5": -1.2489836706716062,
+          "A6": -1.2489836706716062,
+          "C1": 2.6017871257986513,
+          "C2": 2.6017871257986513,
+          "C3": 2.6017871257986513,
+          "C4": 2.6017871257986513,
+          "C5": 2.6017871257986513,
+          "C6": 2.6017871257986513
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "A low-stakes opportunity to collaborate with Bea on a project, which feels like a neutral social invitation rather than a pressing obligation or a source of stress. The decision to engage or work alone is open, and there is no immediate pressure or conflict.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.3,
+            "Adversity": 0.0,
+            "Mating": 0.0,
+            "Positivity": 0.2,
+            "Negativity": 0.0,
+            "Deception": 0.0,
+            "Sociality": 0.3
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 0.67179273654168,
+          "E": -0.3656997994763492,
+          "O": -0.05127052388901003,
+          "A": -1.2489836706716124,
+          "C": 2.6017871257986473
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-live-joint-task-situation",
+        "situation": "Bea is available to discuss a project. Decide whether to discuss it together or work alone.",
+        "cues": [
+          "social",
+          "school"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-0-live-joint-task-action:used-memory:seed-meeting",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "life-0-live-joint-task-action:used-memory:seed-context",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "life-0-live-joint-task-request:reminder:alex:seed-meeting",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "life-0-live-joint-task-request:reminder:bea:seed-meeting",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "bea:semantic:6b0acee5d8e2bb56:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "bea:semantic:6b0acee5d8e2bb56:seed-meeting",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "life-0-live-joint-task-contact-situation",
+      "kind": "situation_state",
+      "owner": "bea",
+      "day": 6576.357417778332,
+      "state": {
+        "day": 6576.357417778332,
+        "offsets": {
+          "N1": 0.04082346905606471,
+          "N2": 0.04082346905606471,
+          "N3": 0.04082346905606471,
+          "N4": 0.04082346905606471,
+          "N5": 0.04082346905606471,
+          "N6": 0.04082346905606471,
+          "E1": -1.8715851105442027,
+          "E2": -1.8715851105442027,
+          "E3": -1.8715851105441992,
+          "E4": -1.8715851105442027,
+          "E5": -1.8715851105442027,
+          "E6": -1.8715851105442027,
+          "O1": 1.3798055459145786,
+          "O2": 1.3798055459145786,
+          "O3": 1.3798055459145768,
+          "O4": 1.3798055459145786,
+          "O5": 1.3798055459145786,
+          "O6": 1.3798055459145786,
+          "A1": 1.9339332532971412,
+          "A2": 1.9339332532971447,
+          "A3": 1.9339332532971447,
+          "A4": 1.9339332532971412,
+          "A5": 1.933933253297143,
+          "A6": 1.9339332532971412,
+          "C1": -0.6509579762389084,
+          "C2": -0.6509579762389066,
+          "C3": -0.6509579762389084,
+          "C4": -0.6509579762389084,
+          "C5": -0.6509579762389066,
+          "C6": -0.6509579762389079
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Alex is initiating a collaborative dialogue to balance our respective project commitments with our social time. This feels like a low-stakes, open-ended invitation to brainstorm and find a mutual rhythm, rather than a demand for rigid structure or a test of loyalty. It aligns well with my desire for imaginative exploration and social connection, though I remain slightly uncertain about my own ability to manage the logistics until we see how the conversation flows.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.6,
+            "Adversity": 0.1,
+            "Mating": 0.0,
+            "Positivity": 0.5,
+            "Negativity": 0.1,
+            "Deception": 0.0,
+            "Sociality": 0.7
+          },
+          "controllability": 0.8,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 0.040823469056064605,
+          "E": -1.8715851105442,
+          "O": 1.3798055459145766,
+          "A": 1.9339332532971434,
+          "C": -0.6509579762389079
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-live-joint-task-contact-situation",
+        "situation": "Alex approaches you: Hey, I've been thinking about how we can make time for both our projects and hanging out. I'd love to bounce some ideas off you and see if we can find a balance that works for us. Request: Discuss the idea with the familiar person.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-0-live-joint-task-contact-action:used-memory:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "life-0-live-joint-task-contact-action:used-memory:seed-meeting",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6576.357417778332
+    },
+    {
+      "id": "life-0-live-joint-task:reminder:alex:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.399084444999
+    },
+    {
+      "id": "life-0-live-joint-task:reminder:alex:seed-meeting",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6576.399084444999
+    },
+    {
+      "id": "life-0-live-joint-task:reminder:bea:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6576.399084444999
+    },
+    {
+      "id": "life-0-live-joint-task:reminder:bea:seed-meeting",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6576.399084444999
+    },
+    {
+      "id": "alex:reflection:life-0-live-joint-task:life-0-live-joint-task-request",
+      "kind": "revision",
+      "owner": "alex",
+      "day": 6576.399084444999,
+      "memory": "life-0-live-joint-task-request",
+      "evidence": [
+        "life-0-live-joint-task-request",
+        "life-0-live-joint-task"
+      ]
+    },
+    {
+      "id": "alex:reflection:life-0-live-joint-task",
+      "kind": "reflection",
+      "owner": "alex",
+      "day": 6576.399084444999,
+      "evidence": [
+        "life-0-live-joint-task"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "life-0-live-joint-task-request",
+          "decision": "revise",
+          "reason": "The initial memory captured the intent to negotiate, but this new evidence confirms the outcome: a constructive, collaborative agreement was reached where Bea validated the need for balance and proposed specific structural solutions.",
+          "meaning": "I successfully initiated a conversation with Bea that resulted in a constructive, collaborative agreement. Bea validated my concerns about feeling stretched thin and proposed a balanced schedule (specific work days, free weekends) with room for creative flexibility, confirming our shared commitment to both projects and friendship.",
+          "confidence": 0.95,
+          "evidence": [
+            "life-0-live-joint-task-request",
+            "life-0-live-joint-task"
+          ]
+        },
+        {
+          "memory_id": "seed-meeting",
+          "decision": "retain",
+          "reason": "The earlier seed memory about the general discussion remains valid as context, but the specific details are now superseded by the more detailed joint task memory. No change in meaning is required for the seed itself.",
+          "meaning": "I care about both shared projects and friendship.",
+          "confidence": 0.5,
+          "evidence": [
+            "seed-meeting",
+            "life-0-live-joint-task"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bea:reflection:life-0-live-joint-task:life-0-live-joint-task-request",
+      "kind": "revision",
+      "owner": "bea",
+      "day": 6576.399084444999,
+      "memory": "life-0-live-joint-task-request",
+      "evidence": [
+        "life-0-live-joint-task-request",
+        "life-0-live-joint-task"
+      ]
+    },
+    {
+      "id": "bea:reflection:life-0-live-joint-task",
+      "kind": "reflection",
+      "owner": "bea",
+      "day": 6576.399084444999,
+      "evidence": [
+        "life-0-live-joint-task"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "life-0-live-joint-task-request",
+          "decision": "revise",
+          "reason": "The request to discuss the idea has been fulfilled by the actual discussion.",
+          "meaning": "Alex initiated a collaborative conversation, which I subsequently engaged in, discussing our projects and finding a balance.",
+          "confidence": 0.95,
+          "evidence": [
+            "life-0-live-joint-task-request",
+            "life-0-live-joint-task"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alex:semantic:8d9e038d0ecba6a1:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "alex:semantic:8d9e038d0ecba6a1:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "alex:semantic:8d9e038d0ecba6a1:seed-meeting",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 6577.579879857195,
+      "state": {
+        "day": 6577.579879857195,
+        "offsets": {
+          "N1": 1.219579022001522,
+          "N2": 1.2195790220015255,
+          "N3": 1.219579022001522,
+          "N4": 1.2195790220015255,
+          "N5": 1.2195790220015255,
+          "N6": 1.2195790220015255,
+          "E1": 0.5277527537344682,
+          "E2": 0.5277527537344682,
+          "E3": 0.5277527537344753,
+          "E4": 0.5277527537344611,
+          "E5": 0.5277527537344664,
+          "E6": 0.5277527537344753,
+          "O1": 0.9516234516107431,
+          "O2": 0.9516234516107431,
+          "O3": 0.9516234516107431,
+          "O4": 0.9516234516107431,
+          "O5": 0.9516234516107431,
+          "O6": 0.9516234516107431,
+          "A1": -1.0210928195506206,
+          "A2": -1.021092819550617,
+          "A3": -1.021092819550617,
+          "A4": -1.021092819550617,
+          "A5": -1.021092819550617,
+          "A6": -1.021092819550617,
+          "C1": 1.179815472879767,
+          "C2": 1.179815472879767,
+          "C3": 1.179815472879767,
+          "C4": 1.179815472879767,
+          "C5": 1.179815472879767,
+          "C6": 1.179815472879767
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Bea is ready to collaborate on the project, and I feel a strong pull to work together to honor our recent agreement and my commitment to following through. The social aspect of the interaction aligns with my current confidence in handling tasks and my desire to maintain the balance we discussed.",
+          "dimensions": {
+            "Duty": 0.85,
+            "Intellect": 0.4,
+            "Adversity": 0.1,
+            "Mating": 0.0,
+            "Positivity": 0.6,
+            "Negativity": 0.1,
+            "Deception": 0.0,
+            "Sociality": 0.75
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 1.2195790220015208,
+          "E": 0.5277527537344663,
+          "O": 0.9516234516107412,
+          "A": -1.0210928195506193,
+          "C": 1.1798154728797619
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-1-live-joint-task-situation",
+        "situation": "Bea is available to discuss a project. Decide whether to discuss it together or work alone.",
+        "cues": [
+          "social",
+          "school"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-1-live-joint-task-action:used-memory:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-action:used-memory:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-request:reminder:alex:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-request:reminder:alex:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-request:reminder:bea:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-request:reminder:bea:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "bea:semantic:88e5986e93daa58c:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "bea:semantic:88e5986e93daa58c:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-contact-situation",
+      "kind": "situation_state",
+      "owner": "bea",
+      "day": 6577.579879857195,
+      "state": {
+        "day": 6577.579879857195,
+        "offsets": {
+          "N1": -0.1378213000067703,
+          "N2": -0.1378213000067703,
+          "N3": -0.1378213000067703,
+          "N4": -0.1378213000067703,
+          "N5": -0.13782130000676318,
+          "N6": -0.13782130000676318,
+          "E1": 0.38987344548196745,
+          "E2": 0.38987344548196745,
+          "E3": 0.38987344548196745,
+          "E4": 0.38987344548196745,
+          "E5": 0.38987344548196745,
+          "E6": 0.38987344548196745,
+          "O1": 1.2022262235855834,
+          "O2": 1.2022262235855834,
+          "O3": 1.202226223585578,
+          "O4": 1.2022262235855834,
+          "O5": 1.2022262235855834,
+          "O6": 1.2022262235855834,
+          "A1": -0.38861716148575454,
+          "A2": -0.38861716148574743,
+          "A3": -0.38861716148574743,
+          "A4": -0.38861716148575454,
+          "A5": -0.38861716148574743,
+          "A6": -0.38861716148574743,
+          "C1": 0.5058300050833786,
+          "C2": 0.5058300050833751,
+          "C3": 0.5058300050833786,
+          "C4": 0.5058300050833786,
+          "C5": 0.5058300050833822,
+          "C6": 0.505830005083379
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "Alex is following through on our previous discussion about balancing work and social time. They have accepted the idea of keeping weekends free and are taking the initiative to draft a specific weekly schedule based on my earlier proposal. They are asking for permission to share this draft with me later to ensure it feels balanced. This feels like a constructive step toward making our arrangement work, and I am curious to see how they structured it.",
+          "dimensions": {
+            "Duty": 0.4,
+            "Intellect": 0.3,
+            "Adversity": 0.1,
+            "Mating": 0.0,
+            "Positivity": 0.6,
+            "Negativity": 0.1,
+            "Deception": 0.0,
+            "Sociality": 0.5
+          },
+          "controllability": 0.8,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": -0.13782130000677045,
+          "E": 0.38987344548196734,
+          "O": 1.2022262235855765,
+          "A": -0.38861716148574654,
+          "C": 0.5058300050833793
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-1-live-joint-task-contact-situation",
+        "situation": "Alex approaches you: Hey, I've been thinking about our last chat. I really like the idea of keeping weekends free. I want to make sure I actually follow through on my end, so I'm going to draft a specific weekly schedule based on your proposal. Can I run it by you later to see if it feels balanced to you too? Request: Discuss the idea with the familiar person.",
+        "cues": [],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-1-live-joint-task-contact-action:used-memory:life-1-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-contact-action:used-memory:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task-contact-action:used-memory:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.579879857195
+    },
+    {
+      "id": "life-1-live-joint-task:reminder:alex:life-1-live-joint-task-request",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.621546523862
+    },
+    {
+      "id": "life-1-live-joint-task:reminder:alex:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 6577.621546523862
+    },
+    {
+      "id": "life-1-live-joint-task:reminder:bea:life-0-live-joint-task",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.621546523862
+    },
+    {
+      "id": "life-1-live-joint-task:reminder:bea:life-0-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.621546523862
+    },
+    {
+      "id": "life-1-live-joint-task:reminder:bea:life-1-live-joint-task-request",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 6577.621546523862
+    },
+    {
+      "id": "alex:reflection:life-1-live-joint-task:life-1-live-joint-task-request",
+      "kind": "revision",
+      "owner": "alex",
+      "day": 6577.621546523862,
+      "memory": "life-1-live-joint-task-request",
+      "evidence": [
+        "life-1-live-joint-task-request",
+        "life-1-live-joint-task"
+      ]
+    },
+    {
+      "id": "alex:reflection:life-1-live-joint-task",
+      "kind": "reflection",
+      "owner": "alex",
+      "day": 6577.621546523862,
+      "evidence": [
+        "life-1-live-joint-task"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "life-1-live-joint-task-request",
+          "decision": "revise",
+          "reason": "The new evidence provides the immediate outcome of the request made in the target memory. Bea's response confirms that my proactive approach was well-received and validates the specific next step of drafting the schedule, shifting the memory's meaning from a pending request to a confirmed collaborative action.",
+          "meaning": "I proactively took ownership of the next step by proposing to draft a schedule. Bea responded with trust and enthusiasm, validating my initiative and establishing a clear, collaborative next step to review the draft together. This reinforces my sense of reliability and shared commitment.",
+          "confidence": 0.95,
+          "evidence": [
+            "life-1-live-joint-task-request",
+            "life-1-live-joint-task"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bea:reflection:life-1-live-joint-task:life-1-live-joint-task-request",
+      "kind": "revision",
+      "owner": "bea",
+      "day": 6577.621546523862,
+      "memory": "life-1-live-joint-task-request",
+      "evidence": [
+        "life-1-live-joint-task-request",
+        "life-1-live-joint-task"
+      ]
+    },
+    {
+      "id": "bea:reflection:life-1-live-joint-task",
+      "kind": "reflection",
+      "owner": "bea",
+      "day": 6577.621546523862,
+      "evidence": [
+        "life-1-live-joint-task"
+      ],
+      "revision_decisions": [
+        {
+          "memory_id": "life-1-live-joint-task-request",
+          "decision": "revise",
+          "reason": "The request for a follow-up discussion has been fulfilled; the interaction has moved from anticipation to execution.",
+          "meaning": "I engaged in a collaborative discussion with Alex regarding our respective projects, aligning with the request to find a balance between work and social time.",
+          "confidence": 0.95,
+          "evidence": [
+            "life-1-live-joint-task-request",
+            "life-1-live-joint-task"
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "semantic_recall": true,
+      "indexed_retrieval": true,
+      "reference_resolution": true,
+      "reflection": true,
+      "autonomous_goals": true,
+      "semantic_candidates": 24,
+      "detail_threshold": 0.45,
+      "fan_weight": 0.15,
+      "rumination_per_year": 0,
+      "rumination_minimum_gap_days": 1
+    },
+    "planning": {
+      "calendar_mode": "elapsed",
+      "hours_per_day": 12,
+      "habit_half_life_days": 30,
+      "habit_gain": 0.1,
+      "habit_max": 1
+    },
+    "expression": {
+      "std_by_domain": {
+        "N": 1,
+        "E": 1,
+        "O": 1,
+        "A": 1,
+        "C": 1
+      },
+      "half_life_days": 1,
+      "age_appropriate_actions": true
+    },
+    "society": {
+      "closeness_half_life_days": 365.25
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "b4a4f063215dfb2c9c036ae9e28da61164330d8a3a602726d0dad1de45081e1b",
+    "scripted": false,
+    "start_day": 6574.5,
+    "current_day": 6577.63,
+    "next_tick": null,
+    "tick": 2,
+    "trace": [
+      {
+        "event_index": 0,
+        "day": 6576.357417778332,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "live-joint-task",
+        "day": 6576.399084444999,
+        "action": "share",
+        "success": true,
+        "event": "life-0-live-joint-task",
+        "policy": "scenario_assumption",
+        "contact_action": "discuss"
+      },
+      {
+        "event_index": 1,
+        "day": 6577.579879857195,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "live-joint-task",
+        "day": 6577.621546523862,
+        "action": "share",
+        "success": false,
+        "event": "life-1-live-joint-task",
+        "policy": "scenario_assumption",
+        "contact_action": "discuss"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "live-joint-task": 2
+    },
+    "next_opportunities": {
+      "live-joint-task": 6577.81804905641
+    },
+    "next_world_events": {},
+    "background_counts": {},
+    "next_background": {},
+    "pending_activities": {},
+    "hazard_counts": {},
+    "next_hazards": {}
+  }
+}

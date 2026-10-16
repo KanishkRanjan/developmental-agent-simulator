@@ -1,0 +1,39 @@
+{
+  "description": "Seeded adult Graphiti wiring fixture; omitted childhood, neutral synthetic traits, one eligible offered activity and guaranteed success for outcome coverage.",
+  "sampling": "event_driven",
+  "planning": {
+    "calendar_mode": "elapsed",
+    "grounded_plans": true,
+    "hours_per_day": 8
+  },
+  "cognition": {
+    "graphiti_retrieval": true,
+    "indexed_retrieval": true,
+    "semantic_recall": true,
+    "reflection": true
+  },
+  "opportunities": [
+    {
+      "id": "presentation",
+      "actor": "alex",
+      "goal_id": "presentation",
+      "min_age": 18,
+      "max_age": 80,
+      "rate_per_year": 365,
+      "situation": "Prepare a small presentation after an employment setback; consider what prior experiences mean for seeking support.",
+      "options": [
+        {
+          "id": "draft",
+          "label": "Draft one paragraph for the short presentation.",
+          "duration_hours": 0.5,
+          "success_probability": 1,
+          "progress_gain": 0.5,
+          "success_text": "I drafted one useful paragraph for my presentation.",
+          "failure_text": "The paragraph is still unfinished.",
+          "valence_success": 0.2,
+          "valence_failure": -0.2
+        }
+      ]
+    }
+  ]
+}

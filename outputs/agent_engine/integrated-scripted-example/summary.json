@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "provider": "scripted_engineering_fixture",
+  "scope": "combined policy integration; model semantic/reflection/background stages intentionally skipped",
+  "day": 8035.5,
+  "resolved_actions": 50,
+  "opportunity_steps": 42,
+  "world_transitions": 3,
+  "autonomous_recall_opportunities": 481,
+  "checkpoint_restored": true,
+  "policy": "../integrated-demo.json",
+  "state": "final-world.json"
+}

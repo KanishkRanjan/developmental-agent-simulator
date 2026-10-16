@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "scope": "synthetic repeated-trigger actual-model wiring, not independent predictive evaluation",
+  "requests": 9,
+  "new_actions": 3,
+  "appraisals": 3,
+  "crystallization_updates": 1,
+  "maximum_per_facet_change": 0.029010757688070044,
+  "state_is_model_inference_not_measured_behavior": true,
+  "checkpoint_restored": true
+}

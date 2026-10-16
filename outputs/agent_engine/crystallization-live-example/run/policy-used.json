@@ -1,0 +1,102 @@
+{
+  "description": "Synthetic repeated-trigger integration fixture based on an already generated signature. Not an independent realism evaluation. Two actions offered; state-conditioned exposure remains an unvalidated proxy for enacted state.",
+  "step_days": 90,
+  "max_trait_change_per_year": 0.5,
+  "opportunities": [
+    {
+      "id": "cleanup",
+      "actor": "alex",
+      "min_age": 5,
+      "max_age": 12,
+      "rate_per_year": 6,
+      "situation": "Maya asks you to clean a shared play area. Another child left the mess; you did not make it. You have time to respond and act. What do you do?",
+      "options": [
+        {
+          "id": "tidy",
+          "label": "Explain that it feels unfair, then tidy the play area carefully.",
+          "success_probability": 1,
+          "success_text": "I said that the mess was not mine, then tidied the play area carefully.",
+          "failure_text": "I tried to tidy but struggled.",
+          "valence_success": 0.1,
+          "valence_failure": -0.2
+        },
+        {
+          "id": "decline",
+          "label": "Decline the cleanup and return to your own game.",
+          "success_probability": 1,
+          "success_text": "I declined the cleanup and returned to my game.",
+          "failure_text": "I could not return to the game.",
+          "valence_success": 0.1,
+          "valence_failure": -0.1
+        }
+      ]
+    }
+  ],
+  "sampling": "event_driven",
+  "situational_personality": {
+    "recovery_half_life_days": 1.0
+  },
+  "development": {
+    "maturation": {
+      "N": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          -2
+        ],
+        [
+          65,
+          -3
+        ]
+      ],
+      "A": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ],
+      "C": [
+        [
+          0,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          40,
+          2
+        ],
+        [
+          65,
+          3
+        ]
+      ]
+    },
+    "crystallization": {
+      "rate": 0.005,
+      "minimum_days": 3,
+      "max_change_per_year": 0.5
+    }
+  }
+}

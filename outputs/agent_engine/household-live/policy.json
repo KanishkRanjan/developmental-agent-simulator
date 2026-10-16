@@ -1,0 +1,97 @@
+{
+  "description": "Synthetic short household wiring fixture; childhood was not simulated.",
+  "sampling": "event_driven",
+  "opportunities": [],
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 8
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "cognition": {
+    "semantic_recall": true,
+    "graphiti_retrieval": true,
+    "indexed_retrieval": true
+  },
+  "household": {
+    "rooms": {
+      "living": {
+        "label": "the household living room"
+      },
+      "bedroom": {
+        "label": "a closed bedroom"
+      }
+    },
+    "locations": {
+      "alex": "living",
+      "maya": "living",
+      "bea": "living",
+      "noor": "bedroom"
+    },
+    "routines": {
+      "alex": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          0.5,
+          1.5
+        ]
+      },
+      "maya": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          0.5,
+          1.5
+        ]
+      },
+      "bea": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          0.5,
+          1.5
+        ]
+      },
+      "noor": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          0.5,
+          1.5
+        ]
+      }
+    },
+    "conversations": [
+      {
+        "id": "homework",
+        "day": 0.75,
+        "room": "living",
+        "participants": [
+          "alex",
+          "maya"
+        ],
+        "topic": "Discuss how school projects are going and what support would be useful. Each person can express their own needs.",
+        "max_turns": 4,
+        "exit_room": "bedroom"
+      }
+    ]
+  }
+}

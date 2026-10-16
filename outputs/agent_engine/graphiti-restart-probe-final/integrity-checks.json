@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checkpoint_preserved": true,
+  "queued_while_service_stopped": true,
+  "queued_snapshot_recovered_after_restart": true,
+  "status": {
+    "status": "done",
+    "error": null,
+    "attempts": 1
+  },
+  "backend": "graphiti_neo4j_local_bge_rrf",
+  "scope": "durable background indexing across an intentional idle service stop/start, not a mid-write crash injection"
+}

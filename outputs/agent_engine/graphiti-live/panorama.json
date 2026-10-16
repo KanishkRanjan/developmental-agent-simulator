@@ -1,0 +1,40 @@
+{
+  "mode": "panorama",
+  "scope": "researcher checkpoint inspection; no recall or agent state mutation",
+  "events": [
+    {
+      "event": "dismissal",
+      "day": 0,
+      "current_representation": "episodic_detail",
+      "current_meaning": "I lost my job, but I am actively taking steps to regain a sense of agency and forward momentum.",
+      "kind": "direct",
+      "source": "direct",
+      "prior_interpretations": [
+        {
+          "day": 1.8405873736097254,
+          "meaning": "I lost a job and worried about being judged.",
+          "confidence": 0.5,
+          "replaced_by": "alex:reflection:life-0-presentation:dismissal"
+        }
+      ]
+    },
+    {
+      "event": "encouragement",
+      "day": 0,
+      "current_representation": "episodic_detail",
+      "current_meaning": "I felt supported after explaining a difficulty.",
+      "kind": "direct",
+      "source": "direct",
+      "prior_interpretations": []
+    },
+    {
+      "event": "life-0-presentation",
+      "day": 1.8405873736097254,
+      "current_representation": "episodic_detail",
+      "current_meaning": "I successfully completed the first step of my plan by drafting a useful paragraph, which provides a small but tangible sense of progress and agency after the recent job loss.",
+      "kind": "direct",
+      "source": "direct",
+      "prior_interpretations": []
+    }
+  ]
+}

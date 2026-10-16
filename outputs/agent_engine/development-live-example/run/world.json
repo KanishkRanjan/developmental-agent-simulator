@@ -1,0 +1,1786 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 1933.497705438307,
+  "entities": {
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "biological_parents": [
+          "maya"
+        ],
+        "birth_day": 0,
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "maya": {
+      "name": "Maya",
+      "facts": {}
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {}
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 49.973306525931605,
+        "N2": 49.973306525931605,
+        "N3": 49.973306525931605,
+        "N4": 49.973306525931605,
+        "N5": 49.973306525931605,
+        "N6": 49.973306525931605,
+        "E1": 50.0,
+        "E2": 50.0,
+        "E3": 50.0,
+        "E4": 50.0,
+        "E5": 50.0,
+        "E6": 50.0,
+        "O1": 50.0,
+        "O2": 50.0,
+        "O3": 50.0,
+        "O4": 50.0,
+        "O5": 50.0,
+        "O6": 50.0,
+        "A1": 50.026693474068395,
+        "A2": 50.026693474068395,
+        "A3": 50.026693474068395,
+        "A4": 50.026693474068395,
+        "A5": 50.026693474068395,
+        "A6": 50.026693474068395,
+        "C1": 50.026693474068395,
+        "C2": 50.026693474068395,
+        "C3": 50.026693474068395,
+        "C4": 50.026693474068395,
+        "C5": 50.026693474068395,
+        "C6": 50.026693474068395
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "alex": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-2-childhood-support"
+        }
+      },
+      "references": {},
+      "beliefs": {
+        "gist-84189ea11e8f2e89-0": {
+          "text": "Collaborative interactions with Alex tend to be low-intensity and routine, suggesting a stable but unremarkable pattern of support.",
+          "confidence": 0.7,
+          "evidence": [
+            "life-0-childhood-support",
+            "life-1-childhood-support",
+            "life-2-childhood-support"
+          ],
+          "day": 1933.497705438307,
+          "kind": "inferred_semantic_gist"
+        }
+      },
+      "memory_meta": {
+        "life-0-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.3,
+          "meaning": "A collaborative interaction with Alex where we worked on a school project together.",
+          "versions": [],
+          "stability_days": 5.4,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-0-childhood-support",
+          "consolidated": true,
+          "archived": true
+        },
+        "life-1-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.2,
+          "meaning": "A neutral recollection of a past collaborative interaction with Alex, characterized by low emotional intensity and a sense of routine familiarity.",
+          "versions": [],
+          "stability_days": 4.5,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-1-childhood-support",
+          "consolidated": true,
+          "archived": true
+        },
+        "life-2-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.2,
+          "meaning": "A direct recollection of a collaborative interaction with Alex, characterized by low emotional intensity and a sense of routine familiarity.",
+          "versions": [],
+          "stability_days": 4.5,
+          "last_recall_day": null,
+          "encountered": [
+            "alex"
+          ],
+          "provenance": "life-2-childhood-support",
+          "consolidated": true,
+          "archived": true
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.4738481352088552,
+          -0.15483410836045738,
+          -0.9994671949032232,
+          -1.069118066632094,
+          -0.2567552828665248,
+          -0.17767402190059842,
+          1.3332594987661879,
+          0.5558852941552133,
+          0.6651432011404581,
+          0.22236622520567761,
+          1.1567625407397022,
+          1.6715002821251264,
+          2.1122598366042538,
+          1.7281779209483732,
+          0.5358684241369184,
+          0.9185481518272485,
+          1.3894020808366268,
+          2.0623954253455605,
+          0.6624837155786824,
+          -0.1352073787241836,
+          1.7031556100593528,
+          0.26384335003741854,
+          0.10746617840785101,
+          1.572789507503627,
+          0.42922379150901063,
+          -0.9518287287984598,
+          -0.9362542832143601,
+          -0.34403325001955776,
+          -0.1390783083910736,
+          -0.25068638631396234
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms"
+      },
+      "developmental_model": {
+        "origin_day": 1826.25,
+        "initial_facets": {
+          "N1": 50,
+          "N2": 50,
+          "N3": 50,
+          "N4": 50,
+          "N5": 50,
+          "N6": 50,
+          "E1": 50,
+          "E2": 50,
+          "E3": 50,
+          "E4": 50,
+          "E5": 50,
+          "E6": 50,
+          "O1": 50,
+          "O2": 50,
+          "O3": 50,
+          "O4": 50,
+          "O5": 50,
+          "O6": 50,
+          "A1": 50,
+          "A2": 50,
+          "A3": 50,
+          "A4": 50,
+          "A5": 50,
+          "A6": 50,
+          "C1": 50,
+          "C2": 50,
+          "C3": 50,
+          "C4": 50,
+          "C5": 50,
+          "C6": 50
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "alex": {
+      "facets": {
+        "N1": 22.59,
+        "N2": 89.64,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 20.84,
+        "N6": 69.55,
+        "E1": 24.75,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 64.63,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 70.96,
+        "O2": 88.47,
+        "O3": 43.99,
+        "O4": 55.99,
+        "O5": 95.96,
+        "O6": 74.98,
+        "A1": 31.49,
+        "A2": 91.54,
+        "A3": 52.16,
+        "A4": 77.21,
+        "A5": 77.29,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 83.16,
+        "C6": 77.49
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-2-childhood-support"
+        }
+      },
+      "references": {},
+      "beliefs": {
+        "gist-84189ea11e8f2e89-0": {
+          "text": "Reaching out to Maya for help often feels like a shared effort that doesn't fully resolve the underlying difficulty, leaving a sense of lingering stagnation.",
+          "confidence": 0.85,
+          "evidence": [
+            "life-0-childhood-support",
+            "life-1-childhood-support",
+            "life-2-childhood-support"
+          ],
+          "day": 1933.497705438307,
+          "kind": "inferred_semantic_gist"
+        },
+        "gist-84189ea11e8f2e89-1": {
+          "text": "Despite the repeated frustration of remaining stuck, I continue to perceive Maya's engagement as attentive and warm, suggesting a distinction between the effectiveness of the solution and the quality of the support.",
+          "confidence": 0.7,
+          "evidence": [
+            "life-2-childhood-support"
+          ],
+          "day": 1933.497705438307,
+          "kind": "inferred_semantic_gist"
+        }
+      },
+      "memory_meta": {
+        "life-0-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I sought assistance from Maya and we collaborated, but the issue remains unresolved. The effort was made, yet the outcome is still a state of being stuck.",
+          "versions": [],
+          "stability_days": 9.075000000000001,
+          "last_recall_day": 1933.497705438307,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-0-childhood-support",
+          "consolidated": true,
+          "archived": true
+        },
+        "life-1-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I sought assistance from Maya and we collaborated, but the issue remains unresolved. The effort was made, yet the outcome is still a state of being stuck.",
+          "versions": [],
+          "stability_days": 8.25,
+          "last_recall_day": 1933.497705438307,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-1-childhood-support",
+          "consolidated": true,
+          "archived": true
+        },
+        "life-2-childhood-support": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "I reached out to Maya for assistance and we engaged in a collaborative effort, yet the fundamental difficulty remains unresolved. While I perceive Maya\u2019s engagement as attentive and warm, the persistence of the problem creates a sense of lingering frustration and stagnation.",
+          "versions": [],
+          "stability_days": 7.3500000000000005,
+          "last_recall_day": null,
+          "encountered": [
+            "maya"
+          ],
+          "provenance": "life-2-childhood-support",
+          "consolidated": true,
+          "archived": true
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 1904.8347428634554,
+          "valence": -0.05,
+          "arousal": 0.075,
+          "memory": "life-0-childhood-support"
+        },
+        {
+          "day": 1933.497705438307,
+          "valence": -0.025,
+          "arousal": 0.0375,
+          "memory": "life-0-childhood-support"
+        },
+        {
+          "day": 1933.497705438307,
+          "valence": -0.05,
+          "arousal": 0.075,
+          "memory": "life-1-childhood-support"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "life-1-childhood-support-action:used-memory:life-0-childhood-support",
+          "day": 1904.8347428634554,
+          "memory": "life-0-childhood-support",
+          "rehearsed": true
+        },
+        {
+          "id": "life-2-childhood-support-action:used-memory:life-0-childhood-support",
+          "day": 1933.497705438307,
+          "memory": "life-0-childhood-support",
+          "rehearsed": true
+        },
+        {
+          "id": "life-2-childhood-support-action:used-memory:life-1-childhood-support",
+          "day": 1933.497705438307,
+          "memory": "life-1-childhood-support",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.6643747026120979,
+          1.42556854410861,
+          -0.930972776914486,
+          -1.139080651745723,
+          -1.680808422482368,
+          0.3362318405321472,
+          0.6036063725678315,
+          -0.04586237138901689,
+          2.268309834822298,
+          0.5162325557528157,
+          -0.9329483799198658,
+          0.8756592385091474,
+          0.331300353443148,
+          1.9061398952690098,
+          -0.6288114423466264,
+          -0.5330838168705087,
+          1.4916110869543018,
+          0.047217825779885425,
+          0.26960008398924284,
+          0.27305130914113096,
+          0.4597925059011791,
+          1.1357448628611602,
+          -0.30085085866863515,
+          1.5811465165130825,
+          1.1853373755597558,
+          0.23401974963592914,
+          0.5994559882383798,
+          0.8611956532788801,
+          1.3725702814019132,
+          0.8421790282234106
+        ],
+        "nonshared_latent": [
+          -0.22145488831475035,
+          0.2380719757825447,
+          0.06117348294822844,
+          1.2479665337817227,
+          0.5009510226140108,
+          0.35697298678586886,
+          -1.1181505850267195,
+          -0.8968278861965979,
+          -0.2412974322601349,
+          0.09562418467844819,
+          -0.31107152972489627,
+          0.6352776516906531,
+          0.20283025457276516,
+          -0.11100608441261395,
+          0.14139874576954264,
+          0.403697199699508,
+          0.8794854413720177,
+          0.7735013215199855,
+          -0.7804004507698558,
+          1.1794629648697312,
+          -0.17585034142495348,
+          0.07715474324365446,
+          0.9157191529329053,
+          1.0670910834087919,
+          0.5709410672098251,
+          0.8825819890069785,
+          0.9013219522897673,
+          1.1322135820401207,
+          0.024034238006481634,
+          0.18025620679205978
+        ],
+        "parents": [
+          "maya"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "developmental_model": {
+        "origin_day": 1826.25,
+        "initial_facets": {
+          "N1": 22.59,
+          "N2": 89.64,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 20.84,
+          "N6": 69.55,
+          "E1": 24.75,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 64.63,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 70.96,
+          "O2": 88.47,
+          "O3": 43.99,
+          "O4": 55.99,
+          "O5": 95.96,
+          "O6": 74.98,
+          "A1": 31.49,
+          "A2": 91.54,
+          "A3": 52.16,
+          "A4": 77.21,
+          "A5": 77.29,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 83.16,
+          "C6": 77.49
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "caps_rules": [
+        {
+          "id": "sig_01",
+          "dimension": "Adversity",
+          "trigger_context": "Witnessing a younger sibling or peer struggling with a physical task, such as falling off a bike or failing to build a block tower.",
+          "narrative_shift": "Alex's focus shifts from their own play to an intense, empathetic observation of the other's distress, potentially pausing their own activity to offer a simple, direct comfort or a practical suggestion, driven by a visceral reaction to the difficulty.",
+          "state_modifiers": {
+            "N": 5,
+            "E": -2,
+            "O": 0,
+            "A": 8,
+            "C": 2
+          }
+        },
+        {
+          "id": "sig_02",
+          "dimension": "Intellect",
+          "trigger_context": "Encountering a 'why' question about a natural phenomenon, such as why the moon changes shape or how rain forms, during a walk or story time.",
+          "narrative_shift": "Alex becomes absorbed in the abstract mechanism, asking rapid-fire follow-up questions to probe the complexity, showing a preference for the logical structure of the answer over immediate social reassurance.",
+          "state_modifiers": {
+            "N": -2,
+            "E": 3,
+            "O": 9,
+            "A": -1,
+            "C": 4
+          }
+        },
+        {
+          "id": "sig_03",
+          "dimension": "Duty",
+          "trigger_context": "Being asked to clean up a shared play area where another child has left a mess that Alex did not create.",
+          "narrative_shift": "Alex expresses candid dissatisfaction with the unfairness of the task, speaking up clearly to assert that they should not be responsible for someone else's mess, yet still performs the task with a focus on doing it 'right' to meet the standard.",
+          "state_modifiers": {
+            "N": 3,
+            "E": 2,
+            "O": -1,
+            "A": -4,
+            "C": 6
+          }
+        },
+        {
+          "id": "sig_04",
+          "dimension": "Positivity",
+          "trigger_context": "Successfully completing a challenging puzzle or drawing that required sustained effort and focus.",
+          "narrative_shift": "Alex exhibits a heightened sense of pride and achievement, seeking validation not just for the result but for the effort invested, and may immediately set a slightly higher goal for the next similar task.",
+          "state_modifiers": {
+            "N": -5,
+            "E": 6,
+            "O": 2,
+            "A": 3,
+            "C": 5
+          }
+        },
+        {
+          "id": "sig_05",
+          "dimension": "Sociality",
+          "trigger_context": "Joining a group of children playing a game where the rules are unclear or being enforced inconsistently by the leader.",
+          "narrative_shift": "Alex advocates for their preferred interpretation of the rules, speaking straightforwardly about what they think is fair, potentially causing a minor social friction but asserting their preference for a structured, equitable interaction.",
+          "state_modifiers": {
+            "N": 1,
+            "E": 4,
+            "O": -2,
+            "A": -3,
+            "C": 3
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 1827.9304454886246,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 22.59,
+          "N2": 89.64,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 20.84,
+          "N6": 69.55,
+          "E1": 24.75,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 64.63,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 70.96,
+          "O2": 88.47,
+          "O3": 43.99,
+          "O4": 55.99,
+          "O5": 95.96,
+          "O6": 74.98,
+          "A1": 31.49,
+          "A2": 91.54,
+          "A3": 52.16,
+          "A4": 77.21,
+          "A5": 77.29,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 83.16,
+          "C6": 77.49
+        },
+        "evidence": []
+      },
+      "situational_state": {
+        "day": 1933.497705438307,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "I am facing a difficult school project that I cannot solve alone. I recall past instances where asking Maya for help resulted in collaboration but left me still stuck, creating a sense of unresolved frustration. However, my expectation is that she is available and responsive to my needs. I intend to approach her candidly to seek assistance, driven by the desire to overcome this challenge and achieve the goal, even if the outcome remains uncertain.",
+          "dimensions": {
+            "Duty": 0.6,
+            "Intellect": 0.7,
+            "Adversity": 0.5,
+            "Mating": 0.0,
+            "Positivity": 0.2,
+            "Negativity": 0.4,
+            "Deception": 0.0,
+            "Sociality": 0.5
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-2-childhood-support-situation",
+        "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+        "cues": [
+          "school",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "caregiving_experiences": [
+        {
+          "caregiver": "maya",
+          "responsiveness": 0.85,
+          "acceptance": 0.85,
+          "event": "life-0-childhood-support",
+          "day": 1827.9304454886246
+        },
+        {
+          "caregiver": "maya",
+          "responsiveness": 0.85,
+          "acceptance": 0.85,
+          "event": "life-1-childhood-support",
+          "day": 1904.8347428634554
+        },
+        {
+          "caregiver": "maya",
+          "responsiveness": 0.85,
+          "acceptance": 0.85,
+          "event": "life-2-childhood-support",
+          "day": 1933.497705438307
+        }
+      ],
+      "developmental_exposures": [
+        {
+          "day": 1827.9304454886246,
+          "action": "life-0-childhood-support-action",
+          "evidence": "life-0-childhood-support",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        },
+        {
+          "day": 1904.8347428634554,
+          "action": "life-1-childhood-support-action",
+          "evidence": "life-1-childhood-support",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        },
+        {
+          "day": 1933.497705438307,
+          "action": "life-2-childhood-support-action",
+          "evidence": "life-2-childhood-support",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {}
+    },
+    "bea": {
+      "facets": {
+        "N1": 50.0,
+        "N2": 50.0,
+        "N3": 50.0,
+        "N4": 50.0,
+        "N5": 50.0,
+        "N6": 50.0,
+        "E1": 50.0,
+        "E2": 50.0,
+        "E3": 50.0,
+        "E4": 50.0,
+        "E5": 50.0,
+        "E6": 50.0,
+        "O1": 50.0,
+        "O2": 50.0,
+        "O3": 50.0,
+        "O4": 50.0,
+        "O5": 50.0,
+        "O6": 50.0,
+        "A1": 50.0,
+        "A2": 50.0,
+        "A3": 50.0,
+        "A4": 50.0,
+        "A5": 50.0,
+        "A6": 50.0,
+        "C1": 50.0,
+        "C2": 50.0,
+        "C3": 50.0,
+        "C4": 50.0,
+        "C5": 50.0,
+        "C6": 50.0
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "developmental_model": {
+        "origin_day": 1826.25,
+        "initial_facets": {
+          "N1": 50,
+          "N2": 50,
+          "N3": 50,
+          "N4": 50,
+          "N5": 50,
+          "N6": 50,
+          "E1": 50,
+          "E2": 50,
+          "E3": 50,
+          "E4": 50,
+          "E5": 50,
+          "E6": 50,
+          "O1": 50,
+          "O2": 50,
+          "O3": 50,
+          "O4": 50,
+          "O5": 50,
+          "O6": 50,
+          "A1": 50,
+          "A2": 50,
+          "A3": 50,
+          "A4": 50,
+          "A5": 50,
+          "A6": 50,
+          "C1": 50,
+          "C2": 50,
+          "C3": 50,
+          "C4": 50,
+          "C5": 50,
+          "C6": 50
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "life-0-childhood-support",
+      "day": 1827.9304454886246,
+      "description": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+      "observations": {
+        "alex": {
+          "text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "meaning": "I sought assistance from Maya and we collaborated, but the issue remains unresolved. The effort was made, yet the outcome is still a state of being stuck.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ],
+          "caregiving": {
+            "caregiver": "maya",
+            "responsiveness": 0.85,
+            "acceptance": 0.85
+          },
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "maya": {
+          "text": "Alex asked me for help with a school project and we spent time on it together.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "A collaborative interaction with Alex where we worked on a school project together.",
+          "valence": 0.1,
+          "arousal": 0.2,
+          "importance": 0.3,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-0-childhood-support-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-1-childhood-support",
+      "day": 1904.8347428634554,
+      "description": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+      "observations": {
+        "alex": {
+          "text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.3,
+          "importance": 0.6,
+          "meaning": "I sought assistance from Maya and we collaborated, but the issue remains unresolved. The effort was made, yet the outcome is still a state of being stuck.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ],
+          "caregiving": {
+            "caregiver": "maya",
+            "responsiveness": 0.85,
+            "acceptance": 0.85
+          },
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "maya": {
+          "text": "Alex asked me for help with a school project and we spent time on it together.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "A neutral recollection of a past collaborative interaction with Alex, characterized by low emotional intensity and a sense of routine familiarity.",
+          "valence": 0.05,
+          "arousal": 0.1,
+          "importance": 0.2,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-1-childhood-support-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-2-childhood-support",
+      "day": 1933.497705438307,
+      "description": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+      "observations": {
+        "alex": {
+          "text": "I asked Maya for help, and we tried together, but I was still stuck afterwards.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.15,
+          "arousal": 0.25,
+          "importance": 0.6,
+          "meaning": "I reached out to Maya for assistance and we engaged in a collaborative effort, yet the fundamental difficulty remains unresolved. While I perceive Maya\u2019s engagement as attentive and warm, the persistence of the problem creates a sense of lingering frustration and stagnation.",
+          "confidence": 0.8,
+          "encountered": [
+            "maya"
+          ],
+          "caregiving": {
+            "caregiver": "maya",
+            "responsiveness": 0.85,
+            "acceptance": 0.85
+          },
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "maya": {
+          "text": "Alex asked me for help with a school project and we spent time on it together.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "alex"
+          ],
+          "meaning": "A direct recollection of a collaborative interaction with Alex, characterized by low emotional intensity and a sense of routine familiarity.",
+          "valence": 0.05,
+          "arousal": 0.1,
+          "importance": 0.2,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-2-childhood-support-action",
+        "alive": [
+          "alex",
+          "maya"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-childhood-support-action",
+      "owner": "alex",
+      "day": 1827.9304454886246,
+      "decision": {
+        "action": "Ask Maya to work through the school project together.",
+        "speech": "Maya, this project is really hard. I want to get it right, but I'm stuck. Can you help me figure it out? I want to understand it myself, but I need a hand getting started.",
+        "goal_id": null,
+        "plan": [
+          "Acknowledge the difficulty of the school project.",
+          "Request Maya's assistance to overcome the barrier.",
+          "Ensure the collaboration allows for personal understanding and achievement of high standards."
+        ],
+        "memory_ids": [],
+        "action_id": "ask-caregiver"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-0-childhood-support"
+    },
+    {
+      "id": "life-1-childhood-support-action",
+      "owner": "alex",
+      "day": 1904.8347428634554,
+      "decision": {
+        "action": "Ask Maya to work through the school project together.",
+        "speech": "Maya, I'm really stuck on this project. I know we tried before and it didn't fully work, but I need to get this right. Can we look at it again together?",
+        "goal_id": null,
+        "plan": [
+          "Approach Maya directly with the specific problem.",
+          "Explain that previous attempts left me stuck but I am determined to succeed.",
+          "Collaborate to find a solution that works this time."
+        ],
+        "memory_ids": [
+          "life-0-childhood-support"
+        ],
+        "action_id": "ask-caregiver"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-1-childhood-support"
+    },
+    {
+      "id": "life-2-childhood-support-action",
+      "owner": "alex",
+      "day": 1933.497705438307,
+      "decision": {
+        "action": "Ask Maya to work through the school project together.",
+        "speech": "Maya, I'm really stuck on this school project. I know we've tried this before and it didn't fully work out, but I think I need your help to get through it. Can we work on it together?",
+        "goal_id": null,
+        "plan": [
+          "Approach Maya directly.",
+          "Explain the specific parts of the project that are difficult.",
+          "Collaborate to find a solution, aiming for a better outcome than last time."
+        ],
+        "memory_ids": [
+          "life-0-childhood-support",
+          "life-1-childhood-support"
+        ],
+        "action_id": "ask-caregiver"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-2-childhood-support"
+    }
+  ],
+  "updates": [
+    {
+      "id": "life-0-childhood-support-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 1827.9304454886246,
+      "state": {
+        "day": 1827.9304454886246,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "Alex perceives a challenging academic task as a barrier to achievement. The presence of Maya offers a potential resource for overcoming this difficulty, but Alex's primary drive is to maintain autonomy and meet their own high standards. The situation is construed as a test of competence where external help is acceptable only if it facilitates success without diminishing personal effort or control.",
+          "dimensions": {
+            "Duty": 0.6,
+            "Intellect": 0.5,
+            "Adversity": 0.4,
+            "Mating": 0.0,
+            "Positivity": 0.3,
+            "Negativity": 0.3,
+            "Deception": 0.0,
+            "Sociality": 0.4
+          },
+          "controllability": 0.7,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-0-childhood-support-situation",
+        "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+        "cues": [
+          "school",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-1-childhood-support-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 1904.8347428634554,
+      "state": {
+        "day": 1904.8347428634554,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "I am stuck on this school project. Maya is here to help, but I remember that last time we tried, I was still stuck afterwards. I have mixed feelings about asking her again because I'm not sure it will actually fix the problem, but I want to get this right.",
+          "dimensions": {
+            "Duty": 0.6,
+            "Intellect": 0.4,
+            "Adversity": 0.7,
+            "Mating": 0.0,
+            "Positivity": 0.2,
+            "Negativity": 0.3,
+            "Deception": 0.0,
+            "Sociality": 0.5
+          },
+          "controllability": 0.4,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-1-childhood-support-situation",
+        "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+        "cues": [
+          "school",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-1-childhood-support-action:used-memory:life-0-childhood-support",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1904.8347428634554
+    },
+    {
+      "id": "life-2-childhood-support-situation",
+      "kind": "situation_state",
+      "owner": "alex",
+      "day": 1933.497705438307,
+      "state": {
+        "day": 1933.497705438307,
+        "offsets": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "recovery_half_life_days": 1.0,
+        "perception": {
+          "meaning": "I am facing a difficult school project that I cannot solve alone. I recall past instances where asking Maya for help resulted in collaboration but left me still stuck, creating a sense of unresolved frustration. However, my expectation is that she is available and responsive to my needs. I intend to approach her candidly to seek assistance, driven by the desire to overcome this challenge and achieve the goal, even if the outcome remains uncertain.",
+          "dimensions": {
+            "Duty": 0.6,
+            "Intellect": 0.7,
+            "Adversity": 0.5,
+            "Mating": 0.0,
+            "Positivity": 0.2,
+            "Negativity": 0.4,
+            "Deception": 0.0,
+            "Sociality": 0.5
+          },
+          "controllability": 0.6,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "id": "life-2-childhood-support-situation",
+        "situation": "You are struggling with a school project. Maya is available to help. What will you do?",
+        "cues": [
+          "school",
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "life-2-childhood-support-action:used-memory:life-0-childhood-support",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1933.497705438307
+    },
+    {
+      "id": "life-2-childhood-support-action:used-memory:life-1-childhood-support",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 1933.497705438307
+    },
+    {
+      "id": "alex:gist-84189ea11e8f2e89-0",
+      "kind": "belief",
+      "owner": "alex",
+      "day": 1933.497705438307,
+      "key": "gist-84189ea11e8f2e89-0",
+      "previous": null
+    },
+    {
+      "id": "alex:gist-84189ea11e8f2e89-1",
+      "kind": "belief",
+      "owner": "alex",
+      "day": 1933.497705438307,
+      "key": "gist-84189ea11e8f2e89-1",
+      "previous": null
+    },
+    {
+      "id": "alex:consolidate:84189ea11e8f2e89",
+      "kind": "consolidation",
+      "owner": "alex",
+      "day": 1933.497705438307,
+      "evidence": [
+        "life-0-childhood-support",
+        "life-1-childhood-support",
+        "life-2-childhood-support"
+      ],
+      "gist_count": 2
+    },
+    {
+      "id": "maya:gist-84189ea11e8f2e89-0",
+      "kind": "belief",
+      "owner": "maya",
+      "day": 1933.497705438307,
+      "key": "gist-84189ea11e8f2e89-0",
+      "previous": null
+    },
+    {
+      "id": "maya:consolidate:84189ea11e8f2e89",
+      "kind": "consolidation",
+      "owner": "maya",
+      "day": 1933.497705438307,
+      "evidence": [
+        "life-0-childhood-support",
+        "life-1-childhood-support",
+        "life-2-childhood-support"
+      ],
+      "gist_count": 1
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0
+  },
+  "runtime": {
+    "policy_fingerprint": "b091b5c667e1ea3239825c2bf3aaa7bfae2f6b2e8ef15b3dc0ea496f0444f862",
+    "scripted": false,
+    "start_day": 1826.25,
+    "current_day": 1933.497705438307,
+    "next_tick": null,
+    "tick": 3,
+    "trace": [
+      {
+        "opportunity": "childhood-support",
+        "day": 1827.9304454886246,
+        "action": "ask-caregiver",
+        "success": false,
+        "event": "life-0-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 0,
+        "day": 1827.9304454886246,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 1904.8347428634554,
+        "action": "ask-caregiver",
+        "success": false,
+        "event": "life-1-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 1,
+        "day": 1904.8347428634554,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "childhood-support",
+        "day": 1933.497705438307,
+        "action": "ask-caregiver",
+        "success": false,
+        "event": "life-2-childhood-support",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 2,
+        "day": 1933.497705438307,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "childhood-support": 3
+    },
+    "next_opportunities": {
+      "childhood-support": 1953.0043415731477
+    }
+  }
+}

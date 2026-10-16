@@ -1,0 +1,45 @@
+{
+  "checkpoint_restored": true,
+  "actions_resolved": 30,
+  "appraisals": 36,
+  "ticks": 89,
+  "age": 22,
+  "goals": {
+    "community-presentation": {
+      "description": "Prepare and deliver a community project presentation.",
+      "priority": 0.8,
+      "deadline": null,
+      "status": "completed",
+      "progress": 1.0,
+      "plan": [
+        "Review the current draft to identify the weakest sections.",
+        "Refine the wording in those sections to ensure clarity and flow."
+      ]
+    }
+  },
+  "facet_changes_under_scenario_policy": {
+    "N1": {
+      "initial": 65,
+      "final": 64.75000000000001
+    },
+    "C1": {
+      "initial": 45,
+      "final": 45.74999999999999
+    },
+    "C5": {
+      "initial": 50,
+      "final": 51.40000000000002
+    }
+  },
+  "memories": {
+    "alex": 30,
+    "maya": 6,
+    "bea": 0
+  },
+  "choices": {
+    "ask-caregiver": 6,
+    "draft-alone": 14,
+    "revise-notes": 10
+  },
+  "action_responses_citing_memories": 29
+}

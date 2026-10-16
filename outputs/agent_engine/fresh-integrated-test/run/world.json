@@ -1,0 +1,2489 @@
+{
+  "version": 1,
+  "seed": 73,
+  "day": 7.305,
+  "entities": {
+    "maya": {
+      "name": "Maya",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well",
+        "education": "Completed secondary education",
+        "residence": "Urban apartment",
+        "interests": "Reading and hiking"
+      },
+      "generated_biography": {
+        "personal-history-v1": {
+          "current_facts": {
+            "education": "Completed secondary education",
+            "residence": "Urban apartment",
+            "interests": "Reading and hiking"
+          },
+          "timeline": [
+            {
+              "field": "education",
+              "value": "Completed secondary education",
+              "start_day": -9100.0,
+              "end_day": 4.719484707954479
+            },
+            {
+              "field": "residence",
+              "value": "Urban apartment",
+              "start_day": -9100.0,
+              "end_day": 4.719484707954479
+            },
+            {
+              "field": "interests",
+              "value": "Reading and hiking",
+              "start_day": -9100.0,
+              "end_day": 4.719484707954479
+            }
+          ],
+          "overview": "Maya is a long-standing resident of an urban apartment who has maintained a consistent routine of reading and hiking since completing secondary education. Her life has remained stable with no significant changes in residence or educational status over the simulated period.",
+          "day": 4.719484707954479,
+          "policy": "open_values_structured_synthetic_initialization",
+          "invented_private_observations": false
+        }
+      }
+    },
+    "noor": {
+      "name": "Noor",
+      "facts": {
+        "birth_day": -9861.75,
+        "health_status": "well"
+      }
+    },
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "maya",
+          "noor"
+        ],
+        "caregivers": [
+          "maya",
+          "noor"
+        ]
+      }
+    },
+    "rowan": {
+      "name": "Rowan",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well"
+      }
+    },
+    "kai": {
+      "name": "Kai",
+      "facts": {
+        "birth_day": -9861.75,
+        "health_status": "well"
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "kai",
+          "rowan"
+        ],
+        "caregivers": [
+          "rowan",
+          "kai"
+        ]
+      }
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 82.53818181818183,
+        "N2": 96.01818181818182,
+        "N3": 74.57818181818182,
+        "N4": 33.66818181818182,
+        "N5": 97.64818181818183,
+        "N6": 69.54818181818182,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 85.42,
+        "E4": 91.61,
+        "E5": 73.91,
+        "E6": 52.51,
+        "O1": 88.05,
+        "O2": 70.51,
+        "O3": 96.87,
+        "O4": 84.81,
+        "O5": 79.51,
+        "O6": 24.5,
+        "A1": 95.96181818181817,
+        "A2": 38.92181818181818,
+        "A3": 79.44181818181818,
+        "A4": 3.901818181818182,
+        "A5": 10.021818181818182,
+        "A6": 72.60181818181817,
+        "C1": 77.13181818181818,
+        "C2": 28.00181818181818,
+        "C3": 59.74181818181818,
+        "C4": 82.69181818181818,
+        "C5": 49.86181818181818,
+        "C6": 11.311818181818182
+      },
+      "initial_facets": {
+        "N1": 82.54,
+        "N2": 96.02,
+        "N3": 74.58,
+        "N4": 33.67,
+        "N5": 97.65,
+        "N6": 69.55,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 85.42,
+        "E4": 91.61,
+        "E5": 73.91,
+        "E6": 52.51,
+        "O1": 88.05,
+        "O2": 70.51,
+        "O3": 96.87,
+        "O4": 84.81,
+        "O5": 79.51,
+        "O6": 24.5,
+        "A1": 95.96,
+        "A2": 38.92,
+        "A3": 79.44,
+        "A4": 3.9,
+        "A5": 10.02,
+        "A6": 72.6,
+        "C1": 77.13,
+        "C2": 28.0,
+        "C3": 59.74,
+        "C4": 82.69,
+        "C5": 49.86,
+        "C6": 11.31
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": [
+            "Identify the specific friction point causing the difficulty.",
+            "Reduce the scope of the task further to make it less intimidating."
+          ],
+          "plan_versions": [
+            {
+              "day": 4.740318041287812,
+              "plan": [
+                "Identify a specific small task that is personally useful.",
+                "Set aside 30 minutes of focused time.",
+                "Execute the task with an energetic pace."
+              ],
+              "evidence": "life-0-maya:goal:personal-task"
+            }
+          ]
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-0-maya:goal:personal-task": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.4,
+          "meaning": "A direct observation confirming that a specific, minor action or transition is still proving challenging to execute. This aligns with the active goal of finishing a small personally useful task, suggesting a potential obstacle or friction in the plan. The phrasing is neutral and descriptive, indicating a state of persistence rather than immediate failure or success.",
+          "versions": [],
+          "stability_days": 6.0,
+          "encoding_stability_days": 6.0,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-0-maya:goal:personal-task",
+          "summary": "The small step remained difficult.",
+          "topics": [
+            "personal-task",
+            "friction",
+            "persistence"
+          ]
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.21203364154164073,
+          0.6124970164657961,
+          0.08381754007499442,
+          -0.0521469240359273,
+          1.1371350061443164,
+          -0.8851007580224642,
+          1.3447168311505249,
+          0.9597565615669227,
+          0.5405451745892512,
+          0.543172781110104,
+          0.6881772100526773,
+          1.2670224478919705,
+          -0.09485881911218996,
+          -0.953958550479094,
+          0.5165106402057975,
+          0.8594891663154361,
+          -0.14441150492787658,
+          -1.175358074111427,
+          1.9945978129898054,
+          -0.24221787919252466,
+          -0.14998760685763368,
+          0.0686283622906727,
+          -1.1388436571034535,
+          -0.3023469609088302,
+          1.5456345807741152,
+          -0.40174527963382567,
+          0.676835447708519,
+          0.5926716499254745,
+          0.44943132742840164,
+          0.1291910643800559
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 82.54,
+          "N2": 96.02,
+          "N3": 74.58,
+          "N4": 33.67,
+          "N5": 97.65,
+          "N6": 69.55,
+          "E1": 97.13,
+          "E2": 86.33,
+          "E3": 85.42,
+          "E4": 91.61,
+          "E5": 73.91,
+          "E6": 52.51,
+          "O1": 88.05,
+          "O2": 70.51,
+          "O3": 96.87,
+          "O4": 84.81,
+          "O5": 79.51,
+          "O6": 24.5,
+          "A1": 95.96,
+          "A2": 38.92,
+          "A3": 79.44,
+          "A4": 3.9,
+          "A5": 10.02,
+          "A6": 72.6,
+          "C1": 77.13,
+          "C2": 28.0,
+          "C3": 59.74,
+          "C4": 82.69,
+          "C5": 49.86,
+          "C6": 11.31
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "caps_rules": [
+        {
+          "id": "maya_duty_01",
+          "dimension": "Duty",
+          "trigger_context": "When balancing the immediate need to finish a personal task against a sudden, urgent request from Alex for help with a minor domestic issue.",
+          "narrative_shift": "Maya pauses her personal task to address Alex's request with immediate warmth, but her internal monologue becomes noticeably more critical and impatient as she calculates how this interruption delays her own progress. She helps efficiently but with a visible tightness in her posture.",
+          "state_modifiers": {
+            "N": 4,
+            "E": 2,
+            "O": 0,
+            "A": -2,
+            "C": 3
+          }
+        },
+        {
+          "id": "maya_intellect_01",
+          "dimension": "Intellect",
+          "trigger_context": "While reading a complex non-fiction book in her apartment, she encounters a concept that contradicts a belief she previously held strongly.",
+          "narrative_shift": "Instead of dismissing the new information, Maya becomes intensely focused on the text, re-reading paragraphs to understand the nuance. She feels a surge of curiosity and energy, temporarily ignoring her physical comfort to explore the new idea, though she remains open to the possibility that her previous view was wrong.",
+          "state_modifiers": {
+            "N": -1,
+            "E": 3,
+            "O": 5,
+            "A": 1,
+            "C": 2
+          }
+        },
+        {
+          "id": "maya_adversity_01",
+          "dimension": "Adversity",
+          "trigger_context": "During a hike, Maya encounters an unexpected obstacle, such as a washed-out trail section, requiring her to detour or turn back.",
+          "narrative_shift": "Maya initially feels a sharp spike of irritation at the disruption of her planned pace. However, she quickly shifts to a problem-solving mode, scanning the environment for alternative routes. Her irritation fades as she engages with the challenge, though she remains wary of further delays.",
+          "state_modifiers": {
+            "N": 5,
+            "E": 1,
+            "O": 2,
+            "A": -1,
+            "C": 4
+          }
+        },
+        {
+          "id": "maya_sociality_01",
+          "dimension": "Sociality",
+          "trigger_context": "At a casual gathering, Maya notices a new person who seems isolated or uncomfortable at the edge of the group.",
+          "narrative_shift": "Maya actively approaches the isolated individual with genuine warmth and curiosity, initiating conversation. She gives the person the benefit of the doubt regarding their shyness, focusing on finding common ground. Her energy level rises as she facilitates the connection, feeling a sense of social accomplishment.",
+          "state_modifiers": {
+            "N": -2,
+            "E": 4,
+            "O": 1,
+            "A": 5,
+            "C": 0
+          }
+        },
+        {
+          "id": "maya_negativity_01",
+          "dimension": "Negativity",
+          "trigger_context": "Maya receives mild, constructive criticism about a small task she completed, which she felt was already well-done.",
+          "narrative_shift": "Maya feels a quick, sharp sting of irritation and defensiveness, standing her ground on the quality of her work. However, she does not lash out; instead, she processes the feedback internally, weighing the critic's perspective against her own. She may briefly withdraw to re-evaluate her feelings before responding calmly.",
+          "state_modifiers": {
+            "N": 6,
+            "E": -1,
+            "O": 0,
+            "A": -3,
+            "C": 1
+          }
+        }
+      ],
+      "caps_provenance": {
+        "day": 4.719484707954479,
+        "stage": 2,
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+        "policy": "local_llm_unfitted",
+        "facets_at_generation": {
+          "N1": 82.53882534137068,
+          "N2": 96.01882534137067,
+          "N3": 74.57882534137067,
+          "N4": 33.66882534137068,
+          "N5": 97.64882534137068,
+          "N6": 69.54882534137067,
+          "E1": 97.13,
+          "E2": 86.33,
+          "E3": 85.42,
+          "E4": 91.61,
+          "E5": 73.91,
+          "E6": 52.51,
+          "O1": 88.05,
+          "O2": 70.51,
+          "O3": 96.87,
+          "O4": 84.81,
+          "O5": 79.51,
+          "O6": 24.5,
+          "A1": 95.96117465862932,
+          "A2": 38.921174658629326,
+          "A3": 79.44117465862932,
+          "A4": 3.9011746586293206,
+          "A5": 10.02117465862932,
+          "A6": 72.60117465862932,
+          "C1": 77.13117465862932,
+          "C2": 28.00117465862932,
+          "C3": 59.74117465862932,
+          "C4": 82.69117465862932,
+          "C5": 49.861174658629324,
+          "C6": 11.311174658629321
+        },
+        "evidence": []
+      },
+      "situational_state": {
+        "day": 4.719484707954479,
+        "offsets": {
+          "N1": 0.06956883219818621,
+          "N2": 0.06956883219818621,
+          "N3": 0.06956883219818621,
+          "N4": 0.06956883219817911,
+          "N5": 0.06956883219818621,
+          "N6": 0.06956883219818621,
+          "E1": 0.7409266686835707,
+          "E2": 0.7409266686835707,
+          "E3": 0.7409266686835707,
+          "E4": 0.7409266686835707,
+          "E5": 0.7409266686835707,
+          "E6": 0.7409266686835778,
+          "O1": 0.2676015293942555,
+          "O2": 0.2676015293942555,
+          "O3": 0.2676015293942555,
+          "O4": 0.2676015293942555,
+          "O5": 0.2676015293942555,
+          "O6": 0.26760152939425197,
+          "A1": 1.1341830219013644,
+          "A2": 1.1341830219013644,
+          "A3": 1.1341830219013644,
+          "A4": 1.134183021901363,
+          "A5": 1.1341830219013627,
+          "A6": 1.1341830219013644,
+          "C1": -0.3673174103928858,
+          "C2": -0.36731741039288224,
+          "C3": -0.3673174103928858,
+          "C4": -0.3673174103928858,
+          "C5": -0.3673174103928858,
+          "C6": -0.367317410392884
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "A quiet opportunity to reclaim agency. The situation presents a low-stakes challenge that aligns with my desire for a busy, energetic pace. I feel a gentle pull toward action, viewing the task not as a burden but as a way to assert my preferences and maintain momentum. There is no external pressure or social complication, just the internal satisfaction of making progress on something personally useful.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.1,
+            "Adversity": 0.3,
+            "Mating": 0.0,
+            "Positivity": 0.4,
+            "Negativity": 0.0,
+            "Deception": 0.0,
+            "Sociality": 0.1
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 0.06956883219818111,
+          "E": 0.7409266686835765,
+          "O": 0.2676015293942504,
+          "A": 1.1341830219013627,
+          "C": -0.3673174103928836
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-maya:goal:personal-task-situation",
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      },
+      "calendar": [
+        {
+          "activity": "life-0-maya:goal:personal-task",
+          "start_day": 4.719484707954479,
+          "end_day": 4.740318041287812,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "4": 0.4999999999999929
+      },
+      "habits": {
+        "challenge:small-step": {
+          "strength": 0.1,
+          "day": 4.740318041287812,
+          "cues": [
+            "challenge"
+          ],
+          "evidence": [
+            "life-0-maya:goal:personal-task"
+          ],
+          "days": [
+            4
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-0-maya:goal:personal-task"
+      ],
+      "developmental_exposures": [
+        {
+          "day": 4.740318041287812,
+          "action": "life-0-maya:goal:personal-task-action",
+          "evidence": "life-0-maya:goal:personal-task",
+          "offsets": {
+            "N1": 0.06956883219818621,
+            "N2": 0.06956883219818621,
+            "N3": 0.06956883219818621,
+            "N4": 0.06956883219817911,
+            "N5": 0.06956883219818621,
+            "N6": 0.06956883219818621,
+            "E1": 0.7409266686835707,
+            "E2": 0.7409266686835707,
+            "E3": 0.7409266686835707,
+            "E4": 0.7409266686835707,
+            "E5": 0.7409266686835707,
+            "E6": 0.7409266686835778,
+            "O1": 0.2676015293942555,
+            "O2": 0.2676015293942555,
+            "O3": 0.2676015293942555,
+            "O4": 0.2676015293942555,
+            "O5": 0.2676015293942555,
+            "O6": 0.26760152939425197,
+            "A1": 1.1341830219013644,
+            "A2": 1.1341830219013644,
+            "A3": 1.1341830219013644,
+            "A4": 1.134183021901363,
+            "A5": 1.1341830219013627,
+            "A6": 1.1341830219013644,
+            "C1": -0.3673174103928858,
+            "C2": -0.36731741039288224,
+            "C3": -0.3673174103928858,
+            "C4": -0.3673174103928858,
+            "C5": -0.3673174103928858,
+            "C6": -0.367317410392884
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {}
+    },
+    "noor": {
+      "facets": {
+        "N1": 57.91818181818182,
+        "N2": 1.9081818181818182,
+        "N3": 30.53818181818182,
+        "N4": 33.66818181818182,
+        "N5": 20.83818181818182,
+        "N6": 83.47818181818182,
+        "E1": 62.1,
+        "E2": 37.33,
+        "E3": 1.66,
+        "E4": 20.94,
+        "E5": 42.99,
+        "E6": 78.07,
+        "O1": 29.4,
+        "O2": 23.7,
+        "O3": 15.03,
+        "O4": 55.99,
+        "O5": 60.87,
+        "O6": 74.98,
+        "A1": 39.86181818181818,
+        "A2": 91.54181818181819,
+        "A3": 14.631818181818183,
+        "A4": 95.58181818181818,
+        "A5": 68.86181818181818,
+        "A6": 72.60181818181817,
+        "C1": 6.371818181818182,
+        "C2": 56.36181818181818,
+        "C3": 7.011818181818182,
+        "C4": 13.951818181818181,
+        "C5": 38.80181818181818,
+        "C6": 35.091818181818184
+      },
+      "initial_facets": {
+        "N1": 57.92,
+        "N2": 1.91,
+        "N3": 30.54,
+        "N4": 33.67,
+        "N5": 20.84,
+        "N6": 83.48,
+        "E1": 62.1,
+        "E2": 37.33,
+        "E3": 1.66,
+        "E4": 20.94,
+        "E5": 42.99,
+        "E6": 78.07,
+        "O1": 29.4,
+        "O2": 23.7,
+        "O3": 15.03,
+        "O4": 55.99,
+        "O5": 60.87,
+        "O6": 74.98,
+        "A1": 39.86,
+        "A2": 91.54,
+        "A3": 14.63,
+        "A4": 95.58,
+        "A5": 68.86,
+        "A6": 72.6,
+        "C1": 6.37,
+        "C2": 56.36,
+        "C3": 7.01,
+        "C4": 13.95,
+        "C5": 38.8,
+        "C6": 35.09
+      },
+      "birth_day": -9861.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.6963662248993846,
+          -2.1829015846828534,
+          0.6314400988322775,
+          1.3165990324214079,
+          -1.1241009598098675,
+          1.3250976291342642,
+          -0.9699789577891339,
+          -1.7546651314579995,
+          -2.4827722900966513,
+          -1.2296797005412659,
+          -0.5927657425549484,
+          -0.6345993769497833,
+          0.11071064225138727,
+          -0.6254473264868055,
+          -0.7392213135833215,
+          -0.93251872046884,
+          -0.49469413476155677,
+          0.3805958807044915,
+          -0.15345893334145105,
+          0.531786750375946,
+          -1.1857432197906,
+          1.3609836224598302,
+          0.36300376046937227,
+          0.39173526498376926,
+          -1.3685561739795982,
+          0.41104065702509446,
+          -1.6202094654548835,
+          -1.841492333767357,
+          -0.29552023798799987,
+          0.07064730966955962
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 57.92,
+          "N2": 1.91,
+          "N3": 30.54,
+          "N4": 33.67,
+          "N5": 20.84,
+          "N6": 83.48,
+          "E1": 62.1,
+          "E2": 37.33,
+          "E3": 1.66,
+          "E4": 20.94,
+          "E5": 42.99,
+          "E6": 78.07,
+          "O1": 29.4,
+          "O2": 23.7,
+          "O3": 15.03,
+          "O4": 55.99,
+          "O5": 60.87,
+          "O6": 74.98,
+          "A1": 39.86,
+          "A2": 91.54,
+          "A3": 14.63,
+          "A4": 95.58,
+          "A5": 68.86,
+          "A6": 72.6,
+          "C1": 6.37,
+          "C2": 56.36,
+          "C3": 7.01,
+          "C4": 13.95,
+          "C5": 38.8,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "alex": {
+      "facets": {
+        "N1": 66.82,
+        "N2": 10.18,
+        "N3": 74.58,
+        "N4": 86.2,
+        "N5": 3.69,
+        "N6": 41.22,
+        "E1": 40.64,
+        "E2": 45.4,
+        "E3": 2.98,
+        "E4": 30.23,
+        "E5": 32.05,
+        "E6": 15.67,
+        "O1": 48.89,
+        "O2": 60.17,
+        "O3": 57.04,
+        "O4": 23.66,
+        "O5": 16.47,
+        "O6": 32.9,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 36.66,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 72.6,
+        "C1": 27.33,
+        "C2": 34.93,
+        "C3": 59.74,
+        "C4": 48.43,
+        "C5": 83.16,
+        "C6": 96.39
+      },
+      "initial_facets": {
+        "N1": 66.82,
+        "N2": 10.18,
+        "N3": 74.58,
+        "N4": 86.2,
+        "N5": 3.69,
+        "N6": 41.22,
+        "E1": 40.64,
+        "E2": 45.4,
+        "E3": 2.98,
+        "E4": 30.23,
+        "E5": 32.05,
+        "E6": 15.67,
+        "O1": 48.89,
+        "O2": 60.17,
+        "O3": 57.04,
+        "O4": 23.66,
+        "O5": 16.47,
+        "O6": 32.9,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 36.66,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 72.6,
+        "C1": 27.33,
+        "C2": 34.93,
+        "C3": 59.74,
+        "C4": 48.43,
+        "C5": 83.16,
+        "C6": 96.39
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        },
+        "noor": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.5155483914590713,
+          -1.988549814579443,
+          1.046605253735007,
+          1.605720397471114,
+          -1.2942350808599257,
+          0.167668845212304,
+          0.09386636567107098,
+          -0.08534349590759072,
+          -1.5551314384430608,
+          -0.8895800195598447,
+          -1.0164118158647728,
+          -0.5454228660301632,
+          0.2151929122834899,
+          -0.17757105079268243,
+          -0.6185368558490698,
+          -1.104143592184962,
+          -0.030800146786545968,
+          0.5924281156892939,
+          0.4317602733707357,
+          0.3542599457850545,
+          -1.8047836152318526,
+          0.5655979835209776,
+          0.172176402190925,
+          -0.5935732153629619,
+          -0.29587001447686717,
+          -0.6661590876095757,
+          -0.25426728022194456,
+          -0.5968519355811541,
+          0.39219808765888536,
+          0.9330747224862767
+        ],
+        "nonshared_latent": [
+          0.17048385805655475,
+          0.20838508584581183,
+          -0.07216899048745395,
+          0.06569021089358351,
+          -0.9401764936419196,
+          -0.22039971215204263,
+          -0.1819762448341109,
+          -0.014295741011589286,
+          -0.9053709214785437,
+          -0.0013502575717609933,
+          0.15862891692049397,
+          -0.521680952296655,
+          -0.10857555004367109,
+          0.41006352054281353,
+          0.5732902002814894,
+          0.050078126541814316,
+          -1.017799653915865,
+          -0.857716643805826,
+          -0.839414589399083,
+          0.29792494666962055,
+          1.109752382215684,
+          0.09435185906860327,
+          0.2669015728903438,
+          0.8991879545573844,
+          -0.3371062725653918,
+          0.03688106334784852,
+          0.5897127168711319,
+          0.4567940941239977,
+          0.658680138145407,
+          0.8657042170333769
+        ],
+        "parents": [
+          "maya",
+          "noor"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 66.82,
+          "N2": 10.18,
+          "N3": 74.58,
+          "N4": 86.2,
+          "N5": 3.69,
+          "N6": 41.22,
+          "E1": 40.64,
+          "E2": 45.4,
+          "E3": 2.98,
+          "E4": 30.23,
+          "E5": 32.05,
+          "E6": 15.67,
+          "O1": 48.89,
+          "O2": 60.17,
+          "O3": 57.04,
+          "O4": 23.66,
+          "O5": 16.47,
+          "O6": 32.9,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 36.66,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 72.6,
+          "C1": 27.33,
+          "C2": 34.93,
+          "C3": 59.74,
+          "C4": 48.43,
+          "C5": 83.16,
+          "C6": 96.39
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "rowan": {
+      "facets": {
+        "N1": 0.7481818181818182,
+        "N2": 70.10818181818182,
+        "N3": 59.81818181818182,
+        "N4": 86.19818181818182,
+        "N5": 13.178181818181818,
+        "N6": 13.088181818181818,
+        "E1": 3.44,
+        "E2": 53.83,
+        "E3": 40.9,
+        "E4": 20.94,
+        "E5": 14.47,
+        "E6": 15.67,
+        "O1": 9.74,
+        "O2": 5.13,
+        "O3": 5.88,
+        "O4": 91.1,
+        "O5": 60.87,
+        "O6": 94.33,
+        "A1": 24.27181818181818,
+        "A2": 13.821818181818182,
+        "A3": 0.7018181818181818,
+        "A4": 77.21181818181817,
+        "A5": 58.83181818181818,
+        "A6": 24.28181818181818,
+        "C1": 77.13181818181818,
+        "C2": 56.36181818181818,
+        "C3": 29.75181818181818,
+        "C4": 27.88181818181818,
+        "C5": 83.16181818181818,
+        "C6": 42.27181818181818
+      },
+      "initial_facets": {
+        "N1": 0.75,
+        "N2": 70.11,
+        "N3": 59.82,
+        "N4": 86.2,
+        "N5": 13.18,
+        "N6": 13.09,
+        "E1": 3.44,
+        "E2": 53.83,
+        "E3": 40.9,
+        "E4": 20.94,
+        "E5": 14.47,
+        "E6": 15.67,
+        "O1": 9.74,
+        "O2": 5.13,
+        "O3": 5.88,
+        "O4": 91.1,
+        "O5": 60.87,
+        "O6": 94.33,
+        "A1": 24.27,
+        "A2": 13.82,
+        "A3": 0.7,
+        "A4": 77.21,
+        "A5": 58.83,
+        "A6": 24.28,
+        "C1": 77.13,
+        "C2": 56.36,
+        "C3": 29.75,
+        "C4": 27.88,
+        "C5": 83.16,
+        "C6": 42.27
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -2.090787970821949,
+          0.5591962857379185,
+          -0.12517624067529695,
+          0.30360519900750277,
+          -1.1751205001963982,
+          0.10680251528260998,
+          -1.13334692893081,
+          0.615139596802374,
+          -0.20162781602510021,
+          -0.11188444346623483,
+          -0.5460713253303777,
+          -0.5604948513845988,
+          -1.2075027692306315,
+          -0.7452854912619864,
+          -1.0600417406756806,
+          1.1686751607319366,
+          -0.3366844448605867,
+          0.3382528132530892,
+          -0.4688795614326381,
+          -0.43500763408122256,
+          -1.5179169652544475,
+          0.415297365938688,
+          0.7494824299083801,
+          0.11167980753411583,
+          -0.431377091598658,
+          0.37431090405409434,
+          -0.9129821167024659,
+          -1.1839046520436478,
+          0.5780795441243809,
+          0.28144441825032374
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 0.75,
+          "N2": 70.11,
+          "N3": 59.82,
+          "N4": 86.2,
+          "N5": 13.18,
+          "N6": 13.09,
+          "E1": 3.44,
+          "E2": 53.83,
+          "E3": 40.9,
+          "E4": 20.94,
+          "E5": 14.47,
+          "E6": 15.67,
+          "O1": 9.74,
+          "O2": 5.13,
+          "O3": 5.88,
+          "O4": 91.1,
+          "O5": 60.87,
+          "O6": 94.33,
+          "A1": 24.27,
+          "A2": 13.82,
+          "A3": 0.7,
+          "A4": 77.21,
+          "A5": 58.83,
+          "A6": 24.28,
+          "C1": 77.13,
+          "C2": 56.36,
+          "C3": 29.75,
+          "C4": 27.88,
+          "C5": 83.16,
+          "C6": 42.27
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "kai": {
+      "facets": {
+        "N1": 93.36818181818182,
+        "N2": 98.61818181818182,
+        "N3": 98.51818181818182,
+        "N4": 86.19818181818182,
+        "N5": 86.64818181818183,
+        "N6": 60.89818181818182,
+        "E1": 9.44,
+        "E2": 37.33,
+        "E3": 40.9,
+        "E4": 30.23,
+        "E5": 89.05,
+        "E6": 15.67,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 89.61,
+        "O4": 33.44,
+        "O5": 60.87,
+        "O6": 43.02,
+        "A1": 48.77181818181818,
+        "A2": 9.051818181818183,
+        "A3": 36.66181818181818,
+        "A4": 14.241818181818182,
+        "A5": 25.75181818181818,
+        "A6": 16.46181818181818,
+        "C1": 27.33181818181818,
+        "C2": 15.001818181818182,
+        "C3": 2.3918181818181816,
+        "C4": 9.291818181818181,
+        "C5": 13.111818181818181,
+        "C6": 0.8118181818181818
+      },
+      "initial_facets": {
+        "N1": 93.37,
+        "N2": 98.62,
+        "N3": 98.52,
+        "N4": 86.2,
+        "N5": 86.65,
+        "N6": 60.9,
+        "E1": 9.44,
+        "E2": 37.33,
+        "E3": 40.9,
+        "E4": 30.23,
+        "E5": 89.05,
+        "E6": 15.67,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 89.61,
+        "O4": 33.44,
+        "O5": 60.87,
+        "O6": 43.02,
+        "A1": 48.77,
+        "A2": 9.05,
+        "A3": 36.66,
+        "A4": 14.24,
+        "A5": 25.75,
+        "A6": 16.46,
+        "C1": 27.33,
+        "C2": 15.0,
+        "C3": 2.39,
+        "C4": 9.29,
+        "C5": 13.11,
+        "C6": 0.81
+      },
+      "birth_day": -9861.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          1.210209830069098,
+          2.193275648452431,
+          1.7811362622951765,
+          0.6551229527655118,
+          0.1293775609864466,
+          -0.4167815678599179,
+          -1.3326532416900156,
+          -1.1178931102954062,
+          0.3021899644595546,
+          -0.709760884573178,
+          0.7098049798763606,
+          -1.1640825930600731,
+          1.3270556034181566,
+          1.1421553216038194,
+          0.1575880617866895,
+          -0.22328949953630878,
+          1.0993754053657816,
+          -0.10964367565215744,
+          -0.512318613685356,
+          -1.5080415842514872,
+          -1.0143222093222277,
+          -2.366670436618387,
+          -1.8832232514978227,
+          -2.073363680795294,
+          0.5271383662258771,
+          -1.2016807849099045,
+          -1.3546650908593074,
+          -1.845248828344765,
+          -1.4443944158519781,
+          -2.2918334735523658
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 93.37,
+          "N2": 98.62,
+          "N3": 98.52,
+          "N4": 86.2,
+          "N5": 86.65,
+          "N6": 60.9,
+          "E1": 9.44,
+          "E2": 37.33,
+          "E3": 40.9,
+          "E4": 30.23,
+          "E5": 89.05,
+          "E6": 15.67,
+          "O1": 95.88,
+          "O2": 96.27,
+          "O3": 89.61,
+          "O4": 33.44,
+          "O5": 60.87,
+          "O6": 43.02,
+          "A1": 48.77,
+          "A2": 9.05,
+          "A3": 36.66,
+          "A4": 14.24,
+          "A5": 25.75,
+          "A6": 16.46,
+          "C1": 27.33,
+          "C2": 15.0,
+          "C3": 2.39,
+          "C4": 9.29,
+          "C5": 13.11,
+          "C6": 0.81
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    },
+    "bea": {
+      "facets": {
+        "N1": 48.63,
+        "N2": 96.02,
+        "N3": 50.96,
+        "N4": 24.52,
+        "N5": 40.54,
+        "N6": 30.66,
+        "E1": 62.1,
+        "E2": 79.23,
+        "E3": 65.29,
+        "E4": 75.82,
+        "E5": 64.41,
+        "E6": 65.69,
+        "O1": 70.96,
+        "O2": 96.27,
+        "O3": 96.87,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 89.36,
+        "A1": 58.7,
+        "A2": 76.71,
+        "A3": 92.84,
+        "A4": 35.63,
+        "A5": 77.29,
+        "A6": 90.07,
+        "C1": 77.13,
+        "C2": 49.18,
+        "C3": 43.94,
+        "C4": 37.26,
+        "C5": 49.86,
+        "C6": 4.04
+      },
+      "initial_facets": {
+        "N1": 48.63,
+        "N2": 96.02,
+        "N3": 50.96,
+        "N4": 24.52,
+        "N5": 40.54,
+        "N6": 30.66,
+        "E1": 62.1,
+        "E2": 79.23,
+        "E3": 65.29,
+        "E4": 75.82,
+        "E5": 64.41,
+        "E6": 65.69,
+        "O1": 70.96,
+        "O2": 96.27,
+        "O3": 96.87,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 89.36,
+        "A1": 58.7,
+        "A2": 76.71,
+        "A3": 92.84,
+        "A4": 35.63,
+        "A5": 77.29,
+        "A6": 90.07,
+        "C1": 77.13,
+        "C2": 49.18,
+        "C3": 43.94,
+        "C4": 37.26,
+        "C5": 49.86,
+        "C6": 4.04
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "rowan": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        },
+        "kai": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {},
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.31167826536252907,
+          2.335960650825241,
+          0.9730463954716602,
+          0.9697066366432696,
+          0.3779592126385062,
+          0.7575511280249634,
+          -1.850360448692338,
+          -0.4807462636361888,
+          0.06234358516473589,
+          -0.5628473734202467,
+          -0.8228374719355834,
+          -1.3331135131607106,
+          0.09230908937146737,
+          0.6245457775562099,
+          0.47711959283865685,
+          -0.028814273722278738,
+          1.0846296840019567,
+          0.18867834271245112,
+          -0.6788594218219496,
+          -1.007769811323873,
+          -1.0378452653504529,
+          -1.21500403201072,
+          0.47036263967315173,
+          -1.1139797969912846,
+          -0.3615621733598785,
+          0.9098152061112059,
+          -1.092925992272423,
+          -1.1821873648682513,
+          -0.392672069286555,
+          -1.8274836214983434
+        ],
+        "nonshared_latent": [
+          -0.18805773869323386,
+          0.11405236724680878,
+          -0.648145583247156,
+          -1.4683067511643488,
+          -0.417958540677674,
+          -0.9405592249844007,
+          1.5485123472532596,
+          1.2869955424060102,
+          0.24013013475626455,
+          0.9910586088532491,
+          0.8843137612935569,
+          1.5038704706274129,
+          0.4411636026615935,
+          2.163045269484466,
+          1.9654065640010194,
+          0.6631684069484309,
+          1.372344998433586,
+          1.1490985226964818,
+          0.62617580112734,
+          1.2725176288126123,
+          2.0206973439771194,
+          0.4554216256022724,
+          0.36125147227383997,
+          2.2840752825981503,
+          0.9323455381180812,
+          -0.750012009549927,
+          0.4619967901728668,
+          0.5294189805704229,
+          0.28681439215365473,
+          -0.48622301402859325
+        ],
+        "parents": [
+          "kai",
+          "rowan"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 48.63,
+          "N2": 96.02,
+          "N3": 50.96,
+          "N4": 24.52,
+          "N5": 40.54,
+          "N6": 30.66,
+          "E1": 62.1,
+          "E2": 79.23,
+          "E3": 65.29,
+          "E4": 75.82,
+          "E5": 64.41,
+          "E6": 65.69,
+          "O1": 70.96,
+          "O2": 96.27,
+          "O3": 96.87,
+          "O4": 76.66,
+          "O5": 95.96,
+          "O6": 89.36,
+          "A1": 58.7,
+          "A2": 76.71,
+          "A3": 92.84,
+          "A4": 35.63,
+          "A5": 77.29,
+          "A6": 90.07,
+          "C1": 77.13,
+          "C2": 49.18,
+          "C3": 43.94,
+          "C4": 37.26,
+          "C5": 49.86,
+          "C6": 4.04
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "life-0-maya:goal:personal-task",
+      "day": 4.740318041287812,
+      "description": "The small step remained difficult.",
+      "observations": {
+        "maya": {
+          "text": "The small step remained difficult.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.1,
+          "arousal": 0.2,
+          "importance": 0.4,
+          "meaning": "A direct observation confirming that a specific, minor action or transition is still proving challenging to execute. This aligns with the active goal of finishing a small personally useful task, suggesting a potential obstacle or friction in the plan. The phrasing is neutral and descriptive, indicating a state of persistence rather than immediate failure or success.",
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted",
+          "mentions": [],
+          "cued_memories": []
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-0-maya:goal:personal-task-action",
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-maya:goal:personal-task-action",
+      "owner": "maya",
+      "day": 4.719484707954479,
+      "decision": {
+        "action": "Spend half an hour on a small practical step appropriate to your age.",
+        "speech": "",
+        "goal_id": "personal-task",
+        "plan": [
+          "Identify a specific small task that is personally useful.",
+          "Set aside 30 minutes of focused time.",
+          "Execute the task with an energetic pace."
+        ],
+        "memory_ids": [],
+        "action_id": "small-step"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.06956883219818621,
+        "N2": 0.06956883219818621,
+        "N3": 0.06956883219818621,
+        "N4": 0.06956883219817911,
+        "N5": 0.06956883219818621,
+        "N6": 0.06956883219818621,
+        "E1": 0.7409266686835707,
+        "E2": 0.7409266686835707,
+        "E3": 0.7409266686835707,
+        "E4": 0.7409266686835707,
+        "E5": 0.7409266686835707,
+        "E6": 0.7409266686835778,
+        "O1": 0.2676015293942555,
+        "O2": 0.2676015293942555,
+        "O3": 0.2676015293942555,
+        "O4": 0.2676015293942555,
+        "O5": 0.2676015293942555,
+        "O6": 0.26760152939425197,
+        "A1": 1.1341830219013644,
+        "A2": 1.1341830219013644,
+        "A3": 1.1341830219013644,
+        "A4": 1.134183021901363,
+        "A5": 1.1341830219013627,
+        "A6": 1.1341830219013644,
+        "C1": -0.3673174103928858,
+        "C2": -0.36731741039288224,
+        "C3": -0.3673174103928858,
+        "C4": -0.3673174103928858,
+        "C5": -0.3673174103928858,
+        "C6": -0.367317410392884
+      },
+      "outcome_event": "life-0-maya:goal:personal-task"
+    }
+  ],
+  "updates": [
+    {
+      "id": "life-0-maya:goal:personal-task-situation",
+      "kind": "situation_state",
+      "owner": "maya",
+      "day": 4.719484707954479,
+      "state": {
+        "day": 4.719484707954479,
+        "offsets": {
+          "N1": 0.06956883219818621,
+          "N2": 0.06956883219818621,
+          "N3": 0.06956883219818621,
+          "N4": 0.06956883219817911,
+          "N5": 0.06956883219818621,
+          "N6": 0.06956883219818621,
+          "E1": 0.7409266686835707,
+          "E2": 0.7409266686835707,
+          "E3": 0.7409266686835707,
+          "E4": 0.7409266686835707,
+          "E5": 0.7409266686835707,
+          "E6": 0.7409266686835778,
+          "O1": 0.2676015293942555,
+          "O2": 0.2676015293942555,
+          "O3": 0.2676015293942555,
+          "O4": 0.2676015293942555,
+          "O5": 0.2676015293942555,
+          "O6": 0.26760152939425197,
+          "A1": 1.1341830219013644,
+          "A2": 1.1341830219013644,
+          "A3": 1.1341830219013644,
+          "A4": 1.134183021901363,
+          "A5": 1.1341830219013627,
+          "A6": 1.1341830219013644,
+          "C1": -0.3673174103928858,
+          "C2": -0.36731741039288224,
+          "C3": -0.3673174103928858,
+          "C4": -0.3673174103928858,
+          "C5": -0.3673174103928858,
+          "C6": -0.367317410392884
+        },
+        "recovery_half_life_days": 1,
+        "perception": {
+          "meaning": "A quiet opportunity to reclaim agency. The situation presents a low-stakes challenge that aligns with my desire for a busy, energetic pace. I feel a gentle pull toward action, viewing the task not as a burden but as a way to assert my preferences and maintain momentum. There is no external pressure or social complication, just the internal satisfaction of making progress on something personally useful.",
+          "dimensions": {
+            "Duty": 0.2,
+            "Intellect": 0.1,
+            "Adversity": 0.3,
+            "Mating": 0.0,
+            "Positivity": 0.4,
+            "Negativity": 0.0,
+            "Deception": 0.0,
+            "Sociality": 0.1
+          },
+          "controllability": 0.9,
+          "active_rule_ids": []
+        },
+        "policy": "caps_elapsed_time_v1_unfitted",
+        "stochastic_component": {
+          "N": 0.06956883219818111,
+          "E": 0.7409266686835765,
+          "O": 0.2676015293942504,
+          "A": 1.1341830219013627,
+          "C": -0.3673174103928836
+        },
+        "variation_policy": "seeded_correlated_temporary_policy_unfitted",
+        "id": "life-0-maya:goal:personal-task-situation",
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf"
+      }
+    },
+    {
+      "id": "maya:reflection:life-0-maya:goal:personal-task",
+      "kind": "reflection",
+      "owner": "maya",
+      "day": 4.740318041287812,
+      "evidence": [
+        "life-0-maya:goal:personal-task"
+      ],
+      "revision_decisions": []
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "semantic_recall": true,
+      "indexed_retrieval": true,
+      "reference_resolution": true,
+      "reflection": true,
+      "autonomous_goals": true,
+      "semantic_candidates": 24,
+      "detail_threshold": 0.45,
+      "fan_weight": 0.15,
+      "rumination_per_year": 4,
+      "rumination_minimum_gap_days": 1
+    },
+    "planning": {
+      "calendar_mode": "elapsed",
+      "hours_per_day": 12,
+      "habit_half_life_days": 30,
+      "habit_gain": 0.1,
+      "habit_max": 1
+    },
+    "expression": {
+      "std_by_domain": {
+        "N": 1,
+        "E": 1,
+        "O": 1,
+        "A": 1,
+        "C": 1
+      },
+      "half_life_days": 1,
+      "age_appropriate_actions": true
+    },
+    "society": {
+      "closeness_half_life_days": 365.25
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "b964699976af4b4ff0b670a67153ed37aa16855c615134621d6a984a81d55b88",
+    "scripted": false,
+    "start_day": 0.0,
+    "current_day": 7.305,
+    "next_tick": null,
+    "tick": 1,
+    "trace": [
+      {
+        "event_index": 0,
+        "day": 4.719484707954479,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "maya:goal:personal-task",
+        "day": 4.740318041287812,
+        "action": "small-step",
+        "success": false,
+        "event": "life-0-maya:goal:personal-task",
+        "policy": "scenario_assumption"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "alex:infancy": 0,
+      "alex:early-childhood": 0,
+      "alex:school-learning": 0,
+      "alex:adolescent-project": 0,
+      "alex:adult-project": 0,
+      "bea:infancy": 0,
+      "bea:early-childhood": 0,
+      "bea:school-learning": 0,
+      "bea:adolescent-project": 0,
+      "bea:adult-project": 0,
+      "maya:goal:personal-task": 1,
+      "noor:goal:personal-task": 0,
+      "rowan:goal:personal-task": 0,
+      "kai:goal:personal-task": 0
+    },
+    "next_opportunities": {
+      "alex:infancy": 324.38669681215583,
+      "alex:early-childhood": 964.2402703513574,
+      "alex:school-learning": 1899.3135339726418,
+      "alex:adolescent-project": 4422.110823668626,
+      "alex:adult-project": 7257.029157212045,
+      "bea:infancy": 206.87118790944635,
+      "bea:early-childhood": 1166.8134527590216,
+      "bea:school-learning": 2150.564346918178,
+      "bea:adolescent-project": 4540.025682408118,
+      "bea:adult-project": 6873.41120899527,
+      "maya:goal:personal-task": 168.6366416870522,
+      "noor:goal:personal-task": 23.940062849282693,
+      "rowan:goal:personal-task": 230.28698983488616,
+      "kai:goal:personal-task": 78.19744190866034
+    },
+    "next_world_events": {},
+    "background_counts": {
+      "maya": 0
+    },
+    "next_background": {
+      "maya": 19.367517278039962
+    },
+    "pending_activities": {},
+    "hazard_counts": {
+      "maya:illness": 0,
+      "maya:recovery": 0,
+      "maya:later-life-death": 0,
+      "noor:illness": 0,
+      "noor:recovery": 0,
+      "noor:later-life-death": 0,
+      "alex:illness": 0,
+      "alex:recovery": 0,
+      "alex:later-life-death": 0,
+      "rowan:illness": 0,
+      "rowan:recovery": 0,
+      "rowan:later-life-death": 0,
+      "kai:illness": 0,
+      "kai:recovery": 0,
+      "kai:later-life-death": 0,
+      "bea:illness": 0,
+      "bea:recovery": 0,
+      "bea:later-life-death": 0,
+      "alex:new-dependent": 0
+    },
+    "next_hazards": {
+      "maya:illness": 1403.949344435316,
+      "maya:recovery": 26.69508195766846,
+      "maya:later-life-death": 19242.181483751105,
+      "noor:illness": 3520.321937918086,
+      "noor:recovery": 38.57652634250588,
+      "noor:later-life-death": 19602.883193468555,
+      "alex:illness": 987.8115391434981,
+      "alex:recovery": 76.86312748172851,
+      "alex:later-life-death": 33621.5134063134,
+      "rowan:illness": 906.1907640253618,
+      "rowan:recovery": 29.77200755724901,
+      "rowan:later-life-death": 19253.648035852195,
+      "kai:illness": 2493.067810837702,
+      "kai:recovery": 22.145023214471554,
+      "kai:later-life-death": 20920.154858297603,
+      "bea:illness": 381.3210047330439,
+      "bea:recovery": 124.7652197118871,
+      "bea:later-life-death": 34648.72067947468,
+      "alex:new-dependent": null
+    },
+    "dynamic_opportunities": [
+      {
+        "id": "maya:goal:personal-task",
+        "actor": "maya",
+        "goal_id": "personal-task",
+        "min_age": 2,
+        "max_age": 120,
+        "rate_per_year": 1.5,
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "options": [
+          {
+            "id": "small-step",
+            "label": "Spend half an hour on a small practical step appropriate to your age.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I completed a small useful step on my intention.",
+            "failure_text": "The small step remained difficult.",
+            "valence_success": 0.2,
+            "valence_failure": -0.1,
+            "progress_gain": 0.25
+          },
+          {
+            "id": "reflect",
+            "label": "Take half an hour to consider a different approach.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I identified a clearer next step.",
+            "failure_text": "I remained unsure of my next step.",
+            "valence_success": 0.1,
+            "valence_failure": -0.1,
+            "progress_gain": 0.1
+          }
+        ]
+      },
+      {
+        "id": "noor:goal:personal-task",
+        "actor": "noor",
+        "goal_id": "personal-task",
+        "min_age": 2,
+        "max_age": 120,
+        "rate_per_year": 1.5,
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "options": [
+          {
+            "id": "small-step",
+            "label": "Spend half an hour on a small practical step appropriate to your age.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I completed a small useful step on my intention.",
+            "failure_text": "The small step remained difficult.",
+            "valence_success": 0.2,
+            "valence_failure": -0.1,
+            "progress_gain": 0.25
+          },
+          {
+            "id": "reflect",
+            "label": "Take half an hour to consider a different approach.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I identified a clearer next step.",
+            "failure_text": "I remained unsure of my next step.",
+            "valence_success": 0.1,
+            "valence_failure": -0.1,
+            "progress_gain": 0.1
+          }
+        ]
+      },
+      {
+        "id": "rowan:goal:personal-task",
+        "actor": "rowan",
+        "goal_id": "personal-task",
+        "min_age": 2,
+        "max_age": 120,
+        "rate_per_year": 1.5,
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "options": [
+          {
+            "id": "small-step",
+            "label": "Spend half an hour on a small practical step appropriate to your age.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I completed a small useful step on my intention.",
+            "failure_text": "The small step remained difficult.",
+            "valence_success": 0.2,
+            "valence_failure": -0.1,
+            "progress_gain": 0.25
+          },
+          {
+            "id": "reflect",
+            "label": "Take half an hour to consider a different approach.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I identified a clearer next step.",
+            "failure_text": "I remained unsure of my next step.",
+            "valence_success": 0.1,
+            "valence_failure": -0.1,
+            "progress_gain": 0.1
+          }
+        ]
+      },
+      {
+        "id": "kai:goal:personal-task",
+        "actor": "kai",
+        "goal_id": "personal-task",
+        "min_age": 2,
+        "max_age": 120,
+        "rate_per_year": 1.5,
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "options": [
+          {
+            "id": "small-step",
+            "label": "Spend half an hour on a small practical step appropriate to your age.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I completed a small useful step on my intention.",
+            "failure_text": "The small step remained difficult.",
+            "valence_success": 0.2,
+            "valence_failure": -0.1,
+            "progress_gain": 0.25
+          },
+          {
+            "id": "reflect",
+            "label": "Take half an hour to consider a different approach.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I identified a clearer next step.",
+            "failure_text": "I remained unsure of my next step.",
+            "valence_success": 0.1,
+            "valence_failure": -0.1,
+            "progress_gain": 0.1
+          }
+        ]
+      }
+    ]
+  }
+}

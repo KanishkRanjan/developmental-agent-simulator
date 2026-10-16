@@ -1,0 +1,3315 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 365.25,
+  "entities": {
+    "maya": {
+      "name": "Maya",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well"
+      }
+    },
+    "alex": {
+      "name": "Alex",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "maya"
+        ],
+        "caregivers": [
+          "maya"
+        ]
+      }
+    },
+    "rowan": {
+      "name": "Rowan",
+      "facts": {
+        "birth_day": -9131.25,
+        "health_status": "well"
+      }
+    },
+    "bea": {
+      "name": "Bea",
+      "facts": {
+        "birth_day": 0,
+        "health_status": "well",
+        "biological_parents": [
+          "rowan"
+        ],
+        "caregivers": [
+          "rowan"
+        ]
+      }
+    }
+  },
+  "agents": {
+    "maya": {
+      "facets": {
+        "N1": 88.6290909090909,
+        "N2": 98.52909090909091,
+        "N3": 80.44909090909091,
+        "N4": 71.2290909090909,
+        "N5": 95.32909090909091,
+        "N6": 95.7090909090909,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.790909090909096,
+        "A2": 3.460909090909091,
+        "A3": 66.4009090909091,
+        "A4": 6.470909090909091,
+        "A5": 16.87090909090909,
+        "A6": 59.92090909090909,
+        "C1": 27.42090909090909,
+        "C2": 42.06090909090909,
+        "C3": 11.620909090909091,
+        "C4": 6.11090909090909,
+        "C5": 8.020909090909091,
+        "C6": 35.1809090909091
+      },
+      "initial_facets": {
+        "N1": 88.72,
+        "N2": 98.62,
+        "N3": 80.54,
+        "N4": 71.32,
+        "N5": 95.42,
+        "N6": 95.8,
+        "E1": 13.63,
+        "E2": 37.33,
+        "E3": 31.92,
+        "E4": 8.06,
+        "E5": 54.05,
+        "E6": 15.67,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 57.04,
+        "O4": 4.98,
+        "O5": 11.16,
+        "O6": 1.71,
+        "A1": 58.7,
+        "A2": 3.37,
+        "A3": 66.31,
+        "A4": 6.38,
+        "A5": 16.78,
+        "A6": 59.83,
+        "C1": 27.33,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 6.02,
+        "C5": 7.93,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.25,
+          "plan": [
+            "Spend half an hour on a small practical step appropriate to your age."
+          ],
+          "execution_plan": {
+            "version": 1,
+            "day": 20.325595690318867,
+            "catalog_hash": "72f011777ac47ce61fb827656be60ca4ca855ce0382968db43d96dd1be412c77",
+            "needs_replan": false,
+            "provider": "scripted_engineering_fixture",
+            "received_episode_count": 0,
+            "steps": [
+              {
+                "description": "Spend half an hour on a small practical step appropriate to your age.",
+                "action_id": "small-step",
+                "status": "completed",
+                "attempts": [
+                  {
+                    "event": "life-4-maya:goal:personal-task",
+                    "day": 290.63508319045667,
+                    "success": true
+                  }
+                ],
+                "completed_event": "life-4-maya:goal:personal-task"
+              }
+            ]
+          }
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-0-maya:goal:personal-task": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I identified a clearer next step.",
+          "versions": [],
+          "stability_days": 7.260000000000002,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": 27.720501382930994,
+          "encountered": [],
+          "provenance": "life-0-maya:goal:personal-task"
+        },
+        "life-1-maya:goal:personal-task": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I identified a clearer next step.",
+          "versions": [],
+          "stability_days": 7.260000000000002,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": 188.5986261142291,
+          "encountered": [],
+          "provenance": "life-1-maya:goal:personal-task"
+        },
+        "life-4-maya:goal:personal-task": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I completed a small useful step on my intention.",
+          "versions": [],
+          "stability_days": 7.260000000000002,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": 305.45233540372794,
+          "encountered": [],
+          "provenance": "life-4-maya:goal:personal-task"
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 27.720501382930994,
+          "valence": 0.025,
+          "arousal": 0.05,
+          "memory": "life-0-maya:goal:personal-task"
+        },
+        {
+          "day": 188.5986261142291,
+          "valence": 0.025,
+          "arousal": 0.05,
+          "memory": "life-1-maya:goal:personal-task"
+        },
+        {
+          "day": 305.45233540372794,
+          "valence": 0.05,
+          "arousal": 0.05,
+          "memory": "life-4-maya:goal:personal-task"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "maya:autonomous:0",
+          "day": 27.720501382930994,
+          "memory": "life-0-maya:goal:personal-task",
+          "rehearsed": true
+        },
+        {
+          "id": "maya:autonomous:3",
+          "day": 188.5986261142291,
+          "memory": "life-1-maya:goal:personal-task",
+          "rehearsed": true
+        },
+        {
+          "id": "maya:autonomous:4",
+          "day": 305.45233540372794,
+          "memory": "life-4-maya:goal:personal-task",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          0.3830034525020996,
+          1.4028694510641286,
+          -0.3905994125332013,
+          -0.6711883972735928,
+          0.93614618361995,
+          1.0441600549052343,
+          0.5574964018919111,
+          0.3274008760796736,
+          0.3328475333825997,
+          -0.7683236539145113,
+          1.228670670027051,
+          0.9586564233554301,
+          1.7291942413318073,
+          2.321023915692227,
+          0.6613039520724006,
+          -0.24591241137849873,
+          0.5281014123464178,
+          0.5649513657314105,
+          0.8179302263844332,
+          -1.4285038323800467,
+          2.000804069025171,
+          -0.8135290499072897,
+          -0.5734037142536089,
+          1.7488232453324573,
+          0.0029354547362000494,
+          -1.0951317034624553,
+          -1.7839442966710328,
+          -1.4422385602087857,
+          -1.1359544479019577,
+          -0.5214317665134227
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 88.72,
+          "N2": 98.62,
+          "N3": 80.54,
+          "N4": 71.32,
+          "N5": 95.42,
+          "N6": 95.8,
+          "E1": 13.63,
+          "E2": 37.33,
+          "E3": 31.92,
+          "E4": 8.06,
+          "E5": 54.05,
+          "E6": 15.67,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 57.04,
+          "O4": 4.98,
+          "O5": 11.16,
+          "O6": 1.71,
+          "A1": 58.7,
+          "A2": 3.37,
+          "A3": 66.31,
+          "A4": 6.38,
+          "A5": 16.78,
+          "A6": 59.83,
+          "C1": 27.33,
+          "C2": 41.97,
+          "C3": 11.53,
+          "C4": 6.02,
+          "C5": 7.93,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "calendar": [
+        {
+          "activity": "life-0-maya:goal:personal-task",
+          "start_day": 20.325595690318867,
+          "end_day": 20.3464290236522,
+          "status": "completed"
+        },
+        {
+          "activity": "life-1-maya:goal:personal-task",
+          "start_day": 160.10534530545874,
+          "end_day": 160.12617863879208,
+          "status": "completed"
+        },
+        {
+          "activity": "life-4-maya:goal:personal-task",
+          "start_day": 290.61424985712335,
+          "end_day": 290.63508319045667,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "20": 0.4999999999999716,
+        "160": 0.5000000000002274,
+        "290": 0.49999999999954525
+      },
+      "habits": {
+        "challenge:reflect": {
+          "strength": 0.10395734049635402,
+          "day": 160.12617863879208,
+          "cues": [
+            "challenge"
+          ],
+          "evidence": [
+            "life-0-maya:goal:personal-task",
+            "life-1-maya:goal:personal-task"
+          ],
+          "days": [
+            20,
+            160
+          ]
+        },
+        "challenge:small-step": {
+          "strength": 0.1,
+          "day": 290.63508319045667,
+          "cues": [
+            "challenge"
+          ],
+          "evidence": [
+            "life-4-maya:goal:personal-task"
+          ],
+          "days": [
+            290
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-0-maya:goal:personal-task",
+        "life-1-maya:goal:personal-task",
+        "life-4-maya:goal:personal-task"
+      ],
+      "developmental_exposures": [
+        {
+          "day": 20.3464290236522,
+          "action": "life-0-maya:goal:personal-task-action",
+          "evidence": "life-0-maya:goal:personal-task",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        },
+        {
+          "day": 160.12617863879208,
+          "action": "life-1-maya:goal:personal-task-action",
+          "evidence": "life-1-maya:goal:personal-task",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        },
+        {
+          "day": 290.63508319045667,
+          "action": "life-4-maya:goal:personal-task-action",
+          "evidence": "life-4-maya:goal:personal-task",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "last_autonomous_recall": 305.45233540372794
+    },
+    "alex": {
+      "facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "initial_facets": {
+        "N1": 30.64,
+        "N2": 96.02,
+        "N3": 30.54,
+        "N4": 71.32,
+        "N5": 40.54,
+        "N6": 83.48,
+        "E1": 18.65,
+        "E2": 16.67,
+        "E3": 91.27,
+        "E4": 52.52,
+        "E5": 14.47,
+        "E6": 88.97,
+        "O1": 60.02,
+        "O2": 96.27,
+        "O3": 43.99,
+        "O4": 33.44,
+        "O5": 95.96,
+        "O6": 54.71,
+        "A1": 31.49,
+        "A2": 76.71,
+        "A3": 66.31,
+        "A4": 66.83,
+        "A5": 68.86,
+        "A6": 96.77,
+        "C1": 87.79,
+        "C2": 84.71,
+        "C3": 85.31,
+        "C4": 94.32,
+        "C5": 73.07,
+        "C6": 77.49
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "maya": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-2-alex:infancy": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I remained unsettled.",
+          "versions": [],
+          "stability_days": 7.260000000000002,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": 286.58670179593844,
+          "encountered": [],
+          "provenance": "life-2-alex:infancy"
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 286.58670179593844,
+          "valence": -0.025,
+          "arousal": 0.05,
+          "memory": "life-2-alex:infancy"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "alex:autonomous:0",
+          "day": 286.58670179593844,
+          "memory": "life-2-alex:infancy",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.23594890875662042,
+          2.204420323820903,
+          -0.6265388857294751,
+          -0.9401158170664725,
+          -1.0843576892391307,
+          0.9471488789350636,
+          0.21572482413069305,
+          -0.1601045804267867,
+          2.102162000943369,
+          0.020887616192721226,
+          -0.8969943152761913,
+          0.5192373091242993,
+          0.1397675558069248,
+          2.2025628926409366,
+          -0.5660936783788852,
+          -1.1153140984733823,
+          1.0609607527091973,
+          -0.7015042040271896,
+          0.3473233393921183,
+          -0.3735969176868006,
+          0.6086167353840881,
+          0.5970586628888059,
+          -0.641285804999365,
+          1.6691633854274976,
+          0.9721932071733506,
+          0.16236826230393142,
+          0.1756109815100434,
+          0.31209299818426617,
+          0.8741322116464711,
+          0.7068063381236804
+        ],
+        "nonshared_latent": [
+          -0.22145488831475038,
+          0.2380719757825447,
+          0.06117348294822844,
+          1.2479665337817227,
+          0.5009510226140108,
+          0.35697298678586886,
+          -1.1181505850267195,
+          -0.896827886196598,
+          -0.2412974322601349,
+          0.09562418467844819,
+          -0.31107152972489627,
+          0.6352776516906533,
+          0.20283025457276516,
+          -0.11100608441261395,
+          0.14139874576954264,
+          0.403697199699508,
+          0.8794854413720177,
+          0.7735013215199855,
+          -0.7804004507698558,
+          1.1794629648697312,
+          -0.17585034142495348,
+          0.07715474324365451,
+          0.9157191529329053,
+          1.067091083408792,
+          0.570941067209825,
+          0.8825819890069784,
+          0.9013219522897673,
+          1.1322135820401205,
+          0.024034238006481634,
+          0.18025620679205978
+        ],
+        "parents": [
+          "maya"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 30.64,
+          "N2": 96.02,
+          "N3": 30.54,
+          "N4": 71.32,
+          "N5": 40.54,
+          "N6": 83.48,
+          "E1": 18.65,
+          "E2": 16.67,
+          "E3": 91.27,
+          "E4": 52.52,
+          "E5": 14.47,
+          "E6": 88.97,
+          "O1": 60.02,
+          "O2": 96.27,
+          "O3": 43.99,
+          "O4": 33.44,
+          "O5": 95.96,
+          "O6": 54.71,
+          "A1": 31.49,
+          "A2": 76.71,
+          "A3": 66.31,
+          "A4": 66.83,
+          "A5": 68.86,
+          "A6": 96.77,
+          "C1": 87.79,
+          "C2": 84.71,
+          "C3": 85.31,
+          "C4": 94.32,
+          "C5": 73.07,
+          "C6": 77.49
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "calendar": [
+        {
+          "activity": "life-2-alex:infancy",
+          "start_day": 252.39667235159155,
+          "end_day": 252.4070890182582,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "252": 0.24999999999977263
+      },
+      "habits": {
+        "challenge:family:settle": {
+          "strength": 0.1,
+          "day": 252.4070890182582,
+          "cues": [
+            "family",
+            "challenge"
+          ],
+          "evidence": [
+            "life-2-alex:infancy"
+          ],
+          "days": [
+            252
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-2-alex:infancy"
+      ],
+      "developmental_exposures": [
+        {
+          "day": 252.4070890182582,
+          "action": "life-2-alex:infancy-action",
+          "evidence": "life-2-alex:infancy",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "last_autonomous_recall": 286.58670179593844
+    },
+    "rowan": {
+      "facets": {
+        "N1": 15.569090909090908,
+        "N2": 23.39909090909091,
+        "N3": 21.00909090909091,
+        "N4": 5.589090909090909,
+        "N5": 99.1790909090909,
+        "N6": 30.56909090909091,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 91.27,
+        "E4": 30.23,
+        "E5": 22.35,
+        "E6": 88.97,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 80.59,
+        "O4": 76.66,
+        "O5": 87.8,
+        "O6": 65.84,
+        "A1": 72.9309090909091,
+        "A2": 3.460909090909091,
+        "A3": 36.75090909090909,
+        "A4": 86.7609090909091,
+        "A5": 5.570909090909091,
+        "A6": 46.400909090909096,
+        "C1": 63.330909090909095,
+        "C2": 96.41090909090909,
+        "C3": 59.830909090909095,
+        "C4": 48.52090909090909,
+        "C5": 83.25090909090909,
+        "C6": 35.1809090909091
+      },
+      "initial_facets": {
+        "N1": 15.66,
+        "N2": 23.49,
+        "N3": 21.1,
+        "N4": 5.68,
+        "N5": 99.27,
+        "N6": 30.66,
+        "E1": 97.13,
+        "E2": 86.33,
+        "E3": 91.27,
+        "E4": 30.23,
+        "E5": 22.35,
+        "E6": 88.97,
+        "O1": 29.4,
+        "O2": 79.91,
+        "O3": 80.59,
+        "O4": 76.66,
+        "O5": 87.8,
+        "O6": 65.84,
+        "A1": 72.84,
+        "A2": 3.37,
+        "A3": 36.66,
+        "A4": 86.67,
+        "A5": 5.48,
+        "A6": 46.31,
+        "C1": 63.24,
+        "C2": 96.32,
+        "C3": 59.74,
+        "C4": 48.43,
+        "C5": 83.16,
+        "C6": 35.09
+      },
+      "birth_day": -9131.25,
+      "alive": true,
+      "attachment": {},
+      "culture": {
+        "expression_rules": [
+          {
+            "cues": [
+              "family"
+            ],
+            "tendency": "Consider caregiving duties while expressing your own needs."
+          }
+        ]
+      },
+      "goals": {
+        "personal-task": {
+          "description": "Finish a small personally useful task.",
+          "priority": 0.6,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": [
+            "Take half an hour to consider a different approach."
+          ],
+          "execution_plan": {
+            "version": 1,
+            "day": 322.2891869125259,
+            "catalog_hash": "72f011777ac47ce61fb827656be60ca4ca855ce0382968db43d96dd1be412c77",
+            "needs_replan": false,
+            "provider": "scripted_engineering_fixture",
+            "received_episode_count": 2,
+            "steps": [
+              {
+                "description": "Spend half an hour on a small practical step appropriate to your age.",
+                "action_id": "small-step",
+                "status": "pending",
+                "attempts": []
+              }
+            ]
+          }
+        }
+      },
+      "relationships": {
+        "bea": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-3-bea:infancy",
+          "last_interaction_day": 260.5482919504511
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-3-bea:infancy-request": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-3-bea:infancy-request"
+        },
+        "life-3-bea:infancy": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "bea"
+          ],
+          "provenance": "life-3-bea:infancy"
+        },
+        "life-5-rowan:goal:personal-task": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I remained unsure of my next step.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-5-rowan:goal:personal-task"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "resources": {
+        "money": 100
+      },
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -0.6834513632362134,
+          -1.6011248469005488,
+          -0.48914489911982284,
+          -0.03656172187570306,
+          2.3104468968678473,
+          0.30087847758651665,
+          1.6425844361863111,
+          1.5094385517797564,
+          0.4744218069107717,
+          -0.42088374022739666,
+          -0.16067934312630272,
+          1.5792914547406458,
+          0.07253253813208099,
+          1.373153316858442,
+          0.6688063390476466,
+          0.1519571454671506,
+          1.149511599346135,
+          -0.02498368564095993,
+          1.7889572521493773,
+          -0.9437575935585567,
+          1.1922350496724199,
+          1.8950147386700953,
+          -1.642041509461298,
+          1.0073803788637516,
+          -0.20246877099644986,
+          0.22814146990968043,
+          0.6289176964081831,
+          -0.09049119073314953,
+          -0.1043770980292098,
+          -0.13855148502467352
+        ],
+        "parents": [],
+        "policy": "conditional_latent_founder_unfitted",
+        "population_limit": "adult reference; not child norms",
+        "conditioning": "original materialization dispositions when available; legacy fallback explicitly population-limited"
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 15.66,
+          "N2": 23.49,
+          "N3": 21.1,
+          "N4": 5.68,
+          "N5": 99.27,
+          "N6": 30.66,
+          "E1": 97.13,
+          "E2": 86.33,
+          "E3": 91.27,
+          "E4": 30.23,
+          "E5": 22.35,
+          "E6": 88.97,
+          "O1": 29.4,
+          "O2": 79.91,
+          "O3": 80.59,
+          "O4": 76.66,
+          "O5": 87.8,
+          "O6": 65.84,
+          "A1": 72.84,
+          "A2": 3.37,
+          "A3": 36.66,
+          "A4": 86.67,
+          "A5": 5.48,
+          "A6": 46.31,
+          "C1": 63.24,
+          "C2": 96.32,
+          "C3": 59.74,
+          "C4": 48.43,
+          "C5": 83.16,
+          "C6": 35.09
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "calendar": [
+        {
+          "activity": "life-3-bea:infancy",
+          "start_day": 260.5462086171177,
+          "end_day": 260.5482919504511,
+          "status": "completed"
+        },
+        {
+          "activity": "life-5-rowan:goal:personal-task",
+          "start_day": 322.2891869125259,
+          "end_day": 322.3100202458592,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "260": 0.050000000000636646,
+        "322": 0.49999999999954525
+      },
+      "developmental_exposures": [
+        {
+          "day": 260.5482919504511,
+          "action": "life-3-bea:infancy-contact-action",
+          "evidence": "life-3-bea:infancy",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        },
+        {
+          "day": 322.3100202458592,
+          "action": "life-5-rowan:goal:personal-task-action",
+          "evidence": "life-5-rowan:goal:personal-task",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "habits": {
+        "challenge:reflect": {
+          "strength": 0.1,
+          "day": 322.3100202458592,
+          "cues": [
+            "challenge"
+          ],
+          "evidence": [
+            "life-5-rowan:goal:personal-task"
+          ],
+          "days": [
+            322
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-5-rowan:goal:personal-task"
+      ]
+    },
+    "bea": {
+      "facets": {
+        "N1": 5.78,
+        "N2": 15.85,
+        "N3": 21.1,
+        "N4": 9.94,
+        "N5": 92.06,
+        "N6": 83.48,
+        "E1": 83.23,
+        "E2": 91.94,
+        "E3": 31.92,
+        "E4": 84.77,
+        "E5": 94.02,
+        "E6": 78.07,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 9.53,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 82.81,
+        "A1": 72.84,
+        "A2": 28.42,
+        "A3": 14.63,
+        "A4": 77.21,
+        "A5": 10.02,
+        "A6": 34.39,
+        "C1": 6.37,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 9.29,
+        "C5": 20.0,
+        "C6": 2.35
+      },
+      "initial_facets": {
+        "N1": 5.78,
+        "N2": 15.85,
+        "N3": 21.1,
+        "N4": 9.94,
+        "N5": 92.06,
+        "N6": 83.48,
+        "E1": 83.23,
+        "E2": 91.94,
+        "E3": 31.92,
+        "E4": 84.77,
+        "E5": 94.02,
+        "E6": 78.07,
+        "O1": 95.88,
+        "O2": 96.27,
+        "O3": 9.53,
+        "O4": 76.66,
+        "O5": 95.96,
+        "O6": 82.81,
+        "A1": 72.84,
+        "A2": 28.42,
+        "A3": 14.63,
+        "A4": 77.21,
+        "A5": 10.02,
+        "A6": 34.39,
+        "C1": 6.37,
+        "C2": 41.97,
+        "C3": 11.53,
+        "C4": 9.29,
+        "C5": 20.0,
+        "C6": 2.35
+      },
+      "birth_day": 0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {},
+      "relationships": {
+        "rowan": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-3-bea:infancy",
+          "last_interaction_day": 260.5482919504511
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "life-3-bea:infancy-request": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.0,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": null,
+          "encountered": [
+            "rowan"
+          ],
+          "provenance": "life-3-bea:infancy-request"
+        },
+        "life-3-bea:infancy": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.7,
+          "meaning": "Attention was delayed and I remained unsettled.",
+          "versions": [],
+          "stability_days": 9.438000000000002,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": 316.48484820871954,
+          "encountered": [
+            "rowan"
+          ],
+          "provenance": "life-3-bea:infancy"
+        },
+        "life-6-bea:infancy": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.5,
+          "meaning": "I settled after a quiet interval.",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-6-bea:infancy"
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 268.2452314466958,
+          "valence": -0.05,
+          "arousal": 0.05,
+          "memory": "life-3-bea:infancy"
+        },
+        {
+          "day": 316.48484820871954,
+          "valence": -0.025,
+          "arousal": 0.025,
+          "memory": "life-3-bea:infancy"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "bea:autonomous:0",
+          "day": 268.2452314466958,
+          "memory": "life-3-bea:infancy",
+          "rehearsed": true
+        },
+        {
+          "id": "bea:autonomous:1",
+          "day": 316.48484820871954,
+          "memory": "life-3-bea:infancy",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "temperament_origin": {
+        "h2": 0.5,
+        "genetic_latent": [
+          -1.453675370310486,
+          -0.576336621988087,
+          -0.9951018538751623,
+          -0.6649003697028824,
+          0.6638294847582409,
+          0.13316673326174355,
+          0.9428678469163176,
+          1.5322973854645656,
+          -0.2897716053981809,
+          0.6772354657208207,
+          1.3221892397806987,
+          0.9942293910086375,
+          1.2274147280063759,
+          0.9306897663520052,
+          -0.9901001493524825,
+          0.7172503353510422,
+          1.3052816462429364,
+          0.407399871661108,
+          0.5727221193271754,
+          -1.6403492748189372,
+          -1.3465814985435656,
+          -0.05580088263927563,
+          -2.4960867232562376,
+          -0.9035937682379199,
+          -1.980107106488757,
+          -0.20461648697574325,
+          -1.3283327690268663,
+          -1.2440405447712017,
+          -1.0796357173315707,
+          -1.770577679858056
+        ],
+        "nonshared_latent": [
+          -0.6939808175581539,
+          -0.565998444815311,
+          -0.05567855331458538,
+          -0.700065434409594,
+          0.9736968431509334,
+          0.8050973029367243,
+          0.25697241476278954,
+          0.22376768558779236,
+          -0.2509526144695917,
+          0.7128611630191677,
+          0.6634573916276131,
+          0.2230286776132281,
+          1.1774789008335516,
+          2.059420332382708,
+          -0.594772316716627,
+          0.18898639691645025,
+          1.629887614026925,
+          0.797998852145283,
+          0.019373472588950336,
+          0.6113711705002947,
+          -0.1686499426032877,
+          0.8888717185137409,
+          0.5572795480579564,
+          0.35491866370604425,
+          -0.20100180794319722,
+          -0.07517578136333952,
+          -0.21850285858612928,
+          -0.34090863471710886,
+          -0.17835009564764703,
+          -0.8230346975099716
+        ],
+        "parents": [
+          "rowan"
+        ],
+        "policy": "additive_latent_family_unfitted",
+        "population_limit": "adult reference distribution extrapolated to initial dispositions; not child norms"
+      },
+      "resources": {
+        "money": 10
+      },
+      "developmental_model": {
+        "origin_day": 0.0,
+        "initial_facets": {
+          "N1": 5.78,
+          "N2": 15.85,
+          "N3": 21.1,
+          "N4": 9.94,
+          "N5": 92.06,
+          "N6": 83.48,
+          "E1": 83.23,
+          "E2": 91.94,
+          "E3": 31.92,
+          "E4": 84.77,
+          "E5": 94.02,
+          "E6": 78.07,
+          "O1": 95.88,
+          "O2": 96.27,
+          "O3": 9.53,
+          "O4": 76.66,
+          "O5": 95.96,
+          "O6": 82.81,
+          "A1": 72.84,
+          "A2": 28.42,
+          "A3": 14.63,
+          "A4": 77.21,
+          "A5": 10.02,
+          "A6": 34.39,
+          "C1": 6.37,
+          "C2": 41.97,
+          "C3": 11.53,
+          "C4": 9.29,
+          "C5": 20.0,
+          "C6": 2.35
+        },
+        "learned_change": {
+          "N1": 0.0,
+          "N2": 0.0,
+          "N3": 0.0,
+          "N4": 0.0,
+          "N5": 0.0,
+          "N6": 0.0,
+          "E1": 0.0,
+          "E2": 0.0,
+          "E3": 0.0,
+          "E4": 0.0,
+          "E5": 0.0,
+          "E6": 0.0,
+          "O1": 0.0,
+          "O2": 0.0,
+          "O3": 0.0,
+          "O4": 0.0,
+          "O5": 0.0,
+          "O6": 0.0,
+          "A1": 0.0,
+          "A2": 0.0,
+          "A3": 0.0,
+          "A4": 0.0,
+          "A5": 0.0,
+          "A6": 0.0,
+          "C1": 0.0,
+          "C2": 0.0,
+          "C3": 0.0,
+          "C4": 0.0,
+          "C5": 0.0,
+          "C6": 0.0
+        },
+        "maturation": {
+          "N": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              -2
+            ],
+            [
+              65,
+              -3
+            ]
+          ],
+          "A": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ],
+          "C": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              40,
+              2
+            ],
+            [
+              65,
+              3
+            ]
+          ]
+        },
+        "policy": "scenario_piecewise_linear_unfitted"
+      },
+      "calendar": [
+        {
+          "activity": "life-3-bea:infancy",
+          "start_day": 260.5462086171177,
+          "end_day": 260.5482919504511,
+          "status": "completed"
+        },
+        {
+          "activity": "life-6-bea:infancy",
+          "start_day": 326.307616486281,
+          "end_day": 326.3180331529477,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "260": 0.050000000000636646,
+        "326": 0.25000000000045475
+      },
+      "caregiving_experiences": [
+        {
+          "caregiver": "rowan",
+          "responsiveness": 0.2,
+          "acceptance": 0.5,
+          "event": "life-3-bea:infancy",
+          "day": 260.5482919504511
+        }
+      ],
+      "habits": {
+        "challenge:family:seek-support": {
+          "strength": 0.1,
+          "day": 260.5482919504511,
+          "cues": [
+            "family",
+            "challenge"
+          ],
+          "evidence": [
+            "life-3-bea:infancy"
+          ],
+          "days": [
+            260
+          ]
+        },
+        "challenge:family:settle": {
+          "strength": 0.1,
+          "day": 326.3180331529477,
+          "cues": [
+            "family",
+            "challenge"
+          ],
+          "evidence": [
+            "life-6-bea:infancy"
+          ],
+          "days": [
+            326
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-3-bea:infancy",
+        "life-6-bea:infancy"
+      ],
+      "developmental_exposures": [
+        {
+          "day": 260.5482919504511,
+          "action": "life-3-bea:infancy-action",
+          "evidence": "life-3-bea:infancy",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        },
+        {
+          "day": 326.3180331529477,
+          "action": "life-6-bea:infancy-action",
+          "evidence": "life-6-bea:infancy",
+          "offsets": {
+            "N1": 0.0,
+            "N2": 0.0,
+            "N3": 0.0,
+            "N4": 0.0,
+            "N5": 0.0,
+            "N6": 0.0,
+            "E1": 0.0,
+            "E2": 0.0,
+            "E3": 0.0,
+            "E4": 0.0,
+            "E5": 0.0,
+            "E6": 0.0,
+            "O1": 0.0,
+            "O2": 0.0,
+            "O3": 0.0,
+            "O4": 0.0,
+            "O5": 0.0,
+            "O6": 0.0,
+            "A1": 0.0,
+            "A2": 0.0,
+            "A3": 0.0,
+            "A4": 0.0,
+            "A5": 0.0,
+            "A6": 0.0,
+            "C1": 0.0,
+            "C2": 0.0,
+            "C3": 0.0,
+            "C4": 0.0,
+            "C5": 0.0,
+            "C6": 0.0
+          }
+        }
+      ],
+      "crystallization_budget": {},
+      "last_crystallization_day": {},
+      "last_autonomous_recall": 316.48484820871954
+    }
+  },
+  "events": [
+    {
+      "id": "life-0-maya:goal:personal-task",
+      "day": 20.3464290236522,
+      "description": "I identified a clearer next step.",
+      "observations": {
+        "maya": {
+          "text": "I identified a clearer next step.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.1,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I identified a clearer next step.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-0-maya:goal:personal-task-action",
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@hazard:alex:recovery:0",
+      "day": 75.76475374637356,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "alex": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "alex": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "@hazard:maya:recovery:0",
+      "day": 87.36506333912641,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "maya": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "maya": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "@hazard:alex:recovery:1",
+      "day": 133.42086021565837,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "alex": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "alex": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "@hazard:rowan:recovery:0",
+      "day": 145.02490934261047,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "rowan": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "rowan": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "rowan"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "@hazard:maya:recovery:1",
+      "day": 152.30042968777872,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "maya": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "maya": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "life-1-maya:goal:personal-task",
+      "day": 160.12617863879208,
+      "description": "I identified a clearer next step.",
+      "observations": {
+        "maya": {
+          "text": "I identified a clearer next step.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.1,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I identified a clearer next step.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-1-maya:goal:personal-task-action",
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@hazard:rowan:recovery:1",
+      "day": 196.32690143699415,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "rowan": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "rowan": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "rowan"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "@hazard:maya:recovery:2",
+      "day": 211.7873150878096,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "maya": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "maya": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "@hazard:bea:recovery:0",
+      "day": 236.40181574474332,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "bea": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "bea": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "bea"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "life-2-alex:infancy",
+      "day": 252.4070890182582,
+      "description": "I remained unsettled.",
+      "observations": {
+        "alex": {
+          "text": "I remained unsettled.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.1,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I remained unsettled.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-2-alex:infancy-action",
+        "alive": [
+          "alex"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-3-bea:infancy-request",
+      "day": 260.5462086171177,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "bea": {
+          "text": "I approached Rowan. I said:  Request: Signal discomfort or seek familiar attention.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "rowan"
+          ]
+        },
+        "rowan": {
+          "text": "Bea approached me and said:  Request: Signal discomfort or seek familiar attention.",
+          "source": "bea",
+          "kind": "direct",
+          "encountered": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "bea",
+          "rowan"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-3-bea:infancy",
+      "day": 260.5482919504511,
+      "description": "Attention was delayed and I remained unsettled.",
+      "observations": {
+        "bea": {
+          "text": "Attention was delayed and I remained unsettled.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.2,
+          "arousal": 0.2,
+          "importance": 0.7,
+          "meaning": "Attention was delayed and I remained unsettled.",
+          "confidence": 0.8,
+          "encountered": [
+            "rowan"
+          ],
+          "caregiving": {
+            "caregiver": "rowan",
+            "responsiveness": 0.2,
+            "acceptance": 0.5
+          }
+        },
+        "rowan": {
+          "text": "I could not attend immediately.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "bea"
+          ]
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-3-bea:infancy-action",
+        "alive": [
+          "bea",
+          "rowan"
+        ],
+        "actions": [
+          "life-3-bea:infancy-contact-action"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-4-maya:goal:personal-task",
+      "day": 290.63508319045667,
+      "description": "I completed a small useful step on my intention.",
+      "observations": {
+        "maya": {
+          "text": "I completed a small useful step on my intention.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.2,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I completed a small useful step on my intention.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "maya": {
+          "goals": {
+            "personal-task": {
+              "progress": 0.25,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-4-maya:goal:personal-task-action",
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@hazard:bea:recovery:1",
+      "day": 316.53005146902194,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "bea": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "bea": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "bea"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "life-5-rowan:goal:personal-task",
+      "day": 322.3100202458592,
+      "description": "I remained unsure of my next step.",
+      "observations": {
+        "rowan": {
+          "text": "I remained unsure of my next step.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": -0.1,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I remained unsure of my next step.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-5-rowan:goal:personal-task-action",
+        "alive": [
+          "rowan"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@hazard:rowan:recovery:2",
+      "day": 325.070750119329,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "rowan": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "rowan": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "rowan"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "life-6-bea:infancy",
+      "day": 326.3180331529477,
+      "description": "I settled after a quiet interval.",
+      "observations": {
+        "bea": {
+          "text": "I settled after a quiet interval.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.2,
+          "arousal": 0.2,
+          "importance": 0.5,
+          "meaning": "I settled after a quiet interval.",
+          "confidence": 0.8
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "action": "life-6-bea:infancy-action",
+        "alive": [
+          "bea"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "@hazard:rowan:recovery:3",
+      "day": 338.05906320024826,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "rowan": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "rowan": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "rowan"
+        ]
+      },
+      "status": "ineligible"
+    },
+    {
+      "id": "@hazard:maya:recovery:3",
+      "day": 361.8121473895902,
+      "description": "A temporary illness resolves.",
+      "observations": {
+        "maya": {
+          "text": "I feel recovered from the temporary illness.",
+          "source": "direct"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "facts": {
+          "maya": {
+            "health_status": "temporarily-ill"
+          }
+        },
+        "alive": [
+          "maya"
+        ]
+      },
+      "status": "ineligible"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-0-maya:goal:personal-task-action",
+      "owner": "maya",
+      "day": 20.325595690318867,
+      "decision": {
+        "action_id": "reflect",
+        "action": "Take half an hour to consider a different approach.",
+        "speech": "",
+        "goal_id": "personal-task",
+        "plan": [
+          "Take half an hour to consider a different approach."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-0-maya:goal:personal-task"
+    },
+    {
+      "id": "life-1-maya:goal:personal-task-action",
+      "owner": "maya",
+      "day": 160.10534530545874,
+      "decision": {
+        "action_id": "reflect",
+        "action": "Take half an hour to consider a different approach.",
+        "speech": "",
+        "goal_id": "personal-task",
+        "plan": [
+          "Take half an hour to consider a different approach."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-1-maya:goal:personal-task"
+    },
+    {
+      "id": "life-2-alex:infancy-action",
+      "owner": "alex",
+      "day": 252.39667235159155,
+      "decision": {
+        "action_id": "settle",
+        "action": "Try settling or exploring quietly.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Try settling or exploring quietly."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-2-alex:infancy"
+    },
+    {
+      "id": "life-3-bea:infancy-action",
+      "owner": "bea",
+      "day": 260.5462086171177,
+      "decision": {
+        "action_id": "seek-support",
+        "action": "Signal discomfort or seek familiar attention.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Signal discomfort or seek familiar attention."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-3-bea:infancy"
+    },
+    {
+      "id": "life-3-bea:infancy-contact-action",
+      "owner": "rowan",
+      "day": 260.5462086171177,
+      "decision": {
+        "action_id": "delay",
+        "action": "Signal that you cannot attend immediately.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-3-bea:infancy"
+    },
+    {
+      "id": "life-4-maya:goal:personal-task-action",
+      "owner": "maya",
+      "day": 290.61424985712335,
+      "decision": {
+        "action_id": "small-step",
+        "action": "Spend half an hour on a small practical step appropriate to your age.",
+        "speech": "",
+        "goal_id": "personal-task",
+        "plan": [
+          "Spend half an hour on a small practical step appropriate to your age."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-4-maya:goal:personal-task"
+    },
+    {
+      "id": "life-5-rowan:goal:personal-task-action",
+      "owner": "rowan",
+      "day": 322.2891869125259,
+      "decision": {
+        "action_id": "reflect",
+        "action": "Take half an hour to consider a different approach.",
+        "speech": "",
+        "goal_id": "personal-task",
+        "plan": [
+          "Take half an hour to consider a different approach."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-5-rowan:goal:personal-task"
+    },
+    {
+      "id": "life-6-bea:infancy-action",
+      "owner": "bea",
+      "day": 326.307616486281,
+      "decision": {
+        "action_id": "settle",
+        "action": "Try settling or exploring quietly.",
+        "speech": "",
+        "goal_id": null,
+        "plan": [
+          "Try settling or exploring quietly."
+        ],
+        "memory_ids": []
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-6-bea:infancy"
+    }
+  ],
+  "updates": [
+    {
+      "id": "maya:autonomous:0",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 27.720501382930994
+    },
+    {
+      "id": "maya:autonomous:3",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 188.5986261142291
+    },
+    {
+      "id": "bea:autonomous:0",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 268.2452314466958
+    },
+    {
+      "id": "alex:autonomous:0",
+      "kind": "recall",
+      "owner": "alex",
+      "day": 286.58670179593844
+    },
+    {
+      "id": "maya:autonomous:4",
+      "kind": "recall",
+      "owner": "maya",
+      "day": 305.45233540372794
+    },
+    {
+      "id": "bea:autonomous:1",
+      "kind": "recall",
+      "owner": "bea",
+      "day": 316.48484820871954
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "cognition": {
+      "graphiti_retrieval": false,
+      "semantic_recall": true,
+      "indexed_retrieval": true,
+      "reference_resolution": true,
+      "reflection": true,
+      "autonomous_goals": true,
+      "semantic_candidates": 24,
+      "detail_threshold": 0.45,
+      "fan_weight": 0.15,
+      "rumination_per_year": 4,
+      "rumination_minimum_gap_days": 1
+    },
+    "planning": {
+      "calendar_mode": "elapsed",
+      "grounded_plans": true,
+      "hours_per_day": 12,
+      "habit_half_life_days": 30,
+      "habit_gain": 0.1,
+      "habit_max": 1
+    },
+    "expression": {
+      "std_by_domain": {
+        "N": 1,
+        "E": 1,
+        "O": 1,
+        "A": 1,
+        "C": 1
+      },
+      "half_life_days": 1,
+      "age_appropriate_actions": true
+    },
+    "society": {
+      "closeness_half_life_days": 365.25
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "9e42b96584fa3631e58bec20d0d04554f085a9f943a64c564193d7cae491b060",
+    "scripted": true,
+    "start_day": 0.0,
+    "current_day": 365.25,
+    "next_tick": null,
+    "tick": 7,
+    "trace": [
+      {
+        "event_index": 0,
+        "day": 20.325595690318867,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "maya:goal:personal-task",
+        "day": 20.3464290236522,
+        "action": "reflect",
+        "success": true,
+        "event": "life-0-maya:goal:personal-task",
+        "policy": "scenario_assumption"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "maya",
+        "day": 27.720501382930994,
+        "memory": "life-0-maya:goal:personal-task"
+      },
+      {
+        "kind": "world_transition",
+        "id": "alex:recovery",
+        "day": 75.76475374637356,
+        "applied": false
+      },
+      {
+        "kind": "world_transition",
+        "id": "maya:recovery",
+        "day": 87.36506333912641,
+        "applied": false
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "maya",
+        "day": 121.34852667432054,
+        "memory": null
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "maya",
+        "day": 131.86465207975837,
+        "memory": null
+      },
+      {
+        "kind": "world_transition",
+        "id": "alex:recovery",
+        "day": 133.42086021565837,
+        "applied": false
+      },
+      {
+        "kind": "world_transition",
+        "id": "rowan:recovery",
+        "day": 145.02490934261047,
+        "applied": false
+      },
+      {
+        "kind": "world_transition",
+        "id": "maya:recovery",
+        "day": 152.30042968777872,
+        "applied": false
+      },
+      {
+        "event_index": 1,
+        "day": 160.10534530545874,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "maya:goal:personal-task",
+        "day": 160.12617863879208,
+        "action": "reflect",
+        "success": true,
+        "event": "life-1-maya:goal:personal-task",
+        "policy": "scenario_assumption"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "maya",
+        "day": 188.5986261142291,
+        "memory": "life-1-maya:goal:personal-task"
+      },
+      {
+        "kind": "world_transition",
+        "id": "rowan:recovery",
+        "day": 196.32690143699415,
+        "applied": false
+      },
+      {
+        "kind": "world_transition",
+        "id": "maya:recovery",
+        "day": 211.7873150878096,
+        "applied": false
+      },
+      {
+        "kind": "world_transition",
+        "id": "bea:recovery",
+        "day": 236.40181574474332,
+        "applied": false
+      },
+      {
+        "event_index": 2,
+        "day": 252.39667235159155,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "alex:infancy",
+        "day": 252.4070890182582,
+        "action": "settle",
+        "success": false,
+        "event": "life-2-alex:infancy",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 3,
+        "day": 260.5462086171177,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "bea:infancy",
+        "day": 260.5482919504511,
+        "action": "seek-support",
+        "success": false,
+        "event": "life-3-bea:infancy",
+        "policy": "scenario_assumption",
+        "contact_action": "delay"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "bea",
+        "day": 268.2452314466958,
+        "memory": "life-3-bea:infancy"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "alex",
+        "day": 286.58670179593844,
+        "memory": "life-2-alex:infancy"
+      },
+      {
+        "event_index": 4,
+        "day": 290.61424985712335,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "maya:goal:personal-task",
+        "day": 290.63508319045667,
+        "action": "small-step",
+        "success": true,
+        "event": "life-4-maya:goal:personal-task",
+        "policy": "scenario_assumption"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "maya",
+        "day": 305.45233540372794,
+        "memory": "life-4-maya:goal:personal-task"
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "rowan",
+        "day": 310.3633213171652,
+        "memory": null
+      },
+      {
+        "kind": "autonomous_recall",
+        "owner": "bea",
+        "day": 316.48484820871954,
+        "memory": "life-3-bea:infancy"
+      },
+      {
+        "kind": "world_transition",
+        "id": "bea:recovery",
+        "day": 316.53005146902194,
+        "applied": false
+      },
+      {
+        "event_index": 5,
+        "day": 322.2891869125259,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "rowan:goal:personal-task",
+        "day": 322.3100202458592,
+        "action": "reflect",
+        "success": false,
+        "event": "life-5-rowan:goal:personal-task",
+        "policy": "scenario_assumption"
+      },
+      {
+        "kind": "world_transition",
+        "id": "rowan:recovery",
+        "day": 325.070750119329,
+        "applied": false
+      },
+      {
+        "event_index": 6,
+        "day": 326.307616486281,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "scripted_engineering_fixture"
+      },
+      {
+        "opportunity": "bea:infancy",
+        "day": 326.3180331529477,
+        "action": "settle",
+        "success": true,
+        "event": "life-6-bea:infancy",
+        "policy": "scenario_assumption"
+      },
+      {
+        "kind": "world_transition",
+        "id": "rowan:recovery",
+        "day": 338.05906320024826,
+        "applied": false
+      },
+      {
+        "kind": "world_transition",
+        "id": "maya:recovery",
+        "day": 361.8121473895902,
+        "applied": false
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "alex:infancy": 1,
+      "alex:early-childhood": 0,
+      "alex:school-learning": 0,
+      "alex:adolescent-project": 0,
+      "alex:adult-project": 0,
+      "bea:infancy": 2,
+      "bea:early-childhood": 0,
+      "bea:school-learning": 0,
+      "bea:adolescent-project": 0,
+      "bea:adult-project": 0,
+      "maya:goal:personal-task": 3,
+      "rowan:goal:personal-task": 1
+    },
+    "next_opportunities": {
+      "alex:infancy": 528.9205512083271,
+      "alex:early-childhood": 818.5414874451328,
+      "alex:school-learning": 1832.4313651326404,
+      "alex:adolescent-project": 4827.709327663935,
+      "alex:adult-project": 6766.3744546754615,
+      "bea:infancy": 377.35948281776786,
+      "bea:early-childhood": 861.1984345525738,
+      "bea:school-learning": 2545.1956853944434,
+      "bea:adolescent-project": 4530.083932570086,
+      "bea:adult-project": 6747.168770285839,
+      "maya:goal:personal-task": 444.89084761193476,
+      "rowan:goal:personal-task": 789.3653199411848
+    },
+    "next_world_events": {},
+    "background_counts": {
+      "maya": 5,
+      "alex": 1,
+      "rowan": 1,
+      "bea": 2
+    },
+    "next_background": {
+      "maya": 454.5992886118988,
+      "alex": 449.5287470906269,
+      "rowan": 399.6877080863389,
+      "bea": 462.75536190335265
+    },
+    "pending_activities": {},
+    "hazard_counts": {
+      "maya:illness": 0,
+      "maya:recovery": 4,
+      "maya:later-life-death": 0,
+      "alex:illness": 0,
+      "alex:recovery": 2,
+      "alex:later-life-death": 0,
+      "rowan:illness": 0,
+      "rowan:recovery": 4,
+      "rowan:later-life-death": 0,
+      "bea:illness": 0,
+      "bea:recovery": 2,
+      "bea:later-life-death": 0,
+      "alex:new-dependent": 0
+    },
+    "next_hazards": {
+      "maya:illness": 1046.796812507525,
+      "maya:recovery": 475.3995584593493,
+      "maya:later-life-death": 18478.304055103767,
+      "alex:illness": 766.7403614919658,
+      "alex:recovery": 458.15139391292604,
+      "alex:later-life-death": 41148.77975533354,
+      "rowan:illness": 944.2997605830474,
+      "rowan:recovery": 384.1917009801403,
+      "rowan:later-life-death": 23751.19680635143,
+      "bea:illness": 3088.196790697541,
+      "bea:recovery": 422.46898663906785,
+      "bea:later-life-death": 29857.41395642158,
+      "alex:new-dependent": 12263.15461972736
+    },
+    "dynamic_opportunities": [
+      {
+        "id": "maya:goal:personal-task",
+        "actor": "maya",
+        "goal_id": "personal-task",
+        "min_age": 2,
+        "max_age": 120,
+        "rate_per_year": 1.5,
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "options": [
+          {
+            "id": "small-step",
+            "label": "Spend half an hour on a small practical step appropriate to your age.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I completed a small useful step on my intention.",
+            "failure_text": "The small step remained difficult.",
+            "valence_success": 0.2,
+            "valence_failure": -0.1,
+            "progress_gain": 0.25
+          },
+          {
+            "id": "reflect",
+            "label": "Take half an hour to consider a different approach.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I identified a clearer next step.",
+            "failure_text": "I remained unsure of my next step.",
+            "valence_success": 0.1,
+            "valence_failure": -0.1,
+            "progress_gain": 0.1
+          }
+        ]
+      },
+      {
+        "id": "rowan:goal:personal-task",
+        "actor": "rowan",
+        "goal_id": "personal-task",
+        "min_age": 2,
+        "max_age": 120,
+        "rate_per_year": 1.5,
+        "situation": "You can take a small practical step toward your self-set intention: Finish a small personally useful task.",
+        "cues": [
+          "challenge"
+        ],
+        "options": [
+          {
+            "id": "small-step",
+            "label": "Spend half an hour on a small practical step appropriate to your age.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I completed a small useful step on my intention.",
+            "failure_text": "The small step remained difficult.",
+            "valence_success": 0.2,
+            "valence_failure": -0.1,
+            "progress_gain": 0.25
+          },
+          {
+            "id": "reflect",
+            "label": "Take half an hour to consider a different approach.",
+            "duration_hours": 0.5,
+            "success_probability": 0.6,
+            "success_text": "I identified a clearer next step.",
+            "failure_text": "I remained unsure of my next step.",
+            "valence_success": 0.1,
+            "valence_failure": -0.1,
+            "progress_gain": 0.1
+          }
+        ]
+      }
+    ]
+  }
+}

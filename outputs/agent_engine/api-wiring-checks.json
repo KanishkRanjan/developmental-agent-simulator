@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "local HTTP stub checks only; no live model",
+  "checks": [
+    "agent context transport",
+    "JSON action response",
+    "JSON appraisal response",
+    "no state mutation during proposals"
+  ]
+}

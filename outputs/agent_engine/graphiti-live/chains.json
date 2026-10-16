@@ -1,0 +1,112 @@
+{
+  "mode": "chains",
+  "scope": "researcher query over one current private view; graph connectivity is not causality",
+  "queries": [
+    "employment and Bea"
+  ],
+  "memories": [
+    {
+      "event": "encouragement",
+      "day": 0,
+      "text": "Bea listened when I mentioned the job loss and encouraged a small next step.",
+      "source": "direct",
+      "kind": "direct",
+      "meaning": "I felt supported after explaining a difficulty.",
+      "confidence": 0.5,
+      "availability": 0.9939677216858734,
+      "provenance": "encouragement",
+      "score": 0.9939677216858734,
+      "representation": "episodic_detail",
+      "original_detail_available": true,
+      "interference_factor": 1.0,
+      "topics": []
+    },
+    {
+      "event": "dismissal",
+      "day": 0,
+      "text": "My employer ended my contract. I felt embarrassed telling Bea.",
+      "source": "direct",
+      "kind": "direct",
+      "meaning": "I lost my job, but I am actively taking steps to regain a sense of agency and forward momentum.",
+      "confidence": 0.6,
+      "availability": 0.9976712482306918,
+      "provenance": "dismissal",
+      "score": 1.7976712482306918,
+      "representation": "episodic_detail",
+      "original_detail_available": true,
+      "interference_factor": 1.0,
+      "topics": []
+    },
+    {
+      "event": "life-0-presentation",
+      "day": 1.8405873736097254,
+      "text": "I drafted one useful paragraph for my presentation.",
+      "source": "direct",
+      "kind": "direct",
+      "meaning": "I successfully completed the first step of my plan by drafting a useful paragraph, which provides a small but tangible sense of progress and agency after the recent job loss.",
+      "confidence": 0.9,
+      "availability": 0.9970566034847911,
+      "provenance": "life-0-presentation",
+      "score": 1.413353888042452,
+      "representation": "episodic_detail",
+      "original_detail_available": true,
+      "interference_factor": 1.0,
+      "topics": [
+        "agency",
+        "job_loss",
+        "presentation",
+        "progress"
+      ]
+    }
+  ],
+  "relationship_chains": [
+    {
+      "event": "encouragement",
+      "relation": "KNOWN_REFERENCE",
+      "source": "23dae4d4-c377-5acf-8990-0d5e61405112",
+      "target": "66c01692-0fd5-5b0c-8939-9f8e66f855ac"
+    },
+    {
+      "event": "dismissal",
+      "relation": "RECEIVED_ACCOUNT",
+      "source": "6bd08298-61d5-5d11-8d4a-adc4ab3cb4e4",
+      "target": "440aca14-4b37-5513-b4b6-a3718b391f64"
+    },
+    {
+      "event": "encouragement",
+      "relation": "RECEIVED_ACCOUNT",
+      "source": "6bd08298-61d5-5d11-8d4a-adc4ab3cb4e4",
+      "target": "23dae4d4-c377-5acf-8990-0d5e61405112"
+    },
+    {
+      "event": "life-0-presentation",
+      "relation": "RECEIVED_ACCOUNT",
+      "source": "6bd08298-61d5-5d11-8d4a-adc4ab3cb4e4",
+      "target": "2c31101f-57f3-5394-a86f-0b2ea58c68d8"
+    },
+    {
+      "event": "life-0-presentation",
+      "relation": "TOPIC",
+      "source": "2c31101f-57f3-5394-a86f-0b2ea58c68d8",
+      "target": "b0221f47-cdec-5d0b-b7d2-c0330bb6154f"
+    },
+    {
+      "event": "life-0-presentation",
+      "relation": "TOPIC",
+      "source": "2c31101f-57f3-5394-a86f-0b2ea58c68d8",
+      "target": "e42a2137-8ca9-5075-bc29-48db9bc54fea"
+    },
+    {
+      "event": "life-0-presentation",
+      "relation": "TOPIC",
+      "source": "2c31101f-57f3-5394-a86f-0b2ea58c68d8",
+      "target": "33a31e3a-51f0-5459-9eaf-43cd907d73e2"
+    },
+    {
+      "event": "life-0-presentation",
+      "relation": "TOPIC",
+      "source": "2c31101f-57f3-5394-a86f-0b2ea58c68d8",
+      "target": "baa89c20-a1dc-5286-a76b-0e0ca83b4795"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "scope": "engineering and implementation fidelity only",
+  "checks": [
+    "facet-specific language without numeric personality table",
+    "distinct facets retained without broad-trait conflation",
+    "balanced profile fallback",
+    "read-only inspection",
+    "listener-only social reminders",
+    "actual model-cited memories trigger recall",
+    "recalled-affect habituation",
+    "original encoding stability preserved across resume and rollback",
+    "individual recovery parameters",
+    "source-linked gist without episode rewriting",
+    "events cannot silently rewrite committed birth or family identity",
+    "both action and appraisal use language compiler",
+    "aged details need retrieval cues",
+    "empty 40-year jump requires zero opportunity ticks"
+  ]
+}

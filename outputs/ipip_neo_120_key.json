@@ -1,0 +1,725 @@
+{
+  "source": "Johnson (2014), Table 1, https://doi.org/10.1016/j.jrp.2014.05.003",
+  "items": [
+    {
+      "item": 1,
+      "facet": "N1",
+      "reverse": false,
+      "text": "Worry about things"
+    },
+    {
+      "item": 2,
+      "facet": "E1",
+      "reverse": false,
+      "text": "Make friends easily"
+    },
+    {
+      "item": 3,
+      "facet": "O1",
+      "reverse": false,
+      "text": "Have a vivid imagination"
+    },
+    {
+      "item": 4,
+      "facet": "A1",
+      "reverse": false,
+      "text": "Trust others"
+    },
+    {
+      "item": 5,
+      "facet": "C1",
+      "reverse": false,
+      "text": "Complete tasks successfully"
+    },
+    {
+      "item": 6,
+      "facet": "N2",
+      "reverse": false,
+      "text": "Get angry easily"
+    },
+    {
+      "item": 7,
+      "facet": "E2",
+      "reverse": false,
+      "text": "Love large parties"
+    },
+    {
+      "item": 8,
+      "facet": "O2",
+      "reverse": false,
+      "text": "Believe in the importance of art"
+    },
+    {
+      "item": 9,
+      "facet": "A2",
+      "reverse": true,
+      "text": "Use others for my own ends"
+    },
+    {
+      "item": 10,
+      "facet": "C2",
+      "reverse": false,
+      "text": "Like to tidy up"
+    },
+    {
+      "item": 11,
+      "facet": "N3",
+      "reverse": false,
+      "text": "Often feel blue"
+    },
+    {
+      "item": 12,
+      "facet": "E3",
+      "reverse": false,
+      "text": "Take charge"
+    },
+    {
+      "item": 13,
+      "facet": "O3",
+      "reverse": false,
+      "text": "Experience my emotions intensely"
+    },
+    {
+      "item": 14,
+      "facet": "A3",
+      "reverse": false,
+      "text": "Love to help others"
+    },
+    {
+      "item": 15,
+      "facet": "C3",
+      "reverse": false,
+      "text": "Keep my promises"
+    },
+    {
+      "item": 16,
+      "facet": "N4",
+      "reverse": false,
+      "text": "Find it dif\ufb01cult to approach others"
+    },
+    {
+      "item": 17,
+      "facet": "E4",
+      "reverse": false,
+      "text": "Am always busy"
+    },
+    {
+      "item": 18,
+      "facet": "O4",
+      "reverse": false,
+      "text": "Prefer variety to routine"
+    },
+    {
+      "item": 19,
+      "facet": "A4",
+      "reverse": true,
+      "text": "Love a good \ufb01ght"
+    },
+    {
+      "item": 20,
+      "facet": "C4",
+      "reverse": false,
+      "text": "Work hard"
+    },
+    {
+      "item": 21,
+      "facet": "N5",
+      "reverse": false,
+      "text": "Go on binges"
+    },
+    {
+      "item": 22,
+      "facet": "E5",
+      "reverse": false,
+      "text": "Love excitement"
+    },
+    {
+      "item": 23,
+      "facet": "O5",
+      "reverse": false,
+      "text": "Love to read challenging material"
+    },
+    {
+      "item": 24,
+      "facet": "A5",
+      "reverse": true,
+      "text": "Believe that I am better than others"
+    },
+    {
+      "item": 25,
+      "facet": "C5",
+      "reverse": false,
+      "text": "Am always prepared"
+    },
+    {
+      "item": 26,
+      "facet": "N6",
+      "reverse": false,
+      "text": "Panic easily"
+    },
+    {
+      "item": 27,
+      "facet": "E6",
+      "reverse": false,
+      "text": "Radiate joy"
+    },
+    {
+      "item": 28,
+      "facet": "O6",
+      "reverse": false,
+      "text": "Tend to vote for liberal political candidates"
+    },
+    {
+      "item": 29,
+      "facet": "A6",
+      "reverse": false,
+      "text": "Sympathize with the homeless"
+    },
+    {
+      "item": 30,
+      "facet": "C6",
+      "reverse": true,
+      "text": "Jump into things without thinking"
+    },
+    {
+      "item": 31,
+      "facet": "N1",
+      "reverse": false,
+      "text": "Fear for the worst"
+    },
+    {
+      "item": 32,
+      "facet": "E1",
+      "reverse": false,
+      "text": "Feel comfortable around people"
+    },
+    {
+      "item": 33,
+      "facet": "O1",
+      "reverse": false,
+      "text": "Enjoy wild \ufb02ights of fantasy"
+    },
+    {
+      "item": 34,
+      "facet": "A1",
+      "reverse": false,
+      "text": "Believe that others have good intentions"
+    },
+    {
+      "item": 35,
+      "facet": "C1",
+      "reverse": false,
+      "text": "Excel in what I do"
+    },
+    {
+      "item": 36,
+      "facet": "N2",
+      "reverse": false,
+      "text": "Get irritated easily"
+    },
+    {
+      "item": 37,
+      "facet": "E2",
+      "reverse": false,
+      "text": "Talk to a lot of different people at parties"
+    },
+    {
+      "item": 38,
+      "facet": "O2",
+      "reverse": false,
+      "text": "See beauty in things that others might not notice"
+    },
+    {
+      "item": 39,
+      "facet": "A2",
+      "reverse": true,
+      "text": "Cheat to get ahead"
+    },
+    {
+      "item": 40,
+      "facet": "C2",
+      "reverse": true,
+      "text": "Often forget to put things back in their proper place"
+    },
+    {
+      "item": 41,
+      "facet": "N3",
+      "reverse": false,
+      "text": "Dislike myself"
+    },
+    {
+      "item": 42,
+      "facet": "E3",
+      "reverse": false,
+      "text": "Try to lead others"
+    },
+    {
+      "item": 43,
+      "facet": "O3",
+      "reverse": false,
+      "text": "Feel others\u2019 emotions"
+    },
+    {
+      "item": 44,
+      "facet": "A3",
+      "reverse": false,
+      "text": "Am concerned about others"
+    },
+    {
+      "item": 45,
+      "facet": "C3",
+      "reverse": false,
+      "text": "Tell the truth"
+    },
+    {
+      "item": 46,
+      "facet": "N4",
+      "reverse": false,
+      "text": "Am afraid to draw attention to myself"
+    },
+    {
+      "item": 47,
+      "facet": "E4",
+      "reverse": false,
+      "text": "Am always on the go"
+    },
+    {
+      "item": 48,
+      "facet": "O4",
+      "reverse": true,
+      "text": "Prefer to stick with things that I know"
+    },
+    {
+      "item": 49,
+      "facet": "A4",
+      "reverse": true,
+      "text": "Yell at people"
+    },
+    {
+      "item": 50,
+      "facet": "C4",
+      "reverse": false,
+      "text": "Do more than what\u2019s expected of me"
+    },
+    {
+      "item": 51,
+      "facet": "N5",
+      "reverse": true,
+      "text": "Rarely overindulge"
+    },
+    {
+      "item": 52,
+      "facet": "E5",
+      "reverse": false,
+      "text": "Seek adventure"
+    },
+    {
+      "item": 53,
+      "facet": "O5",
+      "reverse": true,
+      "text": "Avoid philosophical discussions"
+    },
+    {
+      "item": 54,
+      "facet": "A5",
+      "reverse": true,
+      "text": "Think highly of myself"
+    },
+    {
+      "item": 55,
+      "facet": "C5",
+      "reverse": false,
+      "text": "Carry out my plans"
+    },
+    {
+      "item": 56,
+      "facet": "N6",
+      "reverse": false,
+      "text": "Become overwhelmed by events"
+    },
+    {
+      "item": 57,
+      "facet": "E6",
+      "reverse": false,
+      "text": "Have a lot of fun"
+    },
+    {
+      "item": 58,
+      "facet": "O6",
+      "reverse": false,
+      "text": "Believe that there is no absolute right or wrong"
+    },
+    {
+      "item": 59,
+      "facet": "A6",
+      "reverse": false,
+      "text": "Feel sympathy for those who are worse off than myself"
+    },
+    {
+      "item": 60,
+      "facet": "C6",
+      "reverse": true,
+      "text": "Make rash decisions"
+    },
+    {
+      "item": 61,
+      "facet": "N1",
+      "reverse": false,
+      "text": "Am afraid of many things"
+    },
+    {
+      "item": 62,
+      "facet": "E1",
+      "reverse": true,
+      "text": "Avoid contacts with others"
+    },
+    {
+      "item": 63,
+      "facet": "O1",
+      "reverse": false,
+      "text": "Love to daydream"
+    },
+    {
+      "item": 64,
+      "facet": "A1",
+      "reverse": false,
+      "text": "Trust what people say"
+    },
+    {
+      "item": 65,
+      "facet": "C1",
+      "reverse": false,
+      "text": "Handle tasks smoothly"
+    },
+    {
+      "item": 66,
+      "facet": "N2",
+      "reverse": false,
+      "text": "Lose my temper"
+    },
+    {
+      "item": 67,
+      "facet": "E2",
+      "reverse": true,
+      "text": "Prefer to be alone"
+    },
+    {
+      "item": 68,
+      "facet": "O2",
+      "reverse": true,
+      "text": "Do not like poetry"
+    },
+    {
+      "item": 69,
+      "facet": "A2",
+      "reverse": true,
+      "text": "Take advantage of others"
+    },
+    {
+      "item": 70,
+      "facet": "C2",
+      "reverse": true,
+      "text": "Leave a mess in my room"
+    },
+    {
+      "item": 71,
+      "facet": "N3",
+      "reverse": false,
+      "text": "Am often down in the dumps"
+    },
+    {
+      "item": 72,
+      "facet": "E3",
+      "reverse": false,
+      "text": "Take control of things"
+    },
+    {
+      "item": 73,
+      "facet": "O3",
+      "reverse": true,
+      "text": "Rarely notice my emotional reactions"
+    },
+    {
+      "item": 74,
+      "facet": "A3",
+      "reverse": true,
+      "text": "Am indifferent to the feelings of others"
+    },
+    {
+      "item": 75,
+      "facet": "C3",
+      "reverse": true,
+      "text": "Break rules"
+    },
+    {
+      "item": 76,
+      "facet": "N4",
+      "reverse": false,
+      "text": "Only feel comfortable with friends"
+    },
+    {
+      "item": 77,
+      "facet": "E4",
+      "reverse": false,
+      "text": "Do a lot in my spare time"
+    },
+    {
+      "item": 78,
+      "facet": "O4",
+      "reverse": true,
+      "text": "Dislike changes"
+    },
+    {
+      "item": 79,
+      "facet": "A4",
+      "reverse": true,
+      "text": "Insult people"
+    },
+    {
+      "item": 80,
+      "facet": "C4",
+      "reverse": true,
+      "text": "Do just enough work to get by"
+    },
+    {
+      "item": 81,
+      "facet": "N5",
+      "reverse": true,
+      "text": "Easily resist temptations"
+    },
+    {
+      "item": 82,
+      "facet": "E5",
+      "reverse": false,
+      "text": "Enjoy being reckless"
+    },
+    {
+      "item": 83,
+      "facet": "O5",
+      "reverse": true,
+      "text": "Have dif\ufb01culty understanding abstract ideas"
+    },
+    {
+      "item": 84,
+      "facet": "A5",
+      "reverse": true,
+      "text": "Have a high opinion of myself"
+    },
+    {
+      "item": 85,
+      "facet": "C5",
+      "reverse": true,
+      "text": "Waste my time"
+    },
+    {
+      "item": 86,
+      "facet": "N6",
+      "reverse": false,
+      "text": "Feel that I\u2019m unable to deal with things"
+    },
+    {
+      "item": 87,
+      "facet": "E6",
+      "reverse": false,
+      "text": "Love life"
+    },
+    {
+      "item": 88,
+      "facet": "O6",
+      "reverse": true,
+      "text": "Tend to vote for conservative political candidates"
+    },
+    {
+      "item": 89,
+      "facet": "A6",
+      "reverse": true,
+      "text": "Am not interested in other people\u2019s problems"
+    },
+    {
+      "item": 90,
+      "facet": "C6",
+      "reverse": true,
+      "text": "Rush into things"
+    },
+    {
+      "item": 91,
+      "facet": "N1",
+      "reverse": false,
+      "text": "Get stressed out easily"
+    },
+    {
+      "item": 92,
+      "facet": "E1",
+      "reverse": true,
+      "text": "Keep others at a distance"
+    },
+    {
+      "item": 93,
+      "facet": "O1",
+      "reverse": false,
+      "text": "Like to get lost in thought"
+    },
+    {
+      "item": 94,
+      "facet": "A1",
+      "reverse": true,
+      "text": "Distrust people"
+    },
+    {
+      "item": 95,
+      "facet": "C1",
+      "reverse": false,
+      "text": "Know how to get things done"
+    },
+    {
+      "item": 96,
+      "facet": "N2",
+      "reverse": true,
+      "text": "Am not easily annoyed"
+    },
+    {
+      "item": 97,
+      "facet": "E2",
+      "reverse": true,
+      "text": "Avoid crowds"
+    },
+    {
+      "item": 98,
+      "facet": "O2",
+      "reverse": true,
+      "text": "Do not enjoy going to art museums"
+    },
+    {
+      "item": 99,
+      "facet": "A2",
+      "reverse": true,
+      "text": "Obstruct others\u2019 plans"
+    },
+    {
+      "item": 100,
+      "facet": "C2",
+      "reverse": true,
+      "text": "Leave my belongings around"
+    },
+    {
+      "item": 101,
+      "facet": "N3",
+      "reverse": true,
+      "text": "Feel comfortable with myself"
+    },
+    {
+      "item": 102,
+      "facet": "E3",
+      "reverse": true,
+      "text": "Wait for others to lead the way"
+    },
+    {
+      "item": 103,
+      "facet": "O3",
+      "reverse": true,
+      "text": "Don\u2019t understand people who get emotional"
+    },
+    {
+      "item": 104,
+      "facet": "A3",
+      "reverse": true,
+      "text": "Take no time for others"
+    },
+    {
+      "item": 105,
+      "facet": "C3",
+      "reverse": true,
+      "text": "Break my promises"
+    },
+    {
+      "item": 106,
+      "facet": "N4",
+      "reverse": true,
+      "text": "Am not bothered by dif\ufb01cult social situations"
+    },
+    {
+      "item": 107,
+      "facet": "E4",
+      "reverse": true,
+      "text": "Like to take it easy"
+    },
+    {
+      "item": 108,
+      "facet": "O4",
+      "reverse": true,
+      "text": "Am attached to conventional ways"
+    },
+    {
+      "item": 109,
+      "facet": "A4",
+      "reverse": true,
+      "text": "Get back at others"
+    },
+    {
+      "item": 110,
+      "facet": "C4",
+      "reverse": true,
+      "text": "Put little time and effort into my work"
+    },
+    {
+      "item": 111,
+      "facet": "N5",
+      "reverse": true,
+      "text": "Am able to control my cravings"
+    },
+    {
+      "item": 112,
+      "facet": "E5",
+      "reverse": false,
+      "text": "Act wild and crazy"
+    },
+    {
+      "item": 113,
+      "facet": "O5",
+      "reverse": true,
+      "text": "Am not interested in theoretical discussions"
+    },
+    {
+      "item": 114,
+      "facet": "A5",
+      "reverse": true,
+      "text": "Boast about my virtues"
+    },
+    {
+      "item": 115,
+      "facet": "C5",
+      "reverse": true,
+      "text": "Have dif\ufb01culty starting tasks"
+    },
+    {
+      "item": 116,
+      "facet": "N6",
+      "reverse": true,
+      "text": "Remain calm under pressure"
+    },
+    {
+      "item": 117,
+      "facet": "E6",
+      "reverse": false,
+      "text": "Look at the bright side of life"
+    },
+    {
+      "item": 118,
+      "facet": "O6",
+      "reverse": true,
+      "text": "Believe that we should be tough on crime"
+    },
+    {
+      "item": 119,
+      "facet": "A6",
+      "reverse": true,
+      "text": "Try not to think about the needy"
+    },
+    {
+      "item": 120,
+      "facet": "C6",
+      "reverse": true,
+      "text": "Act without thinking"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+services:
+  graph:
+    image: neo4j:5.26-community@sha256:f1e52d4dc6da122468c4a3c1050a4f5e117f6d3268625237c34d49166f0d6082
+    ports:
+      - "127.0.0.1:17687:7687"
+      - "127.0.0.1:17474:7474"
+    environment:
+      NEO4J_AUTH: none
+      NEO4J_dbms_usage__report_enabled: "false"
+      NEO4J_PLUGINS: '["apoc"]'
+      NEO4J_server_memory_heap_initial__size: 128m
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 256m
+    volumes:
+      - graph-data:/data
+volumes:
+  graph-data:

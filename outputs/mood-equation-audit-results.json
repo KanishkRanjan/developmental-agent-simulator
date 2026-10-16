@@ -1,0 +1,8 @@
+{
+  "100_micro_events_true_mood": 0.7162978701990244,
+  "100_micro_events_with_paper_culling": 0.0,
+  "single_negative_event_after_40_years_if_units_days": -0.18971946278900584,
+  "single_negative_event_after_40_years_if_units_hours": -0.03953894563356979,
+  "mood_after_10_same_time_ruminations": -0.9981778976111987,
+  "assumed_event_tau_in_report_time_units": 280.0
+}

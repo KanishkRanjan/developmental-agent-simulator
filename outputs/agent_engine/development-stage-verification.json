@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "scope": "final local engineering verification only; live cluster connection is currently unavailable",
+  "scripts": [
+    {
+      "script": "check_context.py",
+      "passed": true,
+      "checks": 11,
+      "scope": "engineering only; stubbed transport"
+    },
+    {
+      "script": "check_fidelity.py",
+      "passed": true,
+      "checks": 14,
+      "scope": "engineering and implementation fidelity only"
+    },
+    {
+      "script": "check_situation.py",
+      "passed": true,
+      "checks": 11,
+      "scope": "engineering only; stubbed API"
+    },
+    {
+      "script": "check_lifetime.py",
+      "passed": true,
+      "checks": 6,
+      "scope": "engineering only; scripted and stubbed providers"
+    },
+    {
+      "script": "check_development.py",
+      "passed": true,
+      "checks": 12,
+      "scope": "synthetic engineering checks, not psychological validation"
+    },
+    {
+      "script": "check_temperament.py",
+      "passed": true,
+      "checks": 10,
+      "scope": "synthetic generation and algebra only; not calibrated childhood/genetic prediction"
+    },
+    {
+      "script": "check_world_growth.py",
+      "passed": true,
+      "checks": 9,
+      "scope": "synthetic engineering checks; no calibrated event-rate claim"
+    },
+    {
+      "script": "check_interaction.py",
+      "passed": true,
+      "checks": 9,
+      "scope": "synthetic stubbed interaction engineering only"
+    }
+  ],
+  "named_checks": 82,
+  "core_demo_passed": true,
+  "source_sha256": {
+    "outputs/agent_engine/engine.py": "991a04705f070d1baf057522440636d618393edb0a9ff674d5615fb12cee6c45",
+    "outputs/agent_engine/lifetime.py": "ac3a678051f28e1e87e539c6511210f9de426f6c86f693c4e6a98c5f94460fa4",
+    "outputs/agent_engine/development.py": "da4221433b770b5ee97e962fd128f535f51d7f278c0a313d89a5d079aeef6de9",
+    "outputs/agent_engine/temperament.py": "c6af0b78b202ea72d2f8a4f0b82d32b0bc40fe80d3cf031892931f2b0a0629de",
+    "outputs/agent_engine/personality.py": "f139e5eb2bd4a34204803c2b603dbbf9774a0103179aa5fcee21e6fac9142641",
+    "outputs/agent_engine/situation.py": "2fad97fd6940a3130be20c464cf0c6a32ee0371ed7d9a96f13bb7c1188f91934",
+    "outputs/agent_engine/context_view.py": "de6ef908d302064e0570abafa358b896621ddc6b4e8f2f377ae9bc9887c1dedd",
+    "outputs/agent_engine/initialize_life.py": "ced66ff06d961720dbcffbc8ef0e4754b44c91d8fec46f02c1ad4f4c1bd9cc97",
+    "outputs/agent_engine/run_live.py": "2701ae1546a91c6cc08d9eda6c1facfe680de51589695a640db0347891c140ce",
+    "outputs/identity_state_prototype.py": "10462cd2377b1fce2390206ce8ffaba86d432df8cc160bee8aced4de9e4120f7",
+    "outputs/profile_population_v1.py": "62340699f925eaac05b11737d3f64b3c4b7762db92c4382f797ba48e0757d886",
+    "outputs/profile_population_v1_model.json": "008a9f88878b4a1acbac5d4edd27cd33cfc6dadb377fb7184de941f8db7d35c9"
+  }
+}

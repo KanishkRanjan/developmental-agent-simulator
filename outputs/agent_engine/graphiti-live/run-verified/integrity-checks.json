@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "requests": 5,
+  "repairs": 0,
+  "seconds": 35.846,
+  "resolved_actions": 1,
+  "semantic_recall_ids": [
+    "encouragement",
+    "dismissal"
+  ],
+  "graph_backend": "graphiti_neo4j_local_bge_rrf",
+  "no_graph_fallback": true,
+  "original_episodes_preserved": true,
+  "other_agent_private_episode_excluded": true,
+  "json_sqlite_equivalence": true,
+  "elapsed_outcome": true,
+  "no_pending_activities": true,
+  "current_source_hashes_match": true,
+  "scope": "seeded adult wiring fixture with neutral synthetic traits, omitted childhood, one eligible activity and guaranteed outcome; not realism or personality-choice evaluation"
+}

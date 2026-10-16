@@ -1,0 +1,123 @@
+{
+  "sources": [
+    {
+      "title": "LLM Agent Personality Structures",
+      "path": "/Users/kanishkranjan/Downloads/LLM Agent Personality Structures.pdf",
+      "sha256": "3567ae35524de59e34c0ae2b21d7b32cc29bbe393e0d7430504985fe6987f223",
+      "pages": 16,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/LLM Agent Personality Structures.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Personality Structures.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Personality Structures.txt"
+    },
+    {
+      "title": "LLM Personality Profiling Methods",
+      "path": "/Users/kanishkranjan/Downloads/LLM Personality Profiling Methods.pdf",
+      "sha256": "3862eb8a73f530aeba4f4add0bd40764c55555de3fc10dd9ade74b0b89dad3f2",
+      "pages": 13,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/LLM Personality Profiling Methods.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Personality Profiling Methods.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Personality Profiling Methods.txt"
+    },
+    {
+      "title": "LLM Agent Situational Personality Variability",
+      "path": "/Users/kanishkranjan/Downloads/LLM Agent Situational Personality Variability.pdf",
+      "sha256": "a50a550f7f68e3f2134eda197a18c456311ce825bad4541617762244ee38d73b",
+      "pages": 15,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/LLM Agent Situational Personality Variability.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Situational Personality Variability.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Situational Personality Variability.txt"
+    },
+    {
+      "title": "LLM Agent Memory Decay Research",
+      "path": "/Users/kanishkranjan/Downloads/LLM Agent Memory Decay Research.pdf",
+      "sha256": "e8437fc5a9095dedd71ddafb8e82889f4e12a74ff9d52f15d290c97bf2af05a6",
+      "pages": 17,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/LLM Agent Memory Decay Research.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Memory Decay Research.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Memory Decay Research.txt"
+    },
+    {
+      "title": "Graph DB Memory Decay Implementation",
+      "path": "/Users/kanishkranjan/Downloads/Graph DB Memory Decay Implementation.pdf",
+      "sha256": "3a10941d8bd64d1fdc1a22d27020c145cca3376290545296fced101f0dda6d9f",
+      "pages": 20,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/Graph DB Memory Decay Implementation.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Graph DB Memory Decay Implementation.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Graph DB Memory Decay Implementation.txt"
+    },
+    {
+      "title": "LLM Agent Memory Reconsolidation",
+      "path": "/Users/kanishkranjan/Downloads/LLM Agent Memory Reconsolidation.pdf",
+      "sha256": "fa3caa58f1befca9626d335cbb32ffb65640c9d6aae8ea2d66a290282191e6d8",
+      "pages": 19,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/LLM Agent Memory Reconsolidation.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Memory Reconsolidation.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/LLM Agent Memory Reconsolidation.txt"
+    },
+    {
+      "title": "Life-Event Engine Research Plan",
+      "path": "/Users/kanishkranjan/Downloads/Life-Event Engine Research Plan.pdf",
+      "sha256": "596f4f066151c447eb6223d7d078a74f3efb3a28a707b1288fdd8ae582684ddd",
+      "pages": 21,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/Life-Event Engine Research Plan.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Life-Event Engine Research Plan.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Life-Event Engine Research Plan.txt"
+    },
+    {
+      "title": "Mental Health Agent Simulator Design",
+      "path": "/Users/kanishkranjan/Downloads/Mental Health Agent Simulator Design.pdf",
+      "sha256": "38cfe19169607bcf50a8b3c8f8c57885743497a9deda496d060e59ce2b0d4b61",
+      "pages": 16,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/Mental Health Agent Simulator Design.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Mental Health Agent Simulator Design.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Mental Health Agent Simulator Design.txt"
+    },
+    {
+      "title": "Mood and Memory",
+      "path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/mood-report.pdf",
+      "url": "https://docs.google.com/document/d/1-0kxHdsaxjq6RWPhwAnDeDHlNA7pBX_tQdWZipqEdDs/edit",
+      "sha256": "c2f4c23f42f94e5fb5cc51b8a22544afbcb562db06ba8f56013ff2a66a5850da",
+      "pages": 18,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/mood-report.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Mood and Memory.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Mood and Memory.txt"
+    },
+    {
+      "title": "Lifespan Development",
+      "path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/lifespan-report.pdf",
+      "url": "https://docs.google.com/document/d/1qrPK1IgSOzsg4caFGmI0DgQElKaDfDdi7-PmYIe93tY/edit",
+      "sha256": "37aed9671deddd084e11aef40554bc0bfa8bb67e943f17e14afdb60f23454828",
+      "pages": 16,
+      "text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/work/lifespan-report.txt",
+      "reread": "complete extracted text, including reference list",
+      "independent_reference_verification": "not established by this audit",
+      "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Lifespan Development.pdf",
+      "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Lifespan Development.txt"
+    }
+  ],
+  "conversation": {
+    "url": "https://claude.ai/share/5ea0da10-edfe-4473-ae51-0a41b745b6e1",
+    "visible_text_characters": 279063,
+    "reread": "sequential bounded browser-DOM slices from opening personality document through final measurement-harness request; continued past the 200000-character return cap",
+    "coverage_limit": "Shared snapshot warns that historical attachments/data/tool outputs can be absent. This audit cannot recover undisplayed content."
+  },
+  "scope": "implementation fidelity and code correctness; not a new verification of all cited scientific sources"
+}

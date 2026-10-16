@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "provider": "scripted_engineering_fixture",
+  "final_day": 365.25,
+  "actions_by_status": {
+    "resolved": 8,
+    "intended": 0,
+    "cancelled": 0
+  },
+  "agents": 4,
+  "scope": "software integration only; model-only paths skipped"
+}
