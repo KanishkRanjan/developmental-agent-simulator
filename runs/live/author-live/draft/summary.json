@@ -1,0 +1,9 @@
+{
+  "mode": "draft",
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "requests": {
+    "authoring": 2
+  },
+  "seconds": 217.541,
+  "next": "Review/edit runs/live/author-live/draft/scenario.json, then: python3 -m devsim.author compile runs/live/author-live/draft/scenario.json --out NEW_DIRECTORY"
+}

@@ -1,0 +1,16 @@
+{
+  "mode": "compile",
+  "source": "runs/live/author-live/reviewed/scenario.json",
+  "dry_run": {
+    "days": 58.44,
+    "provider": "scripted_engineering_fixture",
+    "resolved_actions": 8,
+    "applied_events": 23,
+    "pending_events": 0,
+    "conversations": {},
+    "scope": "checks that the policy runs; scripted choices skip model cognition"
+  },
+  "seconds": 0.016,
+  "run_live": "python3 -m devsim.run_live --world runs/live/author-live/compiled/initial.json --policy runs/live/author-live/compiled/policy.json --until-day 58.44 --out runs/live/author-live/compiled/run --api API",
+  "run_scripted": "python3 -m devsim.lifetime runs/live/author-live/compiled/initial.json --policy runs/live/author-live/compiled/policy.json --until-day 58.44 --save runs/live/author-live/compiled/scripted-world.json --scripted"
+}

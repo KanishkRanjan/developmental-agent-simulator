@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "scope": "engineering only; stubbed transport",
+  "checks": [
+    "tools are deterministic, read-only and cite only existing event and action ids",
+    "controller events, resolved actions, utterances and state changes are observed outcomes; memory meanings are agent interpretations",
+    "utterances are labeled unverified; authored background is not reported as an interpretation; recipients are listed",
+    "an outline citing unknown evidence is repaired, and fails after two repairs",
+    "observed claims cite only observed outcomes; agent-interpretation claims need an interpretation item",
+    "claims citing evidence outside their section, untyped claims and uncited claims are rejected",
+    "a full report leaves the checkpoint unchanged",
+    "rendering labels every model claim by type and keeps executed tool results in a separate appendix",
+    "an unavailable graph search is logged as a tool error, never turned into evidence"
+  ]
+}

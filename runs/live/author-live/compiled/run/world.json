@@ -1,0 +1,3104 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 58.44,
+  "entities": {
+    "priya": {
+      "name": "Priya",
+      "facts": {
+        "birth_day": -5478.75,
+        "caregivers": [
+          "arun",
+          "meera"
+        ]
+      }
+    },
+    "arun": {
+      "name": "Arun",
+      "facts": {
+        "birth_day": -16071.0
+      }
+    },
+    "meera": {
+      "name": "Meera",
+      "facts": {
+        "birth_day": -25932.75
+      }
+    }
+  },
+  "agents": {
+    "priya": {
+      "facets": {
+        "N1": 75,
+        "N2": 50,
+        "N3": 50,
+        "N4": 60,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 30,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 75,
+        "N2": 50,
+        "N3": 50,
+        "N4": 60,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 30,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5478.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "make_friends": {
+          "description": "Establish at least one meaningful friendship at the new school.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.3,
+          "plan": [
+            "Accept the invitation to the robotics club.",
+            "Attend the first meeting and observe the group dynamics.",
+            "Introduce myself briefly to reduce the fear of standing out."
+          ]
+        },
+        "fit_in": {
+          "description": "Feel accepted by peers and reduce social anxiety.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "completed",
+          "progress": 1.0,
+          "plan": [
+            "Share my current thoughts on the robotics club with Arun to seek reassurance.",
+            "Gauge his reaction to see if he validates my concerns or offers a different perspective.",
+            "Use his response to lower my anxiety before the next school day."
+          ]
+        }
+      },
+      "relationships": {
+        "arun": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-14-evening_check_in",
+          "last_interaction_day": 55.41223968933771
+        },
+        "meera": {
+          "role": "caregiver",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-9-grandmother_advice",
+          "last_interaction_day": 38.48931919895863
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-priya-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 7.260000000000002,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": 5.31243945241517,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-priya-1": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 7.260000000000002,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": 5.31243945241517,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-priya-2": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 9.663060000000003,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": 44.40985189857906,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "life-1-evening_check_in-request": {
+          "kind": "direct",
+          "confidence": 0.6,
+          "importance": 0.8,
+          "meaning": "I initiated a conversation with Arun to bridge the gap between my internal anxiety and his perspective. By explicitly stating my fear of social misstep and my observation of existing peer groups, I am testing the waters to see if he validates my concern or offers a different reality. The request for details is a low-risk probe to gauge his engagement level and whether he is a safe source of information for my goal of fitting in, while managing my self-consciousness about being the 'new' or 'odd' one.",
+          "versions": [],
+          "stability_days": 9.9,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": 44.40985189857906,
+          "encountered": [
+            "arun"
+          ],
+          "provenance": "life-1-evening_check_in-request"
+        },
+        "life-1-evening_check_in": {
+          "kind": "direct",
+          "confidence": 0.75,
+          "importance": 0.6,
+          "meaning": "I shared my interest in the robotics club with Arun, and his attentive, interested response provided the reassurance I was seeking. It feels like a small validation that my concern about fitting in is not unfounded, and that he is a safe person to talk to about my social anxieties. This lowers my immediate social anxiety and makes me feel less alone in my uncertainty.",
+          "versions": [],
+          "stability_days": 12.320401500000006,
+          "encoding_stability_days": 7.65,
+          "last_recall_day": 55.391406356004374,
+          "encountered": [
+            "arun"
+          ],
+          "provenance": "life-1-evening_check_in"
+        },
+        "scenario-week2_invitation": {
+          "kind": "direct",
+          "confidence": 0.5,
+          "importance": 0,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 3.630000000000001,
+          "encoding_stability_days": 3.0,
+          "last_recall_day": 17.819957473313227,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "life-3-evening_check_in": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.4,
+          "meaning": "I am retreating to my bedroom to end the day, deliberately keeping my actions low-key to prevent any further social friction or self-consciousness. This quiet withdrawal serves as a protective boundary, allowing me to process the day's interactions without the pressure of performance or the risk of saying the wrong thing.",
+          "versions": [],
+          "stability_days": 6.0,
+          "encoding_stability_days": 6.0,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "life-3-evening_check_in"
+        },
+        "life-4-robotics_invitation-request": {
+          "kind": "direct",
+          "confidence": 0.7,
+          "importance": 0.8,
+          "meaning": "I am actively executing the first step of my plan to make friends by accepting the robotics club invitation. By approaching Meera and explicitly thanking her, I am attempting to bridge the gap between my internal anxiety about being the 'odd one out' and the external reality of social inclusion. This interaction serves as a test of whether I can navigate a social request without making a mistake, directly addressing my fear of saying the wrong thing. The act of acceptance is a low-risk probe to gauge Meera's reaction and secure my place in the group, moving my 'fit_in' goal forward.",
+          "versions": [],
+          "stability_days": 9.600000000000001,
+          "encoding_stability_days": 9.600000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-4-robotics_invitation-request"
+        },
+        "life-4-robotics_invitation": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "meaning": "I have taken the first step in my plan by joining the robotics club. The presence of Meera and other students who appear friendly provides a tentative sense of safety and acceptance. This aligns with my goal to fit in and reduces the immediate fear of being the 'odd one out,' though I remain cautious and observant to ensure I do not make a social mistake.",
+          "versions": [],
+          "stability_days": 11.616000000000003,
+          "encoding_stability_days": 9.600000000000001,
+          "last_recall_day": 38.30882347659311,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-4-robotics_invitation"
+        },
+        "life-7-grandmother_advice-request": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "I am actively managing my social anxiety by seeking validation and strategy from Meera. By admitting I am 'trying to figure it out,' I am acknowledging my vulnerability while attempting to maintain composure ('without making a scene'). This interaction is a low-risk probe to test if Meera is a safe source of guidance, directly supporting my goal to fit in and reduce the fear of standing out. I am balancing my desire for connection with my tendency to prefer smaller social contact, using this specific, focused exchange to gain confidence before broader group interactions.",
+          "versions": [],
+          "stability_days": 10.065,
+          "encoding_stability_days": 9.149999999999999,
+          "last_recall_day": 38.30882347659311,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-7-grandmother_advice-request"
+        },
+        "life-7-grandmother_advice": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.7,
+          "meaning": "I am consciously choosing to lower my defensive barriers in response to Meera's perceived concern. This feels like a deliberate, small step toward vulnerability that aligns with my goal to fit in, though it still requires significant effort to overcome my natural inclination to stay quiet.",
+          "versions": [],
+          "stability_days": 9.735000000000003,
+          "encoding_stability_days": 8.850000000000001,
+          "last_recall_day": 38.30882347659311,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-7-grandmother_advice"
+        },
+        "life-8-grandmother_advice-request": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.75,
+          "meaning": "I am seeking guidance from Meera, a trusted caregiver, to help me navigate my social anxieties and fit in. By approaching her, I am testing if she is a safe source of validation and strategy, balancing my desire for connection with my tendency to prefer smaller social contact. This interaction is a low-risk probe to gain confidence before broader group interactions.",
+          "versions": [],
+          "stability_days": 10.14,
+          "encoding_stability_days": 10.14,
+          "last_recall_day": null,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-8-grandmother_advice-request"
+        },
+        "life-8-grandmother_advice": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "meaning": "I am consciously choosing to lower my defensive barriers in response to Meera's perceived concern. This feels like a deliberate, small step toward vulnerability that aligns with my goal to fit in, though it still requires significant effort to overcome my natural inclination to stay quiet.",
+          "versions": [],
+          "stability_days": 10.560000000000002,
+          "encoding_stability_days": 9.600000000000001,
+          "last_recall_day": 38.4684858656253,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-8-grandmother_advice"
+        },
+        "life-9-grandmother_advice-request": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "meaning": "I am initiating a low-risk social probe with Meera, seeking validation and strategy to navigate my social anxieties. By approaching her, I am testing if she is a safe source of guidance, balancing my desire for connection with my tendency to prefer smaller social contact. This interaction is a deliberate step to gain confidence before broader group interactions, directly supporting my goal to fit in.",
+          "versions": [],
+          "stability_days": 9.450000000000001,
+          "encoding_stability_days": 9.450000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-9-grandmother_advice-request"
+        },
+        "life-9-grandmother_advice": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "I am consciously choosing to lower my defensive barriers in response to Meera's perceived concern. This feels like a deliberate, small step toward vulnerability that aligns with my goal to fit in, though it still requires significant effort to overcome my natural inclination to stay quiet.",
+          "versions": [],
+          "stability_days": 8.399999999999999,
+          "encoding_stability_days": 8.399999999999999,
+          "last_recall_day": null,
+          "encountered": [
+            "meera"
+          ],
+          "provenance": "life-9-grandmother_advice"
+        },
+        "life-11-evening_check_in-request": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "I am initiating a low-risk social probe with Arun to manage my uncertainty about the robotics club. By stating that the previous interaction 'was okay' and explicitly voicing my fear of saying the wrong thing, I am seeking validation and reassurance before committing fully. The request to share details about school serves as a conversational bridge, allowing me to gather information and gauge his engagement while maintaining a safe distance from the high-stakes social evaluation of the club itself. This aligns with my goal to fit in by reducing anxiety through prior information gathering and trusted connection.",
+          "versions": [],
+          "stability_days": 9.9,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": 55.391406356004374,
+          "encountered": [
+            "arun"
+          ],
+          "provenance": "life-11-evening_check_in-request"
+        },
+        "life-11-evening_check_in": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "I shared my thoughts on the robotics club with Arun, and his attentive, interested response provided the reassurance I was seeking. It feels like a small validation that my concern about fitting in is not unfounded, and that he is a safe person to talk to about my social anxieties. This lowers my immediate social anxiety and makes me feel less alone in my uncertainty.",
+          "versions": [],
+          "stability_days": 9.9,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": 55.391406356004374,
+          "encountered": [
+            "arun"
+          ],
+          "provenance": "life-11-evening_check_in"
+        },
+        "life-14-evening_check_in-request": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "meaning": "I am initiating a familiar, low-risk social probe with Arun to manage my uncertainty about the robotics club. By stating that the previous interaction 'was okay' and explicitly voicing my fear of saying the wrong thing, I am seeking validation and reassurance before committing fully. The request to share details about school serves as a conversational bridge, allowing me to gather information and gauge his engagement while maintaining a safe distance from the high-stakes social evaluation of the club itself. This aligns with my goal to fit in by reducing anxiety through prior information gathering and trusted connection.",
+          "versions": [],
+          "stability_days": 10.05,
+          "encoding_stability_days": 10.05,
+          "last_recall_day": null,
+          "encountered": [
+            "arun"
+          ],
+          "provenance": "life-14-evening_check_in-request"
+        },
+        "life-14-evening_check_in": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "I shared my thoughts on the robotics club with Arun, and his attentive, interested response provided the reassurance I was seeking. It feels like a small validation that my concern about fitting in is not unfounded, and that he is a safe person to talk to about my social anxieties. This lowers my immediate social anxiety and makes me feel less alone in my uncertainty.",
+          "versions": [],
+          "stability_days": 9.0,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": null,
+          "encountered": [
+            "arun"
+          ],
+          "provenance": "life-14-evening_check_in"
+        }
+      },
+      "rules": [],
+      "affect_events": [
+        {
+          "day": 5.31243945241517,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-background-priya-2"
+        },
+        {
+          "day": 5.31243945241517,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-background-priya-1"
+        },
+        {
+          "day": 5.31243945241517,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-background-priya-0"
+        },
+        {
+          "day": 16.564670008566036,
+          "valence": 0.1125,
+          "arousal": 0.0875,
+          "memory": "life-1-evening_check_in"
+        },
+        {
+          "day": 16.564670008566036,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-week2_invitation"
+        },
+        {
+          "day": 17.819957473313227,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-week2_invitation"
+        },
+        {
+          "day": 17.819957473313227,
+          "valence": 0.05625,
+          "arousal": 0.04375,
+          "memory": "life-1-evening_check_in"
+        },
+        {
+          "day": 17.819957473313227,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-background-priya-2"
+        },
+        {
+          "day": 32.34839687613992,
+          "valence": 0.1625,
+          "arousal": 0.15,
+          "memory": "life-4-robotics_invitation"
+        },
+        {
+          "day": 32.34839687613992,
+          "valence": 0.0375,
+          "arousal": 0.029166666666666664,
+          "memory": "life-1-evening_check_in"
+        },
+        {
+          "day": 32.34839687613992,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-background-priya-2"
+        },
+        {
+          "day": 38.30882347659311,
+          "valence": 0.1625,
+          "arousal": 0.1375,
+          "memory": "life-7-grandmother_advice"
+        },
+        {
+          "day": 38.30882347659311,
+          "valence": 0.1125,
+          "arousal": 0.1625,
+          "memory": "life-7-grandmother_advice-request"
+        },
+        {
+          "day": 38.30882347659311,
+          "valence": 0.08125,
+          "arousal": 0.075,
+          "memory": "life-4-robotics_invitation"
+        },
+        {
+          "day": 38.4684858656253,
+          "valence": 0.1875,
+          "arousal": 0.15,
+          "memory": "life-8-grandmother_advice"
+        },
+        {
+          "day": 44.40985189857906,
+          "valence": 0.025,
+          "arousal": 0.1,
+          "memory": "life-1-evening_check_in-request"
+        },
+        {
+          "day": 44.40985189857906,
+          "valence": 0.028125,
+          "arousal": 0.021875,
+          "memory": "life-1-evening_check_in"
+        },
+        {
+          "day": 44.40985189857906,
+          "valence": 0.0,
+          "arousal": 0.0,
+          "memory": "scenario-background-priya-2"
+        },
+        {
+          "day": 55.391406356004374,
+          "valence": 0.1625,
+          "arousal": 0.15,
+          "memory": "life-11-evening_check_in-request"
+        },
+        {
+          "day": 55.391406356004374,
+          "valence": 0.2125,
+          "arousal": 0.15,
+          "memory": "life-11-evening_check_in"
+        },
+        {
+          "day": 55.391406356004374,
+          "valence": 0.022500000000000003,
+          "arousal": 0.017499999999999998,
+          "memory": "life-1-evening_check_in"
+        }
+      ],
+      "recall_log": [
+        {
+          "id": "life-1-evening_check_in-action:used-memory:scenario-background-priya-2",
+          "day": 5.31243945241517,
+          "memory": "scenario-background-priya-2",
+          "rehearsed": true
+        },
+        {
+          "id": "life-1-evening_check_in-action:used-memory:scenario-background-priya-1",
+          "day": 5.31243945241517,
+          "memory": "scenario-background-priya-1",
+          "rehearsed": true
+        },
+        {
+          "id": "life-1-evening_check_in-action:used-memory:scenario-background-priya-0",
+          "day": 5.31243945241517,
+          "memory": "scenario-background-priya-0",
+          "rehearsed": true
+        },
+        {
+          "id": "life-3-evening_check_in-action:used-memory:life-1-evening_check_in",
+          "day": 16.564670008566036,
+          "memory": "life-1-evening_check_in",
+          "rehearsed": true
+        },
+        {
+          "id": "life-3-evening_check_in-action:used-memory:scenario-week2_invitation",
+          "day": 16.564670008566036,
+          "memory": "scenario-week2_invitation",
+          "rehearsed": true
+        },
+        {
+          "id": "life-4-robotics_invitation-action:used-memory:scenario-week2_invitation",
+          "day": 17.819957473313227,
+          "memory": "scenario-week2_invitation",
+          "rehearsed": true
+        },
+        {
+          "id": "life-4-robotics_invitation-action:used-memory:life-1-evening_check_in",
+          "day": 17.819957473313227,
+          "memory": "life-1-evening_check_in",
+          "rehearsed": true
+        },
+        {
+          "id": "life-4-robotics_invitation-action:used-memory:scenario-background-priya-2",
+          "day": 17.819957473313227,
+          "memory": "scenario-background-priya-2",
+          "rehearsed": true
+        },
+        {
+          "id": "life-7-grandmother_advice-action:used-memory:life-4-robotics_invitation",
+          "day": 32.34839687613992,
+          "memory": "life-4-robotics_invitation",
+          "rehearsed": true
+        },
+        {
+          "id": "life-7-grandmother_advice-action:used-memory:life-1-evening_check_in",
+          "day": 32.34839687613992,
+          "memory": "life-1-evening_check_in",
+          "rehearsed": true
+        },
+        {
+          "id": "life-7-grandmother_advice-action:used-memory:scenario-background-priya-2",
+          "day": 32.34839687613992,
+          "memory": "scenario-background-priya-2",
+          "rehearsed": true
+        },
+        {
+          "id": "life-8-grandmother_advice-action:used-memory:life-7-grandmother_advice",
+          "day": 38.30882347659311,
+          "memory": "life-7-grandmother_advice",
+          "rehearsed": true
+        },
+        {
+          "id": "life-8-grandmother_advice-action:used-memory:life-7-grandmother_advice-request",
+          "day": 38.30882347659311,
+          "memory": "life-7-grandmother_advice-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-8-grandmother_advice-action:used-memory:life-4-robotics_invitation",
+          "day": 38.30882347659311,
+          "memory": "life-4-robotics_invitation",
+          "rehearsed": true
+        },
+        {
+          "id": "life-9-grandmother_advice-action:used-memory:life-8-grandmother_advice",
+          "day": 38.4684858656253,
+          "memory": "life-8-grandmother_advice",
+          "rehearsed": true
+        },
+        {
+          "id": "life-9-grandmother_advice-action:used-memory:life-7-grandmother_advice",
+          "day": 38.4684858656253,
+          "memory": "life-7-grandmother_advice",
+          "rehearsed": false
+        },
+        {
+          "id": "life-9-grandmother_advice-action:used-memory:life-7-grandmother_advice-request",
+          "day": 38.4684858656253,
+          "memory": "life-7-grandmother_advice-request",
+          "rehearsed": false
+        },
+        {
+          "id": "life-11-evening_check_in-action:used-memory:life-1-evening_check_in-request",
+          "day": 44.40985189857906,
+          "memory": "life-1-evening_check_in-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-11-evening_check_in-action:used-memory:life-1-evening_check_in",
+          "day": 44.40985189857906,
+          "memory": "life-1-evening_check_in",
+          "rehearsed": true
+        },
+        {
+          "id": "life-11-evening_check_in-action:used-memory:scenario-background-priya-2",
+          "day": 44.40985189857906,
+          "memory": "scenario-background-priya-2",
+          "rehearsed": true
+        },
+        {
+          "id": "life-14-evening_check_in-action:used-memory:life-11-evening_check_in-request",
+          "day": 55.391406356004374,
+          "memory": "life-11-evening_check_in-request",
+          "rehearsed": true
+        },
+        {
+          "id": "life-14-evening_check_in-action:used-memory:life-11-evening_check_in",
+          "day": 55.391406356004374,
+          "memory": "life-11-evening_check_in",
+          "rehearsed": true
+        },
+        {
+          "id": "life-14-evening_check_in-action:used-memory:life-1-evening_check_in",
+          "day": 55.391406356004374,
+          "memory": "life-1-evening_check_in",
+          "rehearsed": true
+        }
+      ],
+      "affect_parameters": {},
+      "calendar": [
+        {
+          "activity": "life-1-evening_check_in",
+          "start_day": 5.31243945241517,
+          "end_day": 5.333272785748503,
+          "status": "completed"
+        },
+        {
+          "activity": "life-3-evening_check_in",
+          "start_day": 16.564670008566036,
+          "end_day": 16.57300334189937,
+          "status": "completed"
+        },
+        {
+          "activity": "life-4-robotics_invitation",
+          "start_day": 17.819957473313227,
+          "end_day": 17.861624139979895,
+          "status": "completed"
+        },
+        {
+          "activity": "life-7-grandmother_advice",
+          "start_day": 32.34839687613992,
+          "end_day": 32.36923020947326,
+          "status": "completed"
+        },
+        {
+          "activity": "life-8-grandmother_advice",
+          "start_day": 38.30882347659311,
+          "end_day": 38.32965680992645,
+          "status": "completed"
+        },
+        {
+          "activity": "life-9-grandmother_advice",
+          "start_day": 38.4684858656253,
+          "end_day": 38.48931919895863,
+          "status": "completed"
+        },
+        {
+          "activity": "life-11-evening_check_in",
+          "start_day": 44.40985189857906,
+          "end_day": 44.4306852319124,
+          "status": "completed"
+        },
+        {
+          "activity": "life-14-evening_check_in",
+          "start_day": 55.391406356004374,
+          "end_day": 55.41223968933771,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "5": 0.4999999999999929,
+        "16": 0.19999999999998863,
+        "17": 1.0000000000000284,
+        "32": 0.5000000000000568,
+        "38": 1.0000000000001137,
+        "44": 0.5000000000000568,
+        "55": 0.5000000000000568
+      },
+      "habits": {
+        "share_details": {
+          "strength": 0.2090309084482589,
+          "day": 55.41223968933771,
+          "cues": [],
+          "evidence": [
+            "life-1-evening_check_in",
+            "life-11-evening_check_in",
+            "life-14-evening_check_in"
+          ],
+          "days": [
+            5,
+            44,
+            55
+          ]
+        },
+        "stay_quiet": {
+          "strength": 0.1,
+          "day": 16.57300334189937,
+          "cues": [],
+          "evidence": [
+            "life-3-evening_check_in"
+          ],
+          "days": [
+            16
+          ]
+        },
+        "accept": {
+          "strength": 0.1,
+          "day": 17.861624139979895,
+          "cues": [],
+          "evidence": [
+            "life-4-robotics_invitation"
+          ],
+          "days": [
+            17
+          ]
+        },
+        "listen": {
+          "strength": 0.18644562540759413,
+          "day": 38.48931919895863,
+          "cues": [],
+          "evidence": [
+            "life-7-grandmother_advice",
+            "life-8-grandmother_advice",
+            "life-9-grandmother_advice"
+          ],
+          "days": [
+            32,
+            38,
+            38
+          ]
+        }
+      },
+      "activity_evidence": [
+        "life-1-evening_check_in",
+        "life-3-evening_check_in",
+        "life-4-robotics_invitation",
+        "life-7-grandmother_advice",
+        "life-8-grandmother_advice",
+        "life-9-grandmother_advice",
+        "life-11-evening_check_in",
+        "life-14-evening_check_in"
+      ]
+    },
+    "arun": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 70,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 70,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -16071.0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "support_priya": {
+          "description": "Ensure Priya feels supported despite work schedule.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {
+        "priya": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-14-evening_check_in",
+          "last_interaction_day": 55.41223968933771
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-arun-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-arun-1": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-arun-2": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "life-1-evening_check_in-request": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "meaning": "Priya is sharing a specific moment of social hesitation and exclusion from school, framing her experience as 'okay' but revealing underlying anxiety about fitting in. She is seeking validation and connection by sharing these details, which directly touches on my goal to support her and my regret about missing these small moments.",
+          "versions": [],
+          "stability_days": 9.0,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-1-evening_check_in-request"
+        },
+        "life-1-evening_check_in": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "meaning": "Priya is making a deliberate effort to bridge the distance between us, likely seeking the validation and connection she hinted at in her previous school anecdote. This aligns with my active goal to support her, though the low closeness in our relationship makes her intent feel tentative rather than established. I perceive this as a positive opportunity to fulfill my obligation to be present, despite the constraints of my work schedule.",
+          "versions": [],
+          "stability_days": 9.0,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-1-evening_check_in"
+        },
+        "life-11-evening_check_in-request": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "meaning": "Priya is revisiting her hesitation about the robotics club, explicitly stating a desire to participate despite fear of social missteps. This signals a step forward in her agency and a continued reliance on me for emotional grounding. Her request to share school details serves as a bridge to maintain connection, aligning with my goal to support her while I navigate the guilt of missing her daily life due to work constraints.",
+          "versions": [],
+          "stability_days": 9.0,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-11-evening_check_in-request"
+        },
+        "life-11-evening_check_in": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "meaning": "Priya is actively seeking engagement or emotional proximity, likely continuing the thread of her recent hesitation about the robotics club. Her behavior aligns with my goal to support her, though the low closeness in our relationship makes this feel like a tentative bridge rather than an established intimacy. I perceive this as a positive opportunity to fulfill my obligation to be present, despite the constraints of my work schedule.",
+          "versions": [],
+          "stability_days": 9.3,
+          "encoding_stability_days": 9.3,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-11-evening_check_in"
+        },
+        "life-14-evening_check_in-request": {
+          "kind": "direct",
+          "confidence": 0.9,
+          "importance": 0.8,
+          "meaning": "Priya is revisiting her hesitation about the robotics club, explicitly stating a desire to participate despite fear of social missteps. This signals a step forward in her agency and a continued reliance on me for emotional grounding. Her request to share school details serves as a bridge to maintain connection, aligning with my goal to support her while I navigate the guilt of missing her daily life due to work constraints.",
+          "versions": [],
+          "stability_days": 9.0,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-14-evening_check_in-request"
+        },
+        "life-14-evening_check_in": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.8,
+          "meaning": "Priya is actively seeking engagement or emotional proximity, likely continuing the thread of her recent hesitation about the robotics club. Her behavior aligns with my goal to support her, though the low closeness in our relationship makes this feel like a tentative bridge rather than an established intimacy. I perceive this as a positive opportunity to fulfill my obligation to be present, despite the constraints of my work schedule.",
+          "versions": [],
+          "stability_days": 9.75,
+          "encoding_stability_days": 9.75,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-14-evening_check_in"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "calendar": [
+        {
+          "activity": "life-1-evening_check_in",
+          "start_day": 5.31243945241517,
+          "end_day": 5.333272785748503,
+          "status": "completed"
+        },
+        {
+          "activity": "life-11-evening_check_in",
+          "start_day": 44.40985189857906,
+          "end_day": 44.4306852319124,
+          "status": "completed"
+        },
+        {
+          "activity": "life-14-evening_check_in",
+          "start_day": 55.391406356004374,
+          "end_day": 55.41223968933771,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "5": 0.4999999999999929,
+        "44": 0.5000000000000568,
+        "55": 0.5000000000000568
+      }
+    },
+    "meera": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 60,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 85,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 60,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 85,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -25932.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "nurture_family": {
+          "description": "Maintain a warm, supportive home environment.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {
+        "priya": {
+          "role": "acquaintance",
+          "trust": 0.5,
+          "closeness": 0.0,
+          "firsthand": true,
+          "evidence": "life-9-grandmother_advice",
+          "last_interaction_day": 38.48931919895863
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-meera-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-meera-1": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-meera-2": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "life-4-robotics_invitation-request": {
+          "kind": "direct",
+          "confidence": 0.8,
+          "importance": 0.6,
+          "meaning": "Priya has accepted my invitation to join an activity. Her tone is polite and affirmative, which aligns with my goal of maintaining a warm family environment. This acceptance validates my effort to include her and suggests a positive step in our current dynamic, though the specific nature of the 'changes' I worry about remains unaddressed in this brief exchange.",
+          "versions": [],
+          "stability_days": 7.200000000000001,
+          "encoding_stability_days": 7.200000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-4-robotics_invitation-request"
+        },
+        "life-4-robotics_invitation": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.6,
+          "meaning": "A direct observation that Priya displays eagerness regarding the new club. This aligns with her recent acceptance of the invitation and supports my goal of nurturing a warm family environment, though the specific nature of the club remains unaddressed in this brief exchange.",
+          "versions": [],
+          "stability_days": 7.3500000000000005,
+          "encoding_stability_days": 7.3500000000000005,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-4-robotics_invitation"
+        },
+        "life-7-grandmother_advice-request": {
+          "kind": "direct",
+          "confidence": 0.7,
+          "importance": 0.6,
+          "meaning": "Priya acknowledges a shared understanding ('I know') and reveals a specific internal conflict: she wants to act but fears causing a public disturbance or conflict. The request to 'listen and consider her advice' suggests she is seeking validation or a collaborative strategy rather than just sympathy. This aligns with my goal of maintaining a warm home environment, as managing this tension without a 'scene' preserves peace. However, given our low current closeness (0.0) and the ambiguity of what 'it' refers to, I am cautious. It feels like a delicate moment where my response could either bridge the gap or inadvertently escalate the tension she is trying to avoid.",
+          "versions": [],
+          "stability_days": 7.65,
+          "encoding_stability_days": 7.65,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-7-grandmother_advice-request"
+        },
+        "life-7-grandmother_advice": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "Priya is internalizing the guidance I provided, suggesting a shift from mere compliance to genuine reflection. This validates my role as a supportive figure and indicates that our recent interaction has had a positive, stabilizing effect on her. It aligns with my goal of nurturing a warm home environment by showing that my words are landing softly rather than causing friction. However, given our low baseline closeness, this is a tentative step; it feels like a quiet confirmation that the 'scene' she feared is being avoided through quiet understanding rather than public resolution.",
+          "versions": [],
+          "stability_days": 8.1,
+          "encoding_stability_days": 8.1,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-7-grandmother_advice"
+        },
+        "life-8-grandmother_advice-request": {
+          "kind": "direct",
+          "confidence": 0.65,
+          "importance": 0.6,
+          "meaning": "Priya has approached me with a request to listen and consider her advice, but the specific content of the advice is missing from the observation. This creates a moment of suspended attention where I must wait for her to speak. Given our recent history where she was trying to avoid making a 'scene' and is currently taking my advice to heart, this interaction likely represents a continuation of that delicate dynamic. I perceive a pause or hesitation in her delivery, which aligns with her tendency to be cautious. My goal to nurture a warm environment suggests I should remain patient and receptive, allowing her space to articulate her thoughts without pressure, while internally noting the ambiguity of the empty statement.",
+          "versions": [],
+          "stability_days": 7.800000000000001,
+          "encoding_stability_days": 7.800000000000001,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-8-grandmother_advice-request"
+        },
+        "life-8-grandmother_advice": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "A quiet, internal confirmation that my guidance is having a stabilizing effect on Priya. This validates my role as a supportive figure and aligns with my goal of nurturing a warm home environment, suggesting that our recent dynamic is shifting from potential friction to quiet understanding. However, given our low baseline closeness, this feels like a tentative step rather than a deep bond, and I remain cautious about the specific content of the advice since it is not explicitly detailed in this observation.",
+          "versions": [],
+          "stability_days": 8.399999999999999,
+          "encoding_stability_days": 8.399999999999999,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-8-grandmother_advice"
+        },
+        "life-9-grandmother_advice-request": {
+          "kind": "direct",
+          "confidence": 0.65,
+          "importance": 0.7,
+          "meaning": "Priya has approached me with a request to listen and consider her advice, but the specific content of the advice is missing from the observation. This creates a moment of suspended attention where I must wait for her to speak. Given our recent history where she was trying to avoid making a 'scene' and is currently taking my advice to heart, this interaction likely represents a continuation of that delicate dynamic. I perceive a pause or hesitation in her delivery, which aligns with her tendency to be cautious. My goal to nurture a warm environment suggests I should remain patient and receptive, allowing her space to articulate her thoughts without pressure, while internally noting the ambiguity of the empty statement.",
+          "versions": [],
+          "stability_days": 9.0,
+          "encoding_stability_days": 9.0,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-9-grandmother_advice-request"
+        },
+        "life-9-grandmother_advice": {
+          "kind": "direct",
+          "confidence": 0.85,
+          "importance": 0.7,
+          "meaning": "A quiet, internal confirmation that my guidance is having a stabilizing effect on Priya. This validates my role as a supportive figure and aligns with my goal of nurturing a warm home environment, suggesting that our recent dynamic is shifting from potential friction to quiet understanding. However, given our low baseline closeness, this feels like a tentative step rather than a deep bond, and I remain cautious about the specific content of the advice since it is not explicitly detailed in this observation.",
+          "versions": [],
+          "stability_days": 8.399999999999999,
+          "encoding_stability_days": 8.399999999999999,
+          "last_recall_day": null,
+          "encountered": [
+            "priya"
+          ],
+          "provenance": "life-9-grandmother_advice"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {},
+      "calendar": [
+        {
+          "activity": "life-4-robotics_invitation",
+          "start_day": 17.819957473313227,
+          "end_day": 17.861624139979895,
+          "status": "completed"
+        },
+        {
+          "activity": "life-7-grandmother_advice",
+          "start_day": 32.34839687613992,
+          "end_day": 32.36923020947326,
+          "status": "completed"
+        },
+        {
+          "activity": "life-8-grandmother_advice",
+          "start_day": 38.30882347659311,
+          "end_day": 38.32965680992645,
+          "status": "completed"
+        },
+        {
+          "activity": "life-9-grandmother_advice",
+          "start_day": 38.4684858656253,
+          "end_day": 38.48931919895863,
+          "status": "completed"
+        }
+      ],
+      "time_use": {
+        "17": 1.0000000000000284,
+        "32": 0.5000000000000568,
+        "38": 1.0000000000001137
+      }
+    }
+  },
+  "events": [
+    {
+      "id": "scenario-background-arun-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "arun": {
+          "text": "I miss being there for the small moments.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-arun-1",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "arun": {
+          "text": "I hope she's happy at the new school.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-arun-2",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "arun": {
+          "text": "My shifts are long but I can't change that.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-meera-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "meera": {
+          "text": "I want to help Priya feel at home.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-meera-1",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "meera": {
+          "text": "Things are different now, but we are still family.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-meera-2",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "meera": {
+          "text": "I worry Arun is too tired to notice the changes.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "I feel like everyone already has their groups formed.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-1",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "I don't want to be the odd one out again.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-2",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "Robotics sounds interesting but I'm scared of saying the wrong thing.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "life-1-evening_check_in-request",
+      "day": 5.31243945241517,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "priya": {
+          "text": "I approached Arun. I said: It was okay. I was thinking about joining the robotics club, but I was a bit worried about saying the wrong thing. Everyone else seemed to already have their groups, so I just kind of watched for a while. Request: Share details about school",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "arun"
+          ],
+          "meaning": "I initiated a conversation with Arun to bridge the gap between my internal anxiety and his perspective. By explicitly stating my fear of social misstep and my observation of existing peer groups, I am testing the waters to see if he validates my concern or offers a different reality. The request for details is a low-risk probe to gauge his engagement level and whether he is a safe source of information for my goal of fitting in, while managing my self-consciousness about being the 'new' or 'odd' one.",
+          "valence": 0.1,
+          "arousal": 0.4,
+          "importance": 0.8,
+          "confidence": 0.6,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "arun": {
+          "text": "Priya approached me and said: It was okay. I was thinking about joining the robotics club, but I was a bit worried about saying the wrong thing. Everyone else seemed to already have their groups, so I just kind of watched for a while. Request: Share details about school",
+          "source": "priya",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya is sharing a specific moment of social hesitation and exclusion from school, framing her experience as 'okay' but revealing underlying anxiety about fitting in. She is seeking validation and connection by sharing these details, which directly touches on my goal to support her and my regret about missing these small moments.",
+          "valence": 0.3,
+          "arousal": 0.4,
+          "importance": 0.8,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "priya",
+          "arun"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-1-evening_check_in",
+      "day": 5.333272785748503,
+      "description": "I tell him about the robotics club and he listens with interest.",
+      "observations": {
+        "priya": {
+          "text": "I tell him about the robotics club and he listens with interest.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.45,
+          "arousal": 0.35,
+          "importance": 0.6,
+          "meaning": "I shared my interest in the robotics club with Arun, and his attentive, interested response provided the reassurance I was seeking. It feels like a small validation that my concern about fitting in is not unfounded, and that he is a safe person to talk to about my social anxieties. This lowers my immediate social anxiety and makes me feel less alone in my uncertainty.",
+          "confidence": 0.75,
+          "encountered": [
+            "arun"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "arun": {
+          "text": "Priya is trying to connect with me.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya is making a deliberate effort to bridge the distance between us, likely seeking the validation and connection she hinted at in her previous school anecdote. This aligns with my active goal to support her, though the low closeness in our relationship makes her intent feel tentative rather than established. I perceive this as a positive opportunity to fulfill my obligation to be present, despite the constraints of my work schedule.",
+          "valence": 0.45,
+          "arousal": 0.4,
+          "importance": 0.8,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "fit_in": {
+              "progress": 0.2,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-1-evening_check_in-action",
+        "alive": [
+          "priya",
+          "arun"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "scenario-week2_invitation",
+      "day": 10,
+      "description": "Priya receives the invitation to the robotics club.",
+      "observations": {
+        "priya": {
+          "text": "I got an invitation to the robotics club. I'm nervous but excited.",
+          "kind": "direct",
+          "source": "direct",
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "life-3-evening_check_in",
+      "day": 16.57300334189937,
+      "description": "I go to bed quietly, avoiding the awkwardness.",
+      "observations": {
+        "priya": {
+          "text": "I go to bed quietly, avoiding the awkwardness.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.15,
+          "arousal": 0.2,
+          "importance": 0.4,
+          "meaning": "I am retreating to my bedroom to end the day, deliberately keeping my actions low-key to prevent any further social friction or self-consciousness. This quiet withdrawal serves as a protective boundary, allowing me to process the day's interactions without the pressure of performance or the risk of saying the wrong thing.",
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "fit_in": {
+              "progress": 0.2,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-3-evening_check_in-action",
+        "alive": [
+          "priya"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-4-robotics_invitation-request",
+      "day": 17.819957473313227,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "priya": {
+          "text": "I approached Meera. I said: Yes, I'd like to join. Thank you for asking. Request: Accept the invitation",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "meera"
+          ],
+          "meaning": "I am actively executing the first step of my plan to make friends by accepting the robotics club invitation. By approaching Meera and explicitly thanking her, I am attempting to bridge the gap between my internal anxiety about being the 'odd one out' and the external reality of social inclusion. This interaction serves as a test of whether I can navigate a social request without making a mistake, directly addressing my fear of saying the wrong thing. The act of acceptance is a low-risk probe to gauge Meera's reaction and secure my place in the group, moving my 'fit_in' goal forward.",
+          "valence": 0.45,
+          "arousal": 0.6,
+          "importance": 0.8,
+          "confidence": 0.7,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya approached me and said: Yes, I'd like to join. Thank you for asking. Request: Accept the invitation",
+          "source": "priya",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya has accepted my invitation to join an activity. Her tone is polite and affirmative, which aligns with my goal of maintaining a warm family environment. This acceptance validates my effort to include her and suggests a positive step in our current dynamic, though the specific nature of the 'changes' I worry about remains unaddressed in this brief exchange.",
+          "valence": 0.4,
+          "arousal": 0.2,
+          "importance": 0.6,
+          "confidence": 0.8,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-4-robotics_invitation",
+      "day": 17.861624139979895,
+      "description": "I join the club and meet a few other students who seem friendly.",
+      "observations": {
+        "priya": {
+          "text": "I join the club and meet a few other students who seem friendly.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.65,
+          "arousal": 0.6,
+          "importance": 0.8,
+          "meaning": "I have taken the first step in my plan by joining the robotics club. The presence of Meera and other students who appear friendly provides a tentative sense of safety and acceptance. This aligns with my goal to fit in and reduces the immediate fear of being the 'odd one out,' though I remain cautious and observant to ensure I do not make a social mistake.",
+          "confidence": 0.85,
+          "encountered": [
+            "meera"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya seems eager about the new club.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "A direct observation that Priya displays eagerness regarding the new club. This aligns with her recent acceptance of the invitation and supports my goal of nurturing a warm family environment, though the specific nature of the club remains unaddressed in this brief exchange.",
+          "valence": 0.45,
+          "arousal": 0.25,
+          "importance": 0.6,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "make_friends": {
+              "progress": 0.3,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-4-robotics_invitation-action",
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-7-grandmother_advice-request",
+      "day": 32.34839687613992,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "priya": {
+          "text": "I approached Meera. I said: I know. I'm just trying to figure out how to do it without making a scene. Request: Listen and consider her advice",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "meera"
+          ],
+          "meaning": "I am actively managing my social anxiety by seeking validation and strategy from Meera. By admitting I am 'trying to figure it out,' I am acknowledging my vulnerability while attempting to maintain composure ('without making a scene'). This interaction is a low-risk probe to test if Meera is a safe source of guidance, directly supporting my goal to fit in and reduce the fear of standing out. I am balancing my desire for connection with my tendency to prefer smaller social contact, using this specific, focused exchange to gain confidence before broader group interactions.",
+          "valence": 0.45,
+          "arousal": 0.65,
+          "importance": 0.7,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya approached me and said: I know. I'm just trying to figure out how to do it without making a scene. Request: Listen and consider her advice",
+          "source": "priya",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya acknowledges a shared understanding ('I know') and reveals a specific internal conflict: she wants to act but fears causing a public disturbance or conflict. The request to 'listen and consider her advice' suggests she is seeking validation or a collaborative strategy rather than just sympathy. This aligns with my goal of maintaining a warm home environment, as managing this tension without a 'scene' preserves peace. However, given our low current closeness (0.0) and the ambiguity of what 'it' refers to, I am cautious. It feels like a delicate moment where my response could either bridge the gap or inadvertently escalate the tension she is trying to avoid.",
+          "valence": 0.15,
+          "arousal": 0.35,
+          "importance": 0.6,
+          "confidence": 0.7,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-7-grandmother_advice",
+      "day": 32.36923020947326,
+      "description": "I appreciate her concern and try to be a bit more open.",
+      "observations": {
+        "priya": {
+          "text": "I appreciate her concern and try to be a bit more open.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.65,
+          "arousal": 0.55,
+          "importance": 0.7,
+          "meaning": "I am consciously choosing to lower my defensive barriers in response to Meera's perceived concern. This feels like a deliberate, small step toward vulnerability that aligns with my goal to fit in, though it still requires significant effort to overcome my natural inclination to stay quiet.",
+          "confidence": 0.8,
+          "encountered": [
+            "meera"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya is taking my advice to heart.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya is internalizing the guidance I provided, suggesting a shift from mere compliance to genuine reflection. This validates my role as a supportive figure and indicates that our recent interaction has had a positive, stabilizing effect on her. It aligns with my goal of nurturing a warm home environment by showing that my words are landing softly rather than causing friction. However, given our low baseline closeness, this is a tentative step; it feels like a quiet confirmation that the 'scene' she feared is being avoided through quiet understanding rather than public resolution.",
+          "valence": 0.65,
+          "arousal": 0.3,
+          "importance": 0.7,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "fit_in": {
+              "progress": 0.35,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-7-grandmother_advice-action",
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-8-grandmother_advice-request",
+      "day": 38.30882347659311,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "priya": {
+          "text": "I approached Meera. I said:  Request: Listen and consider her advice",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "meera"
+          ],
+          "meaning": "I am seeking guidance from Meera, a trusted caregiver, to help me navigate my social anxieties and fit in. By approaching her, I am testing if she is a safe source of validation and strategy, balancing my desire for connection with my tendency to prefer smaller social contact. This interaction is a low-risk probe to gain confidence before broader group interactions.",
+          "valence": 0.85,
+          "arousal": 0.88,
+          "importance": 0.75,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya approached me and said:  Request: Listen and consider her advice",
+          "source": "priya",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya has approached me with a request to listen and consider her advice, but the specific content of the advice is missing from the observation. This creates a moment of suspended attention where I must wait for her to speak. Given our recent history where she was trying to avoid making a 'scene' and is currently taking my advice to heart, this interaction likely represents a continuation of that delicate dynamic. I perceive a pause or hesitation in her delivery, which aligns with her tendency to be cautious. My goal to nurture a warm environment suggests I should remain patient and receptive, allowing her space to articulate her thoughts without pressure, while internally noting the ambiguity of the empty statement.",
+          "valence": 0.3,
+          "arousal": 0.4,
+          "importance": 0.6,
+          "confidence": 0.65,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-8-grandmother_advice",
+      "day": 38.32965680992645,
+      "description": "I appreciate her concern and try to be a bit more open.",
+      "observations": {
+        "priya": {
+          "text": "I appreciate her concern and try to be a bit more open.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.75,
+          "arousal": 0.6,
+          "importance": 0.8,
+          "meaning": "I am consciously choosing to lower my defensive barriers in response to Meera's perceived concern. This feels like a deliberate, small step toward vulnerability that aligns with my goal to fit in, though it still requires significant effort to overcome my natural inclination to stay quiet.",
+          "confidence": 0.85,
+          "encountered": [
+            "meera"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya is taking my advice to heart.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "A quiet, internal confirmation that my guidance is having a stabilizing effect on Priya. This validates my role as a supportive figure and aligns with my goal of nurturing a warm home environment, suggesting that our recent dynamic is shifting from potential friction to quiet understanding. However, given our low baseline closeness, this feels like a tentative step rather than a deep bond, and I remain cautious about the specific content of the advice since it is not explicitly detailed in this observation.",
+          "valence": 0.6,
+          "arousal": 0.4,
+          "importance": 0.7,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "fit_in": {
+              "progress": 0.5,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-8-grandmother_advice-action",
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-9-grandmother_advice-request",
+      "day": 38.4684858656253,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "priya": {
+          "text": "I approached Meera. I said:  Request: Listen and consider her advice",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "meera"
+          ],
+          "meaning": "I am initiating a low-risk social probe with Meera, seeking validation and strategy to navigate my social anxieties. By approaching her, I am testing if she is a safe source of guidance, balancing my desire for connection with my tendency to prefer smaller social contact. This interaction is a deliberate step to gain confidence before broader group interactions, directly supporting my goal to fit in.",
+          "valence": 0.65,
+          "arousal": 0.55,
+          "importance": 0.8,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya approached me and said:  Request: Listen and consider her advice",
+          "source": "priya",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya has approached me with a request to listen and consider her advice, but the specific content of the advice is missing from the observation. This creates a moment of suspended attention where I must wait for her to speak. Given our recent history where she was trying to avoid making a 'scene' and is currently taking my advice to heart, this interaction likely represents a continuation of that delicate dynamic. I perceive a pause or hesitation in her delivery, which aligns with her tendency to be cautious. My goal to nurture a warm environment suggests I should remain patient and receptive, allowing her space to articulate her thoughts without pressure, while internally noting the ambiguity of the empty statement.",
+          "valence": 0.45,
+          "arousal": 0.6,
+          "importance": 0.7,
+          "confidence": 0.65,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-9-grandmother_advice",
+      "day": 38.48931919895863,
+      "description": "I appreciate her concern and try to be a bit more open.",
+      "observations": {
+        "priya": {
+          "text": "I appreciate her concern and try to be a bit more open.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.6,
+          "arousal": 0.4,
+          "importance": 0.7,
+          "meaning": "I am consciously choosing to lower my defensive barriers in response to Meera's perceived concern. This feels like a deliberate, small step toward vulnerability that aligns with my goal to fit in, though it still requires significant effort to overcome my natural inclination to stay quiet.",
+          "confidence": 0.85,
+          "encountered": [
+            "meera"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "meera": {
+          "text": "Priya is taking my advice to heart.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "A quiet, internal confirmation that my guidance is having a stabilizing effect on Priya. This validates my role as a supportive figure and aligns with my goal of nurturing a warm home environment, suggesting that our recent dynamic is shifting from potential friction to quiet understanding. However, given our low baseline closeness, this feels like a tentative step rather than a deep bond, and I remain cautious about the specific content of the advice since it is not explicitly detailed in this observation.",
+          "valence": 0.85,
+          "arousal": 0.4,
+          "importance": 0.7,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "fit_in": {
+              "progress": 0.65,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-9-grandmother_advice-action",
+        "alive": [
+          "priya",
+          "meera"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-11-evening_check_in-request",
+      "day": 44.40985189857906,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "priya": {
+          "text": "I approached Arun. I said: It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try. Request: Share details about school",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "arun"
+          ],
+          "meaning": "I am initiating a low-risk social probe with Arun to manage my uncertainty about the robotics club. By stating that the previous interaction 'was okay' and explicitly voicing my fear of saying the wrong thing, I am seeking validation and reassurance before committing fully. The request to share details about school serves as a conversational bridge, allowing me to gather information and gauge his engagement while maintaining a safe distance from the high-stakes social evaluation of the club itself. This aligns with my goal to fit in by reducing anxiety through prior information gathering and trusted connection.",
+          "valence": 0.65,
+          "arousal": 0.6,
+          "importance": 0.7,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "arun": {
+          "text": "Priya approached me and said: It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try. Request: Share details about school",
+          "source": "priya",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya is revisiting her hesitation about the robotics club, explicitly stating a desire to participate despite fear of social missteps. This signals a step forward in her agency and a continued reliance on me for emotional grounding. Her request to share school details serves as a bridge to maintain connection, aligning with my goal to support her while I navigate the guilt of missing her daily life due to work constraints.",
+          "valence": 0.35,
+          "arousal": 0.4,
+          "importance": 0.8,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "priya",
+          "arun"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-11-evening_check_in",
+      "day": 44.4306852319124,
+      "description": "I tell him about the robotics club and he listens with interest.",
+      "observations": {
+        "priya": {
+          "text": "I tell him about the robotics club and he listens with interest.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.85,
+          "arousal": 0.6,
+          "importance": 0.7,
+          "meaning": "I shared my thoughts on the robotics club with Arun, and his attentive, interested response provided the reassurance I was seeking. It feels like a small validation that my concern about fitting in is not unfounded, and that he is a safe person to talk to about my social anxieties. This lowers my immediate social anxiety and makes me feel less alone in my uncertainty.",
+          "confidence": 0.85,
+          "encountered": [
+            "arun"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "arun": {
+          "text": "Priya is trying to connect with me.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya is actively seeking engagement or emotional proximity, likely continuing the thread of her recent hesitation about the robotics club. Her behavior aligns with my goal to support her, though the low closeness in our relationship makes this feel like a tentative bridge rather than an established intimacy. I perceive this as a positive opportunity to fulfill my obligation to be present, despite the constraints of my work schedule.",
+          "valence": 0.45,
+          "arousal": 0.5,
+          "importance": 0.8,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "fit_in": {
+              "progress": 0.8500000000000001,
+              "status": "active"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-11-evening_check_in-action",
+        "alive": [
+          "priya",
+          "arun"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-14-evening_check_in-request",
+      "day": 55.391406356004374,
+      "description": "A request is received; no task outcome yet.",
+      "observations": {
+        "priya": {
+          "text": "I approached Arun. I said: It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try. Request: Share details about school",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "arun"
+          ],
+          "meaning": "I am initiating a familiar, low-risk social probe with Arun to manage my uncertainty about the robotics club. By stating that the previous interaction 'was okay' and explicitly voicing my fear of saying the wrong thing, I am seeking validation and reassurance before committing fully. The request to share details about school serves as a conversational bridge, allowing me to gather information and gauge his engagement while maintaining a safe distance from the high-stakes social evaluation of the club itself. This aligns with my goal to fit in by reducing anxiety through prior information gathering and trusted connection.",
+          "valence": 0.65,
+          "arousal": 0.75,
+          "importance": 0.8,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "arun": {
+          "text": "Priya approached me and said: It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try. Request: Share details about school",
+          "source": "priya",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya is revisiting her hesitation about the robotics club, explicitly stating a desire to participate despite fear of social missteps. This signals a step forward in her agency and a continued reliance on me for emotional grounding. Her request to share school details serves as a bridge to maintain connection, aligning with my goal to support her while I navigate the guilt of missing her daily life due to work constraints.",
+          "valence": 0.45,
+          "arousal": 0.4,
+          "importance": 0.8,
+          "confidence": 0.9,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {
+        "alive": [
+          "priya",
+          "arun"
+        ]
+      },
+      "status": "applied"
+    },
+    {
+      "id": "life-14-evening_check_in",
+      "day": 55.41223968933771,
+      "description": "I tell him about the robotics club and he listens with interest.",
+      "observations": {
+        "priya": {
+          "text": "I tell him about the robotics club and he listens with interest.",
+          "source": "direct",
+          "kind": "direct",
+          "valence": 0.85,
+          "arousal": 0.6,
+          "importance": 0.7,
+          "meaning": "I shared my thoughts on the robotics club with Arun, and his attentive, interested response provided the reassurance I was seeking. It feels like a small validation that my concern about fitting in is not unfounded, and that he is a safe person to talk to about my social anxieties. This lowers my immediate social anxiety and makes me feel less alone in my uncertainty.",
+          "confidence": 0.85,
+          "encountered": [
+            "arun"
+          ],
+          "appraisal_policy": "local_llm_unfitted"
+        },
+        "arun": {
+          "text": "Priya is trying to connect with me.",
+          "source": "direct",
+          "kind": "direct",
+          "encountered": [
+            "priya"
+          ],
+          "meaning": "Priya is actively seeking engagement or emotional proximity, likely continuing the thread of her recent hesitation about the robotics club. Her behavior aligns with my goal to support her, though the low closeness in our relationship makes this feel like a tentative bridge rather than an established intimacy. I perceive this as a positive opportunity to fulfill my obligation to be present, despite the constraints of my work schedule.",
+          "valence": 0.65,
+          "arousal": 0.65,
+          "importance": 0.8,
+          "confidence": 0.85,
+          "appraisal_policy": "local_llm_unfitted"
+        }
+      },
+      "facts": {},
+      "outcomes": {
+        "priya": {
+          "goals": {
+            "fit_in": {
+              "progress": 1.0,
+              "status": "completed"
+            }
+          }
+        }
+      },
+      "requires": {
+        "action": "life-14-evening_check_in-action",
+        "alive": [
+          "priya",
+          "arun"
+        ]
+      },
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [
+    {
+      "id": "life-1-evening_check_in-action",
+      "owner": "priya",
+      "day": 5.31243945241517,
+      "decision": {
+        "action": "Share details about school",
+        "speech": "It was okay. I was thinking about joining the robotics club, but I was a bit worried about saying the wrong thing. Everyone else seemed to already have their groups, so I just kind of watched for a while.",
+        "goal_id": "fit_in",
+        "plan": [
+          "Mention the robotics club to see if Dad has any advice or if he knows anyone in it.",
+          "Observe his reaction to gauge if it's a safe topic to bring up with peers tomorrow."
+        ],
+        "memory_ids": [
+          "scenario-background-priya-2",
+          "scenario-background-priya-1",
+          "scenario-background-priya-0"
+        ],
+        "action_id": "share_details"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-1-evening_check_in"
+    },
+    {
+      "id": "life-3-evening_check_in-action",
+      "owner": "priya",
+      "day": 16.564670008566036,
+      "decision": {
+        "action": "Stay quiet and go to bed",
+        "speech": "",
+        "goal_id": "fit_in",
+        "plan": [],
+        "memory_ids": [
+          "life-1-evening_check_in",
+          "scenario-week2_invitation"
+        ],
+        "action_id": "stay_quiet"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-3-evening_check_in"
+    },
+    {
+      "id": "life-4-robotics_invitation-action",
+      "owner": "priya",
+      "day": 17.819957473313227,
+      "decision": {
+        "action": "Accept the invitation",
+        "speech": "Yes, I'd like to join. Thank you for asking.",
+        "goal_id": "make_friends",
+        "plan": [
+          "Accept the invitation to the robotics club.",
+          "Attend the first meeting and observe the group dynamics.",
+          "Introduce myself briefly to reduce the fear of standing out."
+        ],
+        "memory_ids": [
+          "scenario-week2_invitation",
+          "life-1-evening_check_in",
+          "scenario-background-priya-2"
+        ],
+        "action_id": "accept"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-4-robotics_invitation"
+    },
+    {
+      "id": "life-7-grandmother_advice-action",
+      "owner": "priya",
+      "day": 32.34839687613992,
+      "decision": {
+        "action": "Listen and consider her advice",
+        "speech": "I know. I'm just trying to figure out how to do it without making a scene.",
+        "goal_id": "fit_in",
+        "plan": [
+          "Reflect on whether being more outgoing aligns with my comfort level.",
+          "Consider how to apply the advice in the robotics club setting."
+        ],
+        "memory_ids": [
+          "life-4-robotics_invitation",
+          "life-1-evening_check_in",
+          "scenario-background-priya-2"
+        ],
+        "action_id": "listen"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-7-grandmother_advice"
+    },
+    {
+      "id": "life-8-grandmother_advice-action",
+      "owner": "priya",
+      "day": 38.30882347659311,
+      "decision": {
+        "action": "Listen and consider her advice",
+        "speech": "",
+        "goal_id": "fit_in",
+        "plan": [
+          "Reflect on whether being more outgoing aligns with my comfort level.",
+          "Consider how to apply the advice in the robotics club setting."
+        ],
+        "memory_ids": [
+          "life-7-grandmother_advice",
+          "life-7-grandmother_advice-request",
+          "life-4-robotics_invitation"
+        ],
+        "action_id": "listen"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-8-grandmother_advice"
+    },
+    {
+      "id": "life-9-grandmother_advice-action",
+      "owner": "priya",
+      "day": 38.4684858656253,
+      "decision": {
+        "action": "listen",
+        "speech": "",
+        "goal_id": "fit_in",
+        "plan": [
+          "Reflect on whether being more outgoing aligns with my comfort level.",
+          "Consider how to apply the advice in the robotics club setting."
+        ],
+        "memory_ids": [
+          "life-8-grandmother_advice",
+          "life-7-grandmother_advice",
+          "life-7-grandmother_advice-request"
+        ],
+        "action_id": "listen"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-9-grandmother_advice"
+    },
+    {
+      "id": "life-11-evening_check_in-action",
+      "owner": "priya",
+      "day": 44.40985189857906,
+      "decision": {
+        "action": "Share details about school",
+        "speech": "It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try.",
+        "goal_id": "fit_in",
+        "plan": [
+          "Accept the invitation to the robotics club.",
+          "Attend the first meeting and observe the group dynamics.",
+          "Introduce myself briefly to reduce the fear of standing out."
+        ],
+        "memory_ids": [
+          "life-1-evening_check_in-request",
+          "life-1-evening_check_in",
+          "scenario-background-priya-2"
+        ],
+        "action_id": "share_details"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-11-evening_check_in"
+    },
+    {
+      "id": "life-14-evening_check_in-action",
+      "owner": "priya",
+      "day": 55.391406356004374,
+      "decision": {
+        "action": "share_details",
+        "speech": "It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try.",
+        "goal_id": "fit_in",
+        "plan": [
+          "Share my current thoughts on the robotics club with Arun to seek reassurance.",
+          "Gauge his reaction to see if he validates my concerns or offers a different perspective.",
+          "Use his response to lower my anxiety before the next school day."
+        ],
+        "memory_ids": [
+          "life-11-evening_check_in-request",
+          "life-11-evening_check_in",
+          "life-1-evening_check_in"
+        ],
+        "action_id": "share_details"
+      },
+      "status": "resolved",
+      "temporary_offsets": {
+        "N1": 0.0,
+        "N2": 0.0,
+        "N3": 0.0,
+        "N4": 0.0,
+        "N5": 0.0,
+        "N6": 0.0,
+        "E1": 0.0,
+        "E2": 0.0,
+        "E3": 0.0,
+        "E4": 0.0,
+        "E5": 0.0,
+        "E6": 0.0,
+        "O1": 0.0,
+        "O2": 0.0,
+        "O3": 0.0,
+        "O4": 0.0,
+        "O5": 0.0,
+        "O6": 0.0,
+        "A1": 0.0,
+        "A2": 0.0,
+        "A3": 0.0,
+        "A4": 0.0,
+        "A5": 0.0,
+        "A6": 0.0,
+        "C1": 0.0,
+        "C2": 0.0,
+        "C3": 0.0,
+        "C4": 0.0,
+        "C5": 0.0,
+        "C6": 0.0
+      },
+      "outcome_event": "life-14-evening_check_in"
+    }
+  ],
+  "updates": [
+    {
+      "id": "life-1-evening_check_in-action:used-memory:scenario-background-priya-2",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 5.31243945241517
+    },
+    {
+      "id": "life-1-evening_check_in-action:used-memory:scenario-background-priya-1",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 5.31243945241517
+    },
+    {
+      "id": "life-1-evening_check_in-action:used-memory:scenario-background-priya-0",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 5.31243945241517
+    },
+    {
+      "id": "life-3-evening_check_in-action:used-memory:life-1-evening_check_in",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 16.564670008566036
+    },
+    {
+      "id": "life-3-evening_check_in-action:used-memory:scenario-week2_invitation",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 16.564670008566036
+    },
+    {
+      "id": "life-4-robotics_invitation-action:used-memory:scenario-week2_invitation",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 17.819957473313227
+    },
+    {
+      "id": "life-4-robotics_invitation-action:used-memory:life-1-evening_check_in",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 17.819957473313227
+    },
+    {
+      "id": "life-4-robotics_invitation-action:used-memory:scenario-background-priya-2",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 17.819957473313227
+    },
+    {
+      "id": "life-7-grandmother_advice-action:used-memory:life-4-robotics_invitation",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 32.34839687613992
+    },
+    {
+      "id": "life-7-grandmother_advice-action:used-memory:life-1-evening_check_in",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 32.34839687613992
+    },
+    {
+      "id": "life-7-grandmother_advice-action:used-memory:scenario-background-priya-2",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 32.34839687613992
+    },
+    {
+      "id": "life-8-grandmother_advice-action:used-memory:life-7-grandmother_advice",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 38.30882347659311
+    },
+    {
+      "id": "life-8-grandmother_advice-action:used-memory:life-7-grandmother_advice-request",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 38.30882347659311
+    },
+    {
+      "id": "life-8-grandmother_advice-action:used-memory:life-4-robotics_invitation",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 38.30882347659311
+    },
+    {
+      "id": "life-9-grandmother_advice-action:used-memory:life-8-grandmother_advice",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 38.4684858656253
+    },
+    {
+      "id": "life-9-grandmother_advice-action:used-memory:life-7-grandmother_advice",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 38.4684858656253
+    },
+    {
+      "id": "life-9-grandmother_advice-action:used-memory:life-7-grandmother_advice-request",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 38.4684858656253
+    },
+    {
+      "id": "life-11-evening_check_in-action:used-memory:life-1-evening_check_in-request",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 44.40985189857906
+    },
+    {
+      "id": "life-11-evening_check_in-action:used-memory:life-1-evening_check_in",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 44.40985189857906
+    },
+    {
+      "id": "life-11-evening_check_in-action:used-memory:scenario-background-priya-2",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 44.40985189857906
+    },
+    {
+      "id": "life-14-evening_check_in-action:used-memory:life-11-evening_check_in-request",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 55.391406356004374
+    },
+    {
+      "id": "life-14-evening_check_in-action:used-memory:life-11-evening_check_in",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 55.391406356004374
+    },
+    {
+      "id": "life-14-evening_check_in-action:used-memory:life-1-evening_check_in",
+      "kind": "recall",
+      "owner": "priya",
+      "day": 55.391406356004374
+    }
+  ],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0,
+    "planning": {
+      "calendar_mode": "elapsed",
+      "hours_per_day": 8
+    },
+    "expression": {
+      "age_appropriate_actions": true
+    },
+    "household": {
+      "rooms": {
+        "living": {
+          "label": "Living Room",
+          "audible_to": [
+            "kitchen",
+            "bedroom"
+          ]
+        },
+        "kitchen": {
+          "label": "Kitchen",
+          "audible_to": [
+            "living",
+            "bedroom"
+          ]
+        },
+        "bedroom": {
+          "label": "Priya's Bedroom",
+          "audible_to": [
+            "living",
+            "kitchen"
+          ]
+        }
+      },
+      "locations": {
+        "priya": "bedroom",
+        "arun": "living",
+        "meera": "living"
+      },
+      "routines": {
+        "priya": {
+          "available_hours": [
+            [
+              7,
+              16
+            ],
+            [
+              17,
+              22
+            ]
+          ],
+          "response_minutes": [
+            5,
+            15
+          ]
+        },
+        "arun": {
+          "available_hours": [
+            [
+              7,
+              14
+            ]
+          ],
+          "response_minutes": [
+            10,
+            30
+          ]
+        },
+        "meera": {
+          "available_hours": [
+            [
+              6,
+              22
+            ]
+          ],
+          "response_minutes": [
+            5,
+            10
+          ]
+        }
+      },
+      "conversations": []
+    }
+  },
+  "runtime": {
+    "policy_fingerprint": "9142ce4c656d55f500f6177cf80940a78d1e6f6f651f6affc2d632e688967d4f",
+    "scripted": false,
+    "start_day": 0,
+    "current_day": 58.44,
+    "next_tick": null,
+    "tick": 16,
+    "trace": [
+      {
+        "event_index": 0,
+        "day": 5.152057910654951,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "event_index": 1,
+        "day": 5.31243945241517,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "evening_check_in",
+        "day": 5.333272785748503,
+        "action": "share_details",
+        "success": true,
+        "event": "life-1-evening_check_in",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 2,
+        "day": 12.27241751601554,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "event_index": 3,
+        "day": 16.564670008566036,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "evening_check_in",
+        "day": 16.57300334189937,
+        "action": "stay_quiet",
+        "success": true,
+        "event": "life-3-evening_check_in",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 4,
+        "day": 17.819957473313227,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "robotics_invitation",
+        "day": 17.861624139979895,
+        "action": "accept",
+        "success": true,
+        "event": "life-4-robotics_invitation",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 5,
+        "day": 18.038257112167475,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "event_index": 6,
+        "day": 26.215447686675915,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "event_index": 7,
+        "day": 32.34839687613992,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "grandmother_advice",
+        "day": 32.36923020947326,
+        "action": "listen",
+        "success": true,
+        "event": "life-7-grandmother_advice",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 8,
+        "day": 38.30882347659311,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "grandmother_advice",
+        "day": 38.32965680992645,
+        "action": "listen",
+        "success": true,
+        "event": "life-8-grandmother_advice",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 9,
+        "day": 38.4684858656253,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "grandmother_advice",
+        "day": 38.48931919895863,
+        "action": "listen",
+        "success": true,
+        "event": "life-9-grandmother_advice",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 10,
+        "day": 42.88356917904126,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "event_index": 11,
+        "day": 44.40985189857906,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "evening_check_in",
+        "day": 44.4306852319124,
+        "action": "share_details",
+        "success": true,
+        "event": "life-11-evening_check_in",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 12,
+        "day": 46.12739028021047,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "event_index": 13,
+        "day": 49.19960336415271,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "event_index": 14,
+        "day": 55.391406356004374,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      },
+      {
+        "opportunity": "evening_check_in",
+        "day": 55.41223968933771,
+        "action": "share_details",
+        "success": true,
+        "event": "life-14-evening_check_in",
+        "policy": "scenario_assumption"
+      },
+      {
+        "event_index": 15,
+        "day": 56.913177017955675,
+        "status": "completed",
+        "sampling": "piecewise_constant_poisson",
+        "provider": "local_model_api"
+      }
+    ],
+    "trait_budget": {},
+    "opportunity_counts": {
+      "robotics_invitation": 2,
+      "evening_check_in": 8,
+      "grandmother_advice": 5,
+      "club_meeting": 1
+    },
+    "next_opportunities": {
+      "robotics_invitation": 146.22953154572076,
+      "evening_check_in": 58.68028523884189,
+      "grandmother_advice": null,
+      "club_meeting": 67.77776118050193
+    },
+    "household_moves": {},
+    "conversations": {},
+    "next_world_events": {},
+    "background_counts": {},
+    "next_background": {},
+    "pending_activities": {},
+    "hazard_counts": {},
+    "next_hazards": {}
+  },
+  "household": {
+    "locations": {
+      "priya": "bedroom",
+      "arun": "living",
+      "meera": "living"
+    }
+  }
+}

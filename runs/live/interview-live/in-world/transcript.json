@@ -1,0 +1,37 @@
+{
+  "mode": "in_world",
+  "id": "evening-checkin",
+  "owner": "alex",
+  "interviewer": "maya",
+  "day": 0.8,
+  "policy": "generated_account_not_causal_access",
+  "provider": "local_model_api",
+  "turns": [
+    {
+      "question": "How are you feeling about the biology lab now?",
+      "question_event": "@interview:evening-checkin:0:question",
+      "action": "@interview:evening-checkin:0:answer",
+      "reply_event": "@interview:evening-checkin:0:reply",
+      "choice": "answer",
+      "speech": "Honestly? A little better. Knowing I have a target for Wednesday helps, but I'm still a bit nervous that I'll get stuck on the data analysis part and run out of time before then.",
+      "memory_ids": [
+        "@interview:evening-checkin:0:question",
+        "@conversation:homework:3",
+        "@conversation:homework:2"
+      ]
+    },
+    {
+      "question": "Why didn't you tell me sooner that you were worried?",
+      "question_event": "@interview:evening-checkin:1:question",
+      "action": "@interview:evening-checkin:1:answer",
+      "reply_event": "@interview:evening-checkin:1:reply",
+      "choice": "answer",
+      "speech": "I guess I just didn't want to seem like a whiner. I kept thinking I could handle it on my own, but then it got to the point where I was actually scared I'd mess up the bio lab, so I finally just said something.",
+      "memory_ids": [
+        "@interview:evening-checkin:1:question",
+        "@conversation:homework:0",
+        "@conversation:homework:2"
+      ]
+    }
+  ]
+}

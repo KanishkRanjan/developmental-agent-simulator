@@ -1,0 +1,346 @@
+{
+  "title": "The New School Robotics Club",
+  "summary": "Priya, a 15-year-old anxious about fitting in at her new school, navigates her first two months while balancing her father's evening shifts and her grandmother's presence at home. The central tension revolves around her decision to join the robotics club and the social dynamics that follow.",
+  "seed": 42,
+  "duration_years": 0.16,
+  "people": [
+    {
+      "id": "priya",
+      "name": "Priya",
+      "age_years": 15,
+      "facets": {
+        "N1": 75,
+        "N4": 60,
+        "E2": 30
+      },
+      "facet_basis": "Anxious about making friends, self-conscious in new environments, and introverted.",
+      "caregivers": [
+        "arun",
+        "meera"
+      ],
+      "goals": [
+        {
+          "id": "make_friends",
+          "description": "Establish at least one meaningful friendship at the new school.",
+          "priority": 1
+        },
+        {
+          "id": "fit_in",
+          "description": "Feel accepted by peers and reduce social anxiety.",
+          "priority": 0.8
+        }
+      ],
+      "private_background": [
+        "I feel like everyone already has their groups formed.",
+        "I don't want to be the odd one out again.",
+        "Robotics sounds interesting but I'm scared of saying the wrong thing."
+      ]
+    },
+    {
+      "id": "arun",
+      "name": "Arun",
+      "age_years": 44,
+      "facets": {
+        "A6": 80,
+        "C3": 70
+      },
+      "facet_basis": "Worries about absence, dutiful parent, sympathetic.",
+      "caregivers": [],
+      "goals": [
+        {
+          "id": "support_priya",
+          "description": "Ensure Priya feels supported despite work schedule.",
+          "priority": 1
+        }
+      ],
+      "private_background": [
+        "I miss being there for the small moments.",
+        "I hope she's happy at the new school.",
+        "My shifts are long but I can't change that."
+      ]
+    },
+    {
+      "id": "meera",
+      "name": "Meera",
+      "age_years": 71,
+      "facets": {
+        "A6": 85,
+        "O3": 60
+      },
+      "facet_basis": "Warm, old-fashioned, emotionally expressive.",
+      "caregivers": [],
+      "goals": [
+        {
+          "id": "nurture_family",
+          "description": "Maintain a warm, supportive home environment.",
+          "priority": 1
+        }
+      ],
+      "private_background": [
+        "I want to help Priya feel at home.",
+        "Things are different now, but we are still family.",
+        "I worry Arun is too tired to notice the changes."
+      ]
+    }
+  ],
+  "household": {
+    "rooms": {
+      "living": {
+        "label": "Living Room",
+        "audible_to": [
+          "kitchen",
+          "bedroom"
+        ]
+      },
+      "kitchen": {
+        "label": "Kitchen",
+        "audible_to": [
+          "living",
+          "bedroom"
+        ]
+      },
+      "bedroom": {
+        "label": "Priya's Bedroom",
+        "audible_to": [
+          "living",
+          "kitchen"
+        ]
+      }
+    },
+    "locations": {
+      "priya": "bedroom",
+      "arun": "living",
+      "meera": "living"
+    },
+    "routines": {
+      "priya": {
+        "available_hours": [
+          [
+            7,
+            16
+          ],
+          [
+            17,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          15
+        ]
+      },
+      "arun": {
+        "available_hours": [
+          [
+            6,
+            18
+          ]
+        ],
+        "response_minutes": [
+          10,
+          30
+        ]
+      },
+      "meera": {
+        "available_hours": [
+          [
+            6,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          10
+        ]
+      }
+    },
+    "conversations": []
+  },
+  "situations": [
+    {
+      "id": "robotics_invitation",
+      "actor": "priya",
+      "situation": "A teacher invites you to join the robotics club after school. You feel excited but nervous about standing out.",
+      "rate_per_year": 4,
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "accept",
+          "label": "Accept the invitation",
+          "success_probability": 0.6,
+          "valence_success": 0.8,
+          "valence_failure": -0.2,
+          "success_text": "I join the club and meet a few other students who seem friendly.",
+          "failure_text": "I join the club but feel out of place and quiet.",
+          "contact": "meera",
+          "contact_text": "Priya seems eager about the new club.",
+          "importance": 0.8,
+          "arousal": 0.6,
+          "progress_gain": 0.3,
+          "duration_hours": 1
+        },
+        {
+          "id": "decline",
+          "label": "Politely decline",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.5,
+          "success_text": "I decline and keep to myself, feeling safe but isolated.",
+          "failure_text": "I decline and regret it, feeling left out.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    },
+    {
+      "id": "evening_check_in",
+      "actor": "priya",
+      "situation": "Your father comes home late from his shift. He looks tired but asks how your day was.",
+      "rate_per_year": 52,
+      "goal_id": "fit_in",
+      "options": [
+        {
+          "id": "share_details",
+          "label": "Share details about school",
+          "success_probability": 0.7,
+          "valence_success": 0.6,
+          "valence_failure": -0.1,
+          "success_text": "I tell him about the robotics club and he listens with interest.",
+          "failure_text": "I try to talk but he seems too tired to engage.",
+          "contact": "arun",
+          "contact_text": "Priya is trying to connect with me.",
+          "importance": 0.6,
+          "arousal": 0.4,
+          "progress_gain": 0.2,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "stay_quiet",
+          "label": "Stay quiet and go to bed",
+          "success_probability": 0.9,
+          "valence_success": 0.0,
+          "valence_failure": -0.2,
+          "success_text": "I go to bed quietly, avoiding the awkwardness.",
+          "failure_text": "I go to bed and feel distant from my father.",
+          "importance": 0.4,
+          "arousal": 0.2,
+          "progress_gain": 0.0,
+          "duration_hours": 0.2
+        }
+      ]
+    },
+    {
+      "id": "grandmother_advice",
+      "actor": "priya",
+      "situation": "Your grandmother offers advice on how to make friends, suggesting you be more outgoing.",
+      "rate_per_year": 26,
+      "goal_id": "fit_in",
+      "options": [
+        {
+          "id": "listen",
+          "label": "Listen and consider her advice",
+          "success_probability": 0.8,
+          "valence_success": 0.4,
+          "valence_failure": -0.1,
+          "success_text": "I appreciate her concern and try to be a bit more open.",
+          "failure_text": "I listen but feel misunderstood.",
+          "contact": "meera",
+          "contact_text": "Priya is taking my advice to heart.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.15,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "brush_off",
+          "label": "Brush off the advice",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.3,
+          "success_text": "I politely ignore her and keep to my own pace.",
+          "failure_text": "I brush her off and feel guilty for being rude.",
+          "importance": 0.4,
+          "arousal": 0.2,
+          "progress_gain": 0.0,
+          "duration_hours": 0.3
+        }
+      ]
+    },
+    {
+      "id": "club_meeting",
+      "actor": "priya",
+      "situation": "You attend a robotics club meeting. The group is working on a project and you need to contribute.",
+      "rate_per_year": 8,
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "contribute_idea",
+          "label": "Contribute an idea",
+          "success_probability": 0.5,
+          "valence_success": 0.9,
+          "valence_failure": -0.4,
+          "success_text": "I share an idea and the group likes it, feeling accepted.",
+          "failure_text": "I share an idea but it falls flat, making me feel foolish.",
+          "importance": 0.9,
+          "arousal": 0.7,
+          "progress_gain": 0.4,
+          "duration_hours": 1.5
+        },
+        {
+          "id": "observe",
+          "label": "Observe and take notes",
+          "success_probability": 0.9,
+          "valence_success": 0.3,
+          "valence_failure": -0.1,
+          "success_text": "I stay quiet but learn a lot, feeling less anxious.",
+          "failure_text": "I stay quiet and feel like an outsider.",
+          "importance": 0.6,
+          "arousal": 0.4,
+          "progress_gain": 0.1,
+          "duration_hours": 1.5
+        }
+      ]
+    }
+  ],
+  "interventions": [
+    {
+      "id": "week2_invitation",
+      "day": 10,
+      "description": "Priya receives the invitation to the robotics club.",
+      "observations": {
+        "priya": {
+          "text": "I got an invitation to the robotics club. I'm nervous but excited.",
+          "kind": "direct",
+          "source": "direct"
+        }
+      }
+    },
+    {
+      "id": "month1_review",
+      "day": 30,
+      "description": "A month into the new term, Priya reflects on her social progress.",
+      "observations": {
+        "priya": {
+          "text": "I've made a few acquaintances in the club, but I'm not sure if they're friends yet.",
+          "kind": "direct",
+          "source": "direct"
+        },
+        "arun": {
+          "text": "Priya seems a bit more relaxed lately. I hope she's doing well.",
+          "kind": "testimony",
+          "source": "direct"
+        }
+      }
+    }
+  ],
+  "assumptions": [
+    "Priya's anxiety is primarily social and related to the new school environment.",
+    "Arun's work schedule prevents him from being present during most of Priya's school day.",
+    "Meera's advice is well-intentioned but may not align with Priya's current comfort level.",
+    "The robotics club is a small group where individual contributions are noticeable.",
+    "Priya's goal is to make friends, not just to participate in the club.",
+    "The simulation covers the first two months of the school term, approximately 60 days."
+  ]
+}

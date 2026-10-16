@@ -1,0 +1,628 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 0,
+  "entities": {
+    "priya": {
+      "name": "Priya",
+      "facts": {
+        "birth_day": -5478.75,
+        "caregivers": [
+          "arun",
+          "meera"
+        ]
+      }
+    },
+    "arun": {
+      "name": "Arun",
+      "facts": {
+        "birth_day": -16071.0
+      }
+    },
+    "meera": {
+      "name": "Meera",
+      "facts": {
+        "birth_day": -25932.75
+      }
+    }
+  },
+  "agents": {
+    "priya": {
+      "facets": {
+        "N1": 75,
+        "N2": 50,
+        "N3": 50,
+        "N4": 60,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 30,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 75,
+        "N2": 50,
+        "N3": 50,
+        "N4": 60,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 30,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5478.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "make_friends": {
+          "description": "Establish at least one meaningful friendship at the new school.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        },
+        "fit_in": {
+          "description": "Feel accepted by peers and reduce social anxiety.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {
+        "arun": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        },
+        "meera": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-priya-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-priya-1": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-priya-2": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "arun": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 70,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 70,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -16071.0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "support_priya": {
+          "description": "Ensure Priya feels supported despite work schedule.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-arun-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-arun-1": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-arun-2": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "meera": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 60,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 85,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 60,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 85,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -25932.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "nurture_family": {
+          "description": "Maintain a warm, supportive home environment.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-meera-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-meera-1": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-meera-2": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    }
+  },
+  "events": [
+    {
+      "id": "scenario-background-arun-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "arun": {
+          "text": "I miss being there for the small moments.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-arun-1",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "arun": {
+          "text": "I hope she's happy at the new school.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-arun-2",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "arun": {
+          "text": "My shifts are long but I can't change that.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-meera-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "meera": {
+          "text": "I want to help Priya feel at home.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-meera-1",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "meera": {
+          "text": "Things are different now, but we are still family.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-meera-2",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "meera": {
+          "text": "I worry Arun is too tired to notice the changes.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "I feel like everyone already has their groups formed.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-1",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "I don't want to be the odd one out again.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-2",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "Robotics sounds interesting but I'm scared of saying the wrong thing.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    }
+  ],
+  "pending": [
+    {
+      "id": "scenario-week2_invitation",
+      "day": 10,
+      "description": "Priya receives the invitation to the robotics club.",
+      "observations": {
+        "priya": {
+          "text": "I got an invitation to the robotics club. I'm nervous but excited.",
+          "kind": "direct",
+          "source": "direct",
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {}
+    }
+  ],
+  "actions": [],
+  "updates": [],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0
+  }
+}

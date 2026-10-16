@@ -1,0 +1,232 @@
+{
+  "description": "The New School Robotics Club: authored scenario. All rates, probabilities, valences, ages and facet percentiles are scenario assumptions, not measured values.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "robotics_invitation",
+      "actor": "priya",
+      "situation": "A teacher invites you to join the robotics club after school. You feel excited but nervous about standing out.",
+      "rate_per_year": 4,
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "accept",
+          "label": "Accept the invitation",
+          "success_probability": 0.6,
+          "valence_success": 0.8,
+          "valence_failure": -0.2,
+          "success_text": "I join the club and meet a few other students who seem friendly.",
+          "failure_text": "I join the club but feel out of place and quiet.",
+          "contact": "meera",
+          "contact_text": "Priya seems eager about the new club.",
+          "importance": 0.8,
+          "arousal": 0.6,
+          "progress_gain": 0.3,
+          "duration_hours": 1
+        },
+        {
+          "id": "decline",
+          "label": "Politely decline",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.5,
+          "success_text": "I decline and keep to myself, feeling safe but isolated.",
+          "failure_text": "I decline and regret it, feeling left out.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    },
+    {
+      "id": "evening_check_in",
+      "actor": "priya",
+      "situation": "Your father comes home late from his shift. He looks tired but asks how your day was.",
+      "rate_per_year": 52,
+      "goal_id": "fit_in",
+      "options": [
+        {
+          "id": "share_details",
+          "label": "Share details about school",
+          "success_probability": 0.7,
+          "valence_success": 0.6,
+          "valence_failure": -0.1,
+          "success_text": "I tell him about the robotics club and he listens with interest.",
+          "failure_text": "I try to talk but he seems too tired to engage.",
+          "contact": "arun",
+          "contact_text": "Priya is trying to connect with me.",
+          "importance": 0.6,
+          "arousal": 0.4,
+          "progress_gain": 0.2,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "stay_quiet",
+          "label": "Stay quiet and go to bed",
+          "success_probability": 0.9,
+          "valence_success": 0.0,
+          "valence_failure": -0.2,
+          "success_text": "I go to bed quietly, avoiding the awkwardness.",
+          "failure_text": "I go to bed and feel distant from my father.",
+          "importance": 0.4,
+          "arousal": 0.2,
+          "progress_gain": 0.0,
+          "duration_hours": 0.2
+        }
+      ]
+    },
+    {
+      "id": "grandmother_advice",
+      "actor": "priya",
+      "situation": "Your grandmother offers advice on how to make friends, suggesting you be more outgoing.",
+      "rate_per_year": 26,
+      "goal_id": "fit_in",
+      "options": [
+        {
+          "id": "listen",
+          "label": "Listen and consider her advice",
+          "success_probability": 0.8,
+          "valence_success": 0.4,
+          "valence_failure": -0.1,
+          "success_text": "I appreciate her concern and try to be a bit more open.",
+          "failure_text": "I listen but feel misunderstood.",
+          "contact": "meera",
+          "contact_text": "Priya is taking my advice to heart.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.15,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "brush_off",
+          "label": "Brush off the advice",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.3,
+          "success_text": "I politely ignore her and keep to my own pace.",
+          "failure_text": "I brush her off and feel guilty for being rude.",
+          "importance": 0.4,
+          "arousal": 0.2,
+          "progress_gain": 0.0,
+          "duration_hours": 0.3
+        }
+      ]
+    },
+    {
+      "id": "club_meeting",
+      "actor": "priya",
+      "situation": "You attend a robotics club meeting. The group is working on a project and you need to contribute.",
+      "rate_per_year": 8,
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "contribute_idea",
+          "label": "Contribute an idea",
+          "success_probability": 0.5,
+          "valence_success": 0.9,
+          "valence_failure": -0.4,
+          "success_text": "I share an idea and the group likes it, feeling accepted.",
+          "failure_text": "I share an idea but it falls flat, making me feel foolish.",
+          "importance": 0.9,
+          "arousal": 0.7,
+          "progress_gain": 0.4,
+          "duration_hours": 1.5
+        },
+        {
+          "id": "observe",
+          "label": "Observe and take notes",
+          "success_probability": 0.9,
+          "valence_success": 0.3,
+          "valence_failure": -0.1,
+          "success_text": "I stay quiet but learn a lot, feeling less anxious.",
+          "failure_text": "I stay quiet and feel like an outsider.",
+          "importance": 0.6,
+          "arousal": 0.4,
+          "progress_gain": 0.1,
+          "duration_hours": 1.5
+        }
+      ]
+    }
+  ],
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 8
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "household": {
+    "rooms": {
+      "living": {
+        "label": "Living Room",
+        "audible_to": [
+          "kitchen",
+          "bedroom"
+        ]
+      },
+      "kitchen": {
+        "label": "Kitchen",
+        "audible_to": [
+          "living",
+          "bedroom"
+        ]
+      },
+      "bedroom": {
+        "label": "Priya's Bedroom",
+        "audible_to": [
+          "living",
+          "kitchen"
+        ]
+      }
+    },
+    "locations": {
+      "priya": "bedroom",
+      "arun": "living",
+      "meera": "living"
+    },
+    "routines": {
+      "priya": {
+        "available_hours": [
+          [
+            7,
+            16
+          ],
+          [
+            17,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          15
+        ]
+      },
+      "arun": {
+        "available_hours": [
+          [
+            7,
+            14
+          ]
+        ],
+        "response_minutes": [
+          10,
+          30
+        ]
+      },
+      "meera": {
+        "available_hours": [
+          [
+            6,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          10
+        ]
+      }
+    },
+    "conversations": []
+  }
+}

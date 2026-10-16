@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "seconds": 292.603,
+  "day": 58.44,
+  "requests": 45,
+  "requests_by_purpose": {
+    "semantic_recall": 8,
+    "action": 8,
+    "appraisal": 29
+  },
+  "repairs": 0,
+  "actions": 8,
+  "resolved_actions": 8,
+  "choices": [
+    {
+      "day": 5.31,
+      "owner": "priya",
+      "action_id": "share_details",
+      "status": "resolved",
+      "speech": "It was okay. I went to the robotics club meeting. I was a bit nervous about talking to the other kids, but I think I asked a question that wasn't too stupid. I'm still not sure if I'm actually making friends yet, though."
+    },
+    {
+      "day": 16.56,
+      "owner": "priya",
+      "action_id": "stay_quiet",
+      "status": "resolved",
+      "speech": ""
+    },
+    {
+      "day": 17.82,
+      "owner": "priya",
+      "action_id": "accept",
+      "status": "resolved",
+      "speech": "That sounds really interesting. I'd like to join."
+    },
+    {
+      "day": 32.35,
+      "owner": "priya",
+      "action_id": "listen",
+      "status": "resolved",
+      "speech": ""
+    },
+    {
+      "day": 38.31,
+      "owner": "priya",
+      "action_id": "listen",
+      "status": "resolved",
+      "speech": "Okay, I'll think about it. I just don't want to feel like I'm forcing it."
+    },
+    {
+      "day": 38.47,
+      "owner": "priya",
+      "action_id": "listen",
+      "status": "resolved",
+      "speech": "I'm listening. I just need to make sure I don't end up doing things that feel fake."
+    },
+    {
+      "day": 44.41,
+      "owner": "priya",
+      "action_id": "share_details",
+      "status": "resolved",
+      "speech": "It was pretty good. I went to the robotics club meeting. I was a bit nervous about talking to the other kids, but I think I asked a question that wasn't too stupid. I'm still not sure if I'm actually making friends yet, though."
+    },
+    {
+      "day": 55.39,
+      "owner": "priya",
+      "action_id": "share_details",
+      "status": "resolved",
+      "speech": "It was pretty good. I went to the robotics club meeting. I was a bit nervous about talking to the other kids, but I think I asked a question that wasn't too stupid. I'm still not sure if I'm actually making friends yet, though."
+    }
+  ],
+  "pending_events": 0,
+  "authored_background_private_to_owner_in_state_and_model_contexts": true,
+  "intervention_reached_listed_recipient_only": true,
+  "original_episodes_preserved": true,
+  "json_sqlite_equivalence": true,
+  "numeric_facet_table_not_sent": true,
+  "no_world_facts_from_events": true,
+  "graph_retrieval_status": {
+    "priya": "ready",
+    "arun": null,
+    "meera": null
+  },
+  "source_files_changed_after_live_load": [],
+  "scope": "Actual HauhauCS 27B run of a model-drafted, human-reviewed authored scenario; engineering integration, no human predictive claim."
+}

@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "verified_utc": "2026-10-16T18:34:58.131006+00:00",
+  "suites_run_here": 18,
+  "named_checks_run_here": 241,
+  "per_suite": {
+    "author": 13,
+    "cockpit": 7,
+    "complete": 25,
+    "context": 11,
+    "development": 12,
+    "environment": 9,
+    "extended": 29,
+    "fidelity": 14,
+    "goal-plans": 10,
+    "graphiti": 16,
+    "household": 24,
+    "interaction": 9,
+    "interview": 14,
+    "lifetime": 6,
+    "report": 9,
+    "situation": 14,
+    "temperament": 10,
+    "world-growth": 9
+  },
+  "not_run_here": {},
+  "core_checks": 12,
+  "new_checks": {
+    "environment": [
+      "a channel conversation reaches members in other rooms as read messages, not encounters, and no one else",
+      "an invitation is received, decided by the invitee, and acceptance becomes membership and a committed fact",
+      "group meetings bring available members to the meeting place over timed routes, then home again",
+      "meeting talk reaches only the people at the meeting place",
+      "a scheduled interview asks the fixed questions in order and takes simulated time on both calendars",
+      "interview speech is overheard in an audible adjacent room and not beyond it",
+      "an agent can start an interview with a contact by choosing an option; it runs over a shared room or channel",
+      "a checkpoint saved mid-commute and mid-meeting resumes to the same state as an uninterrupted run",
+      "unknown route rooms, non-member channel speakers, existing-member invitations, malformed interviews, contactless option conversations, oversized meetings and one-person channels are rejected"
+    ],
+    "author": [
+      "compile builds committed people, ages, caregivers, goals and listed facet percentiles; others stay neutral",
+      "authored background is a labeled private starting experience of its owner only",
+      "interventions become pending controller events for their listed recipients",
+      "assumptions report lists every generated number, compiler default and stated assumption",
+      "scripted dry run executes the compiled policy, including scheduled conversations and interventions",
+      "compiling the same spec is deterministic",
+      "saved initial world runs under the compiled policy with a fresh controller",
+      "a situation gated by requires_facts never occurs before an intervention sets the fact, and occurs after it",
+      "option effects set facts that open later situations and give actor and contact a shared role",
+      "authored places, routes, groups, channels, invitations and interviews compile and run; membership facts gate situations",
+      "a setting review must cite real spec fields; it returns their values, is repaired or fails, and edits nothing",
+      "out-of-vocabulary keys, facet codes and ranges, ids, caregivers, actors, contacts, rates, probabilities, intervention days/recipients, testimony sources, fact keys/values/reachability, effects, conversation participants and size limits are rejected with field names",
+      "model drafts must compile; repairs return the previous draft with the field-named error, and fail after two"
+    ],
+    "graphiti": [
+      "private snapshot contains only this agent received representations",
+      "actual Graphiti BM25 vector and BFS retrieval returns private event ids without state mutation",
+      "duplicate snapshots reuse completed deterministic ingestion without duplicate work",
+      "graph topics and received-reference links remain namespaced by owner and immutable view",
+      "aging changes the indexed snapshot and old graph detail cannot reappear through gist retrieval",
+      "checkpoint publication uses a durable idempotent outbox and leaves canonical state unchanged",
+      "quick and historical-interpretation researcher inspection are read-only",
+      "runtime semantic recall uses Graphiti but gist-only recall cannot rehearse original detail",
+      "graph outage falls back only to private FTS and records the downgrade",
+      "deep researcher search combines scoped subqueries without creating a recall event",
+      "engine rechecks candidate membership even when an index returns a foreign event id",
+      "temporary startup 503 waits within the indexing deadline rather than degrading immediately",
+      "compaction dry runs change nothing and recently used views are protected by their lease",
+      "compaction removes superseded views from Neo4j and the outbox; the newest view stays searchable without reindexing",
+      "a compacted view is re-derived from its checkpoint on demand with identical results",
+      "compaction never removes a queued or running indexing job"
+    ]
+  },
+  "mutation_checks": {
+    "environment": [
+      "channel messages leak to non-members",
+      "teleport instead of commute",
+      "acceptance without membership fact",
+      "members never return home",
+      "interviewer questions replaced by free model turns"
+    ],
+    "author": [
+      "situation gate not compiled",
+      "unreachable required fact accepted",
+      "intervention facts dropped"
+    ],
+    "graphiti_compaction": [
+      "lease ignored",
+      "running jobs compacted",
+      "newest view deleted instead of oldest"
+    ]
+  },
+  "graphiti_compaction_on_this_machine": {
+    "before": {
+      "snapshots": {
+        "done": 133
+      },
+      "nodes": 1855,
+      "relationships": 2060,
+      "cached_embeddings": 91,
+      "outbox_bytes": 1208320
+    },
+    "compaction": {
+      "keep_per_owner": 1,
+      "lease_seconds": 0,
+      "deleted_snapshots": 105,
+      "kept_snapshots": 28,
+      "dry_run": false,
+      "nodes": 1652,
+      "relationships": 1846
+    },
+    "after": {
+      "snapshots": {
+        "done": 28
+      },
+      "nodes": 203,
+      "relationships": 214,
+      "cached_embeddings": 91,
+      "outbox_bytes": 1368064
+    },
+    "after_vacuum": {
+      "snapshots": {
+        "done": 28
+      },
+      "nodes": 203,
+      "relationships": 214,
+      "cached_embeddings": 91,
+      "outbox_bytes": 1368064
+    }
+  },
+  "actual_27b": "pending: environment-rich draft in runs/live/environment-live",
+  "source_hashes": {
+    "devsim/household.py": "21321d84f78b11a78be42d83cd5553c742d0d0db4fc7c6a2a911e08b2fb9484a",
+    "devsim/lifetime.py": "9f06810805332a112485c6484473fc094c300f95491bd4b2e10bc318f2e3e92d",
+    "devsim/author.py": "1c7f9471823e9efb21f08347e98066c80af285fd5993275aa8104bb60e5fab90",
+    "devsim/graphiti_service.py": "699418afb260337e2b2de137490c2ba89d46eb080176bd896a063aa9ae5bda46",
+    "devsim/graphiti_bridge.py": "9741aab1086c57cdfec816f20226febf8d89a351fcedd586d3f01e12b2df422f",
+    "checks/check_environment.py": "c23ba22ae403c0b5f959c8d94ea3e3f1cc2f912eaaf11e8564c22664a62b24a8",
+    "checks/check_author.py": "89e6e035798132cfced22da5b6801658e483099f02c6688afbce7b4af705d1ac",
+    "checks/check_graphiti.py": "3720153739596eac386de9c043a12f0f380f814c799c42da12bde5070543aa33",
+    "services/graphiti-local/start.py": "efec46b7d6362458f2ede6784ecb339830138fd10fa7dae1b469792ecdf9df9d"
+  },
+  "new_paid_dependencies": false,
+  "scope": "Engineering integration only; scripted fixtures and stubbed transport for the new mechanisms."
+}

@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "seconds": 235.767,
+  "day": 58.44,
+  "requests": 37,
+  "requests_by_purpose": {
+    "action": 8,
+    "appraisal": 29
+  },
+  "repairs": 0,
+  "actions": 8,
+  "resolved_actions": 8,
+  "choices": [
+    {
+      "day": 5.31,
+      "owner": "priya",
+      "action_id": "share_details",
+      "status": "resolved",
+      "speech": "It was okay. I was thinking about joining the robotics club, but I was a bit worried about saying the wrong thing. Everyone else seemed to already have their groups, so I just kind of watched for a while."
+    },
+    {
+      "day": 16.56,
+      "owner": "priya",
+      "action_id": "stay_quiet",
+      "status": "resolved",
+      "speech": ""
+    },
+    {
+      "day": 17.82,
+      "owner": "priya",
+      "action_id": "accept",
+      "status": "resolved",
+      "speech": "Yes, I'd like to join. Thank you for asking."
+    },
+    {
+      "day": 32.35,
+      "owner": "priya",
+      "action_id": "listen",
+      "status": "resolved",
+      "speech": "I know. I'm just trying to figure out how to do it without making a scene."
+    },
+    {
+      "day": 38.31,
+      "owner": "priya",
+      "action_id": "listen",
+      "status": "resolved",
+      "speech": ""
+    },
+    {
+      "day": 38.47,
+      "owner": "priya",
+      "action_id": "listen",
+      "status": "resolved",
+      "speech": ""
+    },
+    {
+      "day": 44.41,
+      "owner": "priya",
+      "action_id": "share_details",
+      "status": "resolved",
+      "speech": "It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try."
+    },
+    {
+      "day": 55.39,
+      "owner": "priya",
+      "action_id": "share_details",
+      "status": "resolved",
+      "speech": "It was okay. I'm still thinking about the robotics club. I'm a bit worried about saying the wrong thing, but I want to give it a try."
+    }
+  ],
+  "pending_events": 0,
+  "authored_background_private_to_owner_in_state_and_model_contexts": true,
+  "intervention_reached_listed_recipient_only": true,
+  "original_episodes_preserved": true,
+  "json_sqlite_equivalence": true,
+  "numeric_facet_table_not_sent": true,
+  "no_world_facts_from_events": true,
+  "graph_retrieval_status": {
+    "priya": null,
+    "arun": null,
+    "meera": null
+  },
+  "source_files_changed_after_live_load": [
+    "author.py"
+  ],
+  "scope": "Actual HauhauCS 27B run of a model-drafted, human-reviewed authored scenario; engineering integration, no human predictive claim."
+}

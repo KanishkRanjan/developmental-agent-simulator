@@ -1,20 +1,10 @@
-# Installed runtimes, third-party checkouts, caches and private service state.
-/work/*
-!/work/*.py
-!/work/*.json
-!/work/*.jsonl
-!/work/*.md
-!/work/*.txt
-!/work/*.pdf
-!/work/*.ipynb
-!/work/*.parquet
-/work/graphiti-data/
-/work/profile-env/
-/work/graphiti-env/
-/work/MiroFish/
-/work/oasis-v0.2.5/
+# Local runtime state: virtual environments, Graphiti config/outbox, third-party
+# checkouts and scratch runs. Nothing under work/ is tracked.
+/work/
 
 __pycache__/
+*.egg-info/
+build/
 *.py[cod]
 .DS_Store
 .venv/

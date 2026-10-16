@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "scope": "engineering only; stubbed transport",
+  "checks": [
+    "compile builds committed people, ages, caregivers, goals and listed facet percentiles; others stay neutral",
+    "authored background is a labeled private starting experience of its owner only",
+    "interventions become pending controller events for their listed recipients",
+    "assumptions report lists every generated number, compiler default and stated assumption",
+    "scripted dry run executes the compiled policy, including scheduled conversations and interventions",
+    "compiling the same spec is deterministic",
+    "saved initial world runs under the compiled policy with a fresh controller",
+    "a situation gated by requires_facts never occurs before an intervention sets the fact, and occurs after it",
+    "option effects set facts that open later situations and give actor and contact a shared role",
+    "authored places, routes, groups, channels, invitations and interviews compile and run; membership facts gate situations",
+    "a setting review must cite real spec fields; it returns their values, is repaired or fails, and edits nothing",
+    "out-of-vocabulary keys, facet codes and ranges, ids, caregivers, actors, contacts, rates, probabilities, intervention days/recipients, testimony sources, fact keys/values/reachability, effects, conversation participants and size limits are rejected with field names",
+    "model drafts must compile; repairs return the previous draft with the field-named error, and fail after two"
+  ]
+}

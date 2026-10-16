@@ -1,0 +1,10 @@
+{
+  "mode": "diagnostic",
+  "source_checkpoint": "runs/live/household-live/run/world.json",
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "requests": {
+    "interview": 8
+  },
+  "seconds": 50.693,
+  "policy": "generated_account_not_causal_access"
+}

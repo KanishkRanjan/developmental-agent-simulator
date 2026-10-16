@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "scope": "engineering only; stubbed transport",
+  "checks": [
+    "batch diagnostic interview answers every agent-question pair from private context only",
+    "diagnostic interview leaves world state, observations, recall and mood unchanged",
+    "diagnostic answer citing another agent's memory is rejected without state change",
+    "infants, self-interviews, unknown interviewers, duplicate agents and empty questions are rejected",
+    "in-world questions become appraised received events for the interviewee only",
+    "in-world replies are committed actions resolved by the observed reply",
+    "in-world interview leaves mood and a firsthand acquaintance but no world facts",
+    "later decisions can retrieve the interview memory",
+    "interview ids cannot be reused",
+    "a materialized interviewer hears the reply as a direct observation of the speaker",
+    "a failure on a later question rolls back the whole interview; the id stays usable",
+    "a diagnostic interview after an in-world interview sees it as received memory",
+    "interviewed checkpoints restore identically from JSON and SQLite and resume under the same policy",
+    "household availability gates in-world interviews; scripted provider needs no model"
+  ]
+}

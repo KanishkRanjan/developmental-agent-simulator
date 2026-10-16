@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "verified_utc": "2026-10-16T17:54:42.705688+00:00",
+  "suites_run_here": 16,
+  "named_checks_run_here": 217,
+  "per_suite": {
+    "author": 9,
+    "complete": 25,
+    "context": 11,
+    "development": 12,
+    "extended": 29,
+    "fidelity": 14,
+    "goal-plans": 10,
+    "graphiti": 12,
+    "household": 24,
+    "interaction": 9,
+    "interview": 14,
+    "lifetime": 6,
+    "report": 9,
+    "situation": 14,
+    "temperament": 10,
+    "world-growth": 9
+  },
+  "not_run_here": {},
+  "recorded_total": {
+    "suites": 16,
+    "named_checks": 217
+  },
+  "core_checks": 12,
+  "new_checks": {
+    "passed": true,
+    "scope": "engineering only; stubbed transport",
+    "checks": [
+      "tools are deterministic, read-only and cite only existing event and action ids",
+      "controller events, resolved actions, utterances and state changes are observed outcomes; memory meanings are agent interpretations",
+      "utterances are labeled unverified; authored background is not reported as an interpretation; recipients are listed",
+      "an outline citing unknown evidence is repaired, and fails after two repairs",
+      "observed claims cite only observed outcomes; agent-interpretation claims need an interpretation item",
+      "claims citing evidence outside their section, untyped claims and uncited claims are rejected",
+      "a full report leaves the checkpoint unchanged",
+      "rendering labels every model claim by type and keeps executed tool results in a separate appendix",
+      "an unavailable graph search is logged as a tool error, never turned into evidence"
+    ]
+  },
+  "mutation_checks": [
+    "accepting an observed claim that cites interpretation evidence is caught",
+    "filing utterances as agent interpretations is caught",
+    "turning a failed graph search into evidence is caught",
+    "reporting authored background as an agent interpretation is caught"
+  ],
+  "actual_27b": {
+    "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+    "report": {
+      "requests": {
+        "report": 5
+      },
+      "evidence_items": 65,
+      "sections": 4,
+      "claims": {
+        "observed": 12,
+        "agent_interpretation": 7,
+        "researcher_inference": 4
+      },
+      "seconds": 100.253,
+      "repairs": 0,
+      "checkpoint": "runs/live/author-live/compiled-graphiti/run/world.json",
+      "graphiti_searches": 2,
+      "flagged_timing_contradiction_unprompted": true
+    }
+  },
+  "source_hashes": {
+    "devsim/report.py": "1ffdcec96b54f601fafc2ef4472cf92e09a5f5cab031eb6df9656902f597557f",
+    "checks/check_report.py": "8995f16c9aa030a0c700cda6543ac55793db872480450f8eb53bbf05590d34f4",
+    "devsim/run_live.py": "45712265ce33c2cd753ecf69f6fc09f8648677e5269dfa1c016cc136d1440612"
+  },
+  "new_paid_dependencies": false,
+  "scope": "Engineering integration only. Report claims are checked for citation and type discipline, not truth; the simulation is fictional."
+}

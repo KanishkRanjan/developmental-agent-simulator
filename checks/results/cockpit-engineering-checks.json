@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "engineering only; scripted fixture, no browser",
+  "checks": [
+    "loading a run is read-only and skips a half-written last model-call line",
+    "an agent perspective holds only that person's received memories and own actions; another person's private text never appears",
+    "the researcher view holds every raw event and action, and both views carry their scope label",
+    "faded memories show only their encoded gist, and memories with no accessible representation are omitted",
+    "embedded run text cannot close the page script",
+    "before a live run writes its checkpoint, the cockpit shows the streaming model-call timeline",
+    "the live server binds to loopback and serves only the page and its data"
+  ]
+}

@@ -1,0 +1,392 @@
+{
+  "title": "The New School Robotics Club",
+  "duration_days": 58.44,
+  "model_stated_assumptions": [
+    "Priya's anxiety is primarily social and related to the new school environment.",
+    "Arun's work schedule prevents him from being present during most of Priya's school day.",
+    "Meera's advice is well-intentioned but may not align with Priya's current comfort level.",
+    "The robotics club is a small group where individual contributions are noticeable.",
+    "Priya's goal is to make friends, not just to participate in the club.",
+    "The simulation covers the first two months of the school term, approximately 60 days.",
+    "Reviewer: Arun is home and awake 07:00-14:00 and works the evening shift."
+  ],
+  "compiler_defaults": [
+    "Facets a person's spec leaves out are set to the 50th percentile (neutral), not sampled.",
+    "Planning uses elapsed activity calendars with an 8-hour daily activity budget.",
+    "Age-appropriate action constraints are on (infants act nonverbally).",
+    "Private background lines are seeded as internal day-0 experiences with provenance scenario_authoring; they are authored, not simulated history.",
+    "Interventions are controller-scheduled world events delivered only to their listed recipients.",
+    "Recurring situations are capped at 52 occurrences per year."
+  ],
+  "generated_numbers": [
+    {
+      "path": "duration_years",
+      "value": 0.16
+    },
+    {
+      "path": "people.0.age_years",
+      "value": 15
+    },
+    {
+      "path": "people.0.facets.N1",
+      "value": 75
+    },
+    {
+      "path": "people.0.facets.N4",
+      "value": 60
+    },
+    {
+      "path": "people.0.facets.E2",
+      "value": 30
+    },
+    {
+      "path": "people.0.goals.0.priority",
+      "value": 1
+    },
+    {
+      "path": "people.0.goals.1.priority",
+      "value": 0.8
+    },
+    {
+      "path": "people.1.age_years",
+      "value": 44
+    },
+    {
+      "path": "people.1.facets.A6",
+      "value": 80
+    },
+    {
+      "path": "people.1.facets.C3",
+      "value": 70
+    },
+    {
+      "path": "people.1.goals.0.priority",
+      "value": 1
+    },
+    {
+      "path": "people.2.age_years",
+      "value": 71
+    },
+    {
+      "path": "people.2.facets.A6",
+      "value": 85
+    },
+    {
+      "path": "people.2.facets.O3",
+      "value": 60
+    },
+    {
+      "path": "people.2.goals.0.priority",
+      "value": 1
+    },
+    {
+      "path": "household.routines.priya.available_hours.0.0",
+      "value": 7
+    },
+    {
+      "path": "household.routines.priya.available_hours.0.1",
+      "value": 16
+    },
+    {
+      "path": "household.routines.priya.available_hours.1.0",
+      "value": 17
+    },
+    {
+      "path": "household.routines.priya.available_hours.1.1",
+      "value": 22
+    },
+    {
+      "path": "household.routines.priya.response_minutes.0",
+      "value": 5
+    },
+    {
+      "path": "household.routines.priya.response_minutes.1",
+      "value": 15
+    },
+    {
+      "path": "household.routines.arun.available_hours.0.0",
+      "value": 7
+    },
+    {
+      "path": "household.routines.arun.available_hours.0.1",
+      "value": 14
+    },
+    {
+      "path": "household.routines.arun.response_minutes.0",
+      "value": 10
+    },
+    {
+      "path": "household.routines.arun.response_minutes.1",
+      "value": 30
+    },
+    {
+      "path": "household.routines.meera.available_hours.0.0",
+      "value": 6
+    },
+    {
+      "path": "household.routines.meera.available_hours.0.1",
+      "value": 22
+    },
+    {
+      "path": "household.routines.meera.response_minutes.0",
+      "value": 5
+    },
+    {
+      "path": "household.routines.meera.response_minutes.1",
+      "value": 10
+    },
+    {
+      "path": "situations.0.rate_per_year",
+      "value": 4
+    },
+    {
+      "path": "situations.0.options.0.success_probability",
+      "value": 0.6
+    },
+    {
+      "path": "situations.0.options.0.valence_success",
+      "value": 0.8
+    },
+    {
+      "path": "situations.0.options.0.valence_failure",
+      "value": -0.2
+    },
+    {
+      "path": "situations.0.options.0.importance",
+      "value": 0.8
+    },
+    {
+      "path": "situations.0.options.0.arousal",
+      "value": 0.6
+    },
+    {
+      "path": "situations.0.options.0.progress_gain",
+      "value": 0.3
+    },
+    {
+      "path": "situations.0.options.0.duration_hours",
+      "value": 1
+    },
+    {
+      "path": "situations.0.options.1.success_probability",
+      "value": 0.9
+    },
+    {
+      "path": "situations.0.options.1.valence_success",
+      "value": 0.1
+    },
+    {
+      "path": "situations.0.options.1.valence_failure",
+      "value": -0.5
+    },
+    {
+      "path": "situations.0.options.1.importance",
+      "value": 0.5
+    },
+    {
+      "path": "situations.0.options.1.arousal",
+      "value": 0.3
+    },
+    {
+      "path": "situations.0.options.1.progress_gain",
+      "value": 0.0
+    },
+    {
+      "path": "situations.0.options.1.duration_hours",
+      "value": 0.5
+    },
+    {
+      "path": "situations.1.rate_per_year",
+      "value": 52
+    },
+    {
+      "path": "situations.1.options.0.success_probability",
+      "value": 0.7
+    },
+    {
+      "path": "situations.1.options.0.valence_success",
+      "value": 0.6
+    },
+    {
+      "path": "situations.1.options.0.valence_failure",
+      "value": -0.1
+    },
+    {
+      "path": "situations.1.options.0.importance",
+      "value": 0.6
+    },
+    {
+      "path": "situations.1.options.0.arousal",
+      "value": 0.4
+    },
+    {
+      "path": "situations.1.options.0.progress_gain",
+      "value": 0.2
+    },
+    {
+      "path": "situations.1.options.0.duration_hours",
+      "value": 0.5
+    },
+    {
+      "path": "situations.1.options.1.success_probability",
+      "value": 0.9
+    },
+    {
+      "path": "situations.1.options.1.valence_success",
+      "value": 0.0
+    },
+    {
+      "path": "situations.1.options.1.valence_failure",
+      "value": -0.2
+    },
+    {
+      "path": "situations.1.options.1.importance",
+      "value": 0.4
+    },
+    {
+      "path": "situations.1.options.1.arousal",
+      "value": 0.2
+    },
+    {
+      "path": "situations.1.options.1.progress_gain",
+      "value": 0.0
+    },
+    {
+      "path": "situations.1.options.1.duration_hours",
+      "value": 0.2
+    },
+    {
+      "path": "situations.2.rate_per_year",
+      "value": 26
+    },
+    {
+      "path": "situations.2.options.0.success_probability",
+      "value": 0.8
+    },
+    {
+      "path": "situations.2.options.0.valence_success",
+      "value": 0.4
+    },
+    {
+      "path": "situations.2.options.0.valence_failure",
+      "value": -0.1
+    },
+    {
+      "path": "situations.2.options.0.importance",
+      "value": 0.5
+    },
+    {
+      "path": "situations.2.options.0.arousal",
+      "value": 0.3
+    },
+    {
+      "path": "situations.2.options.0.progress_gain",
+      "value": 0.15
+    },
+    {
+      "path": "situations.2.options.0.duration_hours",
+      "value": 0.5
+    },
+    {
+      "path": "situations.2.options.1.success_probability",
+      "value": 0.9
+    },
+    {
+      "path": "situations.2.options.1.valence_success",
+      "value": 0.1
+    },
+    {
+      "path": "situations.2.options.1.valence_failure",
+      "value": -0.3
+    },
+    {
+      "path": "situations.2.options.1.importance",
+      "value": 0.4
+    },
+    {
+      "path": "situations.2.options.1.arousal",
+      "value": 0.2
+    },
+    {
+      "path": "situations.2.options.1.progress_gain",
+      "value": 0.0
+    },
+    {
+      "path": "situations.2.options.1.duration_hours",
+      "value": 0.3
+    },
+    {
+      "path": "situations.3.rate_per_year",
+      "value": 8
+    },
+    {
+      "path": "situations.3.options.0.success_probability",
+      "value": 0.5
+    },
+    {
+      "path": "situations.3.options.0.valence_success",
+      "value": 0.9
+    },
+    {
+      "path": "situations.3.options.0.valence_failure",
+      "value": -0.4
+    },
+    {
+      "path": "situations.3.options.0.importance",
+      "value": 0.9
+    },
+    {
+      "path": "situations.3.options.0.arousal",
+      "value": 0.7
+    },
+    {
+      "path": "situations.3.options.0.progress_gain",
+      "value": 0.4
+    },
+    {
+      "path": "situations.3.options.0.duration_hours",
+      "value": 1.5
+    },
+    {
+      "path": "situations.3.options.1.success_probability",
+      "value": 0.9
+    },
+    {
+      "path": "situations.3.options.1.valence_success",
+      "value": 0.3
+    },
+    {
+      "path": "situations.3.options.1.valence_failure",
+      "value": -0.1
+    },
+    {
+      "path": "situations.3.options.1.importance",
+      "value": 0.6
+    },
+    {
+      "path": "situations.3.options.1.arousal",
+      "value": 0.4
+    },
+    {
+      "path": "situations.3.options.1.progress_gain",
+      "value": 0.1
+    },
+    {
+      "path": "situations.3.options.1.duration_hours",
+      "value": 1.5
+    },
+    {
+      "path": "interventions.0.day",
+      "value": 10
+    }
+  ],
+  "scripted_dry_run": {
+    "days": 58.44,
+    "provider": "scripted_engineering_fixture",
+    "resolved_actions": 8,
+    "applied_events": 23,
+    "pending_events": 0,
+    "conversations": {},
+    "scope": "checks that the policy runs; scripted choices skip model cognition"
+  }
+}

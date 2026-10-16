@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "verified_utc": "2026-10-16T17:48:58.012567+00:00",
+  "suites_run_here": 15,
+  "named_checks_run_here": 208,
+  "per_suite": {
+    "author": 9,
+    "complete": 25,
+    "context": 11,
+    "development": 12,
+    "extended": 29,
+    "fidelity": 14,
+    "goal-plans": 10,
+    "graphiti": 12,
+    "household": 24,
+    "interaction": 9,
+    "interview": 14,
+    "lifetime": 6,
+    "situation": 14,
+    "temperament": 10,
+    "world-growth": 9
+  },
+  "not_run_here": {},
+  "recorded_total": {
+    "suites": 15,
+    "named_checks": 208
+  },
+  "core_checks": 12,
+  "new_checks": {
+    "passed": true,
+    "scope": "engineering only; stubbed transport",
+    "checks": [
+      "compile builds committed people, ages, caregivers, goals and listed facet percentiles; others stay neutral",
+      "authored background is a labeled private starting experience of its owner only",
+      "interventions become pending controller events for their listed recipients",
+      "assumptions report lists every generated number, compiler default and stated assumption",
+      "scripted dry run executes the compiled policy, including scheduled conversations and interventions",
+      "compiling the same spec is deterministic",
+      "saved initial world runs under the compiled policy with a fresh controller",
+      "out-of-vocabulary keys, facet codes and ranges, ids, caregivers, actors, contacts, rates, probabilities, intervention days/recipients, testimony sources, conversation participants and size limits are rejected with field names",
+      "model drafts must compile; invalid drafts get field-named repair feedback and fail after two repairs"
+    ]
+  },
+  "mutation_checks": [
+    "accepting testimony without another person as its source is caught",
+    "accepting unsupported keys is caught",
+    "seeding background without scenario_authoring provenance is caught"
+  ],
+  "actual_27b": {
+    "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+    "draft": {
+      "requests": {
+        "authoring": 2
+      },
+      "seconds": 217.541,
+      "repairs": 1,
+      "repair_reason": "situations[0].options[1].progress_gain must be finite and in [0, 1]",
+      "rejected_by_current_compiler": "interventions[1].observations.arun: testimony with source \"direct\""
+    },
+    "review_edits": [
+      "removed intervention month1_review (pre-written outcome; invalid testimony source)",
+      "arun available_hours 06-18 -> 07-14 (setting says evening shifts)"
+    ],
+    "compiled_reviewed": {
+      "dry_run": {
+        "days": 58.44,
+        "provider": "scripted_engineering_fixture",
+        "resolved_actions": 8,
+        "applied_events": 23,
+        "pending_events": 0,
+        "conversations": {},
+        "scope": "checks that the policy runs; scripted choices skip model cognition"
+      },
+      "generated_numbers": 90,
+      "stated_assumptions": 7,
+      "cli_scripted_rerun_matches_dry_run": true
+    },
+    "live_run_compiled": {
+      "requests": 37,
+      "requests_by_purpose": {
+        "action": 8,
+        "appraisal": 29
+      },
+      "repairs": 0,
+      "resolved_actions": 8,
+      "pending_events": 0,
+      "seconds": 235.767,
+      "graph_retrieval_status": {
+        "priya": null,
+        "arun": null,
+        "meera": null
+      },
+      "source_files_changed_after_live_load": [
+        "author.py"
+      ],
+      "note": "compiled before the compiler enabled cognition: no semantic recall"
+    },
+    "live_run_compiled_graphiti": {
+      "requests": 45,
+      "requests_by_purpose": {
+        "semantic_recall": 8,
+        "action": 8,
+        "appraisal": 29
+      },
+      "repairs": 0,
+      "resolved_actions": 8,
+      "pending_events": 0,
+      "seconds": 292.603,
+      "graph_retrieval_status": {
+        "priya": "ready",
+        "arun": null,
+        "meera": null
+      },
+      "source_files_changed_after_live_load": [],
+      "notes": [
+        "all 8 semantic recalls used graphiti_neo4j_local_bge_rrf; no fallback",
+        "day 5.31 speech claims a robotics club meeting before the day-10 invitation; seeded by the authored evening_check_in success_text that mentions the club and can fire before the invitation; an unverified utterance, not promoted to a world fact"
+      ]
+    }
+  },
+  "source_hashes": {
+    "devsim/author.py": "dbb0264fab49f03f38b107c615281e481263000688225507f012aac2df0eab2a",
+    "checks/check_author.py": "11ac4b58f43414d648b42291d44ea224dba7635a542d20ad8580b7ee6e31c5d7",
+    "services/graphiti-local/start.py": "5fb35f2c3256401609651f24d8664bff974b9d80c73687443f9fec7c04a52990"
+  },
+  "new_paid_dependencies": false,
+  "scope": "Engineering integration only. A compiling draft is well-formed and runnable, not faithful to the setting; generated numbers are scenario assumptions; the dry run uses the scripted provider.",
+  "graphiti_service": {
+    "install": "Docker-less: Neo4j 5.26.32 tarball + Temurin JRE 21 under work/graphiti-runtime, pinned lock in work/graphiti-env (Python 3.12 via uv)",
+    "health": {
+      "ready": true,
+      "backend": "Graphiti 0.31.1 / Neo4j",
+      "local_embeddings": true
+    }
+  }
+}

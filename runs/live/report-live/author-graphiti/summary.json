@@ -1,0 +1,15 @@
+{
+  "checkpoint": "runs/live/author-live/compiled-graphiti/run/world.json",
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "requests": {
+    "report": 5
+  },
+  "evidence_items": 65,
+  "sections": 4,
+  "claims": {
+    "observed": 12,
+    "agent_interpretation": 7,
+    "researcher_inference": 4
+  },
+  "seconds": 100.253
+}

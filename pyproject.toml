@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "developmental-agent-simulator"
+version = "0.1.0"
+description = "Research prototype for persistent agents with personality facets, private memory, mood and developmental change."
+requires-python = ">=3.12"
+dynamic = ["dependencies"]
+
+[tool.setuptools]
+packages = ["devsim"]
+
+[tool.setuptools.package-data]
+devsim = ["data/*.json", "policies/*.json"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }

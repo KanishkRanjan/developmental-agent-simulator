@@ -1,0 +1,25 @@
+{
+  "json_sqlite_restore_identical": true,
+  "source_checkpoint_events_preserved": true,
+  "interviewee_received_all_interview_events": true,
+  "interviewer_received_all_interview_events": true,
+  "bystanders_received_nothing": true,
+  "answers_resolved_by_observed_reply": true,
+  "no_world_facts_changed": true,
+  "simulated_day_unchanged": true,
+  "mood_change_alex": {
+    "valence": -0.2962,
+    "arousal": 0.0034
+  },
+  "appraised_meanings": {
+    "@interview:evening-checkin:0:question": "Maya is checking in on my emotional state regarding the biology lab specifically, following her previous request for a timeline. This feels like a gentle probe to see if the concrete plan we discussed has actually alleviated my anxiety or if I am still feeling overwhelmed. It invites me to be honest about my confidence level, which is a bit risky given my tendency to want to appear competent, but it also feels like an opportunity to get further reassurance if I admit I'm still nervous.",
+    "@interview:evening-checkin:0:reply": "I am expressing a cautious improvement in my mood, acknowledging that the specific Wednesday deadline Maya suggested provides some structure. However, I am still voicing a lingering, specific anxiety about the 'data analysis' component of the biology lab, fearing that this particular step might cause me to miss the target. This is a continued act of vulnerability; I am not fully reassuring myself but rather testing whether Maya will validate this new, more granular fear or dismiss it. I am holding back from fully relaxing because my tendency to anticipate problems makes me focus on the most likely point of failure.",
+    "@interview:evening-checkin:1:question": "Maya is asking why I kept my worries to myself until now. It feels like a gentle challenge to my tendency to hold back, but also a reminder that she is there to help if I ask. I feel a mix of relief that she is engaging with the issue and a flush of embarrassment for not sharing my anxiety earlier, worrying that I might have made her feel excluded or that I am still not being open enough.",
+    "@interview:evening-checkin:1:reply": "I am articulating the specific social and emotional barrier that prevented me from seeking help earlier: the fear of being perceived as a 'whiner' and the desire to maintain an image of self-sufficiency. By admitting that I only spoke up when the fear of failure became 'scary,' I am exposing my vulnerability and the turning point in my anxiety. This statement serves to explain my previous hesitation to Maya, acknowledging that my silence was a choice driven by social anxiety rather than a lack of need. I am now waiting to see if Maya validates this fear of judgment or if she reinforces the idea that I should have spoken sooner, which could increase my feeling of embarrassment."
+  },
+  "graph_retrieval_status": {
+    "status": "fallback_private_fts",
+    "note": "Graphiti service not configured on this machine; private FTS fallback used and recorded"
+  },
+  "resumable_under_archived_policy": true
+}

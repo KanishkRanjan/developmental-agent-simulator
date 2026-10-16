@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "verified_utc": "2026-10-16T18:00:55.747955+00:00",
+  "suites_run_here": 17,
+  "named_checks_run_here": 224,
+  "per_suite": {
+    "author": 9,
+    "cockpit": 7,
+    "complete": 25,
+    "context": 11,
+    "development": 12,
+    "extended": 29,
+    "fidelity": 14,
+    "goal-plans": 10,
+    "graphiti": 12,
+    "household": 24,
+    "interaction": 9,
+    "interview": 14,
+    "lifetime": 6,
+    "report": 9,
+    "situation": 14,
+    "temperament": 10,
+    "world-growth": 9
+  },
+  "not_run_here": {},
+  "recorded_total": {
+    "suites": 17,
+    "named_checks": 224
+  },
+  "core_checks": 12,
+  "new_checks": {
+    "passed": true,
+    "scope": "engineering only; scripted fixture, no browser",
+    "checks": [
+      "loading a run is read-only and skips a half-written last model-call line",
+      "an agent perspective holds only that person's received memories and own actions; another person's private text never appears",
+      "the researcher view holds every raw event and action, and both views carry their scope label",
+      "faded memories show only their encoded gist, and memories with no accessible representation are omitted",
+      "embedded run text cannot close the page script",
+      "before a live run writes its checkpoint, the cockpit shows the streaming model-call timeline",
+      "the live server binds to loopback and serves only the page and its data"
+    ]
+  },
+  "mutation_checks": [
+    "showing other people's actions in an agent view is caught",
+    "showing the hidden original instead of the gist is caught",
+    "showing inaccessible memories is caught",
+    "embedding the payload without script escaping is caught",
+    "serving paths other than the page and data is caught"
+  ],
+  "browser": {
+    "engine": "Playwright headless Chromium (scratch env under work/)",
+    "cases": "2 perspectives x light/dark x 1280/390 px",
+    "script_errors": 0,
+    "horizontal_overflow": 0,
+    "live_mode": "timeline grew 3 -> 10 calls by polling, half-written line ignored, switched to full views when world.json appeared"
+  },
+  "source_hashes": {
+    "devsim/cockpit.py": "8502361cd47febd16493212594ff2dbadf382c4ec7f18febfcf3ad8feece810b",
+    "checks/check_cockpit.py": "a88237a7394f75ba333420004b75c3f7c3e49e8ebacde2beb8e54128b9af03c9"
+  },
+  "new_paid_dependencies": false,
+  "scope": "Engineering integration only: a read-only local view of fictional simulation runs."
+}
