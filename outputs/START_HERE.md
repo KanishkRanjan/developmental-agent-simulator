@@ -1,5 +1,7 @@
 # Start here: continuing the agent simulator
 
+GitHub: [private project repository](https://github.com/KanishkRanjan/developmental-agent-simulator). [Backup scope](GITHUB_BACKUP.md) records included artifacts and runtime exclusions; the repository-root README gives fresh-clone setup commands.
+
 ## Latest: household environment and conversation layer
 
 [Household implementation](agent_engine/HOUSEHOLD_IMPLEMENTATION.md) is the newest phase. Explicit rooms/audibility, private multi-turn conversation, waking windows/response intervals and elapsed calendar reservations now connect to the existing scheduler, memory/mood and optional cognition/development paths. Use `household_example.py` for a short scene or `simulate.py --household` for fresh combined policies; archived policies remain unchanged.
