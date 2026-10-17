@@ -142,6 +142,16 @@ In environment-v2 run-2 the researcher's lines, spoken into class conversations 
 
 **Talking from the cockpit (same day).** The live cockpit (`python3 -m devsim.cockpit RUN_DIR --serve 18090`) now has a "Talk to someone" box read exactly like the watcher's `t` key (shared `visit.talk_line`): `@priya hello` walks up to Priya, plain text continues, `/bye` ends, `/call priya` phones, `/send Kabir @priya a new classmate, 15` sends your character, and `/auto GOAL` lets the model play it. The transcript refreshes every 1.5 s. The watcher's `t` gained `/call` and `/send` the same way. Over SSH with no port forwarding, the terminal watcher (`python3 -m devsim.watch RUN_DIR`) is the way to talk: key `h` opens a talk guide that lists the run's people and gives examples, and it was driven in a pseudo-terminal (guide opens at its top, closes again). It writes to the run's inbox through `devsim.visit`, so the run validates and decides everything. It accepts only JSON requests from its own loopback origin, so another site open in the browser cannot post into a simulation. Static exports and checkpoint-file cockpits stay read-only. Check: one new `cockpit` check. The page was also driven in headless Chromium (start, reply shown, say, character fields, end; light and dark; no sideways scroll at 390 px; no script errors). All 20 suites pass. Not used against a live 27B run yet.
 
+## Fix, 17 October: coarsened events regained full detail after load or rollback
+
+Found with a randomized invariant harness (1,000 synthetic worlds mixing sleep, attention, cognition, dials, routines and caregiver links, plus 60 scripted household lifetimes with mid-run resumes). `Engine.load` and the controller's rollback rebuild each received memory from the event log, which holds the original text. So every GIST and NONE event regained its full original wording after any resume or failed event. The receipt now records the encoded text (`attention.encoded_text`), and the rebuild uses it. The `attention` resume check now also compares the rebuilt memory cache, and fails without the fix. After the fix, every invariant held in all runs:
+- mood bounds; no hidden memory in recall, views or context;
+- one receipt per received memory; trust and closeness in [0, 1];
+- attention tiers consistent with their thresholds; buffer entries tagged as buffered;
+- save/load reproduces state, memories and mood exactly.
+
+All 23 suites: 343 named checks plus 12 core checks.
+
 ## Fixes, 17 October: fourth review pass (reports, interviews, resume)
 
 - **Reports quoted forgotten memories as current interpretations.** The `checkpoint_memory_view` evidence tool listed every memory's meaning, including dropped, merged and unattended ones (the latter's meaning is a placeholder). Hidden tiers are now skipped, and the tool indexes received memories once instead of scanning per memory.

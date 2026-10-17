@@ -145,7 +145,11 @@ def main():
         resumed = Engine.load(Path(d) / 'w.json')
         Lifetime(resumed, policy, scripted=True).run(10)
     assert json.dumps(whole.state, sort_keys=True) == json.dumps(resumed.state, sort_keys=True)
-    checks.append('a checkpoint resumed mid-run (sleep and attention on) ends byte-identical to an uninterrupted run')
+    # The received-memory cache is rebuilt on load: coarsened events must stay coarse, not regain their original text.
+    assert whole.world.observations == resumed.world.observations, 'load restored the full text of coarsened events'
+    assert any(o.text.startswith('Half-noticed') or o.text == '(not attended)' for v in resumed.world.observations.values() for o in v)
+    checks.append('a checkpoint resumed mid-run (sleep and attention on) ends byte-identical to an uninterrupted run, and '
+                  'coarsened events stay coarse after loading')
 
     # Determinism: insertion order of events and of recipients does not change any result.
     def scene(order):

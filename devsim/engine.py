@@ -738,7 +738,7 @@ class Engine:
                             times_asked_before=agent['memory_meta'][obs['repeat_of']].get('times_asked_before', 0) + 1)
                     if owner in attended:
                         attention.record(agent['memory_meta'][event['id']], attended[owner], buffered='sleep' in self.state['config'],
-                                         original=event['observations'][owner])
+                                         original=event['observations'][owner], encoded_text=obs['text'])
                         attention.felt_ignored(self, owner, event, obs, attended[owner])
                     if 'sleep' in self.state['config'] and agent['memory_meta'][event['id']].get('tier') != attention.UNATTENDED:
                         sleep.buffer(self, owner, event, obs)
@@ -1405,7 +1405,10 @@ class Engine:
         original = meta.get('encoding_stability_days', obs.get('stability_days',
             cfg['memory_base_stability_days'] * (1 + cfg['memory_importance_weight'] * obs.get('importance', 0) +
                                                cfg['memory_arousal_weight'] * obs.get('arousal', 0))))
-        return Observation(event['id'], event['day'], obs['text'], obs['source'],
+        # An event attention coarsened was encoded as its coarse line; rebuilding from the original would restore
+        # full detail after every load or rollback.
+        text = meta.get('attention', {}).get('encoded_text', obs['text'])
+        return Observation(event['id'], event['day'], text, obs['source'],
                            obs.get('valence', 0), obs.get('arousal', 0), original)
 
 
