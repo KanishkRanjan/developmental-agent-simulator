@@ -65,7 +65,9 @@ def main():
     reject(lambda: validate_rules([{'id': 'x', 'dimension': 'Adversity', 'trigger_context': 'x',
                                   'narrative_shift': 'x', 'state_modifiers': {'Q': 8}}]))
     with patch('devsim.engine.request_json', return_value=perception):
-        reject(lambda: e.prepare_situation('a', 'Bad classification.', 'bad'))
+        assert e.prepare_situation('a', 'Bad classification.', 'bad') is None  # optional step: skipped, not fatal
+    assert [x['step'] for x in e.state['runtime'].pop('skipped_model_steps')] == ['situation']
+    if 'runtime' not in saved and not e.state['runtime']: del e.state['runtime']
     assert e.state == saved, 'Invalid construal partially mutated state'
     with TemporaryDirectory() as directory:
         checkpoint=Path(directory)/'stage.json'
@@ -151,7 +153,9 @@ def main():
     with patch('devsim.engine.request_json',return_value=bad):
         child.agent('baby')['caps_provenance']['capability_band']='legacy-unknown'
         retry_state=deepcopy(child.state)
-        reject(lambda:child.generate_signatures('baby'))
+        assert child.generate_signatures('baby')==retry_state['agents']['baby']['caps_rules']  # skipped: previous rules kept
+        assert [x['step'] for x in child.state['runtime'].pop('skipped_model_steps')]==['signatures']
+        if 'runtime' not in retry_state and not child.state['runtime']: del child.state['runtime']
         assert child.state==retry_state
     child.state=saved_child
     with TemporaryDirectory() as directory:

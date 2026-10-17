@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "scope": "synthetic checks of design defaults; V anchors are inputs or comparisons, never fitted twice",
+  "checks": [
+    "every parameter carries a V/D/U tag and a note; only the five NFHS-5 and Holt-Lunstad anchors are V; bad overrides are refused",
+    "the implicit graph is seeded, symmetric and heavy-tailed (mean degree 111, median 70.0, max 467); a neighborhood query costs the same for 40,000 or 4,000,000 people",
+    "tie strength decays by the memory forgetting curve; contacts replay identically however a pair is queried; closer pairs have shorter gaps since last contact (Spearman -0.62) and kin shorter than friends (V direction); threat sensitivity suppresses contact over a negative memory and dysregulation turns it hostile",
+    "demography (calibrated only on median marriage age and adolescent fertility) gives period total fertility 2.11 (NFHS-5: 1.7; runs high on unverified parity factors), 25% of women 20-24 married before 18 (21.9%), median first marriage 19.7 (19.6) and life expectancy 73.7 without isolation",
+    "marriages are joint facts in both logs with no bigamy; a life resolved in one call or in chunks is identical; seeing someone alive moves a latent death later; seeing someone single rolls back the marriage and the partner's slice; committed facts are never rolled back; the commit horizon is the earliest uncommitted joint fact; resolving 600 women in reverse order keeps the married share (0.95 vs 0.95) and mean parity (1.33 vs 1.33)",
+    "composition-rejection picks channels in proportion to rate; on this graph wide confidence gives one opinion group and narrow gives 2 (sd 0.026 vs 0.423), and the mean-field compartment agrees (1 vs 6 peaks); a rumor reaches 358 people where a three-exposure behavior reaches 5; low reality testing discounts low-credibility sources less",
+    "institutions have no member list: a workplace's 47 members come from its region by hash, roles go to the best fit, sanction sensitivity is one formula over dials and traits (no archetype branch), and a collective event fires only once tension pushes the threshold cascade past the trigger (0.00 -> 1.00)",
+    "over 30 years capital is heavy-tailed (top 1% hold 25%), trait fit helps (Spearman 0.41) but the top outcomes are not all the best fits, and identical personalities in different networks end apart",
+    "the most isolated sampled person (isolation 0.60) carries a death hazard 1.26x the least isolated (0.00) as imposed, stronger under 65; deaths log tie losses and grief shifts on close survivors, and isolation slowly raises threat sensitivity",
+    "a model-proposed opinion change is clamped to the bounded-confidence rule (same direction, no larger), a post-check flags overshoot, personas are fixed per person, enmity sets a non-cooperation floor, and the variance monitor flags collapse",
+    "engine characters are bound into the population (a caregiver and child share a household), their circle reaches them as received observations (93 in a year for Priya), shown people are committed, the context section is stable between calls, checks are event-driven, and a spoken turn moves opinions by the rule, never the model"
+  ],
+  "report": {
+    "degree": {
+      "mean": 110.5,
+      "median": 70.0,
+      "max": 467
+    },
+    "contact": {
+      "closeness_gap_spearman": -0.62,
+      "median_gap_days_kin": 1.1,
+      "median_gap_days_friend": 17.7
+    },
+    "demography": {
+      "median_first_marriage": 19.7,
+      "married_before_18": 0.252,
+      "period_tfr": 2.11,
+      "life_expectancy_no_isolation": 73.7,
+      "women_sampled": 2945
+    },
+    "order": {
+      "married_share_forward_vs_reverse": [
+        0.953,
+        0.953
+      ],
+      "mean_parity_forward_vs_reverse": [
+        1.33,
+        1.33
+      ]
+    },
+    "opinions": {
+      "1.0": {
+        "sd": 0.026,
+        "groups": 1,
+        "mean_field_peaks": 1,
+        "realized": 365
+      },
+      "0.15": {
+        "sd": 0.423,
+        "groups": 2,
+        "mean_field_peaks": 6,
+        "realized": 365
+      }
+    },
+    "contagion_adopters": {
+      "1": 358,
+      "3": 5
+    },
+    "capital": {
+      "top_1pct_share": 0.25,
+      "fit_spearman": 0.41,
+      "people": 300
+    },
+    "isolation": {
+      "least": 0.0,
+      "most": 0.6,
+      "hazard_ratio_under_65": 1.257,
+      "tie_losses_logged": 5586
+    },
+    "bridge": {
+      "news_for_priya_in_a_year": 93,
+      "kinds": [
+        [
+          "got in touch with me.",
+          91
+        ],
+        [
+          "-out; we are not speaking",
+          1
+        ],
+        [
+          "d I had an angry exchange",
+          1
+        ]
+      ]
+    }
+  }
+}

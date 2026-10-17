@@ -27,6 +27,22 @@ def request(path,data=None,timeout=10):
         return json.load(response)
 
 
+_VECTORS={}
+def vectors(texts):
+    """Normalized BGE vectors from the local service, cached in-process by text (texts clipped to 4000 characters).
+
+    shortcut: the cache grows with distinct memory texts and is never evicted; bound it if runs reach 1e5+ texts.
+    """
+    texts=[t[:4000] for t in texts]
+    missing=[t for t in dict.fromkeys(texts) if t not in _VECTORS]
+    for i in range(0,len(missing),512):
+        chunk=missing[i:i+512]
+        found=request('/embed',{'texts':chunk},timeout=120)['vectors']
+        if len(found)!=len(chunk):raise ValueError('Embedding service returned the wrong number of vectors')
+        _VECTORS.update(zip(chunk,found))
+    return [_VECTORS[t] for t in texts]
+
+
 def snapshot(engine,owner):
     from .cognition import views
     agent=engine.agent(owner)
@@ -37,7 +53,8 @@ def snapshot(engine,owner):
     for m in available:
         records.append({k:m[k] for k in ['event','day','text','meaning','source','kind','topics','representation']})
         # Lost detail cannot leave hidden participant links in the active view.
-        records[-1]['reference_ids']=sorted(agent['memory_meta'][m['event']].get('encountered',[])) if m['original_detail_available'] else []
+        meta=agent['memory_meta'][m['event']]  # a sleep gist keeps its participant links
+        records[-1]['reference_ids']=sorted(meta.get('encountered',[])) if m['original_detail_available'] or meta.get('tier')=='gist' else []
     return {'scope':scope,'owner':owner,'view_day':engine.day,'records':sorted(records,key=lambda r:r['event'])}
 
 
@@ -53,7 +70,11 @@ def publish(engine):
     if not engine.state['config'].get('cognition',{}).get('graphiti_retrieval'):return
     c=config();store=Path(c['outbox']);store.parent.mkdir(parents=True,exist_ok=True)
     with sqlite3.connect(store,timeout=10) as db:
-        db.execute('CREATE TABLE IF NOT EXISTS jobs(id TEXT PRIMARY KEY,payload TEXT NOT NULL,status TEXT NOT NULL,error TEXT,attempts INTEGER NOT NULL DEFAULT 0,updated REAL NOT NULL)')
+        db.execute('CREATE TABLE IF NOT EXISTS jobs(id TEXT PRIMARY KEY,payload TEXT NOT NULL,status TEXT NOT NULL,error TEXT,attempts INTEGER NOT NULL DEFAULT 0,updated REAL NOT NULL,used REAL)')
+        if 'used' in [c[1] for c in db.execute('PRAGMA table_info(jobs)')]:
+            # A newer checkpoint supersedes views queued only by earlier checkpoints (never searched): they are caches,
+            # re-derived on demand. Without this, one save per event queued ~7 jobs per event and the queue never drained.
+            db.execute("DELETE FROM jobs WHERE status='queued' AND used IS NULL")
         for owner,agent in engine.state['agents'].items():
             if not agent['alive'] or not agent['memory_meta']:continue
             payload=snapshot(engine,owner)

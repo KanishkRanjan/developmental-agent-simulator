@@ -52,6 +52,17 @@ class LocalEmbeddings(EmbedderClient):
         vector=self.model.encode(text,normalize_embeddings=True).tolist()
         with sqlite3.connect(self.store) as db:db.execute('INSERT OR IGNORE INTO embeddings VALUES(?,?)',(key,canonical(vector)))
         return vector
+    async def batch(self,texts):
+        """Cached vectors for many texts; misses are encoded in one batch (engine meaning-based recall)."""
+        keys=[sha256(t.encode()).hexdigest() for t in texts]
+        with sqlite3.connect(self.store) as db:
+            found={k:json.loads(v) for k,v in db.execute(f'SELECT id,vector FROM embeddings WHERE id IN ({",".join("?"*len(keys))})',keys)}
+        missing=list(dict.fromkeys(t for t,k in zip(texts,keys) if k not in found))
+        if missing:
+            for text,vector in zip(missing,self.model.encode(missing,normalize_embeddings=True,batch_size=64).tolist()):
+                found[sha256(text.encode()).hexdigest()]=vector
+                with sqlite3.connect(self.store) as db:db.execute('INSERT OR IGNORE INTO embeddings VALUES(?,?)',(sha256(text.encode()).hexdigest(),canonical(vector)))
+        return [found[k] for k in keys]
 
 
 class NoExternalReranker(CrossEncoderClient):
@@ -109,7 +120,9 @@ class Index:
     async def worker(self):
         while True:
             with sqlite3.connect(self.store) as db:
-                row=db.execute("SELECT id,payload FROM jobs WHERE status='queued' ORDER BY updated LIMIT 1").fetchone()
+                # Views a search is waiting on (used is set) go first, newest request first: in environment-v2 run-2, 178 of 179 recalls waited
+                # 45 s behind ~24,000 checkpoint-only jobs and then fell back to FTS (2.3 of 6.7 hours).
+                row=db.execute("SELECT id,payload FROM jobs WHERE status='queued' ORDER BY used IS NULL, used DESC, updated LIMIT 1").fetchone()
                 if row:db.execute("UPDATE jobs SET status='running',attempts=attempts+1,updated=? WHERE id=?",(time.time(),row[0]))
             if not row:await asyncio.sleep(.1);continue
             try:
@@ -188,12 +201,14 @@ class Index:
         for key,payload,status,used,updated in rows:
             data=json.loads(payload)
             if scope is not None and data['scope']!=scope:continue
-            views.setdefault((data['scope'],data['owner']),[]).append((data['view_day'],updated,key,status,used or updated))
+            views.setdefault((data['scope'],data['owner']),[]).append((data['view_day'],updated,key,status,used))
         doomed=[]
         for group_views in views.values():
             group_views.sort(reverse=True)
             for view_day,updated,key,status,used in group_views[keep_per_owner:]:
-                if status in ('done','failed') and now-used>lease_seconds:doomed.append(key)
+                # The lease protects views being read (searched, or enqueued by a search); views only published by
+                # checkpoint saves carry no lease and are kept only while among the newest per owner.
+                if status in ('done','failed') and (used is None or now-used>lease_seconds):doomed.append(key)
         result={'deleted_snapshots':len(doomed),'kept_snapshots':sum(map(len,views.values()))-len(doomed),'dry_run':dry_run,
                 'deleted':doomed,'nodes':0,'relationships':0}
         driver=self.graph.driver
@@ -236,6 +251,11 @@ def main():
                     if not 0<length<=4_000_000:raise ValueError('Invalid request size')
                     body=json.loads(self.rfile.read(length))
                     if self.path=='/enqueue':result={'snapshot':index.enqueue(body)}
+                    elif self.path=='/embed':
+                        texts=body.get('texts')
+                        if not isinstance(texts,list) or not 1<=len(texts)<=512 or not all(isinstance(t,str) and 0<len(t)<=4000 for t in texts):
+                            raise ValueError('Expected 1-512 texts of 1-4000 characters')
+                        result={'vectors':asyncio.run_coroutine_threadsafe(index.embedder.batch(texts),loop).result(timeout=120)}
                     elif self.path=='/search':result=asyncio.run_coroutine_threadsafe(index.search(body['snapshot'],body['query'],body.get('limit',24)),loop).result(timeout=60)
                     elif self.path=='/compact':
                         async def locked():

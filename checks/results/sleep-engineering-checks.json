@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "scope": "synthetic engineering checks of design defaults (unverified); no calibrated sleep claim",
+  "checks": [
+    "step 1: Q is the clipped product of dial, mood-baseline, threat and stress terms; low mood baseline lowers Q",
+    "step 2: weight multiplies arousal, rehearsal, self-relevance and novelty; threat amplifies negative arousal only",
+    "step 3: lability is an isolated exponential of delay days",
+    "step 4: two thresholds, flat-then-declining age multiplier, monotone reality-testing capacity, logistic noise",
+    "gist matching falls back to participant and word overlap; extractive summaries reuse the appraisal gist",
+    "encoding writes only a raw buffer entry; buffered memories are retrievable in full with lability retrievability",
+    "rehearsal: a buffered recall increments rehearsal_count only; after promotion the existing rule multiplies S and resets the clock",
+    "a skip shorter than one sleep opportunity leaves the buffer untouched; an empty buffer gives zero counts",
+    "same seed gives identical records (also after a checkpoint round trip); another seed changes only near-threshold entries; sigma 0 is seed-independent",
+    "a 50-year skip with a 600-entry buffer resolves once, in about the time of a one-day skip (no per-night loop)",
+    "over 1500 seeds: threat sensitivity promotes a high-arousal negative memory more often; low reality testing, old age and near-floor Q lower promotion (insomnia promotes under 30% as often)",
+    "config-gated encoding penalty: after near-floor sleep, new memories encode with stability x (1 - strength x (1 - Q))",
+    "Lifetime 2-year scripted skip drains the buffer: 12% episodic, 50% gist, 38% dropped; skip-time events follow the same pipeline; dropped and merged entries are never retrieved",
+    "the optional LLM summarizer is batched (at most llm_batch_size memories per call), behind the summarizer flag",
+    "no branch keyed on agent type, role or trait; invalid or inverted settings are rejected"
+  ]
+}

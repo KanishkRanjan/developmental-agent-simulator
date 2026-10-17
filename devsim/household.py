@@ -30,7 +30,7 @@ def validate(engine, settings):
         if room not in rooms: raise ValueError('Unknown initial room')
     for owner, routine in settings.get('routines',{}).items():
         engine.agent(owner)
-        if not isinstance(routine,dict) or set(routine)-{'available_hours','response_minutes'}:
+        if not isinstance(routine,dict) or set(routine)-{'available_hours','response_minutes','in_person_response_minutes'}:
             raise ValueError('Unsupported daily routine')
         windows=routine.get('available_hours',[[0,24]])
         if not isinstance(windows,list): raise ValueError('Availability must be a list')
@@ -47,6 +47,11 @@ def validate(engine, settings):
         if not isinstance(delay,list) or len(delay)!=2: raise ValueError('Response minutes need [minimum,maximum]')
         number(delay[0],.1,60,'minimum response minutes')
         number(delay[1],delay[0],60,'maximum response minutes')
+        if 'in_person_response_minutes' in routine:
+            spoken=routine['in_person_response_minutes']
+            if not isinstance(spoken,list) or len(spoken)!=2: raise ValueError('In-person response minutes need [minimum,maximum]')
+            number(spoken[0],.05,10,'minimum in-person response minutes')
+            number(spoken[1],spoken[0],10,'maximum in-person response minutes')
     _validate_places(engine, settings, rooms)
     for field in ('moves','conversations'):
         rules=settings.get(field,[])
@@ -133,9 +138,43 @@ def view(engine, owner):
     if room is None: return None
     cfg=engine.state['config']['household']
     return {'room':room,'label':cfg['rooms'][room]['label'],
-        'visible_people':[{'id':p,'name':engine.state['entities'][p]['name']} for p in engine.state['agents']
+        'visible_people':[{'id':p,'name':engine.label(p)} for p in engine.state['agents']
             if p!=owner and present(engine,p,room)],
         'available_now':available(engine,owner)}
+
+
+def conversation_memory(engine, owner, turns=8, previous_turns=4):
+    """Working memory: the owner's own received turns of the conversation they are in now,
+    and how the last session in the same place on the same topic ended.
+
+    Search-ranked memories can bury the last few minutes (a silent reply shares no words with
+    the situation text). These are only observations the owner already received; no shared transcript.
+    """
+    sessions=engine.state['runtime'].get('conversations',{})
+    current=next((k for k,s in sessions.items() if s['status']!='closed' and owner in s['active']),None)
+    if current is None: return None
+    heard={}
+    for o in engine.world.observations.get(owner,[]):
+        if o.event_id.startswith('@conversation:'):
+            heard.setdefault(o.event_id.split(':')[1],[]).append(o)
+    clip=lambda text:text if len(text)<=300 else text[:299]+'…'
+    result={'policy':'own_received_turns_oldest_first',
+        'this_conversation':[{'minutes_ago':round((engine.day-o.day)*1440),'text':clip(o.text)} for o in heard.get(current,[])[-turns:]]}
+    # Group meetings continue by group (topics may rotate); other conversations by place and topic.
+    thread=lambda s:(s['spec'].get('room'),s['spec'].get('channel'),s['spec'].get('group') or s['spec']['topic'])
+    earlier=[k for k in heard if k!=current and k in sessions and thread(sessions[k])==thread(sessions[current])]
+    if earlier:
+        last=max(earlier,key=lambda k:heard[k][-1].day)
+        texts={o.event_id:o.text for o in heard[last]}
+        if 'cognition' in engine.state['config']:
+            # A week-old session is long-term memory: forgetting applies, so only accessible text or gist is shown.
+            from .cognition import views
+            available={r['event']:r['text'] for r in views(engine,owner,'',len(engine.agent(owner)['memory_meta']))}
+            texts={k:available[k] for k in texts if k in available}
+        if texts:
+            result['previous_session']={'days_ago':round(engine.day-heard[last][-1].day,1),
+                'last_turns':[clip(t) for t in list(texts.values())[-previous_turns:]]}
+    return result
 
 
 def in_session(engine, owner, spec):
@@ -157,10 +196,10 @@ def listeners(engine, speaker, spec=None):
     return [p for p in engine.state['agents'] if p!=speaker and any(present(engine,p,r) for r in audible) and available(engine,p)]
 
 
-def deliver(controller, event_id, description, observations, action_id=None, facts=None):
+def deliver(controller, event_id, description, observations, action_id=None, facts=None, routine=False):
     engine=controller.engine
     if not controller.scripted:
-        observations={p:engine.appraise(p,o,api=controller.api,model=controller.model) for p,o in observations.items()}
+        observations={p:engine.appraise(p,o,api=controller.api,model=controller.model,routine=routine) for p,o in observations.items()}
     engine.schedule(event_id,engine.day,description,observations,facts=facts,
         requires={'alive':list(observations),**({'action':action_id} if action_id else {})})
     engine.advance(engine.day)
@@ -172,7 +211,7 @@ def move(controller, owner, room, event_id):
     if not engine.agent(owner)['alive'] or engine.agent(owner)['birth_day']>engine.day: return
     old=location(engine,owner)
     if old==room: return
-    name=engine.state['entities'][owner]['name']
+    name=engine.label(owner)
     cfg=engine.state['config']['household']
     observations={owner:{'text':'I entered '+cfg['rooms'][room]['label']+'.','source':'direct','kind':'direct',
         'encountered':[p for p in engine.state['agents'] if p!=owner and present(engine,p,room)]}}
@@ -183,7 +222,7 @@ def move(controller, owner, room, event_id):
         elif present(engine,p,room):
             observations[p]={'text':name+' entered the room.','source':'direct','kind':'direct','encountered':[owner]}
     engine.state['household']['locations'][owner]=room
-    deliver(controller,event_id,'A person changes rooms.',observations)
+    deliver(controller,event_id,'A person changes rooms.',observations,routine=True)
 
 
 def close(session, reason):
@@ -201,7 +240,9 @@ def queue_turn(controller, key):
         return close(session,'questions finished')
     if len(session['turns'])>=spec.get('max_turns',6): return close(session,'turn limit')
     speaker=active[session['cursor']%len(active)]
-    delay=engine.state['config']['household'].get('routines',{}).get(speaker,{}).get('response_minutes',[1,1])
+    routine=engine.state['config']['household'].get('routines',{}).get(speaker,{})
+    # Face-to-face replies take seconds to minutes; response_minutes (chat pace) remains the written-channel delay.
+    delay=routine.get('in_person_response_minutes' if 'channel' not in spec and 'in_person_response_minutes' in routine else 'response_minutes',[1,1])
     minutes=controller.rng('conversation',key,len(session['turns'])).uniform(*delay)
     hours=minutes/60
     # Busy/unavailable invitees cannot be silently double-booked into a dialogue.
@@ -226,7 +267,7 @@ def step(controller, key):
             people=[host,*listeners(engine,host,spec)]
             deliver(controller,'@conversation:'+key+':opening','A public conversation topic is introduced.',
                 {p:{'text':'A conversation begins on this topic: '+spec['topic'],
-                    'source':'direct','kind':'direct'} for p in people})
+                    'source':'direct','kind':'direct'} for p in people},routine=True)
         return
     previous=list(session['active'])
     active=[p for p in previous if in_session(engine,p,spec) and available(engine,p)]
@@ -248,7 +289,9 @@ def step(controller, key):
     menu=[{'id':'listen','label':'Listen quietly without speaking.' if not channel else 'Read without replying.',
            'speech_allowed':False,'plan_allowed':not infant},
         {'id':'signal' if infant else 'speak','label':'Make a nonverbal signal.' if infant else
-         ('Write a message.' if channel else 'Say something or ask a question; you may introduce a different topic.'),
+         ('Write a message.' if channel else
+          # v2 run: Kiara and Rohan averaged 56-63 words a turn, speeches rather than conversation.
+          'Say something or ask a question, as one spoken turn (usually one to three sentences); you may introduce a different topic.'),
          'speech_allowed':not infant,'plan_allowed':not infant},
         {'id':'leave','label':'Stop participating in this conversation.','speech_allowed':False,'plan_allowed':not infant}]
     if interview and speaker!=spec['interviewer']:
@@ -264,7 +307,7 @@ def step(controller, key):
         ('Only channel members read these messages. ' if channel else 'Other people may overhear normal room speech. ')+
         'Listening or leaving must have empty speech. Speech is a claim, not proof that its content happened.')
     if interview and speaker!=spec['interviewer']:
-        interviewer=engine.state['entities'][spec['interviewer']]['name']
+        interviewer=engine.label(spec['interviewer'])
         situation=(interviewer+' is interviewing you in '+where+' and has just asked: "'+spec['questions'][asked-1]+'" '
             'Answer from what you have personally experienced, decline, or end the interview. Your answer is your own '
             'account and may be incomplete. Declining or ending must have empty speech.')
@@ -291,7 +334,7 @@ def step(controller, key):
     action_id=event_id+':action'
     engine.commit_action(action_id,proposal)
     decision=proposal['decision']; choice=decision['action_id']
-    name=engine.state['entities'][speaker]['name']
+    name=engine.label(speaker)
     speech=decision['speech'] if choice=='speak' else ''
     behavior=({'listen':'declined to answer.' if interview else ('read without replying.' if channel else 'listened quietly.'),
         'leave':'stopped participating.','leave-room':'stood up to leave the room.',
@@ -305,6 +348,9 @@ def step(controller, key):
                          'encountered':[speaker] if same else [],'provenance':event_id}
     observations[speaker]['encountered']=[] if channel else [p for p in active if p!=speaker and location(engine,p)==location(engine,speaker)]
     deliver(controller,event_id,'A conversation turn is observed; spoken claims are not world facts.',observations,action_id)
+    if choice=='speak' and 'society_layer' in engine.state['config']:
+        from .population.bridge import after_turn
+        after_turn(engine,speaker,[p for p in recipients if p!=speaker])
     crystal=controller.policy.get('development',{}).get('crystallization')
     if crystal is not None:
         engine.crystallize(speaker,action_id,event_id,**crystal)
@@ -347,9 +393,13 @@ def _validate_places(engine, settings, rooms):
         for owner in members: engine.agent(owner)
         if 'meetings' in group:
             meeting=group['meetings']
+            topics=meeting.get('topic') if isinstance(meeting,dict) else None
+            topics=[topics] if isinstance(topics,str) else topics
             if not isinstance(meeting,dict) or set(meeting)-{'first_day','start_hour','duration_hours','every_days','topic','max_turns'} \
-                    or not isinstance(meeting.get('topic'),str) or not meeting['topic'].strip():
-                raise ValueError('Group meetings need first_day, start_hour, duration_hours, every_days and a topic')
+                    or not isinstance(topics,list) or not 1<=len(topics)<=30 \
+                    or not all(isinstance(t,str) and t.strip() and len(t)<=2000 for t in topics):
+                raise ValueError('Group meetings need first_day, start_hour, duration_hours, every_days and a topic '
+                                 '(one opening topic, or a list of up to 30 used in turn)')
             if isinstance(meeting.get('first_day'),bool) or not isinstance(meeting.get('first_day'),int) or meeting['first_day']<0:
                 raise ValueError('Meeting first_day is a whole day number; the time of day is start_hour')
             number(meeting.get('start_hour'),0,24-1e-9,'meeting start_hour (time of day, 0-24)')
@@ -394,6 +444,15 @@ def travel(controller, owner, room, key):
     agent=engine.agent(owner)
     if not agent['alive'] or agent['birth_day']>engine.day: return None
     old=location(engine,owner)
+    if old is None:
+        # In transit, a new journey used to teleport the person and the old arrival still fired later. They turn back
+        # instead: the pending arrival is cancelled and they set off from where it began.
+        # shortcut: distance already covered is ignored; a leg without a recorded origin cannot be interrupted.
+        pending=heading(engine,owner)
+        if pending is None or 'origin' not in pending[1]: return None
+        engine.state['runtime']['trips'].pop(pending[0])
+        calendar_time.finish(engine,owner,pending[1]['reservation'],cancel=True)
+        old=engine.state['household']['locations'][owner]=pending[1]['origin']
     if old==room: return engine.day
     minutes=route_minutes(engine,old,room) if old else None
     if not minutes:
@@ -404,16 +463,21 @@ def travel(controller, owner, room, key):
     reservation='@travel:'+key
     calendar_time.reserve(engine,owner,hours,reservation)
     cfg=engine.state['config']['household']
-    name=engine.state['entities'][owner]['name']
+    name=engine.label(owner)
     observations={owner:{'text':'I set off for '+cfg['rooms'][room]['label']+'.','source':'direct','kind':'direct'}}
     for p in engine.state['agents']:
         if p!=owner and available(engine,p) and present(engine,p,old):
             observations[p]={'text':name+' left.','source':'direct','kind':'direct','encountered':[owner]}
     engine.state['household']['locations'][owner]=None  # in transit: nowhere to be overheard or met
-    deliver(controller,reservation+':depart','A person sets off on a journey.',observations)
+    deliver(controller,reservation+':depart','A person sets off on a journey.',observations,routine=True)
     arrival=engine.day+hours/24
-    engine.state['runtime']['trips'][key]={'actor':owner,'room':room,'day':arrival,'phase':'arrive','reservation':reservation}
+    engine.state['runtime']['trips'][key]={'actor':owner,'room':room,'day':arrival,'phase':'arrive','reservation':reservation,'origin':old}
     return arrival
+
+
+def heading(engine, owner):
+    """(trip key, arrival leg) of someone currently travelling, or None."""
+    return next(((k,t) for k,t in engine.state['runtime'].get('trips',{}).items() if t['actor']==owner and t['phase']=='arrive'),None)
 
 
 def trip(controller, key):
@@ -443,7 +507,8 @@ def meet(controller, group_id):
     state.update(count=n+1,next_day=engine.day+meeting['every_days'])
     arrivals={}
     for owner in engine.state['household']['memberships'][group_id]:
-        origin=location(engine,owner)
+        pending=heading(engine,owner) if location(engine,owner) is None else None
+        origin=pending[1]['room'] if pending else location(engine,owner)  # where they were going is where they return
         if not available(engine,owner,meeting['duration_hours']): continue
         arrival=travel(controller,owner,group['place'],f'group-{group_id}-{n}-{owner}')
         if arrival is not None: arrivals[owner]=(arrival,origin)
@@ -453,7 +518,9 @@ def meet(controller, group_id):
     start=max(a for a,_ in arrivals.values())+1/1440
     key=f'group-{group_id}-{n}'
     if len(arrivals)>=2:
-        spec={'id':key,'day':start,'room':group['place'],'participants':list(arrivals),'topic':meeting['topic'],
+        # A topic list rotates one per meeting, so a daily class does not open on the same subject every day.
+        topic=meeting['topic'] if isinstance(meeting['topic'],str) else meeting['topic'][n%len(meeting['topic'])]
+        spec={'id':key,'day':start,'room':group['place'],'participants':list(arrivals),'topic':topic,'group':group_id,
               'max_turns':meeting.get('max_turns',6)}
         runtime['conversations'][key]={'spec':spec,'status':'scheduled','next_day':start,'turns':[],'active':[],'cursor':0,'reservations':{}}
     else:  # one attendee (a solo work shift, or everyone else away): presence without a conversation
@@ -495,7 +562,7 @@ def invite(controller, invitation_id):
         return
     state['next_day']=None
     group=cfg['groups'][group_id]
-    names={p:engine.state['entities'][p]['name'] for p in (invitee,inviter)}
+    names={p:engine.label(p) for p in (invitee,inviter)}
     same=location(engine,invitee) is not None and location(engine,invitee)==location(engine,inviter)
     event_id='@invitation:'+invitation_id
     deliver(controller,event_id,'An invitation to join a group.',{

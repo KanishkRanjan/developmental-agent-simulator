@@ -1,0 +1,105 @@
+{
+  "scope": "advisory model review; check each issue yourself",
+  "issues": [
+    {
+      "path": "household.routines.arun.available_hours",
+      "kind": "contradiction",
+      "problem": "The setting states Arun works roughly 15:00 to 23:00, but the routine lists him as available from 0:00 to 7:00 and 15:00 to 23:00, implying he is awake and active during his shift hours (15:00-23:00) and potentially awake at night, which contradicts the standard interpretation of working evening shifts (where one is at work, not 'available' in the home context, or at least the 15-23 block is his work time, not free time).",
+      "value": [
+        [
+          0,
+          7
+        ],
+        [
+          15,
+          23
+        ]
+      ]
+    },
+    {
+      "path": "household.routines.ms_okafor.available_hours",
+      "kind": "contradiction",
+      "problem": "The setting states the robotics club meets after school, and the group meeting is scheduled for 16:00, but Ms. Okafor's available hours end at 18:00 and start at 8:00, which is consistent, however, the setting implies she is a teacher who runs the club, and typically teachers are at school during the day; the issue is that the 'available_hours' for a teacher usually imply when they can be contacted or are free, but here it seems to define when they are present. More critically, if she is at school from 8 to 18, she is available for the 16:00 meeting. However, the setting says she 'runs the robotics club' and the meeting is 'after school'. If school ends around 15:00-16:00, 16:00 is fine. But wait, the setting says 'The school is a 20-minute walk from home.' This doesn't contradict the hours. Let's look closer. Is there a contradiction? The setting says Arun works 15:00-23:00. The routine says Arun is available 15:00-23:00. If 'available' means 'present in the apartment and able to interact', this is a contradiction because he is at work. If 'available' means 'awake', it's ambiguous. But usually, in these sims, 'available_hours' means the character is present in the household location. Arun is at the hospital. So listing 15:00-23:00 as available hours in the household context is a contradiction.",
+      "value": [
+        [
+          8,
+          18
+        ]
+      ]
+    },
+    {
+      "path": "household.routes",
+      "kind": "unsupported",
+      "problem": "The setting states the school is a 20-minute walk from home, but the routes only define a path between 'bedroom' and 'school_lab' with 20 minutes, ignoring the fact that Priya would need to travel from the apartment (home) to the school, and the 'bedroom' is inside the apartment, not the starting point of the walk to the school.",
+      "value": [
+        {
+          "a": "bedroom",
+          "b": "school_lab",
+          "minutes": 20
+        }
+      ]
+    },
+    {
+      "path": "situations.1.options.0.contact_text",
+      "kind": "timing",
+      "problem": "The success text for the 'ask' option in the club meeting situation includes a contact message to Ms. Okafor, but the situation is a private interaction within the club; while not impossible, the 'contact' mechanism usually implies a direct message or notification, which is less likely to be the primary outcome of asking a question in person compared to the 'family_chat' situation, but more importantly, the 'contact' field is often used for asynchronous communication. However, a clearer timing issue is in the 'club_meeting' situation itself.",
+      "value": "Priya is engaged in her club activities."
+    },
+    {
+      "path": "situations.1",
+      "kind": "timing",
+      "problem": "The 'club_meeting' situation has a 'requires_facts' of 'invited_to_club': true, but the invitation happens on day 14. The situation has a 'rate_per_year' of 8. If the simulation starts on day 0, this situation cannot occur until day 14. This is not a problem in itself, but if the 'rate_per_year' is interpreted as a continuous probability from day 0, it might attempt to trigger before the fact is set. However, the 'requires_facts' guard prevents this. A more subtle timing issue is that the 'club_meeting' situation assumes Priya is *at* the club meeting. The group 'robotics_club' has a 'first_day' of 14. So the situation is valid only on Thursdays after day 14. The rate_per_year of 8 is roughly 1.5 times per month, which is reasonable for a weekly club (4-5 times a month). No major timing contradiction here.",
+      "value": {
+        "id": "club_meeting",
+        "actor": "priya",
+        "situation": "You are at the robotics club meeting. You have a question about a circuit.",
+        "rate_per_year": 8,
+        "requires_facts": {
+          "priya": {
+            "invited_to_club": true
+          }
+        },
+        "goal_id": "make_friends",
+        "options": [
+          {
+            "id": "ask",
+            "label": "Ask the teacher or a peer.",
+            "success_probability": 0.6,
+            "valence_success": 0.6,
+            "valence_failure": -0.2,
+            "success_text": "I asked my question and got a helpful answer.",
+            "failure_text": "I asked but felt embarrassed by the response.",
+            "contact": "ms_okafor",
+            "contact_text": "Priya is engaged in her club activities.",
+            "importance": 0.7,
+            "arousal": 0.5,
+            "progress_gain": 0.15,
+            "duration_hours": 1.5
+          },
+          {
+            "id": "stay_silent",
+            "label": "Keep to yourself.",
+            "success_probability": 0.9,
+            "valence_success": 0.0,
+            "valence_failure": -0.1,
+            "success_text": "I stayed quiet and focused on my work.",
+            "failure_text": "I missed out on learning by staying silent.",
+            "importance": 0.4,
+            "arousal": 0.2,
+            "progress_gain": 0.05,
+            "duration_hours": 1.5
+          }
+        ]
+      }
+    },
+    {
+      "path": "household.rooms.school_lab",
+      "kind": "unsupported",
+      "problem": "The setting describes the school as a separate location 20 minutes away, but the household structure includes 'school_lab' as a room in the household, which implies the school is part of the apartment or the household model incorrectly merges the school location into the home's room graph without a distinct 'school' location node, making the '20-minute walk' route from 'bedroom' to 'school_lab' physically inconsistent with the spatial separation described in the setting.",
+      "value": {
+        "label": "School Robotics Lab",
+        "audible_to": []
+      }
+    }
+  ]
+}

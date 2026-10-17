@@ -101,6 +101,24 @@ def main():
     assert not any(k.startswith('group-shift') for k in runtime['conversations'])
     assert any(t.get('status') == 'one attendee; no conversation' for t in runtime['trace'])
     checks.append('a one-person group (a work shift) commutes there and back every day without a conversation')
+    # A topic list rotates per meeting; "how the last session ended" follows the group, not the topic.
+    from devsim import household
+    r, rpolicy = fixture()
+    rpolicy['household']['groups']['robotics']['meetings']['topic'] = ['Build the robot arm.', 'Plan the competition.']
+    Lifetime(r, rpolicy, scripted=True).run(11)
+    rotated = [r.state['runtime']['conversations'][f'group-robotics-{n}']['spec'] for n in (0, 1)]
+    assert [s['topic'] for s in rotated] == ['Build the robot arm.', 'Plan the competition.'] and {s['group'] for s in rotated} == {'robotics'}
+    later = r.state['runtime']['conversations']['group-robotics-1']
+    later.update(status='open', active=['kid'])
+    assert household.conversation_memory(r, 'kid')['previous_session']['last_turns']
+    fixed, fpolicy = fixture()
+    fpolicy['household']['groups']['robotics']['meetings']['topic'] = []
+    try:
+        Lifetime(fixed, fpolicy, scripted=True); raise AssertionError('empty topic list accepted')
+    except ValueError:
+        pass
+    checks.append('a meeting topic list rotates one topic per meeting (an empty list is rejected), and the previous-session '
+                  'memory follows the group across topics')
     checks += ['group meetings bring available members to the meeting place over timed routes, then home again',
                'meeting talk reaches only the people at the meeting place']
 
@@ -151,6 +169,21 @@ def main():
     assert all(errors)
     checks.append('unknown route rooms, non-member channel speakers, existing-member invitations, malformed interviews, '
                   'contactless option conversations, oversized meetings and one-person channels are rejected')
+
+    # The v2 environment dry run: a person walking home was sent to a meeting, teleported there, and the old arrival
+    # later moved them home mid-meeting. Now an interrupted traveller turns back from where the walk began.
+    from devsim import household
+    e, policy = fixture(); c = Lifetime(e, policy, scripted=True); c.run(.5)
+    assert household.travel(c, 'kid', 'lab', 'walk') is not None
+    e.advance(e.day + 5 / 1440)
+    assert household.location(e, 'kid') is None and household.heading(e, 'kid')[1]['room'] == 'lab'
+    assert household.travel(c, 'kid', 'bedroom', 'back') == e.day and household.location(e, 'kid') == 'bedroom'
+    assert household.heading(e, 'kid') is None and not e.state['runtime']['trips']
+    assert next(b for b in e.agent('kid')['calendar'] if b['activity'] == '@travel:walk')['status'] != 'reserved'
+    household.travel(c, 'kid', 'lab', 'again'); e.advance(e.day + 5 / 1440)
+    e.state['runtime']['trips']['again'].pop('origin')  # a leg from an older checkpoint: no known way back
+    assert household.travel(c, 'kid', 'bedroom', 'blocked') is None and household.heading(e, 'kid')[0] == 'again'
+    checks.append('a new journey while travelling turns back from the interrupted walk\'s origin, cancelling its arrival and calendar slot; no teleporting')
 
     result = {'passed': True, 'scope': 'engineering only; scripted fixture', 'checks': checks}
     RESULTS_DIR.joinpath('environment-engineering-checks.json').write_text(json.dumps(result, indent=2) + '\n')

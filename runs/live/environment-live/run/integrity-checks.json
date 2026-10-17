@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "day": 31.5,
+  "requests": 253,
+  "requests_by_purpose": {
+    "appraisal": 225,
+    "semantic_recall": 14,
+    "action": 14
+  },
+  "repairs": 0,
+  "routine_movement_appraisals": 176,
+  "invitation": {
+    "decision": "accept",
+    "membership": [
+      "ms_okafor",
+      "priya"
+    ],
+    "fact_member_robotics_club": true
+  },
+  "club_meetings": {
+    "group-robotics_club-0": {
+      "participants": [
+        "ms_okafor",
+        "priya"
+      ],
+      "turns": 2,
+      "status": "closed",
+      "closed_reason": "response interval conflicts with availability or calendar"
+    },
+    "group-robotics_club-1": {
+      "participants": [
+        "ms_okafor",
+        "priya"
+      ],
+      "turns": 2,
+      "status": "closed",
+      "closed_reason": "response interval conflicts with availability or calendar"
+    },
+    "group-robotics_club-2": {
+      "participants": [
+        "ms_okafor",
+        "priya"
+      ],
+      "turns": 2,
+      "status": "closed",
+      "closed_reason": "response interval conflicts with availability or calendar"
+    }
+  },
+  "club_talk_reached_only_attendees": true,
+  "arun_shift_commutes_completed": 62,
+  "kitchen_interview": {
+    "status": "closed",
+    "closed_reason": "questions finished",
+    "turns": [
+      [
+        "meera",
+        "speak",
+        "How is school going?"
+      ],
+      [
+        "priya",
+        "speak",
+        "It's... okay. I joined the robotics club, so that's new. I'm still getting used to everyone."
+      ],
+      [
+        "meera",
+        "speak",
+        "Have you made any friends yet?"
+      ],
+      [
+        "priya",
+        "speak",
+        "Not really yet. I'm still just getting used to everyone in the robotics club, so I'm mostly just watching how things work right now."
+      ]
+    ],
+    "received_by": [
+      "meera",
+      "priya"
+    ]
+  },
+  "channel_and_room_talks": {},
+  "channel_messages_members_only_no_encounter": true,
+  "graph_retrieval_status": {
+    "priya": "ready",
+    "arun": null,
+    "meera": null,
+    "ms_okafor": "ready"
+  },
+  "json_sqlite_equivalence": true,
+  "scope": "Actual HauhauCS 27B run of a model-drafted, model- and human-reviewed environment scenario to day 31.5; engineering integration, no human predictive claim."
+}

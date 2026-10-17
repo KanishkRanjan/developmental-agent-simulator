@@ -5,12 +5,14 @@
     "a channel conversation reaches members in other rooms as read messages, not encounters, and no one else",
     "an invitation is received, decided by the invitee, and acceptance becomes membership and a committed fact",
     "a one-person group (a work shift) commutes there and back every day without a conversation",
+    "a meeting topic list rotates one topic per meeting (an empty list is rejected), and the previous-session memory follows the group across topics",
     "group meetings bring available members to the meeting place over timed routes, then home again",
     "meeting talk reaches only the people at the meeting place",
     "a scheduled interview asks the fixed questions in order and takes simulated time on both calendars",
     "interview speech is overheard in an audible adjacent room and not beyond it",
     "an agent can start an interview with a contact by choosing an option; it runs over a shared room or channel",
     "a checkpoint saved mid-commute and mid-meeting resumes to the same state as an uninterrupted run",
-    "unknown route rooms, non-member channel speakers, existing-member invitations, malformed interviews, contactless option conversations, oversized meetings and one-person channels are rejected"
+    "unknown route rooms, non-member channel speakers, existing-member invitations, malformed interviews, contactless option conversations, oversized meetings and one-person channels are rejected",
+    "a new journey while travelling turns back from the interrupted walk's origin, cancelling its arrival and calendar slot; no teleporting"
   ]
 }

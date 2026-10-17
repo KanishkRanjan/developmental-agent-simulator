@@ -16,6 +16,8 @@ The [source manifest](../../docs/source-audit-manifest.json) records original lo
 | [Mental Health Agent Simulator Design](<Mental Health Agent Simulator Design.pdf>) | [Searchable text](<Mental Health Agent Simulator Design.txt>) |
 | [Mood and Memory](<Mood and Memory.pdf>) | [Searchable text](<Mood and Memory.txt>) |
 | [Lifespan Development](<Lifespan Development.pdf>) | [Searchable text](<Lifespan Development.txt>) |
+| [Hopfield Networks is All You Need (blog)](<Hopfield Networks is All You Need (blog).html>) — external web page, ml-jku.github.io/hopfield-layers, retrieved 17 Oct 2026; figures not archived; paper arXiv:2008.02217 | [Searchable text](<Hopfield Networks is All You Need (blog).txt>) |
+| [Hopfield Networks: Neural Memory Machines](<Hopfield Networks - Neural Memory Machines (TDS).html>) — external article, Ethan Crouse, Towards Data Science, 2022, retrieved 17 Oct 2026; equations are images and not in the text | [Searchable text](<Hopfield Networks - Neural Memory Machines (TDS).txt>) |
 
 ## Conversation and implementation references
 

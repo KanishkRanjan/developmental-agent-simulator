@@ -1,0 +1,405 @@
+{
+  "title": "New School, New Home",
+  "summary": "Priya navigates the social challenges of a new school while balancing her family dynamics with her father's night shifts and her grandmother's presence.",
+  "seed": 42,
+  "duration_years": 0.17,
+  "people": [
+    {
+      "id": "priya",
+      "name": "Priya",
+      "age_years": 15,
+      "facets": {
+        "N1": 75,
+        "N4": 60,
+        "E1": 40,
+        "C1": 30
+      },
+      "facet_basis": "Anxious about making friends, new environment, self-conscious.",
+      "caregivers": [
+        "arun",
+        "meera"
+      ],
+      "goals": [
+        {
+          "id": "make_friends",
+          "description": "Establish a peer group at the new school.",
+          "priority": 1
+        },
+        {
+          "id": "fit_in",
+          "description": "Feel comfortable in the new school environment.",
+          "priority": 0.5
+        }
+      ],
+      "private_background": [
+        "I moved here recently and don't know anyone.",
+        "I worry I'll say the wrong thing and get laughed at.",
+        "I hope the robotics club is as interesting as it sounds."
+      ],
+      "facts": {
+        "school_start": true
+      }
+    },
+    {
+      "id": "arun",
+      "name": "Arun",
+      "age_years": 44,
+      "facets": {
+        "A3": 80,
+        "N3": 40
+      },
+      "facet_basis": "Worries about absence, altruistic nurse.",
+      "caregivers": [],
+      "goals": [
+        {
+          "id": "support_priya",
+          "description": "Ensure Priya feels supported despite work schedule.",
+          "priority": 1
+        }
+      ],
+      "private_background": [
+        "I work nights so I miss most of her day.",
+        "I try to stay connected via the group chat.",
+        "I worry I'm not there enough."
+      ],
+      "facts": {
+        "works_nights": true
+      }
+    },
+    {
+      "id": "meera",
+      "name": "Meera",
+      "age_years": 71,
+      "facets": {
+        "A6": 90,
+        "C2": 70
+      },
+      "facet_basis": "Warm, old-fashioned, orderly.",
+      "caregivers": [],
+      "goals": [
+        {
+          "id": "guide_priya",
+          "description": "Help Priya adjust to the new life.",
+          "priority": 0.8
+        }
+      ],
+      "private_background": [
+        "I am here to support my granddaughter.",
+        "I believe in traditional ways of doing things.",
+        "I want to know how her school is going."
+      ],
+      "facts": {
+        "lives_at_home": true
+      }
+    },
+    {
+      "id": "ms_okafor",
+      "name": "Ms. Okafor",
+      "age_years": 45,
+      "facets": {
+        "C4": 70
+      },
+      "facet_basis": "Runs the robotics club, professional teacher.",
+      "caregivers": [],
+      "goals": [
+        {
+          "id": "run_club",
+          "description": "Manage the robotics club effectively.",
+          "priority": 1
+        }
+      ],
+      "private_background": [
+        "I run the robotics club at school.",
+        "I look for interested students to join."
+      ],
+      "facts": {
+        "teacher": true
+      }
+    }
+  ],
+  "household": {
+    "rooms": {
+      "kitchen": {
+        "label": "Kitchen",
+        "audible_to": [
+          "living_room",
+          "bedroom"
+        ]
+      },
+      "living_room": {
+        "label": "Living Room",
+        "audible_to": [
+          "kitchen",
+          "bedroom"
+        ]
+      },
+      "bedroom": {
+        "label": "Priya's Bedroom",
+        "audible_to": [
+          "kitchen",
+          "living_room"
+        ]
+      },
+      "school_lab": {
+        "label": "School Robotics Lab",
+        "audible_to": []
+      },
+      "hospital": {
+        "label": "the hospital ward",
+        "audible_to": []
+      }
+    },
+    "locations": {
+      "priya": "bedroom",
+      "arun": "bedroom",
+      "meera": "living_room",
+      "ms_okafor": "school_lab"
+    },
+    "routines": {
+      "priya": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          30
+        ]
+      },
+      "arun": {
+        "available_hours": [
+          [
+            8,
+            24
+          ]
+        ],
+        "response_minutes": [
+          10,
+          60
+        ]
+      },
+      "meera": {
+        "available_hours": [
+          [
+            6,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          20
+        ]
+      },
+      "ms_okafor": {
+        "available_hours": [
+          [
+            8,
+            18
+          ]
+        ],
+        "response_minutes": [
+          10,
+          60
+        ]
+      }
+    },
+    "routes": [
+      {
+        "a": "bedroom",
+        "b": "school_lab",
+        "minutes": 20
+      },
+      {
+        "a": "kitchen",
+        "b": "school_lab",
+        "minutes": 20
+      },
+      {
+        "a": "living_room",
+        "b": "school_lab",
+        "minutes": 20
+      },
+      {
+        "a": "bedroom",
+        "b": "hospital",
+        "minutes": 30
+      }
+    ],
+    "groups": {
+      "robotics_club": {
+        "label": "Robotics Club",
+        "place": "school_lab",
+        "members": [
+          "ms_okafor"
+        ],
+        "meetings": {
+          "first_day": 14,
+          "start_hour": 16,
+          "duration_hours": 1.5,
+          "every_days": 7,
+          "topic": "Robotics",
+          "max_turns": 10
+        }
+      },
+      "evening_shift": {
+        "label": "Arun's evening shift",
+        "place": "hospital",
+        "members": [
+          "arun"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 14.5,
+          "duration_hours": 8,
+          "every_days": 1,
+          "topic": "Ward work"
+        }
+      }
+    },
+    "channels": {
+      "family_chat": {
+        "label": "Family Group Chat",
+        "members": [
+          "priya",
+          "arun",
+          "meera"
+        ]
+      }
+    },
+    "invitations": [
+      {
+        "id": "club_invite",
+        "day": 10.65,
+        "group": "robotics_club",
+        "invitee": "priya",
+        "inviter": "ms_okafor"
+      }
+    ],
+    "conversations": [
+      {
+        "id": "kitchen_talk",
+        "day": 30.8,
+        "room": "kitchen",
+        "participants": [
+          "meera",
+          "priya"
+        ],
+        "topic": "How school is going",
+        "interviewer": "meera",
+        "questions": [
+          "How is school going?",
+          "Have you made any friends yet?"
+        ],
+        "max_turns": 4
+      }
+    ],
+    "moves": [
+      {
+        "id": "priya_to_kitchen",
+        "day": 30.79,
+        "actor": "priya",
+        "room": "kitchen"
+      },
+      {
+        "id": "meera_to_kitchen",
+        "day": 30.79,
+        "actor": "meera",
+        "room": "kitchen"
+      }
+    ]
+  },
+  "situations": [
+    {
+      "id": "lunch_social",
+      "actor": "priya",
+      "situation": "You are at lunch and see a group of students talking. You want to join them.",
+      "rate_per_year": 30,
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "join",
+          "label": "Walk over and say hi.",
+          "success_probability": 0.4,
+          "valence_success": 0.5,
+          "valence_failure": -0.3,
+          "success_text": "I joined the conversation and felt included.",
+          "failure_text": "I tried to join but they seemed closed off.",
+          "importance": 0.8,
+          "arousal": 0.6,
+          "progress_gain": 0.1,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "observe",
+          "label": "Sit alone and watch.",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.1,
+          "success_text": "I sat quietly and observed the group.",
+          "failure_text": "I felt isolated sitting alone.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    },
+    {
+      "id": "family_chat",
+      "actor": "priya",
+      "situation": "Your father sends a message in the family chat asking how your day was.",
+      "rate_per_year": 60,
+      "goal_id": "fit_in",
+      "options": [
+        {
+          "id": "share",
+          "label": "Share details about your day.",
+          "success_probability": 0.8,
+          "valence_success": 0.4,
+          "valence_failure": -0.1,
+          "success_text": "I shared my day and felt connected to my family.",
+          "failure_text": "I shared but felt my father didn't fully understand.",
+          "contact": "arun",
+          "contact_text": "Priya shared her day with me.",
+          "importance": 0.6,
+          "arousal": 0.4,
+          "progress_gain": 0.1,
+          "duration_hours": 0.1,
+          "conversation": {
+            "topic": "Priya's day at school",
+            "max_turns": 4
+          }
+        },
+        {
+          "id": "brief",
+          "label": "Send a brief response.",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.1,
+          "success_text": "I sent a brief response to keep the peace.",
+          "failure_text": "I felt distant from my family after the brief reply.",
+          "contact": "arun",
+          "contact_text": "Priya gave a brief response.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.05,
+          "duration_hours": 0.1
+        }
+      ]
+    }
+  ],
+  "interventions": [],
+  "assumptions": [
+    "Priya's anxiety is driven by the move and new school.",
+    "Arun's worry stems from his work schedule.",
+    "Meera's old-fashioned nature influences her interactions.",
+    "The robotics club is a key social opportunity for Priya.",
+    "The family chat is the primary communication channel between Priya and Arun during the day.",
+    "Ms. Okafor is 45 years old as a reasonable age for a senior teacher.",
+    "Reviewer: Arun commutes 30 minutes each way to the hospital and is reachable on the family chat at work.",
+    "Reviewer: the club invitation arrives after school on day 10 (second week of term); meetings start on day 14 at 16:00.",
+    "Reviewer: Meera's month-end check-in is at 19:12 on day 30 in the kitchen."
+  ]
+}

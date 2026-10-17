@@ -8,8 +8,10 @@ def known(engine,owner,observation=None):
     ids=set(agent['relationships'])|set(agent['references'])
     if observation:
         ids.update(observation.get('encountered',[]));ids.update(observation.get('references',[]))
+    # A handle is a unique alias: "@priya0123" resolves where a shared name like "Priya" stays unresolved.
+    handle=lambda key:[h for h in (engine.state['entities'][key]['facts'].get('handle'),) if h]
     return {key:{'id':key,'name':engine.state['entities'][key]['name'],
-                 'aliases':engine.state['entities'][key]['facts'].get('aliases',[])}
+                 'aliases':engine.state['entities'][key]['facts'].get('aliases',[])+[a for h in handle(key) for a in (h,'@'+h)]}
             for key in sorted(ids) if key in engine.state['entities'] and key!=owner}
 
 

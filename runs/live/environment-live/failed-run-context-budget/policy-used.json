@@ -1,0 +1,289 @@
+{
+  "description": "New School, New Home: authored scenario. All rates, probabilities, valences, ages and facet percentiles are scenario assumptions, not measured values.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "lunch_social",
+      "actor": "priya",
+      "situation": "You are at lunch and see a group of students talking. You want to join them.",
+      "rate_per_year": 30,
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "join",
+          "label": "Walk over and say hi.",
+          "success_probability": 0.4,
+          "valence_success": 0.5,
+          "valence_failure": -0.3,
+          "success_text": "I joined the conversation and felt included.",
+          "failure_text": "I tried to join but they seemed closed off.",
+          "importance": 0.8,
+          "arousal": 0.6,
+          "progress_gain": 0.1,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "observe",
+          "label": "Sit alone and watch.",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.1,
+          "success_text": "I sat quietly and observed the group.",
+          "failure_text": "I felt isolated sitting alone.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    },
+    {
+      "id": "family_chat",
+      "actor": "priya",
+      "situation": "Your father sends a message in the family chat asking how your day was.",
+      "rate_per_year": 60,
+      "goal_id": "fit_in",
+      "options": [
+        {
+          "id": "share",
+          "label": "Share details about your day.",
+          "success_probability": 0.8,
+          "valence_success": 0.4,
+          "valence_failure": -0.1,
+          "success_text": "I shared my day and felt connected to my family.",
+          "failure_text": "I shared but felt my father didn't fully understand.",
+          "contact": "arun",
+          "contact_text": "Priya shared her day with me.",
+          "importance": 0.6,
+          "arousal": 0.4,
+          "progress_gain": 0.1,
+          "duration_hours": 0.1,
+          "conversation": {
+            "topic": "Priya's day at school",
+            "max_turns": 4
+          }
+        },
+        {
+          "id": "brief",
+          "label": "Send a brief response.",
+          "success_probability": 0.9,
+          "valence_success": 0.1,
+          "valence_failure": -0.1,
+          "success_text": "I sent a brief response to keep the peace.",
+          "failure_text": "I felt distant from my family after the brief reply.",
+          "contact": "arun",
+          "contact_text": "Priya gave a brief response.",
+          "importance": 0.5,
+          "arousal": 0.3,
+          "progress_gain": 0.05,
+          "duration_hours": 0.1
+        }
+      ]
+    }
+  ],
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 8
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "cognition": {
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "graphiti_retrieval": true
+  },
+  "household": {
+    "rooms": {
+      "kitchen": {
+        "label": "Kitchen",
+        "audible_to": [
+          "living_room",
+          "bedroom"
+        ]
+      },
+      "living_room": {
+        "label": "Living Room",
+        "audible_to": [
+          "kitchen",
+          "bedroom"
+        ]
+      },
+      "bedroom": {
+        "label": "Priya's Bedroom",
+        "audible_to": [
+          "kitchen",
+          "living_room"
+        ]
+      },
+      "school_lab": {
+        "label": "School Robotics Lab",
+        "audible_to": []
+      },
+      "hospital": {
+        "label": "the hospital ward",
+        "audible_to": []
+      }
+    },
+    "locations": {
+      "priya": "bedroom",
+      "arun": "bedroom",
+      "meera": "living_room",
+      "ms_okafor": "school_lab"
+    },
+    "routines": {
+      "priya": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          30
+        ]
+      },
+      "arun": {
+        "available_hours": [
+          [
+            8,
+            24
+          ]
+        ],
+        "response_minutes": [
+          10,
+          60
+        ]
+      },
+      "meera": {
+        "available_hours": [
+          [
+            6,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          20
+        ]
+      },
+      "ms_okafor": {
+        "available_hours": [
+          [
+            8,
+            18
+          ]
+        ],
+        "response_minutes": [
+          10,
+          60
+        ]
+      }
+    },
+    "routes": [
+      {
+        "a": "bedroom",
+        "b": "school_lab",
+        "minutes": 20
+      },
+      {
+        "a": "kitchen",
+        "b": "school_lab",
+        "minutes": 20
+      },
+      {
+        "a": "living_room",
+        "b": "school_lab",
+        "minutes": 20
+      },
+      {
+        "a": "bedroom",
+        "b": "hospital",
+        "minutes": 30
+      }
+    ],
+    "groups": {
+      "robotics_club": {
+        "label": "Robotics Club",
+        "place": "school_lab",
+        "members": [
+          "ms_okafor"
+        ],
+        "meetings": {
+          "first_day": 14,
+          "start_hour": 16,
+          "duration_hours": 1.5,
+          "every_days": 7,
+          "topic": "Robotics",
+          "max_turns": 10
+        }
+      },
+      "evening_shift": {
+        "label": "Arun's evening shift",
+        "place": "hospital",
+        "members": [
+          "arun"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 14.5,
+          "duration_hours": 8,
+          "every_days": 1,
+          "topic": "Ward work"
+        }
+      }
+    },
+    "channels": {
+      "family_chat": {
+        "label": "Family Group Chat",
+        "members": [
+          "priya",
+          "arun",
+          "meera"
+        ]
+      }
+    },
+    "invitations": [
+      {
+        "id": "club_invite",
+        "day": 10.65,
+        "group": "robotics_club",
+        "invitee": "priya",
+        "inviter": "ms_okafor"
+      }
+    ],
+    "conversations": [
+      {
+        "id": "kitchen_talk",
+        "day": 30.8,
+        "room": "kitchen",
+        "participants": [
+          "meera",
+          "priya"
+        ],
+        "topic": "How school is going",
+        "interviewer": "meera",
+        "questions": [
+          "How is school going?",
+          "Have you made any friends yet?"
+        ],
+        "max_turns": 4
+      }
+    ],
+    "moves": [
+      {
+        "id": "priya_to_kitchen",
+        "day": 30.79,
+        "actor": "priya",
+        "room": "kitchen"
+      },
+      {
+        "id": "meera_to_kitchen",
+        "day": 30.79,
+        "actor": "meera",
+        "room": "kitchen"
+      }
+    ]
+  }
+}

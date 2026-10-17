@@ -1,12 +1,16 @@
 """Scenario authoring checks: deterministic compile, strict vocabulary, model draft repair; stubbed model."""
 from copy import deepcopy
 import json
+import re
+import subprocess
+import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from devsim.author import COMPILER_DEFAULTS, compile_scenario, draft, review
 from devsim.engine import Engine
+from devsim import cognition
 from devsim.lifetime import Lifetime
 
 RESULTS_DIR = Path(__file__).resolve().parent / 'results'
@@ -52,7 +56,8 @@ def main():
     checks = []
     engine, policy, report = compile_scenario(deepcopy(SPEC))
     sam = engine.agent('sam')
-    assert engine.state['entities']['sam']['facts'] == {'birth_day': -15 * 365.25, 'caregivers': ['dana']}
+    identity = dict(engine.state['entities']['sam']['facts'])
+    assert re.fullmatch(r'sam\d{4}', identity.pop('handle')) and identity == {'birth_day': -15 * 365.25, 'caregivers': ['dana']}
     assert sam['facets']['N1'] == 70 and sam['facets']['E2'] == 30 and sam['facets']['C1'] == 50
     assert sam['goals']['friends']['priority'] == .8 and 'runtime' not in engine.state
     background = sam['memory_meta']['scenario-background-sam-0']
@@ -68,7 +73,10 @@ def main():
             'interventions.0.day', 'duration_years'} <= paths and 'seed' not in paths
     assert report['compiler_defaults'] == COMPILER_DEFAULTS and report['model_stated_assumptions'] == SPEC['assumptions']
     assert 'scenario assumptions' in policy['description']
-    assert policy['cognition'] == {'semantic_recall': True, 'indexed_retrieval': True, 'graphiti_retrieval': True}
+    assert policy['cognition'] == {'semantic_recall': True, 'indexed_retrieval': True, 'graphiti_retrieval': True, **cognition.MEMORY_DEFAULTS}
+    assert policy['consolidation_batch_size'] == 8
+    assert policy['situational_personality'] == {'recovery_half_life_days': 1}
+    assert policy['horizon_days'] == SPEC['duration_years'] * 365.25
     checks += ['assumptions report lists every generated number, compiler default and stated assumption']
 
     dry = report['scripted_dry_run']
@@ -199,6 +207,30 @@ def main():
     assert any('Facts that can be set for sam: none' in e for e in errors)
     checks += ['out-of-vocabulary keys, facet codes and ranges, ids, caregivers, actors, contacts, rates, probabilities, '
                'intervention days/recipients, testimony sources, fact keys/values/reachability, effects, conversation participants and size limits are rejected with field names']
+
+    # The overnight environment scenario: a parent started in the teenager's labelled room, and had a goal but no way to act.
+    owned = edit(lambda s: s['household']['rooms'].update(bedroom={'label': "Sam's bedroom"}) or s['household']['locations'].update(dana='bedroom'))
+    assert 'give Dana their own room' in reject(owned)
+    compile_scenario(edit(lambda s: s['household']['rooms'].update(nursery={'label': "Rio's nursery"}) or
+                          s['household']['locations'].update(dana='nursery')), dry_run=False)  # an infant's caregiver may
+    idle = edit(lambda s: s['people'][1].update(goals=[{'id': 'help', 'description': 'Help Sam.', 'priority': .5}]) or
+                s['household'].update(conversations=[]))
+    assert 'no way to act' in reject(idle)
+    assert 'household room' in reject(edit(lambda s: s['situations'][0].update(room='nowhere')))
+    assert 'hours' in reject(edit(lambda s: s['situations'][0].update(hours=[13, 12])))
+    _, timed, _ = compile_scenario(edit(lambda s: s['situations'][0].update(room='kitchen', hours=[11.5, 13.5]) or
+                                        s['household'].update(routines={'sam': {'response_minutes': [5, 30]}})), dry_run=False)
+    assert timed['household']['routines']['sam']['in_person_response_minutes'] == [.25, 2]
+    assert timed['opportunities'][0]['room'] == 'kitchen' and timed['opportunities'][0]['hours'] == [11.5, 13.5]
+    with TemporaryDirectory() as directory:
+        Path(directory, 'policy.json').write_text(json.dumps(timed))
+        out = Path(directory, 'out')
+        run = subprocess.run([sys.executable, '-m', 'devsim.run_live', '--world', 'unused.json', '--policy',
+                              str(Path(directory, 'policy.json')), '--until-day', '400', '--out', str(out)],
+                             capture_output=True, text=True)
+        assert run.returncode != 0 and 'past the scenario horizon' in run.stderr and not out.exists()
+    checks += ['rooms labelled as one person\'s cannot be another\'s start (except an infant\'s caregiver); every person with goals needs a way to act; '
+               'situation room/hours are validated and compiled; face-to-face reply delay defaults to 0.25-2 minutes; run_live refuses to pass the scenario horizon']
 
     calls = []
     def stub(system, context, api, model, max_tokens=600):

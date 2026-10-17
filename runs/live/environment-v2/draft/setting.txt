@@ -1,0 +1,7 @@
+A family of three shares a small apartment with two bedrooms, a kitchen and a living room. Priya, 15, has one bedroom; her father Arun, 44, has the other; her grandmother Meera, 71, sleeps on a fold-out bed in the living room. Priya has just started at a new school after a move and is anxious about making friends. The school is a 20-minute walk from home; she attends every school day from 08:30 to 15:00 with her classmates and eats lunch in the school cafeteria around 12:00.
+
+Arun works evening shifts as a hospital nurse (roughly 15:00 to 23:00), worries he is not around enough, and keeps in touch with Priya through the written family group chat. Meera is usually home, warm but a little old-fashioned. At the end of the first month, Meera sits down with Priya in the kitchen one evening and asks how school is going.
+
+Three classmates matter. Kiara, 15, is popular, quick-tempered and dismissive; she mocks newcomers and spreads gossip, and she sits at the cafeteria table Priya would like to join. Rohan, 16, is in the robotics club; he is arrogant and competitive, interrupts others and takes credit for their work. Dev, 15, also in the club, is shy and kind and rarely speaks first.
+
+In the second week of term, Ms. Okafor, the physics teacher who runs the robotics club, invites Priya to join; the club (Ms. Okafor, Rohan, Dev and, if she accepts, Priya) meets every Thursday after school in the school lab. Simulate the first two months.

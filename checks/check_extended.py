@@ -70,6 +70,131 @@ def policy():
                 'effects_success':{'resources':{'a':{'money':2}},'facts':{'a':{'employment':'project-worker'}}}}]}]}
 
 
+def memory_physics():
+    """Exact-word fading, Hopfield-style sampled recall, neuroticism rumination and mood-strengthened encoding."""
+    from devsim.engine import InvalidModelOutput
+    checks=[]
+    long='Kiara, the dance is just logistics; my closed-loop feedback system with real-time latency compensation is the only thing keeping this together.'
+    e=world(); cognition.configure(e,{'verbatim_days':1})
+    gist=lambda s,c,a,m,t=600: {**stub(s,c,a,m,t),'gist':'Rohan said his robot code matters more than the dance.'}
+    with patch('devsim.engine.request_json',side_effect=stub):
+        try: e.appraise('a',{'text':'Rohan said: '+long,'source':'b'},api='stub',model='stub'); raise AssertionError('gist missing')
+        except InvalidModelOutput: pass
+    with patch('devsim.engine.request_json',side_effect=gist):
+        heard=e.appraise('a',{'text':'Rohan said: '+long,'source':'b'},api='stub',model='stub')
+    e.schedule('rohan-line',e.day,'Rohan speaks.',{'a':heard}); e.advance(e.day)
+    seen=lambda: next(v for v in cognition.views(e,'a','robot dance',30) if v['event']=='rohan-line')
+    assert seen()['text']=='Rohan said: '+long and seen()['exact_words']
+    e.advance(e.day+2)
+    later=seen()
+    assert later['text']==heard['gist'] and not later['exact_words'] and later['original_detail_available']
+    assert e.world.observations['a'][-1].text=='Rohan said: '+long  # the stored original is untouched
+    assert next(v for v in cognition.views(e,'a','folder rejected',30) if v['event']=='episode')['exact_words']  # no gist: kept
+    plain=world(); plain.schedule('line',plain.day,'Speech.',{'a':{'text':long,'source':'b','gist':'A short gist.'}})
+    plain.advance(plain.day+2); cognition.configure(plain,{})
+    assert next(v for v in cognition.views(plain,'a','dance',30) if v['event']=='line')['text']==long  # setting absent: unchanged
+    reject(lambda: world().schedule('bad',0,'x',{'a':{'text':'x','source':'b','gist':''}}))
+    checks.append('with verbatim_days, appraisal must return a short gist; exact words are shown only within the window, '
+                  'then the gist while the episode stays accessible; originals are stored unchanged; without the setting nothing changes')
+
+    # Meaning-based cueing: a faded memory sharing no words with the cue is found by meaning; fallback is flagged.
+    concepts=[{'shouted','yelled','screamed'},{'father','dad'},{'robot','arm'}]
+    def fake(texts):
+        out=[]
+        for t in texts:
+            w=set(cognition.words(t)); v=[float(bool(w&c)) for c in concepts]+[.3]; n=sum(x*x for x in v)**.5; out.append([x/n for x in v])
+        return out
+    m=world(); cognition.configure(m,{'semantic_matching':True})
+    m.schedule('dad',0,'Childhood.',{'a':{'text':'Father yelled loudly.','source':'direct','importance':.3,'gist':'My father yelled at me.'}}); m.advance(400)
+    cue='Rohan shouted today.'
+    with patch('devsim.graphiti_bridge.vectors',side_effect=fake):
+        found=next(v for v in cognition.views(m,'a',cue,30) if v['event']=='dad')
+    assert found['similarity']>.6 and found['matching']=='semantic' and not found['original_detail_available']
+    # Ranking too: with no shared words, the meaning match outranks an unrelated memory the tie-break would favour.
+    m.schedule('aaa-related',m.day,'Earlier.',{'a':{'text':'Dad screamed again.','source':'direct','importance':.4}}); m.advance(m.day)
+    m.schedule('zzz-unrelated',m.day+.01,'Later.',{'a':{'text':'The arm jammed.','source':'direct','importance':.4}}); m.advance(m.day+.01)
+    with patch('devsim.graphiti_bridge.vectors',side_effect=fake):
+        ranked=[v['event'] for v in cognition.views(m,'a',cue,30) if v['event'] in ('aaa-related','zzz-unrelated')]
+    assert ranked==['aaa-related','zzz-unrelated']
+    lexical=deepcopy(m); lexical.state['config']['cognition']={}
+    assert all(v['event']!='dad' for v in cognition.views(lexical,'a',cue,30))
+    m.schedule('now',m.day,'Lunch.',{'a':{'text':'Rohan shouted today at lunch.','source':'direct'}}); m.advance(m.day)
+    with patch('devsim.graphiti_bridge.vectors',side_effect=OSError('service down')):
+        down=cognition.views(m,'a',cue,30)
+    assert down and all(v['matching']=='lexical_fallback' for v in down) and all(v['event']!='dad' for v in down)
+    checks.append('semantic_matching cues a faded memory by meaning ("shouted" finds "yelled") with no shared words; '
+                  'an unreachable embedding service falls back to word matching, flagged on every result')
+
+    # Hopfield-style recall: P ∝ exp(beta * score), deterministic per query, read-only.
+    def crowd(beta):
+        w=world(); cognition.configure(w,{'recall_beta':beta} if beta else {})
+        for i in range(12):
+            w.schedule(f'm{i}',0,'Robot.',{'a':{'text':f'Robot practice {i}.','source':'direct','importance':i/12}})
+        w.advance(1); return w
+    order=lambda w,q='robot practice': [v['event'] for v in cognition.views(w,'a',q,12)]
+    greedy,sharp,loose=crowd(None),crowd(100),crowd(.01)
+    before=deepcopy(loose.state)
+    assert order(sharp)==order(greedy) and order(loose)!=order(greedy) and order(loose)==order(loose) and loose.state==before
+    tops=lambda w: sum(order(w,f'robot practice {q}')[0]=='m11' for q in ('a','b','c','d','e','f','g','h','i','j'))
+    assert tops(crowd(3))>tops(crowd(.01))
+    checks.append('recall_beta samples memories in proportion to exp(beta * score): high beta matches greedy ranking, low beta wanders, '
+                  'the draw is deterministic per query and inspection stays read-only')
+
+    # Neuroticism: more frequent background recall, leaning toward negative memories.
+    def person(n,k):
+        w=Engine(seed=12); w.entity('a','A',{'birth_day':-30*365.25}); w.materialize('a',dict.fromkeys(FACET_NAMES,50),birth_day=-30*365.25)
+        cognition.configure(w,{'rumination_per_year':12,'rumination_neuroticism':k})
+        w.agent('a')['facets'].update({f'N{i}':n for i in range(1,7)})
+        w.schedule('good',0,'Praise.',{'a':{'text':'My work was praised.','source':'direct','importance':.6,'valence':.6}})
+        w.schedule('bad',0,'Mockery.',{'a':{'text':'I was mocked at lunch.','source':'direct','importance':.5,'valence':-.6}})
+        w.advance(0); return w
+    rate=lambda n,k: Lifetime(person(n,k),{'sampling':'event_driven','opportunities':[],
+        'cognition':{'rumination_per_year':12,'rumination_neuroticism':k}},scripted=True)._rumination_rate('a')
+    assert rate(90,1)>rate(50,1)==12>rate(10,1) and rate(90,0)==rate(10,0)==12
+    pick=lambda n,k: cognition.ruminate(person(n,k),'a','a:ruminate:0')
+    assert pick(90,0)=='good' and pick(90,2)=='bad' and pick(10,2)=='good'
+    checks.append('rumination_neuroticism raises background recall rate with neuroticism and leans it toward negative memories; k=0 is unchanged')
+
+    # Mood and Memory pathway 1: a strong mood at encoding makes the new memory more durable.
+    def encoded(weight,explicit=None):
+        w=world(); cognition.configure(w,{'mood_encoding_weight':weight} if weight else {})
+        w.schedule('blow',w.day,'Loss.',{'a':{'text':'A loss.','source':'direct','valence':-1,'arousal':1}}); w.advance(w.day)
+        w.schedule('next',w.day,'Note.',{'a':{'text':'A note.','source':'direct',**({'stability_days':explicit} if explicit else {})}})
+        w.advance(w.day); return w.agent('a')['memory_meta']['next']['stability_days']
+    assert encoded(1)>encoded(0) and encoded(1,5.0)==encoded(0,5.0)==5.0
+    checks.append('mood_encoding_weight strengthens memories encoded in a strong mood; explicit stability and the default are unchanged')
+
+    # Mood reactivity from current traits (Mood and Memory trait table), normalized so an average person is unchanged.
+    def tempered(n,e_=50,explicit=None):
+        w=Engine(seed=3); w.entity('a','A',{'birth_day':-9000}); w.materialize('a',dict.fromkeys(FACET_NAMES,50),birth_day=-9000,affect=explicit)
+        w.agent('a')['facets'].update({**{f'N{i}':n for i in range(1,7)},**{f'E{i}':e_ for i in range(1,7)}})
+        cognition.configure(w,{'affect_from_traits':True}); return w
+    mid,anxious,outgoing=tempered(50).affect('a'),tempered(90).affect('a'),tempered(50,90).affect('a')
+    assert mid=={'recovery_multiplier':1,'positive_reactivity':1,'negative_reactivity':1,'rumination_fraction':.25}
+    assert anxious['negative_reactivity']>1 and anxious['recovery_multiplier']>1 and anxious['rumination_fraction']>.25
+    assert outgoing['positive_reactivity']>1 and outgoing['negative_reactivity']==1
+    assert tempered(90,explicit={'negative_reactivity':.5}).affect('a')['negative_reactivity']==.5 and world().affect('a')=={}
+    def hit(w): w.schedule('insult',w.day,'Insult.',{'a':{'text':'Mocked.','source':'direct','valence':-.5,'arousal':.3}}); w.advance(w.day); return w.mood('a')['valence']
+    assert hit(tempered(90))<hit(tempered(10))
+    checks.append('affect_from_traits derives reactivity, inertia and rumination from current neuroticism/extraversion; '
+                  'an average person is unchanged and explicit affect_parameters win')
+
+    # Average mood kernel: steady mild days stay mild where summed kernels saturate; strong events still dominate.
+    def stream(kernel,big=False):
+        w=Engine(seed=4,mood_kernel=kernel); w.entity('a','A',{'birth_day':-9000}); w.materialize('a',dict.fromkeys(FACET_NAMES,50),birth_day=-9000)
+        for i in range(300):
+            w.schedule(f's{i}',i/10,'Chatter.',{'a':{'text':f'Small talk {i}.','source':'direct','valence':.1,'arousal':.2}})
+        if big: w.schedule('loss',30,'Loss.',{'a':{'text':'A friend moved away.','source':'direct','valence':-.9,'arousal':.9}})
+        w.advance(30); return w.mood('a')
+    calm,summed=stream('average'),stream('power_law')
+    assert summed['arousal']>.9 and calm['arousal']<.3 and 0<calm['valence']<.2
+    assert stream('average',True)['valence']<-.2  # one strong loss flips a day of mild chatter (+0.04 -> about -0.28)
+    assert Engine(seed=5,mood_kernel='average').state['config']['mood_kernel']=='average'
+    checks.append('the average mood kernel keeps a steady stream of mild events mild (the power-law sum saturates arousal), '
+                  'lets a strong event dominate, and stays within bounds')
+    return checks
+
+
 def main():
     checks=[]
     e=world(); cognition.configure(e,{'reflection':True,'rumination_per_year':8})
@@ -96,6 +221,35 @@ def main():
         e.advance(e.day); e.agent('a')['memory_meta']['similar'+str(i)].update(summary='Another evaluation.',topics=['evaluation','work'])
     assert next(v for v in e.memories('a','work evaluation',30) if v['event']=='episode')['availability']<baseline
     checks.append('fan overload lowers retrieval accessibility without destroying storage')
+    # The overnight environment run died when recall cited a memory shown in context but not among candidates.
+    e.state['config']['cognition']['semantic_candidates']=1
+    def cite(choose):
+        return lambda s,c,a,m,t=600: {'memory_ids':choose(c)} if c.get('task')=='semantic_recall' else stub(s,c,a,m,t)
+    shown=lambda c:[next(m['event'] for m in c['memories'] if m['event'] not in {x['event'] for x in c['memory_candidates']})]
+    with patch('devsim.engine.request_json',side_effect=cite(shown)): cited=cognition.semantic_recall(e,'a','Another evaluation at work',api='stub',model='stub')
+    assert len(cited)==1 and cited[0] in e.agent('a')['memory_meta']
+    before=deepcopy(e.agent('a'))
+    with patch('devsim.engine.request_json',side_effect=cite(lambda c:['never-received'])):
+        assert cognition.semantic_recall(e,'a','A further evaluation',api='stub',model='stub')==[]
+    assert e.agent('a')==before and e.state['runtime']['skipped_model_steps'][-1]['step']=='semantic_recall'
+    del e.state['config']['cognition']['semantic_candidates']
+    checks.append('semantic recall accepts a memory already shown in its own context; ids never shown are rejected, and after failed repairs the optional step is skipped and recorded instead of ending the run')
+    # Boredom (inhibition of return): identical memories tie until one is recalled again and again.
+    for twin in ('twin-1','twin-2'):
+        e.schedule(twin,e.day,'The robot arm jammed.',{'a':{'text':'The robot arm jammed.','source':'direct','meaning':'A jam.','importance':.5}})
+    e.advance(e.day)
+    shown=[v for v in e.memories('a','robot arm jammed',30) if v['event'].startswith('twin')]
+    assert len(shown)==1 and shown[0]['times']==2 and len(e.agent('a')['memory_meta'])==len(e.world.observations['a'])
+    checks.append('identical memories collide into one context entry with a count; both stay stored')
+    rank=lambda: next(v for v in cognition.views(e,'a','robot arm jammed',30) if v['event'].startswith('twin'))
+    assert rank()['event']=='twin-2' and rank()['boredom_factor']==1
+    stability=e.agent('a')['memory_meta']['twin-2']['stability_days']
+    for i in range(4): e.recall('a','twin-2',f'a:bored:{i}')
+    assert rank()['event']=='twin-1' and e.agent('a')['memory_meta']['twin-2']['stability_days']==stability
+    factor=lambda: next(v for v in cognition.views(e,'a','robot arm jammed',30) if v['event']=='twin-2')['boredom_factor']
+    assert factor()>1
+    e.advance(e.day+31); assert factor()==1
+    checks.append('inhibition of return transiently lowers retrieval of over-recalled memories, then fades; storage unchanged')
     # Received new evidence may revise meaning but not original episodes.
     with patch('devsim.engine.request_json',side_effect=stub): cognition.reflect(e,'a','similar0',api='stub',model='stub')
     assert e.agent('a')['memory_meta']['episode']['versions']
@@ -103,7 +257,8 @@ def main():
     before=deepcopy(e.state)
     with patch('devsim.engine.request_json',return_value={'summary':'Bad','topics':[],'revisions':[],
             'narrative':{'text':'Bad','confidence':.5,'evidence':['secret']},'plans':[],'probes':[]}):
-        reject(lambda:cognition.reflect(e,'a','similar1',api='stub',model='stub'))
+        assert cognition.reflect(e,'a','similar1',api='stub',model='stub') is None  # optional step: skipped, not fatal
+    assert e.state['runtime']['skipped_model_steps'].pop()['step']=='reflection'
     assert e.state==before
     checks+=['conditional reinterpretation preserves original event and prior meaning','unreceived narrative evidence rejected before mutation']
     # Controlled historical expansion cannot promote an account into a fact or meeting.
@@ -272,6 +427,7 @@ def main():
         with patch('devsim.engine.request_json',side_effect=bounded_social): cognition.reflect(social,'a',mid,api='stub',model='stub')
     assert abs(social.agent('a')['relationships']['b']['trust']-.58)<1e-9
     checks.append('same-day trust/closeness changes share an absolute budget')
+    checks+=memory_physics()
     result={'passed':True,'scope':'synthetic integration checks; model responses stubbed, coefficients and world rules are provisional','checks':checks}
     RESULTS_DIR.joinpath('extended-engineering-checks.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

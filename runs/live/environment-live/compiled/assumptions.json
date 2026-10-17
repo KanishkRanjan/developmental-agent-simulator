@@ -1,0 +1,381 @@
+{
+  "title": "New School, New Home",
+  "duration_days": 62.0925,
+  "model_stated_assumptions": [
+    "Priya's anxiety is driven by the move and new school.",
+    "Arun's worry stems from his work schedule.",
+    "Meera's old-fashioned nature influences her interactions.",
+    "The robotics club is a key social opportunity for Priya.",
+    "The family chat is the primary communication channel between Priya and Arun during the day.",
+    "Ms. Okafor is 45 years old as a reasonable age for a senior teacher.",
+    "Reviewer: Arun commutes 30 minutes each way to the hospital and is reachable on the family chat at work.",
+    "Reviewer: the club invitation arrives after school on day 10 (second week of term); meetings start on day 14 at 16:00.",
+    "Reviewer: Meera's month-end check-in is at 19:12 on day 30 in the kitchen."
+  ],
+  "compiler_defaults": [
+    "Facets a person's spec leaves out are set to the 50th percentile (neutral), not sampled.",
+    "Planning uses elapsed activity calendars with an 8-hour daily activity budget.",
+    "Age-appropriate action constraints are on (infants act nonverbally).",
+    "Private background lines are seeded as internal day-0 experiences with provenance scenario_authoring; they are authored, not simulated history.",
+    "Interventions are controller-scheduled world events delivered only to their listed recipients.",
+    "Live runs use semantic recall over the local Graphiti index (private full-text fallback, recorded, if the service is unavailable); the scripted dry run skips graph indexing.",
+    "Recurring situations are capped at 365 occurrences per year."
+  ],
+  "generated_numbers": [
+    {
+      "path": "duration_years",
+      "value": 0.17
+    },
+    {
+      "path": "people.0.age_years",
+      "value": 15
+    },
+    {
+      "path": "people.0.facets.N1",
+      "value": 75
+    },
+    {
+      "path": "people.0.facets.N4",
+      "value": 60
+    },
+    {
+      "path": "people.0.facets.E1",
+      "value": 40
+    },
+    {
+      "path": "people.0.facets.C1",
+      "value": 30
+    },
+    {
+      "path": "people.0.goals.0.priority",
+      "value": 1
+    },
+    {
+      "path": "people.0.goals.1.priority",
+      "value": 0.5
+    },
+    {
+      "path": "people.1.age_years",
+      "value": 44
+    },
+    {
+      "path": "people.1.facets.A3",
+      "value": 80
+    },
+    {
+      "path": "people.1.facets.N3",
+      "value": 40
+    },
+    {
+      "path": "people.1.goals.0.priority",
+      "value": 1
+    },
+    {
+      "path": "people.2.age_years",
+      "value": 71
+    },
+    {
+      "path": "people.2.facets.A6",
+      "value": 90
+    },
+    {
+      "path": "people.2.facets.C2",
+      "value": 70
+    },
+    {
+      "path": "people.2.goals.0.priority",
+      "value": 0.8
+    },
+    {
+      "path": "people.3.age_years",
+      "value": 45
+    },
+    {
+      "path": "people.3.facets.C4",
+      "value": 70
+    },
+    {
+      "path": "people.3.goals.0.priority",
+      "value": 1
+    },
+    {
+      "path": "household.routines.priya.available_hours.0.0",
+      "value": 7
+    },
+    {
+      "path": "household.routines.priya.available_hours.0.1",
+      "value": 22
+    },
+    {
+      "path": "household.routines.priya.response_minutes.0",
+      "value": 5
+    },
+    {
+      "path": "household.routines.priya.response_minutes.1",
+      "value": 30
+    },
+    {
+      "path": "household.routines.arun.available_hours.0.0",
+      "value": 8
+    },
+    {
+      "path": "household.routines.arun.available_hours.0.1",
+      "value": 24
+    },
+    {
+      "path": "household.routines.arun.response_minutes.0",
+      "value": 10
+    },
+    {
+      "path": "household.routines.arun.response_minutes.1",
+      "value": 60
+    },
+    {
+      "path": "household.routines.meera.available_hours.0.0",
+      "value": 6
+    },
+    {
+      "path": "household.routines.meera.available_hours.0.1",
+      "value": 22
+    },
+    {
+      "path": "household.routines.meera.response_minutes.0",
+      "value": 5
+    },
+    {
+      "path": "household.routines.meera.response_minutes.1",
+      "value": 20
+    },
+    {
+      "path": "household.routines.ms_okafor.available_hours.0.0",
+      "value": 8
+    },
+    {
+      "path": "household.routines.ms_okafor.available_hours.0.1",
+      "value": 18
+    },
+    {
+      "path": "household.routines.ms_okafor.response_minutes.0",
+      "value": 10
+    },
+    {
+      "path": "household.routines.ms_okafor.response_minutes.1",
+      "value": 60
+    },
+    {
+      "path": "household.routes.0.minutes",
+      "value": 20
+    },
+    {
+      "path": "household.routes.1.minutes",
+      "value": 20
+    },
+    {
+      "path": "household.routes.2.minutes",
+      "value": 20
+    },
+    {
+      "path": "household.routes.3.minutes",
+      "value": 30
+    },
+    {
+      "path": "household.groups.robotics_club.meetings.first_day",
+      "value": 14
+    },
+    {
+      "path": "household.groups.robotics_club.meetings.start_hour",
+      "value": 16
+    },
+    {
+      "path": "household.groups.robotics_club.meetings.duration_hours",
+      "value": 1.5
+    },
+    {
+      "path": "household.groups.robotics_club.meetings.every_days",
+      "value": 7
+    },
+    {
+      "path": "household.groups.robotics_club.meetings.max_turns",
+      "value": 10
+    },
+    {
+      "path": "household.groups.evening_shift.meetings.first_day",
+      "value": 0
+    },
+    {
+      "path": "household.groups.evening_shift.meetings.start_hour",
+      "value": 14.5
+    },
+    {
+      "path": "household.groups.evening_shift.meetings.duration_hours",
+      "value": 8
+    },
+    {
+      "path": "household.groups.evening_shift.meetings.every_days",
+      "value": 1
+    },
+    {
+      "path": "household.invitations.0.day",
+      "value": 10.65
+    },
+    {
+      "path": "household.conversations.0.day",
+      "value": 30.8
+    },
+    {
+      "path": "household.conversations.0.max_turns",
+      "value": 4
+    },
+    {
+      "path": "household.moves.0.day",
+      "value": 30.79
+    },
+    {
+      "path": "household.moves.1.day",
+      "value": 30.79
+    },
+    {
+      "path": "situations.0.rate_per_year",
+      "value": 30
+    },
+    {
+      "path": "situations.0.options.0.success_probability",
+      "value": 0.4
+    },
+    {
+      "path": "situations.0.options.0.valence_success",
+      "value": 0.5
+    },
+    {
+      "path": "situations.0.options.0.valence_failure",
+      "value": -0.3
+    },
+    {
+      "path": "situations.0.options.0.importance",
+      "value": 0.8
+    },
+    {
+      "path": "situations.0.options.0.arousal",
+      "value": 0.6
+    },
+    {
+      "path": "situations.0.options.0.progress_gain",
+      "value": 0.1
+    },
+    {
+      "path": "situations.0.options.0.duration_hours",
+      "value": 0.5
+    },
+    {
+      "path": "situations.0.options.1.success_probability",
+      "value": 0.9
+    },
+    {
+      "path": "situations.0.options.1.valence_success",
+      "value": 0.1
+    },
+    {
+      "path": "situations.0.options.1.valence_failure",
+      "value": -0.1
+    },
+    {
+      "path": "situations.0.options.1.importance",
+      "value": 0.5
+    },
+    {
+      "path": "situations.0.options.1.arousal",
+      "value": 0.3
+    },
+    {
+      "path": "situations.0.options.1.progress_gain",
+      "value": 0.0
+    },
+    {
+      "path": "situations.0.options.1.duration_hours",
+      "value": 0.5
+    },
+    {
+      "path": "situations.1.rate_per_year",
+      "value": 60
+    },
+    {
+      "path": "situations.1.options.0.success_probability",
+      "value": 0.8
+    },
+    {
+      "path": "situations.1.options.0.valence_success",
+      "value": 0.4
+    },
+    {
+      "path": "situations.1.options.0.valence_failure",
+      "value": -0.1
+    },
+    {
+      "path": "situations.1.options.0.importance",
+      "value": 0.6
+    },
+    {
+      "path": "situations.1.options.0.arousal",
+      "value": 0.4
+    },
+    {
+      "path": "situations.1.options.0.progress_gain",
+      "value": 0.1
+    },
+    {
+      "path": "situations.1.options.0.duration_hours",
+      "value": 0.1
+    },
+    {
+      "path": "situations.1.options.0.conversation.max_turns",
+      "value": 4
+    },
+    {
+      "path": "situations.1.options.1.success_probability",
+      "value": 0.9
+    },
+    {
+      "path": "situations.1.options.1.valence_success",
+      "value": 0.1
+    },
+    {
+      "path": "situations.1.options.1.valence_failure",
+      "value": -0.1
+    },
+    {
+      "path": "situations.1.options.1.importance",
+      "value": 0.5
+    },
+    {
+      "path": "situations.1.options.1.arousal",
+      "value": 0.3
+    },
+    {
+      "path": "situations.1.options.1.progress_gain",
+      "value": 0.05
+    },
+    {
+      "path": "situations.1.options.1.duration_hours",
+      "value": 0.1
+    }
+  ],
+  "scripted_dry_run": {
+    "days": 62.0925,
+    "provider": "scripted_engineering_fixture",
+    "resolved_actions": 36,
+    "applied_events": 339,
+    "pending_events": 0,
+    "conversations": {
+      "kitchen_talk": "closed",
+      "group-robotics_club-0": "closed",
+      "life-3-family_chat-talk": "closed",
+      "group-robotics_club-1": "closed",
+      "group-robotics_club-2": "closed",
+      "group-robotics_club-3": "closed",
+      "group-robotics_club-4": "closed",
+      "group-robotics_club-5": "closed",
+      "group-robotics_club-6": "closed"
+    },
+    "scope": "checks that the policy runs; scripted choices skip model cognition"
+  }
+}

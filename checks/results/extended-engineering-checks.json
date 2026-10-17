@@ -7,6 +7,9 @@
     "inspection remains read-only",
     "evidence-linked narrative and replanning",
     "fan overload lowers retrieval accessibility without destroying storage",
+    "semantic recall accepts a memory already shown in its own context; ids never shown are rejected, and after failed repairs the optional step is skipped and recorded instead of ending the run",
+    "identical memories collide into one context entry with a count; both stay stored",
+    "inhibition of return transiently lowers retrieval of over-recalled memories, then fades; storage unchanged",
     "conditional reinterpretation preserves original event and prior meaning",
     "unreceived narrative evidence rejected before mutation",
     "need-driven canonical biography commits shared history without invented memories",
@@ -30,6 +33,13 @@
     "trust and closeness update separately from direct evidence with retained provenance",
     "reflection separates new evidence from eligible earlier revision targets",
     "simultaneous death precedes action eligibility",
-    "same-day trust/closeness changes share an absolute budget"
+    "same-day trust/closeness changes share an absolute budget",
+    "with verbatim_days, appraisal must return a short gist; exact words are shown only within the window, then the gist while the episode stays accessible; originals are stored unchanged; without the setting nothing changes",
+    "semantic_matching cues a faded memory by meaning (\"shouted\" finds \"yelled\") with no shared words; an unreachable embedding service falls back to word matching, flagged on every result",
+    "recall_beta samples memories in proportion to exp(beta * score): high beta matches greedy ranking, low beta wanders, the draw is deterministic per query and inspection stays read-only",
+    "rumination_neuroticism raises background recall rate with neuroticism and leans it toward negative memories; k=0 is unchanged",
+    "mood_encoding_weight strengthens memories encoded in a strong mood; explicit stability and the default are unchanged",
+    "affect_from_traits derives reactivity, inertia and rumination from current neuroticism/extraversion; an average person is unchanged and explicit affect_parameters win",
+    "the average mood kernel keeps a steady stream of mild events mild (the power-law sum saturates arousal), lets a strong event dominate, and stays within bounds"
   ]
 }

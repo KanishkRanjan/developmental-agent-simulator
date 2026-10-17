@@ -14,6 +14,7 @@
     "authored places, routes, groups, channels, invitations and interviews compile and run; membership facts gate situations",
     "a setting review must cite real spec fields; it returns their values, is repaired or fails, and edits nothing",
     "out-of-vocabulary keys, facet codes and ranges, ids, caregivers, actors, contacts, rates, probabilities, intervention days/recipients, testimony sources, fact keys/values/reachability, effects, conversation participants and size limits are rejected with field names",
+    "rooms labelled as one person's cannot be another's start (except an infant's caregiver); every person with goals needs a way to act; situation room/hours are validated and compiled; face-to-face reply delay defaults to 0.25-2 minutes; run_live refuses to pass the scenario horizon",
     "model drafts must compile; repairs return the previous draft with the field-named error, and fail after two"
   ]
 }

@@ -101,7 +101,7 @@ def in_world(controller, owner, interviewer, questions, interview_id):
     if 'household' in engine.state['config'] and not household.available(engine, owner):
         raise ValueError('This person is not available for an interview now')
     hearer = interviewer if interviewer in engine.state['agents'] and engine.agent(interviewer)['alive'] else None
-    asker, name = engine.state['entities'][interviewer]['name'], engine.state['entities'][owner]['name']
+    asker, name = engine.label(interviewer), engine.label(owner)
     menu = [{'id': 'answer', 'label': 'Answer the question in your own words.'},
             {'id': 'decline', 'label': 'Decline to answer.'}]
     backup, turns = deepcopy(engine.state), []

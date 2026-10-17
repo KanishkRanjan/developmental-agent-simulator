@@ -21,6 +21,7 @@ from . import cognition
 from . import life_policy
 from . import goal_plans
 from . import household
+from . import sleep
 class Lifetime:
     def __init__(self, engine, policy, *, scripted=False, api='http://127.0.0.1:8081', model='local'):
         self.engine = engine
@@ -44,6 +45,13 @@ class Lifetime:
             ids.add(opportunity['id'])
             engine.agent(opportunity['actor'])
             number(opportunity['rate_per_year'], 0, 10000, 'rate_per_year')
+            if 'hours' in opportunity:
+                window = opportunity['hours']
+                if not isinstance(window, list) or len(window) != 2:
+                    raise ValueError('Situation hours need [start, end] within one day')
+                number(window[0], 0, 24, 'situation start hour'); number(window[1], window[0] + 1e-6, 24, 'situation end hour')
+            if 'room' in opportunity and opportunity['room'] not in policy.get('household', {}).get('rooms', {}):
+                raise ValueError('A situation room must be a household room')
             if 'rate_modifiers' in opportunity:
                 modifiers = opportunity['rate_modifiers']
                 if self.sampling != 'event_driven' or not isinstance(modifiers, list) or len(modifiers) > 8:
@@ -131,6 +139,8 @@ class Lifetime:
                         raise ValueError('Unknown developmental facet')
                     number(delta, -100, 100, facet)
         number(policy.get('max_trait_change_per_year', 1.0), 0, 100, 'trait rate')
+        if 'horizon_days' in policy:
+            number(policy['horizon_days'], 1e-3, 120 * 365.25, 'horizon_days')
         if 'situational_personality' in policy:
             settings = policy['situational_personality']
             if not isinstance(settings, dict) or set(settings) - {'recovery_half_life_days'}:
@@ -201,6 +211,14 @@ class Lifetime:
         if 'society' in policy:
             from . import society
             society.configure(probe,policy['society'])
+        if 'sleep' in policy:
+            sleep.configure(probe,policy['sleep'])
+        if 'society_layer' in policy:
+            from .population import settings as society_settings
+            layer = policy['society_layer']
+            if not isinstance(layer,dict) or set(layer)-{'overrides','bind'}:
+                raise ValueError('society_layer policy takes overrides and bind')
+            society_settings(layer.get('overrides'))
         saved = engine.state.get('runtime')
         if saved:
             if saved['policy_fingerprint'] != self.fingerprint or saved['scripted'] != scripted:
@@ -228,6 +246,17 @@ class Lifetime:
             expression.configure(engine,policy['expression'])
         if 'society' in policy:
             society.configure(engine,policy['society'])
+        if 'sleep' in policy:
+            sleep.configure(engine,policy['sleep'])
+            if not scripted and engine.state['config']['sleep']['summarizer'] == 'llm':
+                engine.sleep_summarizer = sleep.llm_summarizer(api, model)
+        if 'society_layer' in policy:
+            from .population import bridge
+            bridge.configure(engine, policy['society_layer'].get('overrides'))
+            for owner in policy['society_layer'].get('bind', sorted(engine.state['agents'])):
+                bridge.bind(engine, owner)
+            if self.sampling == 'event_driven':
+                engine.state['runtime'].setdefault('next_society', engine.day)
         if self.sampling == 'event_driven':
             runtime = engine.state['runtime']
             if 'household' in policy:
@@ -273,13 +302,18 @@ class Lifetime:
 
     def _ensure_background(self):
         runtime = self.engine.state['runtime']
-        rate = self.policy.get('cognition', {}).get('rumination_per_year', 0)
-        if not rate:
+        if not self.policy.get('cognition', {}).get('rumination_per_year', 0):
             return
         for owner, agent in self.engine.state['agents'].items():
             if owner not in runtime['next_background'] and agent['alive'] and agent['memory_meta']:
                 runtime['background_counts'][owner] = 0
-                runtime['next_background'][owner] = self.engine.day + self.rng('rumination', owner, 0).expovariate(rate / 365.25)
+                runtime['next_background'][owner] = self.engine.day + self.rng('rumination', owner, 0).expovariate(self._rumination_rate(owner) / 365.25)
+
+    def _rumination_rate(self, owner):
+        """Background recalls per year; scaled by exp(k * neuroticism) when rumination_neuroticism = k is set."""
+        settings = self.policy.get('cognition', {})
+        k = settings.get('rumination_neuroticism', 0)
+        return settings.get('rumination_per_year', 0) * (exp(k * cognition.neuroticism(self.engine.agent(owner))) if k else 1)
 
     def _register_births(self, effects):
         """Instantiate declared life opportunities for newborns, not silent lives.
@@ -355,6 +389,18 @@ class Lifetime:
         if checkpoint:
             engine.save(checkpoint)
 
+    def _window_delay(self, opportunity, day, sequence):
+        """None when the actor is at the situation's room within its hours; otherwise days until the next try."""
+        start, end = opportunity.get('hours', [0, 24])
+        hour = (day % 1) * 24
+        in_hours = start <= hour < end
+        if in_hours and ('room' not in opportunity or household.location(self.engine, opportunity['actor']) == opportunity['room']):
+            return None
+        if in_hours and hour + .5 < end:
+            return .5 / 24  # in the window but elsewhere: look again shortly
+        target = self.rng('window', opportunity['id'], sequence, hour).uniform(start, end)
+        return ((target - hour) % 24 or 24) / 24
+
     def _next_opportunity(self, opportunity, after, sequence):
         agent = self.engine.agent(opportunity['actor'])
         if not agent['alive'] or opportunity['rate_per_year'] == 0:
@@ -391,9 +437,29 @@ class Lifetime:
             predictor += modifier['coefficient'] * value / modifier.get('scale',1)
         return exp(min(log(opportunity['rate_cap_per_year']), max(-700, log(base) + predictor)))
 
+    def _visitors(self, checkpoint):
+        """Deliver what a watching researcher typed (devsim.visit) at this event boundary, atomically."""
+        engine = self.engine
+        try:
+            if self.inbox.stat().st_size <= engine.state['runtime'].get('inbox_offset', 0):
+                return
+        except OSError:
+            return
+        from . import visit
+        backup = deepcopy(engine.state)
+        try:
+            if visit.deliver_inbox(self, self.inbox) and checkpoint:
+                engine.save(checkpoint)
+        except Exception:
+            engine.state = backup
+            engine.world = self._world_from_state(backup)
+            raise
+
     def _run_events(self, until, checkpoint):
         engine = self.engine
         while True:
+            if getattr(self, 'inbox', None):
+                self._visitors(checkpoint)
             runtime = engine.state['runtime']
             queue = [(day, 'opportunity', key) for key, day in runtime['next_opportunities'].items() if day is not None and day <= until]
             queue += [(day, 'background', key) for key, day in runtime.get('next_background', {}).items() if day is not None and day <= until]
@@ -407,11 +473,13 @@ class Lifetime:
                       if i['next_day'] is not None and i['next_day']<=until]
             queue += [(s['next_day'],'conversation',key) for key,s in runtime.get('conversations',{}).items()
                       if s['next_day'] is not None and s['next_day']<=until]
+            if runtime.get('next_society') is not None and runtime['next_society']<=until:
+                queue.append((runtime['next_society'],'society','layer'))
             if not queue:
                 break
             # Commit simultaneous world transitions before cognitive/choice events.
             day, kind, key = min(queue,key=lambda item:(item[0],
-                {'world':0,'hazard':0,'move':1,'trip':1,'background':2,'completion':3,'group':3,'invite':3,'conversation':4,
+                {'world':0,'hazard':0,'society':1,'move':1,'trip':1,'background':2,'completion':3,'group':3,'invite':3,'conversation':4,
                  'opportunity':5}[item[1]],item[2],item[1]))
             backup = deepcopy(engine.state)
             try:
@@ -423,7 +491,22 @@ class Lifetime:
                         engine.save(checkpoint)
                     continue
                 opportunity = next(o for o in self.policy['opportunities'] if o['id'] == key)
-                self.process(opportunity, runtime['tick'], occurrence=True)
+                wait = self._window_delay(opportunity, day, runtime['opportunity_counts'][key])
+                if wait is not None:
+                    # Only a move to another day counts as a try; short same-window retries do not use them up.
+                    attempts = runtime.setdefault('window_attempts', {}).get(key, 0) + (wait > .5 / 24 + 1e-9)
+                    if attempts <= 14:  # postpone into the situation's place/hours window instead of losing the occurrence
+                        runtime['window_attempts'][key] = attempts
+                        runtime['next_opportunities'][key] = day + wait
+                        runtime['trace'].append({'day': day, 'opportunity': key, 'status': 'postponed_to_window'})
+                        runtime['current_day'] = engine.day
+                        if checkpoint:
+                            engine.save(checkpoint)
+                        continue
+                    runtime['trace'].append({'day': day, 'opportunity': key, 'status': 'skipped_outside_window'})
+                else:
+                    self.process(opportunity, runtime['tick'], occurrence=True)
+                runtime.setdefault('window_attempts', {}).pop(key, None)
                 runtime['opportunity_counts'][key] += 1
                 agent = engine.agent(opportunity['actor'])
                 completed = (opportunity.get('goal_id') is not None and
@@ -454,6 +537,11 @@ class Lifetime:
     def _process_background_or_world(self, kind, key):
         engine = self.engine
         runtime = engine.state['runtime']
+        if kind=='society':
+            from .population import bridge
+            runtime['next_society']=bridge.sync(engine,lambda event_id,description,observations,routine=False:
+                household.deliver(self,event_id,description,observations,routine=routine))
+            return
         if kind=='move':
             rule=next(r for r in self.policy['household'].get('moves',[]) if r['id']==key)
             household.move(self,rule['actor'],rule['room'],'@move:'+key)
@@ -505,7 +593,7 @@ class Lifetime:
             mid = cognition.ruminate(engine, key, f'{key}:autonomous:{count}',
                 self.policy['cognition'].get('rumination_minimum_gap_days', 1))
             runtime['background_counts'][key] += 1
-            rate = self.policy['cognition'].get('rumination_per_year', 0)
+            rate = self._rumination_rate(key)
             runtime['next_background'][key] = (engine.day + self.rng('rumination', key, count+1).expovariate(rate/365.25)
                 if rate and engine.agent(key)['alive'] else None)
             runtime['trace'].append({'kind':'autonomous_recall','owner':key,'day':engine.day,'memory':mid})
@@ -651,8 +739,8 @@ class Lifetime:
             if self.policy.get('planning',{}).get('calendar_mode')=='elapsed':
                 # Encode the actual approach before a reply, independently of
                 # whether the later joint activity succeeds or is cancelled.
-                name=engine.state['entities'][owner]['name']
-                other=engine.state['entities'][contact]['name']
+                name=engine.label(owner)
+                other=engine.label(contact)
                 speech=proposal['decision']['speech']
                 request_observations={
                     owner:{'text':f'I approached {other}. I said: {speech} Request: '+selected['label'],
@@ -667,7 +755,7 @@ class Lifetime:
             if 'contact_responses' in selected:
                 # A current perceived request is the only cross-agent model input.
                 # No private profile, memories, plan or internal appraisal is shared.
-                perceived_request = (engine.state['entities'][owner]['name'] + ' approaches you: ' +
+                perceived_request = (engine.label(owner) + ' approaches you: ' +
                                      proposal['decision']['speech'] + ' Request: ' + selected['label'])
                 replies = selected['contact_responses']
                 reply_menu = [{'id':r['id'],'label':r['label']} for r in replies]
@@ -717,7 +805,7 @@ class Lifetime:
         success = self.rng('outcome', tick, opportunity['id']).random() < probability
         text = (response or selected)['success_text'] if success else (response or selected)['failure_text']
         if contact_proposal and contact_proposal['decision']['speech']:
-            text += ' ' + engine.state['entities'][contact]['name'] + ' said: ' + contact_proposal['decision']['speech']
+            text += ' ' + engine.label(contact) + ' said: ' + contact_proposal['decision']['speech']
         observation = {'text': text, 'source': 'direct', 'kind': 'direct',
                        'valence': selected['valence_success'] if success else selected['valence_failure'],
                        'arousal': selected.get('arousal', 0.2), 'importance': selected.get('importance', 0.5),

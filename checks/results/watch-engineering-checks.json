@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scope": "engineering only; scripted fixture, no terminal",
+  "checks": [
+    "loading is read-only, works before a checkpoint exists and skips a half-written last call",
+    "the feed groups decisions under day, time and place headings and wraps to the panel width",
+    "the speech-only toggle and the one-person filter narrow the feed",
+    "header, footer and people panel fit any width from 40 columns; clock shows day and time",
+    "the engine view shows each model call's input and output (recalled memories, speech, repeat re-asks, repairs), reads the call log incrementally without half-written lines, and the status line shows the call in flight, pace and time left",
+    "run_live writes the call in flight to current.json and removes it when the call ends, including failed calls",
+    "run_live records each call's prompt/output tokens, generation speed and finish time",
+    "graphs show output/prompt tokens and calls per minute, generation speed and seconds per call, how each person's days felt, and what runs now and next; older runs without token logs say so",
+    "the phone-call view merges your lines with the person's replies in order and shows a new call as waiting to ring; a face-to-face talk shows your opening line, their silence and how to walk away",
+    "key h opens a talk guide listing this run's people first, with examples for talking, calling, sending a character, /auto and /bye, wrapped to the panel width; the footer shows h help"
+  ]
+}

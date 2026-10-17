@@ -16,6 +16,7 @@ from pathlib import Path
 import re
 import time
 
+from . import cognition
 from . import household
 from .engine import FACET_NAMES, Engine, number, validated_json
 
@@ -25,7 +26,8 @@ ID = re.compile(r'^[a-z][a-z0-9_-]{0,31}$')
 CONTEXT_TOKENS = 8192
 LIMITS = {'people': 8, 'facets': 10, 'background': 3, 'goals': 3, 'situations': 12, 'options': 4,
           'interventions': 12, 'rate_per_year': 365, 'dry_run_years': 3}
-SITUATION_KEYS = {'id', 'actor', 'situation', 'rate_per_year', 'min_age', 'max_age', 'cues', 'goal_id', 'options', 'requires_facts'}
+SITUATION_KEYS = {'id', 'actor', 'situation', 'rate_per_year', 'min_age', 'max_age', 'cues', 'goal_id', 'options', 'requires_facts',
+                  'room', 'hours'}
 OPTION_KEYS = {'id', 'label', 'success_probability', 'valence_success', 'valence_failure', 'success_text',
                'failure_text', 'contact', 'contact_text', 'importance', 'arousal', 'progress_gain', 'duration_hours',
                'effects_success', 'effects_failure', 'conversation'}
@@ -38,6 +40,14 @@ COMPILER_DEFAULTS = [
     'Interventions are controller-scheduled world events delivered only to their listed recipients.',
     'Live runs use semantic recall over the local Graphiti index (private full-text fallback, recorded, if the service is unavailable); the scripted dry run skips graph indexing.',
     f'Recurring situations are capped at {LIMITS["rate_per_year"]} occurrences per year.',
+    'Face-to-face conversation replies take 0.25-2 minutes unless a routine sets in_person_response_minutes; response_minutes is the written-message delay.',
+    'Live runs use situational personality: each person gets model-written if-then signatures from their tendencies (one about repeated situations), and each decision is preceded by a construal that can activate them; temporary shifts recover with a 1-day half-life.',
+    'Live runs consolidate every 8 unconsolidated received episodes per person into tentative gists (lessons and patterns), so repeated experiences are summarized rather than only stored side by side.',
+    'Every person gets a unique Instagram-style handle (name plus 4 digits, e.g. @priya0123) and is shown to others as "Priya (@priya0123)", so two people can share a name; a shared name alone stays ambiguous in speech and testimony.',
+    'Memory (provisional engineering choices): each appraisal also writes a one-sentence gist; exact words are recalled for 1 day, '
+    'then only the gist (fuzzy-trace theory). Recall is sampled with odds exp(2 x score) rather than always taking the top match. '
+    'A strong mood makes new memories up to 1.5x more durable. Background recall happens 12 times a year at middle neuroticism, '
+    'about 0.4x to 2.7x across the neuroticism range, leaning toward negative memories as neuroticism rises.',
 ]
 VOCABULARY = {
     'title': 'short string', 'summary': 'one paragraph', 'seed': 'integer',
@@ -50,16 +60,19 @@ VOCABULARY = {
     'household': 'optional environment. rooms {room_id: {label, audible_to: [room_ids]}} are places, including places away '
                  'from home (a school lab, a ward); locations {person: room_id}; routines {person: {available_hours: '
                  '[[start, end]] within one day in increasing order (awake 23:00-07:00 is [[0, 7], [23, 24]]), '
-                 'response_minutes: [min, max]}}; routes [{a, b, minutes}] (travel time between places); '
+                 'response_minutes: [min, max] (written-message reply delay), optional in_person_response_minutes: [min, max] '
+                 '(face-to-face reply delay, at most 10)}}; routes [{a, b, minutes}] (travel time between places); '
                  'groups {group_id: {label, place, members, meetings: {first_day (whole day), start_hour (0-24, when members set off; they arrive after the route time), '
-                 'duration_hours (counted from arrival), every_days, topic, max_turns}}} for '
+                 'duration_hours (counted from arrival), every_days, topic (one opening topic, or for frequent meetings a list of '
+                 'several varied topics used in turn, e.g. a lesson, weekend plans, a test), max_turns}}} for '
                  'institutions and clubs (a school class, a work team, a club); channels {channel_id: {label, members}} for '
                  'written messaging such as a family chat; invitations [{id, day, group, invitee, inviter}] (acceptance sets '
                  'the fact member_<group_id> = true); conversations [{id, day, room or channel, participants, topic, '
                  'max_turns 1-40}], or an interview: {id, day, room or channel, participants [interviewer, interviewee], '
                  'interviewer, questions (1-10), topic, max_turns = 2 x questions}',
     'situations': f'up to {LIMITS["situations"]} recurring situations: id, actor, situation (second person), rate_per_year '
-                  f'(0-{LIMITS["rate_per_year"]}), optional min_age/max_age/cues/goal_id, options (2-{LIMITS["options"]}): '
+                  f'(0-{LIMITS["rate_per_year"]}), optional min_age/max_age/cues/goal_id, optional room (a household room id: '
+                  'it only happens while the actor is there) and hours ([start, end] within one day, e.g. lunch [11.5, 13.5]), options (2-{LIMITS["options"]}): '
                   'id, label, success_probability, valence_success, valence_failure (-1 to 1), success_text, failure_text '
                   '(first person), optional contact (person id) with contact_text (what the contact experiences), '
                   'importance, arousal, progress_gain (toward goal_id), duration_hours, effects_success/effects_failure '
@@ -137,6 +150,34 @@ def numbers(value, path=''):
     return [n for key, item in items for n in numbers(item, f'{path}.{key}' if path else str(key))]
 
 
+def _check_rooms_and_roles(spec, ages):
+    """Social plausibility the engine cannot see: whose room is whose, and whether each goal can be acted on."""
+    home = spec.get('household', {})
+    names = {p['id']: p['name'] for p in spec['people']}
+    carers = {p['id']: set(p.get('caregivers', [])) for p in spec['people']}
+    for room, cfg in home.get('rooms', {}).items():
+        owners = [k for k, n in names.items() if re.match(re.escape(n) + r"'s\b", cfg['label'])]
+        owner = owners[0] if len(owners) == 1 else None  # two people share the name: the label names neither
+        for person, where in home.get('locations', {}).items():
+            # An infant's caregiver may start in the infant's room; nobody else starts in someone's own room.
+            if where == room and owner and person != owner and not (ages[owner] < 3 and person in carers[owner]):
+                _fail(f'household.locations.{person}', f'{room} is labelled "{cfg["label"]}"; give {names[person]} '
+                      'their own room (people return to their starting room after trips)')
+    acting = {s['actor'] for s in spec.get('situations', [])} | {r['invitee'] for r in home.get('invitations', [])}
+    acting |= {p for c in home.get('conversations', []) for p in c.get('participants', [])}
+    invited = {}
+    for r in home.get('invitations', []):
+        invited.setdefault(r['group'], set()).add(r['invitee'])
+    for key, group in home.get('groups', {}).items():
+        attendees = set(group.get('members', [])) | invited.get(key, set())
+        if 'meetings' in group and len(attendees) >= 2:
+            acting |= attendees
+    for person in spec['people']:
+        if person.get('goals') and person['id'] not in acting:
+            _fail(f'people.{person["id"]}.goals', f'{person["name"]} has goals but no way to act on them: make them the actor '
+                  'of a situation, a conversation participant, an invitee, or a member of a group that meets with someone else')
+
+
 def compile_scenario(spec, *, dry_run=True):
     """Validate a spec and build (engine, policy, report). Raises ValueError naming the bad field."""
     _keys(spec, 'scenario', {'title', 'summary', 'seed', 'duration_years', 'people'},
@@ -149,6 +190,7 @@ def compile_scenario(spec, *, dry_run=True):
     if not people:
         _fail('people', 'needs at least one person')
     e = Engine(seed=spec['seed'])
+    e.state['config']['identity_handles'] = True  # unique @handles, so two people may share a name
     ages, produced = {}, set()
     places = spec.get('household', {}) if isinstance(spec.get('household'), dict) else {}
     groups = places.get('groups', {}) if isinstance(places.get('groups', {}), dict) else {}
@@ -234,6 +276,13 @@ def compile_scenario(spec, *, dry_run=True):
         if situation['actor'] not in ages:
             _fail(label + '.actor', 'must be a scenario person')
         number(situation['rate_per_year'], 0, LIMITS['rate_per_year'], label + '.rate_per_year')
+        if 'room' in situation and situation['room'] not in spec.get('household', {}).get('rooms', {}):
+            _fail(label + '.room', 'must be a household room id')
+        if 'hours' in situation:
+            window = situation['hours']
+            if not isinstance(window, list) or len(window) != 2:
+                _fail(label + '.hours', 'needs [start, end] within one day')
+            number(window[0], 0, 24, label + '.hours start'); number(window[1], window[0] + 1e-6, 24, label + '.hours end')
         options = situation['options']
         if not isinstance(options, list) or not 2 <= len(options) <= LIMITS['options']:
             _fail(label + '.options', f'needs 2-{LIMITS["options"]} options')
@@ -287,16 +336,25 @@ def compile_scenario(spec, *, dry_run=True):
               'sampling': 'event_driven', 'opportunities': opportunities,
               'planning': {'calendar_mode': 'elapsed', 'hours_per_day': 8},
               'expression': {'age_appropriate_actions': True},
-              'cognition': {'semantic_recall': True, 'indexed_retrieval': True, 'graphiti_retrieval': True}}
+              'cognition': {'semantic_recall': True, 'indexed_retrieval': True, 'graphiti_retrieval': True,
+                            **cognition.MEMORY_DEFAULTS},
+              'consolidation_batch_size': 8, 'situational_personality': {'recovery_half_life_days': 1},
+              'horizon_days': horizon}
     from .lifetime import Lifetime
     try:
         if 'household' in spec:
             household.validate(e, spec['household'])
+            _check_rooms_and_roles(spec, ages)
             policy['household'] = deepcopy(spec['household'])
+            for routine in policy['household'].get('routines', {}).values():
+                routine.setdefault('in_person_response_minutes', [.25, 2])
+        else:
+            _check_rooms_and_roles(spec, ages)
         e.advance(0)
         probe = deepcopy(e)
         scripted = deepcopy(policy)
         scripted['cognition']['graphiti_retrieval'] = False  # as simulate --scripted: no unused graph view caches
+        scripted['cognition']['semantic_matching'] = False  # scripted choices ignore memories; no service needed
         controller = Lifetime(probe, scripted, scripted=True)  # full policy validation against this world
     except ValueError as exc:
         _fail('household' if 'household' in spec and 'household' not in policy else 'policy', str(exc))
@@ -325,7 +383,13 @@ def draft(setting, *, api, model):
               'not imply; list every guess in assumptions. Numbers are provisional scenario choices, not measurements. '
               'Facet percentiles are optional and only for traits the setting describes. Situation texts address the actor '
               'as "you"; success and failure texts are first person. Infants (under 2) need nonverbal options. '
-              'Ids are lowercase slugs. Day 0 is the start; household hours are 0-24. Be concise: at most 4 situations '
+              'Ids are lowercase slugs. Day 0 is the start; household hours are 0-24. Give each person a plausible room '
+              'of their own to start in (people return there after trips). Model daily routines such as school days or work '
+              'shifts as groups with meetings. Anyone a situation or group expects people to interact with (classmates, '
+              'colleagues) must be a person in people. Written messages, such as a family chat, use a channel, not a '
+              'contact option. Give a situation a room and hours when it happens at a particular place or time (lunch at '
+              'school). Every person with goals needs a way to act on them, and a goal_id must fit its situation. '
+              'Be concise: at most 4 situations '
               'and 4 interventions, one or two sentences per text, compact JSON without indentation.')
 
     def validate(result):
@@ -378,7 +442,10 @@ def review(setting, spec, *, api, model):
     context = {'task': 'review_scenario', 'setting': _text(setting, 'setting', 6000), 'vocabulary': VOCABULARY, 'scenario': spec}
     system = ('Compare this scenario spec with the researcher\'s setting and list problems a careful reviewer should fix before '
               'running it: contradictions with the setting, details the setting does not support, and timing problems, such as '
-              'an outcome or situation text that presupposes an event that happens later or may not happen at all. Give each '
+              'an outcome or situation text that presupposes an event that happens later or may not happen at all. Also check '
+              'who starts in whose room, whether written chats are channels rather than in-person contacts, whether situations '
+              'happen at the right place and hours, people that situations or groups mention who are not in the scenario, '
+              'people whose goals nothing lets them pursue, and goals tied to situations that do not concern them. Give each '
               'issue the dotted path of the exact field (for example situations.1.options.0.success_text or '
               'household.routines.arun.available_hours), a kind (contradiction, unsupported, timing or other) and a one-sentence '
               'problem of at most 400 characters. The vocabulary explains what each field means (rooms are any places, including '

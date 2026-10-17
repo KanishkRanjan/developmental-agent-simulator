@@ -22,7 +22,25 @@ python3 -m devsim.cockpit runs/live/author-live/compiled-graphiti/run --out work
 python3 -m devsim.cockpit runs/live/NEW_RUN --serve 18090
 ```
 
-The target is a run directory (`world.json`, `requests.jsonl`) or a checkpoint file. During a live run, `requests.jsonl` grows as calls finish but `world.json` is written only at the end. Until then the page shows the streaming timeline and a note, and it switches to the full views when the checkpoint appears. The server binds only to `127.0.0.1` and serves only the page and its data. Reading never changes a checkpoint.
+The target is a run directory (`world.json`, `requests.jsonl`) or a checkpoint file. During a live run, `requests.jsonl` grows as calls finish and `world.json` is rewritten after every scheduler event, so the views show agent state mid-run. Before the first checkpoint exists, the page shows the streaming timeline and a note. The server binds only to `127.0.0.1` and serves only the page and its data. Reading never changes a checkpoint.
+
+## Watching in a terminal
+
+Where port forwarding is blocked (as on the cluster machine), watch a run over plain SSH:
+
+```sh
+python3 -m devsim.watch runs/live/RUN/run             # full-screen app
+python3 -m devsim.cockpit runs/live/RUN/run --follow  # plain scrolling lines
+```
+
+`devsim/watch.py` is a full-screen `curses` app (standard library only). The left panel shows each person's place, or "in transit", and current mood. The right panel shows the conversation feed: committed decisions and what was said, grouped under the simulated day, time and place (room, channel, group, interview, invitation or situation). The bottom line shows the latest model call. Keys:
+
+- `q` quits.
+- `↑`/`↓` and `PgUp`/`PgDn` scroll, and `End` returns to the live bottom.
+- `a` switches between all decisions and speech only.
+- `1`–`9` show one person, and `0` shows everyone.
+
+It refreshes every 2 seconds and never changes the run. Checks: `checks/check_watch.py`, covering data and layout without a terminal. It was also run in a real pseudo-terminal against the live environment run.
 
 ## Verification
 
@@ -33,6 +51,6 @@ The target is a run directory (`world.json`, `requests.jsonl`) or a checkpoint f
 
 - Mood is shown at the checkpoint's day only; there is no mood history chart.
 - Accessibility is computed for the checkpoint's day. The cockpit does not reconstruct what someone could recall at an earlier time.
-- The live view updates the timeline from model calls. It cannot show agent state mid-run, because `run_live` saves the checkpoint at the end.
+- Mid-run state is as of the last completed scheduler event; a model call in progress is not shown until its event commits.
 - No staged setup wizard: scenarios are created with `devsim.author` and runs started from the command line.
 - One run at a time; no side-by-side comparison.

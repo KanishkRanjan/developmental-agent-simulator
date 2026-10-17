@@ -1,11 +1,13 @@
 """Researcher cockpit: one agent's perspective or a labeled researcher view of a run, as a local web page.
 
 Static:  python3 -m devsim.cockpit RUN_DIR_OR_CHECKPOINT --out cockpit.html
-Live:    python3 -m devsim.cockpit RUN_DIR --serve 18090   (loopback only; re-reads files on each poll)
+Live:    python3 -m devsim.cockpit RUN_DIR --serve 18090   (loopback only; re-reads files on each poll; can talk to people)
+Terminal: python3 -m devsim.cockpit RUN_DIR --follow      (prints decisions and speech as they happen; no browser)
 
 An agent perspective is built only from that person's own received memories, mood, goals, plans,
 relationships and actions. The researcher view shows every raw record and is labeled as such.
-Reading a checkpoint here never changes it.
+Reading a checkpoint here never changes it. Only the live page of a run directory can talk to people: walk up to
+someone, phone them or send your own character (devsim.visit). That appends to the run's inbox; the run decides the rest.
 """
 import argparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -80,6 +82,14 @@ def perspective(engine, owner):
             'calendar': agent.get('calendar', []), 'memories': memories, 'actions': actions}
 
 
+def talk_action(run, note):
+    """One line typed in the talk box, read like the watcher's t key (devsim.visit.talk_line, which validates it)."""
+    from .visit import talk_line
+    if not isinstance(note, dict) or not isinstance(note.get('text'), str):
+        raise ValueError('Expected {"text": ..., "name": ...}')
+    return talk_line(run, note['text'], note.get('name') or 'Visitor')
+
+
 def snapshot(target):
     world_path, requests_path = _paths(target)
     data = {'source': str(world_path), 'requests': _requests(requests_path), 'world_available': world_path.exists()}
@@ -117,14 +127,20 @@ pre{white-space:pre-wrap;word-break:break-word;font-size:12px;margin:4px 0 0}det
 select,input{font:inherit;padding:4px 8px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:6px}
 table{border-collapse:collapse;width:100%;font-size:13px}td,th{border-top:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
 .wide{grid-column:1/-1;overflow-x:auto}
+#talkbox{padding-top:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.row{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin:6px 0}.row input.grow{flex:1 1 220px;min-width:0}
+button{font:inherit;padding:4px 12px;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#t-log{max-height:320px;overflow-y:auto;margin-top:8px}#t-log p{margin:4px 0}
 </style></head><body>
 <header><h1>Researcher cockpit</h1>
 <label>Perspective <select id="who"></select></label>
 <label>Filter <input id="filter" type="search" placeholder="text or event id"></label>
 <span id="status" class="muted" aria-live="polite"></span></header>
+<div id="talkbox" hidden></div>
 <main id="main"></main>
 <script>
-const LIVE = __LIVE__; let data = __DATA__;
+const LIVE = __LIVE__, TALK = __TALK__; let data = __DATA__;
 const $ = s => document.querySelector(s), esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const day = d => d == null ? '' : 'day ' + Number(d).toFixed(2), num = x => x == null ? '' : Number(x).toFixed(2);
 function match(o){const f=$('#filter').value.toLowerCase();return !f||JSON.stringify(o).toLowerCase().includes(f)}
@@ -161,33 +177,99 @@ function draw(){options();const who=$('#who').value;$('#status').textContent=(LI
  $('#main').innerHTML=!data.world_available?`<section class="scope warn">${esc(data.note)}</section>${timeline()}`:
   who==='@researcher'?researcher(data.researcher):agent(data.people[who])}
 $('#who').onchange=draw;$('#filter').oninput=draw;draw();
-if(LIVE)setInterval(async()=>{try{data=await (await fetch('data.json',{cache:'no-store'})).json();draw()}catch(e){$('#status').textContent='Live · reconnecting'}},5000);
+let talk=null;
+async function post(text){$('#t-err').textContent='';try{const r=await fetch('talk',{method:'POST',headers:{'Content-Type':'application/json'},
+ body:JSON.stringify({name:$('#t-name').value,text})});const reply=await r.json().catch(()=>({}));
+ if(!r.ok)$('#t-err').textContent=reply.error||'Request refused';else{$('#t-text').value='';$('#t-done').textContent=reply.done==='said'?'':reply.done||'';poll()}}
+ catch(e){$('#t-err').textContent='The cockpit server is not reachable'}}
+function showTalk(){const c=talk;
+ $('#t-log').innerHTML=c?`<p class="muted">${c.in_person?'Talking with':'Phone call with'} ${esc(c.label)} · ${esc(c.state)}</p>`+c.events.map(r=>
+  r.event==='you'?`<p><strong>You:</strong> ${esc(r.text)}</p>`:r.event==='said'?`<p><strong>${esc(r.label||c.label)}:</strong> ${esc(r.text)}</p>`:
+  r.event==='quiet'?`<p class="muted">${esc(r.label||c.label)} stays quiet</p>`:`<p class="muted">${esc(({approaching:'Walking over to '+c.label+'…',
+  joined:c.label+' turns to you',ringing:'Ringing '+c.label+'…',answered:c.label+' answers: '+(r.text||''),ended:'Ended',missed:'Missed',
+  failed:'Could not start'})[r.event]||r.event)}${r.reason?' — '+esc(r.reason):''}</p>`).join(''):'';
+ $('#t-log').scrollTop=$('#t-log').scrollHeight}
+async function poll(){try{talk=await (await fetch('talk.json',{cache:'no-store'})).json();showTalk()}catch(e){}}
+if(LIVE&&TALK){const box=$('#talkbox');box.hidden=false;box.innerHTML=`<section><h2>Talk to someone</h2>
+ <div class="row"><label>You are <input id="t-name" value="Kanishk" size="10"></label>
+ <input id="t-text" class="grow" list="t-people" placeholder="@priya hello" aria-label="Type a line, as with the watcher's t key">
+ <button id="t-go">Send</button></div><datalist id="t-people"></datalist>
+ <p class="muted">__HELP__</p><div id="t-err" class="warn" role="alert"></div><div id="t-done" class="muted" aria-live="polite"></div>
+ <div id="t-log" aria-live="polite"></div></section>`;
+ $('#t-people').innerHTML=Object.values(data.people||{}).map(p=>`<option value="@${esc(p.owner)} ">${esc(p.name)}</option>`).join('');
+ const go=()=>{const text=$('#t-text').value.trim();if(text)post(text)};
+ $('#t-go').onclick=go;$('#t-text').onkeydown=e=>{if(e.key==='Enter')go()};poll();setInterval(poll,1500)}
 </script></body></html>
 """
 
 
-def render(data, live=False):
+def render(data, live=False, talk=False):
+    from .visit import LINE_HELP
     payload = json.dumps(data, allow_nan=False).replace('</', '<\\/')  # keep embedded text from closing the script tag
-    return PAGE.replace('__LIVE__', 'true' if live else 'false').replace('__DATA__', payload)
+    return PAGE.replace('__LIVE__', 'true' if live else 'false').replace('__TALK__', 'true' if talk else 'false') \
+        .replace('__HELP__', LINE_HELP.replace('&', '&amp;').replace('<', '&lt;')).replace('__DATA__', payload)
 
 
 def make_server(target, port):
+    run = Path(target) if Path(target).is_dir() else None  # talking needs a run directory (its inbox), not a checkpoint file
     class Handler(BaseHTTPRequestHandler):
-        def do_GET(self):
-            if self.path not in ('/', '/data.json'):
-                self.send_error(404)
-                return
-            data = snapshot(target)
-            body = (render(data, live=True) if self.path == '/' else json.dumps(data, allow_nan=False)).encode()
-            self.send_response(200)
-            self.send_header('Content-Type', 'text/html; charset=utf-8' if self.path == '/' else 'application/json')
+        def _send(self, code, body, kind='application/json'):
+            self.send_response(code)
+            self.send_header('Content-Type', kind)
             self.send_header('Cache-Control', 'no-store')
             self.end_headers()
             self.wfile.write(body)
 
+        def do_GET(self):
+            if self.path == '/talk.json' and run is not None:
+                from .watch import latest_call
+                return self._send(200, json.dumps(latest_call(run), allow_nan=False).encode())
+            if self.path not in ('/', '/data.json'):
+                self.send_error(404)
+                return
+            data = snapshot(target)
+            body = (render(data, live=True, talk=run is not None) if self.path == '/' else json.dumps(data, allow_nan=False)).encode()
+            self._send(200, body, 'text/html; charset=utf-8' if self.path == '/' else 'application/json')
+
+        def do_POST(self):
+            if self.path != '/talk' or run is None:
+                self.send_error(404)
+                return
+            # Only this page may talk: a JSON body (other sites cannot send one without permission) and our own origin/host.
+            own = {f'127.0.0.1:{self.server.server_address[1]}', f'localhost:{self.server.server_address[1]}'}
+            origin = self.headers.get('Origin')
+            if (self.headers.get('Content-Type', '').split(';')[0].strip() != 'application/json' or self.headers.get('Host') not in own
+                    or (origin is not None and origin.removeprefix('http://') not in own)):
+                return self._send(403, b'{"error":"Only the cockpit page itself can talk"}')
+            length = int(self.headers.get('Content-Length') or 0)
+            if not 0 < length <= 4096:
+                return self._send(413, b'{"error":"Request too large"}')
+            try:
+                done = talk_action(run, json.loads(self.rfile.read(length)))
+            except (ValueError, TypeError) as exc:
+                return self._send(400, json.dumps({'error': str(exc)}).encode())
+            self._send(200, json.dumps({'ok': True, 'done': done}).encode())
+
         def log_message(self, *args):
             pass
     return ThreadingHTTPServer(('127.0.0.1', port), Handler)
+
+
+def follow(target, every_seconds=2, show_all=False):
+    """Print new model calls as a run writes them: decisions and speech, plus other calls with --all."""
+    import time
+    _, requests_path = _paths(target)
+    seen = 0
+    while True:
+        rows = _requests(requests_path)
+        for row in rows[seen:]:
+            if row['action_id'] or row['speech']:
+                said = f' "{row["speech"]}"' if row['speech'] else ''
+                print(f'day {row["day"] or 0:7.2f}  {row["agent"]:<10} {row["action_id"]}{said}', flush=True)
+            elif show_all:
+                print(f'day {row["day"] or 0:7.2f}  {row["agent"] or "":<10} ({row["purpose"]})', flush=True)
+        seen = len(rows)
+        time.sleep(every_seconds)
 
 
 def main():
@@ -196,12 +278,16 @@ def main():
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument('--out', type=Path, help='Write a self-contained HTML file')
     mode.add_argument('--serve', type=int, metavar='PORT', help='Serve a live page on 127.0.0.1')
+    mode.add_argument('--follow', action='store_true', help='Print decisions and speech in the terminal as they happen')
+    parser.add_argument('--all', action='store_true', help='With --follow, also list appraisals and recalls')
     args = parser.parse_args()
     if args.out:
         if args.out.exists():
             parser.error('Choose a fresh output file')
         args.out.write_text(render(snapshot(args.target)))
         print(args.out)
+    elif args.follow:
+        follow(args.target, show_all=args.all)
     else:
         server = make_server(args.target, args.serve)
         print(f'Cockpit at http://127.0.0.1:{server.server_address[1]}/ (loopback only; Ctrl-C stops)', flush=True)

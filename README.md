@@ -84,6 +84,8 @@ Open a run in the researcher cockpit, from one agent's perspective or the resear
 python3 -m devsim.cockpit runs/live/author-live/compiled-graphiti/run --out work/cockpit.html
 ```
 
+Watch a run live in the terminal, for example over SSH: `python3 -m devsim.watch runs/live/RUN/run` (q quits, a toggles speech only, 1–9 one person).
+
 ## Evidence and limits
 
 The [verification manifest](runs/verification/environment-verification.json) records 241 named engineering checks across 18 suites, all run on the cluster machine, plus 12 core checks; see [BUILD_STATE](docs/BUILD_STATE.md) for which ran where. The phase guides distinguish actual 27B evidence, scripted runs and source-version boundaries.

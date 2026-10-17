@@ -1,0 +1,910 @@
+{
+  "description": "Society layer (devsim/population): the implicit population, ties, demography, opinions, institutions, economy and isolation feedback from 'MiroFish Society Layer: Corrected and Improved Design (v2)'. Tags: V = verified anchor (source named), D = design default, unverified, U = unverified figure from memory or the first report. Only V values may be cited as evidence; every other value is a tunable default. Each parameter carries its allowed range or choices.",
+  "parameters": {
+    "grid": {
+      "value": 60,
+      "range": [
+        1,
+        2000
+      ],
+      "tag": "D",
+      "note": "places form a grid x grid map of cells; population = grid^2 x cell_size"
+    },
+    "cell_size": {
+      "value": 100,
+      "range": [
+        4,
+        2000
+      ],
+      "tag": "D",
+      "note": "people per cell (a neighborhood); candidate sets are this cell and its 8 neighbors"
+    },
+    "household_size": {
+      "value": 4,
+      "range": [
+        1,
+        12
+      ],
+      "tag": "D",
+      "note": "consecutive people in a cell form a household; housemates are kin and always tied"
+    },
+    "long_range_links": {
+      "value": 3,
+      "range": [
+        0,
+        20
+      ],
+      "tag": "D",
+      "note": "long-range candidate pairs per person and direction, from seeded permutations (weak far ties)"
+    },
+    "kappa": {
+      "value": 0.6,
+      "range": [
+        0,
+        100
+      ],
+      "tag": "D",
+      "note": "edge model scale: p_ij = min(1, kappa * theta_i * theta_j * exp(-|x_i - x_j| / h)); Karrer & Newman 2011 give the form (V), not the values"
+    },
+    "h": {
+      "value": 1.4,
+      "range": [
+        0.01,
+        100
+      ],
+      "tag": "D",
+      "note": "edge model length scale in latent units"
+    },
+    "theta_sigma": {
+      "value": 0.8,
+      "range": [
+        0,
+        3
+      ],
+      "tag": "D",
+      "note": "lognormal spread of the degree propensity theta (heavy-tailed degrees); Lindenfors et al. 2021 (V): no single network size, 95% intervals 2-336 and 4-520"
+    },
+    "theta_extraversion": {
+      "value": 0.3,
+      "range": [
+        -2,
+        2
+      ],
+      "tag": "D",
+      "note": "theta multiplier exp(k * E z-score); the v1 source for Extraversion enlarging networks was off-topic"
+    },
+    "theta_openness": {
+      "value": 0.1,
+      "range": [
+        -2,
+        2
+      ],
+      "tag": "D",
+      "note": "theta multiplier exp(k * O z-score)"
+    },
+    "w_place": {
+      "value": 1.0,
+      "range": [
+        0,
+        100
+      ],
+      "tag": "D",
+      "note": "latent weight of place (cell units)"
+    },
+    "w_traits": {
+      "value": 0.35,
+      "range": [
+        0,
+        100
+      ],
+      "tag": "D",
+      "note": "latent weight of Big Five z-scores (homophily)"
+    },
+    "w_age": {
+      "value": 0.08,
+      "range": [
+        0,
+        100
+      ],
+      "tag": "D",
+      "note": "latent weight per year of age difference"
+    },
+    "w_dials": {
+      "value": 0.3,
+      "range": [
+        0,
+        100
+      ],
+      "tag": "D",
+      "note": "latent weight of the four dials"
+    },
+    "age_band_weights": {
+      "value": [
+        0.17,
+        0.17,
+        0.17,
+        0.15,
+        0.13,
+        0.1,
+        0.07,
+        0.03,
+        0.01
+      ],
+      "tag": "U",
+      "note": "share of people per 10-year age band 0-9 ... 80-89 at the start (a rough young pyramid, from memory)"
+    },
+    "tiers": {
+      "value": [
+        5,
+        15,
+        50,
+        150
+      ],
+      "tag": "D",
+      "note": "Dunbar-style tiers by rank of tie strength (contact-frequency ranking, not a degree target; Lindenfors et al. 2021, V: 150 is unsupported as a constant)"
+    },
+    "strength_kin": {
+      "value": 0.8,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "starting strength of a kin (household) tie"
+    },
+    "strength_friend_mean": {
+      "value": 0.35,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "mean starting strength of a non-kin tie, raised for closer pairs in latent space"
+    },
+    "s_floor_kin": {
+      "value": 0.3,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "floor of a kin tie's decay (Roberts & Dunbar 2011, V: kin cost less to maintain; the value is not theirs)"
+    },
+    "s_floor_friend": {
+      "value": 0.02,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "floor of a friend tie's decay"
+    },
+    "stability_kin_days": {
+      "value": 400,
+      "range": [
+        1,
+        1000000.0
+      ],
+      "tag": "D",
+      "note": "S of a kin tie's shared memory; decay s(dt) = floor + (s_last - floor)(1 + dt/9S)^-1 reuses the memory forgetting curve"
+    },
+    "stability_friend_days": {
+      "value": 60,
+      "range": [
+        1,
+        1000000.0
+      ],
+      "tag": "D",
+      "note": "S of a friend tie's shared memory"
+    },
+    "stability_conscientiousness": {
+      "value": 0.2,
+      "range": [
+        -2,
+        2
+      ],
+      "tag": "D",
+      "note": "S multiplier exp(k * C z-score)"
+    },
+    "stability_max_days": {
+      "value": 20000,
+      "range": [
+        1,
+        10000000.0
+      ],
+      "tag": "D",
+      "note": "cap on tie stability"
+    },
+    "contact_boost": {
+      "value": 0.15,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "a hostile contact lowers the tie's peak strength by this much (a friendly contact restores the tie to its peak; it never raises it)"
+    },
+    "contact_rehearsal_gain": {
+      "value": 0.1,
+      "range": [
+        0,
+        10
+      ],
+      "tag": "D",
+      "note": "S multiplied by 1 + gain per contact, like the memory rehearsal rule"
+    },
+    "contact_rate_max_per_year": {
+      "value": 150,
+      "range": [
+        0,
+        10000
+      ],
+      "tag": "D",
+      "note": "recontact hazard of a pair at starting strength 1 (both directions together); rate = max * s0^exponent"
+    },
+    "contact_rate_exponent": {
+      "value": 2.5,
+      "range": [
+        0,
+        10
+      ],
+      "tag": "D",
+      "note": "how steeply contact frequency falls with weaker ties (s0 0.8 kin ~85/yr, 0.35 friend ~11/yr, 0.1 ~0.5/yr)"
+    },
+    "contact_extraversion": {
+      "value": 0.3,
+      "range": [
+        -3,
+        3
+      ],
+      "tag": "D",
+      "note": "contact rate multiplier exp(k * E z-score)"
+    },
+    "contact_arousal_gain": {
+      "value": 0.5,
+      "range": [
+        0,
+        10
+      ],
+      "tag": "D",
+      "note": "contact rate multiplier 1 + k * arousal of the strongest shared memory"
+    },
+    "avoidance": {
+      "value": 2.0,
+      "range": [
+        0,
+        20
+      ],
+      "tag": "D",
+      "note": "contact rate multiplier exp(-k * threat_sensitivity * negativity of the shared memory)"
+    },
+    "hostile_rate_per_year": {
+      "value": 6,
+      "range": [
+        0,
+        1000
+      ],
+      "tag": "D",
+      "note": "hostile contact hazard = rate * dysregulation * negativity of the shared memory"
+    },
+    "valence_friendly_gain": {
+      "value": 0.02,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "a friendly contact raises the shared memory's valence by this much"
+    },
+    "valence_hostile_drop": {
+      "value": 0.2,
+      "range": [
+        0,
+        2
+      ],
+      "tag": "D",
+      "note": "a hostile contact lowers the shared memory's valence by this much (and the tie by contact_boost)"
+    },
+    "rupture_per_hostile": {
+      "value": 0.15,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "chance a hostile contact ruptures the tie, growing with repeated hostility: 1 - exp(-k * hostile count)"
+    },
+    "reconcile_rate_per_year": {
+      "value": 0.5,
+      "range": [
+        0,
+        100
+      ],
+      "tag": "D",
+      "note": "reconciliation hazard after a rupture = rate * strength before the rupture"
+    },
+    "dial_mean": {
+      "value": {
+        "dysregulation": 0.15,
+        "mood_baseline_shift": 0.0,
+        "threat_sensitivity": 0.25,
+        "reality_testing": 0.92
+      },
+      "tag": "D",
+      "note": "population means of the four dials"
+    },
+    "dial_sd": {
+      "value": {
+        "dysregulation": 0.12,
+        "mood_baseline_shift": 0.15,
+        "threat_sensitivity": 0.12,
+        "reality_testing": 0.06
+      },
+      "tag": "D",
+      "note": "population spreads of the four dials"
+    },
+    "dial_neuroticism": {
+      "value": {
+        "dysregulation": 0.05,
+        "mood_baseline_shift": -0.05,
+        "threat_sensitivity": 0.06,
+        "reality_testing": 0.0
+      },
+      "tag": "D",
+      "note": "shift per Neuroticism z-score (the sleep report: Neuroticism acts through the dials; no verified size)"
+    },
+    "infant_mortality_per_1000": {
+      "value": 23.2,
+      "range": [
+        0,
+        1000
+      ],
+      "tag": "V",
+      "note": "NFHS-5 Maharashtra 2019-21 fact sheet: infant mortality per 1,000 live births (hazard for age 0-1)"
+    },
+    "under5_mortality_per_1000": {
+      "value": 28,
+      "range": [
+        0,
+        1000
+      ],
+      "tag": "V",
+      "note": "NFHS-5 Maharashtra 2019-21: under-five mortality per 1,000 (with the infant figure, sets the age 1-5 hazard)"
+    },
+    "gompertz_makeham": {
+      "value": [
+        0.0008,
+        4e-05,
+        0.092
+      ],
+      "tag": "U",
+      "note": "adult death hazard per year from age 5: A + B exp(C age); not verified (the design found no India life table; check SRS life tables)"
+    },
+    "isolation_odds_ratio": {
+      "value": 1.29,
+      "range": [
+        1,
+        10
+      ],
+      "tag": "V",
+      "note": "Holt-Lunstad 2015: social isolation and mortality OR 1.29 (observational). Using it as a hazard multiplier is a design approximation"
+    },
+    "isolation_under65_factor": {
+      "value": 1.5,
+      "range": [
+        1,
+        5
+      ],
+      "tag": "D",
+      "note": "Holt-Lunstad 2015 (V): stronger effects in samples averaging under 65; the factor is a design default"
+    },
+    "integration_tier_weights": {
+      "value": [
+        1.0,
+        0.6,
+        0.3,
+        0.1,
+        0.03
+      ],
+      "tag": "D",
+      "note": "weight of a tie in the integration index by tier (1 = closest)"
+    },
+    "integration_reference": {
+      "value": 8.0,
+      "range": [
+        0.01,
+        1000
+      ],
+      "tag": "D",
+      "note": "weighted tie sum that counts as fully integrated (index 1); isolation = 1 - index"
+    },
+    "median_age_first_marriage_women": {
+      "value": 19.6,
+      "range": [
+        10,
+        40
+      ],
+      "tag": "V",
+      "note": "NFHS-5 Maharashtra: median age at first marriage, women aged 20-49 (the only marriage input; the share married before 18 is a check)"
+    },
+    "marriage_ramp_women": {
+      "value": [
+        15,
+        20,
+        30,
+        6
+      ],
+      "tag": "D",
+      "note": "shape of women's first-marriage hazard: zero before a, rising linearly to full at b, full until c, then falling exp(-(age-c)/d)"
+    },
+    "remarriage_factor": {
+      "value": 0.2,
+      "range": [
+        0,
+        5
+      ],
+      "tag": "D",
+      "note": "widowed women's marriage hazard relative to first marriage"
+    },
+    "spouse_age_gap": {
+      "value": [
+        5,
+        3,
+        0,
+        15
+      ],
+      "tag": "U",
+      "note": "husband older by mean, sd, min, max years (from memory)"
+    },
+    "spouse_latent_scale": {
+      "value": 2.0,
+      "range": [
+        0.01,
+        100
+      ],
+      "tag": "D",
+      "note": "spouse choice weight exp(-latent distance / scale): compatibility by place, traits and dials"
+    },
+    "adolescent_fertility_per_1000": {
+      "value": 47,
+      "range": [
+        0,
+        1000
+      ],
+      "tag": "V",
+      "note": "NFHS-5 Maharashtra: births per 1,000 women aged 15-19 (the only fertility input; total fertility 1.7 is a check)"
+    },
+    "fertility_shape": {
+      "value": [
+        15,
+        30,
+        45
+      ],
+      "tag": "D",
+      "note": "marital fertility: zero before a, flat to b, falling linearly to zero at c"
+    },
+    "parity_factors": {
+      "value": [
+        1.0,
+        0.8,
+        0.15,
+        0.08
+      ],
+      "tag": "D",
+      "note": "birth hazard multiplier at parity 0, 1, 2, 3+ (stopping after two, e.g. sterilization; values not verified)"
+    },
+    "birth_interval_years": {
+      "value": 1.5,
+      "range": [
+        0,
+        10
+      ],
+      "tag": "D",
+      "note": "no further birth for this long after a birth"
+    },
+    "grief_mood_shift": {
+      "value": -0.15,
+      "range": [
+        -1,
+        0
+      ],
+      "tag": "D",
+      "note": "mood-baseline shift from losing a tie of strength 1, buffered by the remaining closest ties (effect size not verified)"
+    },
+    "isolation_threat_per_year": {
+      "value": 0.01,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "threat sensitivity rise per year at full isolation (slow; effect size not verified)"
+    },
+    "opinion_epsilon": {
+      "value": 0.4,
+      "range": [
+        0,
+        2
+      ],
+      "tag": "D",
+      "note": "bounded-confidence threshold: two people move toward each other only if their opinions (on -1..1) differ by less than this; not verified, tune on your graph"
+    },
+    "opinion_mu": {
+      "value": 0.3,
+      "range": [
+        0,
+        0.5
+      ],
+      "tag": "D",
+      "note": "fraction of the gap each side moves (Deffuant); not verified"
+    },
+    "opinion_initial_sd": {
+      "value": 0.5,
+      "range": [
+        0,
+        2
+      ],
+      "tag": "D",
+      "note": "spread of starting opinions (normal, clipped to -1..1)"
+    },
+    "interaction_rate_per_year": {
+      "value": 24,
+      "range": [
+        0,
+        10000
+      ],
+      "tag": "D",
+      "note": "opinion-relevant conversations per person per year, times exp(k * E)"
+    },
+    "interaction_extraversion": {
+      "value": 0.3,
+      "range": [
+        -3,
+        3
+      ],
+      "tag": "D",
+      "note": "interaction rate multiplier exp(k * E z-score)"
+    },
+    "mean_field_bins": {
+      "value": 41,
+      "range": [
+        5,
+        1001
+      ],
+      "tag": "D",
+      "note": "histogram bins for the opinion distribution of people not yet realized"
+    },
+    "mean_field_step_days": {
+      "value": 7,
+      "range": [
+        0.01,
+        365
+      ],
+      "tag": "D",
+      "note": "time step of the mean-field update (it stops early once the distribution settles)"
+    },
+    "credibility_gamma": {
+      "value": 3.0,
+      "range": [
+        0,
+        50
+      ],
+      "tag": "D",
+      "note": "acceptance weight = source credibility ^ (gamma * reality_testing): low reality testing accepts low-credibility sources"
+    },
+    "threat_rate_gain": {
+      "value": 1.0,
+      "range": [
+        0,
+        20
+      ],
+      "tag": "D",
+      "note": "threat-relevant items spread faster: rate x (1 + gain * threat_sensitivity)"
+    },
+    "contagion_window_days": {
+      "value": 30,
+      "range": [
+        0.01,
+        36525
+      ],
+      "tag": "D",
+      "note": "exposures from distinct ties must fall within this window to count toward adoption"
+    },
+    "adoption_threshold_mean": {
+      "value": 2.0,
+      "range": [
+        1,
+        50
+      ],
+      "tag": "U",
+      "note": "mean distinct exposing ties needed to adopt a behavior (complex contagion, Centola & Macy, not opened); rumors use threshold 1"
+    },
+    "institution_types": {
+      "value": {
+        "school": {
+          "min_age": 5,
+          "max_age": 18,
+          "region_cells": 3,
+          "per_region": 2,
+          "roles": [
+            [
+              "head",
+              0.01
+            ],
+            [
+              "senior",
+              0.1
+            ],
+            [
+              "member",
+              0.89
+            ]
+          ],
+          "role_traits": {
+            "head": {
+              "C": 1.0,
+              "E": 0.5
+            },
+            "senior": {
+              "C": 1.0
+            }
+          },
+          "seniority_per_year": 0.3,
+          "needs_job": false
+        },
+        "workplace": {
+          "min_age": 18,
+          "max_age": 60,
+          "region_cells": 3,
+          "per_region": 12,
+          "roles": [
+            [
+              "head",
+              0.02
+            ],
+            [
+              "senior",
+              0.15
+            ],
+            [
+              "member",
+              0.83
+            ]
+          ],
+          "role_traits": {
+            "head": {
+              "C": 1.0,
+              "E": 0.7,
+              "O": 0.3
+            },
+            "senior": {
+              "C": 1.0,
+              "O": 0.3
+            }
+          },
+          "seniority_per_year": 0.05,
+          "needs_job": true
+        }
+      },
+      "tag": "D",
+      "note": "lazy institutions: rules, a role-size distribution and a membership generator (no member list). Members are the region's eligible people whose hash picks this institution; roles go to the best fit (traits + seniority). All values are design defaults"
+    },
+    "norm_tightness_range": {
+      "value": [
+        0.2,
+        0.8
+      ],
+      "tag": "U",
+      "note": "range a community's tightness is drawn from (Gelfand's tightness-looseness idea, not verified; no value for India or Pune is hardcoded)"
+    },
+    "norm_sd": {
+      "value": 0.3,
+      "range": [
+        0.01,
+        2
+      ],
+      "tag": "D",
+      "note": "spread of a community's accepted behavior around its norm"
+    },
+    "sanction_rate_per_year": {
+      "value": 3,
+      "range": [
+        0,
+        1000
+      ],
+      "tag": "D",
+      "note": "sanction hazard (gossip, exclusion, tie rupture) = rate * tightness * visibility * distance from the norm in sds"
+    },
+    "sanction_sensitivity": {
+      "value": {
+        "bias": 0.0,
+        "threat_sensitivity": 3.0,
+        "A": 0.6,
+        "C": 0.4,
+        "dysregulation": -2.0
+      },
+      "tag": "D",
+      "note": "one formula for everyone: sensitivity to sanction = logistic(bias + sum of weights x values); no archetype branch"
+    },
+    "collective_threshold": {
+      "value": [
+        0.35,
+        0.15
+      ],
+      "tag": "U",
+      "note": "mean and sd of members' participation thresholds (Granovetter's threshold model, not opened)"
+    },
+    "collective_trigger_fraction": {
+      "value": 0.25,
+      "range": [
+        0,
+        1
+      ],
+      "tag": "D",
+      "note": "a collective event fires when the cascade reaches this share of members"
+    },
+    "job_initial_shares": {
+      "value": [
+        0.1,
+        0.5,
+        0.4
+      ],
+      "tag": "U",
+      "note": "unemployed, informal, formal shares at entry to working age (18)"
+    },
+    "job_rates_per_year": {
+      "value": {
+        "unemployed>informal": 1.0,
+        "unemployed>formal": 0.3,
+        "informal>formal": 0.1,
+        "informal>unemployed": 0.15,
+        "formal>unemployed": 0.05,
+        "formal>informal": 0.05
+      },
+      "tag": "D",
+      "note": "job-state Markov chain (PLFS transitions not verified)"
+    },
+    "job_trait_effects": {
+      "value": {
+        "C_entry": 0.2,
+        "N_loss": 0.15
+      },
+      "tag": "D",
+      "note": "Conscientiousness speeds moves out of unemployment and into formal work, exp(k C); Neuroticism speeds job loss, exp(k N)"
+    },
+    "income_median_monthly": {
+      "value": {
+        "unemployed": 0,
+        "informal": 12000,
+        "formal": 30000
+      },
+      "tag": "U",
+      "note": "median monthly income by state, rupees (from memory)"
+    },
+    "income_sigma": {
+      "value": 0.6,
+      "range": [
+        0,
+        5
+      ],
+      "tag": "D",
+      "note": "lognormal spread of income within a state"
+    },
+    "job_loss_shift": {
+      "value": {
+        "mood_baseline_shift": -0.1,
+        "dysregulation": 0.05,
+        "reality_testing": 0.0,
+        "threat_sensitivity": 0.0
+      },
+      "tag": "D",
+      "note": "poverty-stress dial push on losing work (effect sizes not verified)"
+    },
+    "opportunity_rate_per_year": {
+      "value": 0.3,
+      "range": [
+        0,
+        1000
+      ],
+      "tag": "D",
+      "note": "opportunities reaching a person per year, times 1 + k * institutions reachable through ties"
+    },
+    "opportunity_reach_gain": {
+      "value": 0.03,
+      "range": [
+        0,
+        10
+      ],
+      "tag": "D",
+      "note": "extra opportunity rate per distinct institution among a person's ties (knowing the right people)"
+    },
+    "opportunity_size_alpha": {
+      "value": 1.6,
+      "range": [
+        1.01,
+        10
+      ],
+      "tag": "D",
+      "note": "Pareto tail of opportunity sizes (heavy-tailed; Pluchino et al. 2018 use multiplicative events, V as a mechanism only)"
+    },
+    "opportunity_fit": {
+      "value": {
+        "bias": -0.5,
+        "O": 0.6,
+        "C": 0.6,
+        "E": 0.3,
+        "connections": 0.4
+      },
+      "tag": "D",
+      "note": "chance to exploit = logistic(bias + O, C, E z-scores + log(1 + connections))"
+    },
+    "cooperation": {
+      "value": {
+        "bias": 1.0,
+        "A": 0.8
+      },
+      "tag": "D",
+      "note": "chance allies cooperate = logistic(bias + k A): very low agreeableness costs allies"
+    },
+    "capital_gain": {
+      "value": 0.3,
+      "range": [
+        0,
+        100
+      ],
+      "tag": "D",
+      "note": "success multiplies capital by 1 + gain * size; set so a typical person roughly breaks even (median log-growth near 0), as in Pluchino et al."
+    },
+    "capital_loss": {
+      "value": 0.2,
+      "range": [
+        0,
+        0.99
+      ],
+      "tag": "D",
+      "note": "failure multiplies capital by 1 - loss * min(1, size / 4)"
+    },
+    "bridge_top_ties": {
+      "value": 8,
+      "range": [
+        0,
+        200
+      ],
+      "tag": "D",
+      "note": "an engine character's closest ties that can reach them (contact news, context)"
+    },
+    "bridge_max_gap_days": {
+      "value": 30,
+      "range": [
+        0.1,
+        3650
+      ],
+      "tag": "D",
+      "note": "longest wait between society checks for an engine character (deaths and fallings-out are noticed within this)"
+    },
+    "bridge_contact_news_max": {
+      "value": 3,
+      "range": [
+        0,
+        50
+      ],
+      "tag": "D",
+      "note": "at most this many 'got in touch' observations per check"
+    },
+    "topics": {
+      "value": [],
+      "tag": "D",
+      "note": "opinion topics the society layer tracks (names; each starts from the configured opinion spread)",
+      "items": "name"
+    },
+    "bridge_contact_repeat_days": {
+      "value": 21,
+      "range": [
+        0,
+        3650
+      ],
+      "tag": "D",
+      "note": "the same person getting in touch is news at most once in this many days (under the 30-day routine-reuse window, so repeats reuse their appraisal)"
+    }
+  }
+}

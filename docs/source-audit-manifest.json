@@ -111,6 +111,27 @@
       "independent_reference_verification": "not established by this audit",
       "archived_path": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Lifespan Development.pdf",
       "archived_text_file": "/Users/kanishkranjan/Documents/Codex/2026-10-15/if-x20/outputs/agent_engine/sources/Lifespan Development.txt"
+    },
+    {
+      "title": "Hopfield Networks is All You Need (blog post)",
+      "url": "https://ml-jku.github.io/hopfield-layers/",
+      "retrieved": "2026-10-17",
+      "sha256": "bd99f5d0d9de893bc207ed8cc397d13f8e034ca46f7e2375715339d175c7c6fc",
+      "archived_path": "research/sources/Hopfield Networks is All You Need (blog).html",
+      "archived_text_file": "research/sources/Hopfield Networks is All You Need (blog).txt",
+      "reread": "complete extracted text; figures not archived (equations kept as TeX)",
+      "paper": "https://arxiv.org/abs/2008.02217",
+      "independent_reference_verification": "not established by this audit"
+    },
+    {
+      "title": "Hopfield Networks: Neural Memory Machines (Ethan Crouse, Towards Data Science, 18 May 2022)",
+      "url": "https://towardsdatascience.com/hopfield-networks-neural-memory-machines-4c94be821073/",
+      "retrieved": "2026-10-17",
+      "sha256": "56739ef5cf0260062a5b50d2f6cc45f95931f5426ab56c3a110c8de28054bd10",
+      "archived_path": "research/sources/Hopfield Networks - Neural Memory Machines (TDS).html",
+      "archived_text_file": "research/sources/Hopfield Networks - Neural Memory Machines (TDS).txt",
+      "reread": "article text extracted; equations 1-10 and figures are images and not archived",
+      "independent_reference_verification": "not established by this audit"
     }
   ],
   "conversation": {

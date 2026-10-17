@@ -8,6 +8,7 @@
     "faded memories show only their encoded gist, and memories with no accessible representation are omitted",
     "embedded run text cannot close the page script",
     "before a live run writes its checkpoint, the cockpit shows the streaming model-call timeline",
-    "the live server binds to loopback and serves only the page and its data"
+    "the live server binds to loopback and serves only the page and its data",
+    "the live page has one talk box read like the watcher's t key (@name starts a talk, plain text continues, /call, /send with who and age, /auto, /bye) writing to the run inbox; requests that are not JSON from the page's own origin, or are invalid, are refused and write nothing; static exports and checkpoint files cannot talk"
   ]
 }

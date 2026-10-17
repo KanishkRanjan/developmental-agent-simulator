@@ -27,7 +27,6 @@ def recorder(request_json, path, counts):
     """Wrap the model transport so every request/response is appended to path."""
     def recorded(system, context, api, model, max_tokens=600):
         start = time.monotonic()
-        result = request_json(system, context, api, model, max_tokens)
         purpose = ({'ground_goal_plan':'goal_planning','semantic_recall':'semantic_recall','reflect_received_evidence':'reflection',
                     'expand_constrained_background':'background','generate_biography':'background',
                     'expand_retrieval_query':'retrieval_query','diagnostic_interview':'interview','author_scenario':'authoring',
@@ -37,14 +36,24 @@ def recorder(request_json, path, counts):
                    'situation' if context.get('task') == 'construe_situation' else
                    'consolidation' if 'episodes_to_consolidate' in context else
                    'appraisal' if 'new_observation' in context else 'action'))
-        counts[purpose] = counts.get(purpose, 0) + 1
         agent, day = context.get('identity', {}).get('id'), context.get('simulated_day')
+        # The watcher shows the call in flight; written atomically and removed when the call ends.
+        current, staged = path.with_name('current.json'), path.with_name('current.json.tmp')
+        staged.write_text(json.dumps({'purpose': purpose, 'agent': agent, 'simulated_day': day, 'started': time.time(),
+                                      'context': context}, allow_nan=False))
+        staged.replace(current)
+        try:
+            result = request_json(system, context, api, model, max_tokens)
+        finally:
+            current.unlink(missing_ok=True)
+        counts[purpose] = counts.get(purpose, 0) + 1
         record = {'purpose': purpose, 'model': model, 'simulated_day': day,
-                  'agent': agent, 'seconds': round(time.monotonic() - start, 3),
-                  'context': context, 'response': result}
+                  'agent': agent, 'seconds': round(time.monotonic() - start, 3), 'finished': time.time(),
+                  'usage': dict(engine_module.LAST_USAGE), 'context': context, 'response': result}
         with path.open('a') as output:
             output.write(json.dumps(record, allow_nan=False) + '\n')
-        print(json.dumps({'purpose': purpose, 'agent': agent, 'day': day, 'seconds': record['seconds']}), flush=True)
+        print(json.dumps({'purpose': purpose, 'agent': agent, 'day': day, 'seconds': record['seconds'],
+                          'tokens': record['usage'].get('completion_tokens')}), flush=True)
         return result
     return recorded
 
@@ -56,7 +65,14 @@ def main():
     parser.add_argument('--until-day', type=float, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--api', default='http://127.0.0.1:18081')
+    parser.add_argument('--beyond-horizon', action='store_true', help='Allow running past the policy\'s horizon_days')
     args = parser.parse_args()
+    policy = json.loads(args.policy.read_text())
+    # The overnight environment run went to day 315 of a 62-day scenario; nothing after day 62 was authored.
+    # 1e-3 tolerance: the compiler prints the horizon rounded to three decimals.
+    if 'horizon_days' in policy and args.until_day > policy['horizon_days'] + 1e-3 and not args.beyond_horizon:
+        raise ValueError(f'--until-day {args.until_day} is past the scenario horizon ({policy["horizon_days"]:.1f} days); '
+                         'extend the scenario or pass --beyond-horizon')
     if args.out.exists() and any(args.out.iterdir()):
         raise ValueError('Use a fresh output directory; existing run evidence must be preserved')
     args.out.mkdir(parents=True, exist_ok=True)
@@ -66,7 +82,6 @@ def main():
     model, models = select_model(args.api)
     (args.out / 'server-model.json').write_text(json.dumps(models, indent=2) + '\n')
     engine = Engine.load(args.world)
-    policy = json.loads(args.policy.read_text())
     (args.out / 'policy-used.json').write_text(json.dumps(policy, indent=2) + '\n')
     initial_actions = len(engine.state['actions'])
     request_json = engine_module.request_json
@@ -77,11 +92,12 @@ def main():
     summary = {'model': model, 'started_utc': datetime.now(timezone.utc).isoformat(), 'provider': 'local_model_api',
                'sampling': policy.get('sampling', 'legacy_discrete'), 'personality_expression': 'behavioral_language_v1'}
     try:
-        Lifetime(engine, policy, api=args.api, model=model).run(
-            args.until_day, args.out / 'world.json')
+        controller = Lifetime(engine, policy, api=args.api, model=model)
+        controller.inbox = args.out / 'inbox.jsonl'  # devsim.visit / watcher key t: a researcher joins a conversation
+        controller.run(args.until_day, args.out / 'world.json')
         summary['status'] = 'completed'
-    except Exception as exc:
-        summary.update(status='failed', error=f'{type(exc).__name__}: {exc}')
+    except BaseException as exc:  # Ctrl-C (to resume later) is recorded as stopped, not left blank
+        summary.update(status='stopped' if isinstance(exc, KeyboardInterrupt) else 'failed', error=f'{type(exc).__name__}: {exc}')
         raise
     finally:
         summary.update(seconds=round(time.monotonic() - started, 3), requests=counts,

@@ -6,6 +6,7 @@ mapping, clinical mechanism, child norm or measured effect is invented.
 from copy import deepcopy
 from math import floor
 from .engine import Engine
+from . import cognition
 
 
 def opportunities(actor,caregiver,peer):
@@ -78,6 +79,7 @@ def hazards(actor):
 def build(seed=42,caregivers=1,graphiti=False,household=False):
     if caregivers not in (1,2): raise ValueError('Example households support one or two known caregivers')
     engine=Engine(seed=seed);families={};parents=[]
+    engine.state['config']['identity_handles']=True  # unique @handles, so two people may share a name
     for child,child_name,names in [('alex','Alex',['Maya','Noor']),('bea','Bea',['Rowan','Kai'])]:
         ids=[]
         for index,name in enumerate(names[:caregivers]):
@@ -93,7 +95,7 @@ def build(seed=42,caregivers=1,graphiti=False,household=False):
         'sampling':'event_driven','opportunities':[],'world_events':[],
         'cognition':{'graphiti_retrieval':graphiti,'semantic_recall':True,'indexed_retrieval':True,'reference_resolution':True,'reflection':True,
             'autonomous_goals':True,'semantic_candidates':24,'detail_threshold':.45,'fan_weight':.15,
-            'rumination_per_year':4,'rumination_minimum_gap_days':1},
+            **cognition.MEMORY_DEFAULTS,'semantic_matching':graphiti,'rumination_per_year':4,'rumination_minimum_gap_days':1},
         'planning':{'calendar_mode':'elapsed','grounded_plans':True,'hours_per_day':12,'habit_half_life_days':30,'habit_gain':.1,'habit_max':1},
         'expression':{'std_by_domain':dict.fromkeys('NEOAC',1),'half_life_days':1,'age_appropriate_actions':True},
         'society':{'closeness_half_life_days':365.25},

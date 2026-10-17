@@ -1,0 +1,26 @@
+{
+  "mode": "compile",
+  "source": "runs/live/environment-live/reviewed/scenario.json",
+  "dry_run": {
+    "days": 62.0925,
+    "provider": "scripted_engineering_fixture",
+    "resolved_actions": 36,
+    "applied_events": 339,
+    "pending_events": 0,
+    "conversations": {
+      "kitchen_talk": "closed",
+      "group-robotics_club-0": "closed",
+      "life-3-family_chat-talk": "closed",
+      "group-robotics_club-1": "closed",
+      "group-robotics_club-2": "closed",
+      "group-robotics_club-3": "closed",
+      "group-robotics_club-4": "closed",
+      "group-robotics_club-5": "closed",
+      "group-robotics_club-6": "closed"
+    },
+    "scope": "checks that the policy runs; scripted choices skip model cognition"
+  },
+  "seconds": 0.541,
+  "run_live": "python3 -m devsim.run_live --world runs/live/environment-live/compiled/initial.json --policy runs/live/environment-live/compiled/policy.json --until-day 62.093 --out runs/live/environment-live/compiled/run --api API",
+  "run_scripted": "python3 -m devsim.lifetime runs/live/environment-live/compiled/initial.json --policy runs/live/environment-live/compiled/policy.json --until-day 62.093 --save runs/live/environment-live/compiled/scripted-world.json --scripted"
+}

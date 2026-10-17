@@ -1,0 +1,49 @@
+{
+  "scope": "advisory model review; check each issue yourself",
+  "issues": [
+    {
+      "path": "household.routines.arun.available_hours",
+      "kind": "contradiction",
+      "problem": "The setting states Arun works from 15:00 to 23:00, but his available_hours are set to [8, 24], implying he is awake and available for 8 hours before his shift starts, which contradicts the specific work schedule provided.",
+      "value": [
+        [
+          8,
+          24
+        ]
+      ]
+    },
+    {
+      "path": "household.groups.robotics_club.meetings.first_day",
+      "kind": "timing",
+      "problem": "The setting states the club meets every Thursday, but the first meeting is scheduled for day 14 (a Tuesday if day 0 is a Monday), which does not align with a weekly Thursday schedule starting in the second week.",
+      "value": 14
+    },
+    {
+      "path": "household.routes",
+      "kind": "unsupported",
+      "problem": "The routes list only includes travel times from bedroom, kitchen, and living room to the school lab, but Priya's location is set to bedroom and she walks to school, implying a route from the apartment entrance or general home location is missing or the bedroom is incorrectly treated as the departure point for a 20-minute walk.",
+      "value": [
+        {
+          "a": "bedroom",
+          "b": "school_lab",
+          "minutes": 20
+        },
+        {
+          "a": "kitchen",
+          "b": "school_lab",
+          "minutes": 20
+        },
+        {
+          "a": "living_room",
+          "b": "school_lab",
+          "minutes": 20
+        },
+        {
+          "a": "bedroom",
+          "b": "hospital",
+          "minutes": 30
+        }
+      ]
+    }
+  ]
+}

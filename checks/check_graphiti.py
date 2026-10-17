@@ -57,6 +57,19 @@ def main():
         with sqlite3.connect(graphiti_bridge.config()['outbox']) as db:
             assert db.execute('SELECT count(*) FROM jobs WHERE id=?',(new['snapshot'],)).fetchone()[0]==1
         checks.append('checkpoint publication uses a durable idempotent outbox and leaves canonical state unchanged')
+        # A later checkpoint supersedes views queued only by earlier checkpoints; searched views stay queued.
+        stale=['private_stale_publish','private_waiting_search']
+        with sqlite3.connect(graphiti_bridge.config()['outbox']) as db:
+            db.execute("INSERT INTO jobs(id,payload,status,updated,used) VALUES(?,'{}','queued',0,NULL),(?,'{}','queued',0,?)",
+                       (stale[0],stale[1],1.0))
+        try:
+            e.save(saved)
+            with sqlite3.connect(graphiti_bridge.config()['outbox']) as db:
+                left={k for (k,) in db.execute('SELECT id FROM jobs WHERE id IN (?,?)',stale)}
+            assert left=={'private_waiting_search'}
+        finally:
+            with sqlite3.connect(graphiti_bridge.config()['outbox']) as db:db.execute('DELETE FROM jobs WHERE id IN (?,?)',stale)
+        checks.append('a new checkpoint drops views queued only by earlier checkpoints (stale caches) but keeps views a search is waiting on')
     before=deepcopy(e.state)
     quick=inspect(e,'a','employment','quick');panorama=inspect(e,'a','employment','panorama');assert quick['memories'] and panorama['events'] and e.state==before
     checks.append('quick and historical-interpretation researcher inspection are read-only')
@@ -113,6 +126,24 @@ def main():
     checks+=['compaction dry runs change nothing and recently used views are protected by their lease',
              'compaction removes superseded views from Neo4j and the outbox; the newest view stays searchable without reindexing',
              'a compacted view is re-derived from its checkpoint on demand with identical results']
+    quiet=fixture();quiet_scope=quiet.state['config']['graphiti_namespace']
+    quiet_keys=[]
+    for day in (1,2,3):
+        quiet.advance(day);graphiti_bridge.publish(quiet)
+        quiet_keys+=[graphiti_bridge.snapshot_key(graphiti_bridge.snapshot(quiet,o)) for o in ('a','b')]
+    import time,urllib.error
+    def state(key):  # automatic compaction may already have removed a superseded view
+        try:return graphiti_bridge.request('/status/'+key)['status']
+        except urllib.error.HTTPError:return 'removed'
+    deadline=time.monotonic()+120
+    while any(state(k) not in ('done','removed') for k in quiet_keys):  # queued jobs are never compacted
+        assert time.monotonic()<deadline,'published views were not indexed in time';time.sleep(.5)
+    graphiti_bridge.compact(1,3600,False,quiet_scope)
+    with sqlite3.connect(graphiti_bridge.config()['outbox']) as db:
+        remaining={r[0] for r in db.execute('SELECT id FROM jobs WHERE id IN (%s)'%','.join('?'*len(quiet_keys)),quiet_keys)}
+    assert remaining==set(quiet_keys[-2:]),remaining
+    graphiti_bridge.compact(1,0,False,quiet_scope)
+    checks.append('views only published by checkpoint saves carry no lease; superseded ones are compactable at once')
     busy=fixture();busy_scope=busy.state['config']['graphiti_namespace'];fakes=[]
     with sqlite3.connect(graphiti_bridge.config()['outbox']) as db:
         for day in (1,2):
@@ -122,6 +153,16 @@ def main():
     finally:
         with sqlite3.connect(graphiti_bridge.config()['outbox']) as db:db.execute('DELETE FROM jobs WHERE id IN (?,?)',fakes)
     checks.append('compaction never removes a queued or running indexing job')
+    # /embed: normalized cached BGE vectors for engine meaning-based cueing.
+    shout,yell,code=graphiti_bridge.vectors(['Rohan shouted at me in the cafeteria.','My father yelled at me when I was small.',
+                                             'The buffer flush at the frame boundary stops the drift.'])
+    cos=lambda a,b:sum(x*y for x,y in zip(a,b))
+    assert abs(cos(shout,shout)-1)<1e-4 and cos(shout,yell)>.6>cos(shout,code)
+    assert graphiti_bridge.request('/embed',{'texts':['Rohan shouted at me in the cafeteria.']})['vectors'][0]==shout
+    for bad in ({'texts':[]},{'texts':['x']*513},{'texts':['']},{'texts':'not a list'}):
+        try:graphiti_bridge.request('/embed',bad);raise AssertionError('bad embed request accepted')
+        except HTTPError as exc:assert exc.code==400
+    checks.append('/embed returns normalized cached BGE vectors (shouted~yelled above 0.6, unrelated below) and rejects malformed batches')
     result={'passed':True,'scope':'actual local Graphiti/Neo4j/BGE plus stubbed selection for runtime assertions; no measured human improvement',
             'health':health,'checks':checks}
     RESULTS_DIR.joinpath('graphiti-engineering-checks.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))

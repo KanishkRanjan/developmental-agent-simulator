@@ -1,0 +1,10 @@
+{
+  "mode": "review",
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "requests": {
+    "review": 2
+  },
+  "review_issues": 3,
+  "seconds": 71.805,
+  "next": "Read review.json, edit runs/live/environment-live/review-of-reviewed/scenario.json, then: python3 -m devsim.author compile runs/live/environment-live/review-of-reviewed/scenario.json --out NEW_DIRECTORY"
+}

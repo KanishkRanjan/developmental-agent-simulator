@@ -1,0 +1,970 @@
+{
+  "version": 1,
+  "seed": 42,
+  "day": 0,
+  "entities": {
+    "priya": {
+      "name": "Priya",
+      "facts": {
+        "birth_day": -5478.75,
+        "member_school_class": true,
+        "club_member": false,
+        "invited_to_club": false,
+        "caregivers": [
+          "arun",
+          "meera"
+        ]
+      }
+    },
+    "arun": {
+      "name": "Arun",
+      "facts": {
+        "birth_day": -16071.0
+      }
+    },
+    "meera": {
+      "name": "Meera",
+      "facts": {
+        "birth_day": -25932.75
+      }
+    },
+    "kiara": {
+      "name": "Kiara",
+      "facts": {
+        "birth_day": -5478.75,
+        "member_school_class": true
+      }
+    },
+    "rohan": {
+      "name": "Rohan",
+      "facts": {
+        "birth_day": -5844.0,
+        "member_school_class": true,
+        "member_robotics_club": true
+      }
+    },
+    "dev": {
+      "name": "Dev",
+      "facts": {
+        "birth_day": -5478.75,
+        "member_school_class": true,
+        "member_robotics_club": true
+      }
+    },
+    "ms_okafor": {
+      "name": "Ms. Okafor",
+      "facts": {
+        "birth_day": -14610.0,
+        "member_robotics_club": true
+      }
+    }
+  },
+  "agents": {
+    "priya": {
+      "facets": {
+        "N1": 75,
+        "N2": 50,
+        "N3": 50,
+        "N4": 80,
+        "N5": 50,
+        "N6": 50,
+        "E1": 40,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 30,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 75,
+        "N2": 50,
+        "N3": 50,
+        "N4": 80,
+        "N5": 50,
+        "N6": 50,
+        "E1": 40,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 50,
+        "C1": 30,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5478.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "make_friends": {
+          "description": "Make friends at the new school.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        },
+        "join_club": {
+          "description": "Become an active member of the robotics club.",
+          "priority": 0.8,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {
+        "arun": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        },
+        "meera": {
+          "role": "caregiver",
+          "firsthand": false,
+          "evidence": null,
+          "trust": 0.5,
+          "closeness": 0.0
+        }
+      },
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-priya-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        },
+        "scenario-background-priya-1": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "arun": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 40,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 70,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 40,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 70,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -16071.0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "stay_connected": {
+          "description": "Maintain a close bond with Priya despite work hours.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-arun-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "meera": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 30,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 90,
+        "C1": 50,
+        "C2": 60,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 30,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 90,
+        "C1": 50,
+        "C2": 60,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -25932.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "guide_priya": {
+          "description": "Offer wisdom and comfort to Priya.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-meera-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "kiara": {
+      "facets": {
+        "N1": 50,
+        "N2": 70,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 80,
+        "E4": 50,
+        "E5": 50,
+        "E6": 60,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 20,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 70,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 80,
+        "E4": 50,
+        "E5": 50,
+        "E6": 60,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 20,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5478.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "dominate_social": {
+          "description": "Maintain status as the popular girl.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-kiara-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "rohan": {
+      "facets": {
+        "N1": 50,
+        "N2": 60,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 90,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 10,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 80,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 60,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 90,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 10,
+        "A6": 50,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 80,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5844.0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "win_competition": {
+          "description": "Be the best in the robotics club.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-rohan-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "dev": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 70,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 20,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 70,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 20,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 50,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 80,
+        "C1": 50,
+        "C2": 50,
+        "C3": 50,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -5478.75,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "be_kind": {
+          "description": "Support friends in the club.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-dev-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    },
+    "ms_okafor": {
+      "facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 80,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 70,
+        "C1": 50,
+        "C2": 50,
+        "C3": 80,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "initial_facets": {
+        "N1": 50,
+        "N2": 50,
+        "N3": 50,
+        "N4": 50,
+        "N5": 50,
+        "N6": 50,
+        "E1": 50,
+        "E2": 50,
+        "E3": 50,
+        "E4": 50,
+        "E5": 50,
+        "E6": 50,
+        "O1": 50,
+        "O2": 50,
+        "O3": 50,
+        "O4": 50,
+        "O5": 80,
+        "O6": 50,
+        "A1": 50,
+        "A2": 50,
+        "A3": 50,
+        "A4": 50,
+        "A5": 50,
+        "A6": 70,
+        "C1": 50,
+        "C2": 50,
+        "C3": 80,
+        "C4": 50,
+        "C5": 50,
+        "C6": 50
+      },
+      "birth_day": -14610.0,
+      "alive": true,
+      "attachment": {},
+      "culture": {},
+      "goals": {
+        "run_club": {
+          "description": "Manage the robotics club effectively.",
+          "priority": 1,
+          "deadline": null,
+          "status": "active",
+          "progress": 0.0,
+          "plan": []
+        }
+      },
+      "relationships": {},
+      "references": {},
+      "beliefs": {},
+      "memory_meta": {
+        "scenario-background-ms_okafor-0": {
+          "kind": "internal",
+          "confidence": 0.5,
+          "importance": 0.6,
+          "meaning": "",
+          "versions": [],
+          "stability_days": 6.6000000000000005,
+          "encoding_stability_days": 6.6000000000000005,
+          "last_recall_day": null,
+          "encountered": [],
+          "provenance": "scenario_authoring"
+        }
+      },
+      "rules": [],
+      "affect_events": [],
+      "recall_log": [],
+      "affect_parameters": {}
+    }
+  },
+  "events": [
+    {
+      "id": "scenario-background-arun-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "arun": {
+          "text": "I miss hearing her voice when I get home late.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-dev-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "dev": {
+          "text": "I don't like conflict, but I want to help.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-kiara-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "kiara": {
+          "text": "New kids are always trying too hard.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-meera-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "meera": {
+          "text": "I remember how hard it was to fit in when I was young.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-ms_okafor-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "ms_okafor": {
+          "text": "I need to balance Rohan's ego with Dev's shyness.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "I feel like everyone is watching me when I walk into the cafeteria.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-priya-1",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "priya": {
+          "text": "I hope I don't say something stupid in front of Kiara.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    },
+    {
+      "id": "scenario-background-rohan-0",
+      "day": 0,
+      "description": "Scenario-authored starting experience; not simulated history.",
+      "observations": {
+        "rohan": {
+          "text": "My ideas are better than anyone else's.",
+          "source": "self",
+          "kind": "internal",
+          "importance": 0.6,
+          "provenance": "scenario_authoring"
+        }
+      },
+      "facts": {},
+      "outcomes": {},
+      "requires": {},
+      "status": "applied"
+    }
+  ],
+  "pending": [],
+  "actions": [],
+  "updates": [],
+  "config": {
+    "mood_kernel": "power_law",
+    "mood_half_life_days": 1.0,
+    "mood_tau_days": 1.0,
+    "mood_alpha": 0.5,
+    "affect_budget": 2.0,
+    "arousal_budget": 2.0,
+    "memory_base_stability_days": 3.0,
+    "memory_importance_weight": 2.0,
+    "memory_arousal_weight": 1.0,
+    "rehearsal_gain": 0.1,
+    "rehearsal_gap_days": 1.0,
+    "max_stability_days": 3650.0,
+    "recall_affect_gap_days": 1.0
+  }
+}

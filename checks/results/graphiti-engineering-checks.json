@@ -13,6 +13,7 @@
     "graph topics and received-reference links remain namespaced by owner and immutable view",
     "aging changes the indexed snapshot and old graph detail cannot reappear through gist retrieval",
     "checkpoint publication uses a durable idempotent outbox and leaves canonical state unchanged",
+    "a new checkpoint drops views queued only by earlier checkpoints (stale caches) but keeps views a search is waiting on",
     "quick and historical-interpretation researcher inspection are read-only",
     "runtime semantic recall uses Graphiti but gist-only recall cannot rehearse original detail",
     "graph outage falls back only to private FTS and records the downgrade",
@@ -22,6 +23,8 @@
     "compaction dry runs change nothing and recently used views are protected by their lease",
     "compaction removes superseded views from Neo4j and the outbox; the newest view stays searchable without reindexing",
     "a compacted view is re-derived from its checkpoint on demand with identical results",
-    "compaction never removes a queued or running indexing job"
+    "views only published by checkpoint saves carry no lease; superseded ones are compactable at once",
+    "compaction never removes a queued or running indexing job",
+    "/embed returns normalized cached BGE vectors (shouted~yelled above 0.6, unrelated below) and rejects malformed batches"
   ]
 }

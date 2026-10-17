@@ -24,6 +24,7 @@ from .identity_state_prototype import AgentWorld, Observation, recall_availabili
 from .personality import describe
 from . import situation as situational
 from . import development
+from . import sleep
 from .context_view import compact
 
 FACET_NAMES = dict(zip(
@@ -56,9 +57,14 @@ def sampled_profile(seed):
             for key, counts in zip(model['facets'], model['marginal_counts'])}
 
 
+LAST_USAGE = {}  # token counts and server timings of the latest model call (read by run_live's recorder)
+
+
 def request_json(system, context, api, model, max_tokens=600):
     """Call the selected local server; context is a disposable, compactable view."""
-    payload = {'model': model, 'temperature': 0.4, 'max_tokens': max_tokens,
+    LAST_USAGE.clear()
+    # A re-ask after a near-repeat samples more freely, or the same low temperature tends to return the same line.
+    payload = {'model': model, 'temperature': 0.8 if 'repeat_notice' in context else 0.4, 'max_tokens': max_tokens,
                'chat_template_kwargs': {'enable_thinking': False}, 'response_format': {'type': 'json_object'},
                'messages': [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(context)}]}
     try:
@@ -95,12 +101,22 @@ def request_json(system, context, api, model, max_tokens=600):
                           headers={'Content-Type': 'application/json'})
         with urlopen(request, timeout=180) as response:
             body = json.load(response)
+        usage, timings = body.get('usage') or {}, body.get('timings') or {}
+        LAST_USAGE.update({k: v for k, v in {
+            'prompt_tokens': usage.get('prompt_tokens'), 'completion_tokens': usage.get('completion_tokens'),
+            'cached_tokens': timings.get('cache_n'), 'prompt_ms': timings.get('prompt_ms'),
+            'generation_ms': timings.get('predicted_ms'), 'tokens_per_second': timings.get('predicted_per_second')}.items()
+            if isinstance(v, (int, float))})
         result = json.loads(body['choices'][0]['message']['content'])
         if not isinstance(result, dict):
             raise ValueError('Expected a JSON object')
         return result
     except (OSError, HTTPException, ValueError, KeyError, IndexError) as exc:
         raise RuntimeError('Local model request failed; no agent state changed') from exc
+
+
+class InvalidModelOutput(ValueError):
+    """The model's output stayed invalid after repairs; nothing was changed."""
 
 
 def validated_json(system, context, validate, api, model, max_tokens=600):
@@ -115,12 +131,12 @@ def validated_json(system, context, validate, api, model, max_tokens=600):
             return result
         except (ValueError, TypeError, KeyError) as exc:
             last_error = exc
-    raise ValueError('Local model output remained invalid after two repair attempts') from last_error
+    raise InvalidModelOutput('Local model output remained invalid after two repair attempts') from last_error
 
 
 class Engine:
     def __init__(self, seed=42, mood_kernel='power_law'):
-        if mood_kernel not in ('power_law', 'exponential'):
+        if mood_kernel not in ('power_law', 'exponential', 'average'):
             raise ValueError('Unsupported mood kernel')
         self.state = {
             'version': 1, 'seed': seed, 'day': 0.0, 'entities': {}, 'agents': {},
@@ -139,6 +155,20 @@ class Engine:
     def day(self):
         return self.state['day']
 
+    def _new_handle(self, key, name):
+        """Unique Instagram-style handle: name letters plus 4 digits seeded by world seed and id (priya0123)."""
+        base = re.sub(r'[^a-z0-9]', '', name.lower())[:20] or 'person'
+        taken = {e['facts'].get('handle') for e in self.state['entities'].values()}
+        n = int(sha256(f'{self.state["seed"]}:{key}'.encode()).hexdigest(), 16) % 10000
+        while f'{base}{n:04d}' in taken:
+            n = (n + 1) % 10000
+        return f'{base}{n:04d}'
+
+    def label(self, key):
+        """How a person is shown to others: 'Priya (@priya0123)' when handles are on, else the plain name."""
+        entity = self.state['entities'][key]
+        return entity['name'] + (f" (@{entity['facts']['handle']})" if entity['facts'].get('handle') else '')
+
     def entity(self, key, name, facts=None):
         """Controller commits identity. Agent testimony never calls this method."""
         if not key or not name:
@@ -151,6 +181,11 @@ class Engine:
                 raise ValueError('Expansion contradicts committed identity facts')
             previous['facts'].update(facts)
         else:
+            if self.state['config'].get('identity_handles') and 'handle' not in facts:
+                facts['handle'] = self._new_handle(key, name)
+            elif 'handle' in facts and (not isinstance(facts['handle'], str) or not re.fullmatch(r'[a-z0-9_.]{3,30}', facts['handle'])
+                                        or any(e['facts'].get('handle') == facts['handle'] for e in self.state['entities'].values())):
+                raise ValueError('A handle is 3-30 lowercase letters, digits, dots or underscores, and unique')
             self.state['entities'][key] = {'name': name, 'facts': facts}
 
     def materialize(self, key, facets=None, birth_day=0.0, attachment=None, culture=None, affect=None):
@@ -310,7 +345,10 @@ class Engine:
                   '(one supplied situation dimension), trigger_context (specific condition), narrative_shift '
                   '(temporary behavioral change, not a mandatory action), and state_modifiers '
                   '(object of affected Big Five domain keys N/E/O/A/C, each a shift from -10 to 10). '
-                  'Avoid making all situations express the same stereotyped reaction.')
+                  'Avoid making all situations express the same stereotyped reaction. One signature must cover what this '
+                  'agent does when the same thing keeps happening, such as being asked the same question again or an '
+                  'unchanging routine: for example boredom, irritation, going quiet, arguing back or leaving, as this '
+                  'agent\'s tendencies suggest.')
         infant = age_appropriate and age < 2
         if infant:
             context['infant_trigger_catalog'] = {key: value[1] for key,value in situational.INFANT_TRIGGERS.items()}
@@ -323,7 +361,11 @@ class Engine:
                       '"reaction_id": "signal", "state_modifiers": {"N": 1}}, four more rule objects]}. '
                       'These are simulation policies, not validated infant trait measurements.')
         validator = situational.infant_rules if infant else lambda r: situational.validate_rules(r.get('rules'))
-        result = validated_json(system, context, validator, api, model, 1400)
+        try:
+            result = validated_json(system, context, validator, api, model, 1400)
+        except InvalidModelOutput as exc:
+            self.skip_model_step('signatures', owner, exc)
+            return deepcopy(agent.get('caps_rules', []))
         rules = validator(result)
         if agent.get('caps_rules'):
             agent.setdefault('caps_versions',[]).append({'rules':deepcopy(agent['caps_rules']),
@@ -355,10 +397,14 @@ class Engine:
                   '(list of candidate signature ids whose full trigger_context is satisfied; may be empty). '
                   'Ambiguous intentions are uncertain interpretations. A matching dimension alone is insufficient '
                   'to satisfy a more specific trigger. Do not invent past experiences or new signatures. '
+                  'Repetition the agent has noticed (repeated_question, conversation_so_far) is part of the situation. '
                   'Respect developmental_capabilities when supplied. For an infant, meaning is a controller sensory/affective '
                   'description, not a verbal self-report or evidence of abstract understanding.')
-        perception = validated_json(system, context, lambda r: situational.transition(agent, self.day, r, half_life_days),
-                                    api, model, 650)
+        try:
+            perception = validated_json(system, context, lambda r: situational.transition(agent, self.day, r, half_life_days),
+                                        api, model, 650)
+        except InvalidModelOutput as exc:
+            return self.skip_model_step('situation', owner, exc)
         record = situational.transition(agent, self.day, perception, half_life_days)
         from . import expression
         record = expression.vary(self,owner,update_id,record)
@@ -367,6 +413,12 @@ class Engine:
         self.state['updates'].append({'id': update_id, 'kind': 'situation_state', 'owner': owner,
                                      'day': self.day, 'state': deepcopy(record)})
         return deepcopy(record)
+
+    def skip_model_step(self, step, owner, error):
+        """An optional cognitive step whose output stayed invalid is skipped and recorded, not fatal.
+        Actions and appraisals stay strict: they decide what happens and what is remembered."""
+        self.state.setdefault('runtime', {}).setdefault('skipped_model_steps', []).append(
+            {'step': step, 'owner': owner, 'day': self.day, 'error': str(error.__cause__ or error)[:300]})
 
     def caregiver(self, child, adult, role='caregiver'):
         """Commit the minimum family constraint; adult need not be materialized."""
@@ -525,6 +577,8 @@ class Engine:
                 number(obs.get(field, default), low, high, field)
             if 'stability_days' in obs:
                 number(obs['stability_days'], 1e-9, 1e8, 'stability_days')
+            if 'gist' in obs and (not isinstance(obs['gist'], str) or not obs['gist'].strip() or len(obs['gist']) > 300):
+                raise ValueError('Observation gist must be short nonempty text')
             encountered = obs.get('encountered', [])
             for field in ('encountered', 'references', 'cued_memories'):
                 if not isinstance(obs.get(field, []), list) or not all(isinstance(k, str) for k in obs.get(field, [])):
@@ -535,6 +589,11 @@ class Engine:
                 raise ValueError('Testimony and reflection cannot establish a firsthand encounter')
             if any(mid not in self.agent(owner)['memory_meta'] for mid in obs.get('cued_memories', [])):
                 raise ValueError('Reminder must refer to a memory already received by this listener')
+            if 'reused_appraisal' in obs and (obs['reused_appraisal'] not in self.agent(owner)['memory_meta'] or
+                    isinstance(obs.get('exposures'), bool) or not isinstance(obs.get('exposures'), int) or obs['exposures'] < 1):
+                raise ValueError('A habituated appraisal must reuse one of this listener\'s own memories')
+            if 'repeat_of' in obs and obs['repeat_of'] not in self.agent(owner)['memory_meta']:
+                raise ValueError('A repeated question must link to a question this listener already received')
             development.validate_caregiving(owner, obs, self.state['entities'][owner]['facts'].get('caregivers', []))
             if 'mentions' in obs or 'resolved_references' in obs:
                 from . import references
@@ -578,12 +637,22 @@ class Engine:
             eligible &= all(any(a['id'] == aid and a['status'] == 'intended' for a in self.state['actions']) for aid in action_ids)
             self._validate_event(event)
             self._advance_development(event['day'])
+            if 'sleep' in self.state['config']:
+                sleep.due(self, event['day'])  # a sleep opportunity before this event consolidates the earlier buffer
             if eligible:
                 recipients = {}
                 for owner, obs in event['observations'].items():
                     cfg = self.state['config']
                     stability = obs.get('stability_days', cfg['memory_base_stability_days'] * (
                         1 + cfg['memory_importance_weight'] * obs.get('importance', 0) + cfg['memory_arousal_weight'] * obs.get('arousal', 0)))
+                    # Mood and Memory, coupling pathway 1: events met in a strong mood are encoded more durably.
+                    # shortcut: linear in |mood valence| with a provisional weight; the report's equation is not legible in the text.
+                    mood_weight = cfg.get('cognition', {}).get('mood_encoding_weight', 0)
+                    if mood_weight and 'stability_days' not in obs:
+                        stability = min(cfg['max_stability_days'],
+                                        stability * (1 + mood_weight * abs(self.mood(owner, event['day'])['valence'])))
+                    if 'sleep' in cfg and 'stability_days' not in obs:
+                        stability *= sleep.encoding_multiplier(self, owner)
                     recipients[owner] = Observation(event['id'], event['day'], obs['text'], obs['source'],
                                                      obs.get('valence', 0), obs.get('arousal', 0), stability)
                 self.world.add_event(event['id'], event['day'], event['description'], recipients)
@@ -597,6 +666,15 @@ class Engine:
                         'last_recall_day': None, 'encountered': obs.get('encountered', []),
                         'provenance': obs.get('provenance', event['id']),
                     }
+                    if obs.get('gist'):
+                        agent['memory_meta'][event['id']]['summary'] = obs['gist']
+                    if 'reused_appraisal' in obs:
+                        agent['memory_meta'][event['id']].update(reused_appraisal=obs['reused_appraisal'], exposures=obs['exposures'])
+                    if 'repeat_of' in obs:
+                        agent['memory_meta'][event['id']].update(repeat_of=obs['repeat_of'],
+                            times_asked_before=agent['memory_meta'][obs['repeat_of']].get('times_asked_before', 0) + 1)
+                    if 'sleep' in self.state['config']:
+                        sleep.buffer(self, owner, event, obs)
                     for other in obs.get('references', []):
                         agent['references'].setdefault(other, []).append(event['id'])
                     for other in obs.get('encountered', []):
@@ -631,12 +709,29 @@ class Engine:
             self.state['pending'].remove(event)
             self.state['day'] = event['day']
         self.state['day'] = day
+        if 'sleep' in self.state['config']:
+            sleep.due(self, day)
         self._advance_development(day)
 
-    def mood(self, owner):
+    def affect(self, owner):
+        """Mood parameters: explicit affect_parameters win; with cognition affect_from_traits, the rest come from current
+        traits (Mood and Memory trait table and reference code: inertia 1+2N, reactivity 1+1.5E / 1+1.5N, rumination N,
+        rated strong). Divided by their values at N = E = 0.5 so an average person keeps 1.0 (and 0.25 rumination).
+        """
+        agent = self.agent(owner)
+        derived = {}
+        if self.state['config'].get('cognition', {}).get('affect_from_traits'):
+            f = agent['facets']
+            n, e = (sum(f[d + str(i)] for i in range(1, 7)) / 600 for d in 'NE')
+            derived = {'recovery_multiplier': (1 + 2 * n) / 2, 'positive_reactivity': (1 + 1.5 * e) / 1.75,
+                       'negative_reactivity': (1 + 1.5 * n) / 1.75, 'rumination_fraction': .5 * n}
+        return {**derived, **agent.get('affect_parameters', {})}
+
+    def mood(self, owner, day=None):
+        now = self.day if day is None else day
         agent = self.agent(owner)
         cfg = self.state['config']
-        settings = agent.get('affect_parameters', {})
+        settings = self.affect(owner)
         def impulse(day, valence, arousal):
             reactivity = settings.get('positive_reactivity' if valence > 0 else 'negative_reactivity', 1.0)
             tau = cfg['mood_tau_days'] * settings.get('recovery_multiplier', 1.0)
@@ -644,7 +739,18 @@ class Engine:
             return day, valence * reactivity, arousal, tau
         impulses = [impulse(o.day, o.valence, o.arousal) for o in self.world.observations.get(owner, [])]
         impulses += [impulse(r['day'], r['valence'], r['arousal']) for r in agent['affect_events']]
-        impulses.sort(key=lambda x: x[0])
+        impulses = sorted((x for x in impulses if x[0] <= now), key=lambda x: x[0])
+        if cfg['mood_kernel'] == 'average':
+            # Intensity-weighted average of recent affect (v2 run: summed kernels pinned all 7 people at arousal ~0.95,
+            # incl. calm ones). Each impulse weighs arousal^2 x 2^(-age/tau) (squared so one strong event outweighs a day of
+            # small talk), tau = half-life x inertia; baseline weight c
+            # pulls toward neutral. Bounded without tanh, so steady mild days give a mild mood. shortcut: c and the
+            # half-life are provisional; Mood and Memory's heavy tail is replaced by exponential fading here.
+            c = cfg.get('mood_baseline_weight', 1.0)
+            w = [(2 ** (-(now - day) / tau), v, a) for day, v, a, tau in impulses]
+            strength = sum(x * a * a for x, _, a in w)
+            return {'valence': max(-1, min(1, sum(x * a * a * v for x, v, a in w) / (c + strength))),
+                    'arousal': sum(x * a for x, _, a in w) / (c + sum(x for x, _, _ in w))}
         if cfg['mood_kernel'] == 'exponential':
             from math import exp, log
             v = a = previous = 0.0
@@ -653,7 +759,7 @@ class Engine:
                 v = max(-1, min(1, v * decay + valence))
                 a = max(0, min(1, a * decay + arousal))
                 previous = day
-            decay = exp(-log(2) * (self.day - previous) / cfg['mood_half_life_days'])
+            decay = exp(-log(2) * (now - previous) / cfg['mood_half_life_days'])
             return {'valence': v * decay, 'arousal': a * decay}
         # Preserve power-law impulses, bounding latent mass at *encoding*, not just display.
         # ponytail: exact history scan is O(n²); optimize only after profiling larger worlds.
@@ -667,7 +773,7 @@ class Engine:
                         item[column] *= limit / mass
         v = a = 0.0
         for day, valence, arousal, tau in active:
-            weight = (1 + (self.day - day) / tau) ** -cfg['mood_alpha']
+            weight = (1 + (now - day) / tau) ** -cfg['mood_alpha']
             v += valence * weight
             a += arousal * weight
         return {'valence': tanh(v), 'arousal': tanh(a)}
@@ -677,7 +783,7 @@ class Engine:
             raise ValueError('Memory count must be a nonnegative integer')
         if 'cognition' in self.state['config']:
             from .cognition import views
-            return views(self, owner, query, limit)
+            return views(self, owner, query, limit, collapse=True)
         agent = self.agent(owner)
         stop = {'the', 'a', 'an', 'i', 'me', 'my', 'you', 'your', 'is', 'was', 'and', 'or', 'to', 'of', 'in', 'for', 'it', 'do', 'what', 'with'}
         tokens = set(re.findall(r'\w+', query.lower())) - stop
@@ -685,15 +791,20 @@ class Engine:
         mood = self.mood(owner)
         for observation in self.world.observations.get(owner, []):
             meta = agent['memory_meta'][observation.event_id]
+            tier = meta.get('tier')
+            if tier in sleep.HIDDEN:
+                continue
             age = self.day - (meta['last_recall_day'] if meta['last_recall_day'] is not None else observation.day)
-            availability = recall_availability(age, meta['stability_days'])
-            overlap = len(tokens & (set(re.findall(r'\w+', (observation.text + ' ' + meta['meaning']).lower())) - stop))
+            availability = sleep.lability(age, self.state['config']['sleep']) if tier == 'buffer' else \
+                recall_availability(age, meta['stability_days'])
+            text = meta['summary'] if tier == 'gist' else observation.text
+            overlap = len(tokens & (set(re.findall(r'\w+', (text + ' ' + meta['meaning']).lower())) - stop))
             # Declared retrieval policy: low-access episodes need a specific cue;
             # retained gist beliefs remain separate from the original details.
             if availability < self.state['config'].get('minimum_episode_accessibility', 0.15) and overlap < 3:
                 continue
             score = 3 * overlap + availability + meta['importance'] + 0.2 * mood['valence'] * observation.valence
-            result.append({'event': observation.event_id, 'day': observation.day, 'text': observation.text,
+            result.append({'event': observation.event_id, 'day': observation.day, 'text': text,
                            'source': observation.source, 'kind': meta['kind'], 'meaning': meta['meaning'],
                            'confidence': meta['confidence'], 'availability': availability,
                            'provenance': meta['provenance'], 'score': score})
@@ -708,6 +819,7 @@ class Engine:
         if not agent['alive']:
             raise ValueError('A dead agent cannot recall')
         meta = agent['memory_meta'][memory_id]
+        rehearse = rehearse and meta.get('tier') not in sleep.HIDDEN
         if rehearse and 'cognition' in self.state['config']:
             from .cognition import views
             available = next((m for m in views(self,owner,'',len(agent['memory_meta'])) if m['event']==memory_id),None)
@@ -715,13 +827,15 @@ class Engine:
         cfg = self.state['config']
         prior_rehearsals = [x['day'] for x in agent['recall_log'] if x['memory'] == memory_id and x['rehearsed']]
         reinforced = bool(rehearse and (not prior_rehearsals or self.day - max(prior_rehearsals) >= cfg['rehearsal_gap_days']))
-        if reinforced:
+        if reinforced and meta.get('tier') == 'buffer':
+            sleep.rehearse(agent, memory_id)
+        elif reinforced:
             meta['stability_days'] = min(cfg['max_stability_days'], meta['stability_days'] * (1 + cfg['rehearsal_gain']))
             meta['last_recall_day'] = self.day
         prior_affect = [x['day'] for x in agent['affect_events'] if x['memory'] == memory_id]
         if affect and (not prior_affect or self.day - max(prior_affect) >= cfg['recall_affect_gap_days']):
             obs = next(o for o in self.world.observations[owner] if o.event_id == memory_id)
-            fraction = agent.get('affect_parameters', {}).get('rumination_fraction', 0.25)
+            fraction = self.affect(owner).get('rumination_fraction', 0.25)
             # Habituation applies to modeled recall, never database inspection.
             fraction /= 1 + len(prior_affect)
             agent['affect_events'].append({'day': self.day, 'valence': obs.valence * fraction,
@@ -788,7 +902,11 @@ class Engine:
                 number(gist.get('confidence'), 0, 1, 'gist confidence')
                 if not isinstance(gist.get('evidence'), list) or not gist['evidence'] or any(e not in allowed for e in gist['evidence']):
                     raise ValueError('Gist cites unavailable episodes')
-        result = validated_json(system, context, validate_gists, api, model, 600)
+        try:
+            result = validated_json(system, context, validate_gists, api, model, 600)
+        except InvalidModelOutput as exc:
+            self.skip_model_step('consolidation', owner, exc)
+            return 0
         gists = result['gists']
         digest = sha256(json.dumps(sorted(allowed)).encode()).hexdigest()[:16]
         for i, gist in enumerate(gists):
@@ -809,6 +927,8 @@ class Engine:
         # Only committed self-identity/known formal roles and received private state;
         # no pending events, other agents' memories, or unrestricted world facts.
         context = {'identity': {'id': owner, 'name': self.state['entities'][owner]['name'],
+                             **({'handle': '@' + self.state['entities'][owner]['facts']['handle']}
+                                if self.state['entities'][owner]['facts'].get('handle') else {}),
                              'age_years': (self.day - agent['birth_day']) / 365.25,
                              'known_caregiving_roles': [
                                  {'dependent':key, 'name':entity['name']}
@@ -859,9 +979,20 @@ class Engine:
                 {'id': rule['id'], 'tendency': rule['narrative_shift']} for rule in agent.get('caps_rules', []) if rule['id'] in active)
         if options is not None:
             context['available_actions'] = deepcopy(options)
+        repeat = self.repeated_question(owner)
+        if repeat:
+            context['repeated_question'] = repeat
+        if 'society_layer' in self.state['config']:
+            from .population.bridge import context as social_world
+            world = social_world(self, owner)
+            if world:
+                context['social_world'] = world
         if 'household' in self.state['config']:
-            from .household import view
+            from .household import view, conversation_memory
             context['physical_environment'] = view(self,owner)
+            recent = conversation_memory(self, owner)
+            if recent:
+                context['conversation_so_far'] = recent
         return compact(context)
 
     def propose(self, owner, situation, *, api='http://127.0.0.1:8081', model='local', cues=(), options=None):
@@ -889,10 +1020,17 @@ class Engine:
             if infant and (result['speech'] or result['plan']):
                 raise ValueError('An infant action must have empty speech and plan []')
         decision = validated_json(system, context, validate_output, api, model)
+        earlier = self.repeated_speech(owner, decision['speech'])
+        if earlier:
+            # One re-ask with the collision shown; a second repeat is kept, since people do repeat on purpose.
+            context['repeat_notice'] = {'your_earlier_words': earlier['speech'], 'days_ago': round(self.day - earlier['day'], 1),
+                'note': 'You were about to say almost exactly what you said before. Take into account what has happened '
+                        'since then. Repeat yourself only if you mean to.'}
+            decision = validated_json(system, context, validate_output, api, model)
         return {'owner': owner, 'day': self.day, 'decision': decision, 'context': context,
                 'validation_context':validation_context}
 
-    def appraise(self, owner, observation, *, api='http://127.0.0.1:8081', model='local'):
+    def appraise(self, owner, observation, *, api='http://127.0.0.1:8081', model='local', routine=False):
         """Estimate subjective meaning before encoding, from delivered content only.
 
         The controller supplies source, kind and information access. The model
@@ -901,7 +1039,20 @@ class Engine:
         """
         if not observation.get('text') or not observation.get('source'):
             raise ValueError('Perceived text and source are required')
+        if routine and 'caregiving' not in observation:
+            habituated = self.habituated(owner, observation)
+            if habituated:
+                return habituated
         context = self.context(owner, observation['text'])
+        context.pop('repeated_question', None)  # about the previous observation; this one is judged below
+        # Collision check at encoding: the listener's own model judgment, over their own recent questions from this speaker.
+        meta = self.agent(owner)['memory_meta']
+        earlier = [{'id': o.event_id, 'days_ago': round(self.day - o.day, 1), 'text': o.text,
+                    'times_asked_before': meta[o.event_id].get('times_asked_before', 0)}
+                   for o in self.world.observations.get(owner, []) if o.source == observation['source'] and '?' in o.text][-5:] \
+            if observation['source'] in self.state['entities'] and observation['source'] != owner and '?' in observation['text'] else []
+        if earlier:
+            context['earlier_questions_from_speaker'] = earlier
         context['new_observation'] = deepcopy(observation)
         for field in ('valence', 'arousal', 'importance', 'confidence', 'meaning'):
             context['new_observation'].pop(field, None)
@@ -916,11 +1067,24 @@ class Engine:
                   'Use traits, attachment expectations, mood, goals, relationships and remembered experiences. '
                   'Distinguish perceived words from inferred intentions; preserve ambiguity. '
                   'Return a JSON object with meaning (string), valence (-1 to 1), arousal (0 to 1), '
-                  'importance (0 to 1), confidence (0 to 1). These are model estimates, not measured psychology.')
+                  'importance (0 to 1), confidence (0 to 1). These are model estimates, not measured psychology. '
+                  'Calibrate to everyday life: routine events (a commute, someone entering or leaving a room, a usual '
+                  'greeting) are near 0, within about 0.2 either way, unless this agent\'s context gives them special '
+                  'meaning; beyond 0.8 either way is for rare, major events such as a serious loss, public humiliation or a '
+                  'great success.')
+        # Fuzzy-trace (Graph DB Memory Decay Implementation p.9): exact wording fades fast, gist remains.
+        gist_needed = self.state['config'].get('cognition', {}).get('verbatim_days') is not None
+        if gist_needed:
+            system += (' Also return gist: one short plain sentence (at most 25 words) of what was said or happened, '
+                       'as this agent would remember it a day later. Not a quotation; keep who did what.')
         if 'caregiving' in observation:
             system += (' Also return caregiving with the supplied caregiver id, responsiveness (0 to 1, '
                        'perceived attention and response to a need), and acceptance (0 to 1, perceived warmth '
                        'and permission to express difficulty). Task failure alone is not unresponsiveness or rejection.')
+        if earlier:
+            system += (' Also return asked_before: the id from earlier_questions_from_speaker that new_observation asks '
+                       'essentially again, even in different words, or null if it asks something new. How the agent feels about being '
+                       'asked again follows from its own tendencies and situation.')
         if resolve_references:
             system += (' Also return mentions (up to twelve objects with span exactly copied from new_observation.text '
                 'and candidate_ids from reference_candidates, or [] for an unknown/ambiguous identity), '
@@ -936,6 +1100,11 @@ class Engine:
                 reminders=result.get('reminded_memory_ids',[])
                 if not isinstance(reminders,list) or not all(isinstance(mid,str) and mid in {m['event'] for m in context['memories']} for mid in reminders):
                     raise ValueError('Reminder cites a memory unavailable to this listener')
+            if gist_needed and (not isinstance(result.get('gist'), str) or not result['gist'].strip()
+                                or len(result['gist']) > 300):
+                raise ValueError('Appraisal needs gist: one short sentence, at most 25 words')
+            if earlier and result.get('asked_before') not in {None, *(q['id'] for q in earlier)}:
+                raise ValueError('asked_before must be null or an id from earlier_questions_from_speaker')
             if 'caregiving' in observation:
                 care = result.get('caregiving')
                 if not isinstance(care, dict) or care.get('caregiver') != observation['caregiving']['caregiver']:
@@ -945,6 +1114,10 @@ class Engine:
         result = validated_json(system, context, validate_appraisal, api, model, 400)
         appraised = {**deepcopy(observation), **{k: result[k] for k in ('meaning', 'valence', 'arousal', 'importance', 'confidence')},
                      'appraisal_policy': 'local_llm_unfitted'}
+        if gist_needed:
+            appraised['gist'] = result['gist'].strip()
+        if earlier and result.get('asked_before'):
+            appraised['repeat_of'] = result['asked_before']
         if resolve_references:
             appraised['mentions'] = references.normalize(self,owner,observation,result.get('mentions',[]))
             appraised['cued_memories'] = list(dict.fromkeys([*observation.get('cued_memories',[]),*result.get('reminded_memory_ids',[])]))
@@ -954,6 +1127,59 @@ class Engine:
                 raise ValueError('Appraisal cannot invent or replace a caregiver')
             development.validate_caregiving(owner, appraised, self.state['entities'][owner]['facts'].get('caregivers', []))
         return appraised
+
+    def habituated(self, owner, observation):
+        """Reuse this person's own recent full appraisal of an identical routine observation, without a model call.
+
+        Lifestyle-policy reuse (Affordable Generative Agents, arXiv 2402.02053) with habituation: valence, arousal and
+        importance shrink as 1/(1+n) over n reuses. A full appraisal older than routine_reappraisal_days is not reused,
+        so the meaning can change over time. shortcut: exact text match and a 1/(1+n) curve, both provisional.
+        """
+        meta = self.agent(owner)['memory_meta']
+        same = [o for o in self.world.observations.get(owner, []) if o.text == observation['text'] and o.source == observation['source']]
+        if not same:
+            return None
+        last = meta[same[-1].event_id]
+        full = last.get('reused_appraisal', same[-1].event_id)
+        original = next(o for o in same if o.event_id == full)
+        if self.day - original.day > self.state['config'].get('routine_reappraisal_days', 30):
+            return None
+        n = last.get('exposures', 0) + 1
+        return {**deepcopy(observation), 'meaning': meta[full]['meaning'], 'valence': original.valence / (1 + n),
+                'arousal': original.arousal / (1 + n), 'importance': meta[full]['importance'] / (1 + n),
+                'confidence': meta[full]['confidence'], 'appraisal_policy': 'habituated_reuse_v1',
+                'reused_appraisal': full, 'exposures': n, **({'gist': meta[full]['summary']} if meta[full].get('summary') else {})}
+
+    def repeated_speech(self, owner, speech, recent=10, similarity=.8):
+        """The owner's own recent committed action whose speech nearly matches, or None. Very short replies are exempt."""
+        if len(speech.split()) < 3:
+            return None
+        from difflib import SequenceMatcher
+        own = [a for a in self.state['actions'] if a['owner'] == owner and a['status'] != 'cancelled' and a['decision'].get('speech')]
+        # Word-level, autojunk off: character-level autojunk drops spaces and vowels from lines over 200 characters,
+        # so near-copies scored ~0.06 (environment-v2 run-2: 0 of 42 Rohan repeats caught).
+        return next((a | {'speech': a['decision']['speech']} for a in reversed(own[-recent:])
+                     if SequenceMatcher(None, speech.lower().split(), a['decision']['speech'].lower().split(),
+                                        autojunk=False).ratio() >= similarity), None)
+
+    def repeated_question(self, owner):
+        """The latest question received today, if the owner's own appraisal linked it to an earlier one from
+        the same person. Only the fact is supplied; the reaction comes from the person's signatures and tendencies."""
+        received = self.world.observations.get(owner, [])
+        if not received or self.day - received[-1].day > 1:
+            return None
+        meta = self.agent(owner)['memory_meta']
+        latest = received[-1]
+        if not meta[latest.event_id].get('repeat_of'):
+            return None
+        first = latest.event_id
+        while meta[first].get('repeat_of'):
+            first = meta[first]['repeat_of']
+        first_day = next(o.day for o in received if o.event_id == first)
+        return {'from': self.label(latest.source), 'times_asked_before': meta[latest.event_id]['times_asked_before'],
+                'first_asked_days_ago': round(self.day - first_day, 1),
+                'note': 'You have been asked this before. How you react (boredom, irritation, going quiet, pushing back, '
+                        'leaving, or patience) depends on you.'}
 
     def validate_decision(self, owner, decision, context):
         if not isinstance(decision, dict) or not isinstance(decision.get('action'), str) or not decision['action'].strip():

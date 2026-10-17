@@ -6,26 +6,40 @@ views, not an embedding service. Inspection remains pure; cognition is explicit.
 from copy import deepcopy
 from collections import Counter
 from hashlib import sha256
-from math import log1p
+from math import exp, log, log1p
 import json
 import re
+
+
+# Defaults for newly built policies (archived policies keep their own). All are engineering choices, not fitted values:
+# meaning-based cueing via the local embedding service; mood reactivity from traits; exact words last one day; recall odds rise e^2 per unit score; a maximal mood strengthens encoding 1.5x;
+# 12 background recalls a year at middle neuroticism, scaled by e^(neuroticism) (0.37x to 2.7x).
+MEMORY_DEFAULTS = {'semantic_matching': True, 'affect_from_traits': True, 'verbatim_days': 1, 'recall_beta': 2, 'mood_encoding_weight': .5,
+                   'rumination_per_year': 12, 'rumination_neuroticism': 1}
 
 
 def configure(engine, settings):
     from .engine import number
     allowed = {'semantic_candidates', 'detail_threshold', 'fan_weight', 'rumination_per_year',
-               'rumination_minimum_gap_days', 'reflection', 'semantic_recall', 'indexed_retrieval', 'reference_resolution', 'autonomous_goals', 'graphiti_retrieval'}
+               'rumination_minimum_gap_days', 'boredom_weight', 'boredom_days', 'reflection', 'semantic_recall', 'indexed_retrieval', 'reference_resolution', 'autonomous_goals', 'graphiti_retrieval', 'semantic_matching', 'affect_from_traits',
+               'verbatim_days', 'recall_beta', 'mood_encoding_weight', 'rumination_neuroticism'}
     if not isinstance(settings, dict) or set(settings) - allowed:
         raise ValueError('Unsupported cognition setting')
-    for key in ('reflection', 'semantic_recall', 'indexed_retrieval', 'reference_resolution', 'autonomous_goals', 'graphiti_retrieval'):
+    for key in ('reflection', 'semantic_recall', 'indexed_retrieval', 'reference_resolution', 'autonomous_goals', 'graphiti_retrieval', 'semantic_matching', 'affect_from_traits'):
         if key in settings and not isinstance(settings[key], bool):
             raise ValueError('Cognition flags must be boolean')
     n = settings.get('semantic_candidates', 24)
     if isinstance(n, bool) or not isinstance(n, int) or not 1 <= n <= 64:
         raise ValueError('Semantic candidate count must be between 1 and 64')
     for key, default, low, high in [('detail_threshold', .45, 0, 1), ('fan_weight', .15, 0, 2),
-            ('rumination_per_year', 12, 0, 365), ('rumination_minimum_gap_days', 1, .01, 36525)]:
+            ('rumination_per_year', 12, 0, 365), ('rumination_minimum_gap_days', 1, .01, 36525),
+            ('boredom_weight', .5, 0, 5), ('boredom_days', 3, .1, 365)]:
         number(settings.get(key, default), low, high, key)
+    # Optional (absent = previous behaviour, so archived policies replay unchanged).
+    for key, low, high in [('verbatim_days', 0, 36525), ('recall_beta', .01, 100), ('mood_encoding_weight', 0, 10),
+                           ('rumination_neuroticism', 0, 5)]:
+        if key in settings:
+            number(settings[key], low, high, key)
     current = engine.state['config'].get('cognition')
     if current is not None and current != settings:
         raise ValueError('Cannot silently replace cognition policy')
@@ -39,13 +53,20 @@ def words(text):
     return set(re.findall(r'\w+', text.lower())) - {'the','a','an','i','me','my','you','your','is','was','and','or','to','of','in','for','it','do','what','with'}
 
 
-def views(engine, owner, query, limit):
+def gumbel(*parts):
+    """Deterministic standard Gumbel noise from a hash of its inputs (no shared random state is consumed)."""
+    u = (int(sha256(repr(parts).encode()).hexdigest()[:13], 16) + .5) / 16**13
+    return -log(-log(u))
+
+
+def views(engine, owner, query, limit, collapse=False):
     """Fan overload lowers access, never stored stability or original records.
 
     At low access only an already encoded subjective meaning/gist is exposed.
     No LLM is asked to reconstruct missing objective detail.
     """
     from .identity_state_prototype import recall_availability
+    from .sleep import HIDDEN, lability
     agent = engine.agent(owner)
     settings = engine.state['config']['cognition']
     observations = engine.world.observations.get(owner, [])
@@ -55,32 +76,89 @@ def views(engine, owner, query, limit):
     focus = agent.get('retrieval_focus', {})
     focused = set(focus.get('ids', [])) if focus.get('day') == engine.day and focus.get('situation') == query else set()
     mood = engine.mood(owner)
+    window = settings.get('verbatim_days')
+    # Inhibition of return (Memory Decay Research report p.10): memories recalled again and again lately
+    # are transiently harder to retrieve; stored stability is untouched. This is memory mechanics, like
+    # forgetting; how a person feels and acts about repetition comes from their situational signatures.
+    days = settings.get('boredom_days', 3)
+    proneness = settings.get('boredom_weight', .5)
+    recent = Counter()
+    for r in agent.get('recall_log', []):
+        if 0 <= engine.day - r['day'] <= 10 * days:
+            recent[r['memory']] += exp(-(engine.day - r['day']) / days)
+    def gist_of(obs):
+        retained = [b['text'] for b in agent['beliefs'].values() if obs.event_id in b.get('evidence', [])]
+        return agent['memory_meta'][obs.event_id].get('summary') or (' '.join(retained) if retained else None)
+    # Meaning-based cueing ("shouted" finds "yelled"): cosine of local BGE embeddings via the Graphiti service.
+    # Unreachable service -> word matching, flagged on every result rather than silent.
+    similarity, matching = {}, 'lexical'
+    if settings.get('semantic_matching') and query.strip():
+        pool = list(dict.fromkeys(t for obs in observations for t in (obs.text, gist_of(obs)) if t))
+        try:
+            from .graphiti_bridge import vectors
+            found = vectors([query, *pool])
+            similarity = {t: sum(a*b for a, b in zip(found[0], v)) for t, v in zip(pool, found[1:])}
+            matching = 'semantic'
+        except (OSError, ValueError, KeyError):
+            matching = 'lexical_fallback'
     result = []
     for obs in observations:
         meta = agent['memory_meta'][obs.event_id]
+        tier = meta.get('tier')  # sleep policy: buffered = vivid but fragile; dropped/merged = not retrievable
+        if tier in HIDDEN:
+            continue
         age = engine.day - (meta['last_recall_day'] if meta['last_recall_day'] is not None else obs.day)
-        base = recall_availability(age, meta['stability_days'])
+        base = lability(age, engine.state['config']['sleep']) if tier == 'buffer' else recall_availability(age, meta['stability_days'])
         related = [fan[t]-1 for t in tags[obs.event_id]]
         penalty = 1 + settings.get('fan_weight', .15) * log1p(max(related, default=0))
         access = base / penalty
         # Matching uses available representation, not hidden original details.
-        detailed = access >= settings.get('detail_threshold', .45)
-        retained = [b['text'] for b in agent['beliefs'].values() if obs.event_id in b.get('evidence', [])]
-        gist = meta.get('summary') or (' '.join(retained) if retained else None)
-        text = obs.text if detailed else gist
+        detailed = tier == 'buffer' or (tier != 'gist' and access >= settings.get('detail_threshold', .45))
+        gist = gist_of(obs)
+        # Fuzzy-trace (Graph DB Memory Decay Implementation p.9): exact wording fades within verbatim_days of the
+        # event, rehearsal or not; the gist stays. Without any gist the original stays visible.
+        exact = detailed and (window is None or engine.day - obs.day <= window or not gist)
+        text = obs.text if exact else gist
         if not text:
             continue
         overlap = len(query_words & words(text + ' ' + ' '.join(tags[obs.event_id])))
-        if not detailed and not overlap and obs.event_id not in focused and query:
+        # BGE cosine: related sentences measured ~0.7, unrelated 0.37-0.48 on this project's text. A 0.7 match is worth
+        # one shared word; a faded memory needs 0.6 to be cued. shortcut: hand-set from 8 pairs; tune on run data.
+        sim = similarity.get(text)
+        meaning_match = 15 * max(0, sim - .5) if sim is not None else 0
+        if not detailed and not overlap and (sim is None or sim < .6) and obs.event_id not in focused and query:
             continue
-        score = 3*overlap + access + meta['importance'] + .2*mood['valence']*obs.valence + (10 if obs.event_id in focused else 0)
+        boredom = 1 + proneness * recent[obs.event_id]
+        score = (3*overlap + meaning_match + access + meta['importance'] + .2*mood['valence']*obs.valence) / boredom \
+            + (10 if obs.event_id in focused else 0)
         result.append({'event':obs.event_id, 'day':obs.day, 'text':text, 'source':obs.source,
             'kind':meta['kind'], 'meaning':meta['meaning'] if detailed else gist, 'confidence':meta['confidence'],
             'availability':access, 'provenance':meta['provenance'], 'score':score,
-            'representation':'episodic_detail' if detailed else 'subjective_gist',
-            'original_detail_available':detailed, 'interference_factor':penalty,
-            'topics':sorted(tags[obs.event_id])})
-    return sorted(result, key=lambda r:(r['score'],r['day'],r['event']), reverse=True)[:limit]
+            'representation':'episodic_detail' if exact else 'subjective_gist',
+            'original_detail_available':detailed, 'exact_words':exact, 'interference_factor':penalty, 'boredom_factor':round(boredom,3),
+            'topics':sorted(tags[obs.event_id]), **({'matching':matching} if matching != 'lexical' else {}),
+            **({'similarity':round(sim,3)} if sim is not None else {})})
+    beta = settings.get('recall_beta')
+    if beta:
+        # Modern Hopfield retrieval (Ramsauer et al. 2020, Eq. 22: softmax(beta * similarity)): recall is a draw,
+        # P ∝ exp(beta * score), taken without replacement via Gumbel keys seeded by the query, so inspection and
+        # replay stay deterministic. Low beta lets the mind wander to weaker matches; high beta is near-greedy.
+        for r in result:
+            r['sample_key'] = beta * r['score'] + gumbel(engine.state.get('seed'), owner, r['event'], engine.day, query)
+        result.sort(key=lambda r:(r['sample_key'],r['day'],r['event']), reverse=True)
+    else:
+        result.sort(key=lambda r:(r['score'],r['day'],r['event']), reverse=True)
+    if collapse:
+        # Memory collision: identical memories are linked, never merged or deleted (Graphiti/A-MEM style; Mem0's
+        # deleting resolver lost facts). The best-ranked copy represents the rest with a count and first day.
+        groups = {}
+        for r in result:
+            groups.setdefault((r['text'].strip().lower(), r['source']), []).append(r)
+        for copies in groups.values():
+            if len(copies) > 1:
+                copies[0].update(times=len(copies), first_day=min(c['day'] for c in copies))
+        result = [copies[0] for copies in groups.values()]
+    return result[:limit]
 
 
 def semantic_recall(engine, owner, situation, *, api, model):
@@ -89,7 +167,7 @@ def semantic_recall(engine, owner, situation, *, api, model):
     A truncated candidate scan is recorded. No unavailable/private-other detail
     is sent. Selected gist does not reset the original-detail forgetting clock.
     """
-    from .engine import validated_json
+    from .engine import validated_json, InvalidModelOutput
     agent = engine.agent(owner)
     if not agent['alive']:
         raise ValueError('Dead agent cannot retrieve')
@@ -124,12 +202,18 @@ def semantic_recall(engine, owner, situation, *, api, model):
               'including paraphrases and analogous experiences, not just matching words. '
               'Use only supplied representations. A subjective_gist is an uncertain retained interpretation, '
               'not access to original details. Return JSON with memory_ids (distinct supplied ids). Empty is allowed.')
-    allowed = {r['event']:r for r in candidates}
+    # The context's own accessible memories are also shown to the model; citing one is not an invention
+    # (the overnight environment run died after three such citations).
+    allowed = {r['event']:r for r in [*context.get('memories',[]), *candidates]}
     def validate(result):
         ids = result.get('memory_ids')
         if not isinstance(ids,list) or len(ids)>3 or not all(isinstance(x,str) for x in ids) or len(set(ids))!=len(ids) or any(x not in allowed for x in ids):
             raise ValueError('Semantic retrieval cited unavailable memory')
-    result = validated_json(system,context,validate,api,model,200)
+    try:
+        result = validated_json(system,context,validate,api,model,200)
+    except InvalidModelOutput as exc:
+        engine.skip_model_step('semantic_recall', owner, exc)
+        return []
     digest = sha256(json.dumps([engine.day,situation]).encode()).hexdigest()[:16]
     for mid in result['memory_ids']:
         engine.recall(owner,mid,f'{owner}:semantic:{digest}:{mid}',
@@ -144,7 +228,7 @@ def semantic_recall(engine, owner, situation, *, api, model):
 
 def reflect(engine, owner, evidence_id, *, api, model):
     """Gate meaning changes on received evidence; original events stay immutable."""
-    from .engine import validated_json, number
+    from .engine import validated_json, number, InvalidModelOutput
     agent = engine.agent(owner)
     if not agent['alive'] or evidence_id not in agent['memory_meta']:
         raise ValueError('Reflection requires a living agent and received evidence')
@@ -251,7 +335,10 @@ def reflect(engine, owner, evidence_id, *, api, model):
             text(update.get('reason'),'Social update reason'); sources(update.get('evidence'))
             if evidence_id not in update['evidence']:
                 raise ValueError('Social update requires current received evidence')
-    result=validated_json(system,context,validate,api,model,1500)
+    try:
+        result=validated_json(system,context,validate,api,model,1500)
+    except InvalidModelOutput as exc:
+        return engine.skip_model_step('reflection', owner, exc)
     # All suboperations below are prevalidated, and the controller rolls back the
     # whole event on transport or validation failure.
     agent['memory_meta'][evidence_id].update(summary=result['summary'],topics=list(dict.fromkeys(t.lower() for t in result['topics'])))
@@ -295,6 +382,12 @@ def reflect(engine, owner, evidence_id, *, api, model):
         'evidence':[evidence_id],'revision_decisions':deepcopy(result['revisions'])})
 
 
+def neuroticism(agent):
+    """Mean N1-N6 percentile mapped to -1..1 (0 = population middle)."""
+    facets=agent.get('facets',{})
+    return (sum(facets.get(f'N{i}',50) for i in range(1,7))/6-50)/50
+
+
 def ruminate(engine,owner,event_id,minimum_gap_days=1):
     """Autonomous scheduled recall, not background world fabrication."""
     agent=engine.agent(owner)
@@ -305,9 +398,19 @@ def ruminate(engine,owner,event_id,minimum_gap_days=1):
         return None
     candidates=views(engine,owner,'',64)
     if not candidates: return None
+    settings=engine.state['config']['cognition']
     mood=engine.mood(owner)['valence']
-    selected=max(candidates,key=lambda r:(agent['memory_meta'][r['event']]['importance']+
-        .3*r['availability']+(.2 if mood and mood*next(o.valence for o in engine.world.observations[owner] if o.event_id==r['event'])>0 else 0),r['event']))
+    valence={o.event_id:o.valence for o in engine.world.observations[owner]}
+    # Memory Decay Research ("phantom" access) and Mood and Memory (neuroticism -> rumination, strong evidence):
+    # higher neuroticism leans background recall toward negative memories. shortcut: linear, provisional weight.
+    lean=settings.get('rumination_neuroticism',0)*max(0,neuroticism(agent))
+    def value(r):
+        v=valence[r['event']]
+        return (agent['memory_meta'][r['event']]['importance']+.3*r['availability']+(.2 if mood and mood*v>0 else 0)
+                +lean*max(0,-v))
+    beta=settings.get('recall_beta')
+    selected=max(candidates,key=lambda r:((beta*value(r)+gumbel(engine.state.get('seed'),owner,event_id,r['event'])) if beta
+                                          else value(r),r['event']))
     engine.recall(owner,selected['event'],event_id,rehearse=selected['original_detail_available'],affect=True)
     agent['last_autonomous_recall']=engine.day
     return selected['event']
