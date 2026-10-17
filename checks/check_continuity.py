@@ -95,6 +95,42 @@ def main():
     assert e.repeated_speech('a', 'Did anyone finish the maths homework last night, or is that just me?') is None
     checks.append('a reused run of six words (three of them content words) counts as repeating oneself; ordinary new lines do not')
 
+    # Citing a belief key or relationship evidence shown in the context is dropped, not a repair; inventing an id still fails.
+    e = world()
+    context = {'memories': [{'event': 'm1'}], 'beliefs': {'gist-1': {'text': 'x'}}, 'relationships': {'b': {'evidence': 'm0'}}}
+    decision = {'action': 'Talk.', 'speech': '', 'plan': [], 'goal_id': None, 'memory_ids': ['m1', 'gist-1', 'm0']}
+    e.validate_decision('a', decision, context)
+    assert decision['memory_ids'] == ['m1']
+    try:
+        e.validate_decision('a', {**decision, 'memory_ids': ['made-up']}, context)
+        raise AssertionError('an invented memory id was accepted')
+    except ValueError:
+        pass
+    checks.append('a decision citing a belief or relationship-evidence id it was shown drops that id instead of costing a '
+                  'repair call; an id never shown is still rejected')
+
+    # Consolidation may cite the context's own memories as evidence, not only the batch being consolidated.
+    e = world()
+    for i in range(2):
+        e.schedule(f'c{i}', .1 + i / 10, 'x', {'a': {'text': f'B smiled at me {i}.', 'source': 'b'}})
+        e.advance(.1 + i / 10)
+    with patch('devsim.engine.request_json', return_value={'gists': [{'text': 'B is warm.', 'confidence': .5, 'evidence': ['c0']}]}):
+        assert e.consolidate('a', batch_size=1) == 1  # c0 is the batch
+    with patch('devsim.engine.request_json', side_effect=[{'gists': [{'text': 'B smiles a lot.', 'confidence': .5, 'evidence': ['c1', 'c0']}]}]):
+        assert e.consolidate('a', batch_size=1) == 1, 'citing an earlier memory shown in the context needed a repair'
+    assert [k for k, m in e.agent('a')['memory_meta'].items() if m.get('consolidated')] == ['c0', 'c1']  # one per batch
+    checks.append('consolidation may cite memories shown in its context as evidence; only the batch is marked consolidated')
+
+    # A caregiver link is known from both sides, whether the adult exists already or is materialized later.
+    e = world()
+    e.caregiver('b', 'a')
+    assert e.agent('a')['relationships']['b']['role'] == 'child' and e.agent('b')['relationships']['a']['role'] == 'caregiver'
+    e.entity('gran', 'Gran')
+    e.caregiver('b', 'gran')
+    e.materialize('gran', dict.fromkeys(FACET_NAMES, 50))
+    assert e.agent('gran')['relationships']['b']['role'] == 'child'
+    checks.append('a caregiver link creates the adult\'s relationship to the child too, also when the adult is materialized later')
+
     result = {'passed': True, 'scope': 'synthetic engineering checks; thresholds are design defaults measured on one run',
               'checks': checks}
     RESULTS_DIR.joinpath('continuity-engineering-checks.json').write_text(json.dumps(result, indent=2) + '\n')

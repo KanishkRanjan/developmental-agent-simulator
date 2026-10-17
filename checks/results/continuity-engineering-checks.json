@@ -7,6 +7,9 @@
     "over the byte budget, inferred interpretations (beliefs) are trimmed to two before any memory is cut",
     "consolidation asks for lessons about people and events, not scripts of the agent's own conversational habits",
     "the previous same-thread session shows the gist of the person's own words, even when sleep dropped those turns",
-    "a reused run of six words (three of them content words) counts as repeating oneself; ordinary new lines do not"
+    "a reused run of six words (three of them content words) counts as repeating oneself; ordinary new lines do not",
+    "a decision citing a belief or relationship-evidence id it was shown drops that id instead of costing a repair call; an id never shown is still rejected",
+    "consolidation may cite memories shown in its context as evidence; only the batch is marked consolidated",
+    "a caregiver link creates the adult's relationship to the child too, also when the adult is materialized later"
   ]
 }

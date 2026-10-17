@@ -248,6 +248,9 @@ class Engine:
             'memory_meta': {}, 'rules': [], 'affect_events': [], 'recall_log': [],
             'affect_parameters': affect,
         }
+        for dependent, entity in self.state['entities'].items():  # a caregiver materialized after the link knows the child
+            if key in entity['facts'].get('caregivers', []) and dependent in self.state['agents']:
+                self.relate(key, dependent, 'child')
 
     def agent(self, key):
         if key not in self.state['agents']:
@@ -474,6 +477,8 @@ class Engine:
             existing.append(adult)
         self.state['entities'][child]['facts']['caregivers'] = existing
         self.relate(child, adult, role)
+        if adult in self.state['agents'] and child not in self.agent(adult)['relationships']:
+            self.relate(adult, child, 'child')  # v4 run: parents had no relationship record for their own daughter
 
     def develop(self, owner, changes, evidence, update_id):
         """Explicit slow trait revision; no automatic trait change from one mood swing."""
@@ -946,7 +951,7 @@ class Engine:
                   'speaking habits or conversational tactics as rules. '
                   'Do not invent new incidents, diagnose conditions or turn testimony into verified events. '
                   'Return JSON with gists, a list of objects with text (string), confidence (0 to 1), '
-                  'and evidence (a nonempty list of ids from episodes_to_consolidate). An empty gists list is allowed.')
+                  'and evidence (a nonempty list of ids from episodes_to_consolidate or memories). An empty gists list is allowed.')
         allowed = {o['event_id'] for o in context['episodes_to_consolidate']}
         def validate_gists(result):
             gists = result.get('gists')
@@ -956,7 +961,9 @@ class Engine:
                 if not isinstance(gist, dict) or not isinstance(gist.get('text'), str) or not gist['text'].strip():
                     raise ValueError('Gist needs text')
                 number(gist.get('confidence'), 0, 1, 'gist confidence')
-                if not isinstance(gist.get('evidence'), list) or not gist['evidence'] or any(e not in allowed for e in gist['evidence']):
+                # The context's own memories are received evidence too (v4 run: 5 repairs cited them).
+                citable = allowed | {m['event'] for m in context.get('memories', [])}
+                if not isinstance(gist.get('evidence'), list) or not gist['evidence'] or any(e not in citable for e in gist['evidence']):
                     raise ValueError('Gist cites unavailable episodes')
         try:
             result = validated_json(system, context, validate_gists, api, model, 600)
@@ -1295,7 +1302,14 @@ class Engine:
         if decision.get('goal_id') is not None and decision['goal_id'] not in self.agent(owner)['goals']:
             raise ValueError('Model invented a goal id')
         ids = decision.get('memory_ids')
-        if not isinstance(ids, list) or any(not isinstance(m, str) or m not in {x['event'] for x in context['memories']} for m in ids):
+        memories = {x['event'] for x in context['memories']}
+        # Ids the context showed as beliefs or relationship evidence are not fabricated, only not memories: drop them
+        # (no recall) instead of a repair call (v4 run: 15 of 17 action repairs were these).
+        shown = set(context.get('beliefs', {})) | {r.get('evidence') for r in context.get('relationships', {}).values()
+                                                   if isinstance(r, dict) and isinstance(r.get('evidence'), str)}
+        if isinstance(ids, list):
+            decision['memory_ids'] = ids = [m for m in ids if m in memories or m not in shown]
+        if not isinstance(ids, list) or any(not isinstance(m, str) or m not in memories for m in ids):
             raise ValueError('Model cited an unavailable memory')
         if 'available_actions' in context and decision.get('action_id') not in {a['id'] for a in context['available_actions']}:
             raise ValueError('Model chose an unavailable action')
