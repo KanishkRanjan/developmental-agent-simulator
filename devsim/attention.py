@@ -164,17 +164,26 @@ def event_view(engine, owner, event, obs):
 # Providers: callables (engine, ...) that return 0-1. Override any of them with engine.attention_providers[name];
 # the defaults are safe until the relationship, surprise, fatigue and goal modules supply real signals.
 
+def family(engine, i, j):
+    """True when one is the other's caregiver or biological parent (committed identity facts)."""
+    facts = lambda k: engine.state['entities'].get(k, {}).get('facts', {})
+    return any(b in facts(a).get(field, []) for a, b in ((i, j), (j, i)) for field in ('caregivers', 'biological_parents'))
+
+
 def default_closeness(engine, i, j):
     cfg = engine.state['config']['attention']
     agent = engine.agent(i)
     record = agent['relationships'].get(j)
-    if record is not None:
-        if 'society' in engine.state['config']:
-            from . import society
-            record = society.relationship(engine, record)
-        # shortcut: encounters create relationships at closeness 0, so 0 reads as "known, unrated", not distant.
-        return record['closeness'] if record.get('closeness', 0) > 0 else cfg['closeness_known']
-    return cfg['closeness_known'] if j in agent['references'] else cfg['closeness_stranger']
+    if record is not None and 'society' in engine.state['config']:
+        from . import society
+        record = society.relationship(engine, record)
+    if record is not None and record.get('closeness', 0) > 0:
+        return record['closeness']
+    # shortcut: encounters and authored worlds leave closeness at 0, so 0 reads as "known, unrated", not distant.
+    # v4 run: parents had no relationship record for their own daughter, so family comes from identity facts.
+    if family(engine, i, j):
+        return cfg['closeness_family']
+    return cfg['closeness_known'] if record is not None or j in agent['references'] else cfg['closeness_stranger']
 
 
 PROVIDERS = {'closeness': default_closeness,

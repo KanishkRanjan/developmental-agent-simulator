@@ -142,6 +142,20 @@ In environment-v2 run-2 the researcher's lines, spoken into class conversations 
 
 **Talking from the cockpit (same day).** The live cockpit (`python3 -m devsim.cockpit RUN_DIR --serve 18090`) now has a "Talk to someone" box read exactly like the watcher's `t` key (shared `visit.talk_line`): `@priya hello` walks up to Priya, plain text continues, `/bye` ends, `/call priya` phones, `/send Kabir @priya a new classmate, 15` sends your character, and `/auto GOAL` lets the model play it. The transcript refreshes every 1.5 s. The watcher's `t` gained `/call` and `/send` the same way. Over SSH with no port forwarding, the terminal watcher (`python3 -m devsim.watch RUN_DIR`) is the way to talk: key `h` opens a talk guide that lists the run's people and gives examples, and it was driven in a pseudo-terminal (guide opens at its top, closes again). It writes to the run's inbox through `devsim.visit`, so the run validates and decides everything. It accepts only JSON requests from its own loopback origin, so another site open in the browser cannot post into a simulation. Static exports and checkpoint-file cockpits stay read-only. Check: one new `cockpit` check. The page was also driven in headless Chromium (start, reply shown, say, character fields, end; light and dark; no sideways scroll at 390 px; no script errors). All 20 suites pass. Not used against a live 27B run yet.
 
+## Fixes, 17 October: second review pass
+
+- **Grief was skipped** for any character without scenario-set dials (all of environment-v4's): the bridge only shifted `mood_baseline_shift` when a `dials` record already existed. It now creates one. The new `population` check fails without the fix.
+- **Attention treated family as strangers:** authored worlds leave closeness at 0, and v4's parents had no relationship record for their daughter. Default closeness now gives caregivers, children and biological parents (from identity facts) `closeness_family` = 0.6 [D].
+- **Cockpit agent view showed forgotten memories** when nothing was accessible (it filtered only on a non-empty accessible set), and always without the cognition policy. Hidden tiers are now never shown.
+- **SQLite checkpoint save was O(memories × events)** (an event search per memory). It now builds one index.
+
+Open, not changed (design questions):
+- A bound character's population twin draws its own dials (used for contact and conflict), while the engine character stays neutral (used for sleep and attention).
+- Attention and sleep compound: in a scripted 120-day household run, the child could still recall 14 of 254 experiences (83 unattended, 138 dropped, 19 merged).
+- The environment-v4 world ran on the power-law mood kernel, which BUILD_STATE records as a standing user decision. Every character ended at |valence| ≈ 0.9 and arousal ≈ 0.95.
+
+All 23 suites: 338 named checks plus 12 core checks.
+
 ## Fixes, 17 October: environment-v4 run review (repetition, consolidation, sleep timing, run robustness)
 
 Found by reviewing the stopped environment-v4 run (11.6 days, 649 model calls):

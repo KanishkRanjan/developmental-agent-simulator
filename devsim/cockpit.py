@@ -16,6 +16,7 @@ from pathlib import Path
 
 from .engine import Engine
 from .interview import state_digest
+from .sleep import HIDDEN
 
 AGENT_SCOPE = ('Agent perspective: only what this person has received and currently holds. Memory text is what is '
                'accessible now (full detail or the encoded gist), not the hidden original.')
@@ -59,8 +60,8 @@ def perspective(engine, owner):
     for event_id, obs in sorted(observations.items(), key=lambda item: item[1].day):
         meta = agent['memory_meta'].get(event_id, {})
         view = accessible.get(event_id)
-        if accessible and not view:
-            continue  # not accessible to this person now
+        if meta.get('tier') in HIDDEN or ('cognition' in engine.state['config'] and not view):
+            continue  # forgotten, or not accessible to this person now (even when nothing at all is accessible)
         memories.append({'event': event_id, 'day': obs.day, 'source': obs.source, 'kind': meta.get('kind'),
                          'text': view['text'] if view else obs.text,
                          'representation': view['representation'] if view else 'received_text',

@@ -6,6 +6,7 @@
     "an agent perspective holds only that person's received memories and own actions; another person's private text never appears",
     "the researcher view holds every raw event and action, and both views carry their scope label",
     "faded memories show only their encoded gist, and memories with no accessible representation are omitted",
+    "forgotten (dropped, merged, unattended) memories never appear, even when the person has nothing accessible",
     "embedded run text cannot close the page script",
     "before a live run writes its checkpoint, the cockpit shows the streaming model-call timeline",
     "the live server binds to loopback and serves only the page and its data",

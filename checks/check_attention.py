@@ -124,6 +124,16 @@ def main():
         assert tiers and set(tiers) <= {'FULL', 'GIST', 'NONE'}
     checks.append('golden regression: enabled=false gives a byte-identical scripted 10-day household world; enabled runs with and without sleep')
 
+    # Default closeness: recorded > family (from identity facts, even without a relationship record) > known > stranger.
+    e = world(['mum', 'kid', 'pal', 'new'])
+    e.state['entities']['kid']['facts']['caregivers'] = ['mum']
+    e.relate('kid', 'pal', 'friend', closeness=.9)
+    e.agent('kid')['relationships']['new'] = {'role': 'acquaintance', 'closeness': 0.0, 'trust': .5}
+    c = lambda i, j: attention.default_closeness(e, i, j)
+    assert c('kid', 'pal') == .9 and c('mum', 'kid') == c('kid', 'mum') == CFG['closeness_family']
+    assert c('kid', 'new') == CFG['closeness_known'] and c('pal', 'new') == CFG['closeness_stranger']
+    checks.append('default closeness: recorded value, else family from identity facts (a parent hearing their child), else known, else stranger')
+
     # Determinism: insertion order of events and of recipients does not change any result.
     def scene(order):
         e = world(['a', 'b', 'c', 'd'])

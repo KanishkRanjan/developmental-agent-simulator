@@ -349,11 +349,23 @@ def main():
     values[ids['arun']], values[ids['priya']] = .1, .3
     bridge.after_turn(world, 'arun', ['priya'])
     assert .1 < values[ids['arun']] < values[ids['priya']] < .3, 'a spoken turn moves both toward each other, by the rule'
+    # A close death reaches a character with no scenario-set dials and still lowers their mood baseline (grief).
+    from unittest.mock import patch
+    from devsim.population.ties import neighbors
+    assert 'dials' not in world.agent('priya')
+    friend = next(r['id'] for r in neighbors(layer, ids['priya'], world.day) if r['strength'] >= .2 and r['id'] != ids['arun'])
+    world.advance(world.day + 1)
+    real = layer.death_day
+    with patch.object(layer, 'death_day', lambda pid, resolve=False: world.day - .5 if pid == friend else real(pid, resolve)):
+        bridge.sync(world)
+    assert world.world.observations['priya'][-1].text.endswith('died.')
+    assert world.agent('priya')['dials']['mood_baseline_shift'] < 0, 'grief skipped for a character without preset dials'
     report['bridge'] = {'news_for_priya_in_a_year': len(news), 'kinds': Counter(o.text.split(' ', 1)[-1] if 'touch' in o.text else
                                                                                 o.text.split('.')[0][-25:] for o in news).most_common(3)}
     checks.append(f'engine characters are bound into the population (a caregiver and child share a household), their circle reaches them '
                   f'as received observations ({len(news)} in a year for Priya), shown people are committed, the context section is stable '
-                  'between calls, checks are event-driven, and a spoken turn moves opinions by the rule, never the model')
+                  'between calls, checks are event-driven, a close death lowers the mood baseline even without preset dials, and a spoken turn '
+                  'moves opinions by the rule, never the model')
 
     result = {'passed': True, 'scope': 'synthetic checks of design defaults; V anchors are inputs or comparisons, never fitted twice',
               'checks': checks, 'report': report}

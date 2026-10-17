@@ -52,7 +52,7 @@ Override any of these with `engine.attention_providers[name]`.
 
 | Provider | Default | Real signal when available |
 |---|---|---|
-| closeness | Recorded relationship closeness (faded by the `society` policy). A known person recorded at 0 gets 0.3; a stranger gets 0.05. | Society-layer tie strength for bound characters |
+| closeness | Recorded relationship closeness (faded by the `society` policy). With nothing above 0 recorded: a caregiver, child or biological parent (from identity facts) gets 0.6, any other known person 0.3, and a stranger 0.05. | Society-layer tie strength for bound characters |
 | surprise | 0 | A prediction-error module. The habituation novelty `1/(1+exposures)` is a candidate. |
 | fatigue | 0 | Hours awake since `sleep.wake_day` and the last sleep quality |
 | asleep | False | Agents are never delivered events outside their waking hours, so nothing sets this yet. |

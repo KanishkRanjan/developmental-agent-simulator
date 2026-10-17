@@ -25,6 +25,7 @@
     "w_ment": {"value": 0.15, "range": [0, 1], "evidence": "[D]", "note": "top-down weight of the closest person mentioned"},
     "w_goal": {"value": 0.20, "range": [0, 1], "evidence": "[D]", "note": "top-down weight of goal match (Kahneman's momentary intentions)"},
     "gamma_rel": {"value": 1.0, "range": [0.1, 5], "evidence": "[D]", "note": "exponent on closeness"},
+    "closeness_family": {"value": 0.6, "range": [0, 1], "evidence": "[D]", "note": "closeness of a caregiver, child or biological parent with no recorded closeness above 0"},
     "closeness_known": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "closeness of a known person with no recorded closeness above 0"},
     "closeness_stranger": {"value": 0.05, "range": [0, 1], "evidence": "[D]", "note": "closeness of a stranger"},
 

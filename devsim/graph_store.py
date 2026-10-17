@@ -25,10 +25,11 @@ def save(path,state):
                 db.execute('INSERT OR REPLACE INTO nodes VALUES(?,?,?,?)',(key,owner,kind,json.dumps(data,allow_nan=False)))
             def edge(source,target,owner,kind): db.execute('INSERT INTO edges VALUES(?,?,?,?)',(source,target,owner,kind))
             for key,entity in state['entities'].items(): node('person:'+key,'','person',{'id':key,'name':entity['name']})
+            events={e['id']:e for e in state['events']}  # one index: a scan per memory made each save O(memories x events)
             for owner,agent in state['agents'].items():
                 for mid,meta in agent['memory_meta'].items():
                     key=f'episode:{owner}:{mid}'
-                    event=next(e for e in state['events'] if e['id']==mid)
+                    event=events[mid]
                     node(key,owner,'episode',{'event':mid,'day':event['day'],'observation':event['observations'][owner],'cognition':meta})
                     edge('person:'+owner,key,owner,'received')
                 for other,relation in agent['relationships'].items():

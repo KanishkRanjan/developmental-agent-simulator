@@ -147,8 +147,8 @@ def sync(engine, deliver=None):
             pop.commit(other, t)  # shown to a character: now immutable
             if kind == 'contact':
                 heard[f'{pid}|{other}'] = t
-            if kind == 'died' and 'dials' in engine.agent(owner):
-                agent_dials = engine.agent(owner)['dials']
+            if kind == 'died':  # v4 review: characters without scenario-set dials silently skipped grief
+                agent_dials = engine.agent(owner).setdefault('dials', {})
                 agent_dials['mood_baseline_shift'] = max(-1, agent_dials.get('mood_baseline_shift', 0) + cfg['grief_mood_shift'] * strength)
         for kind in ('tie_ruptured', 'hostile_contact', 'reconciled'):
             for fact in pop.facts(pid, kind):

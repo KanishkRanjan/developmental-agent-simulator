@@ -12,7 +12,7 @@
     "over 30 years capital is heavy-tailed (top 1% hold 25%), trait fit helps (Spearman 0.41) but the top outcomes are not all the best fits, and identical personalities in different networks end apart",
     "the most isolated sampled person (isolation 0.60) carries a death hazard 1.26x the least isolated (0.00) as imposed, stronger under 65; deaths log tie losses and grief shifts on close survivors, and isolation slowly raises threat sensitivity",
     "a model-proposed opinion change is clamped to the bounded-confidence rule (same direction, no larger), a post-check flags overshoot, personas are fixed per person, enmity sets a non-cooperation floor, and the variance monitor flags collapse",
-    "engine characters are bound into the population (a caregiver and child share a household), their circle reaches them as received observations (93 in a year for Priya), shown people are committed, the context section is stable between calls, checks are event-driven, and a spoken turn moves opinions by the rule, never the model"
+    "engine characters are bound into the population (a caregiver and child share a household), their circle reaches them as received observations (93 in a year for Priya), shown people are committed, the context section is stable between calls, checks are event-driven, a close death lowers the mood baseline even without preset dials, and a spoken turn moves opinions by the rule, never the model"
   ],
   "report": {
     "degree": {

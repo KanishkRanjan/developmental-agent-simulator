@@ -52,6 +52,11 @@ def main():
         assert memories[gist]['text'] == 'Only the gist remains.' and memories[gist]['representation'] == 'subjective_gist'
         assert lost not in memories
         checks.append('faded memories show only their encoded gist, and memories with no accessible representation are omitted')
+        forgot = deepcopy(engine)
+        for meta in forgot.agent('sam')['memory_meta'].values():
+            meta['tier'] = 'dropped'  # forgotten in sleep: nothing at all is accessible
+        assert not cockpit.perspective(forgot, 'sam')['memories'], 'with nothing accessible, every received memory was shown'
+        checks.append('forgotten (dropped, merged, unattended) memories never appear, even when the person has nothing accessible')
 
         page = cockpit.render(data)
         assert page.count('</script>') == 1 and '<\\/script><script>alert(1)' in page
