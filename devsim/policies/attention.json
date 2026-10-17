@@ -60,6 +60,10 @@
     "d_drift": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "weight multiplier while drifted, unless captured"},
 
     "gamma_enc": {"value": 1.0, "range": [0, 5], "evidence": "[D]", "note": "encoding weight is a^gamma_enc times the existing weight"},
-    "gist_stability_factor": {"value": 0.5, "range": [0.01, 1], "evidence": "[D]", "note": "extra stability multiplier of a GIST trace"}
+    "gist_stability_factor": {"value": 0.5, "range": [0.01, 1], "evidence": "[D]", "note": "extra stability multiplier of a GIST trace"},
+
+    "felt_ignored": {"value": false, "choices": [true, false], "evidence": "[D]", "note": "phase 4, off by default: a face-to-face speaker who notices low attention lowers their closeness to the listener"},
+    "notice_gain": {"value": 0.5, "range": [0, 1], "evidence": "[D]", "note": "P(speaker notices) = notice_gain x closeness(speaker, listener) x (1 - a)"},
+    "ignored_penalty": {"value": 0.01, "range": [0, 0.2], "evidence": "[D]", "note": "closeness the speaker loses toward the listener each time they feel ignored"}
   }
 }

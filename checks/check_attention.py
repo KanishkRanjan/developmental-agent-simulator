@@ -264,6 +264,35 @@ def main():
     checks.append(f'drift: bored listeners in a 120-turn stream drift more and keep fewer FULL traces than interested ones '
                   f'(bored {bored_t}, interested {keen_t}); capture ends a drift')
 
+    # The researcher's addressed line (devsim.visit) is addressed to that person only.
+    from tempfile import TemporaryDirectory
+    from checks.check_household import fixture as household_fixture
+    from devsim import visit
+    with TemporaryDirectory() as d:
+        guest, hpolicy = household_fixture(turns=4)
+        control = Lifetime(guest, {**hpolicy, 'attention': {}}, scripted=True)
+        control.inbox = Path(d) / 'inbox.jsonl'
+        visit.say(Path(d), 'Please talk about the bicycle.', to='b', name='Kanishk')
+        control.run(.8, Path(d) / 'world.json')
+        line = guest.state['runtime']['visitor_log'][0]['event']
+        heard = {p: guest.agent(p)['memory_meta'][line]['attention'] for p in guest.state['runtime']['visitor_log'][0]['hearers']}
+        assert heard['b']['addressed'] and heard['b']['captured'] and not any(r['addressed'] for p, r in heard.items() if p != 'b')
+    checks.append('a visitor line addressed to one person is captured for them and not addressed to the others who overhear it')
+
+    # Phase 4: felt ignored, off by default.
+    def ignored(flag):
+        e = world(['mum', 'kid'], dial={'kid': {'dysregulation': 1}}, enabled=None)
+        attention.configure(e, {'felt_ignored': flag})
+        e.relate('mum', 'kid', 'parent', closeness=.8)
+        turns(e, 'mum', ['kid'], 80, gap_minutes=3, text='{s} said: the weather is mild again, number {i}.')
+        e.advance(1)
+        return e.agent('mum')['relationships']['kid']['closeness'], e.state['attention_stats'].get('felt_ignored', [])
+    (c_off, log_off), (c_on, log_on), (c_again, log_again) = ignored(False), ignored(True), ignored(True)
+    assert c_off == .8 and not log_off and c_on < .8 and log_on and (c_on, log_on) == (c_again, log_again)
+    assert abs(c_on - (.8 - CFG['ignored_penalty'] * len(log_on))) < 1e-9
+    checks.append(f'felt ignored (flag, default off): a close speaker facing an inattentive listener loses closeness '
+                  f'{len(log_on)} times over 80 turns via Engine.relate, each logged; off changes nothing')
+
     # Crowded scene: fewer traces than with the switch off, none lost for directly addressed events.
     def crowd(enabled):
         e = world(['host', *[f'g{i}' for i in range(30)]], enabled=enabled)

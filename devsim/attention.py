@@ -408,3 +408,27 @@ def emotion_scale(meta):
     if record is None or record['captured']:
         return 1.0
     return 0.0 if record['tier'] == NONE else record['weight']
+
+
+def felt_ignored(engine, listener, event, obs, result):
+    """5.5 (behind felt_ignored, default off): a face-to-face speaker may notice low attention and feel ignored.
+
+    P(notice) = notice_gain x closeness(speaker, listener) x (1 - a). Only an existing tie of a living, materialized
+    speaker changes, through Engine.relate; each change is logged in attention_stats.felt_ignored.
+    """
+    cfg = engine.state['config']['attention']
+    speaker = obs['source']
+    if (not cfg['felt_ignored'] or result.captured or speaker not in obs.get('encountered', [])
+            or speaker not in engine.state['agents'] or not engine.agent(speaker)['alive']):
+        return
+    tie = engine.agent(speaker)['relationships'].get(listener)
+    if tie is None:
+        return
+    chance = cfg['notice_gain'] * provider(engine, 'closeness')(engine, speaker, listener) * (1 - result.weight)
+    if unit(engine.state.get('seed'), speaker, listener, event['id'], 'felt_ignored') >= chance:
+        return
+    closeness = max(0.0, tie.get('closeness', 0.0) - cfg['ignored_penalty'])
+    engine.relate(speaker, listener, tie.get('role', 'acquaintance'), trust=tie.get('trust', .5), closeness=closeness)
+    engine.state['attention_stats'].setdefault('felt_ignored', []).append(
+        {'event': event['id'], 'speaker': speaker, 'listener': listener, 'weight': result.weight,
+         'closeness_before': tie.get('closeness', 0.0), 'closeness_after': closeness})

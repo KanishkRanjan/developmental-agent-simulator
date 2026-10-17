@@ -682,6 +682,7 @@ class Engine:
                             times_asked_before=agent['memory_meta'][obs['repeat_of']].get('times_asked_before', 0) + 1)
                     if owner in attended:
                         attention.record(agent['memory_meta'][event['id']], attended[owner], buffered='sleep' in self.state['config'])
+                        attention.felt_ignored(self, owner, event, obs, attended[owner])
                     if 'sleep' in self.state['config'] and agent['memory_meta'][event['id']].get('tier') != attention.UNATTENDED:
                         sleep.buffer(self, owner, event, obs)
                         if owner in attended:

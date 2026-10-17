@@ -16,6 +16,8 @@
     "2000 sampled agents on identical events: high dysregulation gives lower mean and higher variance of a {'low_dys_mean_a': 0.294, 'high_dys_mean_a': 0.169, 'low_dys_var_a': 0.0203, 'high_dys_var_a': 0.0341}",
     "2000 sampled agents: high threat sensitivity attends more to threat events than to neutral ones, and more than low {'high_ts_threat': 0.51, 'high_ts_neutral': 0.224, 'low_ts_threat': 0.475}",
     "drift: bored listeners in a 120-turn stream drift more and keep fewer FULL traces than interested ones (bored {'drift_periods': 1781, 'drifted_events': 5956, 'full': 136}, interested {'drift_periods': 940, 'drifted_events': 2942, 'full': 3291}); capture ends a drift",
+    "a visitor line addressed to one person is captured for them and not addressed to the others who overhear it",
+    "felt ignored (flag, default off): a close speaker facing an inattentive listener loses closeness 25 times over 80 turns via Engine.relate, each logged; off changes nothing",
     "crowded scene (30 listeners, 20 turns): traces drop from 600 to 418; addressed events all kept",
     "cost: exactly W allocations for an event with W listeners, none while time passes, one call site (Engine.advance)",
     "no branch keyed on agent type, role or diagnosis; differences come from traits, dials, mood and arousal"

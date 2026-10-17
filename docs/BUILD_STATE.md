@@ -142,6 +142,37 @@ In environment-v2 run-2 the researcher's lines, spoken into class conversations 
 
 **Talking from the cockpit (same day).** The live cockpit (`python3 -m devsim.cockpit RUN_DIR --serve 18090`) now has a "Talk to someone" box read exactly like the watcher's `t` key (shared `visit.talk_line`): `@priya hello` walks up to Priya, plain text continues, `/bye` ends, `/call priya` phones, `/send Kabir @priya a new classmate, 15` sends your character, and `/auto GOAL` lets the model play it. The transcript refreshes every 1.5 s. The watcher's `t` gained `/call` and `/send` the same way. Over SSH with no port forwarding, the terminal watcher (`python3 -m devsim.watch RUN_DIR`) is the way to talk: key `h` opens a talk guide that lists the run's people and gives examples, and it was driven in a pseudo-terminal (guide opens at its top, closes again). It writes to the run's inbox through `devsim.visit`, so the run validates and decides everything. It accepts only JSON requests from its own loopback origin, so another site open in the browser cannot post into a simulation. Static exports and checkpoint-file cockpits stay read-only. Check: one new `cockpit` check. The page was also driven in headless Chromium (start, reply shown, say, character fields, end; light and dark; no sideways scroll at 390 px; no script errors). All 20 suites pass. Not used against a live 27B run yet.
 
+## Attention allocation, 17 October (user request)
+
+Opt-in module ([guide](ATTENTION_IMPLEMENTATION.md), [evidence tags](attention_evidence.md), `devsim/attention.py`, config `devsim/policies/attention.json`). With an `attention` policy block, every delivered event gets a per-listener weight `a` and a tier: FULL, GIST or NONE. The weight comes from four parts:
+
+- **Top-down drive:** trait topic affinity, closeness to the speaker and to people mentioned, and goal match.
+- **Bottom-up capture:** surprise, threat scaled by threat sensitivity, and being addressed or named. It is combined with the top-down drive by a soft OR.
+- **Capacity:** arousal (inverted U), fatigue, the load of other open streams, and dysregulation. Competing streams and mind-wandering share it.
+- **Seeded noise and drift:** logistic noise, and mind-wandering drift within long streams, resolved when the next event arrives.
+
+The effects:
+
+- `a` scales the encoding weight. With sleep on, it scales the buffer's trace weight instead.
+- GIST encodes a coarse who/topic/valence line. NONE leaves a hidden `unattended` receipt.
+- Mood impulses scale with `a`, in full when the event is captured.
+- NONE events are left out of the model context, and GIST events are shown as one line.
+- The optional felt-ignored tie penalty is off by default.
+
+There are no model calls and no per-tick work: one allocation per (listener, event), from `Engine.advance` only. **Every parameter is a design default, unverified.** Without the block, or with `enabled: false`, the world is byte-identical (golden check). Built in four committed phases.
+
+Checks: new `attention` suite, 19 named checks:
+
+- spec sanity values and monotonicity with the noise held fixed;
+- config validation, the golden regression, and order-independent determinism;
+- addressed events captured, and asleep/wake behaviour;
+- NONE/GIST encoding and context, emotion scaling;
+- 2000-agent dysregulation and threat-sensitivity effects;
+- drift (bored vs interested), felt-ignored, and crowded-scene trace reduction with addressed events kept;
+- cost (W allocations per W listeners, a single call site), and no agent-type branches.
+
+All 22 suites ran here, including Graphiti: 327 named checks plus 12 core checks. Not live-verified with the 27B model, and no parameter is calibrated.
+
 ## Previous phase: researcher cockpit
 
 [Cockpit implementation](COCKPIT_IMPLEMENTATION.md) adds `devsim/cockpit.py`, a local web view of a run built with only the standard library. An **agent perspective** shows one person's current mood, goals and plans, relationships, calendar, own actions and outcomes, and the memories accessible to them now (gist only when faded). It is built only from what that person received. A labeled **researcher view** shows the model-call timeline and every raw event and action. It can write a static HTML file, or `--serve` a loopback page that polls the run and streams the timeline while a live run is in progress.
@@ -195,6 +226,7 @@ These are engineering results, not measured human fidelity. Scenario authoring, 
 | Development, attachment, inheritance | `development.py`, `temperament.py`, `profile_population_v1.py` | Adult-to-child extrapolation is labeled; no child norms. |
 | Semantic recall, gist-only access, interference | `cognition.views` / `semantic_recall`, `retrieval.py`, local Graphiti/Neo4j/BGE retrieval (`graphiti_bridge.py`, `graphiti_service.py`, `graph_tools.py`) with explicit private-FTS fallback | Retrieval is bounded and not guaranteed exhaustive; thresholds are provisional. |
 | Society layer (opt-in) | `devsim/population/`: implicit graph, ties, demography and joint events, opinions, institutions, economy, isolation feedback, guards, engine bridge | 79 of 92 parameters are design defaults; total fertility runs about 0.4 high; mean field is well-mixed; not live-verified. |
+| Attention allocation (opt-in) | `attention.py`: one allocation per (listener, event) in `Engine.advance`; coarse GIST / hidden NONE encoding; attention-scaled mood; tier-aware `views`/`memories`/`conversation_memory` | All parameters are unverified design defaults; surprise, fatigue, asleep and goal-match providers return neutral defaults; runs after the LLM appraisal, so it saves no calls. |
 | Hippocampal buffer and sleep consolidation (opt-in) | `sleep.py`: raw buffer at encoding, one O(buffer) triage per sleep opportunity in `Engine.advance`, buffer-aware `views`/`memories`, rehearsal counting | All parameters are unverified design defaults; no circadian schedule; optional dials are not derived from traits. |
 | Evidence-based reinterpretation and self-narrative | `cognition.reflect`: retain/defer/revise with received evidence, preserved originals/versions | Evidence-ID validity does not prove semantic correctness. |
 | Autonomous recall, planning, budgets, habits | `cognition.ruminate`, `calendar_time.py`, `life_policy.py`, `goal_plans.py` (ordered action-bound steps, received-outcome completion) | Action libraries and progress amounts remain controller-authored. |

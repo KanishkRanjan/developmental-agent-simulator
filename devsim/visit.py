@@ -241,7 +241,8 @@ def _ring(controller, path, note):
                                       and household.available(engine, p) and household.present(engine, p, room)]
     def event(tag, description, own, heard=None, action_id=None, source='self', theirs=None):
         # Face to face, the visitor is physically met: a firsthand encounter for the person (and anyone watching).
-        observations = {owner: {'text': own, 'source': source, 'kind': 'direct', **({'encountered': [caller]} if face else {})}}
+        observations = {owner: {'text': own, 'source': source, 'kind': 'direct', **({'encountered': [caller]} if face else {}),
+                                **({'addressed': [owner]} if source != 'self' else {})}}  # the caller speaks to them
         if heard:
             observations.update({p: {'text': heard, 'source': owner, 'kind': 'direct',
                                      'encountered': [owner, caller] if face else [owner]} for p in nearby})
@@ -453,7 +454,7 @@ def deliver_inbox(controller, path):
         verb = (' wrote' if channel else ' said') + (' to ' + addressee if addressee else '') + ': '
         observations = {p: {'text': engine.label(visitor) + verb + text, 'source': visitor, 'kind': 'direct',
                             'encountered': [] if channel or not household.present(engine, p, spec.get('room')) else [visitor],
-                            'provenance': event_id} for p in hearers}
+                            'provenance': event_id, **({'addressed': [match[0]]} if addressee else {})} for p in hearers}
         household.deliver(controller, event_id, 'A visitor (the researcher) speaks; spoken claims are not world facts.', observations)
         runtime['visitor_log'].append({'event': event_id, 'day': engine.day, 'conversation': key, 'visitor': visitor,
                                        'text': text, 'hearers': hearers, 'written': note.get('written')})
