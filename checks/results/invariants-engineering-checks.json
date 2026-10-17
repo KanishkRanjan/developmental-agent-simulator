@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "scope": "synthetic randomized engineering invariants; no model",
+  "checks": [
+    "500 seeded random worlds (mood kernels, sleep with dials and routines, attention, cognition, caregiver links, recalls, long skips) keep every invariant: mood finite and in bounds; no hidden memory in recall, views or context; one receipt per received memory; trust and closeness in [0, 1]; attention tiers match thresholds and NONE is exactly the unattended tier; buffer entries are tagged; save and load reproduce state, memories and mood exactly"
+  ]
+}

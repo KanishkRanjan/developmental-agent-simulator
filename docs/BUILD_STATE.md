@@ -144,13 +144,13 @@ In environment-v2 run-2 the researcher's lines, spoken into class conversations 
 
 ## Fix, 17 October: coarsened events regained full detail after load or rollback
 
-Found with a randomized invariant harness (1,000 synthetic worlds mixing sleep, attention, cognition, dials, routines and caregiver links, plus 60 scripted household lifetimes with mid-run resumes). `Engine.load` and the controller's rollback rebuild each received memory from the event log, which holds the original text. So every GIST and NONE event regained its full original wording after any resume or failed event. The receipt now records the encoded text (`attention.encoded_text`), and the rebuild uses it. The `attention` resume check now also compares the rebuilt memory cache, and fails without the fix. After the fix, every invariant held in all runs:
+Found with a randomized invariant harness (1,000 synthetic worlds mixing sleep, attention, cognition, dials, routines and caregiver links, plus 60 scripted household lifetimes with mid-run resumes). `Engine.load` and the controller's rollback rebuild each received memory from the event log, which holds the original text. So every GIST and NONE event regained its full original wording after any resume or failed event. The receipt now records the encoded text (`attention.encoded_text`), and the rebuild uses it. The `attention` resume check now also compares the rebuilt memory cache, and fails without the fix. The harness is now the `invariants` suite (500 seeded worlds, about 9 s). After the fix, every invariant held in all runs:
 - mood bounds; no hidden memory in recall, views or context;
 - one receipt per received memory; trust and closeness in [0, 1];
 - attention tiers consistent with their thresholds; buffer entries tagged as buffered;
 - save/load reproduces state, memories and mood exactly.
 
-All 23 suites: 343 named checks plus 12 core checks.
+All 24 suites: 344 named checks plus 12 core checks.
 
 ## Fixes, 17 October: fourth review pass (reports, interviews, resume)
 
