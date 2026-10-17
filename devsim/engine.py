@@ -835,6 +835,7 @@ class Engine:
             raise ValueError('A dead agent cannot recall')
         meta = agent['memory_meta'][memory_id]
         rehearse = rehearse and meta.get('tier') not in sleep.HIDDEN
+        affect = affect and meta.get('tier') not in sleep.HIDDEN  # a forgotten memory brings back no feeling
         if rehearse and 'cognition' in self.state['config']:
             from .cognition import views
             available = next((m for m in views(self,owner,'',len(agent['memory_meta'])) if m['event']==memory_id),None)
@@ -886,7 +887,7 @@ class Engine:
             raise ValueError('Consolidation needs a living agent and positive batch size')
         episodes = [o for o in self.world.observations.get(owner, [])
                     if not agent['memory_meta'][o.event_id].get('consolidated')
-                    and agent['memory_meta'][o.event_id].get('tier') != attention.UNATTENDED][:batch_size]
+                    and agent['memory_meta'][o.event_id].get('tier') not in sleep.HIDDEN][:batch_size]  # forgotten stays forgotten
         if len(episodes) < batch_size:
             return 0
         context = self.context(owner, 'Reflect on what these experienced episodes may mean for you.')
@@ -1065,7 +1066,8 @@ class Engine:
         meta = self.agent(owner)['memory_meta']
         earlier = [{'id': o.event_id, 'days_ago': round(self.day - o.day, 1), 'text': o.text,
                     'times_asked_before': meta[o.event_id].get('times_asked_before', 0)}
-                   for o in self.world.observations.get(owner, []) if o.source == observation['source'] and '?' in o.text][-5:] \
+                   for o in self.world.observations.get(owner, []) if o.source == observation['source'] and '?' in o.text
+                   and meta[o.event_id].get('tier') not in sleep.HIDDEN][-5:] \
             if observation['source'] in self.state['entities'] and observation['source'] != owner and '?' in observation['text'] else []
         if earlier:
             context['earlier_questions_from_speaker'] = earlier

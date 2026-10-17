@@ -142,6 +142,17 @@ In environment-v2 run-2 the researcher's lines, spoken into class conversations 
 
 **Talking from the cockpit (same day).** The live cockpit (`python3 -m devsim.cockpit RUN_DIR --serve 18090`) now has a "Talk to someone" box read exactly like the watcher's `t` key (shared `visit.talk_line`): `@priya hello` walks up to Priya, plain text continues, `/bye` ends, `/call priya` phones, `/send Kabir @priya a new classmate, 15` sends your character, and `/auto GOAL` lets the model play it. The transcript refreshes every 1.5 s. The watcher's `t` gained `/call` and `/send` the same way. Over SSH with no port forwarding, the terminal watcher (`python3 -m devsim.watch RUN_DIR`) is the way to talk: key `h` opens a talk guide that lists the run's people and gives examples, and it was driven in a pseudo-terminal (guide opens at its top, closes again). It writes to the run's inbox through `devsim.visit`, so the run validates and decides everything. It accepts only JSON requests from its own loopback origin, so another site open in the browser cannot post into a simulation. Static exports and checkpoint-file cockpits stay read-only. Check: one new `cockpit` check. The page was also driven in headless Chromium (start, reply shown, say, character fields, end; light and dark; no sideways scroll at 390 px; no script errors). All 20 suites pass. Not used against a live 27B run yet.
 
+## Fix, 17 October: forgotten memories reached the model again
+
+Sleep-dropped and merged memories, and unattended ones, were hidden from recall but still reached the model through four other paths:
+
+- `Engine.consolidate` sent them for reflection and gist building.
+- `Engine.appraise` showed them as earlier questions from the same speaker.
+- `household.conversation_memory` listed them as recent turns. Without the cognition policy, it also showed them as the previous session.
+- `cognition.reflect` could run on them.
+
+A reminder of a dropped memory also replayed its feeling (`Engine.recall`). Every one of these readers now skips the tiers in `sleep.HIDDEN`. Runs made with the sleep policy before this fix (environment-v4) may have consolidated dropped memories. New `sleep` check: one scenario covers all five paths, and it fails without the fix. All 22 suites: 328 named checks plus 12 core checks.
+
 ## Attention allocation, 17 October (user request)
 
 Opt-in module ([guide](ATTENTION_IMPLEMENTATION.md), [evidence tags](attention_evidence.md), `devsim/attention.py`, config `devsim/policies/attention.json`). With an `attention` policy block, every delivered event gets a per-listener weight `a` and a tier: FULL, GIST or NONE. The weight comes from four parts:

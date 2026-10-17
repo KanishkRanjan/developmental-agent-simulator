@@ -274,6 +274,32 @@ def main():
     assert all(e.agent('ana')['memory_meta'][i.removeprefix('buffer:')]['summary'].startswith('Summary') for i in record['ids']['gist_new'])
     checks.append('the optional LLM summarizer is batched (at most llm_batch_size memories per call), behind the summarizer flag')
 
+    # Forgotten stays forgotten: no reader passes a dropped memory back to the model or replays its feeling.
+    from devsim import cognition, household
+    e = world(theta_drop=19, theta_episodic=20)  # every entry scores below theta_drop
+    for i in range(8):
+        e.schedule(f'@conversation:k:{i}', .3 + i / 1440, 'x', {'ana': {'text': f'Ben asked: did you see the red kite {i}?',
+                   'source': 'ben', 'encountered': ['ben'], 'valence': -.6, 'arousal': .6}})
+    e.advance(1.2)  # awake 16 h, then this step is a sleep opportunity
+    assert all(m['tier'] == 'dropped' for m in e.agent('ana')['memory_meta'].values())
+    seen = []
+    def model(system, context, *rest, **kw):
+        seen.append(context)
+        return {'meaning': 'm', 'valence': 0, 'arousal': 0, 'importance': 0, 'confidence': .5}
+    with patch('devsim.engine.validated_json', side_effect=model):
+        assert e.consolidate('ana', batch_size=1) == 0
+        cognition.reflect(e, 'ana', '@conversation:k:0', api='http://127.0.0.1:1', model='none')
+        assert not seen, 'consolidation or reflection sent a dropped memory to the model'
+        e.appraise('ana', {'text': 'Ben asked: did you see the red kite?', 'source': 'ben'})
+    assert 'earlier_questions_from_speaker' not in seen[0] and 'kite' not in json.dumps(seen[0]['memories'])
+    e.state['runtime'] = {'conversations': {'k': {'status': 'open', 'active': ['ana', 'ben'], 'spec': {'topic': 't'}}}}
+    assert household.conversation_memory(e, 'ana')['this_conversation'] == []
+    feelings = len(e.agent('ana')['affect_events'])
+    e.recall('ana', '@conversation:k:0', 'reminder-of-dropped', rehearse=True, affect=True)
+    assert len(e.agent('ana')['affect_events']) == feelings
+    checks.append('dropped memories never reach the model again: not consolidated, reflected on, shown as earlier questions '
+                  'or recent conversation, and a reminder brings back no feeling')
+
     source = inspect.getsource(sleep).lower()
     assert not any(word in source for word in ('focal', 'narciss', 'psychopath', "['role']", 'agent_type'))
     try:

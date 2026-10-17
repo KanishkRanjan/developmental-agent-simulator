@@ -232,6 +232,9 @@ def reflect(engine, owner, evidence_id, *, api, model):
     agent = engine.agent(owner)
     if not agent['alive'] or evidence_id not in agent['memory_meta']:
         raise ValueError('Reflection requires a living agent and received evidence')
+    from .sleep import HIDDEN
+    if agent['memory_meta'][evidence_id].get('tier') in HIDDEN:
+        return  # nothing left to reflect on
     update_id = f'{owner}:reflection:{evidence_id}'
     if any(u['id']==update_id for u in engine.state['updates']):
         return

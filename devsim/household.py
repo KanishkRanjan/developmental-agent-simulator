@@ -8,6 +8,7 @@ from math import floor
 
 from .engine import number
 from . import calendar_time
+from .sleep import HIDDEN
 def validate(engine, settings):
     if not isinstance(settings, dict) or set(settings)-{'rooms','locations','routines','moves','conversations',
                                                       'routes','groups','channels','invitations'}:
@@ -156,7 +157,7 @@ def conversation_memory(engine, owner, turns=8, previous_turns=4):
     heard={}
     meta=engine.agent(owner)['memory_meta']
     for o in engine.world.observations.get(owner,[]):
-        if o.event_id.startswith('@conversation:') and meta[o.event_id].get('tier')!='unattended':
+        if o.event_id.startswith('@conversation:') and meta[o.event_id].get('tier') not in HIDDEN:  # dropped, merged, unattended
             heard.setdefault(o.event_id.split(':')[1],[]).append(o)
     clip=lambda text:text if len(text)<=300 else text[:299]+'…'
     result={'policy':'own_received_turns_oldest_first',
