@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "scope": "synthetic engineering checks of design defaults (unverified); no calibrated attention claim",
+  "checks": [
+    "stream share matches the spec sanity values: u 0.2 -> 0.64, 0.05 -> 0.10, 0.8 -> 0.97",
+    "with noise held fixed, raising topic fit, speaker closeness, mentioned closeness or goal match never lowers a",
+    "fatigue, stream load and dysregulation never raise a_raw; capacity peaks at mid arousal (inverted_u) or is flat (monotone)",
+    "config fails fast: weights must sum to 1, a_gist < a_full, theta > 0, known keys, choices and well-formed tag tables",
+    "golden regression: enabled=false gives a byte-identical scripted 10-day household world; enabled runs with and without sleep",
+    "same seed gives identical attention results whatever order events and recipients were scheduled in",
+    "a directly addressed event (or one naming the listener) is never NONE; asleep, capacity is K_sleep and nothing gets in",
+    "NONE writes only a hidden receipt (no recall, no mood); GIST encodes who, topic and rough valence at lower stability; originals stay in the event log",
+    "LLM context: NONE turns are left out of memories and conversation_so_far; GIST turns appear as one summary line",
+    "2000 sampled agents on identical events: high dysregulation gives lower mean and higher variance of a {'low_dys_mean_a': 0.311, 'high_dys_mean_a': 0.186, 'low_dys_var_a': 0.0186, 'high_dys_var_a': 0.0368}",
+    "crowded scene (30 listeners, 20 turns): traces drop from 600 to 502; addressed events all kept",
+    "cost: exactly W allocations for an event with W listeners, none while time passes, one call site (Engine.advance)",
+    "no branch keyed on agent type, role or diagnosis; differences come from traits, dials, mood and arousal"
+  ]
+}

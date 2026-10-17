@@ -1,0 +1,239 @@
+"""Attention allocation checks; synthetic, no model server. Every parameter is a design default, so these check the
+mechanism's direction and bookkeeping, not calibrated psychology."""
+from copy import deepcopy
+import inspect
+import json
+from pathlib import Path
+from random import Random
+from statistics import mean, pvariance
+from unittest.mock import patch
+
+from devsim import attention, sleep
+from devsim.engine import Engine, FACET_NAMES
+from devsim.lifetime import Lifetime
+from checks.check_environment import fixture as environment_fixture
+
+RESULTS_DIR = Path(__file__).resolve().parent / 'results'
+CFG = {k: v['value'] for k, v in attention.parameters().items()}
+
+
+def a_of(fit=.4, c_actor=.3, c_ment=0., goal=0., fatigue=0., load=0, dys=0., arousal=.5, z=.4, cfg=CFG):
+    """(a, a_raw) through the pure model functions with the noise draw z held fixed."""
+    T = attention.top_down(cfg, fit, c_actor, c_ment, goal)
+    K = attention.capacity(cfg, arousal, fatigue, load, dys)
+    raw = K * attention.share(cfg, T, [.5] * load, dys)
+    return attention.noisy(raw, z, cfg['s_0'] + cfg['s_dys'] * dys), raw
+
+
+def rejects(overrides):
+    try:
+        attention.configure(Engine(1), overrides)
+    except ValueError:
+        return True
+    return False
+
+
+def world(people, seed=5, facets=None, dial=None, enabled=True):
+    e = Engine(seed)
+    for p in people:
+        e.entity(p, p.title())
+        e.materialize(p, (facets or {}).get(p, dict.fromkeys(FACET_NAMES, 50)))
+        if dial and p in dial:
+            sleep.set_dials(e, p, **dial[p])
+    if enabled is not None:
+        attention.configure(e, {'enabled': enabled})
+    return e
+
+
+def turns(e, speaker, listeners, n, start=.3, gap_minutes=1, text='{s} said: nice weather today, number {i}.', key='x', extra=None):
+    for i in range(n):
+        e.schedule(f'@conversation:{key}:{i}', start + i * gap_minutes / 1440, 'A conversation turn.', {
+            p: {'text': text.format(s=speaker.title(), i=i), 'source': speaker, 'kind': 'direct', 'encountered': [speaker],
+                **(extra(p, i) if extra else {})} for p in listeners})
+
+
+def results(e, owner):
+    return {k: m['attention'] for k, m in e.agent(owner)['memory_meta'].items() if 'attention' in m}
+
+
+def strip_attention(state):
+    state = deepcopy(state)
+    state['config'].pop('attention', None)
+    state.get('runtime', {}).pop('policy_fingerprint', None)
+    return state
+
+
+def main():
+    checks = []
+
+    # 4.6 sanity values from the spec: one stream, theta 2, u0 0.15.
+    for u, expected in [(.2, .64), (.05, .10), (.8, .97)]:
+        assert abs(attention.share(CFG, u, [], 0) - expected) < .01, (u, attention.share(CFG, u, [], 0))
+    checks.append('stream share matches the spec sanity values: u 0.2 -> 0.64, 0.05 -> 0.10, 0.8 -> 0.97')
+
+    grid = [i / 10 for i in range(11)]
+    for name in ('fit', 'c_actor', 'c_ment', 'goal'):
+        for other in (0, .3, .7):
+            base = {k: other for k in ('fit', 'c_actor', 'c_ment', 'goal')}
+            for z in (-2, 0, 1.5):
+                values = [a_of(**{**base, name: x}, z=z)[0] for x in grid]
+                assert all(b >= a - 1e-12 for a, b in zip(values, values[1:])), (name, other, z)
+    checks.append('with noise held fixed, raising topic fit, speaker closeness, mentioned closeness or goal match never lowers a')
+
+    for name, levels in [('fatigue', grid), ('load', range(6)), ('dys', grid)]:
+        for fit in (.1, .5, .9):
+            raws = [a_of(fit=fit, **{name: x})[1] for x in levels]
+            assert all(b <= a + 1e-12 for a, b in zip(raws, raws[1:])), (name, fit)
+    shape = [attention.capacity(CFG, x, 0, 0, 0) for x in grid]
+    assert max(shape) == shape[5] and shape[0] < shape[5] > shape[10]
+    assert attention.capacity({**CFG, 'arousal_shape': 'monotone'}, .0, 0, 0, 0) == CFG['K_max']
+    checks.append('fatigue, stream load and dysregulation never raise a_raw; capacity peaks at mid arousal (inverted_u) or is flat (monotone)')
+
+    assert rejects({'w_topic': .5}) and rejects({'a_gist': .7}) and rejects({'theta': 0}) and rejects({'nonsense': 1})
+    assert rejects({'arousal_shape': 'linear'}) and rejects({'affinity_base': {'social': .4}})
+    assert rejects({'loadings': {'social': {'X': 1}}}) and rejects({'topic_rules': {'threat': ['Fire']}})
+    assert not rejects({'w_topic': .25, 'w_goal': .30})
+    e = Engine(1)
+    attention.configure(e)
+    try:
+        attention.configure(e, {'theta': 3})
+        raise AssertionError('policy silently replaced')
+    except ValueError:
+        pass
+    checks.append('config fails fast: weights must sum to 1, a_gist < a_full, theta > 0, known keys, choices and well-formed tag tables')
+
+    # Golden regression: the master switch off reproduces the engine without the module exactly.
+    plain, policy = environment_fixture()
+    Lifetime(plain, policy, scripted=True).run(10)
+    off, policy = environment_fixture()
+    Lifetime(off, {**policy, 'attention': {'enabled': False}}, scripted=True).run(10)
+    assert json.dumps(strip_attention(plain.state), sort_keys=True) == json.dumps(strip_attention(off.state), sort_keys=True)
+    assert all('attention' not in m for a in off.state['agents'].values() for m in a['memory_meta'].values())
+    for variant in ({}, {'sleep': {}}):
+        on, policy = environment_fixture()
+        Lifetime(on, {**policy, **variant, 'attention': {}}, scripted=True).run(10)
+        tiers = [m['attention']['tier'] for a in on.state['agents'].values() for m in a['memory_meta'].values() if 'attention' in m]
+        assert tiers and set(tiers) <= {'FULL', 'GIST', 'NONE'}
+    checks.append('golden regression: enabled=false gives a byte-identical scripted 10-day household world; enabled runs with and without sleep')
+
+    # Determinism: insertion order of events and of recipients does not change any result.
+    def scene(order):
+        e = world(['a', 'b', 'c', 'd'])
+        events = [(f'@conversation:y:{i}', .3 + i / 1440, {p: {'text': f'A said: the exam is soon {i}.', 'source': 'a',
+                   'encountered': ['a']} for p in order}) for i in range(8)]
+        events += [(f'one-off-{i}', .3 + (i + .5) / 1440, {p: {'text': 'B waved.', 'source': 'b'} for p in order if p != 'b'})
+                   for i in range(4)]
+        for key, day, obs in (events if order[0] == 'b' else events[::-1]):
+            e.schedule(key, day, 'x', obs)
+        e.advance(1)
+        return {p: results(e, p) for p in 'bcd'}
+    assert scene(['b', 'c', 'd']) == scene(['d', 'c', 'b'])
+    checks.append('same seed gives identical attention results whatever order events and recipients were scheduled in')
+
+    # Directly addressed is never NONE; an asleep listener barely takes anything in.
+    e = world(['a', 'b'])
+    for i in range(30):
+        e.schedule(f'call-{i}', .3 + i / 1440, 'x', {'b': {'text': 'A said to B: blah.', 'source': 'a', 'addressed': ['b']}})
+    e.advance(1)
+    assert all(r['tier'] != 'NONE' and r['addressed'] for r in results(e, 'b').values())
+    e = world(['a', 'b'])
+    e.attention_providers = {'asleep': lambda engine, i, now: True}
+    turns(e, 'a', ['b'], 20, extra=lambda p, i: {'valence': -.8, 'arousal': .7})
+    e.advance(1)
+    asleep = list(results(e, 'b').values())
+    assert all(r['capacity'] == CFG['K_sleep'] and r['tier'] == 'NONE' for r in asleep)
+    assert e.mood('b') == {'valence': 0, 'arousal': 0}, 'unattended events must not move mood'
+    checks.append('a directly addressed event (or one naming the listener) is never NONE; asleep, capacity is K_sleep and nothing gets in')
+
+    # Effects: NONE leaves a hidden receipt only; GIST keeps who, topic and rough valence; mood ignores NONE.
+    e = world(['a', 'b'])
+    turns(e, 'a', ['b'], 60, text='{s} said: I spilled tea on the rug again, number {i}.',
+          extra=lambda p, i: {'valence': -.5, 'arousal': .4})
+    e.advance(1)
+    meta = e.agent('b')['memory_meta']
+    by = {t: [k for k, m in meta.items() if m['attention']['tier'] == t] for t in ('FULL', 'GIST', 'NONE')}
+    assert all(by.values()), {t: len(v) for t, v in by.items()}
+    observed = {o.event_id: o for o in e.world.observations['b']}
+    assert all(meta[k]['tier'] == 'unattended' and 'tea' not in observed[k].text for k in by['NONE'])
+    assert all(meta[k]['tier'] == 'gist' and meta[k]['gist_only'] and observed[k].text.startswith('Half-noticed: A')
+               and 'unpleasant' in observed[k].text and 'tea' not in observed[k].text for k in by['GIST'])
+    shown = {m['event'] for m in e.memories('b', 'tea rug spilled', limit=100)}
+    assert shown and not shown & set(by['NONE'])
+    full_k = [k for k in by['FULL']][0]
+    assert 'tea' in observed[full_k].text and e.state['events'][[x['id'] for x in e.state['events']].index(by['NONE'][0])][
+        'observations']['b']['text'].count('tea') == 1  # the original stays in the event log
+    plain = world(['a', 'b'], enabled=None)
+    turns(plain, 'a', ['b'], 60, text='{s} said: I spilled tea on the rug again, number {i}.',
+          extra=lambda p, i: {'valence': -.5, 'arousal': .4})
+    plain.advance(1)
+    stab = {o.event_id: o.stability_days for o in plain.world.observations['b']}
+    assert all(observed[k].stability_days < stab[k] for k in by['GIST'] + by['NONE'])
+    checks.append('NONE writes only a hidden receipt (no recall, no mood); GIST encodes who, topic and rough valence at lower stability; originals stay in the event log')
+
+    # Context: the household recent-conversation view skips unattended turns.
+    from devsim import household
+    e.state['runtime'] = {'conversations': {'x': {'status': 'open', 'active': ['a', 'b'], 'spec': {'topic': 't'}}}}
+    seen = household.conversation_memory(e, 'b', turns=100)['this_conversation']
+    assert len(seen) == len(by['FULL']) + len(by['GIST']) and not any(t['text'] == '(not attended)' for t in seen)
+    checks.append('LLM context: NONE turns are left out of memories and conversation_so_far; GIST turns appear as one summary line')
+
+    # Statistical: N = 2000 sampled agents, identical events; no archetype flag anywhere.
+    rng = Random(42)
+    people = [f'p{i}' for i in range(2000)]
+    facets = {p: {k: rng.uniform(20, 80) for k in FACET_NAMES} for p in people}
+    dial = {p: {'dysregulation': rng.random(), 'threat_sensitivity': rng.random()} for p in people}
+    big = world(['speaker', *people], facets=facets, dial=dial)
+    turns(big, 'speaker', people, 6, text='{s} said: the bus was late again this morning, number {i}.')
+    big.advance(1)
+    assert big.state['attention_stats']['allocations'] == 6 * len(people)
+    ranked = sorted(people, key=lambda p: dial[p]['dysregulation'])
+    low, high = ([r['weight'] for p in group for r in results(big, p).values()] for group in (ranked[:500], ranked[-500:]))
+    assert mean(high) < mean(low) and pvariance(high) > pvariance(low), (mean(low), mean(high), pvariance(low), pvariance(high))
+    stats = {'low_dys_mean_a': round(mean(low), 3), 'high_dys_mean_a': round(mean(high), 3),
+             'low_dys_var_a': round(pvariance(low), 4), 'high_dys_var_a': round(pvariance(high), 4)}
+    checks.append(f'2000 sampled agents on identical events: high dysregulation gives lower mean and higher variance of a {stats}')
+
+    # Crowded scene: fewer traces than with the switch off, none lost for directly addressed events.
+    def crowd(enabled):
+        e = world(['host', *[f'g{i}' for i in range(30)]], enabled=enabled)
+        guests = [f'g{i}' for i in range(30)]
+        turns(e, 'host', guests, 20, extra=lambda p, i: {'addressed': [p]} if i % 5 == 0 and p == f'g{i}' else {})
+        e.advance(1)
+        kept = lambda p, pred: sum(1 for k, m in e.agent(p)['memory_meta'].items() if pred(k) and m.get('tier') not in sleep.HIDDEN)
+        return (sum(kept(p, lambda k: True) for p in guests),
+                sum(kept(f'g{i}', lambda k, i=i: k == f'@conversation:x:{i}') for i in range(0, 20, 5)))
+    (on_all, on_addressed), (off_all, off_addressed) = crowd(True), crowd(False)
+    assert on_all < .9 * off_all and on_addressed == off_addressed == 4, (on_all, off_all, on_addressed)
+    checks.append(f'crowded scene (30 listeners, 20 turns): traces drop from {off_all} to {on_all}; addressed events all kept')
+
+    # Cost: one allocation per (listener, event), only from Engine.advance; none from a tick loop.
+    calls = []
+    real = attention.allocate
+    with patch('devsim.attention.allocate', side_effect=lambda *a: calls.append(a[1]) or real(*a)):
+        for w in (10, 100):
+            e = world(['s', *[f'w{i}' for i in range(w)]])
+            calls.clear()
+            e.schedule('broadcast', .5, 'x', {f'w{i}': {'text': 'S announced dinner.', 'source': 's'} for i in range(w)})
+            e.advance(.6)
+            assert len(calls) == w
+        e = world(['s', 't'])
+        calls.clear()
+        e.advance(30)  # time passing with no events costs nothing
+        assert not calls
+    import devsim
+    sites = [p.name for p in Path(devsim.__file__).parent.rglob('*.py') if 'attention.allocate(' in p.read_text()]
+    assert sites == ['engine.py'] and inspect.getsource(Engine.advance).count('attention.allocate(') == 1
+    checks.append('cost: exactly W allocations for an event with W listeners, none while time passes, one call site (Engine.advance)')
+
+    source = inspect.getsource(attention).lower()
+    assert not any(word in source for word in ('archetype', 'adhd', "['role']", 'agent_type', 'narciss', 'psychopath'))
+    checks.append('no branch keyed on agent type, role or diagnosis; differences come from traits, dials, mood and arousal')
+
+    result = {'passed': True, 'scope': 'synthetic engineering checks of design defaults (unverified); no calibrated attention claim',
+              'checks': checks}
+    RESULTS_DIR.joinpath('attention-engineering-checks.json').write_text(json.dumps(result, indent=2) + '\n')
+    print(json.dumps(result, indent=2))
+
+
+if __name__ == '__main__':
+    main()

@@ -154,8 +154,9 @@ def conversation_memory(engine, owner, turns=8, previous_turns=4):
     current=next((k for k,s in sessions.items() if s['status']!='closed' and owner in s['active']),None)
     if current is None: return None
     heard={}
+    meta=engine.agent(owner)['memory_meta']
     for o in engine.world.observations.get(owner,[]):
-        if o.event_id.startswith('@conversation:'):
+        if o.event_id.startswith('@conversation:') and meta[o.event_id].get('tier')!='unattended':
             heard.setdefault(o.event_id.split(':')[1],[]).append(o)
     clip=lambda text:text if len(text)<=300 else text[:299]+'…'
     result={'policy':'own_received_turns_oldest_first',

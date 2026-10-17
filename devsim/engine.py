@@ -25,6 +25,7 @@ from .personality import describe
 from . import situation as situational
 from . import development
 from . import sleep
+from . import attention
 from .context_view import compact
 
 FACET_NAMES = dict(zip(
@@ -580,7 +581,7 @@ class Engine:
             if 'gist' in obs and (not isinstance(obs['gist'], str) or not obs['gist'].strip() or len(obs['gist']) > 300):
                 raise ValueError('Observation gist must be short nonempty text')
             encountered = obs.get('encountered', [])
-            for field in ('encountered', 'references', 'cued_memories'):
+            for field in ('encountered', 'references', 'cued_memories', 'addressed'):
                 if not isinstance(obs.get(field, []), list) or not all(isinstance(k, str) for k in obs.get(field, [])):
                     raise ValueError('Observation identity and memory references must be lists of ids')
             if not all(other in self.state['entities'] for other in encountered):
@@ -641,8 +642,12 @@ class Engine:
                 sleep.due(self, event['day'])  # a sleep opportunity before this event consolidates the earlier buffer
             if eligible:
                 recipients = {}
+                attended, encoded = {}, dict(event['observations'])  # attention may coarsen what each listener encodes
                 for owner, obs in event['observations'].items():
                     cfg = self.state['config']
+                    if cfg.get('attention', {}).get('enabled'):
+                        attended[owner] = attention.allocate(self, owner, event, obs)
+                        obs = encoded[owner] = attention.encoded(self, owner, obs, attended[owner])
                     stability = obs.get('stability_days', cfg['memory_base_stability_days'] * (
                         1 + cfg['memory_importance_weight'] * obs.get('importance', 0) + cfg['memory_arousal_weight'] * obs.get('arousal', 0)))
                     # Mood and Memory, coupling pathway 1: events met in a strong mood are encoded more durably.
@@ -653,10 +658,12 @@ class Engine:
                                         stability * (1 + mood_weight * abs(self.mood(owner, event['day'])['valence'])))
                     if 'sleep' in cfg and 'stability_days' not in obs:
                         stability *= sleep.encoding_multiplier(self, owner)
+                    if owner in attended and 'stability_days' not in obs:
+                        stability *= attention.encoding_factor(cfg['attention'], attended[owner], buffered='sleep' in cfg)
                     recipients[owner] = Observation(event['id'], event['day'], obs['text'], obs['source'],
                                                      obs.get('valence', 0), obs.get('arousal', 0), stability)
                 self.world.add_event(event['id'], event['day'], event['description'], recipients)
-                for owner, obs in event['observations'].items():
+                for owner, obs in encoded.items():
                     agent = self.agent(owner)
                     agent['memory_meta'][event['id']] = {
                         'kind': obs.get('kind', 'direct'), 'confidence': obs.get('confidence', 0.5),
@@ -673,8 +680,12 @@ class Engine:
                     if 'repeat_of' in obs:
                         agent['memory_meta'][event['id']].update(repeat_of=obs['repeat_of'],
                             times_asked_before=agent['memory_meta'][obs['repeat_of']].get('times_asked_before', 0) + 1)
-                    if 'sleep' in self.state['config']:
+                    if owner in attended:
+                        attention.record(agent['memory_meta'][event['id']], attended[owner], buffered='sleep' in self.state['config'])
+                    if 'sleep' in self.state['config'] and agent['memory_meta'][event['id']].get('tier') != attention.UNATTENDED:
                         sleep.buffer(self, owner, event, obs)
+                        if owner in attended:
+                            agent['hippocampal_buffer'][-1]['attention_weight'] = attention.trace_factor(cfg['attention'], attended[owner])
                     for other in obs.get('references', []):
                         agent['references'].setdefault(other, []).append(event['id'])
                     for other in obs.get('encountered', []):
@@ -702,7 +713,7 @@ class Engine:
                     action = next(a for a in self.state['actions'] if a['id'] == linked_id)
                     action.update(status='resolved', outcome_event=event['id'])
                 self.state['day'] = event['day']
-                for owner, obs in event['observations'].items():
+                for owner, obs in encoded.items():
                     for mid in dict.fromkeys(obs.get('cued_memories', [])):
                         self.recall(owner, mid, f'{event["id"]}:reminder:{owner}:{mid}', rehearse=True, affect=True)
             self.state['events'].append({**event, 'status': 'applied' if eligible else 'ineligible'})
@@ -738,6 +749,9 @@ class Engine:
             tau *= 1 + settings.get('intensity_duration_gain', 0.0) * arousal
             return day, valence * reactivity, arousal, tau
         impulses = [impulse(o.day, o.valence, o.arousal) for o in self.world.observations.get(owner, [])]
+        if 'attention' in cfg:  # an inattentive listener is barely moved
+            scales = [attention.emotion_scale(agent['memory_meta'][o.event_id]) for o in self.world.observations.get(owner, [])]
+            impulses = [impulse(o.day, o.valence * k, o.arousal * k) for o, k in zip(self.world.observations.get(owner, []), scales)]
         impulses += [impulse(r['day'], r['valence'], r['arousal']) for r in agent['affect_events']]
         impulses = sorted((x for x in impulses if x[0] <= now), key=lambda x: x[0])
         if cfg['mood_kernel'] == 'average':
@@ -870,7 +884,8 @@ class Engine:
         if not agent['alive'] or not isinstance(batch_size, int) or batch_size < 1:
             raise ValueError('Consolidation needs a living agent and positive batch size')
         episodes = [o for o in self.world.observations.get(owner, [])
-                    if not agent['memory_meta'][o.event_id].get('consolidated')][:batch_size]
+                    if not agent['memory_meta'][o.event_id].get('consolidated')
+                    and agent['memory_meta'][o.event_id].get('tier') != attention.UNATTENDED][:batch_size]
         if len(episodes) < batch_size:
             return 0
         context = self.context(owner, 'Reflect on what these experienced episodes may mean for you.')

@@ -1,0 +1,54 @@
+{
+  "description": "Attention allocation (devsim/attention.py): how much of each delivered event a listener attends to. Psychological attention (Kahneman 1973 capacity theory), not transformer attention. Every numeric value is a tunable design guess to be calibrated, not a cited effect size. Each parameter carries an evidence tag ([V] verified source, [D] design default, [U] plausible but unverified shape) explained in docs/attention_evidence.md, and its allowed range or choices.",
+  "parameters": {
+    "enabled": {"value": true, "choices": [true, false], "evidence": "[D]", "note": "master switch; false gives every event weight 1 and tier FULL, matching the engine without this module"},
+
+    "neutral_tag_weight": {"value": 0.2, "range": [0, 1], "evidence": "[D]", "note": "every tag's weight when no rule tags an event (counted in attention_stats.neutral_tags)"},
+    "keyword_tag_weight": {"value": 0.6, "range": [0, 1], "evidence": "[D]", "note": "tag weight when one of the tag's keywords occurs in the observation text"},
+    "affinity_base": {"value": {"social": 0.4, "novelty_ideas": 0.4, "threat": 0.4, "conflict": 0.4, "distress": 0.4, "task_duty": 0.4, "gossip": 0.4, "romance": 0.4, "money": 0.4, "family": 0.4}, "table": "tag_numbers", "evidence": "[D]", "note": "topic affinity of an agent at the trait midpoint (Kahneman's enduring dispositions)"},
+    "loadings": {"value": {"social": {"E": 0.6}, "novelty_ideas": {"O": 0.6}, "threat": {"N": 0.6}, "conflict": {"A": -0.6}, "distress": {"A": 0.6}, "task_duty": {"C": 0.6}, "gossip": {"E": 0.4, "A": -0.2}}, "table": "tag_trait_numbers", "evidence": "[D]", "note": "affinity change per unit of a Big Five domain (0-1) away from 0.5; family, romance and money are flat"},
+    "topic_rules": {"value": {
+      "threat": ["danger", "dangerous", "attack", "attacked", "fire", "police", "threat", "threatened", "kill", "knife", "gun", "accident", "emergency", "hurt", "injured", "bleeding", "scared", "afraid"],
+      "conflict": ["argue", "argued", "argument", "angry", "furious", "shout", "shouted", "shouting", "yell", "yelled", "fight", "fighting", "blame", "blamed", "unfair", "rude"],
+      "distress": ["cry", "cried", "crying", "sad", "upset", "sick", "ill", "lonely", "worried", "worry", "pain", "hospital", "miss", "sorry"],
+      "task_duty": ["homework", "work", "exam", "exams", "test", "deadline", "task", "chores", "job", "assignment", "school", "study", "office", "meeting", "project"],
+      "gossip": ["heard", "rumour", "rumor", "apparently", "secret", "everyone", "gossip"],
+      "romance": ["date", "dating", "love", "crush", "kiss", "boyfriend", "girlfriend", "wedding", "married"],
+      "money": ["money", "pay", "paid", "rupees", "dollars", "cost", "price", "rent", "bill", "bills", "salary", "loan", "expensive"],
+      "family": ["mom", "mum", "dad", "mother", "father", "sister", "brother", "family", "parents", "grandma", "grandpa", "aunt", "uncle", "son", "daughter"],
+      "novelty_ideas": ["idea", "ideas", "why", "science", "book", "learn", "learned", "new", "story", "wonder", "curious", "imagine", "invented"]
+    }, "table": "tag_words", "evidence": "[D]", "note": "deterministic keyword rule table (whole lowercase words); replace with event metadata where authored"},
+    "event_tags": {"value": {"@conversation:": {"social": 0.6}, "@call:": {"social": 0.6}, "@society:": {"gossip": 0.6}}, "table": "prefix_tag_numbers", "evidence": "[D]", "note": "tags implied by the event id prefix (the delivery path)"},
+
+    "w_topic": {"value": 0.35, "range": [0, 1], "evidence": "[D]", "note": "top-down weight of topic fit; the four w_ weights must sum to 1"},
+    "w_rel": {"value": 0.30, "range": [0, 1], "evidence": "[D]", "note": "top-down weight of closeness to the speaker (design hypothesis, no verified study)"},
+    "w_ment": {"value": 0.15, "range": [0, 1], "evidence": "[D]", "note": "top-down weight of the closest person mentioned"},
+    "w_goal": {"value": 0.20, "range": [0, 1], "evidence": "[D]", "note": "top-down weight of goal match (Kahneman's momentary intentions)"},
+    "gamma_rel": {"value": 1.0, "range": [0.1, 5], "evidence": "[D]", "note": "exponent on closeness"},
+    "closeness_known": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "closeness of a known person with no recorded closeness above 0"},
+    "closeness_stranger": {"value": 0.05, "range": [0, 1], "evidence": "[D]", "note": "closeness of a stranger"},
+
+    "K_max": {"value": 1.0, "range": [0, 1], "evidence": "[D]", "note": "capacity of a rested, unloaded agent at ideal arousal"},
+    "lam_fat": {"value": 0.5, "range": [0, 1], "evidence": "[D]", "note": "capacity lost at full fatigue"},
+    "lam_load": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "capacity lost at full stream load"},
+    "n_load_ref": {"value": 3, "range": [1, 20], "evidence": "[D]", "note": "number of other open streams that counts as full load"},
+    "lam_dys": {"value": 0.4, "range": [0, 1], "evidence": "[D]", "note": "capacity lost at full dysregulation"},
+    "arousal_shape": {"value": "inverted_u", "choices": ["inverted_u", "monotone"], "evidence": "[U]", "note": "capacity vs arousal: 1 - kappa (arousal - 0.5)^2 (Yerkes-Dodson style, shape unverified) or constant 1"},
+    "kappa": {"value": 2.0, "range": [0, 4], "evidence": "[U]", "note": "curvature of the inverted U; at most 4 keeps the factor nonnegative"},
+    "K_sleep": {"value": 0.02, "range": [0, 1], "evidence": "[D]", "note": "capacity while asleep"},
+
+    "theta": {"value": 2.0, "range": [0.01, 10], "evidence": "[D]", "note": "sharpness of competition between open streams"},
+    "u0_base": {"value": 0.15, "range": [0, 1], "evidence": "[D]", "note": "pull of mind-wandering (the idle competitor)"},
+    "u0_dys": {"value": 0.15, "range": [0, 1], "evidence": "[D]", "note": "extra mind-wandering pull at full dysregulation"},
+    "stream_expiry_minutes": {"value": 15, "range": [0.1, 1440], "evidence": "[D]", "note": "a stream not seen for longer is dropped when next read"},
+
+    "s_0": {"value": 0.3, "range": [0, 5], "evidence": "[D]", "note": "logistic noise scale (logit units), moment-to-moment variability"},
+    "s_dys": {"value": 0.6, "range": [0, 5], "evidence": "[D]", "note": "extra noise scale at full dysregulation"},
+
+    "a_full": {"value": 0.60, "range": [0, 1], "evidence": "[D]", "note": "weight at or above which an event is FULL"},
+    "a_gist": {"value": 0.25, "range": [0, 1], "evidence": "[D]", "note": "weight at or above which an event is GIST; must be below a_full"},
+
+    "gamma_enc": {"value": 1.0, "range": [0, 5], "evidence": "[D]", "note": "encoding weight is a^gamma_enc times the existing weight"},
+    "gist_stability_factor": {"value": 0.5, "range": [0.01, 1], "evidence": "[D]", "note": "extra stability multiplier of a GIST trace"}
+  }
+}

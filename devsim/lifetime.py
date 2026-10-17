@@ -213,6 +213,9 @@ class Lifetime:
             society.configure(probe,policy['society'])
         if 'sleep' in policy:
             sleep.configure(probe,policy['sleep'])
+        if 'attention' in policy:
+            from . import attention
+            attention.configure(probe,policy['attention'])
         if 'society_layer' in policy:
             from .population import settings as society_settings
             layer = policy['society_layer']
@@ -250,6 +253,9 @@ class Lifetime:
             sleep.configure(engine,policy['sleep'])
             if not scripted and engine.state['config']['sleep']['summarizer'] == 'llm':
                 engine.sleep_summarizer = sleep.llm_summarizer(api, model)
+        if 'attention' in policy:
+            from . import attention
+            attention.configure(engine,policy['attention'])
         if 'society_layer' in policy:
             from .population import bridge
             bridge.configure(engine, policy['society_layer'].get('overrides'))

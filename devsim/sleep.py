@@ -22,7 +22,7 @@ from . import POLICY_DIR
 
 LOG = logging.getLogger(__name__)
 CONFIG_PATH = POLICY_DIR / 'sleep-consolidation.json'
-HIDDEN = ('dropped', 'merged')  # tiers kept only as receipt and provenance records; recall never reaches them
+HIDDEN = ('dropped', 'merged', 'unattended')  # receipt and provenance records only; recall never reaches them
 DIALS = {'dysregulation': (0, 1, 0.0), 'mood_baseline_shift': (-1, 1, 0.0),
          'threat_sensitivity': (0, 1, 0.0), 'reality_testing': (0, 1, 1.0)}  # name: (low, high, neutral default)
 
@@ -126,7 +126,7 @@ def sleep_quality(cfg, dial, mean_arousal):
 def trace_weight(cfg, entry, threat):
     """Step 2: multiplicative tag-and-capture weight; threat sensitivity amplifies negative arousal only."""
     arousal = entry['arousal'] * (1 + cfg['threat_gain'] * threat) if entry['valence'] < 0 else entry['arousal']
-    return ((1 + cfg['k_arousal'] * arousal) * (1 + cfg['k_rehearsal'] * log1p(entry['rehearsal_count']))
+    return (entry.get('attention_weight', 1.0) * (1 + cfg['k_arousal'] * arousal) * (1 + cfg['k_rehearsal'] * log1p(entry['rehearsal_count']))
             * (1 + cfg['k_self'] * entry['self_relevance']) * (1 + cfg['k_novelty'] * entry['novelty']))
 
 
