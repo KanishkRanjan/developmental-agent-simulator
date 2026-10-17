@@ -17,7 +17,7 @@ from pathlib import Path
 import time
 
 from . import household
-from .engine import Engine, number, validated_json
+from .engine import Engine, cited_memories, number, validated_json
 
 ACCOUNT_POLICY = 'generated_account_not_causal_access'
 
@@ -63,15 +63,11 @@ def diagnostic(engine, owners, questions, *, api, model):
         for question in questions:
             context = frozen.context(owner, question)
             context.update(task='diagnostic_interview', researcher_question=question)
-            allowed = {m['event'] for m in context['memories']}
-
             def validate(result):
                 if not isinstance(result.get('answer'), str) or not result['answer'].strip():
                     raise ValueError('An interview answer needs text')
                 number(result.get('confidence'), 0, 1, 'answer confidence')
-                ids = result.get('memory_ids')
-                if not isinstance(ids, list) or any(m not in allowed for m in ids):
-                    raise ValueError('Answer cites a memory unavailable to this agent')
+                result['memory_ids'] = cited_memories(result.get('memory_ids'), context)
             result = validated_json(system, context, validate, api, model, 500)
             records.append({'mode': 'diagnostic', 'owner': owner, 'day': engine.day, 'question': question,
                             'answer': result['answer'], 'confidence': result['confidence'],

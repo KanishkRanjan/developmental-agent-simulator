@@ -136,6 +136,23 @@ def _request_json_once(system, context, api, model, max_tokens=600):
         raise RuntimeError('Local model request failed; no agent state changed') from exc
 
 
+def cited_memories(ids, context):
+    """Model-cited memory ids, validated against the context's memories.
+
+    Ids the context showed as beliefs or relationship evidence are not fabricated, only not memories: they are
+    dropped (no recall) instead of costing a repair call (v4 run: all 11 action repairs were these). Any other
+    unknown id is rejected.
+    """
+    memories = {x['event'] for x in context['memories']}
+    shown = set(context.get('beliefs', {})) | {r.get('evidence') for r in context.get('relationships', {}).values()
+                                               if isinstance(r, dict) and isinstance(r.get('evidence'), str)}
+    if isinstance(ids, list):
+        ids = [m for m in ids if m in memories or m not in shown]
+    if not isinstance(ids, list) or any(not isinstance(m, str) or m not in memories for m in ids):
+        raise ValueError('Model cited an unavailable memory')
+    return ids
+
+
 def belief_view(beliefs, situation, limit=4):
     """Beliefs shown in a prompt: every explicit belief, plus the `limit` inferred lessons most related to the situation.
 
@@ -1301,16 +1318,7 @@ class Engine:
             raise ValueError('Model decision has invalid speech or plan')
         if decision.get('goal_id') is not None and decision['goal_id'] not in self.agent(owner)['goals']:
             raise ValueError('Model invented a goal id')
-        ids = decision.get('memory_ids')
-        memories = {x['event'] for x in context['memories']}
-        # Ids the context showed as beliefs or relationship evidence are not fabricated, only not memories: drop them
-        # (no recall) instead of a repair call (v4 run: 15 of 17 action repairs were these).
-        shown = set(context.get('beliefs', {})) | {r.get('evidence') for r in context.get('relationships', {}).values()
-                                                   if isinstance(r, dict) and isinstance(r.get('evidence'), str)}
-        if isinstance(ids, list):
-            decision['memory_ids'] = ids = [m for m in ids if m in memories or m not in shown]
-        if not isinstance(ids, list) or any(not isinstance(m, str) or m not in memories for m in ids):
-            raise ValueError('Model cited an unavailable memory')
+        decision['memory_ids'] = cited_memories(decision.get('memory_ids'), context)
         if 'available_actions' in context and decision.get('action_id') not in {a['id'] for a in context['available_actions']}:
             raise ValueError('Model chose an unavailable action')
         if 'available_actions' in context:

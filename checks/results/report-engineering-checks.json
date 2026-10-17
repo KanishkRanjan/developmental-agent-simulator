@@ -2,6 +2,7 @@
   "passed": true,
   "scope": "engineering only; stubbed transport",
   "checks": [
+    "a forgotten (dropped, merged or unattended) memory is never reported as the person's current interpretation",
     "tools are deterministic, read-only and cite only existing event and action ids",
     "controller events, resolved actions, utterances and state changes are observed outcomes; memory meanings are agent interpretations",
     "utterances are labeled unverified; authored background is not reported as an interpretation; recipients are listed",

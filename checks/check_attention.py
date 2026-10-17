@@ -134,6 +134,19 @@ def main():
     assert c('kid', 'new') == CFG['closeness_known'] and c('pal', 'new') == CFG['closeness_stranger']
     checks.append('default closeness: recorded value, else family from identity facts (a parent hearing their child), else known, else stranger')
 
+    # Resume: a run saved at day 5 and resumed to day 10 ends exactly where an uninterrupted run does (sleep + attention).
+    from tempfile import TemporaryDirectory
+    whole, policy = environment_fixture()
+    policy = {**policy, 'sleep': {}, 'attention': {}}
+    Lifetime(whole, policy, scripted=True).run(10)
+    with TemporaryDirectory() as d:
+        first, _ = environment_fixture()
+        Lifetime(first, policy, scripted=True).run(5, Path(d) / 'w.json')
+        resumed = Engine.load(Path(d) / 'w.json')
+        Lifetime(resumed, policy, scripted=True).run(10)
+    assert json.dumps(whole.state, sort_keys=True) == json.dumps(resumed.state, sort_keys=True)
+    checks.append('a checkpoint resumed mid-run (sleep and attention on) ends byte-identical to an uninterrupted run')
+
     # Determinism: insertion order of events and of recipients does not change any result.
     def scene(order):
         e = world(['a', 'b', 'c', 'd'])

@@ -56,6 +56,12 @@ def main():
     assert flyer['recipients'] == ['sam'] and flyer['day'] == 14
     sam = next(i for i in items if i['tool'] == 'state_changes' and i['owner'] == 'sam')
     assert 'goal friends' in sam['text'] and 'mood at day' in sam['text']
+    forgot = deepcopy(engine)
+    shown = [i['event_ids'][0] for i in items if i['tool'] == 'checkpoint_memory_view']
+    assert shown
+    forgot.agent(next(i['owner'] for i in items if i['tool'] == 'checkpoint_memory_view'))['memory_meta'][shown[0]]['tier'] = 'dropped'
+    assert shown[0] not in [i['event_ids'][0] for i in gather(forgot, initial)[0] if i['tool'] == 'checkpoint_memory_view']
+    checks.append('a forgotten (dropped, merged or unattended) memory is never reported as the person\'s current interpretation')
     checks += ['tools are deterministic, read-only and cite only existing event and action ids',
                'controller events, resolved actions, utterances and state changes are observed outcomes; memory meanings are agent interpretations',
                'utterances are labeled unverified; authored background is not reported as an interpretation; recipients are listed']

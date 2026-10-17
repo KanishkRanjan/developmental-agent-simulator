@@ -67,10 +67,13 @@ def gather(engine, initial=None, graph_queries=()):
                 f'{owner} said (an unverified claim, not a world fact): "{decision["speech"]}"', [action['id']])
     log.append({'tool': 'resolved_actions+utterances', 'items': len(items) - start})
     start = len(items)
+    from .sleep import HIDDEN
     for owner in sorted(engine.state['agents']):
+        received = {o.event_id: o for o in engine.world.observations.get(owner, [])}  # one index, not a scan per memory
         for event_id, meta in engine.agent(owner)['memory_meta'].items():
-            obs = _observation(engine, owner, event_id)
-            if not obs or meta.get('provenance') == 'scenario_authoring' or not meta.get('meaning'):
+            obs = received.get(event_id)
+            # A forgotten (dropped, merged) or unattended memory has no current meaning for this person.
+            if not obs or meta.get('provenance') == 'scenario_authoring' or not meta.get('meaning') or meta.get('tier') in HIDDEN:
                 continue
             versions = meta.get('versions', [])
             text = f'{owner}\'s current meaning (confidence {meta["confidence"]:.2f}): {meta["meaning"]}'
