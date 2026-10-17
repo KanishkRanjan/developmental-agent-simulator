@@ -197,6 +197,16 @@ def main():
     assert all(observed[k].stability_days < stab[k] for k in by['GIST'] + by['NONE'])
     checks.append('NONE writes only a hidden receipt (no recall, no mood); GIST encodes who, topic and rough valence at lower stability; originals stay in the event log')
 
+    # Habituation still recognises a routine event that was coarsened, and reuses its original appraisal.
+    h = world(['a', 'b'])
+    h.schedule('m1', .3, 'x', {'b': {'text': 'A entered the room.', 'source': 'a', 'encountered': ['a'], 'meaning': 'routine'}})
+    h.advance(.31)
+    assert h.agent('b')['memory_meta']['m1']['attention']['tier'] != 'FULL'
+    reuse = h.habituated('b', {'text': 'A entered the room.', 'source': 'a'})
+    assert reuse and reuse['meaning'] == 'routine' and reuse['reused_appraisal'] == 'm1'
+    assert 'routine' not in json.dumps(h.memories('b', 'entered room', limit=10))  # 'heard' is never recalled
+    checks.append('a coarsened routine event still habituates: repeats reuse its original appraisal (no extra model call), never recalled')
+
     # Context: the household recent-conversation view skips unattended turns.
     from devsim import household
     e.state['runtime'] = {'conversations': {'x': {'status': 'open', 'active': ['a', 'b'], 'spec': {'topic': 't'}}}}

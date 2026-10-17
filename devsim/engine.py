@@ -681,7 +681,8 @@ class Engine:
                         agent['memory_meta'][event['id']].update(repeat_of=obs['repeat_of'],
                             times_asked_before=agent['memory_meta'][obs['repeat_of']].get('times_asked_before', 0) + 1)
                     if owner in attended:
-                        attention.record(agent['memory_meta'][event['id']], attended[owner], buffered='sleep' in self.state['config'])
+                        attention.record(agent['memory_meta'][event['id']], attended[owner], buffered='sleep' in self.state['config'],
+                                         original=event['observations'][owner])
                         attention.felt_ignored(self, owner, event, obs, attended[owner])
                     if 'sleep' in self.state['config'] and agent['memory_meta'][event['id']].get('tier') != attention.UNATTENDED:
                         sleep.buffer(self, owner, event, obs)
@@ -1154,7 +1155,9 @@ class Engine:
         so the meaning can change over time. shortcut: exact text match and a 1/(1+n) curve, both provisional.
         """
         meta = self.agent(owner)['memory_meta']
-        same = [o for o in self.world.observations.get(owner, []) if o.text == observation['text'] and o.source == observation['source']]
+        heard = lambda o: meta[o.event_id].get('attention', {}).get('heard', {})  # original wording of a coarsened event
+        same = [o for o in self.world.observations.get(owner, [])
+                if heard(o).get('text', o.text) == observation['text'] and o.source == observation['source']]
         if not same:
             return None
         last = meta[same[-1].event_id]
@@ -1163,10 +1166,11 @@ class Engine:
         if self.day - original.day > self.state['config'].get('routine_reappraisal_days', 30):
             return None
         n = last.get('exposures', 0) + 1
-        return {**deepcopy(observation), 'meaning': meta[full]['meaning'], 'valence': original.valence / (1 + n),
+        meaning, gist = heard(original).get('meaning', meta[full]['meaning']), heard(original).get('gist', meta[full].get('summary'))
+        return {**deepcopy(observation), 'meaning': meaning, 'valence': original.valence / (1 + n),
                 'arousal': original.arousal / (1 + n), 'importance': meta[full]['importance'] / (1 + n),
                 'confidence': meta[full]['confidence'], 'appraisal_policy': 'habituated_reuse_v1',
-                'reused_appraisal': full, 'exposures': n, **({'gist': meta[full]['summary']} if meta[full].get('summary') else {})}
+                'reused_appraisal': full, 'exposures': n, **({'gist': gist} if gist else {})}
 
     def repeated_speech(self, owner, speech, recent=10, similarity=.8):
         """The owner's own recent committed action whose speech nearly matches, or None. Very short replies are exempt."""

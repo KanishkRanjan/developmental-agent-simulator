@@ -12,6 +12,7 @@
     "a directly addressed event (or one naming the listener) is captured, FULL and needs a response; asleep, capacity is K_sleep, only B >= B_wake gets in",
     "emotion: an uncaptured event moves mood by a fraction a of its impulse; a captured (threat) event moves it in full",
     "NONE writes only a hidden receipt (no recall, no mood); GIST encodes who, topic and rough valence at lower stability; originals stay in the event log",
+    "a coarsened routine event still habituates: repeats reuse its original appraisal (no extra model call), never recalled",
     "LLM context: NONE turns are left out of memories and conversation_so_far; GIST turns appear as one summary line",
     "2000 sampled agents on identical events: high dysregulation gives lower mean and higher variance of a {'low_dys_mean_a': 0.294, 'high_dys_mean_a': 0.169, 'low_dys_var_a': 0.0203, 'high_dys_var_a': 0.0341}",
     "2000 sampled agents: high threat sensitivity attends more to threat events than to neutral ones, and more than low {'high_ts_threat': 0.51, 'high_ts_neutral': 0.224, 'low_ts_threat': 0.475}",

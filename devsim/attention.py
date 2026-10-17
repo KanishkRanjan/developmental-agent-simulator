@@ -391,9 +391,12 @@ def encoded(engine, owner, obs, result):
     return {**out, 'text': text, 'meaning': text, 'gist': text}
 
 
-def record(meta, result, buffered=False):
-    """Store the result on the memory receipt. NONE hides the receipt; GIST without the buffer is a gist memory."""
+def record(meta, result, buffered=False, original=None):
+    """Store the result on the memory receipt. NONE hides the receipt; GIST without the buffer is a gist memory.
+    A coarsened event keeps its original wording and appraisal under 'heard' for habituation only, never for recall."""
     meta['attention'] = asdict(result)
+    if result.tier != FULL and original:
+        meta['attention']['heard'] = {k: original[k] for k in ('text', 'meaning', 'gist') if k in original}
     if result.tier == NONE:
         meta['tier'] = UNATTENDED
     elif result.tier == GIST:
