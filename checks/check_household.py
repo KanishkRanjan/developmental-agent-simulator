@@ -274,6 +274,18 @@ def main():
         assert silent[-1]==('ended','caller went silent')
         checks+=['a researcher phone call rings the person, who decides to answer or let it ring; mid-conversation they step away and come '
                  'back, the room hears only their side, an unknown caller stays unknown, asleep means a missed call, silence ends it']
+        # A later note of another kind ends the open call and keeps its own meaning (it used to be swallowed by the call).
+        queued=root/'queued';queued.mkdir()
+        moved,qpolicy=fixture(turns=4)
+        qcontrol=Lifetime(moved,qpolicy,scripted=True);qcontrol.inbox=queued/'inbox.jsonl';qcontrol.call_wait_seconds=0
+        visit.call(queued,'b',name='Kanishk');visit.call(queued,'a',name='Kanishk')
+        visit.say(queued,'Please talk about the bicycle.',to='b',name='Kanishk');visit.call(queued,'c',name='Kanishk')
+        qcontrol.run(.8,queued/'world.json')
+        assert [c['to'] for c in moved.state['runtime']['calls']]==['b','a','c'], 'a queued call vanished inside an open call'
+        assert moved.state['runtime']['visitor_log'][0]['text']=='Please talk about the bicycle.'
+        assert not any(':heard' in o.event_id for o in moved.world.observations['a']), 'a conversation line was spoken on the phone'
+        checks.append('a note of another kind ends an open call and keeps its own meaning: a conversation line reaches the conversation '
+                      'and a second call still happens')
         # Face to face: every researcher line gets the person's own turn, with the exchange so far (run-2: lines were ignored).
         asked=[]
         def talk_stub(system,context,api,model,max_tokens=600):

@@ -145,7 +145,12 @@ def call_log(run):
 
 
 def _next_note(controller, path, wait_seconds):
-    """The next complete inbox line (consumed), waiting up to wait_seconds of real time; None on timeout."""
+    """The next complete call inbox line (consumed), waiting up to wait_seconds of real time; None on timeout.
+
+    A note of another kind (a new call or talk, or a line for a group conversation) is left in the inbox and
+    returned as {'kind': 'other'}: the researcher has moved on. Before, the open call swallowed it (a line meant
+    for a conversation was spoken on the phone; a second call vanished).
+    """
     runtime = controller.engine.state['runtime']
     end = time.monotonic() + wait_seconds
     while True:
@@ -156,11 +161,15 @@ def _next_note(controller, path, wait_seconds):
         except OSError:
             line = b''
         if line.endswith(b'\n'):
-            runtime['inbox_offset'] = runtime.get('inbox_offset', 0) + len(line)
             try:
-                return json.loads(line)
+                note = json.loads(line)
             except ValueError:
+                runtime['inbox_offset'] = runtime.get('inbox_offset', 0) + len(line)  # unreadable: skip it
                 continue
+            if not isinstance(note, dict) or note.get('kind') not in ('call_line', 'hangup', 'auto'):
+                return {'kind': 'other'}  # not consumed: deliver_inbox handles it once this call ends
+            runtime['inbox_offset'] = runtime.get('inbox_offset', 0) + len(line)
+            return note
         if time.monotonic() >= end:
             return None
         time.sleep(.2)
@@ -333,6 +342,8 @@ def _ring(controller, path, note):
                 line = {'kind': 'hangup', 'goodbye': departing}
             else:
                 log('said', text=line['text'], label=shown)
+        if line is not None and line.get('kind') == 'other':
+            line = {'kind': 'hangup'}  # the researcher's next note is something else: they have hung up and moved on
         if line is None or line.get('kind') == 'hangup':
             record['outcome'] = 'caller went silent' if line is None else ('character left' if left else 'caller hung up')
             if face:
