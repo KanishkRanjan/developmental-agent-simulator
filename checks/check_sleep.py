@@ -274,6 +274,23 @@ def main():
     assert all(e.agent('ana')['memory_meta'][i.removeprefix('buffer:')]['summary'].startswith('Summary') for i in record['ids']['gist_new'])
     checks.append('the optional LLM summarizer is batched (at most llm_batch_size memories per call), behind the summarizer flag')
 
+    # Without a routine, where a run is split for a checkpoint cannot change when sleep falls.
+    walk = {'sampling': 'event_driven', 'sleep': {}, 'opportunities': [{
+        'id': 'walk', 'actor': 'ana', 'min_age': 0, 'max_age': 100, 'rate_per_year': 400, 'situation': 'A free evening.',
+        'options': [{'id': 'go', 'label': 'Walk.', 'success_probability': .7, 'arousal': .4, 'success_text': 'I walked.',
+                     'failure_text': 'It rained.', 'valence_success': .3, 'valence_failure': -.3}]}]}
+    whole = world(configure=False)
+    Lifetime(whole, walk, scripted=True).run(60)
+    for split in (7.3, 23.9, 41.05):
+        with TemporaryDirectory() as directory:
+            first = world(configure=False)
+            Lifetime(first, walk, scripted=True).run(split, Path(directory) / 'w.json')
+            resumed = Engine.load(Path(directory) / 'w.json')
+            Lifetime(resumed, walk, scripted=True).run(60)
+        assert json.dumps(resumed.state, sort_keys=True) == json.dumps(whole.state, sort_keys=True), split
+    checks.append('without a routine, a run split for a checkpoint at any point ends identical to an unbroken run '
+                  '(a controller\'s closing advance is not a sleep opportunity)')
+
     # Forgotten stays forgotten: no reader passes a dropped memory back to the model or replays its feeling.
     from devsim import cognition, household
     e = world(theta_drop=19, theta_episodic=20)  # every entry scores below theta_drop

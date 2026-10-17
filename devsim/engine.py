@@ -679,7 +679,7 @@ class Engine:
             if key not in self.state['entities']:
                 raise ValueError('Prerequisite refers to an unknown identity')
 
-    def advance(self, day):
+    def advance(self, day, *, sleep_at_target=True):
         number(day, self.day, 1e8, 'advance day')
         due = sorted((e for e in self.state['pending'] if e['day'] <= day), key=lambda e: (e['day'], e['id']))
         for event in due:
@@ -778,7 +778,9 @@ class Engine:
             self.state['pending'].remove(event)
             self.state['day'] = event['day']
         self.state['day'] = day
-        if 'sleep' in self.state['config']:
+        # A controller's closing advance passes sleep_at_target=False: sleep then resolves before the next event, so where
+        # a run is split for a checkpoint cannot change when sleep falls (a resumed run must match an unbroken one).
+        if 'sleep' in self.state['config'] and sleep_at_target:
             sleep.due(self, day)
         self._advance_development(day)
 

@@ -390,7 +390,7 @@ class Lifetime:
                 if checkpoint:
                     engine.save(checkpoint)
                 raise
-        engine.advance(until)
+        engine.advance(until, sleep_at_target=False)
         runtime['current_day'] = engine.day
         if checkpoint:
             engine.save(checkpoint)
@@ -535,7 +535,7 @@ class Lifetime:
                 if checkpoint:
                     engine.save(checkpoint)
                 raise
-        engine.advance(until)
+        engine.advance(until, sleep_at_target=False)
         engine.state['runtime']['current_day'] = engine.day
         if checkpoint:
             engine.save(checkpoint)
