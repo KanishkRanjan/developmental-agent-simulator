@@ -264,6 +264,29 @@ def noisy(a_raw, z, scale):
     return 1 / (1 + exp(-(log(x / (1 - x)) + scale * z)))
 
 
+def drift(cfg, prev, now, K, dysregulation, captured, seed, owner, stream):
+    """4.9: (drift_until, newly drifted?) for an event arriving in a stream the agent was already in.
+
+    Hazard lam = lam0 (1 - T_stream) (1 + lam_dys dys) / max(K, 0.1) per minute over the gap since the last event
+    in the stream (or since the last drift ended). One draw r, seeded by the stream's last event, decides both
+    whether a drift began (r < 1 - exp(-lam dt)) and when: onset = -ln(1 - r) / lam. Capture ends a drift.
+    """
+    until = prev.get('drift_until')
+    if captured:
+        return None, False
+    if until is not None and until > now:
+        return until, False
+    since = max(prev['last_day'], until or prev['last_day'])
+    lam = cfg['lam0_per_minute'] * (1 - prev['T']) * (1 + cfg['lam_dys'] * dysregulation) / max(K, .1)
+    gap = (now - since) * MINUTES_PER_DAY
+    r = unit(seed, owner, stream, prev['last_event'], 'drift')
+    if lam <= 0 or r >= 1 - exp(-lam * gap):
+        return None, False
+    length = -cfg['drift_mean_minutes'] * log(unit(seed, owner, stream, prev['last_event'], 'drift_length'))
+    end = since + (-log(1 - r) / lam + length) / MINUTES_PER_DAY
+    return (end if end > now else None), True
+
+
 def tier_of(cfg, a, addressed=False, captured=False):
     """4.8: FULL / GIST / NONE by thresholds; captured is at least FULL, addressed never NONE."""
     tier = FULL if a >= cfg['a_full'] else GIST if a >= cfg['a_gist'] else NONE
@@ -311,13 +334,20 @@ def allocate(engine, owner, event, obs):
     q = unit(engine.state.get('seed'), owner, view.event_id, 'attention_noise')
     z = log(q / (1 - q))
     a = noisy(a_raw, z, cfg['s_0'] + cfg['s_dys'] * dys)
+    prev = streams.get(view.stream_id)
+    drift_until, began = drift(cfg, prev, now, K, dys, captured, engine.state.get('seed'), owner, view.stream_id) \
+        if prev else (None, False)
+    state['drift_periods'] = state.get('drift_periods', 0) + began
+    drifted = drift_until is not None
+    if drifted:
+        a *= cfg['d_drift']
     if captured:
         a = max(a, cfg['a_capture_floor'])
     tier = tier_of(cfg, a, addressed, captured)
-    streams[view.stream_id] = {'u': u, 'T': T, 'last_day': now, 'last_event': view.event_id}
+    streams[view.stream_id] = {'u': u, 'T': T, 'last_day': now, 'last_event': view.event_id, 'drift_until': drift_until}
     state['streams'] = streams
     engine.state['attention_stats']['allocations'] += 1
-    return AttentionResult(a, tier, T, B, K, s, captured, False, addressed, tier != FULL and not addressed, {
+    return AttentionResult(a, tier, T, B, K, s, captured, drifted, addressed, tier != FULL and not addressed, {
         'topic_fit': fit, 'closeness_actor': c_actor, 'closeness_mentioned': c_ment, 'goal_match': goal,
         'surprise': surprise, 'threat_salience': view.threat_salience, 'asleep': bool(asleep),
         'arousal': arousal, 'fatigue': fatigue, 'other_streams': len(others), 'dysregulation': dys,

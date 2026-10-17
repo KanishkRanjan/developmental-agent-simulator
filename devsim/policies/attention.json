@@ -55,6 +55,10 @@
     "a_full": {"value": 0.60, "range": [0, 1], "evidence": "[D]", "note": "weight at or above which an event is FULL"},
     "a_gist": {"value": 0.25, "range": [0, 1], "evidence": "[D]", "note": "weight at or above which an event is GIST; must be below a_full"},
 
+    "lam0_per_minute": {"value": 0.02, "range": [0, 10], "evidence": "[D]", "note": "base hazard of drifting off within a stream, per simulated minute (converted from the engine's days)"},
+    "drift_mean_minutes": {"value": 10, "range": [0.1, 1440], "evidence": "[D]", "note": "mean length of a drift (exponential)"},
+    "d_drift": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "weight multiplier while drifted, unless captured"},
+
     "gamma_enc": {"value": 1.0, "range": [0, 5], "evidence": "[D]", "note": "encoding weight is a^gamma_enc times the existing weight"},
     "gist_stability_factor": {"value": 0.5, "range": [0.01, 1], "evidence": "[D]", "note": "extra stability multiplier of a GIST trace"}
   }

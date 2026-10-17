@@ -235,6 +235,35 @@ def main():
     assert tstats['high_ts_threat'] > tstats['high_ts_neutral'] and tstats['high_ts_threat'] > tstats['low_ts_threat'], tstats
     checks.append(f'2000 sampled agents: high threat sensitivity attends more to threat events than to neutral ones, and more than low {tstats}')
 
+    # Phase 3: drift. Bored listeners (stranger speaker, flat topic) vs interested ones (close speaker, goal match).
+    groups = {'bored': [f'bored{i}' for i in range(200)], 'keen': [f'keen{i}' for i in range(200)]}
+    long = world(['speaker', *groups['bored'], *groups['keen']])
+    keen = lambda i: i.startswith('keen')
+    long.attention_providers = {'closeness': lambda engine, i, j: 1.0 if keen(i) else .05,
+                                'goal_match': lambda engine, i, view: 1.0 if keen(i) else 0.0}
+    turns(long, 'speaker', [*groups['bored'], *groups['keen']], 120, gap_minutes=3,
+          text='{s} said: the weather is mild again, number {i}.')
+    long.advance(1)
+    def tally(group):
+        rs = [r for p in group for r in results(long, p).values()]
+        return {'drift_periods': sum(long.agent(p)['attention_state'].get('drift_periods', 0) for p in group),
+                'drifted_events': sum(r['drifted'] for r in rs), 'full': sum(r['tier'] == 'FULL' for r in rs)}
+    bored_t, keen_t = tally(groups['bored']), tally(groups['keen'])
+    assert bored_t['drift_periods'] > keen_t['drift_periods'] and bored_t['full'] < keen_t['full'], (bored_t, keen_t)
+    assert keen_t['drift_periods'] > 0, 'interested listeners can drift too, just less'
+    # Capture ends a drift; drift is resolved lazily at the next event only.
+    e = world(['a', 'b'])
+    turns(e, 'a', ['b'], 200, gap_minutes=3, text='{s} said: the weather is mild again, number {i}.')
+    e.advance(.3 + 199 * 3 / 1440 + 1e-9)
+    drifting = [k for k, r in results(e, 'b').items() if r['drifted']]
+    assert drifting
+    e.schedule('@conversation:x:shout', e.day + 1 / 1440, 'x', {'b': {'text': 'A said to B: are you listening?', 'source': 'a', 'addressed': ['b']}})
+    e.advance(e.day + 2 / 1440)
+    shout = e.agent('b')['memory_meta']['@conversation:x:shout']['attention']
+    assert shout['captured'] and not shout['drifted'] and e.agent('b')['attention_state']['streams']['conversation:x']['drift_until'] is None
+    checks.append(f'drift: bored listeners in a 120-turn stream drift more and keep fewer FULL traces than interested ones '
+                  f'(bored {bored_t}, interested {keen_t}); capture ends a drift')
+
     # Crowded scene: fewer traces than with the switch off, none lost for directly addressed events.
     def crowd(enabled):
         e = world(['host', *[f'g{i}' for i in range(30)]], enabled=enabled)
