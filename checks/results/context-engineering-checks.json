@@ -12,7 +12,7 @@
     "overflow stops before inference",
     "malformed fields repaired before mutation",
     "permanently malformed responses stop after two repairs without changing state",
-    "closed connections become explicit model-request failures",
+    "closed connections are retried twice, then become explicit model-request failures; a single blip recovers",
     "many long retrieval candidates are trimmed lowest-ranked first instead of failing the call"
   ]
 }

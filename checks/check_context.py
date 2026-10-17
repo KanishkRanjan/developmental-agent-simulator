@@ -77,13 +77,20 @@ def main():
         assert appraised['arousal']==.2 and model.call_count==2
         assert 'arousal' in model.call_args_list[1].args[1]['output_repair']['validation_error']
     assert e.state==original
-    with patch('devsim.engine.urlopen',side_effect=RemoteDisconnected('fixture closed connection')):
+    with patch('devsim.engine.urlopen',side_effect=RemoteDisconnected('fixture closed connection')) as transport, \
+            patch('devsim.engine.RETRY_DELAYS',(0,0)):
         try:
             request_json('A system message.',view,'http://local','local')
         except RuntimeError as error:
             assert isinstance(error.__cause__,RemoteDisconnected)
         else:
             raise AssertionError('Closed transport was not reported as a model request failure')
+        assert transport.call_count==3, 'a dropped connection is retried twice before failing'
+    # One dropped connection, then success: the retry recovers instead of ending the run.
+    with patch('devsim.engine.urlopen',side_effect=[RemoteDisconnected('blip'),response(models),response({'prompt':'P.'}),
+            response({'tokens':[1]*100}),response({'choices':[{'message':{'content':'{"ok":true}'}}]})]), \
+            patch('devsim.engine.RETRY_DELAYS',(0,0)):
+        assert request_json('A system message.',deepcopy(view),'http://local','local')=={'ok':True}
     with patch('devsim.engine.request_json',return_value=malformed) as model:
         try:
             e.appraise('a',{'text':'An ordinary event.','source':'direct'})
@@ -100,7 +107,7 @@ def main():
                       'actual template and tokenizer used for window check','output-token reserve included',
                       'overflow stops before inference','malformed fields repaired before mutation',
                       'permanently malformed responses stop after two repairs without changing state',
-                      'closed connections become explicit model-request failures',
+                      'closed connections are retried twice, then become explicit model-request failures; a single blip recovers',
                       'many long retrieval candidates are trimmed lowest-ranked first instead of failing the call']}
     RESULTS_DIR.joinpath('context-engineering-checks.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

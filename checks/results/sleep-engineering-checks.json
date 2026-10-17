@@ -17,6 +17,7 @@
     "Lifetime 2-year scripted skip drains the buffer: 12% episodic, 50% gist, 38% dropped; skip-time events follow the same pipeline; dropped and merged entries are never retrieved",
     "the optional LLM summarizer is batched (at most llm_batch_size memories per call), behind the summarizer flag",
     "dropped memories never reach the model again: not consolidated, reflected on, shown as earlier questions or recent conversation, and a reminder brings back no feeling",
+    "with a household routine sleep resolves at the end of the night (longest off-hours gap, so night shifts work), never mid-afternoon; a long skip is still one resolution",
     "no branch keyed on agent type, role or trait; invalid or inverted settings are rejected"
   ]
 }

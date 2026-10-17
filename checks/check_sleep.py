@@ -300,6 +300,27 @@ def main():
     checks.append('dropped memories never reach the model again: not consolidated, reflected on, shown as earlier questions '
                   'or recent conversation, and a reminder brings back no feeling')
 
+    # With a household routine, sleep falls at night: it resolves at the end of the routine's longest off-hours gap.
+    assert sleep.night(world(), 'ana') is None
+    def nightly(hours, events, until):
+        e = world()
+        e.state['config']['household'] = {'routines': {'ana': {'available_hours': hours}}}
+        for i, day in enumerate(events):
+            e.schedule(f'n{i}', day, 'x', {'ana': {'text': f'Ben waved {i}.', 'source': 'ben', 'arousal': .5}})
+        e.advance(until)
+        return e.agent('ana')['sleep']
+    clock = nightly([[7, 22]], [10 / 24, 15 / 24, 21 / 24], 1 + 6.9 / 24)  # 10:00, 15:00, 21:00; then 06:54 next day
+    assert 'last' not in clock, 'no sleep before the night has ended'
+    clock = nightly([[7, 22]], [10 / 24, 15 / 24, 23.5 / 24], 1 + 12 / 24)  # a late 23:30 event still sleeps that night
+    assert clock['last']['t_end'] == 1 + 7 / 24 and clock['wake_day'] == 1 + 7 / 24 and sum(clock['last']['counts'].values()) == 3
+    shift = nightly([[0, 1], [14, 24]], [20 / 24], 2)  # a night-shift routine sleeps 01:00-14:00
+    assert sleep.night(type('E', (), {'state': {'config': {'household': {'routines': {'x': {'available_hours': [[0, 1], [14, 24]]}}}}}})(), 'x') == (1, 13)
+    assert shift['last']['t_end'] == 1 + 14 / 24
+    many = nightly([[7, 22]], [10 / 24], 30.5)  # a month skipped: one resolution, waking on the last morning
+    assert many['wake_day'] == 30 + 7 / 24
+    checks.append('with a household routine sleep resolves at the end of the night (longest off-hours gap, so night shifts work), '
+                  'never mid-afternoon; a long skip is still one resolution')
+
     source = inspect.getsource(sleep).lower()
     assert not any(word in source for word in ('focal', 'narciss', 'psychopath', "['role']", 'agent_type'))
     try:

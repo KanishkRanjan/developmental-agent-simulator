@@ -142,6 +142,27 @@ In environment-v2 run-2 the researcher's lines, spoken into class conversations 
 
 **Talking from the cockpit (same day).** The live cockpit (`python3 -m devsim.cockpit RUN_DIR --serve 18090`) now has a "Talk to someone" box read exactly like the watcher's `t` key (shared `visit.talk_line`): `@priya hello` walks up to Priya, plain text continues, `/bye` ends, `/call priya` phones, `/send Kabir @priya a new classmate, 15` sends your character, and `/auto GOAL` lets the model play it. The transcript refreshes every 1.5 s. The watcher's `t` gained `/call` and `/send` the same way. Over SSH with no port forwarding, the terminal watcher (`python3 -m devsim.watch RUN_DIR`) is the way to talk: key `h` opens a talk guide that lists the run's people and gives examples, and it was driven in a pseudo-terminal (guide opens at its top, closes again). It writes to the run's inbox through `devsim.visit`, so the run validates and decides everything. It accepts only JSON requests from its own loopback origin, so another site open in the browser cannot post into a simulation. Static exports and checkpoint-file cockpits stay read-only. Check: one new `cockpit` check. The page was also driven in headless Chromium (start, reply shown, say, character fields, end; light and dark; no sideways scroll at 390 px; no script errors). All 20 suites pass. Not used against a live 27B run yet.
 
+## Fixes, 17 October: environment-v4 run review (repetition, consolidation, sleep timing, run robustness)
+
+Found by reviewing the stopped environment-v4 run (11.6 days, 649 model calls):
+
+- **The children's consolidation stopped after day 3.** Each batch took the oldest unconsolidated memories. Dropped ones were never marked consolidated, so they blocked the front of the queue. By day 3 all eight picks were dropped, and consolidation stopped. The hidden-memory fix below removes this; replaying the v4 state confirms that eight usable memories are picked again.
+- **Belief feedback loop, the main cause of the daily repetition.** Consolidation wrote lessons about the agent's own conversational habits ("I use servo calibration to pivot conversations"). These went into every action prompt, were followed like a script, and piled up as near-duplicates (Rohan 14, Kiara 19, with word-for-word copies). They also crowded out memories: beliefs took 36% of a prompt, and the trimmer cut memories to two first. The fixes:
+  - consolidation now asks for lessons about people and events, not one's own speaking tactics;
+  - a near-duplicate lesson (BGE cosine ≥ 0.85, measured: duplicates 0.88–1.0, distinct ≤ 0.80) reinforces the existing belief, with history kept;
+  - a prompt shows explicit beliefs plus at most four inferred lessons, situation-related first;
+  - beliefs are trimmed to two before memories.
+
+  The merge removes only close duplicates: on v4's beliefs, 57 become 49.
+- **People could not see their own words from yesterday.** Sleep had dropped most of their own turns. The previous-session view now includes the gist of what the person said then (first sentence, up to 25 words, from their committed actions). The repeat check also catches a reused run of six words with three content words. On v4's speech that flags 11 of 50 lines, all verbal loops (e.g. Kiara's daily "Wow, the silence is so loud").
+- **Sleep happened mid-afternoon.** It now resolves at the end of the routine's night (see the sleep guide).
+- **Habituation broke under attention.** Coarsened routine events kept a placeholder as their text, so repeats were re-appraised. Fixed: the original wording is kept for habituation only.
+- **One transient model failure ended a whole run.** Timeouts, dropped connections and unreadable JSON are now retried twice (after 5 s and 20 s), with a warning logged each time.
+
+Checks: new `continuity` suite (6 named checks), plus new `sleep`, `context` and `attention` checks. All 23 suites: 336 named checks plus 12 core checks. Not live-verified with the 27B model.
+
+Open risk: `Engine.mood` with the power-law kernel rescans the whole history on every call (cost grows with history²). It dominates the attention suite's 25 s, and it will slow long runs.
+
 ## Fix, 17 October: forgotten memories reached the model again
 
 Sleep-dropped and merged memories, and unattended ones, were hidden from recall but still reached the model through four other paths:

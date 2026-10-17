@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "scope": "synthetic engineering checks; thresholds are design defaults measured on one run",
+  "checks": [
+    "a near-duplicate lesson reinforces the existing belief (evidence merged, history kept); a new lesson is added",
+    "a prompt shows every explicit belief and at most four inferred lessons: situation-related first, then the newest",
+    "over the byte budget, inferred interpretations (beliefs) are trimmed to two before any memory is cut",
+    "consolidation asks for lessons about people and events, not scripts of the agent's own conversational habits",
+    "the previous same-thread session shows the gist of the person's own words, even when sleep dropped those turns",
+    "a reused run of six words (three of them content words) counts as repeating oneself; ordinary new lines do not"
+  ]
+}

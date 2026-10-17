@@ -13,7 +13,9 @@ from dataclasses import asdict
 from hashlib import sha256
 from http.client import HTTPException
 import json
+import logging
 import sqlite3
+import time
 from math import isfinite, tanh
 from pathlib import Path
 import re
@@ -59,10 +61,28 @@ def sampled_profile(seed):
 
 
 LAST_USAGE = {}  # token counts and server timings of the latest model call (read by run_live's recorder)
+LOG = logging.getLogger(__name__)
+RETRY_DELAYS = (5, 20)  # seconds before the 2nd and 3rd try of a request that failed in transport (design default)
 
 
 def request_json(system, context, api, model, max_tokens=600):
-    """Call the selected local server; context is a disposable, compactable view."""
+    """Call the selected local server, retrying twice on a timeout, dropped connection or unreadable JSON.
+
+    v4 review: one transient failure rolled back the event and ended the whole run. Other failures (model no longer
+    served, a context that cannot fit) are not retried. Each retry is logged as a warning.
+    """
+    for delay in (*RETRY_DELAYS, None):
+        try:
+            return _request_json_once(system, context, api, model, max_tokens)
+        except RuntimeError as exc:
+            if delay is None or not isinstance(exc.__cause__, (OSError, HTTPException, json.JSONDecodeError)):
+                raise
+            LOG.warning('model request failed (%s: %s); retrying in %s s', type(exc.__cause__).__name__, exc.__cause__, delay)
+            time.sleep(delay)
+
+
+def _request_json_once(system, context, api, model, max_tokens=600):
+    """One call to the selected local server; context is a disposable, compactable view."""
     LAST_USAGE.clear()
     # A re-ask after a near-repeat samples more freely, or the same low temperature tends to return the same line.
     payload = {'model': model, 'temperature': 0.8 if 'repeat_notice' in context else 0.4, 'max_tokens': max_tokens,
@@ -114,6 +134,20 @@ def request_json(system, context, api, model, max_tokens=600):
         return result
     except (OSError, HTTPException, ValueError, KeyError, IndexError) as exc:
         raise RuntimeError('Local model request failed; no agent state changed') from exc
+
+
+def belief_view(beliefs, situation, limit=4):
+    """Beliefs shown in a prompt: every explicit belief, plus the `limit` inferred lessons most related to the situation.
+
+    shortcut: ranked by shared words, then recency; use embeddings if paraphrased situations miss relevant lessons.
+    """
+    from .cognition import words
+    inferred = [k for k, b in beliefs.items() if b.get('kind') == 'inferred_semantic_gist']
+    if len(inferred) <= limit:
+        return deepcopy(beliefs)
+    cue = words(situation)
+    keep = set(sorted(inferred, key=lambda k: (len(cue & words(beliefs[k]['text'])), beliefs[k]['day'], k), reverse=True)[:limit])
+    return {k: deepcopy(b) for k, b in beliefs.items() if b.get('kind') != 'inferred_semantic_gist' or k in keep}
 
 
 class InvalidModelOutput(ValueError):
@@ -904,8 +938,12 @@ class Engine:
             if not context['episodes_to_consolidate']:
                 return 0
         context = compact(context)
+        # v4 run: lessons phrased as the agent's own conversational habits ("I pivot to my robotics work") were fed back
+        # into every action prompt and followed like a script, so the agent repeated itself daily.
         system = ('Reflect as the fictional agent using the supplied behavioral tendencies and received episodes. '
-                  'Extract up to three tentative personal lessons or patterns, preserving disagreement and uncertainty. '
+                  'Extract up to three tentative personal lessons about other people, relationships, places or what tends '
+                  'to happen, and how these make you feel, preserving disagreement and uncertainty. Do not describe your own '
+                  'speaking habits or conversational tactics as rules. '
                   'Do not invent new incidents, diagnose conditions or turn testimony into verified events. '
                   'Return JSON with gists, a list of objects with text (string), confidence (0 to 1), '
                   'and evidence (a nonempty list of ids from episodes_to_consolidate). An empty gists list is allowed.')
@@ -929,6 +967,13 @@ class Engine:
         digest = sha256(json.dumps(sorted(allowed)).encode()).hexdigest()[:16]
         for i, gist in enumerate(gists):
             key = f'gist-{digest}-{i}'
+            same = self._similar_belief(owner, gist['text'])
+            if same:  # v4 run: near-duplicate lessons piled up (Rohan 14, Kiara 19); reinforce the existing one instead
+                old = agent['beliefs'][same]
+                self.believe(owner, same, old['text'], max(old['confidence'], gist['confidence']),
+                             list(dict.fromkeys(old['evidence'] + gist['evidence'])), f'{owner}:{key}:reinforces:{same}')
+                agent['beliefs'][same].update(kind='inferred_semantic_gist', reinforced=old.get('reinforced', 0) + 1)
+                continue
             self.believe(owner, key, gist['text'], gist['confidence'], gist['evidence'], f'{owner}:{key}')
             agent['beliefs'][key]['kind'] = 'inferred_semantic_gist'
         for episode in episodes:
@@ -937,6 +982,32 @@ class Engine:
         self.state['updates'].append({'id': f'{owner}:consolidate:{digest}', 'kind': 'consolidation',
             'owner': owner, 'day': self.day, 'evidence': sorted(allowed), 'gist_count': len(gists)})
         return len(gists)
+
+    def _similar_belief(self, owner, text):
+        """Key of an inferred belief that says nearly the same thing, else None.
+
+        BGE cosine 0.85, measured on environment-v4 beliefs: duplicates scored 0.88-1.0, distinct lessons at most 0.80.
+        Without the embedding service: word Jaccard 0.6 (near-verbatim only).
+        """
+        from .cognition import words
+        beliefs = self.agent(owner)['beliefs']
+        keys = [k for k, b in beliefs.items() if b.get('kind') == 'inferred_semantic_gist']
+        if not keys:
+            return None
+        texts = [beliefs[k]['text'] for k in keys]
+        scores, limit = None, .85
+        if self.state['config'].get('cognition', {}).get('semantic_matching'):
+            try:
+                from .graphiti_bridge import vectors
+                found = vectors([text, *texts])
+                scores = [sum(a * b for a, b in zip(found[0], v)) for v in found[1:]]
+            except (OSError, ValueError, KeyError):
+                pass
+        if scores is None:
+            new = words(text)
+            scores, limit = [len(new & words(t)) / max(1, len(new | words(t))) for t in texts], .6
+        best = max(range(len(keys)), key=lambda i: (scores[i], i))
+        return keys[best] if scores[best] >= limit else None
 
     def context(self, owner, situation, cues=(), options=None):
         agent = self.agent(owner)
@@ -957,7 +1028,7 @@ class Engine:
                 'attachment_expectations': deepcopy(agent['attachment']), 'culture': deepcopy(agent['culture']),
                 'simulated_day': self.day, 'mood': self.mood(owner),
                 'goals': deepcopy(agent['goals']), 'relationships': deepcopy(agent['relationships']),
-                'heard_about': deepcopy(agent['references']), 'beliefs': deepcopy(agent['beliefs']),
+                'heard_about': deepcopy(agent['references']), 'beliefs': belief_view(agent['beliefs'], situation),
                 'active_situation_rules': [r for r in deepcopy(agent['rules']) if set(r['cues']) <= set(cues)],
                 'memories': self.memories(owner, situation), 'situation': situation, 'situation_cues': list(cues)}
         if self.state['config'].get('expression',{}).get('age_appropriate_actions',False):
@@ -1042,7 +1113,8 @@ class Engine:
         if earlier:
             # One re-ask with the collision shown; a second repeat is kept, since people do repeat on purpose.
             context['repeat_notice'] = {'your_earlier_words': earlier['speech'], 'days_ago': round(self.day - earlier['day'], 1),
-                'note': 'You were about to say almost exactly what you said before. Take into account what has happened '
+                **({'same_words': earlier['repeated_words']} if 'repeated_words' in earlier else {}),
+                'note': 'You were about to repeat what you said before. Take into account what has happened '
                         'since then. Repeat yourself only if you mean to.'}
             decision = validated_json(system, context, validate_output, api, model)
         return {'owner': owner, 'day': self.day, 'decision': decision, 'context': context,
@@ -1177,12 +1249,24 @@ class Engine:
         if len(speech.split()) < 3:
             return None
         from difflib import SequenceMatcher
+        from .cognition import words
         own = [a for a in self.state['actions'] if a['owner'] == owner and a['status'] != 'cancelled' and a['decision'].get('speech')]
-        # Word-level, autojunk off: character-level autojunk drops spaces and vowels from lines over 200 characters,
-        # so near-copies scored ~0.06 (environment-v2 run-2: 0 of 42 Rohan repeats caught).
-        return next((a | {'speech': a['decision']['speech']} for a in reversed(own[-recent:])
-                     if SequenceMatcher(None, speech.lower().split(), a['decision']['speech'].lower().split(),
-                                        autojunk=False).ratio() >= similarity), None)
+        # Also a shared run of six words with three content words: v4 run openers ("Wow, the silence is so loud ...")
+        # recurred daily below 0.8 similarity; on that run this flagged 11 of 50 lines, all verbal loops.
+        def phrases(text):
+            toks = re.findall(r"[a-z']+", text.lower())
+            return {' '.join(toks[i:i + 6]) for i in range(len(toks) - 5) if len(words(' '.join(toks[i:i + 6]))) >= 3}
+        mine = phrases(speech)
+        for a in reversed(own[-recent:]):
+            other = a['decision']['speech']
+            # Word-level, autojunk off: character-level autojunk drops spaces and vowels from lines over 200 characters,
+            # so near-copies scored ~0.06 (environment-v2 run-2: 0 of 42 Rohan repeats caught).
+            if SequenceMatcher(None, speech.lower().split(), other.lower().split(), autojunk=False).ratio() >= similarity:
+                return a | {'speech': other}
+            shared = mine & phrases(other)
+            if shared:
+                return a | {'speech': other, 'repeated_words': min(shared)}
+        return None
 
     def repeated_question(self, owner):
         """The latest question received today, if the owner's own appraisal linked it to an earlier one from

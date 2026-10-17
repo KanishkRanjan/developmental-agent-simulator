@@ -14,7 +14,7 @@ from dataclasses import asdict, dataclass
 from hashlib import sha256
 import json
 import logging
-from math import exp, log, log1p
+from math import exp, floor, log, log1p
 from random import Random
 import re
 
@@ -104,12 +104,44 @@ def lability(days, cfg):
     return exp(-cfg['lambda_lability'] * max(0.0, days))
 
 
+def night(engine, owner):
+    """(start hour, length in hours) of the longest daily gap in the household routine's waking windows, or None.
+
+    The longest gap is the sleep window, so a night-shift routine ([[0, 1], [14, 24]]) sleeps 01:00-14:00.
+    """
+    routine = engine.state['config'].get('household', {}).get('routines', {}).get(owner, {})
+    windows = sorted(routine.get('available_hours', []))
+    if not windows:
+        return None
+    gaps = [(b, windows[(i + 1) % len(windows)][0] + 24 * (i == len(windows) - 1) - b) for i, (_, b) in enumerate(windows)]
+    start, length = max(gaps, key=lambda g: (g[1], -g[0]))
+    return (start % 24, length) if length > 0 else None
+
+
+def morning(wake_day, day, start, length):
+    """End of the latest night that has ended by `day`, if at least half of it came after `wake_day`; else None."""
+    end = floor(day - (start + length) / 24) + (start + length) / 24
+    return end if end - wake_day >= length / 48 else None
+
+
 def due(engine, day):
-    """Called by Engine.advance before each event and at the target day; resolves agents due for sleep."""
+    """Called by Engine.advance before each event and at the target day; resolves agents due for sleep.
+
+    With a household routine, sleep is resolved at the end of the night (the routine's longest off-hours gap), and
+    the person wakes then. v4 run: the 16-hour rule fired at any time step, so 'nights' fell at 17:07 and 15:21.
+    Without a routine, the next time step after min_awake_hours counts as a sleep opportunity, as before.
+    """
     min_awake = engine.state['config']['sleep']['min_awake_hours'] / 24
     for owner, agent in engine.state['agents'].items():
         clock = agent.get('sleep')
-        if agent['alive'] and clock and day >= clock['wake_day'] + min_awake:
+        if not (agent['alive'] and clock):
+            continue
+        gap = night(engine, owner)
+        if gap:
+            end = morning(clock['wake_day'], day, *gap)
+            if end is not None:
+                resolve_sleep(engine, owner, clock['wake_day'], end)
+        elif day >= clock['wake_day'] + min_awake:
             resolve_sleep(engine, owner, clock['wake_day'], day)
 
 

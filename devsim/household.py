@@ -5,6 +5,7 @@ controller owns routing; a model cannot grant itself listeners or world facts.
 """
 from copy import deepcopy
 from math import floor
+import re
 
 from .engine import number
 from . import calendar_time
@@ -154,28 +155,35 @@ def conversation_memory(engine, owner, turns=8, previous_turns=4):
     sessions=engine.state['runtime'].get('conversations',{})
     current=next((k for k,s in sessions.items() if s['status']!='closed' and owner in s['active']),None)
     if current is None: return None
-    heard={}
+    heard,ended={},{}  # ended: last turn day of every session the owner took part in, even if its turns were forgotten
     meta=engine.agent(owner)['memory_meta']
     for o in engine.world.observations.get(owner,[]):
-        if o.event_id.startswith('@conversation:') and meta[o.event_id].get('tier') not in HIDDEN:  # dropped, merged, unattended
-            heard.setdefault(o.event_id.split(':')[1],[]).append(o)
+        if o.event_id.startswith('@conversation:'):
+            ended[o.event_id.split(':')[1]]=o.day
+            if meta[o.event_id].get('tier') not in HIDDEN:  # dropped, merged, unattended
+                heard.setdefault(o.event_id.split(':')[1],[]).append(o)
     clip=lambda text:text if len(text)<=300 else text[:299]+'…'
     result={'policy':'own_received_turns_oldest_first',
         'this_conversation':[{'minutes_ago':round((engine.day-o.day)*1440),'text':clip(o.text)} for o in heard.get(current,[])[-turns:]]}
     # Group meetings continue by group (topics may rotate); other conversations by place and topic.
     thread=lambda s:(s['spec'].get('room'),s['spec'].get('channel'),s['spec'].get('group') or s['spec']['topic'])
-    earlier=[k for k in heard if k!=current and k in sessions and thread(sessions[k])==thread(sessions[current])]
+    earlier=[k for k in ended if k!=current and k in sessions and thread(sessions[k])==thread(sessions[current])]
     if earlier:
-        last=max(earlier,key=lambda k:heard[k][-1].day)
-        texts={o.event_id:o.text for o in heard[last]}
+        last=max(earlier,key=lambda k:ended[k])
+        texts={o.event_id:o.text for o in heard.get(last,[])}
         if 'cognition' in engine.state['config']:
             # A week-old session is long-term memory: forgetting applies, so only accessible text or gist is shown.
             from .cognition import views
             available={r['event']:r['text'] for r in views(engine,owner,'',len(engine.agent(owner)['memory_meta']))}
             texts={k:available[k] for k in texts if k in available}
-        if texts:
-            result['previous_session']={'days_ago':round(engine.day-heard[last][-1].day,1),
-                'last_turns':[clip(t) for t in list(texts.values())[-previous_turns:]]}
+        # The gist of one's own words last time (first sentence, at most 25 words), so a daily opener is noticed as
+        # a repeat (v4 run: own turns were mostly dropped by sleep, and Kiara opened the same way every day).
+        said=[' '.join(re.split(r'(?<=[.!?])\s+',a['decision']['speech'].strip())[0].split()[:25]) for a in engine.state['actions']
+              if a['owner']==owner and a['id'].startswith(f'@conversation:{last}:') and a['status']!='cancelled' and a['decision'].get('speech')]
+        if texts or said:
+            result['previous_session']={'days_ago':round(engine.day-ended[last],1),
+                **({'last_turns':[clip(t) for t in list(texts.values())[-previous_turns:]]} if texts else {}),
+                **({'what_you_said_then':said[-3:]} if said else {})}
     return result
 
 

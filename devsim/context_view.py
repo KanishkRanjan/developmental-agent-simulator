@@ -13,7 +13,8 @@ def compact(context, max_bytes=16000):
     def too_large():
         return len(json.dumps(context, allow_nan=False).encode()) > max_bytes
     # memory_candidates arrive in retrieval rank order, so trimming drops the lowest-ranked first.
-    for field, minimum in [('memories',2), ('memory_candidates',3), ('beliefs',0), ('heard_about',0), ('unresolved_references',0), ('relationships',0), ('pending_questions',0), ('goals',1), ('memories',0)]:
+    # Interpretations go before evidence: beliefs are trimmed to two before memories are cut (v4: beliefs took 36%).
+    for field, minimum in [('beliefs',2), ('memories',2), ('memory_candidates',3), ('beliefs',0), ('heard_about',0), ('unresolved_references',0), ('relationships',0), ('pending_questions',0), ('goals',1), ('memories',0)]:
         values = context.get(field, [])
         while too_large() and len(values) > minimum:
             if isinstance(values,list):
