@@ -28,6 +28,13 @@
     "closeness_known": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "closeness of a known person with no recorded closeness above 0"},
     "closeness_stranger": {"value": 0.05, "range": [0, 1], "evidence": "[D]", "note": "closeness of a stranger"},
 
+    "g_sur": {"value": 1.0, "range": [0, 5], "evidence": "[D]", "note": "bottom-up gain on surprise (Corbetta and Shulman: unexpected stimuli capture attention)"},
+    "threat_base": {"value": 0.5, "range": [0, 1], "evidence": "[D]", "note": "threat gain at zero threat sensitivity; g_threat = clip(threat_base + threat_dial_gain x threat_sensitivity)"},
+    "threat_dial_gain": {"value": 0.5, "range": [0, 1], "evidence": "[D]", "note": "extra threat gain at full threat sensitivity"},
+    "B_capture": {"value": 0.8, "range": [0, 1], "evidence": "[D]", "note": "bottom-up drive at or above which the event captures attention"},
+    "a_capture_floor": {"value": 0.85, "range": [0, 1], "evidence": "[D]", "note": "lowest weight of a captured event"},
+    "B_wake": {"value": 0.9, "range": [0, 1], "evidence": "[D]", "note": "bottom-up drive that wakes an asleep agent (otherwise capacity is K_sleep)"},
+
     "K_max": {"value": 1.0, "range": [0, 1], "evidence": "[D]", "note": "capacity of a rested, unloaded agent at ideal arousal"},
     "lam_fat": {"value": 0.5, "range": [0, 1], "evidence": "[D]", "note": "capacity lost at full fatigue"},
     "lam_load": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "capacity lost at full stream load"},

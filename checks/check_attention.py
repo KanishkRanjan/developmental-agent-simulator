@@ -102,6 +102,14 @@ def main():
         pass
     checks.append('config fails fast: weights must sum to 1, a_gist < a_full, theta > 0, known keys, choices and well-formed tag tables')
 
+    # Phase 2: bottom-up capture.
+    for T in (0, .2, .9):
+        assert attention.combined(T, 1) == 1
+        assert abs(attention.combined(T, 0) - T) < 1e-12
+    assert attention.bottom_up(CFG, 0, .9, 1, False) > attention.bottom_up(CFG, 0, .9, 0, False)
+    assert attention.bottom_up(CFG, 0, 0, 0, True) == 1 and attention.bottom_up(CFG, .7, 0, 0, False) == .7 * CFG['g_sur']
+    checks.append('soft OR: B = 1 gives u = 1 whatever T; B is the max of surprise, threat (scaled by threat sensitivity) and being addressed')
+
     # Golden regression: the master switch off reproduces the engine without the module exactly.
     plain, policy = environment_fixture()
     Lifetime(plain, policy, scripted=True).run(10)
@@ -135,7 +143,7 @@ def main():
     for i in range(30):
         e.schedule(f'call-{i}', .3 + i / 1440, 'x', {'b': {'text': 'A said to B: blah.', 'source': 'a', 'addressed': ['b']}})
     e.advance(1)
-    assert all(r['tier'] != 'NONE' and r['addressed'] for r in results(e, 'b').values())
+    assert all(r['tier'] == 'FULL' and r['addressed'] and r['captured'] and not r['may_skip_response'] for r in results(e, 'b').values())
     e = world(['a', 'b'])
     e.attention_providers = {'asleep': lambda engine, i, now: True}
     turns(e, 'a', ['b'], 20, extra=lambda p, i: {'valence': -.8, 'arousal': .7})
@@ -143,12 +151,31 @@ def main():
     asleep = list(results(e, 'b').values())
     assert all(r['capacity'] == CFG['K_sleep'] and r['tier'] == 'NONE' for r in asleep)
     assert e.mood('b') == {'valence': 0, 'arousal': 0}, 'unattended events must not move mood'
-    checks.append('a directly addressed event (or one naming the listener) is never NONE; asleep, capacity is K_sleep and nothing gets in')
+    e.schedule('wake', 1.1, 'x', {'b': {'text': 'A shouted to B: wake up!', 'source': 'a', 'addressed': ['b']}})
+    e.advance(1.2)
+    woken = e.agent('b')['memory_meta']['wake']['attention']
+    assert woken['tier'] == 'FULL' and woken['capacity'] > CFG['K_sleep'] and woken['bottom_up'] >= CFG['B_wake']
+    checks.append('a directly addressed event (or one naming the listener) is captured, FULL and needs a response; asleep, capacity is K_sleep, only B >= B_wake gets in')
+
+    # 5.2 Emotion: one event moves mood by its weight a; a captured event in full.
+    def one(obs, dial=None, enabled=True):
+        e = world(['a', 'b'], dial=dial, enabled=enabled)
+        e.attention_providers = {'closeness': lambda engine, i, j: 1.0}  # a close speaker, so the event is not NONE
+        e.schedule('one', .3, 'x', {'b': {'source': 'a', **obs}})
+        e.advance(.4)
+        return e.mood('b')['valence'], e.agent('b')['memory_meta']['one'].get('attention')
+    calm = {'text': 'A said: the weather is grey.', 'valence': -.4, 'arousal': .3}
+    (v_on, r), (v_off, _) = one(calm), one(calm, enabled=None)
+    assert not r['captured'] and r['tier'] != 'NONE' and abs(v_on) < abs(v_off)
+    alarm = {'text': 'A said: there is a fire in the kitchen!', 'valence': -.9, 'arousal': .95}
+    (v_on, r), (v_off, _) = one(alarm, {'b': {'threat_sensitivity': 1}}), one(alarm, {'b': {'threat_sensitivity': 1}}, enabled=None)
+    assert r['captured'] and v_on == v_off
+    checks.append('emotion: an uncaptured event moves mood by a fraction a of its impulse; a captured (threat) event moves it in full')
 
     # Effects: NONE leaves a hidden receipt only; GIST keeps who, topic and rough valence; mood ignores NONE.
     e = world(['a', 'b'])
     turns(e, 'a', ['b'], 60, text='{s} said: I spilled tea on the rug again, number {i}.',
-          extra=lambda p, i: {'valence': -.5, 'arousal': .4})
+          extra=lambda p, i: {'valence': -.5, 'arousal': .4, 'threat_salience': 0})
     e.advance(1)
     meta = e.agent('b')['memory_meta']
     by = {t: [k for k, m in meta.items() if m['attention']['tier'] == t] for t in ('FULL', 'GIST', 'NONE')}
@@ -164,7 +191,7 @@ def main():
         'observations']['b']['text'].count('tea') == 1  # the original stays in the event log
     plain = world(['a', 'b'], enabled=None)
     turns(plain, 'a', ['b'], 60, text='{s} said: I spilled tea on the rug again, number {i}.',
-          extra=lambda p, i: {'valence': -.5, 'arousal': .4})
+          extra=lambda p, i: {'valence': -.5, 'arousal': .4, 'threat_salience': 0})
     plain.advance(1)
     stab = {o.event_id: o.stability_days for o in plain.world.observations['b']}
     assert all(observed[k].stability_days < stab[k] for k in by['GIST'] + by['NONE'])
@@ -192,6 +219,21 @@ def main():
     stats = {'low_dys_mean_a': round(mean(low), 3), 'high_dys_mean_a': round(mean(high), 3),
              'low_dys_var_a': round(pvariance(low), 4), 'high_dys_var_a': round(pvariance(high), 4)}
     checks.append(f'2000 sampled agents on identical events: high dysregulation gives lower mean and higher variance of a {stats}')
+
+    # Statistical: threat sensitivity, threat events vs neutral ones.
+    threat = world(['speaker', *people], facets=facets, dial=dial)
+    turns(threat, 'speaker', people, 4, text='{s} said: the bus was late again this morning, number {i}.')
+    turns(threat, 'speaker', people, 4, start=.5, key='t', text='{s} said: someone is following me with a knife, number {i}.',
+          extra=lambda p, i: {'valence': -.7, 'arousal': .7})
+    threat.advance(1)
+    def mean_a(group, prefix):
+        return mean(r['weight'] for p in group for k, r in results(threat, p).items() if k.startswith(prefix))
+    by_ts = sorted(people, key=lambda p: dial[p]['threat_sensitivity'])
+    lo, hi = by_ts[:500], by_ts[-500:]
+    tstats = {k: round(v, 3) for k, v in {'high_ts_threat': mean_a(hi, '@conversation:t:'), 'high_ts_neutral': mean_a(hi, '@conversation:x:'),
+              'low_ts_threat': mean_a(lo, '@conversation:t:')}.items()}
+    assert tstats['high_ts_threat'] > tstats['high_ts_neutral'] and tstats['high_ts_threat'] > tstats['low_ts_threat'], tstats
+    checks.append(f'2000 sampled agents: high threat sensitivity attends more to threat events than to neutral ones, and more than low {tstats}')
 
     # Crowded scene: fewer traces than with the switch off, none lost for directly addressed events.
     def crowd(enabled):

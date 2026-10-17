@@ -113,6 +113,7 @@ class AttentionResult:
     captured: bool = False
     drifted: bool = False
     addressed: bool = False
+    may_skip_response: bool = False  # 5.4 hook for a later response gate: NONE or GIST and not addressed
     reasons: dict = field(default_factory=dict)
 
 
@@ -224,6 +225,17 @@ def top_down(cfg, fit, closeness_actor, closeness_mentioned, goal_match):
             + cfg['w_goal'] * goal_match)
 
 
+def bottom_up(cfg, surprise, threat_salience, threat_sensitivity, addressed):
+    """4.3: B = max(surprise g_sur, threat_salience g_threat, 1 if addressed); g_threat rises with threat sensitivity."""
+    g_threat = clip(cfg['threat_base'] + cfg['threat_dial_gain'] * threat_sensitivity)
+    return max(surprise * cfg['g_sur'], threat_salience * g_threat, 1.0 if addressed else 0.0)
+
+
+def combined(T, B):
+    """4.4: soft OR, so bottom-up capture can override boredom."""
+    return 1 - (1 - T) * (1 - B)
+
+
 def capacity(cfg, arousal, fatigue, load, dysregulation, asleep=False):
     """4.5: K = K_max f(arousal) (1 - lam_fat fatigue) (1 - lam_load min(1, load / n_load_ref)) (1 - lam_dys dys)."""
     if asleep:
@@ -281,7 +293,10 @@ def allocate(engine, owner, event, obs):
     c_ment = max((close(m) for m in view.mentioned_ids if m != owner and m in engine.state['entities']), default=0.0)
     goal = provider(engine, 'goal_match')(engine, owner, view)
     T = top_down(cfg, fit, c_actor, c_ment, goal)
-    u = T
+    surprise = provider(engine, 'surprise')(engine, owner, view)
+    B = bottom_up(cfg, surprise, view.threat_salience, dial['threat_sensitivity'], addressed)
+    captured = B >= cfg['B_capture']
+    u = combined(T, B)
     # Stream state: drop streams unseen for longer than the expiry, then compete with the rest.
     state = agent.setdefault('attention_state', {'streams': {}})
     expiry = cfg['stream_expiry_minutes'] / MINUTES_PER_DAY
@@ -289,18 +304,22 @@ def allocate(engine, owner, event, obs):
     others = [s['u'] for k, s in streams.items() if k != view.stream_id]
     arousal = engine.mood(owner, now)['arousal']
     fatigue = provider(engine, 'fatigue')(engine, owner, now)
-    K = capacity(cfg, arousal, fatigue, len(others), dys, provider(engine, 'asleep')(engine, owner, now))
+    asleep = provider(engine, 'asleep')(engine, owner, now)
+    K = capacity(cfg, arousal, fatigue, len(others), dys, asleep and B < cfg['B_wake'])
     s = share(cfg, u, others, dys)
     a_raw = K * s
     q = unit(engine.state.get('seed'), owner, view.event_id, 'attention_noise')
     z = log(q / (1 - q))
     a = noisy(a_raw, z, cfg['s_0'] + cfg['s_dys'] * dys)
-    tier = tier_of(cfg, a, addressed)
+    if captured:
+        a = max(a, cfg['a_capture_floor'])
+    tier = tier_of(cfg, a, addressed, captured)
     streams[view.stream_id] = {'u': u, 'T': T, 'last_day': now, 'last_event': view.event_id}
     state['streams'] = streams
     engine.state['attention_stats']['allocations'] += 1
-    return AttentionResult(a, tier, T, 0.0, K, s, False, False, addressed, {
+    return AttentionResult(a, tier, T, B, K, s, captured, False, addressed, tier != FULL and not addressed, {
         'topic_fit': fit, 'closeness_actor': c_actor, 'closeness_mentioned': c_ment, 'goal_match': goal,
+        'surprise': surprise, 'threat_salience': view.threat_salience, 'asleep': bool(asleep),
         'arousal': arousal, 'fatigue': fatigue, 'other_streams': len(others), 'dysregulation': dys,
         'a_raw': a_raw, 'noise_z': z, 'stream': view.stream_id, 'topic_tags': view.topic_tags})
 
@@ -354,6 +373,8 @@ def record(meta, result, buffered=False):
 
 
 def emotion_scale(meta):
-    """Multiplier on an event's mood impulse: 0 for an unattended event, else 1."""
+    """5.2: multiplier on an event's mood and arousal impulse: a, in full when captured, 0 for an unattended event."""
     record = meta.get('attention')
-    return 1.0 if record is None else 0.0 if record['tier'] == NONE else 1.0
+    if record is None or record['captured']:
+        return 1.0
+    return 0.0 if record['tier'] == NONE else record['weight']
