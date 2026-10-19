@@ -11,6 +11,8 @@
     "run_live records each call's prompt/output tokens, generation speed and finish time",
     "graphs show output/prompt tokens and calls per minute, generation speed and seconds per call, how each person's days felt, and what runs now and next; older runs without token logs say so",
     "the phone-call view merges your lines with the person's replies in order and shows a new call as waiting to ring; a face-to-face talk shows your opening line, their silence and how to walk away",
-    "key h opens a talk guide listing this run's people first, with examples for talking, calling, sending a character, /auto and /bye, wrapped to the panel width; the footer shows h help"
+    "key h opens a talk guide listing this run's people first, with examples for talking, calling, sending a character, /auto and /bye, wrapped to the panel width; the footer shows h help",
+    "the character panel shows the face, feelings, and hormone and need bars only when those modules are on; the room map lists every person once in their room with the selection marked; the web uses only the picked person's own relationship records",
+    "every menu choice writes exactly the inbox note its typed command writes; an introduction carries its relationship"
   ]
 }

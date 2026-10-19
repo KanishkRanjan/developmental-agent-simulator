@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "scope": "builder engineering checks with scripted fills and a stubbed model",
+  "checks": [
+    "two people at home can share one bedroom, labelled with both names",
+    "templates lay out homes (a bedroom each, shared rooms within earshot), a school and a ward as sites with kinds, routes from homes with set or default minutes, groups from daily hours, and a family chat per home",
+    "a scripted build turns sliders into facets, applies relationships both ways (family links warm, a new classmate barely known), gives main characters goals and a situation of their own, side characters neither, switches on the chosen modules and crowd, and the world runs",
+    "with the model: one small fill call per person (sliders win over model facets), and \"fill the past\" writes a biography for each adult before day 0",
+    "fast-forward ages everyone by the chosen years with scripted highlights, clears the run state, records the scripted history, and the live policy starts there with its horizon counted from that day",
+    "the builder explains what is missing in plain words (no home, a shared name, not born before a fast-forward)",
+    "builder designs may hold more people and situations than one model draft; the draft limits stay as they were",
+    "a rebuild goes to the next free compiled-N folder; earlier builds that runs may point at are kept"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "scope": "ASCII renderer engineering checks (no terminal needed)",
+  "checks": [
+    "the glyph table holds all 95 printable characters, each 6-circle shape vector normalized per dimension",
+    "glyphs are picked by shape: blank is a space, a vertical stroke a bar, a horizontal stroke a dash, ink at the bottom an underscore, a filled cell a dense glyph ('Q')",
+    "directional contrast darkens the components next to a brighter neighbour, sharpening the boundary",
+    "a face is the same for the same person and state, differs between people and worlds, and changes with mood, stress and sleep pressure",
+    "age shapes the look: grey hair and lines when older, a rounder face with bigger eyes when young"
+  ]
+}

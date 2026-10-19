@@ -8,6 +8,13 @@ from devsim.watch import (help_lines, clock, engine_lines, feed_lines, footer, h
                           status_line, summarize)
 
 
+def load_world(engine):
+    """load() on a saved copy of a world, as the watcher reads a run."""
+    with TemporaryDirectory() as directory:
+        engine.save(Path(directory) / 'world.json')
+        return load(Path(directory))
+
+
 def main():
     checks = []
     _, engine = world()
@@ -152,6 +159,53 @@ def main():
     assert 'h help' in footer({'last': None}, True, None, 200)
     checks.append('key h opens a talk guide listing this run\'s people first, with examples for talking, calling, sending a '
                   'character, /auto and /bye, wrapped to the panel width; the footer shows h help')
+
+    # Character panel, room map, relationship web and the menus' notes.
+    from checks.check_living import world as living_world
+    from devsim.lifetime import Lifetime
+    from devsim.watch import map_lines, perform, person_card, web_lines
+    from devsim import visit
+    plain = load_world(engine)
+    card = '\n'.join(t for _, t in person_card(plain, plain['people'][0], 40))
+    assert 'feeling' in card and 'hormones' not in card and 'needs' not in card
+    lived, policy = living_world(quiet=False, thoughts=True, creature=True)
+    policy['hormones'] = {}
+    policy['skills'] = {}
+    Lifetime(lived, policy, scripted=True).run(.6)
+    rich = load_world(lived)
+    kid = next(p for p in rich['people'] if p['id'] == 'kid')
+    shown = person_card(rich, kid, 40)
+    text = '\n'.join(t for _, t in shown)
+    assert all(part in text for part in ('hormones', 'stress', 'sleep pressure', 'dopamine', 'needs', 'hunger', 'people (closeness'))
+    assert 'skills (stored, today)' in text or not lived.agent('kid').get('skills')
+    assert 'skills' not in card
+    assert all(len(t) <= 40 for _, t in shown) and len([1 for t in text.splitlines()[:11] if t.strip()]) >= 8  # the face on top
+    drawn = '\n'.join(t for _, t in map_lines(rich, 'kid', 100))
+    for n, person in enumerate(rich['people'], 1):
+        assert drawn.count(f'{n} {person["name"]}') == 1
+    assert '*' + str([p['id'] for p in rich['people']].index('kid') + 1) + ' Kid' in drawn and 'Biscuit the cat' in drawn
+    web = '\n'.join(t for _, t in web_lines(rich, 'kid', 90, 22))
+    ties = {lived.label(k) for k in lived.agent('kid')['relationships']}
+    others = {p['name'] for p in rich['people']} - ties - {'Kid'}
+    assert all(name in web for name in ties) and not any(f' {name} c' in web for name in others) and '[ Kid ]' in web
+    checks.append('the character panel shows the face, feelings, and hormone and need bars only when those modules are on; the '
+                  'room map lists every person once in their room with the selection marked; the web uses only the picked '
+                  "person's own relationship records")
+    with TemporaryDirectory() as directory:
+        menu, typed = Path(directory) / 'menu', Path(directory) / 'typed'
+        menu.mkdir(), typed.mkdir()
+        perform(menu, 'Kanishk', 'talk', to='sam', text='Hi Sam')
+        perform(menu, 'Kanishk', 'call', to='sam')
+        perform(menu, 'Kanishk', 'send', character='Kabir', to='sam', who='a new classmate', age=15)
+        perform(menu, 'Kanishk', 'auto', goal='make friends')
+        perform(menu, 'Kanishk', 'end')
+        for line in ('@sam Hi Sam', '/call sam', '/send Kabir @sam a new classmate, 15', '/auto make friends', '/bye'):
+            visit.talk_line(typed, line, 'Kanishk')
+        strip = lambda path: [{k: v for k, v in json.loads(l).items() if k != 'written'} for l in (path / 'inbox.jsonl').read_text().splitlines()]
+        assert strip(menu) == strip(typed)
+        perform(menu, 'Kanishk', 'send', character='Ravi', to='sam', who="Sam's cousin", age=19, relationship='Cousin')
+        assert strip(menu)[-1]['relationship'] == 'cousin'
+    checks.append('every menu choice writes exactly the inbox note its typed command writes; an introduction carries its relationship')
 
     result = {'passed': True, 'scope': 'engineering only; scripted fixture, no terminal', 'checks': checks}
     Path(__file__).with_name('results').joinpath('watch-engineering-checks.json').write_text(json.dumps(result, indent=2) + '\n')

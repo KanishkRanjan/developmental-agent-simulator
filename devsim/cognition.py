@@ -391,6 +391,68 @@ def neuroticism(agent):
     return (sum(facets.get(f'N{i}',50) for i in range(1,7))/6-50)/50
 
 
+def think(engine, owner, event_id, *, api, model, options=None):
+    """Inner speech: the person thinks to themselves (about what just happened, a worry, something they could do).
+
+    The thought is a private internal memory of its owner; nobody else perceives it and it establishes no world fact.
+    One model call returns the thought with its own feeling, so no separate appraisal is needed. With options (the
+    living world's menu), the same call also picks what to do next. Returns (choice id or None, what to talk about).
+    """
+    from .engine import validated_json, number
+    from . import household
+    place = household.view(engine, owner) if 'household' in engine.state['config'] else None
+    minutes = round(engine.day % 1 * 1440)
+    situation = (f'It is {minutes // 60:02d}:{minutes % 60:02d}. You are' + (f' in {place["label"]}' if place else '') +
+                 ' and not talking with anyone; your mind wanders.')
+    context = engine.context(owner, situation, ['social'])
+    context['task'] = 'inner_thought'
+    if options:
+        from . import living
+        context['what_you_could_do_now'] = [{'id': o['id'], 'label': o['label']} for o in options]
+        context['where_people_are_as_far_as_you_know'] = {
+            living.name(engine, p): engine.state['config']['household']['rooms'][r]['label']
+            for p, (r, _) in sorted(living.whereabouts(engine, owner).items())}
+    system = ('Write the private inner thought this fictional person has right now, as they would say it to themselves: '
+              'one to three short first-person sentences. It may go back over something that just happened, worry, '
+              'wonder about someone, or plan something they could do. Use only their own memories and situation; never '
+              'invent events, people or things they did. Return JSON with thought, valence (-1 to 1), arousal (0 to 1) '
+              'and importance (0 to 1) for how the thought feels to them.' + (
+              ' Also return choice: the id from what_you_could_do_now this person actually does next, following their '
+              'thought, needs and tendencies (stay when nothing calls them), and about: a few words on what they want to '
+              'talk about if they choose to talk or message, else null.' if options else ''))
+    def check(result):
+        thought = result.get('thought')
+        if not isinstance(thought, str) or not thought.strip() or len(thought) > 400:
+            raise ValueError('thought must be one to three short sentences')
+        for field, low in [('valence', -1), ('arousal', 0), ('importance', 0)]:
+            number(result.get(field), low, 1, field)
+        if options and result.get('choice') not in {o['id'] for o in options}:
+            raise ValueError('choice must be an id from what_you_could_do_now')
+        if options and result.get('about') is not None and (not isinstance(result['about'], str) or len(result['about']) > 200):
+            raise ValueError('about is a few words or null')
+    result = validated_json(system, context, check, api, model, 400)
+    # test-2 run: the last thought came back as the top memory and was copied word for word up to three times.
+    from .engine import near_repeat
+    prefix = f'@thought:{owner}:'
+    recent = [o for o in engine.world.observations.get(owner, []) if o.event_id.startswith(prefix)][-5:]
+    for earlier in reversed(recent):
+        hit = near_repeat(result['thought'], earlier.text)
+        if hit is not None:
+            # One re-ask with the collision shown, as for speech; a second repeat is kept (minds do loop).
+            # All recent thoughts, not only the copied one: earth-family-2 re-asks fell back on another recent thought.
+            context['repeat_notice'] = {'your_earlier_words': earlier.text, **({'same_words': hit['repeated_words']} if hit else {}),
+                'your_recent_thoughts': [o.text for o in recent],
+                'note': 'You already thought this, and your recent thoughts are listed. Let your mind move on: notice '
+                        'something, feel it differently, or think about something new. Return to one only if it still truly grips you.'}
+            result = validated_json(system, context, check, api, model, 400)
+            break
+    engine.schedule(event_id, engine.day, 'A private inner thought; not spoken and not a world fact.', {owner: {
+        'text': result['thought'].strip(), 'source': 'self', 'kind': 'internal', 'confidence': 1.0,
+        **{k: result[k] for k in ('valence', 'arousal', 'importance')}}})
+    engine.advance(engine.day)
+    return (result['choice'], (result.get('about') or '').strip() or None) if options else (None, None)
+
+
 def ruminate(engine,owner,event_id,minimum_gap_days=1):
     """Autonomous scheduled recall, not background world fabrication."""
     agent=engine.agent(owner)

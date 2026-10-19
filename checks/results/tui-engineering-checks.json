@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "widget helpers; the interactive screens were driven in a pseudo-terminal",
+  "checks": [
+    "the tab bar marks the active tab and fits any width",
+    "a slider shows a bar filled in proportion and the value in the right form for its range",
+    "character search matches name, id or handle, case-insensitively, every word",
+    "Pip the mascot animates through at least three frames, and the logo fits 80 columns"
+  ]
+}

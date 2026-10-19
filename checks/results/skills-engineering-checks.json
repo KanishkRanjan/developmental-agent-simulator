@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "scope": "skill module engineering checks; [U] magnitudes are placeholders, see docs/PARAMETERS.md",
+  "checks": [
+    "reads are pure and decay monotonically in [0, 1); practice raises the level; zero attention changes neither level nor stability; replaying the event log reproduces the stored state exactly; reads compose",
+    "with identical histories, more cognitive, more open-loop and more accuracy-graded skills retain less after the same idle time (E12 ordering, coefficients free)",
+    "spaced practice keeps more at a 60-day test than the same practice massed (0.015 vs 0.000); retrieval builds more stability than restudy (directions E8, E9)",
+    "relearning after near-total decay takes fewer practices than first learning (12 vs 16); a pruned skill keeps a savings record and relearns faster than a never-seen one (E13 direction)",
+    "near transfer only: a related skill speeds learning; below the similarity cutoff the boost is exactly zero",
+    "task-focused feedback gives at least the gain of none, self-focused at most (E21 direction)",
+    "perceived skill correlates r = 0.28 with true skill across a reference population (target .29, E22); no built-in overconfidence",
+    "the same seed and events give byte-identical states and logs; changing one seeding purpose changes only its own draws",
+    "no type, role, sex, occupation or name branch and no list of skills in the module; renaming people or adding identity facts changes nothing",
+    "a long idle stretch performs no skill computation; a stubbed run makes the same model calls with and without the module (14)",
+    "with gamma-distributed rates, 88% of individual curves fit an exponential better than a power function (AIC) while the population mean fits a power function better (E2 mechanism, not the science)",
+    "strategy shifts make visible dips in individual curves (352 across 200 learners) while the population mean stays smooth (largest second difference 0.010)",
+    "practice volume alone does not decide level: 152 pairs where the one who practised less is better (aptitude and per-skill draws matter, E25)",
+    "high sleep pressure lowers performance below stored skill, which does not change; rested performance equals it",
+    "the competence gate decides success outside the model (a novice fails a hard repair although the scenario said 100%), logs every check, and its directive describes not knowing without asking for wrong content",
+    "abandonment emerges: repeated failure lowers the learned value and wanting, and the softmax then picks that practice only 0% of the time (no abandonment hazard exists)",
+    "a sensitivity sweep reports outcome ranges across placeholder parameters (results/skills-sensitivity.json)"
+  ]
+}

@@ -17,13 +17,16 @@ Reading the run never changes it; talking only appends to inbox.jsonl (see devsi
 """
 import argparse
 from collections import deque
+from functools import lru_cache
 import json
-from math import floor
+from math import cos, floor, pi, sin
 from pathlib import Path
 import textwrap
 import time
 
+from . import household
 from .engine import Engine
+from .tui import ask, choose
 
 WEEKDAYS = ('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')
 
@@ -91,6 +94,25 @@ def load(run):
     rooms = engine.state['config'].get('household', {}).get('rooms', {})
     locations = engine.state.get('household', {}).get('locations', {})
     data['day'] = engine.day
+    data['skip_until'] = engine.state.get('runtime', {}).get('skip_until')
+    data['seed'] = engine.state.get('seed')
+    thoughts, said = {}, {}
+    for event in reversed(engine.state['events']):
+        if event['id'].startswith('@thought:'):
+            who = event['id'].split(':')[1]
+            if who not in thoughts and who in event['observations']:
+                thoughts[who] = event['observations'][who]['text']
+    for action in reversed(engine.state['actions']):
+        if action['decision'].get('speech') and action['owner'] not in said:
+            said[action['owner']] = action['decision']['speech']
+    household_cfg = engine.state['config'].get('household', {})
+    data['rooms'] = {k: {'label': r['label'], 'audible_to': r.get('audible_to', []), 'site': r.get('site'), 'kind': r.get('kind')}
+                     for k, r in household_cfg.get('rooms', {}).items()}
+    data['locations'] = dict(locations)
+    data['creatures'] = {c['name'] + ' the ' + c['kind']: engine.state.get('living', {}).get('creatures', {}).get(c['id'], {}).get('room')
+                         for c in household_cfg.get('creatures', [])}
+    data['my_characters'] = [{'id': k, 'name': e['name'], 'about': e['facts'].get('description', '')}
+                             for k, e in sorted(engine.state['entities'].items()) if 'sent_by' in e['facts'] and k in engine.state['agents']]
     for owner in sorted(engine.state['agents']):
         agent = engine.agent(owner)
         if not agent['alive']:
@@ -99,7 +121,16 @@ def load(run):
             place = 'in transit'
         else:
             place = rooms.get(locations.get(owner), {}).get('label', locations.get(owner) or '')
-        data['people'].append({'id': owner, 'name': names.get(owner, owner), 'place': place, 'mood': engine.mood(owner)})
+        person = {'id': owner, 'name': names.get(owner, owner), 'place': place, 'mood': engine.mood(owner)}
+        if agent['alive']:
+            person['card'] = card(engine, owner, thoughts, said)
+            person['awake'] = household.available(engine, owner) if household_cfg else True
+        if 'living' in engine.state['config'] and agent['alive']:
+            from . import living
+            doing = engine.state.get('living', {}).get('doing', {}).get(owner)
+            person['doing'] = doing['verb'] if doing and doing['phase'] == 'busy' else ''
+            person['feel'] = ', '.join(living.words(engine, owner))
+        data['people'].append(person)
     for action in sorted(engine.state['actions'], key=lambda a: (a['day'], a['id'])):
         decision = action['decision']
         data['feed'].append({'day': action['day'], 'owner': action['owner'], 'name': names.get(action['owner'], action['owner']),
@@ -108,6 +139,17 @@ def load(run):
     visits = engine.state.get('runtime', {}).get('visitor_log', [])
     data['feed'] += [{'day': v['day'], 'owner': v['visitor'], 'name': names.get(v['visitor'], 'Visitor') + ' (you)',
                       'where': where(engine, v['event']), 'choice': 'speak', 'label': '', 'speech': v['text']} for v in visits]
+    # The living world: thoughts, activities, and what happened around people (one line per event).
+    for event in engine.state['events']:
+        kind, _, rest = event['id'].partition(':')
+        if kind not in ('@thought', '@living', '@happening', '@creature', '@weather') or not event['observations']:
+            continue
+        owner = rest.split(':')[0] if kind in ('@thought', '@living') else None
+        text = (event['observations'].get(owner) or next(iter(event['observations'].values())))['text']
+        room = rooms.get(rest.split('/')[0], {}).get('label', '') if kind == '@happening' else ''  # only happenings record their room
+        data['feed'].append({'day': event['day'], 'owner': owner or 'world', 'name': names.get(owner, 'Around them'),
+                             'where': room, 'choice': 'thinks' if kind == '@thought' else 'notices',
+                             'label': ('(thinks) ' if kind == '@thought' else '') + text, 'speech': ''})
     data['feed'].sort(key=lambda item: item['day'])
     try:
         with open(run / 'inbox.jsonl', 'rb') as inbox:
@@ -414,6 +456,8 @@ def call_lines(call, width):
             lines.append(('quiet', f'[{row["event"]}] {row.get("reason") or ""}'[:width]))
     if call['state'] == 'talking':
         lines.append(('quiet', 'press t to speak, /bye to ' + ('walk away' if call.get('in_person') else 'hang up')))
+    elif not call.get('in_person'):
+        lines.append(('quiet', 'press Tab and choose End the talk to hang up'))
     return lines
 
 
@@ -421,8 +465,15 @@ def help_lines(data, width):
     """The talk guide (key h): how to reach people from this terminal, with examples using this run's people."""
     people = data.get('people') or []
     who = people[0]['id'] if people else 'priya'
-    rows = [('head', 'How to talk to people · press h to close'),
-            ('quiet', 'Press t, type a line, press Enter. The run picks it up at its next event, and the world waits while you talk.'),
+    rows = [('head', 'Watching · press h to close'),
+            ('quiet', 'p opens the character panel (face, feelings, hormones, needs, goals, people); 1-9 or Tab picks the person.'),
+            ('quiet', 'm shows the room map, m again the relationship web of the picked person, m again the feed.'),
+            ('quiet', ''), ('head', 'Talking: press t and choose'),
+            ('quiet', 't opens a menu: talk face to face, phone, introduce a new character (name, who they are, age, '
+                      'whom they meet and how they know them), send one of your characters again, or speak to the group. '
+                      'During a talk, t types your next line and Tab offers "let the model play" and "end the talk".'),
+            ('quiet', 'The run picks it up at its next event, and the world waits while you talk.'),
+            ('quiet', ''), ('head', 'Typed commands (still work, for power users)'),
             ('quiet', 'People: ' + (', '.join(f'@{p["id"]} ({p["name"]})' for p in people) or 'none loaded yet')),
             ('quiet', ''), ('head', 'Talk face to face'),
             ('speech', f'@{who} Hi, how was your day?'), ('quiet', f'   walk up to {who} and say it'),
@@ -449,12 +500,229 @@ def help_lines(data, width):
     return lines
 
 
+def card(engine, owner, thoughts, said):
+    """What the character panel shows about one person, read from the run (never changed)."""
+    from .personality import describe
+    from .sleep import dials as sleep_dials
+    from .sleep import HIDDEN
+    agent = engine.agent(owner)
+    meta = agent['memory_meta']
+    mood = engine.mood(owner)
+    label = lambda k: engine.label(k) if k in engine.state['entities'] else k
+    out = {'age': (engine.day - agent['birth_day']) / 365.25, 'arousal': mood['arousal'], 'valence': mood['valence'],
+           'about': describe(agent['facets'])['tendencies'][:3],
+           'goals': [{'text': g['description'], 'progress': g.get('progress', 0.0), 'status': g['status']} for g in agent['goals'].values()],
+           'ties': sorted(({'id': k, 'name': label(k), 'role': r.get('role') or '', 'trust': r.get('trust', .5), 'closeness': r.get('closeness', 0.0)}
+                           for k, r in agent['relationships'].items()), key=lambda t: (-t['closeness'], -t['trust'], t['name'])),
+           'memories': [sum(m.get('tier') not in HIDDEN for m in meta.values()), len(meta)],
+           'beliefs': len(agent.get('beliefs', {})), 'thought': thoughts.get(owner), 'said': said.get(owner),
+           'facets': dict(agent['facets']), 'dials': sleep_dials(agent),
+           'handle': engine.state['entities'][owner]['facts'].get('handle'),
+           'goal_ids': list(agent['goals']), 'role': 'yours' if 'sent_by' in engine.state['entities'][owner]['facts'] else 'simulated'}
+    stress, sleepy, drive = mood['arousal'], 0.0, 0.0
+    if 'hormones' in engine.state['config']:
+        from . import hormones
+        snap = hormones.read(engine, owner)
+        out['hormones'] = {'stress': snap.stress, 'sleep pressure': snap.sleep_pressure, 'dopamine': snap.dopamine}
+        stress, sleepy, drive = snap.stress, snap.sleep_pressure, snap.dopamine
+    if 'living' in engine.state['config']:
+        from . import living
+        out['needs'] = living.needs(engine, owner)
+    if 'skills' in engine.state['config']:
+        from . import skills
+        rows = sorted(engine.agent(owner).get('skills', {}).values(), key=lambda s: -skills.level(engine, owner, s['key']))[:6]
+        out['skills'] = [{'key': s['key'], 'label': s.get('label') or s['key'], 'level': skills.level(engine, owner, s['key']),
+                          'now': skills.performance(engine, owner, s['key']),
+                          'tier': skills.tier_of(skills.cfg(engine), skills.performance(engine, owner, s['key']))} for s in rows]
+        doing = engine.state.get('living', {}).get('doing', {}).get(owner)
+        out['doing'] = doing['verb'] if doing and doing['phase'] == 'busy' else ''
+        if 'hormones' not in engine.state['config']:
+            sleepy = 1 - out['needs']['energy']
+    out['face'] = {'mood': round(mood['valence'], 2), 'stress': round(stress, 2), 'sleepy': round(sleepy, 2), 'drive': round(drive, 2)}
+    return out
+
+
+def bar(value, low, high, cells):
+    """A block bar: filled share of [low, high]."""
+    full = max(0, min(cells, round((value - low) / (high - low) * cells)))
+    return '█' * full + '░' * (cells - full)
+
+
+@lru_cache(maxsize=256)
+def face_lines(seed, owner, age, mood, stress, sleepy, drive, cols):
+    from .ascii_art import portrait
+    return tuple(portrait(seed, owner, age, mood, stress, sleepy, drive, cols, max(6, cols // 2)))
+
+
+def person_card(data, person, width):
+    """The character panel: ASCII face, description, feelings, hormones, needs, goals, people, thoughts."""
+    c = person.get('card')
+    if c is None:
+        return [('head', f'{person["name"]} (died)'[:width])]
+    lines = []
+    cols = max(8, min(22, width - 2))
+    pad = ' ' * max(0, (width - cols) // 2)
+    lines += [('speech', (pad + row)[:width]) for row in face_lines(data.get('seed'), person['id'], round(c['age']), cols=cols, **c['face'])]
+    lines.append(('head', f'{person["name"]}, {c["age"]:.0f}'[:width]))
+    lines.append(('quiet', (person['place'] + (f', {c["doing"]}' if c.get('doing') else ''))[:width]))
+    for text in c['about']:
+        lines += [('quiet', part) for part in textwrap.wrap(text, width, initial_indent='· ', subsequent_indent='  ')]
+    n = max(4, min(14, width - 22))
+    row = lambda name, value, low, high, shown: ('speech', f' {name:<15}{bar(value, low, high, n)} {shown}'[:width])
+    lines.append(('head', 'feeling'))
+    lines.append(row('mood', c['valence'], -1, 1, f'{c["valence"]:+.2f}'))
+    lines.append(row('arousal', c['arousal'], 0, 1, f'{c["arousal"]:.2f}'))
+    if 'hormones' in c:
+        lines.append(('head', 'hormones'))
+        for name, value in c['hormones'].items():
+            lines.append(row(name, value, -1 if name == 'dopamine' else 0, 1, f'{value:+.2f}' if name == 'dopamine' else f'{value:.2f}'))
+    if 'needs' in c:
+        lines.append(('head', 'needs (full = met)'))
+        for name, value in c['needs'].items():
+            lines.append(row(name, value, 0, 1, f'{value:.2f}'))
+    if c.get('skills'):
+        lines.append(('head', 'skills (stored, today)'))
+        for skill in c['skills']:
+            lines.append(row(skill['label'][:14], skill['level'], 0, 1, f'{skill["level"]:.2f} {skill["tier"]}'))
+    if c['goals']:
+        lines.append(('head', 'goals'))
+        for goal in c['goals']:
+            lines += [('quiet', part) for part in textwrap.wrap(goal['text'], width, initial_indent=' ', subsequent_indent='  ')]
+            lines.append(row(goal['status'], goal['progress'], 0, 1, f'{goal["progress"]:.0%}'))
+    if c['ties']:
+        lines.append(('head', 'people (closeness · trust)'))
+        k = max(3, min(6, (width - 18) // 2))
+        for tie in c['ties'][:5]:
+            lines.append(('speech', f' {tie["name"].split(" (@")[0][:13]:<14}{bar(tie["closeness"], 0, 1, k)} {bar(tie["trust"], 0, 1, k)}'[:width]))
+    for title, text in (('thinking', c.get('thought')), ('last said', c.get('said'))):
+        if text:
+            lines.append(('head', title))
+            lines += [('quiet', part) for part in textwrap.wrap(text, width, initial_indent=' ', subsequent_indent=' ')[:4]]
+    lines.append(('quiet', f' {c["memories"][0]}/{c["memories"][1]} memories recallable · {c["beliefs"]} beliefs'[:width]))
+    return lines
+
+
+def numbers(data):
+    return {p['id']: n for n, p in enumerate(data['people'], 1)}
+
+
+def map_lines(data, selected, width):
+    """Rooms as boxes grouped by site, joined where one room hears the other; people by panel number."""
+    rooms, number = data.get('rooms') or {}, numbers(data)
+    if not rooms:
+        return [('quiet', 'No rooms in this run.')]
+    inside = {k: [] for k in rooms}
+    for p in data['people']:
+        where = data['locations'].get(p['id'])
+        if where in inside:
+            inside[where].append(('*' if p['id'] == selected else ' ') + f'{number[p["id"]]} {p["name"]}')
+    for name, where in data.get('creatures', {}).items():
+        if where in inside:
+            inside[where].append(f' ~ {name}')
+    linked = lambda a, b: b in rooms[a]['audible_to'] or a in rooms[b]['audible_to']
+    sites = {}
+    for k, r in rooms.items():
+        sites.setdefault(r.get('site') or 'places', []).append(k)
+    lines = [('head', 'Room map · numbers open the panel · * selected · ── can hear each other'[:width])]
+    for site, keys in sites.items():
+        order, seen = [], set()
+        for start in keys:  # walk the hearing links so neighbours sit side by side
+            stack = [start]
+            while stack:
+                k = stack.pop()
+                if k in seen:
+                    continue
+                seen.add(k)
+                order.append(k)
+                stack += [o for o in reversed(keys) if o not in seen and linked(k, o)]
+        lines.append(('head', f'{site}'[:width]))
+        boxes = []
+        for k in order:
+            body = inside[k] or ['']
+            inner = min(max(10, len(rooms[k]['label']) + 2, *(len(b) for b in body)), max(10, width // 2 - 4))
+            top = '┌ ' + rooms[k]['label'][:inner - 1] + ' ' + '─' * max(0, inner - len(rooms[k]['label'][:inner - 1]) - 2) + '┐'
+            boxes.append((k, [top, *('│' + b[:inner].ljust(inner) + '│' for b in body), '└' + '─' * inner + '┘']))
+        row, used, drawn = [], 0, set()
+        def flush(row):
+            height = max(len(b) for _, b in row)
+            for i in range(height):
+                text = ''
+                for j, (k, box) in enumerate(row):
+                    blank = ' ' * len(box[0])
+                    piece = box[i] if i < len(box) else blank
+                    if j:
+                        text += '──' if i == 1 and linked(row[j - 1][0], k) else '  '
+                    text += piece
+                lines.append(('speech', text[:width]))
+            for (a, _), (b, _) in zip(row, row[1:]):
+                if linked(a, b):
+                    drawn.add(frozenset((a, b)))
+        for k, box in boxes:
+            if row and used + 2 + len(box[0]) > width:
+                flush(row)
+                row, used = [], 0
+            row.append((k, box))
+            used += len(box[0]) + 2
+        if row:
+            flush(row)
+        rest = sorted({frozenset((a, b)) for a in keys for b in keys if a < b and linked(a, b)} - drawn, key=sorted)
+        if rest:
+            text = 'also hear each other: ' + ', '.join(' ↔ '.join(rooms[r]['label'] for r in sorted(pair)) for pair in rest)
+            lines += [('quiet', part) for part in textwrap.wrap(text, width)]
+    away = [f'{number[p["id"]]} {p["name"]}' for p in data['people'] if p['place'] == 'in transit']
+    if away:
+        lines.append(('quiet', ('in transit: ' + ', '.join(away))[:width]))
+    return lines
+
+
+def web_lines(data, selected, width, height):
+    """The selected person in the middle, the people they have records of around them; # close, = warm, - known, . distant."""
+    person = next((p for p in data['people'] if p['id'] == selected), None)
+    if person is None or 'card' not in person:
+        return [('quiet', 'Pick a person with 1-9 or Tab.')]
+    ties = person['card']['ties'][:10]
+    w, h = max(30, width), max(11, min(height - 2, 25))
+    canvas = [[' '] * w for _ in range(h)]
+    cx, cy = w // 2, h // 2
+    rx, ry = max(8, w // 2 - 12), max(3, h // 2 - 1)
+    nodes = []
+    for i, tie in enumerate(ties):
+        angle = 2 * pi * i / max(1, len(ties)) - pi / 2
+        nodes.append((cx + round(rx * cos(angle)), cy + round(ry * sin(angle)), tie))
+    for x, y, tie in nodes:
+        mark = '#' if tie['closeness'] >= .6 else '=' if tie['closeness'] >= .3 else '-' if tie['closeness'] > 0 else '.'
+        x0, y0, dx, dy = cx, cy, abs(x - cx), -abs(y - cy)
+        sx, sy, err = (1 if x > cx else -1), (1 if y > cy else -1), abs(x - cx) - abs(y - cy)
+        while (x0, y0) != (x, y):  # Bresenham
+            if 0 <= y0 < h and 0 <= x0 < w and canvas[y0][x0] == ' ':
+                canvas[y0][x0] = mark
+            e2 = 2 * err
+            if e2 >= dy:
+                err += dy
+                x0 += sx
+            if e2 <= dx:
+                err += dx
+                y0 += sy
+    def put(x, y, text):
+        start = max(0, min(w - len(text), x - len(text) // 2))
+        for i, ch in enumerate(text[:w]):
+            if 0 <= y < h:
+                canvas[y][start + i] = ch
+    for x, y, tie in nodes:
+        put(x, y, f' {tie["name"][:10]} c{tie["closeness"]:.1f} t{tie["trust"]:.1f} ')
+    put(cx, cy, f'[ {person["name"]} ]')
+    head = ('head', f'Relationship web of {person["name"]} · from their own records only · c closeness, t trust'[:width])
+    return [head, *(('speech', ''.join(r).rstrip()) for r in canvas)] if ties else [head, ('quiet', 'No relationship records yet.')]
+
+
 def people_lines(data, width):
     lines = []
     for n, person in enumerate(data['people'], 1):
         mood = person['mood']['valence']
         lines.append(('head', f'{n} {person["name"]}'[:width]))
-        lines.append(('quiet', f'  {person["place"]}'[:width]))
+        lines.append(('quiet', f'  {person["place"]}' + (f', {person["doing"]}' if person.get('doing') else '')[:width]))
+        if person.get('feel'):
+            lines.append(('quiet', f'  feels {person["feel"]}'[:width]))
         lines.append(('speech', f'  mood {mood:+.2f} {"▲" if mood > .05 else "▼" if mood < -.05 else "■"}'[:width]))
     return lines
 
@@ -462,7 +730,8 @@ def people_lines(data, width):
 def header(data, run, width):
     when = clock(data['day']) if 'day' in data else 'no checkpoint yet'
     name = run.parent.name if run.name == 'run' else run.name
-    return f' {name} · {when} · {data["status"]} · {data["calls"]} model calls '[:width]
+    skipping = f' · fast-forwarding to {clock(data["skip_until"])}' if data.get('skip_until') is not None else ''
+    return f' {name} · {when}{skipping} · {data["status"]} · {data["calls"]} model calls '[:width]
 
 
 def footer(data, everyone, only, width, engine=False, verbose=False, graphs=False):
@@ -471,26 +740,118 @@ def footer(data, everyone, only, width, engine=False, verbose=False, graphs=Fals
     view = ('graphs' if graphs else 'engine' + (' · full text' if verbose else '') if engine else 'all decisions' if everyone
             else 'speech only') + (f' · {only}' if only else '')
     if data.get('call') and data['call']['active']:
-        view = ('talking' if data['call'].get('in_person') else 'phone call') + ' · t to speak, /bye to end'
-    return f' {now}  |  {view}  |  h help  t talk  c call  g graphs  l engine  v full  s stats  a speech  1-9 person  0 all  ↑↓  q quit '[:width]
+        view = ('talking' if data['call'].get('in_person') else 'phone call') + ' · t to speak, Tab for options'
+    return f' {now}  |  {view}  |  t talk  p panel  m map/web  Tab next  h help  c call  f skip time  g graphs  l engine  v full  s stats  a speech  1-9 person  0 all  ↑↓  q quit '[:width]
 
 
-def ask(screen, prompt):
-    """A one-line text prompt on the bottom row; empty when cancelled."""
-    import curses
-    height, width = screen.getmaxyx()
-    screen.timeout(-1)
-    curses.echo()
-    curses.curs_set(1)
-    screen.addnstr(height - 1, 0, prompt.ljust(width), width - 1, curses.A_REVERSE)
-    try:
-        text = screen.getstr(height - 1, min(len(prompt), width - 2), 600).decode('utf8', 'replace')
-    except (curses.error, KeyboardInterrupt):
-        text = ''
-    curses.noecho()
-    curses.curs_set(0)
-    screen.timeout(250)
-    return text.strip()
+ACTIONS = ['Talk to someone face to face', 'Phone someone', 'Introduce a new character', 'Send one of your characters again',
+           'Say something to the current group conversation']
+AGES = [('a child, about 10', 10), ('a teenager, about 15', 15), ('a young adult, about 22', 22), ('an adult, about 35', 35),
+        ('middle-aged, about 50', 50), ('older, about 70', 70), ('type an age', None)]
+
+
+def perform(run, name, action, **values):
+    """What a finished menu does: the same inbox notes the typed commands write (devsim.visit)."""
+    from . import visit
+    if action == 'talk':
+        visit.talk(run, values['to'], values['text'], name)
+    elif action == 'call':
+        visit.call(run, values['to'], name)
+    elif action == 'send':
+        visit.send(run, values['character'], values['to'], name, values.get('who'), values.get('age'),
+                   relationship=values.get('relationship'))
+    elif action == 'say':
+        visit.say(run, values['text'], None, name)
+    elif action == 'auto':
+        visit.auto(run, values['goal'])
+    elif action == 'end':
+        visit.hang_up(run)
+    else:
+        raise ValueError(f'Unknown action {action}')
+
+
+def pick_person(screen, data, title):
+    people = [p for p in data['people'] if 'card' in p]
+    if not people:
+        return None
+    labels = [f'{p["name"]} · {p["place"] or "somewhere"}' + ('' if p.get('awake', True) else ' (asleep or busy)') for p in people]
+    i = choose(screen, title, labels)
+    return None if i is None else people[i]
+
+
+def interact(screen, run, data, name):
+    """The talk menu (key t): every step is a choice or a short answer; no commands to remember. Returns a status line."""
+    action = choose(screen, 'What would you like to do?', ACTIONS)
+    if action is None:
+        return ''
+    if action == 0:
+        person = pick_person(screen, data, 'Who do you walk up to?')
+        text = person and ask(screen, f' What do you say to {person["name"]}? ')
+        if text:
+            perform(run, name, 'talk', to=person['id'], text=text)
+            return f'walking over to {person["name"]}: type your lines with t, Tab for options'
+    elif action == 1:
+        person = pick_person(screen, data, 'Who do you call?')
+        if person:
+            perform(run, name, 'call', to=person['id'])
+            return f'calling {person["name"]}'
+    elif action == 2:
+        character = ask(screen, ' Your character\'s name: ')
+        who = character and ask(screen, f' Who is {character}? (e.g. Priya\'s cousin from Delhi, studying engineering): ')
+        if not who:
+            return ''
+        a = choose(screen, f'How old is {character}?', [label for label, _ in AGES])
+        if a is None:
+            return ''
+        age = AGES[a][1]
+        if age is None:
+            try:
+                age = float(ask(screen, ' Age (1-100): '))
+            except ValueError:
+                return 'age must be a number'
+        person = pick_person(screen, data, f'Who does {character} go to meet?')
+        if person is None:
+            return ''
+        from .visit import RELATIONSHIPS
+        kinds = [*RELATIONSHIPS, 'something else (type it)']
+        k = choose(screen, f'{character} is {person["name"]}\'s ...', kinds)
+        if k is None:
+            return ''
+        relationship = kinds[k] if k < len(RELATIONSHIPS) else ask(screen, f' {character} is {person["name"]}\'s (a few words): ')
+        summary = f'{character}, {age:g}: {who}. {person["name"]}\'s {relationship}; meets them in person.'
+        if choose(screen, 'Send this character?', ['Send', 'Cancel'], summary[:120]) != 0:
+            return 'cancelled'
+        perform(run, name, 'send', character=character, to=person['id'], who=who, age=age, relationship=relationship)
+        return f'sending {character} to {person["name"]}: type their lines with t, Tab for options'
+    elif action == 3:
+        mine = data.get('my_characters') or []
+        if not mine:
+            return 'you have no characters yet: introduce one first'
+        c = choose(screen, 'Which of your characters?', [f'{m["name"]} · {m["about"]}' for m in mine])
+        person = None if c is None else pick_person(screen, data, f'Who does {mine[c]["name"]} go to?')
+        if person:
+            perform(run, name, 'send', character=mine[c]['name'], to=person['id'])
+            return f'sending {mine[c]["name"]} to {person["name"]}'
+    elif action == 4:
+        text = ask(screen, ' Say to the group: ')
+        if text:
+            perform(run, name, 'say', text=text)
+            return 'said into the most recent group conversation'
+    return ''
+
+
+def talk_options(screen, run, name):
+    """Tab during a talk: let the model play your character, or end the talk."""
+    i = choose(screen, 'This talk', ['Let the model play your character (give it a goal)', 'End the talk', 'Back'])
+    if i == 0:
+        goal = ask(screen, ' Goal for your character (e.g. make friends with Priya): ')
+        if goal:
+            perform(run, name, 'auto', goal=goal)
+            return 'the model now plays your character; press t and type to take over'
+    elif i == 1:
+        perform(run, name, 'end')
+        return 'ending the talk'
+    return ''
 
 
 def run_screen(screen, run, every_seconds, name='Visitor'):
@@ -503,6 +864,7 @@ def run_screen(screen, run, every_seconds, name='Visitor'):
     screen.timeout(250)
     everyone, only, offset, data, loaded = True, None, 0, None, 0.0
     engine, verbose, stats, cache, graphs, guide = False, False, False, {}, False, False
+    panel, panel_w, chosen, surroundings, notice = False, 0, None, None, ''
     while True:
         if data is None or time.monotonic() - loaded >= every_seconds:
             try:
@@ -511,11 +873,24 @@ def run_screen(screen, run, every_seconds, name='Visitor'):
                 pass  # a checkpoint being replaced mid-read; try again next tick
             read_calls(run / 'requests.jsonl', cache)
             loaded = time.monotonic()
+        ended = data and data.get('call') and not data['call']['active'] and data['call']['events']
+        if ended and notice.startswith('calling '):  # the call is over: say how, instead of 'calling' forever
+            last = data['call']['events'][-1]
+            notice = f'call with {data["call"]["label"]}: {last["event"]}' + (f' ({last["reason"]})' if last.get('reason') else '')
         height, width = screen.getmaxyx()
         screen.erase()
+        target = min(48, max(30, width * 2 // 5)) if panel and width >= 70 else 0
+        if panel_w != target:  # the panel slides in or out over a few frames
+            step = max(4, (target or panel_w) // 4)
+            panel_w = min(target, panel_w + step) if panel_w < target else max(target, panel_w - step)
+        screen.timeout(40 if panel_w != target else 250)
+        people = data['people'] if data else []
+        if people and chosen not in [p['id'] for p in people]:
+            chosen = only or people[0]['id']
         if data is not None and height >= 8 and width >= 40:
             left = min(26, width // 3)
             body = height - 3
+            right = width - left - 2 - (panel_w + 1 if panel_w else 0)
             screen.addnstr(0, 0, header(data, run, width).ljust(width), width - 1, curses.A_REVERSE)
             panel = stats_lines(data, cache, left - 1) if stats else people_lines(data, left - 1)
             for row, (tag, text) in enumerate(panel[:body]):
@@ -524,29 +899,47 @@ def run_screen(screen, run, every_seconds, name='Visitor'):
                 screen.addch(row + 1, left, curses.ACS_VLINE)
             call = data.get('call')
             if guide:
-                lines = help_lines(data, width - left - 3)
+                lines = help_lines(data, right - 1)
+            elif surroundings == 'map':
+                lines = map_lines(data, chosen, right - 1)
+            elif surroundings == 'web':
+                lines = web_lines(data, chosen, right - 1, body)
             elif graphs:
                 lines = graph_lines(data, cache, width - left - 2)
             elif call and call['active']:
-                lines = call_lines(call, width - left - 3)
+                lines = call_lines(call, right - 1)
             elif engine:
                 calls = list(cache.get('recent', []))
                 if data.get('current'):
                     calls.append({**summarize(data['current']), 'seconds': None})
-                lines = engine_lines(calls, width - left - 2, verbose, only)
+                lines = engine_lines(calls, right, verbose, only)
             else:
-                lines = feed_lines(data, width - left - 2, everyone, only)
+                lines = feed_lines(data, right, everyone, only)
             top = max(0, len(lines) - body - offset)
             offset = max(0, min(offset, max(0, len(lines) - body)))
             for row, (tag, text) in enumerate(lines[top:top + body]):
-                screen.addnstr(row + 1, left + 2, text, width - left - 3, style[tag])
-            screen.addnstr(height - 2, 0, status_line(data, width).ljust(width, '─'), width - 1, style['head'])
+                screen.addnstr(row + 1, left + 2, text, max(1, right - 1), style[tag])
+            if panel_w:
+                x0 = width - panel_w
+                person = next((p for p in people if p['id'] == chosen), None)
+                card_lines = person_card(data, person, max(20, target or panel_w) - 2) if person else []
+                for row in range(body):
+                    screen.addch(row + 1, x0 - 1, curses.ACS_VLINE)
+                    screen.addnstr(row + 1, x0, ' ' * (panel_w - 1), panel_w - 1)
+                for row, (tag, text) in enumerate(card_lines[:body]):
+                    screen.addnstr(row + 1, x0 + 1, text, max(1, panel_w - 2), style[tag])
+            if notice:
+                screen.addnstr(height - 2, 0, f' {notice} '.ljust(width), width - 1, curses.A_REVERSE)
+            if not notice:
+                screen.addnstr(height - 2, 0, status_line(data, width).ljust(width, '─'), width - 1, style['head'])
             screen.addnstr(height - 1, 0, footer(data, everyone, only, width, engine, verbose, graphs), width - 1, curses.A_REVERSE)
         else:
             screen.addnstr(0, 0, 'Make the terminal at least 40x8.', max(1, width - 1))
         screen.refresh()
         key = screen.getch()
-        if key in (ord('q'), ord('Q')):
+        if key != -1:
+            notice = ''
+        if key in (ord('q'), ord('Q'), 27):  # Esc too: back to the control panel when embedded
             return
         if key == curses.KEY_UP:
             offset += 1
@@ -572,23 +965,56 @@ def run_screen(screen, run, every_seconds, name='Visitor'):
             guide = not guide
             offset = 10 ** 6 if guide else 0  # the feed follows its newest end; the guide opens at its top
         elif key == ord('c'):
-            whom = ask(screen, f' {name} calls (id, @handle or name; Enter to ring, empty to cancel): ').strip()
-            if whom:
-                from .visit import call
-                call(run, whom, name)
+            person = pick_person(screen, data or {'people': []}, 'Who do you call?')
+            if person:
+                perform(run, name, 'call', to=person['id'])
+                notice = f'calling {person["name"]}'
                 graphs, data, loaded = False, None, 0.0
-        elif key == ord('t'):
-            from .visit import LINE_HELP, talk_line
-            text = ask(screen, f' {name} (@name to start, /bye to end, h for help): ').strip()
-            if text:
-                guide = False
+        elif key == ord('f'):
+            hours = ask(screen, ' Skip how many hours? (everything in them still happens, just without waiting): ').strip()
+            if hours:
+                from .visit import skip
                 try:
-                    talk_line(run, text, name)
-                except ValueError:
-                    ask(screen, ' ' + LINE_HELP[:200] + ' (Enter)')
-                graphs, data, loaded = False, None, 0.0
+                    skip(run, hours, name)
+                    notice = f'skipping {hours} hours at the next event'
+                except ValueError as exc:
+                    notice = str(exc)[:200]
+                data, loaded = None, 0.0
+        elif key == ord('t'):
+            call_now = data.get('call') if data else None
+            try:
+                if call_now and call_now['active']:  # in a talk: just type the next line
+                    from .visit import call_say, typing
+                    typing(run)  # they wait for your line instead of taking you as silent
+                    text = ask(screen, f' {name} says (Enter to send, empty to cancel; Tab for options): ').strip()
+                    if text.startswith('/'):
+                        from .visit import talk_line
+                        notice = talk_line(run, text, name)  # power users: the typed commands still work
+                    elif text:
+                        call_say(run, text)
+                else:
+                    notice = interact(screen, run, data or {'people': []}, name)
+            except ValueError as exc:
+                notice = str(exc)[:200]
+            guide, graphs, surroundings, data, loaded = False, False, None, None, 0.0
+        elif key == 9:  # Tab: talk options during a talk, otherwise the next person
+            if data and data.get('call') and data['call']['active']:
+                try:
+                    notice = talk_options(screen, run, name)
+                except ValueError as exc:
+                    notice = str(exc)[:200]
+                data, loaded = None, 0.0
+            elif people:
+                ids = [p['id'] for p in people]
+                chosen = ids[(ids.index(chosen) + 1) % len(ids)] if chosen in ids else ids[0]
+        elif key == ord('p'):
+            panel = not panel
+        elif key == ord('m'):
+            surroundings = {None: 'map', 'map': 'web', 'web': None}[surroundings]
+            offset = 0
         elif data and ord('1') <= key <= ord('9') and key - ord('1') < len(data['people']):
             only, offset = data['people'][key - ord('1')]['id'], 0
+            chosen = only
         elif key == ord('0'):
             only, offset = None, 0
 
@@ -597,12 +1023,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('run', type=Path, help='Run directory containing world.json and requests.jsonl')
     parser.add_argument('--every', type=float, default=2.0, help='Seconds between refreshes')
-    parser.add_argument('--name', default='Visitor', help='Your name when you talk (key t)')
     args = parser.parse_args()
+    from .visit import your_name
     if not args.run.is_dir():
         parser.error('Give a run directory, such as runs/live/environment-live/run')
     import curses
-    curses.wrapper(run_screen, args.run, args.every, args.name)
+    curses.wrapper(run_screen, args.run, args.every, your_name())
 
 
 if __name__ == '__main__':

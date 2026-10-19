@@ -11,6 +11,8 @@
     "saved initial world runs under the compiled policy with a fresh controller",
     "a situation gated by requires_facts never occurs before an intervention sets the fact, and occurs after it",
     "option effects set facts that open later situations and give actor and contact a shared role",
+    "rooms with kinds and sites compile into a lived-in world; a person without a home, rooms only partly marked, or a group member with no route to the meeting site are rejected with the field to fix",
+    "compiled talks get the 40-turn safety cap whatever the draft says (they end on a silent round); interviews keep 2 per question",
     "authored places, routes, groups, channels, invitations and interviews compile and run; membership facts gate situations",
     "a setting review must cite real spec fields; it returns their values, is repaired or fails, and edits nothing",
     "out-of-vocabulary keys, facet codes and ranges, ids, caregivers, actors, contacts, rates, probabilities, intervention days/recipients, testimony sources, fact keys/values/reachability, effects, conversation participants and size limits are rejected with field names",

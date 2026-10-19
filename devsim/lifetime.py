@@ -14,6 +14,7 @@ import json
 from math import exp, log
 from pathlib import Path
 from random import Random
+import time
 
 from .engine import Engine, FACET_NAMES, number
 from . import development
@@ -23,8 +24,11 @@ from . import goal_plans
 from . import household
 from . import sleep
 class Lifetime:
-    def __init__(self, engine, policy, *, scripted=False, api='http://127.0.0.1:8081', model='local'):
+    def __init__(self, engine, policy, *, scripted=False, api='http://127.0.0.1:8081', model='local', pace=0):
         self.engine = engine
+        # Simulated seconds per real second: 1 is real time, 0 runs as fast as the model allows. Not part of the
+        # policy: pacing changes when events happen on the wall clock, never what happens in the world.
+        self.pace = number(pace, 0, 1e9, 'pace')
         self.policy = deepcopy(policy)
         self.policy['opportunities'].extend(deepcopy(engine.state.get('runtime', {}).get('dynamic_opportunities', [])))
         self.policy.setdefault('world_hazards',[]).extend(deepcopy(engine.state.get('runtime',{}).get('dynamic_hazards',[])))
@@ -111,6 +115,9 @@ class Lifetime:
                         number(contact_birth, -1e8, 1e8, 'contact birth day')
                     if option['contact'] == opportunity['actor']:
                         raise ValueError('Contact must be another actor')
+                if 'skill' in option:
+                    from . import skills
+                    skills.validate_option_skill(option['skill'])
                 if 'caregiving' in option:
                     if not isinstance(option['caregiving'], dict) or set(option['caregiving']) != {'responsiveness', 'acceptance'}:
                         raise ValueError('Caregiving option needs responsiveness and acceptance')
@@ -216,6 +223,28 @@ class Lifetime:
         if 'attention' in policy:
             from . import attention
             attention.configure(probe,policy['attention'])
+        if 'hormones' in policy:
+            from . import hormones
+            hormones.configure(probe, policy['hormones'])
+        if 'skills' in policy:
+            from . import skills
+            skills.configure(probe, policy['skills'])
+        if 'relationship_learning' in policy:
+            from . import society
+            society.configure_learning(probe, policy['relationship_learning'])
+        if 'living' in policy:
+            from . import living
+            if self.sampling != 'event_driven' or 'household' not in policy:
+                raise ValueError('The living world needs event-driven sampling and household rooms')
+            probe.state['config'].setdefault('household', policy['household'])
+            living.configure(probe, policy['living'])
+        if 'inner_thoughts' in policy:
+            thoughts = policy['inner_thoughts']
+            if not isinstance(thoughts, dict) or set(thoughts) != {'mean_minutes'}:
+                raise ValueError('inner_thoughts policy takes mean_minutes')
+            number(thoughts['mean_minutes'], 1, 1440, 'inner_thoughts mean_minutes')
+            if self.sampling != 'event_driven':
+                raise ValueError('Inner thoughts require event-driven sampling')
         if 'society_layer' in policy:
             from .population import settings as society_settings
             layer = policy['society_layer']
@@ -256,6 +285,15 @@ class Lifetime:
         if 'attention' in policy:
             from . import attention
             attention.configure(engine,policy['attention'])
+        if 'hormones' in policy:
+            from . import hormones
+            hormones.configure(engine,policy['hormones'])
+        if 'relationship_learning' in policy:
+            from . import society
+            society.configure_learning(engine,policy['relationship_learning'])
+        if 'skills' in policy:
+            from . import skills
+            skills.configure(engine,policy['skills'])
         if 'society_layer' in policy:
             from .population import bridge
             bridge.configure(engine, policy['society_layer'].get('overrides'))
@@ -270,6 +308,11 @@ class Lifetime:
             runtime.setdefault('next_world_events', {r['id']: r['day'] for r in world_rules if r['day'] >= engine.day})
             runtime.setdefault('background_counts', {})
             runtime.setdefault('next_background', {})
+            runtime.setdefault('next_thought', {})
+            if 'living' in policy:
+                from . import living
+                living.configure(engine, policy['living'])
+                living.start(self)
             runtime.setdefault('pending_activities', {})
             runtime.setdefault('hazard_counts',{r['id']:0 for r in hazards})
             runtime.setdefault('next_hazards',{r['id']:self._next_opportunity(
@@ -308,12 +351,73 @@ class Lifetime:
 
     def _ensure_background(self):
         runtime = self.engine.state['runtime']
+        self._ensure_thoughts()
         if not self.policy.get('cognition', {}).get('rumination_per_year', 0):
             return
         for owner, agent in self.engine.state['agents'].items():
             if owner not in runtime['next_background'] and agent['alive'] and agent['memory_meta']:
                 runtime['background_counts'][owner] = 0
                 runtime['next_background'][owner] = self.engine.day + self.rng('rumination', owner, 0).expovariate(self._rumination_rate(owner) / 365.25)
+
+    def _ensure_thoughts(self):
+        """Each living person thinks to themselves now and then (live runs only: a scripted run has no words)."""
+        if 'inner_thoughts' not in self.policy or (self.scripted and 'living' not in self.policy):
+            return
+        runtime = self.engine.state['runtime']
+        for owner, agent in self.engine.state['agents'].items():
+            if owner not in runtime['next_thought'] and agent['alive']:
+                runtime['next_thought'][owner] = self.engine.day + self._thought_gap(owner, 0)
+
+    def _thought_gap(self, owner, n):
+        return self.rng('thought', owner, n).expovariate(1 / self.policy['inner_thoughts']['mean_minutes']) / 1440
+
+    def _think(self, owner):
+        """A private thought while awake and out of conversation: an internal memory, never speech or a world fact."""
+        engine = self.engine
+        runtime = engine.state['runtime']
+        n = runtime.setdefault('thought_counts', {}).get(owner, 0)
+        runtime['thought_counts'][owner] = n + 1
+        if not engine.agent(owner)['alive']:
+            runtime['next_thought'][owner] = None
+            return
+        runtime['next_thought'][owner] = engine.day + self._thought_gap(owner, n + 1)
+        talking = any(s['status'] != 'closed' and owner in s['active'] for s in runtime.get('conversations', {}).values())
+        if talking or not household.available(engine, owner):
+            return
+        options = None
+        if 'living' in self.policy:
+            from . import living
+            options = living.menu(engine, owner)
+        if self.scripted:  # no words in a scripted run: the best-ranked option, as Sims autonomy would pick it
+            choice, about = options[0]['id'], None
+        else:
+            choice, about = cognition.think(engine, owner, f'@thought:{owner}:{n}', api=self.api, model=self.model, options=options)
+            self._after_received(owner, f'@thought:{owner}:{n}')
+        if options:
+            living.act(self, owner, choice, about, f'auto-{owner}-{n}')
+
+    def _wait_until(self, day):
+        """Real-time pacing: sleep until the wall clock reaches `day`. The anchor moves after every event, so time
+        spent waiting on the model never counts: a 12-second reply moves the world 12 seconds, however long it took
+        to write. False when a researcher line arrived first; the world is then advanced to now to receive it."""
+        skip = self.engine.state['runtime'].get('skip_until')
+        if skip is not None and day <= skip + 1e-12:  # the researcher fast-forwarded past this moment
+            return True
+        start, origin = self._anchor
+        while True:
+            now = origin + (time.monotonic() - start) * self.pace / 86400
+            if now >= day:
+                return True
+            inbox = getattr(self, 'inbox', None)
+            try:
+                waiting = inbox is not None and inbox.stat().st_size > self.engine.state['runtime'].get('inbox_offset', 0)
+            except OSError:
+                waiting = False
+            if waiting:
+                self.engine.advance(now)
+                self.engine.state['runtime']['current_day'] = self.engine.day
+                return False
+            time.sleep(min(1.0, (day - now) * 86400 / self.pace))
 
     def _rumination_rate(self, owner):
         """Background recalls per year; scaled by exp(k * neuroticism) when rumination_neuroticism = k is set."""
@@ -464,11 +568,14 @@ class Lifetime:
     def _run_events(self, until, checkpoint):
         engine = self.engine
         while True:
+            self._anchor = (time.monotonic(), engine.day)
             if getattr(self, 'inbox', None):
                 self._visitors(checkpoint)
             runtime = engine.state['runtime']
             queue = [(day, 'opportunity', key) for key, day in runtime['next_opportunities'].items() if day is not None and day <= until]
             queue += [(day, 'background', key) for key, day in runtime.get('next_background', {}).items() if day is not None and day <= until]
+            queue += [(day, 'thought', key) for key, day in runtime.get('next_thought', {}).items() if day is not None and day <= until]
+            queue += [(day, 'living', key) for key, day in runtime.get('living_due', {}).items() if day <= until]
             queue += [(day, 'world', key) for key, day in runtime.get('next_world_events', {}).items() if day is not None and day <= until]
             queue += [(activity['day'],'completion',key) for key,activity in runtime.get('pending_activities',{}).items() if activity['day']<=until]
             queue += [(day,'hazard',key) for key,day in runtime.get('next_hazards',{}).items() if day is not None and day<=until]
@@ -479,6 +586,8 @@ class Lifetime:
                       if i['next_day'] is not None and i['next_day']<=until]
             queue += [(s['next_day'],'conversation',key) for key,s in runtime.get('conversations',{}).items()
                       if s['next_day'] is not None and s['next_day']<=until]
+            if runtime.get('skip_until') is not None:
+                queue.append((min(runtime['skip_until'],until),'skip','end'))
             if runtime.get('next_society') is not None and runtime['next_society']<=until:
                 queue.append((runtime['next_society'],'society','layer'))
             if not queue:
@@ -486,7 +595,9 @@ class Lifetime:
             # Commit simultaneous world transitions before cognitive/choice events.
             day, kind, key = min(queue,key=lambda item:(item[0],
                 {'world':0,'hazard':0,'society':1,'move':1,'trip':1,'background':2,'completion':3,'group':3,'invite':3,'conversation':4,
-                 'opportunity':5}[item[1]],item[2],item[1]))
+                 'opportunity':5,'thought':6,'living':2,'skip':7}[item[1]],item[2],item[1]))
+            if self.pace and not self._wait_until(day):
+                continue
             backup = deepcopy(engine.state)
             try:
                 engine.advance(day)
@@ -555,6 +666,16 @@ class Lifetime:
             return
         if kind=='conversation':
             household.step(self,key)
+            return
+        if kind=='thought':
+            self._think(key)
+            return
+        if kind=='skip':  # fast-forward reached: real-time pacing resumes from here
+            runtime.pop('skip_until',None)
+            return
+        if kind=='living':
+            from . import living
+            living.step(self,key)
             return
         if kind=='trip':
             household.trip(self,key)
@@ -705,6 +826,12 @@ class Lifetime:
             return
         menu = [{'id': option['id'], 'label': option['label'],
                  **({k: option[k] for k in ('duration_hours','costs','goal_id') if k in option})} for option in options]
+        if 'skills' in engine.state['config']:  # how good they think they are at what an option asks (noisy, E22)
+            from . import skills
+            for item, option in zip(menu, options):
+                if 'skill' in option:
+                    seen = skills.perceived(engine, owner, option['skill']['key'], f'{opportunity["id"]}:{tick}:{option["id"]}')
+                    item['how_good_you_think_you_are_at_this'] = skills.tier_of(skills.cfg(engine), seen)
         key = f'life-{tick}-{opportunity["id"]}'
         self._before_decision(owner, opportunity['situation'])
         for target in dict.fromkeys([goal_id,*[o.get('goal_id',goal_id) for o in options]]):
@@ -809,13 +936,19 @@ class Lifetime:
         contact_proposal = {'decision':{'speech':activity['contact_speech']}} if activity['has_contact_action'] else None
         probability = min(1, selected['success_probability'] * (response.get('success_multiplier',1) if response else 1))
         success = self.rng('outcome', tick, opportunity['id']).random() < probability
+        skill_check = None
+        if 'skill' in selected and 'skills' in engine.state['config']:  # the person's own skill decides, not a fixed chance
+            from . import skills
+            skill_check, _ = skills.attempt(engine, owner, selected['skill'], key)
+            success = skill_check['passed']
         text = (response or selected)['success_text'] if success else (response or selected)['failure_text']
         if contact_proposal and contact_proposal['decision']['speech']:
             text += ' ' + engine.label(contact) + ' said: ' + contact_proposal['decision']['speech']
         observation = {'text': text, 'source': 'direct', 'kind': 'direct',
                        'valence': selected['valence_success'] if success else selected['valence_failure'],
                        'arousal': selected.get('arousal', 0.2), 'importance': selected.get('importance', 0.5),
-                       'meaning': text, 'confidence': 0.8}
+                       'meaning': text, 'confidence': 0.8,
+                       **({'outcome_target': 'skill:' + skill_check['skill']} if skill_check else {})}
         recipients = {owner: observation}
         if contact:
             observation['encountered'] = [contact]

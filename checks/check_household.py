@@ -6,6 +6,7 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import re
+from time import monotonic
 from devsim.engine import Engine,FACET_NAMES
 from devsim.lifetime import Lifetime
 from devsim import household, calendar_time, situation
@@ -58,7 +59,8 @@ def main():
         assert [t['speaker'] for t in turns]==['a','b'] and s['status']=='closed'
         assert all(a['status']=='resolved' for a in e.state['actions'])
         assert turns[1]['day']>turns[0]['day']>.75
-        assert all(abs(sum(e.agent(x)['time_use'].values())-4/60)<1e-8 for x in 'ab')
+        assert all(abs(sum(e.agent(x)['time_use'].values())-(4/60+6/2.5/3600))<1e-8 for x in 'ab')  # + saying a's 6 words
+        assert abs((turns[1]['day']-turns[0]['day'])*86400-(120+6/2.5))<1e-3  # b replies after a's line has been said
         checks+=['multiple independent private-context replies use previously received speech','elapsed response intervals resolve intended turns and account both participants']
         assert all(t['event'] in e.agent('c')['memory_meta'] for t in turns)
         assert all(t['event'] in e.agent('d')['memory_meta'] for t in turns)
@@ -174,7 +176,7 @@ def main():
         for p in 'ab': policy['household']['routines'][p]['in_person_response_minutes']=[.5,.5]
         Lifetime(quick,policy,scripted=True).run(.8)
         spoken=quick.state['runtime']['conversations']['family']['turns']
-        assert abs((spoken[1]['day']-spoken[0]['day'])*1440-.5)<1e-6
+        assert abs((spoken[1]['day']-spoken[0]['day'])*1440-(.5+8/2.5/60))<1e-6  # pause + saying the 8-word scripted line
         checks+=['face-to-face turns use in_person_response_minutes; response_minutes stays the written-channel delay']
         # A watching researcher joins a conversation through the run's inbox (devsim.visit / watcher key t).
         from devsim import visit
@@ -247,12 +249,14 @@ def main():
                             'speech':'Oh, hi.' if len(replies)==1 else 'I have to go.','goal_id':None,'plan':[],'memory_ids':[]}
                 return stub(system,context,api,model,max_tokens)
             return respond
-        def ring(answer=True,lines=('Hi, it is Kanishk.','How was school?'),until=.752,wait=300):
+        def ring(answer=True,lines=('Hi, it is Kanishk.','How was school?'),until=.752,wait=300,ring_seconds=None,hang=False):
             world,policy=fixture(turns=6);phone=root/f'phone-{len(list(root.glob("phone-*")))}';phone.mkdir()
             control=Lifetime(world,policy);control.inbox=phone/'inbox.jsonl';control.call_wait_seconds=wait
+            if ring_seconds is not None: control.ring_seconds=ring_seconds
             with patch('devsim.engine.request_json',side_effect=phone_stub(answer)):
                 control.run(until)
                 visit.call(phone,'a','Kanishk')
+                if hang: visit.hang_up(phone)
                 for line in lines: visit.call_say(phone,line)
                 control.run(until+.001,phone/'world.json')
             return world,[(r['event'],r.get('text') or r.get('reason')) for r in visit.call_log(phone)]
@@ -271,9 +275,31 @@ def main():
         night,missed=ring(until=1.95)
         assert missed[-1][0]=='missed' and any(o.text=='I missed a phone call from an unknown number.' for o in night.world.observations['a'])
         replies.clear();_,silent=ring(lines=(),wait=.3)
-        assert silent[-1]==('ended','caller went silent')
+        assert silent==[('ringing',None),('answered','Hello? Who is this?'),('said','Oh, hi.'),('ended','caller went silent')],silent
+        assert 'they have said nothing for a while' in replies[0] and 'an unknown number stayed quiet' in replies[0]
+        assert not any('Kanishk' in r for r in replies), 'an unknown caller was named in the person\'s own prompt'
+        # Typing holds off the silence check: a line that arrives after the silence limit is still heard first.
+        from threading import Timer
+        replies.clear();world,policy=fixture(turns=6);typed=root/'typed';typed.mkdir()
+        control=Lifetime(world,policy);control.inbox=typed/'inbox.jsonl';control.call_wait_seconds=.3
+        with patch('devsim.engine.request_json',side_effect=phone_stub(True)):
+            control.run(.752);visit.call(typed,'a','Kanishk');visit.typing(typed)
+            Timer(.8,lambda:(visit.call_say(typed,'Sorry, slow typist.'),visit.hang_up(typed))).start()
+            control.run(.753,typed/'world.json')
+        assert [r['event'] for r in visit.call_log(typed)]==['ringing','answered','said','ended'] and 'said nothing' not in replies[0]
+        # Ringing takes real time, and the caller can hang up while it rings.
+        started=monotonic();_,rang=ring(answer=False,lines=(),ring_seconds=.6)
+        assert rang==[('ringing',None),('not answered',None)] and monotonic()-started>=.6, rang
+        replies.clear();hung_world,hung=ring(lines=(),ring_seconds=30,hang=True)
+        assert hung==[('ringing',None),('ended','you hung up before it was answered')] and not replies, hung
+        assert hung_world.state['runtime']['calls'][-1]['outcome']=='caller hung up'
+        assert any(o.text=='I missed a phone call from an unknown number.' for o in hung_world.world.observations['a'])
+        started=monotonic();_,night_hung=ring(until=1.95,ring_seconds=30,hang=True)
+        assert night_hung[-1][0]=='missed' and night_hung[-1][1].startswith('you hung up') and monotonic()-started<10, night_hung
         checks+=['a researcher phone call rings the person, who decides to answer or let it ring; mid-conversation they step away and come '
-                 'back, the room hears only their side, an unknown caller stays unknown, asleep means a missed call, silence ends it']
+                 'back, the room hears only their side, an unknown caller stays unknown, asleep means a missed call, silence ends it; '
+                 'a paced call rings for real seconds and the caller can hang up while it rings; '
+                 'a silent caller is checked on once, then the call ends; typing holds that off']
         # A later note of another kind ends the open call and keeps its own meaning (it used to be swallowed by the call).
         queued=root/'queued';queued.mkdir()
         moved,qpolicy=fixture(turns=4)
@@ -323,6 +349,8 @@ def main():
         # The researcher's own character: typed, played by the model toward a goal, switched both ways, recalled.
         envoy=[]
         def character_stub(system,context,api,model,max_tokens=600):
+            if context.get('task')=='synthesize_character':
+                return {'facets':{'E1':80},'background':['I just moved here from Pune.']}
             situation=context.get('situation','')
             if 'new_observation' not in context and situation.startswith('You are Kabir'):
                 envoy.append(situation)
@@ -351,9 +379,27 @@ def main():
         theirs=[o.text for o in typed.world.observations['a'] if o.event_id.startswith('@call:')]
         assert theirs[0]=='Kabir (a new classmate) came over to talk with me, so I stepped aside from the conversation.'
         his=[o.text for o in typed.world.observations['kabir']]
-        assert his==['I went over to talk with A.','I said to A: Hey, are you in the robotics club?','A said to me: Maybe.',
+        assert his==['I just moved here from Pune.','I went over to talk with A.','I said to A: Hey, are you in the robotics club?','A said to me: Maybe.',
                      'I said goodbye to A and left.'],his
         assert typed.agent('a')['relationships']['kabir']['firsthand'] and typed.agent('kabir')['relationships']['a']['firsthand']
+        assert typed.agent('kabir')['facets']['E1']==80 and typed.agent('kabir')['memory_meta']['@introduce:kabir']['provenance']=='researcher_introduced'
+        # An introduced relationship: a fact for both, grounded in the meeting; one introduction memory, no invented past.
+        cousin,_,log=with_character(lambda d:(visit.send(d,'Ravi','a','Kanishk',"A's cousin from Delhi",19,relationship='cousin'),
+                                             visit.hang_up(d)))
+        intro=[k for k,m in cousin.agent('a')['memory_meta'].items() if m.get('provenance')=='researcher_introduced']
+        assert len(intro)==1 and "Ravi (A's cousin from Delhi; my cousin) came over" in next(o.text for o in cousin.world.observations['a'] if o.event_id==intro[0])
+        assert {k:cousin.agent('a')['relationships']['ravi'][k] for k in ('role','trust','closeness','firsthand')}=={'role':'relative','trust':.65,'closeness':.5,'firsthand':True}
+        assert cousin.agent('ravi')['relationships']['a']['role']=='relative'
+        bad=[]
+        reject(lambda:visit.send(root,'Ravi','a','Kanishk','x',19,relationship='r'*61))
+        quiet,qpolicy=fixture(turns=6);door=root/'send-scripted';door.mkdir()
+        qcontrol=Lifetime(quiet,qpolicy,scripted=True);qcontrol.inbox=door/'inbox.jsonl';qcontrol.run(.752)
+        visit.send(door,'Mo','a','Kanishk','a neighbour',40,relationship='neighbour');visit.hang_up(door)
+        with patch('devsim.engine.request_json',side_effect=lambda *a,**k:bad.append(1)):
+            qcontrol.run(.753)
+        assert not bad and 'mo' in quiet.state['agents'] and quiet.agent('a')['relationships']['mo']['role']=='neighbour'
+        checks+=['an introduced character gets facets and a private background synthesized from the description (no call in scripted runs); '
+                 'its stated relationship becomes a fact for both at the first meeting, with one researcher-introduced introduction memory']
         envoy.clear()
         sent,_,log=with_character(lambda d:visit.send(d,'Kabir','a','Kanishk','a new classmate',15,goal='make friends with A'))
         assert [e[0] for e in log]==['approaching','joined','said','said','ended'] and log[2][1:]==('Kabir','Want to sit with us at lunch?')
@@ -406,9 +452,12 @@ def main():
         assert len(broken.state['actions'])==2
         checks+=['failed bystander appraisal rolls back turn, action, calendars and all recipients; retry commits once']
         asleep,policy=fixture();policy['household']['routines']['b']['available_hours']=[[7,17]]
+        reject(lambda:Lifetime(asleep,policy,scripted=True))
+        asleep,policy=fixture();policy['household']['routines']['c']['available_hours']=[[7,17]]
+        policy['household']['conversations'][0]['participants']=['a','b','c']
         Lifetime(asleep,policy,scripted=True).run(.8)
-        assert not asleep.state['actions']
-        checks+=['unavailable invited participant cannot be forced into a conversation']
+        assert asleep.state['actions'] and not any(a['owner']=='c' for a in asleep.state['actions'])
+        checks+=['a conversation set when fewer than two participants are awake is rejected; an asleep invitee is not forced in']
         bounded,policy=fixture();policy['household']['routines']['a']['available_hours']=[[18,18.01]]
         Lifetime(bounded,policy,scripted=True).run(.8)
         assert not bounded.state['actions']
@@ -480,6 +529,147 @@ def main():
         assert contact.state['actions'][0]['status']=='cancelled'
         assert not contact.state['runtime']['pending_activities']
         checks+=['physical contact activity cannot resolve after a participant leaves its room']
+        # A talk ends on its own after a silent round; a participant elsewhere comes to the room and goes back after.
+        quiet,policy=fixture(turns=40)
+        policy['household']['locations']['b']='hall'
+        def hush(system,context,api,model,max_tokens=600):
+            if 'new_observation' in context:
+                return {'meaning':'Heard it.','valence':0,'arousal':.1,'importance':.5,'confidence':.6}
+            talk=len(quiet.state['actions'])<2
+            return {'action_id':'speak' if talk else 'listen','action':'Talk.','speech':'Hello there.' if talk else '',
+                    'goal_id':None,'plan':[],'memory_ids':[]}
+        with patch('devsim.engine.request_json',side_effect=hush): Lifetime(quiet,policy).run(.8)
+        session=quiet.state['runtime']['conversations']['family']
+        assert [t['choice'] for t in session['turns']]==['speak','speak','listen','listen']
+        assert session['closed_reason']=='everyone fell silent' and session['spec']['origins']=={'b':'hall'}
+        assert '@travel:family-b:arrive' not in quiet.agent('b')['memory_meta'] and household.location(quiet,'b')=='hall'
+        checks+=['a conversation ends when a full round passes in silence; an invited participant elsewhere comes to the room and goes back']
+        # Real-time pacing: the run waits on the wall clock, and pacing never changes what happens.
+        import time
+        fast,policy=fixture();Lifetime(fast,policy,scripted=True).run(.8)
+        paced,policy=fixture();pace=.76*86400/1.5;start=monotonic()
+        Lifetime(paced,policy,scripted=True,pace=pace).run(.8)
+        took=monotonic()-start
+        assert 1.4<took<6 and paced.state==fast.state,took
+        reject(lambda:Lifetime(fixture()[0],policy,pace=-1))
+        checks+=[f'real-time pacing waits on the wall clock ({took:.1f} s for 0.76 simulated days at {pace:.0f}x) and ends in the same world as an unpaced run']
+        # Fast-forward: a researcher skip drops the waiting for those hours; every event still happens, the world is the same.
+        hop=root/'skip';hop.mkdir()
+        skipped,policy=fixture();control=Lifetime(skipped,policy,scripted=True,pace=pace);control.inbox=hop/'inbox.jsonl'
+        visit.skip(hop,18,'Kanishk');start=monotonic();control.run(.8);took_skip=monotonic()-start
+        same=lambda s:{**s,'runtime':{k:v for k,v in s['runtime'].items() if k not in ('skips','inbox_offset')}}
+        assert took_skip<.8 and same(skipped.state)==same(fast.state),took_skip
+        assert skipped.state['runtime']['skips'][0]['to_day']>.7 and 'skip_until' not in skipped.state['runtime']
+        reject(lambda:visit.skip(hop,0));reject(lambda:visit.skip(hop,'two'));reject(lambda:visit.skip(hop,1000))
+        checks+=[f'a researcher skip of 18 hours plays them without waiting ({took_skip:.2f} s instead of ~1.5 s) and ends in the same world']
+        # Inner thoughts: private internal memories, only while awake and out of conversation.
+        minds,policy=fixture();policy['inner_thoughts']={'mean_minutes':60}
+        reasks=[]
+        def thinking(system,context,api,model,max_tokens=600):
+            if context.get('task')=='inner_thought':
+                # Copies its last thought (test-2 run) unless shown the repeat notice.
+                if 'repeat_notice' in context:
+                    assert context['repeat_notice']['your_earlier_words'] in context['repeat_notice']['your_recent_thoughts']
+                    reasks.append(context['repeat_notice']['your_earlier_words'])
+                    return {'thought':f'Something else crosses my mind, number {len(reasks)}.','valence':.1,'arousal':.2,'importance':.3}
+                return {'thought':'I wonder what '+context['identity']['id']+' should do next.','valence':.1,'arousal':.2,'importance':.3}
+            return stub(system,context,api,model,max_tokens)
+        with patch('devsim.engine.request_json',side_effect=thinking): Lifetime(minds,policy).run(.8)
+        thoughts=[ev for ev in minds.state['events'] if ev['id'].startswith('@thought:')]
+        said={}
+        for ev in thoughts: said.setdefault(ev['id'].split(':')[1],[]).append(next(iter(ev['observations'].values()))['text'])
+        assert reasks and all(all(x!=y for x,y in zip(t,t[1:])) for t in said.values()),said
+        talk=minds.state['runtime']['conversations']['family']
+        during=lambda d,p:p in talk['spec']['participants'] and talk['turns'][0]['day']-1e-9<=d<=talk['turns'][-1]['day']
+        assert len({ev['id'].split(':')[1] for ev in thoughts})==5 and len(thoughts)>=20
+        assert all(list(ev['observations'])==[ev['id'].split(':')[1]] and ev['observations'][ev['id'].split(':')[1]]['kind']=='internal'
+                   and 7<=ev['day']%1*24<22 and not during(ev['day'],ev['id'].split(':')[1]) for ev in thoughts)
+        assert all(ev['id'] not in minds.agent(p)['memory_meta'] for ev in thoughts for p in 'abcde' if p!=ev['id'].split(':')[1])
+        reject(lambda:Lifetime(fixture()[0],{**policy,'inner_thoughts':{'mean_minutes':0}}))
+        checks+=[f'inner thoughts ({len(thoughts)} in a day for 5 people) are private internal memories, only while awake and not in a conversation; a thought that copies a recent one is re-asked once with the earlier words shown']
+    # Researcher edits and notifications through the inbox: applied at the next boundary, atomic, logged.
+    with TemporaryDirectory() as box:
+        door=Path(box)
+        live,lpolicy=fixture()
+        lpolicy={**lpolicy,'hormones':{},'skills':{}}
+        control=Lifetime(live,lpolicy,scripted=True);control.inbox=door/'inbox.jsonl'
+        control.run(.3)
+        live.relate('a','b','classmate',trust=.5,closeness=.2)
+        visit.edit(door,'a',{'facet:N1':90,'dial:threat_sensitivity':.7,'hormone:stress':.8,'mood':-.5,
+                             'goal:add':{'id':'calm','description':'Find a calmer routine.','priority':.6},'tie:b:trust':.9,
+                             'skill:violin':.4},'Kanishk')
+        visit.edit(door,'a',{'facet:N1':95,'facet:XX':10},'Kanishk')  # one bad field: nothing applies
+        visit.edit(door,'nobody',{'mood':.2},'Kanishk')
+        visit.notify(door,'a','Your library book is due tomorrow.','Kanishk')
+        control.run(.31)
+        a=live.agent('a')
+        from devsim import hormones as _h
+        assert a['facets']['N1']==90 and a['dials']['threat_sensitivity']==.7 and .7<_h.read(live,'a').stress<=.8  # set to .8, then decaying
+        assert a['goals']['calm']['status']=='active' and a['relationships']['b']['trust']==.9 and live.mood('a')['valence']<0
+        log=live.state['runtime']['researcher_edits']
+        from devsim import skills as _s
+        assert abs(_s.level(live,'a','violin',.3)-.4)<1e-9 and _s.level(live,'a','violin',.31)<.4
+        assert len([e for e in log if 'field' in e])==7 and len([e for e in log if 'rejected' in e])==2
+        heard=[o.text for o in live.world.observations['a'] if o.event_id.startswith('@notify:')]
+        assert heard==['A notification on my phone: Your library book is due tomorrow.']
+        assert live.agent('a')['memory_meta'][next(o.event_id for o in live.world.observations['a'] if o.event_id.startswith('@notify:'))]['provenance']=='researcher_notification'
+        live.agent('c')['alive']=False
+        reject(lambda:visit.apply_edit(live,{'to':'c','changes':{'mood':.1}}))
+    checks+=['researcher edits (facets, dials, hormones, mood, goals, ties) apply at the next event boundary all-or-nothing and are '
+             'logged as interventions; bad fields, unknown or dead people are rejected and logged; a notification reaches the person once']
+    # Silence habituates: the same "I listened quietly." is appraised once, then reused with fading weight.
+    shy,spolicy=fixture(turns=12)
+    silent=[]
+    def shy_stub(system,context,api,model,max_tokens=600):
+        if 'new_observation' in context:
+            if context['new_observation']['text']=='I listened quietly.': silent.append(context['identity']['id'])
+            return {'meaning':'Noted.','valence':-.6,'arousal':.3,'importance':.4,'confidence':.7}
+        owner=context['identity']['id']
+        return {'action_id':'speak' if owner=='b' else 'listen','action':'Talk.','speech':'Go on.' if owner=='b' else '',
+                'goal_id':None,'plan':[],'memory_ids':[]}
+    with patch('devsim.engine.request_json',side_effect=shy_stub): Lifetime(shy,spolicy).run(.8)
+    quiet_turns=[t for t in shy.state['runtime']['conversations']['family']['turns'] if t['speaker']=='a']
+    reused=[m for k,m in shy.agent('a')['memory_meta'].items() if k.startswith('@conversation:') and 'reused_appraisal' in m]
+    assert len(quiet_turns)>=5 and silent.count('a')==1 and len(reused)==len(quiet_turns)-1
+    checks+=[f'a person silent for {len(quiet_turns)} turns appraises their own silence once; repeats reuse it with fading weight']
+    # The family cue only among family (v5 run: school talk was cued 'family' and drifted to "family stuff").
+    from devsim.engine import Engine as _Engine
+    seen=[]
+    real=_Engine.context
+    def spy(self,owner,situation,cues=(),options=None):
+        if options: seen.append((owner,tuple(cues)))
+        return real(self,owner,situation,cues,options)
+    with patch.object(_Engine,'context',spy):
+        peers,ppolicy=fixture(); Lifetime(peers,ppolicy,scripted=True).run(.8)
+        peer_cues={c for o,c in seen}; seen.clear()
+        kin,kpolicy=fixture(); kin.caregiver('b','a'); Lifetime(kin,kpolicy,scripted=True).run(.8)
+        kin_cues={c for o,c in seen}
+    assert peer_cues=={('social',)} and kin_cues=={('social','family')},(peer_cues,kin_cues)
+    checks+=["conversation decisions carry the 'family' cue only when the speaker is talking with their own family"]
+    # Relationships learn from interactions (v5 run: every tie stayed at its starting value for 62 days).
+    from devsim import society, attention
+    def ties(valences,reflection=False,tier=None,learning=True):
+        w,_=fixture()
+        if learning: society.configure_learning(w,{})
+        if reflection: w.state['config']['cognition']={'reflection':True}
+        w.relate('a','b','classmate',trust=.5,closeness=.2)
+        for i,v in enumerate(valences):
+            obs={'text':'B said something.','source':'b','kind':'direct','valence':v,'encountered':['b']}
+            if tier:
+                attention.configure(w)
+                with patch('devsim.attention.allocate',return_value=attention.AttentionResult(.1,tier)):
+                    w.schedule(f'x{i}',.5+i/1000,'A test.',{'a':obs}); w.advance(.5+i/1000)
+            else:
+                w.schedule(f'x{i}',.5+i/1000,'A test.',{'a':obs}); w.advance(.5+i/1000)
+        r=w.agent('a')['relationships']['b']
+        return r['closeness'],r['trust']
+    warm,cold,flat=ties([.6]*10),ties([-.6]*10),ties([0]*10)
+    assert warm[0]>flat[0]>.2>cold[0] and warm[1]>.5>cold[1] and flat[1]==.5
+    assert ties([.6]*10,learning=False)==(.2,.5) and ties([.6]*10,reflection=True)==(.2,.5) and ties([.6]*10,tier='NONE')==(.2,.5)
+    assert .2<ties([.6]*10,tier='GIST')[0]<warm[0] and all(0<=x<=1 for x in (*ties([1]*500),*ties([-1]*500)))
+    checks+=[f'relationships learn from interactions: ten pleasant exchanges raise closeness to {warm[0]:.2f} and trust to {warm[1]:.2f}, '
+             f'unpleasant ones lower them ({cold[0]:.2f}, {cold[1]:.2f}), neutral contact adds only familiarity; GIST counts half, '
+             'an unattended event nothing, and reflection (when on) owns the change instead']
     result={'passed':True,'scope':'synthetic household engineering checks, not psychological validation','checks':checks}
     RESULTS_DIR.joinpath('household-engineering-checks.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2))

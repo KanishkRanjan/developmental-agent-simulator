@@ -1,0 +1,677 @@
+{
+  "description": "Living-world defaults (game-like, no model): needs, the furniture catalog by room kind, happenings, weather and creatures. Every number is a provisional design default [D], not a measurement.",
+  "needs": {
+    "hunger": {
+      "awake_per_hour": 0.06,
+      "asleep_per_hour": 0.02,
+      "start": 0.7
+    },
+    "energy": {
+      "awake_per_hour": 0.05,
+      "asleep_per_hour": -0.12,
+      "start": 0.8
+    },
+    "social": {
+      "awake_per_hour": 0.04,
+      "asleep_per_hour": 0.0,
+      "start": 0.6
+    },
+    "fun": {
+      "awake_per_hour": 0.05,
+      "asleep_per_hour": 0.0,
+      "start": 0.6
+    },
+    "hygiene": {
+      "awake_per_hour": 0.03,
+      "asleep_per_hour": 0.01,
+      "start": 0.8
+    }
+  },
+  "social_per_turn": 0.03,
+  "menu_size": 6,
+  "stay_score": 0.2,
+  "travel_penalty_per_minute": 0.01,
+  "same_room_talk_bonus": 0.1,
+  "whereabouts_hours": 6,
+  "bedtime_minutes_before": 10,
+  "catalog": {
+    "bedroom": {
+      "bed": {
+        "label": "the bed",
+        "capacity": 2,
+        "powered": false,
+        "activities": {
+          "nap": {
+            "label": "take a nap",
+            "verb": "napping",
+            "minutes": 30,
+            "needs": {
+              "energy": 0.2
+            }
+          },
+          "lie_down": {
+            "label": "lie on the bed and scroll on the phone",
+            "verb": "scrolling on the phone",
+            "minutes": 30,
+            "needs": {
+              "fun": 0.2,
+              "energy": 0.05
+            }
+          }
+        }
+      },
+      "desk": {
+        "label": "the desk",
+        "capacity": 1,
+        "powered": true,
+        "activities": {
+          "study": {
+            "label": "do homework at the desk",
+            "verb": "doing homework",
+            "minutes": 60,
+            "needs": {
+              "fun": -0.1,
+              "energy": -0.05
+            },
+            "skill": {
+              "cognitive": 0.9,
+              "open_loop": 0.3,
+              "accuracy_graded": 0.9,
+              "feedback_clarity": 0.5
+            }
+          },
+          "music": {
+            "label": "listen to music",
+            "verb": "listening to music",
+            "minutes": 30,
+            "needs": {
+              "fun": 0.3
+            }
+          }
+        }
+      }
+    },
+    "kitchen": {
+      "stove": {
+        "label": "the stove",
+        "capacity": 2,
+        "powered": true,
+        "activities": {
+          "cook": {
+            "label": "cook a meal and eat",
+            "verb": "cooking",
+            "minutes": 45,
+            "needs": {
+              "hunger": 0.7,
+              "fun": 0.05
+            },
+            "skill": {
+              "cognitive": 0.4,
+              "open_loop": 0.6,
+              "accuracy_graded": 0.6,
+              "feedback_clarity": 0.7
+            }
+          }
+        }
+      },
+      "fridge": {
+        "label": "the fridge",
+        "capacity": 3,
+        "powered": true,
+        "activities": {
+          "snack": {
+            "label": "grab a snack",
+            "verb": "having a snack",
+            "minutes": 5,
+            "needs": {
+              "hunger": 0.2
+            }
+          }
+        }
+      },
+      "table": {
+        "label": "the kitchen table",
+        "capacity": 4,
+        "powered": false,
+        "activities": {
+          "tea": {
+            "label": "make tea and sit at the table",
+            "verb": "having tea",
+            "minutes": 20,
+            "needs": {
+              "fun": 0.1,
+              "energy": 0.05
+            }
+          }
+        }
+      }
+    },
+    "living_room": {
+      "tv": {
+        "label": "the TV",
+        "capacity": 4,
+        "powered": true,
+        "activities": {
+          "watch": {
+            "label": "watch TV",
+            "verb": "watching TV",
+            "minutes": 60,
+            "needs": {
+              "fun": 0.4,
+              "energy": 0.05
+            }
+          }
+        }
+      },
+      "sofa": {
+        "label": "the sofa",
+        "capacity": 3,
+        "powered": false,
+        "activities": {
+          "rest": {
+            "label": "rest on the sofa",
+            "verb": "resting on the sofa",
+            "minutes": 30,
+            "needs": {
+              "energy": 0.15
+            }
+          },
+          "read": {
+            "label": "read on the sofa",
+            "verb": "reading",
+            "minutes": 45,
+            "needs": {
+              "fun": 0.25
+            }
+          }
+        }
+      }
+    },
+    "bathroom": {
+      "shower": {
+        "label": "the shower",
+        "capacity": 1,
+        "powered": false,
+        "activities": {
+          "shower": {
+            "label": "take a shower",
+            "verb": "showering",
+            "minutes": 15,
+            "needs": {
+              "hygiene": 0.8,
+              "energy": 0.05
+            }
+          }
+        }
+      }
+    },
+    "cafeteria": {
+      "counter": {
+        "label": "the lunch counter",
+        "capacity": 30,
+        "powered": false,
+        "activities": {
+          "lunch": {
+            "label": "get lunch and eat",
+            "verb": "eating lunch",
+            "minutes": 25,
+            "needs": {
+              "hunger": 0.6
+            }
+          }
+        }
+      }
+    },
+    "classroom": {
+      "desk": {
+        "label": "a classroom desk",
+        "capacity": 30,
+        "powered": false,
+        "activities": {
+          "revise": {
+            "label": "go over today's notes",
+            "verb": "going over notes",
+            "minutes": 30,
+            "needs": {
+              "fun": -0.05
+            },
+            "skill": {
+              "cognitive": 0.9,
+              "open_loop": 0.3,
+              "accuracy_graded": 0.9,
+              "feedback_clarity": 0.5
+            }
+          }
+        }
+      }
+    },
+    "lab": {
+      "workbench": {
+        "label": "the workbench",
+        "capacity": 4,
+        "powered": true,
+        "activities": {
+          "tinker": {
+            "label": "work on the robot at the workbench",
+            "verb": "working on the robot",
+            "minutes": 45,
+            "needs": {
+              "fun": 0.3,
+              "energy": -0.05
+            },
+            "skill": {
+              "cognitive": 0.7,
+              "open_loop": 0.6,
+              "accuracy_graded": 0.8,
+              "feedback_clarity": 0.8
+            }
+          }
+        }
+      }
+    },
+    "office": {
+      "computer": {
+        "label": "the computer",
+        "capacity": 1,
+        "powered": true,
+        "activities": {
+          "paperwork": {
+            "label": "catch up on paperwork",
+            "verb": "doing paperwork",
+            "minutes": 45,
+            "needs": {
+              "fun": -0.1
+            },
+            "skill": {
+              "cognitive": 0.8,
+              "open_loop": 0.2,
+              "accuracy_graded": 0.9,
+              "feedback_clarity": 0.6
+            }
+          }
+        }
+      },
+      "kettle": {
+        "label": "the office kettle",
+        "capacity": 3,
+        "powered": true,
+        "activities": {
+          "coffee": {
+            "label": "make a coffee",
+            "verb": "making coffee",
+            "minutes": 10,
+            "needs": {
+              "energy": 0.1,
+              "hunger": 0.05
+            }
+          }
+        }
+      }
+    },
+    "ward": {
+      "station": {
+        "label": "the nurses' station",
+        "capacity": 4,
+        "powered": true,
+        "activities": {
+          "break": {
+            "label": "take a short break at the station",
+            "verb": "on a break",
+            "minutes": 15,
+            "needs": {
+              "energy": 0.1,
+              "hunger": 0.1
+            }
+          }
+        }
+      }
+    },
+    "outdoors": {
+      "bench": {
+        "label": "a bench",
+        "capacity": 3,
+        "powered": false,
+        "activities": {
+          "sit": {
+            "label": "sit on the bench outside",
+            "verb": "sitting outside",
+            "minutes": 20,
+            "needs": {
+              "fun": 0.15,
+              "energy": 0.05
+            }
+          }
+        }
+      }
+    },
+    "other": {}
+  },
+  "windows": [
+    "bedroom",
+    "living_room",
+    "kitchen",
+    "classroom",
+    "cafeteria",
+    "office",
+    "ward",
+    "outdoors"
+  ],
+  "happenings": {
+    "kitchen": [
+      {
+        "id": "kettle",
+        "kind": "atmosphere",
+        "text": "The kettle whistled in the kitchen.",
+        "hours": [
+          6,
+          22
+        ],
+        "rate_per_day": 2,
+        "audible": true
+      },
+      {
+        "id": "slip",
+        "kind": "incident",
+        "text": "{name} slipped on the wet kitchen floor and hurt a wrist.",
+        "self_text": "I slipped on the wet kitchen floor and hurt my wrist.",
+        "hours": [
+          6,
+          23
+        ],
+        "rate_per_day": 0.02,
+        "audible": true,
+        "effects": {
+          "target_needs": {
+            "energy": -0.2,
+            "fun": -0.2
+          }
+        }
+      }
+    ],
+    "living_room": [
+      {
+        "id": "tv_noise",
+        "kind": "atmosphere",
+        "text": "The TV murmured in the living room.",
+        "hours": [
+          17,
+          23
+        ],
+        "rate_per_day": 2,
+        "audible": true
+      },
+      {
+        "id": "power_cut",
+        "kind": "incident",
+        "text": "The power went out; the lights and appliances died.",
+        "hours": [
+          0,
+          24
+        ],
+        "rate_per_day": 0.03,
+        "audible": true,
+        "effects": {
+          "disable_powered": "site",
+          "minutes": 120,
+          "restore_text": "The power came back on."
+        }
+      },
+      {
+        "id": "delivery",
+        "kind": "offstage",
+        "text": "Someone knocked at the front door: a parcel delivery.",
+        "hours": [
+          9,
+          20
+        ],
+        "rate_per_day": 0.3,
+        "audible": true
+      },
+      {
+        "id": "relative_call",
+        "kind": "offstage",
+        "text": "The home phone rang: a relative calling to ask how everyone is.",
+        "hours": [
+          10,
+          21
+        ],
+        "rate_per_day": 0.15,
+        "audible": true
+      },
+      {
+        "id": "news",
+        "kind": "news",
+        "text": "The TV news ran a story about {topic}.",
+        "hours": [
+          18,
+          22
+        ],
+        "rate_per_day": 1,
+        "audible": false
+      }
+    ],
+    "bedroom": [
+      {
+        "id": "dog_bark",
+        "kind": "atmosphere",
+        "text": "A neighbour's dog barked outside the window.",
+        "hours": [
+          7,
+          22
+        ],
+        "rate_per_day": 1,
+        "audible": false
+      }
+    ],
+    "bathroom": [
+      {
+        "id": "pipes",
+        "kind": "atmosphere",
+        "text": "The pipes knocked and gurgled in the bathroom.",
+        "hours": [
+          6,
+          23
+        ],
+        "rate_per_day": 0.5,
+        "audible": true
+      }
+    ],
+    "cafeteria": [
+      {
+        "id": "loud_table",
+        "kind": "atmosphere",
+        "text": "The cafeteria got loud as a table nearby burst out laughing.",
+        "hours": [
+          11,
+          14
+        ],
+        "rate_per_day": 3,
+        "audible": false
+      },
+      {
+        "id": "tray_crash",
+        "kind": "incident",
+        "text": "Someone dropped a full tray with a crash and the whole cafeteria turned to look.",
+        "hours": [
+          11.5,
+          13.5
+        ],
+        "rate_per_day": 0.3,
+        "audible": true
+      }
+    ],
+    "classroom": [
+      {
+        "id": "fire_drill",
+        "kind": "incident",
+        "text": "The fire alarm went off for a drill; everyone had to file outside.",
+        "hours": [
+          9,
+          15
+        ],
+        "rate_per_day": 0.03,
+        "audible": true,
+        "effects": {
+          "close_conversations": "site"
+        }
+      }
+    ],
+    "lab": [
+      {
+        "id": "sensor_pop",
+        "kind": "incident",
+        "text": "A sensor on the robot short-circuited with a pop and a smell of burnt plastic.",
+        "hours": [
+          15,
+          18
+        ],
+        "rate_per_day": 0.2,
+        "audible": true,
+        "effects": {
+          "disable_powered": "room",
+          "minutes": 60,
+          "restore_text": "The workbench was working again."
+        }
+      }
+    ],
+    "office": [
+      {
+        "id": "printer_jam",
+        "kind": "atmosphere",
+        "text": "The printer jammed again with a grinding noise.",
+        "hours": [
+          9,
+          17
+        ],
+        "rate_per_day": 1,
+        "audible": true
+      }
+    ],
+    "ward": [
+      {
+        "id": "call_bell",
+        "kind": "atmosphere",
+        "text": "A patient's call bell rang down the corridor.",
+        "hours": [
+          0,
+          24
+        ],
+        "rate_per_day": 6,
+        "audible": true
+      },
+      {
+        "id": "busy_shift",
+        "kind": "incident",
+        "text": "Two new admissions arrived at once and the ward got hectic.",
+        "hours": [
+          14,
+          23
+        ],
+        "rate_per_day": 0.3,
+        "audible": true
+      }
+    ],
+    "outdoors": [
+      {
+        "id": "bus_late",
+        "kind": "incident",
+        "text": "The bus was running late; the stop was crowded.",
+        "hours": [
+          7,
+          19
+        ],
+        "rate_per_day": 0.2,
+        "audible": false,
+        "effects": {
+          "route_delay_minutes": 15,
+          "minutes": 90
+        }
+      }
+    ]
+  },
+  "news_topics": [
+    "a heatwave expected this week",
+    "a local school winning a science prize",
+    "rising food prices",
+    "a new park opening downtown",
+    "a traffic accident on the highway",
+    "a city council election",
+    "a football team's surprise win"
+  ],
+  "weather": {
+    "start": "clear",
+    "mean_hours": 5,
+    "transitions": {
+      "clear": {
+        "cloudy": 0.7,
+        "rain": 0.3
+      },
+      "cloudy": {
+        "clear": 0.5,
+        "rain": 0.5
+      },
+      "rain": {
+        "cloudy": 0.6,
+        "clear": 0.4
+      }
+    },
+    "texts": {
+      "clear": "The sky cleared and the sun came out.",
+      "cloudy": "Grey clouds rolled in.",
+      "rain": "It started raining."
+    },
+    "rain_travel_factor": 1.2
+  },
+  "creature_kinds": {
+    "cat": {
+      "active_hours": [
+        [
+          6,
+          23
+        ]
+      ],
+      "mean_minutes": 45,
+      "stay_chance": 0.4,
+      "behaviours": [
+        "curled up asleep",
+        "batting a toy around",
+        "washing its paws",
+        "staring out of the window",
+        "rubbing against people's legs"
+      ],
+      "play": {
+        "label": "play with",
+        "minutes": 15,
+        "needs": {
+          "fun": 0.2,
+          "social": 0.1
+        }
+      }
+    },
+    "dog": {
+      "active_hours": [
+        [
+          6,
+          22
+        ]
+      ],
+      "mean_minutes": 40,
+      "stay_chance": 0.4,
+      "behaviours": [
+        "chewing a toy",
+        "napping by the door",
+        "wagging and begging for food",
+        "sniffing around"
+      ],
+      "play": {
+        "label": "play with",
+        "minutes": 20,
+        "needs": {
+          "fun": 0.25,
+          "social": 0.1,
+          "energy": -0.05
+        }
+      }
+    }
+  }
+}

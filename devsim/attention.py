@@ -162,7 +162,8 @@ def event_view(engine, owner, event, obs):
 
 
 # Providers: callables (engine, ...) that return 0-1. Override any of them with engine.attention_providers[name];
-# the defaults are safe until the relationship, surprise, fatigue and goal modules supply real signals.
+# the defaults are safe until the relationship, surprise and goal modules supply real signals. Fatigue comes from the
+# living world's energy need when that is on, else 0.
 
 def family(engine, i, j):
     """True when one is the other's caregiver or biological parent (committed identity facts)."""
@@ -186,9 +187,27 @@ def default_closeness(engine, i, j):
     return cfg['closeness_known'] if record is not None or j in agent['references'] else cfg['closeness_stranger']
 
 
+def state_fatigue(engine, i, now):
+    """Fatigue from hormone sleep pressure, else the living world's energy need; 0 when both are off."""
+    if 'hormones' in engine.state['config']:
+        from .hormones import fatigue
+        return fatigue(engine, i, now)
+    from .living import fatigue
+    return fatigue(engine, i, now)
+
+
+def state_capacity(engine, i, now):
+    """Capacity multiplier from hormone arousal (off by default); 1 without the hormone module."""
+    if 'hormones' not in engine.state['config']:
+        return 1.0
+    from .hormones import capacity_factor
+    return capacity_factor(engine, i, now)
+
+
 PROVIDERS = {'closeness': default_closeness,
              'surprise': lambda engine, i, view: 0.0,
-             'fatigue': lambda engine, i, now: 0.0,
+             'fatigue': state_fatigue,
+             'capacity_factor': state_capacity,
              'asleep': lambda engine, i, now: False,
              'goal_match': lambda engine, i, view: 0.0}
 
@@ -337,7 +356,7 @@ def allocate(engine, owner, event, obs):
     arousal = engine.mood(owner, now)['arousal']
     fatigue = provider(engine, 'fatigue')(engine, owner, now)
     asleep = provider(engine, 'asleep')(engine, owner, now)
-    K = capacity(cfg, arousal, fatigue, len(others), dys, asleep and B < cfg['B_wake'])
+    K = capacity(cfg, arousal, fatigue, len(others), dys, asleep and B < cfg['B_wake']) * provider(engine, 'capacity_factor')(engine, owner, now)
     s = share(cfg, u, others, dys)
     a_raw = K * s
     q = unit(engine.state.get('seed'), owner, view.event_id, 'attention_noise')
@@ -353,7 +372,10 @@ def allocate(engine, owner, event, obs):
     if captured:
         a = max(a, cfg['a_capture_floor'])
     tier = tier_of(cfg, a, addressed, captured)
-    streams[view.stream_id] = {'u': u, 'T': T, 'last_day': now, 'last_event': view.event_id, 'drift_until': drift_until}
+    # A one-off event (an arrival, a door) has no duration: it opens no stream that competes for the next 15 minutes.
+    # v5 run: classmates' arrivals cut listeners' share of the conversation that followed.
+    if view.stream_id != view.event_id:
+        streams[view.stream_id] = {'u': u, 'T': T, 'last_day': now, 'last_event': view.event_id, 'drift_until': drift_until}
     state['streams'] = streams
     engine.state['attention_stats']['allocations'] += 1
     return AttentionResult(a, tier, T, B, K, s, captured, drifted, addressed, tier != FULL and not addressed, {
@@ -377,16 +399,24 @@ def encoding_factor(cfg, result, buffered=False):
 
 
 def coarse_text(engine, owner, obs, result):
-    """A GIST trace keeps only who, the main topic and rough valence; a NONE receipt keeps nothing readable."""
+    """A GIST trace keeps only who, the gist and rough valence; a NONE receipt keeps nothing readable.
+
+    The listener's own appraisal gist is used when there is one. v5 run: a topic label replaced it, so Kiara got
+    "Priya, something about everyday things" for a question about the robotics room, and kept mocking that phrase.
+    """
     if result.tier == NONE:
         return '(not attended)'
-    tags = result.reasons.get('topic_tags', {})
-    topic = PHRASES[max(TAGS, key=lambda t: (tags.get(t, 0), TAGS.index(t)))]  # ties go past generic 'social'
-    source = obs['source']
-    who = engine.label(source) if source in engine.state['entities'] and source != owner else 'Something'
     valence = obs.get('valence', 0)
     feel = '; it seemed unpleasant' if valence < -.2 else '; it seemed pleasant' if valence > .2 else ''
-    return f'Half-noticed: {who}, something about {topic}{feel}.'
+    if obs.get('gist'):
+        return f'Half-noticed: {obs["gist"].strip().rstrip(".")}{feel}.'
+    tags = result.reasons.get('topic_tags', {})
+    topic = PHRASES[max(TAGS, key=lambda t: (tags.get(t, 0), TAGS.index(t)))]  # ties go past generic 'social'
+    # No keyword matched (all tags equal): say nothing about the topic rather than invent one.
+    about = '' if len(set(tags.values())) <= 1 else f' about {topic}'
+    source = obs['source']
+    who = engine.label(source) if source in engine.state['entities'] and source != owner else 'Something'
+    return f'Half-noticed: {who}, something{about}{feel}.'
 
 
 def encoded(engine, owner, obs, result):

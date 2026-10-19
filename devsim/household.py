@@ -12,19 +12,21 @@ from . import calendar_time
 from .sleep import HIDDEN
 def validate(engine, settings):
     if not isinstance(settings, dict) or set(settings)-{'rooms','locations','routines','moves','conversations',
-                                                      'routes','groups','channels','invitations'}:
+                                                      'routes','groups','channels','invitations','creatures','happenings'}:
         raise ValueError('Unsupported household settings')
     rooms = settings.get('rooms', {})
     if not isinstance(rooms, dict) or not rooms:
         raise ValueError('Household needs named rooms')
     for key, room in rooms.items():
-        if not isinstance(key,str) or not key or not isinstance(room,dict) or set(room)-{'label','audible_to'}:
+        if not isinstance(key,str) or not key or not isinstance(room,dict) or set(room)-{'label','audible_to','kind','site','objects'}:
             raise ValueError('Invalid room')
         if not isinstance(room.get('label'),str) or not room['label'].strip():
             raise ValueError('Room needs a label')
         links=room.get('audible_to',[])
         if not isinstance(links,list) or any(not isinstance(r,str) or r not in rooms or r==key for r in links) or len(set(links))!=len(links):
             raise ValueError('Audibility needs distinct other room ids')
+    from . import living
+    living.validate_household(settings)
     if not isinstance(settings.get('locations',{}),dict) or not isinstance(settings.get('routines',{}),dict):
         raise ValueError('Locations and routines must be objects')
     for owner, room in settings.get('locations',{}).items():
@@ -87,6 +89,13 @@ def validate(engine, settings):
                     raise ValueError('Conversation turn bound must be one to forty')
                 if 'exit_room' in rule and (rule['exit_room'] not in rooms or rule['exit_room']==rule['room']):
                     raise ValueError('Exit room must be a distinct known room')
+                # v5 run: Meera's talk was set for day 28 (midnight) and silently never happened.
+                hour=rule['day']%1*24
+                routines=settings.get('routines',{})
+                awake=[p for p in people if any(a<=hour<b for a,b in routines.get(p,{}).get('available_hours',[[0,24]]))]
+                if len(awake)<2:
+                    raise ValueError(f'Conversation {rule["id"]} starts at hour {hour:g}, when fewer than two participants are '
+                                     'available; the fraction of day is the time of day (28.8 is day 28 at 19:12)')
                 validate_interview(rule)
         if len(set(ids))!=len(ids): raise ValueError('Duplicate household rule id')
 
@@ -108,6 +117,12 @@ def initialize(engine, settings):
     runtime.setdefault('invitations',{r['id']:{'next_day':r['day'],'attempts':0} for r in settings.get('invitations',[]) if r['day']>=engine.day})
 
 
+# How long a line takes to say or type. shortcut: fixed population averages (about 150 spoken and 40 typed words a
+# minute); per-person speech rate would come from age and temperament if needed.
+SPOKEN_WORDS_PER_SECOND = 2.5
+TYPED_WORDS_PER_SECOND = 0.67
+
+
 def available(engine, owner, hours=0):
     """Entire half-open interval must fit explicit local-day waking windows."""
     routine=engine.state['config'].get('household',{}).get('routines',{}).get(owner,{})
@@ -124,6 +139,17 @@ def available(engine, owner, hours=0):
         if not any(a-1e-8<=low and high<=b+1e-8 for a,b in windows): return False
         start=stop
     return True
+
+
+def next_waking(engine, owner, after):
+    """The first moment at or after `after` inside the person's waking windows."""
+    windows=engine.state['config'].get('household',{}).get('routines',{}).get(owner,{}).get('available_hours',[[0,24]])
+    day=floor(after)
+    for d in (day,day+1):
+        for a,b in sorted(windows):
+            start=d+a/24
+            if d+b/24>after: return max(start,after)
+    return day+1+min(a for a,_ in windows)/24
 
 
 def location(engine, owner):
@@ -232,6 +258,12 @@ def move(controller, owner, room, event_id):
         elif present(engine,p,room):
             observations[p]={'text':name+' entered the room.','source':'direct','kind':'direct','encountered':[owner]}
     engine.state['household']['locations'][owner]=room
+    if 'living' in engine.state['config']:
+        from . import living
+        for p,o in observations.items():
+            if p==owner:
+                for q in o['encountered']: living.saw(engine,owner,q,room)
+            else: living.saw(engine,p,owner,room if present(engine,p,room) else None)
     deliver(controller,event_id,'A person changes rooms.',observations,routine=True)
 
 
@@ -239,25 +271,63 @@ def close(session, reason):
     session.update(status='closed',next_day=None,closed_reason=reason)
 
 
+def interrupt(controller, key, reason):
+    """Stop a session from outside (a fire drill): free the reserved turn interval, then end it."""
+    engine=controller.engine
+    session=engine.state['runtime']['conversations'][key]
+    for p in session['reservations']:
+        calendar_time.finish(engine,p,session['reservation_id'],cancel=True)
+    session['reservations']={}
+    end(controller,key,reason)
+
+
+def end(controller, key, reason):
+    """Close a session. People brought to the room go back; a long group meeting (a school day) talks again later."""
+    engine=controller.engine
+    runtime=engine.state['runtime']
+    session=runtime['conversations'][key]
+    spec=session['spec']
+    close(session,reason)
+    for p,origin in spec.get('origins',{}).items():
+        if location(engine,p)==spec['room']:
+            runtime['trips'][f'{key}-{p}-back']={'actor':p,'room':origin,'day':engine.day,'phase':'depart'}
+    if 'until' not in spec or reason not in ('turn limit','everyone fell silent'): return
+    rng=controller.rng('conversation',key,'break')
+    # shortcut: a fixed 1-2 hour break between a group's talks; make it a meeting setting if a group needs another pace.
+    start=engine.day+rng.uniform(60,120)/1440
+    if start+15/1440>spec['until']: return
+    topics=engine.state['config']['household']['groups'][spec['group']]['meetings']['topic']
+    part=spec.get('part',0)+1
+    follow={**spec,'id':spec['id'].split('.')[0]+'.'+str(part),'day':start,'part':part,
+            'topic':topics if isinstance(topics,str) else rng.choice(topics)}
+    runtime['conversations'][follow['id']]={'spec':follow,'status':'scheduled','next_day':start,'turns':[],'active':[],
+                                            'cursor':0,'reservations':{}}
+
+
 def queue_turn(controller, key):
     engine=controller.engine
     session=engine.state['runtime']['conversations'][key]
     spec=session['spec']
     active=[p for p in session['active'] if in_session(engine,p,spec) and available(engine,p)]
-    if len(active)<2: return close(session,'fewer than two available participants')
+    if len(active)<2: return end(controller,key,'fewer than two available participants')
     if 'questions' in spec and sum(t['speaker']==spec['interviewer'] for t in session['turns'])>=len(spec['questions']) \
             and session['turns'] and session['turns'][-1]['speaker']!=spec['interviewer']:
-        return close(session,'questions finished')
-    if len(session['turns'])>=spec.get('max_turns',6): return close(session,'turn limit')
+        return end(controller,key,'questions finished')
+    if len(session['turns'])>=spec.get('max_turns',6): return end(controller,key,'turn limit')
+    # The natural end: a full round in which nobody spoke. max_turns is then only a safety cap.
+    # v5 run: every conversation stopped at its turn limit, mostly 4 turns (one line each).
+    if len(session['turns'])>=len(active) and not any(t['choice'] in ('speak','signal') for t in session['turns'][-len(active):]):
+        return end(controller,key,'everyone fell silent')
     speaker=active[session['cursor']%len(active)]
     routine=engine.state['config']['household'].get('routines',{}).get(speaker,{})
     # Face-to-face replies take seconds to minutes; response_minutes (chat pace) remains the written-channel delay.
     delay=routine.get('in_person_response_minutes' if 'channel' not in spec and 'in_person_response_minutes' in routine else 'response_minutes',[1,1])
     minutes=controller.rng('conversation',key,len(session['turns'])).uniform(*delay)
-    hours=minutes/60
+    # The next turn starts after the last line has been said: its length, not the model's writing time, sets the clock.
+    hours=minutes/60+(session['turns'][-1].get('seconds',0)/3600 if session['turns'] else 0)
     # Busy/unavailable invitees cannot be silently double-booked into a dialogue.
     active=[p for p in active if calendar_time.can_reserve(engine,p,hours)]
-    if speaker not in active or len(active)<2: return close(session,'response interval conflicts with availability or calendar')
+    if speaker not in active or len(active)<2: return end(controller,key,'response interval conflicts with availability or calendar')
     reservation='@conversation:'+key+':'+str(len(session['turns']))
     session.update(active=active,speaker=speaker,reservation_id=reservation,
         reservations={p:calendar_time.reserve(engine,p,hours,reservation) for p in active},
@@ -270,6 +340,15 @@ def step(controller, key):
     session=engine.state['runtime']['conversations'][key]
     spec=session['spec']
     if session['status']=='scheduled':
+        if 'room' in spec and 'group' not in spec and 'origins' not in spec:
+            # Participants come to the room (v5 run: Meera's kitchen talk found nobody in the kitchen) and go back after.
+            spec['origins']={p:location(engine,p) for p in spec['participants']
+                             if location(engine,p) not in (None,spec['room']) and available(engine,p)}
+            arrivals=[travel(controller,p,spec['room'],f'{key}-{p}') for p in spec['origins']]
+            late=max([a for a in arrivals if a is not None],default=engine.day)
+            if late>engine.day:
+                session['next_day']=late+1/1440
+                return
         session['active']=list(spec['participants'])
         queue_turn(controller,key)
         if session['status']=='waiting':
@@ -285,7 +364,7 @@ def step(controller, key):
         calendar_time.finish(engine,p,session['reservation_id'],cancel=p not in active)
     session['reservations']={}
     session['active']=active
-    if len(active)<2: return close(session,'participants left, died or became unavailable')
+    if len(active)<2: return end(controller,key,'participants left, died or became unavailable')
     speaker=session['speaker']
     if speaker not in active:
         session['cursor']=0
@@ -311,11 +390,17 @@ def step(controller, key):
     if 'exit_room' in spec and not infant and not interview:
         menu.append({'id':'leave-room','label':'Leave for '+engine.state['config']['household']['rooms'][spec['exit_room']]['label']+'.',
                      'speech_allowed':False})
+    # The 'family' cue only with one's own family (v5 run: every school talk was cued 'family', and 5 of 156 school
+    # lines argued about "family stuff" nobody had raised).
+    from .attention import family
+    cues=['social']+(['family'] if any(family(engine,speaker,p) for p in active if p!=speaker) else [])
     # No shared transcript: each person sees their own received memories only.
     situation=('You are in a conversation in '+where+'. The opening topic was: '+spec['topic']+
         ' Choose your next turn using only what you have personally perceived. '+
         ('Only channel members read these messages. ' if channel else 'Other people may overhear normal room speech. ')+
-        'Listening or leaving must have empty speech. Speech is a claim, not proof that its content happened.')
+        'Listening or leaving must have empty speech. Speech is a claim, not proof that its content happened. '
+        # v5 run: Rohan, with no activities, reported invented work every day.
+        'Say you did or saw something only if it is in your memories; otherwise share opinions, plans, questions or feelings.')
     if interview and speaker!=spec['interviewer']:
         interviewer=engine.label(spec['interviewer'])
         situation=(interviewer+' is interviewing you in '+where+' and has just asked: "'+spec['questions'][asked-1]+'" '
@@ -331,15 +416,15 @@ def step(controller, key):
         if not controller.scripted and 'situational_personality' in controller.policy:
             engine.generate_signatures(speaker,api=controller.api,model=controller.model)
             engine.prepare_situation(speaker,situation,f'@conversation:{key}:{len(session["turns"])}:situation',
-                cues=['family','social'],half_life_days=controller.policy['situational_personality'].get('recovery_half_life_days',1),
+                cues=cues,half_life_days=controller.policy['situational_personality'].get('recovery_half_life_days',1),
                 api=controller.api,model=controller.model)
         if controller.scripted:
             choice='signal' if infant else 'speak'
-            proposal={'owner':speaker,'day':engine.day,'context':engine.context(speaker,situation,['family','social'],menu),
+            proposal={'owner':speaker,'day':engine.day,'context':engine.context(speaker,situation,cues,menu),
                 'decision':{'action_id':choice,'action':'Take my conversation turn.','speech':'' if infant else 'I would like to hear what you think.',
                             'goal_id':None,'plan':[],'memory_ids':[]}}
         else:
-            proposal=engine.propose(speaker,situation,cues=['family','social'],options=menu,api=controller.api,model=controller.model)
+            proposal=engine.propose(speaker,situation,cues=cues,options=menu,api=controller.api,model=controller.model)
     event_id=f'@conversation:{key}:{len(session["turns"])}'
     action_id=event_id+':action'
     engine.commit_action(action_id,proposal)
@@ -357,7 +442,17 @@ def step(controller, key):
         observations[p]={'text':name+' '+behavior,'source':speaker,'kind':'direct' if same or channel else 'testimony',
                          'encountered':[speaker] if same else [],'provenance':event_id}
     observations[speaker]['encountered']=[] if channel else [p for p in active if p!=speaker and location(engine,p)==location(engine,speaker)]
-    deliver(controller,event_id,'A conversation turn is observed; spoken claims are not world facts.',observations,action_id)
+    # Saying nothing is the same note every time: habituate it like other routine notes (v5 run: 209 model calls
+    # appraised "I listened quietly." at about -0.6 each time, dragging the quiet people's mood down by their own silence).
+    deliver(controller,event_id,'A conversation turn is observed; spoken claims are not world facts.',observations,action_id,
+            routine=choice in ('listen','leave'))
+    if 'living' in engine.state['config']:
+        from . import living
+        for p in recipients:
+            if not channel: living.saw(engine,p,speaker,location(engine,speaker))
+        if choice=='speak':
+            for p in [speaker,*recipients]:
+                living.change_needs(engine,p,{'social':engine.state['config']['living']['social_per_turn']})
     if choice=='speak' and 'society_layer' in engine.state['config']:
         from .population.bridge import after_turn
         after_turn(engine,speaker,[p for p in recipients if p!=speaker])
@@ -365,7 +460,8 @@ def step(controller, key):
     if crystal is not None:
         engine.crystallize(speaker,action_id,event_id,**crystal)
     session['turns'].append({'event':event_id,'action':action_id,'speaker':speaker,'day':engine.day,
-        'choice':choice,'recipients':list(observations)})
+        'choice':choice,'recipients':list(observations),
+        'seconds':len(speech.split())/(TYPED_WORDS_PER_SECOND if channel else SPOKEN_WORDS_PER_SECOND)})
     if choice in ('leave','leave-room'):
         session['cursor']=active.index(speaker)
         session['active'].remove(speaker)
@@ -445,7 +541,18 @@ def first_meeting(meeting):
 
 
 def route_minutes(engine, a, b):
-    return next((r['minutes'] for r in engine.state['config']['household'].get('routes',[]) if {r['a'],r['b']}=={a,b}),None)
+    routes=engine.state['config']['household'].get('routes',[])
+    found=next((r['minutes'] for r in routes if {r['a'],r['b']}=={a,b}),None)
+    if 'living' not in engine.state['config']: return found
+    from . import living
+    sa,sb=living.site(engine,a),living.site(engine,b)
+    if found is None and sa and sb and sa!=sb:  # a route between any rooms of two sites joins the sites
+        found=min((r['minutes'] for r in routes if {living.site(engine,r['a']),living.site(engine,r['b'])}=={sa,sb}),default=None)
+    if found:
+        state=living.state(engine)
+        found*=engine.state['config']['living']['weather']['rain_travel_factor'] if (state['weather'] or {}).get('state')=='rain' else 1
+        found+=sum(d['minutes'] for key,d in state['delays'].items() if key in (sa,sb) and d['until']>engine.day)
+    return found
 
 
 def travel(controller, owner, room, key):
@@ -466,6 +573,9 @@ def travel(controller, owner, room, key):
     if old==room: return engine.day
     minutes=route_minutes(engine,old,room) if old else None
     if not minutes:
+        if 'living' in engine.state['config']:
+            from . import living
+            if living.minutes_between(engine,old,room) is None: return None  # another site with no route: no teleporting
         move(controller,owner,room,'@travel:'+key)
         return engine.day
     hours=minutes/60
@@ -531,7 +641,7 @@ def meet(controller, group_id):
         # A topic list rotates one per meeting, so a daily class does not open on the same subject every day.
         topic=meeting['topic'] if isinstance(meeting['topic'],str) else meeting['topic'][n%len(meeting['topic'])]
         spec={'id':key,'day':start,'room':group['place'],'participants':list(arrivals),'topic':topic,'group':group_id,
-              'max_turns':meeting.get('max_turns',6)}
+              'max_turns':meeting.get('max_turns',6),'until':start+meeting['duration_hours']/24}
         runtime['conversations'][key]={'spec':spec,'status':'scheduled','next_day':start,'turns':[],'active':[],'cursor':0,'reservations':{}}
     else:  # one attendee (a solo work shift, or everyone else away): presence without a conversation
         runtime['trace'].append({'day':engine.day,'group':group_id,'meeting':n,'status':'one attendee; no conversation'})
@@ -566,7 +676,7 @@ def invite(controller, invitation_id):
     if not engine.agent(invitee)['alive'] or not engine.agent(inviter)['alive'] or invitee in members:
         state['next_day']=None
         return
-    if not available(engine,invitee):
+    if not available(engine,invitee) or not available(engine,inviter):  # v5 run: the teacher invited at 07:00, before her day began
         state['attempts']+=1
         state['next_day']=engine.day+1/24 if state['attempts']<72 else None
         return

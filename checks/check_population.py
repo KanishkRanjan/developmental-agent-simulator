@@ -336,6 +336,7 @@ def main():
     assert layer.kin(ids['arun'], ids['priya']) and layer.person(ids['priya'])['household'] == layer.person(ids['arun'])['household']
     news = [o for o in world.world.observations['priya'] if o.event_id.startswith('@society:')]
     assert news and all(o.source in world.state['entities'] for o in news)
+    assert not any(o.source in layer.state['bound'].values() for o in news), 'the layer reported contact between two simulated characters'
     assert all(layer.state['commit_day'].get(world.state['entities'][o.source]['facts'].get('society_person'), -1) >= o.day - 1e-6
                for o in news if o.source != 'arun')
     view = world.context('priya', 'An evening at home.')['social_world']
@@ -360,12 +361,25 @@ def main():
         bridge.sync(world)
     assert world.world.observations['priya'][-1].text.endswith('died.')
     assert world.agent('priya')['dials']['mood_baseline_shift'] < 0, 'grief skipped for a character without preset dials'
+    # With a daily routine, news waits until the person is awake.
+    awake = Engine(seed=4)
+    for key, name, age in (('arun', 'Arun', 45), ('priya', 'Priya', 15)):
+        awake.entity(key, name, {'birth_day': -age * YEAR})
+        awake.materialize(key, dict.fromkeys(FACET_NAMES, 55), birth_day=-age * YEAR)
+    awake.caregiver('priya', 'arun')
+    Lifetime(awake, {**policy, 'household': {'rooms': {'home': {'label': 'home'}}, 'locations': {'arun': 'home', 'priya': 'home'},
+                                             'routines': {'arun': {'available_hours': [[14, 24]]}, 'priya': {'available_hours': [[7, 22]]}}}},
+             scripted=True).run(120)
+    timed = [(e['day'] % 1 * 24, owner) for e in awake.state['events'] if e['id'].startswith('@society:') for owner in e['observations']]
+    windows = {'arun': (14, 24), 'priya': (7, 22)}
+    assert timed and all(windows[o][0] - 1e-6 <= h < windows[o][1] for h, o in timed), timed[:5]
     report['bridge'] = {'news_for_priya_in_a_year': len(news), 'kinds': Counter(o.text.split(' ', 1)[-1] if 'touch' in o.text else
                                                                                 o.text.split('.')[0][-25:] for o in news).most_common(3)}
     checks.append(f'engine characters are bound into the population (a caregiver and child share a household), their circle reaches them '
                   f'as received observations ({len(news)} in a year for Priya), shown people are committed, the context section is stable '
                   'between calls, checks are event-driven, a close death lowers the mood baseline even without preset dials, and a spoken turn '
-                  'moves opinions by the rule, never the model')
+                  'moves opinions by the rule, never the model; news never reports contact between two simulated characters and, with a '
+                  f'daily routine, only arrives while the person is awake ({len(timed)} items in 120 days)')
 
     result = {'passed': True, 'scope': 'synthetic checks of design defaults; V anchors are inputs or comparisons, never fitted twice',
               'checks': checks, 'report': report}

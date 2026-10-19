@@ -4,7 +4,9 @@
   "checks": [
     "a channel conversation reaches members in other rooms as read messages, not encounters, and no one else",
     "an invitation is received, decided by the invitee, and acceptance becomes membership and a committed fact",
+    "an invitation waits until both the inviter and the invitee are available",
     "a one-person group (a work shift) commutes there and back every day without a conversation",
+    "a 6-hour meeting holds 4 separate talks with 1-2 hour breaks, all inside the meeting",
     "a meeting topic list rotates one topic per meeting (an empty list is rejected), and the previous-session memory follows the group across topics",
     "group meetings bring available members to the meeting place over timed routes, then home again",
     "meeting talk reaches only the people at the meeting place",

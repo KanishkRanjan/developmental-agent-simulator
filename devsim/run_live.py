@@ -31,7 +31,7 @@ def recorder(request_json, path, counts):
                     'expand_constrained_background':'background','generate_biography':'background',
                     'expand_retrieval_query':'retrieval_query','diagnostic_interview':'interview','author_scenario':'authoring',
                     'report_outline':'report','report_section':'report',
-                    'review_scenario':'review'}.get(context.get('task')) or
+                    'review_scenario':'review','inner_thought':'thought','news_headline':'news'}.get(context.get('task')) or
                    ('signatures' if context.get('task') == 'generate_situational_signatures' else
                    'situation' if context.get('task') == 'construe_situation' else
                    'consolidation' if 'episodes_to_consolidate' in context else
@@ -65,6 +65,9 @@ def main():
     parser.add_argument('--until-day', type=float, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--api', default='http://127.0.0.1:18081')
+    parser.add_argument('--pace', type=float, default=1.0,
+                        help='Simulated seconds per real second: 1 (default) is real time, 0 runs as fast as possible. '
+                             'Time spent waiting on the model never counts.')
     parser.add_argument('--beyond-horizon', action='store_true', help='Allow running past the policy\'s horizon_days')
     args = parser.parse_args()
     policy = json.loads(args.policy.read_text())
@@ -86,14 +89,18 @@ def main():
     initial_actions = len(engine.state['actions'])
     request_json = engine_module.request_json
     counts = {'action': 0, 'appraisal': 0, 'consolidation': 0, 'signatures': 0, 'situation': 0,
-              'semantic_recall':0, 'reflection':0, 'background':0,'retrieval_query':0,'goal_planning':0}
+              'semantic_recall':0, 'reflection':0, 'background':0,'retrieval_query':0,'goal_planning':0,'thought':0,'news':0}
     engine_module.request_json = recorder(request_json, args.out / 'requests.jsonl', counts)
     started = time.monotonic()
     summary = {'model': model, 'started_utc': datetime.now(timezone.utc).isoformat(), 'provider': 'local_model_api',
-               'sampling': policy.get('sampling', 'legacy_discrete'), 'personality_expression': 'behavioral_language_v1'}
+               'sampling': policy.get('sampling', 'legacy_discrete'), 'personality_expression': 'behavioral_language_v1',
+               'pace': args.pace}
     try:
-        controller = Lifetime(engine, policy, api=args.api, model=model)
+        controller = Lifetime(engine, policy, api=args.api, model=model, pace=args.pace)
         controller.inbox = args.out / 'inbox.jsonl'  # devsim.visit / watcher key t: a researcher joins a conversation
+        runtime = engine.state['runtime']
+        if not controller.inbox.exists() or controller.inbox.stat().st_size < runtime.get('inbox_offset', 0):
+            runtime['inbox_offset'] = 0  # resumed into a new folder: its inbox is new, the old position would skip lines
         controller.run(args.until_day, args.out / 'world.json')
         summary['status'] = 'completed'
     except BaseException as exc:  # Ctrl-C (to resume later) is recorded as stopped, not left blank

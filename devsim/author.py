@@ -18,6 +18,8 @@ import time
 
 from . import cognition
 from . import household
+
+TALK_CAP = 40  # the household validator's upper bound
 from .engine import FACET_NAMES, Engine, number, validated_json
 
 ID = re.compile(r'^[a-z][a-z0-9_-]{0,31}$')
@@ -30,7 +32,7 @@ SITUATION_KEYS = {'id', 'actor', 'situation', 'rate_per_year', 'min_age', 'max_a
                   'room', 'hours'}
 OPTION_KEYS = {'id', 'label', 'success_probability', 'valence_success', 'valence_failure', 'success_text',
                'failure_text', 'contact', 'contact_text', 'importance', 'arousal', 'progress_gain', 'duration_hours',
-               'effects_success', 'effects_failure', 'conversation'}
+               'effects_success', 'effects_failure', 'conversation', 'skill'}
 PROTECTED_FACTS = {'birth_day', 'biological_parents', 'caregivers', 'name'}
 COMPILER_DEFAULTS = [
     'Facets a person\'s spec leaves out are set to the 50th percentile (neutral), not sampled.',
@@ -57,25 +59,32 @@ VOCABULARY = {
               f'(why), caregivers (ids of older people in the scenario), goals (up to {LIMITS["goals"]}: id, description, '
               f'priority 0-1), private_background (up to {LIMITS["background"]} first-person sentences the person already knows), '
               'facts (starting state flags {key: true|false|number|short text}, e.g. {"club_member": false})',
-    'household': 'optional environment. rooms {room_id: {label, audible_to: [room_ids]}} are places, including places away '
-                 'from home (a school lab, a ward); locations {person: room_id}; routines {person: {available_hours: '
+    'household': 'optional environment. rooms {room_id: {label, audible_to: [room_ids], kind (bedroom, kitchen, living_room, '
+                 'bathroom, classroom, cafeteria, lab, office, ward, outdoors or other: it decides the furniture and everyday '
+                 'happenings), site (the building: each family\'s home, school, a workplace)}} are places, including places away '
+                 'from home (a school lab, a ward); give every person a home: locations {person: room_id} is where they sleep '
+                 '(a bedroom, shared or not, or a living room for a fold-out bed), and family members share a home site; '
+                 'optional creatures [{id, name, kind (cat or dog), rooms (on one home site), room}] for pets; routines {person: {available_hours: '
                  '[[start, end]] within one day in increasing order (awake 23:00-07:00 is [[0, 7], [23, 24]]), '
                  'response_minutes: [min, max] (written-message reply delay), optional in_person_response_minutes: [min, max] '
-                 '(face-to-face reply delay, at most 10)}}; routes [{a, b, minutes}] (travel time between places); '
+                 '(pause before a face-to-face reply; real replies follow within seconds, e.g. [0.05, 0.2], at least 0.05)}}; routes [{a, b, minutes}] (travel time between sites: one route between '
+                 'any rooms of two sites joins them; rooms of one site are a short walk apart); '
                  'groups {group_id: {label, place, members, meetings: {first_day (whole day), start_hour (0-24, when members set off; they arrive after the route time), '
                  'duration_hours (counted from arrival), every_days, topic (one opening topic, or for frequent meetings a list of '
-                 'several varied topics used in turn, e.g. a lesson, weekend plans, a test), max_turns}}} for '
+                 'several varied topics used in turn, e.g. a lesson, weekend plans, a test)}}} for '
                  'institutions and clubs (a school class, a work team, a club); channels {channel_id: {label, members}} for '
                  'written messaging such as a family chat; invitations [{id, day, group, invitee, inviter}] (acceptance sets '
-                 'the fact member_<group_id> = true); conversations [{id, day, room or channel, participants, topic, '
-                 'max_turns 1-40}], or an interview: {id, day, room or channel, participants [interviewer, interviewee], '
+                 'the fact member_<group_id> = true); conversations [{id, day (the fraction is the time of day: 28.8 is day 28 at 19:12; '
+                 'at least two participants must be awake then), room or channel (participants come to the room), participants, topic}], or an interview: {id, day, room or channel, participants [interviewer, interviewee], '
                  'interviewer, questions (1-10), topic, max_turns = 2 x questions}',
     'situations': f'up to {LIMITS["situations"]} recurring situations: id, actor, situation (second person), rate_per_year '
                   f'(0-{LIMITS["rate_per_year"]}), optional min_age/max_age/cues/goal_id, optional room (a household room id: '
                   'it only happens while the actor is there) and hours ([start, end] within one day, e.g. lunch [11.5, 13.5]), options (2-{LIMITS["options"]}): '
                   'id, label, success_probability, valence_success, valence_failure (-1 to 1), success_text, failure_text '
                   '(first person), optional contact (person id) with contact_text (what the contact experiences), '
-                  'importance, arousal, progress_gain (toward goal_id), duration_hours, effects_success/effects_failure '
+                  'importance, arousal, progress_gain (toward goal_id), duration_hours, optional skill {key (a short label of what the option '
+                  'exercises, e.g. "robotics", "singing"), difficulty 0-1}: success then comes from the person\'s own skill and the attempt '
+                  'is practice; effects_success/effects_failure '
                   '({facts: {person: {key: value}}, relationship_role: role the actor and contact now share}); optional '
                   'requires_facts {person: {key: value}}: the situation can only occur while these facts hold (use it for '
                   'situations that follow an intervention or an earlier choice, or membership: {"member_club": true}); '
@@ -163,23 +172,55 @@ def _check_rooms_and_roles(spec, ages):
             if where == room and owner and person != owner and not (ages[owner] < 3 and person in carers[owner]):
                 _fail(f'household.locations.{person}', f'{room} is labelled "{cfg["label"]}"; give {names[person]} '
                       'their own room (people return to their starting room after trips)')
-    acting = {s['actor'] for s in spec.get('situations', [])} | {r['invitee'] for r in home.get('invitations', [])}
-    acting |= {p for c in home.get('conversations', []) for p in c.get('participants', [])}
-    invited = {}
-    for r in home.get('invitations', []):
-        invited.setdefault(r['group'], set()).add(r['invitee'])
-    for key, group in home.get('groups', {}).items():
-        attendees = set(group.get('members', [])) | invited.get(key, set())
-        if 'meetings' in group and len(attendees) >= 2:
-            acting |= attendees
+    # Each person with goals needs something of their own to do. v5 run: only Priya had situations, so Rohan, who
+    # only ever talked, invented "I ran simulations last night" and then built on his own invention every day.
+    acting = {s['actor'] for s in spec.get('situations', [])}
     for person in spec['people']:
         if person.get('goals') and person['id'] not in acting:
-            _fail(f'people.{person["id"]}.goals', f'{person["name"]} has goals but no way to act on them: make them the actor '
-                  'of a situation, a conversation participant, an invitee, or a member of a group that meets with someone else')
+            _fail(f'people.{person["id"]}.goals', f'{person["name"]} has goals but nothing of their own to do: add a situation '
+                  'with them as actor (what they do between conversations: practice, work, a hobby, a chore), or drop the goals')
 
 
-def compile_scenario(spec, *, dry_run=True):
-    """Validate a spec and build (engine, policy, report). Raises ValueError naming the bad field."""
+def _check_living_map(spec):
+    """With room kinds and sites the world is lived in: everyone sleeps somewhere, and can get to their groups."""
+    home = spec.get('household', {})
+    rooms = home.get('rooms', {})
+    if not any('kind' in r or 'site' in r for r in rooms.values()):
+        return False
+    for key, room in rooms.items():
+        if 'kind' not in room or 'site' not in room:
+            _fail(f'household.rooms.{key}', 'give every room a kind and a site (such as home or school), or none of them')
+    names = {p['id']: p['name'] for p in spec['people']}
+    sites = lambda key: rooms[key]['site']
+    linked = {frozenset((sites(r['a']), sites(r['b']))) for r in home.get('routes', [])}
+    for person in spec['people']:
+        start = home.get('locations', {}).get(person['id'])
+        if start is None or rooms[start]['kind'] not in ('bedroom', 'living_room'):
+            _fail(f'household.locations.{person["id"]}', f'give {person["name"]} a home: their starting room is where they '
+                  'sleep (a bedroom, or a living room for a fold-out bed), on a home site with a route to school or work')
+    invited = {}
+    for rule in home.get('invitations', []):
+        invited.setdefault(rule['group'], set()).add(rule['invitee'])
+    for key, group in home.get('groups', {}).items():
+        place = sites(group['place'])
+        for member in sorted(set(group.get('members', [])) | invited.get(key, set())):
+            mine = sites(home['locations'][member])
+            if mine != place and frozenset((mine, place)) not in linked:
+                _fail('household.routes', f'{names[member]} cannot get from {mine} to {place} for {group["label"]}: add a route '
+                      'between a room of each site')
+    return True
+
+
+def compile_scenario(spec, *, dry_run=True, limits=None):
+    """Validate a spec and build (engine, policy, report). Raises ValueError naming the bad field.
+    limits raises the draft limits for designs that did not come from one model reply (the control panel builder)."""
+    global LIMITS
+    if limits:
+        saved, LIMITS = LIMITS, {**LIMITS, **limits}
+        try:
+            return compile_scenario(spec, dry_run=dry_run)
+        finally:
+            LIMITS = saved
     _keys(spec, 'scenario', {'title', 'summary', 'seed', 'duration_years', 'people'},
           {'household', 'situations', 'interventions', 'assumptions'})
     _text(spec['title'], 'title', 120); _text(spec['summary'], 'summary', 2000)
@@ -338,16 +379,29 @@ def compile_scenario(spec, *, dry_run=True):
               'expression': {'age_appropriate_actions': True},
               'cognition': {'semantic_recall': True, 'indexed_retrieval': True, 'graphiti_retrieval': True,
                             **cognition.MEMORY_DEFAULTS},
-              'consolidation_batch_size': 8, 'situational_personality': {'recovery_half_life_days': 1},
+              'consolidation_batch_size': 8, 'inner_thoughts': {'mean_minutes': 3}, 'relationship_learning': {}, 'situational_personality': {'recovery_half_life_days': 1},
               'horizon_days': horizon}
     from .lifetime import Lifetime
     try:
         if 'household' in spec:
             household.validate(e, spec['household'])
             _check_rooms_and_roles(spec, ages)
+            if _check_living_map(spec):
+                policy['living'] = {}  # needs, furniture, free-time choices and the surroundings (devsim/living.py)
             policy['household'] = deepcopy(spec['household'])
             for routine in policy['household'].get('routines', {}).values():
-                routine.setdefault('in_person_response_minutes', [.25, 2])
+                # Face-to-face replies follow within seconds; the line's own length is added by the engine. A drafted
+                # 1-5 minutes would leave a silence before every line once the clock runs in real time.
+                low, high = routine.get('in_person_response_minutes', [.05, .2])
+                routine['in_person_response_minutes'] = [min(low, .25), max(min(high, .5), min(low, .25))]
+        # Talks end on their own after a silent round, so max_turns is only a safety cap; a drafted 4 cut every
+        # school-day talk to one line each in the v5 run. Interviews keep their two turns per question.
+        talks = [*policy.get('household', {}).get('conversations', []),
+                 *(g['meetings'] for g in policy.get('household', {}).get('groups', {}).values() if 'meetings' in g),
+                 *(o['conversation'] for opp in opportunities for o in opp.get('options', []) if 'conversation' in o)]
+        for talk in talks:
+            if 'questions' not in talk:
+                talk['max_turns'] = TALK_CAP
         else:
             _check_rooms_and_roles(spec, ages)
         e.advance(0)
@@ -355,6 +409,9 @@ def compile_scenario(spec, *, dry_run=True):
         scripted = deepcopy(policy)
         scripted['cognition']['graphiti_retrieval'] = False  # as simulate --scripted: no unused graph view caches
         scripted['cognition']['semantic_matching'] = False  # scripted choices ignore memories; no service needed
+        # Scripted free-time choices every 20 minutes for every person would make the dry run very long; the living
+        # world is still configured and its surroundings run (its behaviour has its own check suite).
+        scripted.pop('inner_thoughts', None)
         controller = Lifetime(probe, scripted, scripted=True)  # full policy validation against this world
     except ValueError as exc:
         _fail('household' if 'household' in spec and 'household' not in policy else 'policy', str(exc))
@@ -378,7 +435,8 @@ def draft(setting, *, api, model):
     context = {'task': 'author_scenario', 'setting': _text(setting, 'setting', 6000), 'vocabulary': VOCABULARY,
                'facet_codes': FACET_NAMES, 'limits': LIMITS}
     system = ('Turn the researcher\'s setting into a scenario spec for a fictional developmental social simulation. '
-              'Use only the supplied vocabulary; return a single JSON object with its top-level keys. Keep it small: only '
+              'Use only the supplied vocabulary; return a single JSON object with its top-level keys. Every person with goals needs at least one situation of their own, so they have a life to '
+              'talk about. Otherwise keep it small: only '
               'people, situations and events the setting needs. Do not add biography, diagnoses or events the setting does '
               'not imply; list every guess in assumptions. Numbers are provisional scenario choices, not measurements. '
               'Facet percentiles are optional and only for traits the setting describes. Situation texts address the actor '

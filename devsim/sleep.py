@@ -273,6 +273,9 @@ def resolve_sleep(engine, owner, t_start, t_end, rng=None):
     entries = sorted((e for e in held if e['timestamp'] <= t_end), key=lambda e: (e['timestamp'], e['id']))
     dial = dials(agent)
     q = sleep_quality(cfg, dial, sum(e['arousal'] for e in entries) / len(entries) if entries else 0.0)
+    if 'hormones' in engine.state['config']:  # a stressed bedtime repays less (the hormone module's sleep efficiency)
+        from .hormones import sleep_efficiency
+        q = max(cfg['q_floor'], q * sleep_efficiency(engine, owner, t_end))
     capacity = (log(q) + log(age_multiplier(cfg, (t_end - agent['birth_day']) / 365.25))
                 + log(reality_capacity(cfg, dial['reality_testing'])))
     first_sleep = t_start + cfg['min_awake_hours'] / 24

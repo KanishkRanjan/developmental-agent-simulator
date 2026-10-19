@@ -147,6 +147,33 @@ def main():
              'success_text': 'I listened.', 'failure_text': 'I listened.'}]})
     world, compiled, report = compile_scenario(deepcopy(places))
     assert world.state['entities']['coach']['facts']['member_robotics'] is True
+    # With room kinds and sites the compiled world is lived in; everyone needs a home and a way to their groups.
+    lived = deepcopy(SPEC)
+    lived['household'] = {'rooms': {'sam_room': {'label': 'a small bedroom', 'kind': 'bedroom', 'site': 'home'},
+                                    'dana_room': {'label': 'the big bedroom', 'kind': 'bedroom', 'site': 'home'},
+                                    'kitchen': {'label': 'the kitchen', 'kind': 'kitchen', 'site': 'home'}},
+                          'locations': {'sam': 'sam_room', 'dana': 'dana_room', 'baby': 'dana_room'},
+                          'creatures': [{'id': 'tom', 'name': 'Tom', 'kind': 'cat', 'rooms': ['kitchen', 'sam_room'], 'room': 'kitchen'}],
+                          'conversations': [{'id': 'week', 'day': 6.8, 'room': 'kitchen', 'participants': ['sam', 'dana'], 'topic': 'The first week.'}]}
+    _, lived_policy, lived_report = compile_scenario(deepcopy(lived))
+    assert lived_policy['living'] == {} and 'living' not in policy and lived_report['scripted_dry_run']['conversations']['week'] == 'closed'
+    homeless = edit(lambda s: s.update(household={**deepcopy(lived['household']), 'locations': {'sam': 'kitchen', 'dana': 'dana_room', 'baby': 'dana_room'}}))
+    assert 'give Sam a home' in reject(homeless)
+    half = deepcopy(lived['household']); half['rooms']['kitchen'] = {'label': 'the kitchen'}
+    assert 'kind and a site' in reject(edit(lambda s: s.update(household=half)))
+    club = deepcopy(lived['household'])
+    club['rooms']['lab'] = {'label': 'the school lab', 'kind': 'lab', 'site': 'school'}
+    club['groups'] = {'robotics': {'label': 'the robotics club', 'place': 'lab', 'members': ['sam', 'dana'],
+                                   'meetings': {'first_day': 2, 'start_hour': 15, 'duration_hours': 1, 'every_days': 7, 'topic': 'Robots.'}}}
+    assert 'cannot get from home to school' in reject(edit(lambda s: s.update(household=club)))
+    club['routes'] = [{'a': 'sam_room', 'b': 'lab', 'minutes': 15}]
+    compile_scenario(edit(lambda s: s.update(household=club)), dry_run=False)
+    checks.append('rooms with kinds and sites compile into a lived-in world; a person without a home, rooms only partly '
+                  'marked, or a group member with no route to the meeting site are rejected with the field to fix')
+    talks = compiled['household']
+    assert talks['groups']['robotics']['meetings']['max_turns'] == 40 and talks['conversations'][0]['max_turns'] == 2
+    assert compile_scenario(deepcopy(SPEC))[1]['household']['conversations'][0]['max_turns'] == 40
+    checks.append('compiled talks get the 40-turn safety cap whatever the draft says (they end on a silent round); interviews keep 2 per question')
     assert 'member_robotics' not in world.state['entities']['sam']['facts']
     dry = report['scripted_dry_run']
     assert dry['conversations']['checkin'] == 'closed' and dry['conversations']['group-robotics-0'] == 'closed'
@@ -208,19 +235,21 @@ def main():
     checks += ['out-of-vocabulary keys, facet codes and ranges, ids, caregivers, actors, contacts, rates, probabilities, '
                'intervention days/recipients, testimony sources, fact keys/values/reachability, effects, conversation participants and size limits are rejected with field names']
 
-    # The overnight environment scenario: a parent started in the teenager's labelled room, and had a goal but no way to act.
+    # The overnight environment scenario: a parent started in the teenager's labelled room, and had a goal but no way to act; talking alone is not enough.
     owned = edit(lambda s: s['household']['rooms'].update(bedroom={'label': "Sam's bedroom"}) or s['household']['locations'].update(dana='bedroom'))
     assert 'give Dana their own room' in reject(owned)
     compile_scenario(edit(lambda s: s['household']['rooms'].update(nursery={'label': "Rio's nursery"}) or
                           s['household']['locations'].update(dana='nursery')), dry_run=False)  # an infant's caregiver may
     idle = edit(lambda s: s['people'][1].update(goals=[{'id': 'help', 'description': 'Help Sam.', 'priority': .5}]) or
                 s['household'].update(conversations=[]))
-    assert 'no way to act' in reject(idle)
+    assert 'nothing of their own to do' in reject(idle)
+    talker = edit(lambda s: s['people'][1].update(goals=[{'id': 'help', 'description': 'Help Sam.', 'priority': .5}]))
+    assert 'nothing of their own to do' in reject(talker)  # v5 run: talking was Rohan's only activity, so he invented work
     assert 'household room' in reject(edit(lambda s: s['situations'][0].update(room='nowhere')))
     assert 'hours' in reject(edit(lambda s: s['situations'][0].update(hours=[13, 12])))
     _, timed, _ = compile_scenario(edit(lambda s: s['situations'][0].update(room='kitchen', hours=[11.5, 13.5]) or
                                         s['household'].update(routines={'sam': {'response_minutes': [5, 30]}})), dry_run=False)
-    assert timed['household']['routines']['sam']['in_person_response_minutes'] == [.25, 2]
+    assert timed['household']['routines']['sam']['in_person_response_minutes'] == [.05, .2]  # seconds, not minutes
     assert timed['opportunities'][0]['room'] == 'kitchen' and timed['opportunities'][0]['hours'] == [11.5, 13.5]
     with TemporaryDirectory() as directory:
         Path(directory, 'policy.json').write_text(json.dumps(timed))

@@ -41,7 +41,7 @@
     "lam_load": {"value": 0.3, "range": [0, 1], "evidence": "[D]", "note": "capacity lost at full stream load"},
     "n_load_ref": {"value": 3, "range": [1, 20], "evidence": "[D]", "note": "number of other open streams that counts as full load"},
     "lam_dys": {"value": 0.4, "range": [0, 1], "evidence": "[D]", "note": "capacity lost at full dysregulation"},
-    "arousal_shape": {"value": "inverted_u", "choices": ["inverted_u", "monotone"], "evidence": "[U]", "note": "capacity vs arousal: 1 - kappa (arousal - 0.5)^2 (Yerkes-Dodson style, shape unverified) or constant 1"},
+    "arousal_shape": {"value": "monotone", "choices": ["inverted_u", "monotone"], "evidence": "[U]", "note": "capacity vs arousal: 1 - kappa (arousal - 0.5)^2 (Yerkes-Dodson style, shape unverified) or constant 1. Default monotone since the v5 run: mood arousal 0 means calm, and the inverted U halved a calm listener's capacity (6% of conversation turns heard in full)"},
     "kappa": {"value": 2.0, "range": [0, 4], "evidence": "[U]", "note": "curvature of the inverted U; at most 4 keeps the factor nonnegative"},
     "K_sleep": {"value": 0.02, "range": [0, 1], "evidence": "[D]", "note": "capacity while asleep"},
 

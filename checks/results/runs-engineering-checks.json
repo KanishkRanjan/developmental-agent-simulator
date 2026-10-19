@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "run control engineering checks; run_live itself is stubbed",
+  "checks": [
+    "discovery reads status from summary.json (completed, stopped, failed), marks a run with no summary and no process as interrupted, and reads the day from the last complete call without loading the world",
+    "a live run_live process is found by its --out directory; stop sends SIGINT and sees it exit",
+    "start checks the model server first, launches run_live in its own session with the chosen pace, adds modules to a copied policy, records pid.json beside the run, and refuses a directory that already holds a run",
+    "resume starts a fresh sibling (NAME-r2) from the checkpoint and its archived policy; changes made while stopped are applied to a staged copy and logged, and the old checkpoint is never edited"
+  ]
+}

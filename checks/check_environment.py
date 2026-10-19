@@ -83,6 +83,12 @@ def main():
     assert received(e, 'kid', '@invitation:join') and '@invitation:join:reply' in e.agent('teacher')['memory_meta']
     assert any(a['id'] == '@invitation:join:action' and a['status'] == 'resolved' for a in e.state['actions'])
     checks.append('an invitation is received, decided by the invitee, and acceptance becomes membership and a committed fact')
+    late, lpolicy = fixture()
+    lpolicy['household']['routines']['teacher']['available_hours'] = [[13, 22]]
+    Lifetime(late, lpolicy, scripted=True).run(4)
+    asked = next(ev for ev in late.state['events'] if ev['id'] == '@invitation:join')
+    assert 13 - 1e-6 <= asked['day'] % 1 * 24 < 22, asked['day']
+    checks.append('an invitation waits until both the inviter and the invitee are available')
 
     meeting = runtime['conversations']['group-robotics-0']
     assert set(meeting['spec']['participants']) == {'teacher', 'friend', 'kid'} and meeting['turns']
@@ -111,6 +117,17 @@ def main():
     later = r.state['runtime']['conversations']['group-robotics-1']
     later.update(status='open', active=['kid'])
     assert household.conversation_memory(r, 'kid')['previous_session']['last_turns']
+    # A long meeting (a school day) talks again after 1-2 hour breaks, never past the meeting's end.
+    day_long, dpolicy = fixture()
+    dpolicy['household']['groups']['robotics']['meetings'].update(duration_hours=6, topic=['Arm.', 'Sensors.', 'Lunch.'])
+    Lifetime(day_long, dpolicy, scripted=True).run(4)
+    talks = sorted((s for k, s in day_long.state['runtime']['conversations'].items() if k.startswith('group-robotics-0')),
+                   key=lambda s: s['spec']['day'])
+    assert len(talks) >= 3 and [s['spec'].get('part', 0) for s in talks] == list(range(len(talks)))
+    assert all(60 <= (b['spec']['day'] - a['turns'][-1]['day']) * 1440 <= 120 and b['spec']['day'] < a['spec']['until']
+               for a, b in zip(talks, talks[1:]))
+    assert all(s['turns'] and s['spec']['topic'] in ('Arm.', 'Sensors.', 'Lunch.') for s in talks)
+    checks.append(f'a 6-hour meeting holds {len(talks)} separate talks with 1-2 hour breaks, all inside the meeting')
     fixed, fpolicy = fixture()
     fpolicy['household']['groups']['robotics']['meetings']['topic'] = []
     try:

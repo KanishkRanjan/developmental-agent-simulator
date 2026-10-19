@@ -1,6 +1,152 @@
 # Build state
 
-Updated 17 October 2026 (memory fixes from the v2 run; environment and authoring-gaps phase). This is the single current status file. Earlier milestone sections, with their original counts and wording, are in [the build-state log](history/BUILD_STATE-log.md) and the other [history documents](history/README.md). Where they disagree with this file or [the source-to-code audit](source-to-code-audit.md), this file and the audit win.
+Updated 19 October 2026 (earth-family-3 crash fix). This is the single current status file. Earlier milestone sections, with their original counts and wording, are in [the build-state log](history/BUILD_STATE-log.md) and the other [history documents](history/README.md). Where they disagree with this file or [the source-to-code audit](source-to-code-audit.md), this file and the audit win.
+
+## Travelling while busy no longer crashes, 19 October (earth-family-3 crash)
+
+`runs/live/earth-family-3` crashed after 3.4 hours (168 actions) with `TypeError: 'NoneType' object does not support item assignment`, and its resume `earth-family-3-r2` hit the same error at once. A person still marked busy by the living layer set off for a group meeting. While travelling they have no room, so `household.view` returns `None`, and `engine.context` then wrote `you_are` into that `None`. Now `you_are` is set only when there is a physical environment. Check: `living` (+1: a busy person in transit gets a context without crashing). 412 named checks passed (Graphiti skipped). Left open: whether someone busy should be able to leave without first ending the activity. **Not live-verified.** The earth-family-3 checkpoint should now resume past the crash point.
+
+## Inner thoughts no longer copy themselves, 18 October (user report)
+
+In the `test-2` run, Kai thought the same sentence two or three times in a row ("John's silence is still sitting in my chest like a stone…"). The previous thought came back as his top memory, word for word, and with nothing new in between the model copied it. Now `cognition.think` compares each new thought with the person's last 5 thoughts, using the speech repeat test (`engine.near_repeat`, shared with `repeated_speech`: word similarity of 0.8 or more, or a shared six-word phrase). On a match it asks once more, showing the earlier words and the person's last 5 thoughts in `repeat_notice` (sampling at 0.8, as for speech). Showing only the copied thought let re-asks fall back on another recent one (earth-family-2: 1 of 10 stored thoughts). On earth-family-3, 14 of 42 thought calls were re-asks; of 28 stored thoughts, 3 shared a six-word phrase with a recent one and none were copies. A second repeat is kept. Check: `household` inner-thought case (a stub that always copies its last thought now stores no back-to-back duplicates). 410 named checks passed (Graphiti skipped). **Not live-verified.** The running `test-2` process still runs the old code.
+
+## Shared bedrooms in the builder, 18 October (user request)
+
+A home place's `shared` map (`{person: person whose bedroom they share}`, already read by `builder.rooms_for`) now labels the room with both names ("Vikram and Anjali's bedroom"). The control panel has no control for it yet; set it in `design.json`. Check: `builder` (+1). Used by `work/designs/earth_family` (parents share a room), run `runs/live/earth-family-3`.
+
+## Fast-forward a live run, 18 October (user request)
+
+A paced run can skip ahead: key `f` in the watcher (also in the control panel's Watch), `/skip 2` in the cockpit or a typed line, or `python3 -m devsim.visit RUN --skip 2`. The skip reaches the run at its next event boundary (`deliver_inbox`, note kind `skip`, 0–168 hours) and sets `runtime.skip_until`. Real-time waiting stops until then. Nothing is summarized or invented: every event in the skipped hours (thoughts, free-time choices, conversations, happenings, meetings) still happens through the model, as fast as the model replies. Needs, hormones, sleep and mood advance as they always do. At `skip_until` pacing resumes. Each skip is logged in `runtime.skips`. The watcher header shows "fast-forwarding to HH:MM" while it lasts. The cost is the model calls the skipped hours would have made anyway. A night of sleep skips almost instantly; a busy afternoon with conversations can take minutes.
+
+Also fixed: a run resumed into a new folder kept the previous folder's inbox position, so the first ~80 bytes typed into the new run (a call, edit or skip) were silently skipped or misread. `run_live` now starts a new folder's inbox at 0.
+
+Checks: `household` (+1: an 18-hour skip plays without waiting and ends in the same world as an unpaced run; bad hours are rejected). 410 named checks passed (Graphiti skipped). The inbox-position fix has no check. **Not live-verified.**
+
+## Phone calls ring for a while and can be hung up, 18 October (user request)
+
+A researcher's phone call used to be settled at once: answered, let ring or missed in the same instant, with no way to hang up before an answer, and the watcher's bar kept saying "calling …". Now, in a paced run, the phone rings for up to 30 real seconds (`controller.ring_seconds`; 0 in an unpaced run, so fast runs and checks keep their timing). A few rings pass before the person reaches it, then they decide. "Let it ring" rings out the rest of the 30 seconds, and asleep or busy means it rings out to a missed call. The caller can hang up at any time while it rings: Tab → End the talk in the watcher, `/bye` in the cockpit, Ctrl-C in `devsim.visit --call`. Hanging up before an answer leaves the person a missed call and makes no pickup model call. Lines typed into a ringing phone are not heard. Simulated time still waits during the ringing, as it does during a call. The watcher's bar now shows how the call ended.
+
+Silence on a call or face-to-face talk (user request): you used to have 5 real minutes, with the person waiting silently and the whole world paused. Now, after 15 seconds of quiet (`SILENCE_SECONDS`), the person checks in with one model decision ("Hello? Are you still there?", or they hang up or turn away). After a second 15-second silence the talk ends. While you type they wait up to 60 seconds (`TYPING_GRACE_SECONDS`). The watcher's `t` prompt and the cockpit's box send a `typing` note; `devsim.visit --call` sends one with every prompt, because a terminal cannot see keystrokes. Also fixed: the "So far" recap in the person's own call prompts named the caller ("Kanishk: …") even when they knew them only as an unknown number. It now uses the name the person knows. Checks: `household` (3 new cases: ring-out timing, hang up before pickup, hang up while asleep). 409 named checks passed (Graphiti skipped). **Not live-verified.**
+
+## Skill acquisition module, 18 October (user spec)
+
+`devsim/skills.py` adds open-ended skills: there is no skill list, and a skill is created when first practised, keyed by its normalized label. The model is the same for everyone:
+- reads in closed form, which never change state;
+- an exponential approach within a learner and skill;
+- gamma-distributed rates, so power-law averages emerge (E2);
+- strategy shifts with a dip;
+- stability that grows with spacing and retrieval;
+- decay ordering by attributes (E12);
+- savings, including pruned savings records;
+- near transfer only;
+- performance lowered by sleep pressure and stress without touching stored skill;
+- a competence gate that decides outcomes outside the model, with a directive that describes not knowing;
+- self-assessment calibrated to r = .29;
+- emergent abandonment through the hormone module's learned value.
+
+All randomness comes from the 7 allowed seeding purposes, and the module makes no model calls.
+
+It is wired into situation options (`skill` field: the check decides success), the living-world catalog (cooking, homework, robot work, paperwork as practice), the free-time menu (practice wanting) and every prompt (`your_skills`). The evidence ledger is `docs/research/skill_acquisition_ledger.md`; parameters are in `docs/PARAMETERS.md`. The report (placeholders, mismatches with the spec, the aptitude flag) is [skills_report.md](skills_report.md). Turn it on with `skills: {}`.
+
+In the control panel, the character card shows skills, the Characters tab can set a skill's level (logged as an intervention; the replay record restarts there), and the builder and start dialog offer the module, which is on by default in new designs. Checks: new suite `skills` (16). These include replay equal to stored state, the E2 AIC test (individual curves fit exponential better, the population mean fits a power law better), determinism by seeding purpose, zero idle computation and no added model calls. **Not live-verified.**
+
+## Control panel app, 18 October (user request)
+
+`python3 -m devsim.app` is one terminal application to see, start, stop, resume, watch, design and steer simulations; see [COCKPIT_IMPLEMENTATION.md](COCKPIT_IMPLEMENTATION.md).
+- New modules: `devsim/tui.py` (widgets, logo, Pip the mascot, loading animation; `choose` and `ask` moved here from the watcher), `devsim/runs.py` (run control), `devsim/builder.py` (designs to compiled worlds) and `devsim/app.py`.
+- **Live edits and notifications.** New inbox notes `edit` and `notify`, applied by `visit.apply_edit` and `deliver_inbox` at event boundaries, all-or-nothing, and logged as interventions in `runtime.researcher_edits` and `runtime.notifications`.
+- **Builder limits.** `author.compile_scenario(limits=…)` lets builder designs go past the one-draft limits; the draft limits are unchanged.
+- **Your name is set in the app.** It asks once on first start (Enter keeps your login name), remembers it in `work/control-panel.json`, shows it in the top bar, and `y` changes it. The `--name` flag is gone from `devsim.app`, `devsim.watch` and `devsim.visit`; the watcher and the visit command use your login name.
+- **The builder fills one person at a time.** This replaces the one-shot draft, whose repair ran out of the 8k context on 18 October.
+
+- **Fixes after the user could not create a world (18 October).** Tab now cycles Runs → Watch → Characters → New (before, every sub-screen returned to Runs, so Tab only ever reached Watch). `n` lists "Design a new world…" first (before, it only offered already-compiled worlds), and the footer names `4 new world`. A rebuild goes to the next free `compiled-N` folder instead of refusing with "already holds a build"; earlier builds are kept because runs point at them by path. Verified by driving the app in a pseudo-terminal (n → design → build → rebuild; Tab to New) and one new `builder` check. The user's original failing keystrokes were not seen, so these are the dead ends found, not a confirmed match.
+
+Checks: new suites `tui` (4), `runs` (4) and `builder` (5), plus 1 in `household`. 391 named checks plus 12 core checks passed (Graphiti skipped). Pseudo-terminal walk-throughs covered the runs list, a character card with sliders, and a full builder build. **Not yet used to start a live run.**
+
+## Bug fixes from a second pass over the v5 text, 18 October
+
+No simulation was running (only the Graphiti service, left alone), so the finished environment-v5 run was re-read. Six bugs were fixed:
+- **Relationships never changed.** With reflection off (as in every compiled policy), nothing moved trust or closeness: after 62 days every tie was still at 0.5 and 0, although beliefs showed clear opinions ("Arun's pattern of reading my messages without replying…").
+  - New `society.learn`, run from `Engine.advance` for each received interaction with a known person: each attended contact adds a little familiarity, and its appraisal valence moves closeness and trust toward 1 or 0. GIST counts half; an unattended event counts nothing.
+  - Policy key `relationship_learning` (compiled default `{}`; gains 0.05, 0.005 and 0.03 are `[D]`). Reflection, when on, owns this instead.
+- **Society news at night.** 53 of 125 society-layer messages reached a sleeping person. `bridge.sync` now holds a person's news until their next waking time (`household.next_waking`).
+- **Invented contact between main characters.** 18 messages said one simulated character "got in touch" with another without any such interaction. The society layer no longer reports deaths, fights or contact between two bound characters; their tie still shows in "people in your life".
+- **"Family" cue in every conversation.** School and club talk was cued `family`, and 5 of 156 lines argued about "family stuff" nobody had raised. The cue is now added only when the speaker talks with their own family.
+- **Own silence appraised every time.** 209 model calls (about 26 minutes) appraised "I listened quietly." at about −0.6 each, pulling the quiet people's mood down through their own silence. Silent and leave turns are now routine notes: appraised once, then reused with fading weight.
+- **Invitation before the inviter's day began.** The club invitation went out at 07:00 while the teacher's hours were 8–18. Invitations now wait for both people.
+
+Checks: 4 new, plus 2 extended (population bridge). 376 named checks plus 12 core checks passed (Graphiti skipped). Not live-verified.
+
+## Watcher: character panel, surroundings graph, menus, 18 October (user request)
+
+`devsim.watch` gains:
+- **`p` character panel**, sliding in from the right: a generated ASCII face with an expression from mood, stress and sleep pressure, description, mood, hormone and need bars, goals, closest people, latest thought and line, and recallable memories.
+- **`m` room map and relationship web.**
+- **Menus on `t`.** Talking, phoning, introducing a new character (name, who, age, whom they meet, relationship, confirm), resending a character and speaking to the group are all chosen from lists. `Tab` offers "let the model play" and "end the talk".
+
+Faces use shape-matched ASCII after Alex Harri's method (`devsim/ascii_art.py`, glyph table `devsim/data/ascii_shapes.json`). An introduced character's facets and background are synthesized from the description in one model call (none in scripted runs). A stated relationship becomes a fact for both people at the first meeting, plus one introduction memory marked `researcher_introduced`; no shared past is invented. Details: [COCKPIT_IMPLEMENTATION.md](COCKPIT_IMPLEMENTATION.md).
+
+Checks: new suite `ascii` (5), plus 2 in `watch` and 1 in `household`. The watcher was also driven in a pseudo-terminal through the panel, map, web and the full introduce-a-character menu on a scratch run. 372 named checks plus 12 core checks passed (Graphiti skipped). **Not used with a live model yet.**
+
+## Hormone-state module, 18 October (user spec)
+
+Exactly three lazily advanced variables per person: stress (`stress_x`, phasic, with a closed-form baseline anchored to waking), sleep pressure (Process S gated by the sleep module's night) and tonic dopamine (a leaky integral of reward prediction error). Per-target expectations V(target) are memory, not hormone state. Bonding comes from society-layer closeness in the wanting score, so there is no fourth variable. Design: [hormone_design.md](hormone_design.md); every constant is tagged in [hormone_evidence.md](hormone_evidence.md).
+- **Wiring, using existing interfaces only:**
+  - one hook per delivered event in `Engine.advance` (stress increment, Rescorla-Wagner step weighted by attention tier);
+  - mood (negative impulses scaled by stress, a baseline offset from dopamine and stress);
+  - attention (fatigue = sleep pressure, plus an arousal capacity factor that is off by default);
+  - the sleep module (night quality times sleep efficiency);
+  - a style line in the existing prompt;
+  - wanting and initiative in the living-world menu.
+- **Constraints met:** no added model calls (checked with a stubbed household run), O(1) per event (timing flat from 5 to 400 agents, and no access to the agents table), seeded draws, no type, role or sex identifiers, and safe defaults without household, attention or sleep.
+- **Evidence (read 18 October):**
+  - `[V]`: awakening-rise timing (Stalder 2016); lower speech complexity with stress reactivity (Saslow 2014).
+  - `[U]`: Process S time constants (seen only as software defaults); more pauses under stress (secondary report of Buchanan 2014).
+  - Not found: "more total words", so stress never shortens speech by default.
+  - Deviation, recorded `[D]`: the attention tier weights the learning step, not the reward, so an unattended outcome teaches nothing.
+
+Checks: new suite `hormones` (15) and a calibration report `checks/results/hormone-calibration.json` (300 seeded agents: awakening peak at 39 min; declared inputs explain 0.98 of stress reactivity and all of wanting, a nuisance fact none). 364 named checks plus 12 core checks passed (Graphiti skipped). **Not live-verified.** Turn it on with `hormones: {}` in the policy; the compiler does not add it.
+
+## Living world, 18 October (user request)
+
+In v5 Meera kept saying she was worried about Priya but never went to her room: nobody chose to go anywhere in 62 days, and the world never did anything by itself. The user asked for a game-like world (The Sims as the model) that runs on rules, with the model only in people's minds. Guide: [LIVING_IMPLEMENTATION.md](LIVING_IMPLEMENTATION.md).
+- **Map:** room `kind` and `site`, with furniture from a catalog by kind. Moving to another site needs a route; that fixes a teleport gap, since `household.travel` used to move instantly when no route existed. Other families' homes and other people's bedroom furniture are off limits.
+- **Needs:** hunger, energy, social, fun and hygiene, computed lazily by waking and sleeping hours and raised by activities, conversation and pets. They reach the model as words only, and low energy feeds attention's fatigue signal.
+- **Whereabouts:** known only from what a person saw or heard.
+- **Free-time choices:** at each inner thought the person picks from a ranked menu (activities in reach, plus people to talk to, go and see, message or play with), in the same model call. A scripted run takes the top option. Choices are carried out by walking, activities with durations, visits that open a conversation (or find the person gone, asleep or busy), messages and bedtime returns.
+- **Surroundings without the model:** happenings by room kind (atmosphere, incidents such as a power cut, late bus, fire drill or a slip, off-stage callers), a seeded weather chain, and pets with their own routine. The only model use is an optional TV news sentence.
+- **Authoring:** the vocabulary asks for kind, site, homes for everyone and pets. When rooms carry kinds the compiler adds `living: {}`, requires everyone to start in a home room, and requires a route from each group member's home to the meeting site. The dry run skips inner thoughts for speed.
+- **Watcher:** each person's current activity and low needs; thoughts, activities and happenings in the feed.
+
+Checks: new suite `living` (15), plus 1 in `author`. 349 named checks plus 12 core checks passed (Graphiti skipped). The stubbed check reproduces the motivating case: a worried thought makes the grandmother walk to the child's room and open a conversation there. **Not live-verified.** All rates and catalog entries are provisional design defaults. The v5 compiled scenario has no room kinds, so it would run without the living world; a recompile from `setting.txt` is needed.
+
+## Real time and inner thoughts, 18 October (user request)
+
+The user wants the world to run at their pace. v5 covered 62 days in 8.1 hours because the engine jumped straight from one event to the next, and a conversation turn took a random 1–5 minutes whatever was said.
+- **Real-time pacing.** `Lifetime(..., pace=1)` and `devsim.run_live --pace` (default 1 = one simulated second per real second; 0 is the old as-fast-as-possible mode). Before each event the controller sleeps until the wall clock reaches it. The clock is re-anchored after every event, so time spent waiting on the model never counts: the world stands still while the model writes. Pacing is not in the policy and never changes what happens; a researcher line arriving during a wait advances the world to "now" and is delivered then. At pace 1, the 62-day scenario takes at least 62 real days.
+- **A line takes as long as it takes to say.** After each turn the next one starts after the line's own duration (2.5 spoken or 0.67 typed words a second, about 150 and 40 a minute; fixed population averages) plus the reply pause. Compiled scenarios now keep face-to-face reply pauses in seconds (default 3–12 s, capped at 15–30 s); v5 had 1–5 minutes.
+- **Inner thoughts** (`policy.inner_thoughts.mean_minutes`, compiled default 3 since 18 October at the user's request; was 20). Each awake person who is not in a conversation thinks to themselves at exponentially spaced moments: one model call (`cognition.think`, purpose `thought`) returns one to three first-person sentences plus valence, arousal and importance, stored as their private internal memory (`@thought:<person>:<n>`). Nobody else perceives it and it establishes no world fact. Live runs only (scripted runs have no words). The rate is an engineering choice; at 7 people and 16 waking hours that is roughly 2,200 calls a simulated day (340 at the old 20 minutes).
+
+Checks: 2 new (paced run waits on the wall clock and ends in the same world as an unpaced one; inner thoughts are private, internal, only while awake and out of conversation); pinned values updated for line durations and reply pauses. 333 named checks plus 12 core checks passed (Graphiti skipped). **Not yet live-verified.** Thoughts do not yet lead to actions by themselves; actions still come from situations and conversations.
+
+## Fixes, 18 October: conversations from the environment-v5 run
+
+`runs/live/environment-v5/` completed 62.09 days (403 actions, 8.1 hours). Its conversations were short and deaf:
+- **Every one of the 79 held conversations ended at its turn limit**, 62 of them after 4 turns (the school class: one line each, once per 6.5-hour school day). None ended naturally.
+- **Listeners heard 6% of others' conversation turns in full** (82 of 1,371; 58% GIST, 36% NONE). The calm-arousal inverted U halved capacity, classmates' arrivals stayed open as competing "streams" for 15 minutes, and nothing marks group speech as addressed to its participants.
+- **GIST threw away meaning.** Kiara's own appraisal gist of Priya's first line was "Priya asked where the robotics room was…", but attention stored "Half-noticed: Priya, something about everyday things." (39% of allocations had no keyword, so the generic 'social' label won). Kiara answered a question she never heard, then mocked "everyday things" for weeks; Ms. Okafor scolded Priya for an "everyday things tangent" she never said.
+- **Rohan repeated himself** because his context held his own bragging (FULL) and others' turns as the same gist line. He took no action outside conversations in 62 days, so his "I ran simulations last night" lines are model invention.
+- **Meera's kitchen talk (the scenario's day-28 event) never happened**: `day: 28` is midnight, Priya sleeps 22:00–07:00, and room conversations did not bring participants to the room.
+
+Changes:
+- `attention.coarse_text`: GIST uses the listener's own appraisal gist; without one and with no keyword it says "something" rather than inventing a topic.
+- `attention.allocate`: one-off events (arrivals, room changes) open no competing stream.
+- `policies/attention.json`: `arousal_shape` default is now `monotone`. Replayed on the v5 conversation turns, these two changes alone move FULL from 6% to about 69% (GIST 24%, NONE 6%).
+- `household`: a conversation ends on its own after a full round with no speech (`everyone fell silent`); `max_turns` is now a safety cap. A group meeting's talk is followed by another after a 1–2 hour break (new topic from its list) until the meeting ends, so a school day holds several talks. Authored room conversations bring available participants to the room and send them back after. Validation rejects a scheduled conversation that starts when fewer than two participants are awake.
+- **Invented activities.** `author._check_rooms_and_roles` now requires every person with goals to be the actor of at least one situation; talking in conversations or group meetings no longer counts. The draft prompt says so. The conversation instructions now say to claim having done or seen something only if it is in one's memories, and otherwise to share opinions, plans, questions or feelings. The prompt line is guidance, not enforcement. The v5 compiled scenario fails the new rule (only Priya has situations), so a new run needs a recompile from `setting.txt`.
+- `author.compile_scenario` sets every non-interview talk (scheduled conversations, group meetings, option conversations) to the 40-turn safety cap, whatever the draft says; the prompt no longer asks for `max_turns` there and explains a conversation's day fraction as its time of day. Interviews keep two turns per question.
+
+Checks: 5 new (talk-only people rejected, gist text, silent-round end with travel to and from the room, follow-up talks inside a meeting, compile-time rejection of a sleeping conversation); two attention checks now name the inverted U explicitly and the crowd check asks only for fewer traces. 331 named checks plus 12 core checks passed (Graphiti skipped). **Not yet live-verified.** Expect many more model calls per simulated day: each turn costs roughly 6–7 calls. Left open: speaker order is still a fixed round robin (the person addressed does not reply next).
 
 ## Latest phase: environment, event-driven authoring, in-scenario interviews, cache compaction
 

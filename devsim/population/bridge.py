@@ -104,20 +104,30 @@ def _deliver_default(engine):
 def sync(engine, deliver=None):
     """Bring each bound character's social world up to now; returns the day of the next check (event-driven)."""
     from .ties import neighbors, tie, _resolve
+    from .. import household
     pop = population(engine)
     deliver = deliver or _deliver_default(engine)
     cfg, t = pop.cfg, engine.day
     synced = pop.state.setdefault('synced', {})
     next_check = t + cfg['bridge_max_gap_days']
+    bound = set(pop.state['bound'])
     for pid, owner in sorted(pop.state['bound'].items()):
         if not engine.agent(owner)['alive']:
+            continue
+        if 'household' in engine.state['config'] and not household.available(engine, owner):
+            # Asleep or off-hours: their news waits until they are up (v5 run: 53 of 125 messages arrived at night).
+            next_check = min(next_check, household.next_waking(engine, owner, t))
             continue
         last = synced.get(pid, pop.state['start_day'])
         rows = neighbors(pop, pid, t)
         close = rows[:int(cfg['bridge_top_ties'])]
         news = []
+        # Between two simulated characters the world itself decides what happens; the layer never reports it
+        # (v5 run: "Priya got in touch with me" reached her father with no such contact in the simulation).
         for row in rows:
             other, death = row['id'], pop.death_day(row['id'])
+            if other in bound:
+                continue
             if death is not None and last < death <= t and row['strength'] >= .2:
                 news.append(('died', other, row))
         previous = pop.state.setdefault('close', {})
@@ -125,10 +135,10 @@ def sync(engine, deliver=None):
         for kind in ('tie_ruptured', 'hostile_contact', 'reconciled'):  # fights matter as news only with close ties
             for fact in pop.facts(pid, kind):
                 other = next(x for x in fact['who'] if x != pid)
-                if last < fact['t'] <= t and not fact['committed'] and other in close_ids:
+                if last < fact['t'] <= t and not fact['committed'] and other in close_ids and other not in bound:
                     news.append((kind, other, next((r for r in rows if r['id'] == other), None)))
         heard = pop.state.setdefault('contact_news', {})
-        touched = [r for r in close if last < r['last_contact'] <= t and r['alive'] and not r['ruptured']
+        touched = [r for r in close if last < r['last_contact'] <= t and r['alive'] and not r['ruptured'] and r['id'] not in bound
                    and t - heard.get(f'{pid}|{r["id"]}', -1e18) >= cfg['bridge_contact_repeat_days']]
         news += [('contact', r['id'], r) for r in sorted(touched, key=lambda r: -r['strength'])[:int(cfg['bridge_contact_news_max'])]]
         for n, (kind, other, row) in enumerate(news):

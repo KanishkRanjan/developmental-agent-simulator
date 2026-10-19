@@ -13,6 +13,47 @@ def configure(engine,settings):
     engine.state['config']['society']=deepcopy(settings)
 
 
+LEARNING={'closeness_gain':.05,'familiarity_gain':.005,'trust_gain':.03}  # design defaults [D], not fitted
+
+
+def configure_learning(engine,settings):
+    """Rule-based relationship change from interactions (no model). Off unless the policy names it."""
+    from .engine import number
+    if not isinstance(settings,dict) or set(settings)-set(LEARNING):
+        raise ValueError(f'relationship_learning takes {sorted(LEARNING)}')
+    merged={**LEARNING,**settings}
+    for key,value in merged.items():
+        number(value,0,1,key)
+    prior=engine.state['config'].get('relationship_learning')
+    if prior is not None and prior!=merged: raise ValueError('Cannot silently replace relationship learning policy')
+    engine.state['config']['relationship_learning']=merged
+
+
+def learn(engine,owner,event,obs,result=None):
+    """How a received interaction with a known person shifts the relationship, by a bounded rule.
+
+    v5 run: with reflection off nothing ever changed trust or closeness, so after 62 days every tie was still at its
+    starting value although the characters had formed clear opinions of each other. Each attended contact adds a
+    little familiarity; how it felt (the owner's own appraisal valence) moves closeness and trust toward 1 when
+    pleasant and toward 0 when not. GIST counts half and an unattended event nothing. Reflection, when on, owns this.
+    """
+    other=obs['source']
+    agent=engine.agent(owner)
+    if other==owner or other not in agent['relationships'] or obs.get('kind')=='internal':
+        return
+    cfg=engine.state['config']['relationship_learning']
+    weight=1.0 if result is None else {'FULL':1.0,'GIST':.5,'NONE':0.0}[result.tier]
+    if not weight:
+        return
+    valence=max(-1.0,min(1.0,obs.get('valence',0.0)))
+    record=agent['relationships'][other]
+    near=relationship(engine,record,event['day'])['closeness']
+    toward=lambda x:max(valence,0)*(1-x)+min(valence,0)*x
+    record.update(closeness=min(1.0,max(0.0,near+weight*(cfg['closeness_gain']*toward(near)+cfg['familiarity_gain']*(1-near)))),
+                  trust=min(1.0,max(0.0,record['trust']+weight*cfg['trust_gain']*toward(record['trust']))),
+                  last_interaction_day=event['day'])
+
+
 def relationship(engine,record,day=None):
     result=deepcopy(record)
     settings=engine.state['config'].get('society')

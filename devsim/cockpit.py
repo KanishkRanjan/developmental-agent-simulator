@@ -199,7 +199,9 @@ if(LIVE&&TALK){const box=$('#talkbox');box.hidden=false;box.innerHTML=`<section>
  <div id="t-log" aria-live="polite"></div></section>`;
  $('#t-people').innerHTML=Object.values(data.people||{}).map(p=>`<option value="@${esc(p.owner)} ">${esc(p.name)}</option>`).join('');
  const go=()=>{const text=$('#t-text').value.trim();if(text)post(text)};
- $('#t-go').onclick=go;$('#t-text').onkeydown=e=>{if(e.key==='Enter')go()};poll();setInterval(poll,1500)}
+ $('#t-go').onclick=go;$('#t-text').onkeydown=e=>{if(e.key==='Enter')go()};
+ let typed=0;$('#t-text').oninput=()=>{if(talk&&talk.active&&Date.now()-typed>20000){typed=Date.now();  // in a talk they wait for your line
+  fetch('talk',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#t-name').value,text:'/typing'})}).catch(()=>{})}};poll();setInterval(poll,1500)}
 </script></body></html>
 """
 

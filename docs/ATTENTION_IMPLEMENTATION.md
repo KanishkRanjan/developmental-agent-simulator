@@ -23,7 +23,7 @@ No archived policy has the block, so archived runs replay unchanged.
 |---|---|---|
 | Event delivery | `Engine.advance` (`engine.py`), the per-recipient loop | One `attention.allocate` call per (listener, event), after the LLM appraisal and before encoding. This is the only call site. |
 | Encoding | same loop | Without sleep, stability is multiplied by `a^gamma_enc`. With sleep, `a^gamma_enc` goes into the buffer entry's `attention_weight`, which `sleep.trace_weight` multiplies in, so inattentive events are more often dropped at the next sleep. GIST traces also get `gist_stability_factor`. |
-| GIST / NONE content | `attention.encoded` | GIST encodes a coarse line: who, main topic and rough valence ("Half-noticed: Rohan, something about work or duties; it seemed unpleasant."). NONE keeps a hidden receipt with tier `unattended`, which is in `sleep.HIDDEN`. The original observation always stays in `state['events']`. NONE also records no reminders or mentions; GIST still records mentions. The physical encounter is recorded either way. |
+| GIST / NONE content | `attention.encoded` | GIST encodes a coarse line: the listener's own appraisal gist when there is one ("Half-noticed: Priya asked where the robotics room was."), else who, main topic and rough valence ("Half-noticed: Rohan, something about work or duties; it seemed unpleasant."), with no topic when no keyword matched. One-off events (arrivals, room changes) open no competing stream. NONE keeps a hidden receipt with tier `unattended`, which is in `sleep.HIDDEN`. The original observation always stays in `state['events']`. NONE also records no reminders or mentions; GIST still records mentions. The physical encounter is recorded either way. |
 | Mood and arousal | `Engine.mood` | Each event's impulse is scaled by `a`, in full when captured, and by 0 when NONE. |
 | LLM context | `cognition.views`, `Engine.memories` (via `HIDDEN`), `household.conversation_memory`, `Engine.consolidate` | NONE is left out. GIST appears as its one-line summary. FULL is shown as before. |
 | Response gating hook | `AttentionResult.may_skip_response` | True for GIST or NONE events that are not addressed. No gate uses it yet. |
@@ -66,7 +66,7 @@ Override any of these with `engine.attention_providers[name]`.
 
 ## Most sensitive parameters for calibration
 
-1. **`arousal_shape`, `kappa` [U].** Mood arousal 0 means "calm", but the inverted U treats it as under-aroused, so a calm agent has only half its capacity (`1 - 2 x 0.25`). In checks, interested listeners in a calm conversation reached FULL on only 14% of turns. This is the biggest single lever, and `monotone` removes it.
+1. **`arousal_shape`, `kappa` [U].** Mood arousal 0 means "calm", but the inverted U treats it as under-aroused, so a calm agent has only half its capacity (`1 - 2 x 0.25`). In checks, interested listeners in a calm conversation reached FULL on only 14% of turns. This is the biggest single lever, and `monotone` removes it. Since 18 October `monotone` is the default: the environment-v5 run heard only 6% of conversation turns in full.
 2. **`a_full`, `a_gist`.** These set how much of everyday talk becomes GIST: for a typical stranger or acquaintance, most of it does.
 3. **`closeness_known`, `closeness_stranger`, `w_rel`.** Most relationships in the authored worlds sit at closeness 0, so the "known" default decides speaker closeness for nearly everyone.
 4. **`lam0_per_minute`, `drift_mean_minutes`, `d_drift`.** Over 120 turns, bored listeners drifted on about 25% of turns.

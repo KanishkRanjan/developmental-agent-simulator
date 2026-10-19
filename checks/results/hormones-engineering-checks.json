@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "scope": "synthetic hormone-module engineering checks; constants are tagged, mostly [D]/[U]",
+  "checks": [
+    "the hormone state has exactly three fields: stress_x, sleep_pressure, dopamine_tonic",
+    "advance(advance(s, t1), t2) == advance(s, t2) for 300 random states and times spanning nights (relative 1e-9)",
+    "stress readout stays in [0, 1) and sleep pressure in [0, 1]; pressure strictly rises awake and falls asleep",
+    "the awakening rise peaks tau_car (40 min) after waking; the whole baseline peaks at 39 min, inside the verified 30-45 min window; asleep it sits at the floor",
+    "repeat increments fade within one or two exposures (habituation reuses the routine exposure count)",
+    "same seed, agent, event and purpose give bit-identical results; a different purpose string changes the draw",
+    "no agent-type, archetype, role, sex or gender identifier in the module; names, identity facts and tie labels change nothing; across 300 seeded agents the declared inputs explain 0.982 of reactivity and 1.000 of wanting, a nuisance fact adds 1.7e-05",
+    "a stubbed household run makes the same number of model calls with and without the module (14)",
+    "per-event cost is flat in agent count (21 us at 5 agents, 21 us at 400) and no event, read or wanting call iterates over the agents",
+    "tired but wired: high sleep pressure plus high stress gives a longer onset, lower efficiency and more pressure left in the morning than high pressure alone; the flag turns it off",
+    "a sleep-deprived listener has lower attention capacity (K 0.53 vs 0.95 rested)",
+    "group drift: repeated disappointment sinks a group below a new one with an optimistic prior, a close friend with ~0 prediction error stays most wanted, and leaving becomes possible; an unattended outcome teaches nothing",
+    "the style directive is monotone in stress (none, mild, strong), never asks for shorter speech by default, and adds the tired line only under high sleep pressure",
+    "each received event records stress at that moment and teaches an expectation of its source; negative mood impulses deepen with stress; the sleep module pays for a stressed bedtime through sleep efficiency",
+    "runs standalone with safe defaults (no routine: never asleep; no attention or sleep module); unknown settings are rejected"
+  ]
+}

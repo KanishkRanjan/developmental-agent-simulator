@@ -171,6 +171,26 @@ class InvalidModelOutput(ValueError):
     """The model's output stayed invalid after repairs; nothing was changed."""
 
 
+def near_repeat(text, other, similarity=.8):
+    """{} when text nearly copies other, {'repeated_words': ...} when they share a telling phrase, else None.
+    Very short lines (under three words) never count."""
+    if len(text.split()) < 3:
+        return None
+    from difflib import SequenceMatcher
+    from .cognition import words
+    # Word-level, autojunk off: character-level autojunk drops spaces and vowels from lines over 200 characters,
+    # so near-copies scored ~0.06 (environment-v2 run-2: 0 of 42 Rohan repeats caught).
+    if SequenceMatcher(None, text.lower().split(), other.lower().split(), autojunk=False).ratio() >= similarity:
+        return {}
+    # Also a shared run of six words with three content words: v4 run openers ("Wow, the silence is so loud ...")
+    # recurred daily below 0.8 similarity; on that run this flagged 11 of 50 lines, all verbal loops.
+    def phrases(line):
+        toks = re.findall(r"[a-z']+", line.lower())
+        return {' '.join(toks[i:i + 6]) for i in range(len(toks) - 5) if len(words(' '.join(toks[i:i + 6]))) >= 3}
+    shared = phrases(text) & phrases(other)
+    return {'repeated_words': min(shared)} if shared else None
+
+
 def validated_json(system, context, validate, api, model, max_tokens=600):
     """Repair malformed structured responses at most twice, before any mutation."""
     last_error = None
@@ -311,7 +331,7 @@ class Engine:
             self.state = backup
             raise
 
-    def materialize_for_interaction(self, key, *, default_age_years=25):
+    def materialize_for_interaction(self, key, *, default_age_years=25, facet_overrides=None):
         """Necessity-driven activation, without turning testimony into biography.
 
         Only committed identity/family constraints determine age. Unknown age
@@ -335,7 +355,7 @@ class Engine:
             raise ValueError('Activation birth day follows an existing caregiving experience')
         # Prepare the optional sampler before any mutation.
         seed = int.from_bytes(sha256(f'{self.state["seed"]}:{key}'.encode()).digest()[:4], 'big')
-        facets = sampled_profile(seed)
+        facets = {**sampled_profile(seed), **(facet_overrides or {})}  # a described visitor: facets their description implies
         self.materialize(key, facets, birth_day=birth_day)
         entity['facts'].setdefault('birth_day', birth_day)
         self.agent(key)['materialization_provenance'] = {'day': self.day, 'age_basis': basis,
@@ -740,6 +760,9 @@ class Engine:
                         attention.record(agent['memory_meta'][event['id']], attended[owner], buffered='sleep' in self.state['config'],
                                          original=event['observations'][owner], encoded_text=obs['text'])
                         attention.felt_ignored(self, owner, event, obs, attended[owner])
+                    if 'hormones' in self.state['config']:  # stress increment and prediction-error learning, O(1)
+                        from . import hormones
+                        agent['memory_meta'][event['id']]['hormones'] = hormones.on_event(self, owner, event, obs, attended.get(owner))
                     if 'sleep' in self.state['config'] and agent['memory_meta'][event['id']].get('tier') != attention.UNATTENDED:
                         sleep.buffer(self, owner, event, obs)
                         if owner in attended:
@@ -754,6 +777,9 @@ class Engine:
                             'trust': old.get('trust', 0.5), 'closeness': old.get('closeness', 0.0),
                             'firsthand': True, 'evidence': event['id'], 'last_interaction_day':event['day'],
                             **({'versions':deepcopy(old['versions'])} if 'versions' in old else {})}
+                    if 'relationship_learning' in self.state['config'] and not self.state['config'].get('cognition', {}).get('reflection'):
+                        from . import society
+                        society.learn(self, owner, event, obs, attended.get(owner))
                     if 'caregiving' in obs:
                         agent.setdefault('caregiving_experiences', []).append({
                             **deepcopy(obs['caregiving']), 'event': event['id'], 'day': event['day']})
@@ -799,6 +825,14 @@ class Engine:
         return {**derived, **agent.get('affect_parameters', {})}
 
     def mood(self, owner, day=None):
+        result = self._mood(owner, day)
+        if 'hormones' in self.state['config']:  # tonic dopamine and stress shift the baseline the mood settles to
+            from . import hormones
+            offset = hormones.mood_offset(self, owner, self.day if day is None else day)
+            result = {**result, 'valence': max(-1, min(1, result['valence'] + offset))}
+        return result
+
+    def _mood(self, owner, day=None):
         now = self.day if day is None else day
         agent = self.agent(owner)
         cfg = self.state['config']
@@ -812,6 +846,10 @@ class Engine:
         if 'attention' in cfg:  # an inattentive listener is barely moved
             scales = [attention.emotion_scale(agent['memory_meta'][o.event_id]) for o in self.world.observations.get(owner, [])]
             impulses = [impulse(o.day, o.valence * k, o.arousal * k) for o, k in zip(self.world.observations.get(owner, []), scales)]
+        if 'hormones' in cfg:  # stress at the event deepens negative impulses
+            from . import hormones
+            impulses = [(d, v * hormones.mood_scale(self, agent['memory_meta'][o.event_id], v), a, tau)
+                        for (d, v, a, tau), o in zip(impulses, self.world.observations.get(owner, []))]
         impulses += [impulse(r['day'], r['valence'], r['arousal']) for r in agent['affect_events']]
         impulses = sorted((x for x in impulses if x[0] <= now), key=lambda x: x[0])
         if cfg['mood_kernel'] == 'average':
@@ -1105,9 +1143,25 @@ class Engine:
         if 'household' in self.state['config']:
             from .household import view, conversation_memory
             context['physical_environment'] = view(self,owner)
+            if 'living' in self.state['config']:
+                from . import living
+                feel = living.words(self, owner)
+                context['how_your_body_feels'] = feel or ['fine']
+                doing = living.state(self)['doing'].get(owner)
+                if doing and doing['phase'] == 'busy' and context['physical_environment']:  # None while travelling
+                    context['physical_environment']['you_are'] = doing['verb']
             recent = conversation_memory(self, owner)
             if recent:
                 context['conversation_so_far'] = recent
+        if 'skills' in self.state['config']:
+            from . import skills
+            context['your_skills'] = skills.context(self, owner)
+        if 'hormones' in self.state['config']:
+            from . import hormones
+            line = hormones.style_directive(self.state['config']['hormones'], hormones.read(self, owner),
+                                            context.get('mood', {}).get('valence', 0.0))
+            if line:
+                context['how_you_come_across_right_now'] = line
         return compact(context)
 
     def propose(self, owner, situation, *, api='http://127.0.0.1:8081', model='local', cues=(), options=None):
@@ -1272,26 +1326,11 @@ class Engine:
 
     def repeated_speech(self, owner, speech, recent=10, similarity=.8):
         """The owner's own recent committed action whose speech nearly matches, or None. Very short replies are exempt."""
-        if len(speech.split()) < 3:
-            return None
-        from difflib import SequenceMatcher
-        from .cognition import words
         own = [a for a in self.state['actions'] if a['owner'] == owner and a['status'] != 'cancelled' and a['decision'].get('speech')]
-        # Also a shared run of six words with three content words: v4 run openers ("Wow, the silence is so loud ...")
-        # recurred daily below 0.8 similarity; on that run this flagged 11 of 50 lines, all verbal loops.
-        def phrases(text):
-            toks = re.findall(r"[a-z']+", text.lower())
-            return {' '.join(toks[i:i + 6]) for i in range(len(toks) - 5) if len(words(' '.join(toks[i:i + 6]))) >= 3}
-        mine = phrases(speech)
         for a in reversed(own[-recent:]):
-            other = a['decision']['speech']
-            # Word-level, autojunk off: character-level autojunk drops spaces and vowels from lines over 200 characters,
-            # so near-copies scored ~0.06 (environment-v2 run-2: 0 of 42 Rohan repeats caught).
-            if SequenceMatcher(None, speech.lower().split(), other.lower().split(), autojunk=False).ratio() >= similarity:
-                return a | {'speech': other}
-            shared = mine & phrases(other)
-            if shared:
-                return a | {'speech': other, 'repeated_words': min(shared)}
+            hit = near_repeat(speech, a['decision']['speech'], similarity)
+            if hit is not None:
+                return a | {'speech': a['decision']['speech'], **hit}
         return None
 
     def repeated_question(self, owner):

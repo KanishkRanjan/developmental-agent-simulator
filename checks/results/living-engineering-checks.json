@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "synthetic living-world engineering checks; rates are design defaults, not calibrated",
+  "checks": [
+    "needs fall per waking or sleeping hour from the last update (energy refills asleep, capped at 1); reading them is pure",
+    "rooms in a site are within walking reach; another site needs a route (no teleporting); rain lengthens routes",
+    "a classmate cannot use or walk into another family's home; school and other public places are open",
+    "a hungry person's best-ranked option is to cook (need relief minus travel)",
+    "an activity is seen by people in the room, takes its minutes, and only completes (raising needs) if the person stays",
+    "people know where others are only from what they saw or heard; someone leaving makes their whereabouts unknown",
+    "going to talk walks to the person and opens a conversation there; someone gone or asleep is noticed instead",
+    "near the end of the waking day a person at home walks back to their own room",
+    "a happening reaches only people in the room and, for sounds, in rooms within earshot",
+    "a power cut takes out the powered objects of the whole site (not the school) and they work again two hours later",
+    "a fire drill interrupts conversations on the school site and releases their reserved turns",
+    "the cat wanders its rooms on its own (15 sightings in a day); people there notice it and can play with it",
+    "a scripted living day (choices, activities, visits, happenings, weather, the cat) is deterministic, ends with everyone in their own room, and resumes from a mid-day checkpoint to the same world",
+    "live choice (stubbed model): a worried thought picks \"go and talk\", the grandmother walks to the child's room and opens the conversation there, which ends on its own",
+    "a busy person in transit (no room) gets a context with no physical environment instead of crashing",
+    "unknown room kinds, creatures outside their rooms, bad settings and person-happenings without self_text are rejected"
+  ]
+}
