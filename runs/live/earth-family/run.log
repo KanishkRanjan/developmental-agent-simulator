@@ -1,0 +1,157 @@
+{"purpose": "thought", "agent": "anjali", "day": 0.2524390895813375, "seconds": 4.489, "tokens": 81}
+{"purpose": "thought", "agent": "anjali", "day": 0.2539516134907512, "seconds": 4.652, "tokens": 82}
+{"purpose": "thought", "agent": "anjali", "day": 0.25538954581292994, "seconds": 5.22, "tokens": 93}
+{"purpose": "thought", "agent": "anjali", "day": 0.25538954581292994, "seconds": 2.813, "tokens": 70}
+{"purpose": "thought", "agent": "anjali", "day": 0.258134527335394, "seconds": 5.671, "tokens": 100}
+{"purpose": "appraisal", "agent": "anjali", "day": 0.258134527335394, "seconds": 6.463, "tokens": 126}
+{"purpose": "appraisal", "agent": "anjali", "day": 0.258134527335394, "seconds": 5.812, "tokens": 108}
+{"purpose": "thought", "agent": "anjali", "day": 0.260325859726166, "seconds": 5.293, "tokens": 79}
+{"purpose": "thought", "agent": "anjali", "day": 0.26089600762763787, "seconds": 5.217, "tokens": 83}
+{"purpose": "thought", "agent": "anjali", "day": 0.2616131238633317, "seconds": 5.392, "tokens": 88}
+{"purpose": "thought", "agent": "anjali", "day": 0.2627723424992625, "seconds": 5.247, "tokens": 84}
+{"purpose": "thought", "agent": "anjali", "day": 0.2627723424992625, "seconds": 3.467, "tokens": 88}
+{"purpose": "thought", "agent": "anjali", "day": 0.2643497526752912, "seconds": 5.861, "tokens": 99}
+{"purpose": "thought", "agent": "anjali", "day": 0.2650152975491998, "seconds": 6.129, "tokens": 108}
+{"purpose": "thought", "agent": "anjali", "day": 0.2650203924851847, "seconds": 5.831, "tokens": 99}
+{"purpose": "thought", "agent": "anjali", "day": 0.2650203924851847, "seconds": 3.873, "tokens": 100}
+{"purpose": "thought", "agent": "anjali", "day": 0.2652706401020669, "seconds": 5.681, "tokens": 95}
+{"purpose": "thought", "agent": "anjali", "day": 0.2670242185649876, "seconds": 5.708, "tokens": 95}
+{"purpose": "thought", "agent": "anjali", "day": 0.2670242185649876, "seconds": 3.633, "tokens": 93}
+{"purpose": "appraisal", "agent": "vikram", "day": 0.2708333333333333, "seconds": 5.539, "tokens": 117}
+{"purpose": "appraisal", "agent": "vikram", "day": 0.2708333333333333, "seconds": 5.542, "tokens": 117}
+{"purpose": "appraisal", "agent": "mehta", "day": 0.2708333333333333, "seconds": 5.709, "tokens": 130}
+{"purpose": "thought", "agent": "anjali", "day": 0.2709798096024961, "seconds": 5.798, "tokens": 97}
+{"purpose": "thought", "agent": "anjali", "day": 0.2709798096024961, "seconds": 3.699, "tokens": 95}
+{"purpose": "thought", "agent": "anjali", "day": 0.2712606857797565, "seconds": 5.597, "tokens": 91}
+{"purpose": "thought", "agent": "anjali", "day": 0.2712606857797565, "seconds": 3.592, "tokens": 92}
+{"purpose": "thought", "agent": "mehta", "day": 0.27140199310080554, "seconds": 4.714, "tokens": 81}
+{"purpose": "thought", "agent": "vikram", "day": 0.2715138228390724, "seconds": 4.814, "tokens": 77}
+{"purpose": "thought", "agent": "mehta", "day": 0.2721584118636313, "seconds": 4.858, "tokens": 81}
+{"purpose": "thought", "agent": "mehta", "day": 0.2721584118636313, "seconds": 3.719, "tokens": 96}
+{"purpose": "thought", "agent": "vikram", "day": 0.2727783635070083, "seconds": 5.037, "tokens": 77}
+{"purpose": "thought", "agent": "vikram", "day": 0.2727783635070083, "seconds": 4.387, "tokens": 116}
+{"purpose": "thought", "agent": "anjali", "day": 0.2731788658768936, "seconds": 5.861, "tokens": 99}
+{"purpose": "thought", "agent": "mehta", "day": 0.27325891029115723, "seconds": 5.246, "tokens": 87}
+{"purpose": "thought", "agent": "mehta", "day": 0.2742326867366424, "seconds": 5.209, "tokens": 87}
+{"purpose": "thought", "agent": "mehta", "day": 0.2742326867366424, "seconds": 3.421, "tokens": 87}
+{"purpose": "appraisal", "agent": "mehta", "day": 0.2742326867366424, "seconds": 5.722, "tokens": 100}
+{"purpose": "thought", "agent": "anjali", "day": 0.2745457046618183, "seconds": 5.705, "tokens": 92}
+{"purpose": "thought", "agent": "anjali", "day": 0.2745457046618183, "seconds": 3.501, "tokens": 89}
+{"purpose": "thought", "agent": "mehta", "day": 0.275160873204358, "seconds": 5.532, "tokens": 94}
+{"purpose": "thought", "agent": "anjali", "day": 0.27635066744428494, "seconds": 5.716, "tokens": 96}
+{"purpose": "thought", "agent": "mehta", "day": 0.27680639192601275, "seconds": 5.516, "tokens": 95}
+{"purpose": "thought", "agent": "mehta", "day": 0.27680639192601275, "seconds": 3.428, "tokens": 87}
+{"purpose": "thought", "agent": "anjali", "day": 0.2777488374871773, "seconds": 5.888, "tokens": 100}
+{"purpose": "thought", "agent": "anjali", "day": 0.2777488374871773, "seconds": 3.425, "tokens": 86}
+{"purpose": "thought", "agent": "mehta", "day": 0.2780324321432224, "seconds": 5.271, "tokens": 87}
+{"purpose": "thought", "agent": "mehta", "day": 0.2780324321432224, "seconds": 3.396, "tokens": 86}
+{"purpose": "thought", "agent": "anjali", "day": 0.2785701976747993, "seconds": 5.786, "tokens": 97}
+{"purpose": "thought", "agent": "anjali", "day": 0.2785701976747993, "seconds": 3.026, "tokens": 75}
+{"purpose": "thought", "agent": "anjali", "day": 0.27899054880419283, "seconds": 5.667, "tokens": 95}
+{"purpose": "thought", "agent": "mehta", "day": 0.27926506343168855, "seconds": 5.241, "tokens": 86}
+{"purpose": "thought", "agent": "mehta", "day": 0.27926506343168855, "seconds": 3.587, "tokens": 92}
+{"purpose": "thought", "agent": "mehta", "day": 0.2802755089499318, "seconds": 5.317, "tokens": 88}
+{"purpose": "thought", "agent": "vikram", "day": 0.28159620186031514, "seconds": 5.144, "tokens": 81}
+{"purpose": "thought", "agent": "vikram", "day": 0.28159620186031514, "seconds": 3.085, "tokens": 77}
+{"purpose": "appraisal", "agent": "vikram", "day": 0.28159620186031514, "seconds": 6.387, "tokens": 118}
+{"purpose": "appraisal", "agent": "vikram", "day": 0.28159620186031514, "seconds": 5.736, "tokens": 104}
+{"purpose": "thought", "agent": "mehta", "day": 0.2817363972584951, "seconds": 5.429, "tokens": 88}
+{"purpose": "thought", "agent": "mehta", "day": 0.2817363972584951, "seconds": 3.631, "tokens": 93}
+{"purpose": "thought", "agent": "vikram", "day": 0.2826760247628739, "seconds": 5.492, "tokens": 88}
+{"purpose": "thought", "agent": "mehta", "day": 0.28356558100251306, "seconds": 5.655, "tokens": 97}
+{"purpose": "appraisal", "agent": "mehta", "day": 0.28356558100251306, "seconds": 8.103, "tokens": 170}
+{"purpose": "appraisal", "agent": "mehta", "day": 0.28356558100251306, "seconds": 5.897, "tokens": 110}
+{"purpose": "thought", "agent": "mehta", "day": 0.28424083423860863, "seconds": 5.695, "tokens": 94}
+{"purpose": "thought", "agent": "vikram", "day": 0.28596902253634016, "seconds": 5.348, "tokens": 87}
+{"purpose": "thought", "agent": "mehta", "day": 0.2863680439379142, "seconds": 5.58, "tokens": 95}
+{"purpose": "thought", "agent": "vikram", "day": 0.28711222091686883, "seconds": 5.187, "tokens": 83}
+{"purpose": "thought", "agent": "vikram", "day": 0.28711222091686883, "seconds": 4.291, "tokens": 112}
+{"purpose": "thought", "agent": "mehta", "day": 0.289300076619801, "seconds": 5.246, "tokens": 83}
+{"purpose": "appraisal", "agent": "anjali", "day": 0.289384527335394, "seconds": 6.156, "tokens": 111}
+{"purpose": "thought", "agent": "vikram", "day": 0.2898145760605771, "seconds": 5.669, "tokens": 92}
+{"purpose": "thought", "agent": "vikram", "day": 0.2898145760605771, "seconds": 3.468, "tokens": 88}
+{"purpose": "thought", "agent": "anjali", "day": 0.2902517365680612, "seconds": 5.548, "tokens": 88}
+{"purpose": "appraisal", "agent": "vikram", "day": 0.29201286852698183, "seconds": 6.267, "tokens": 118}
+{"purpose": "thought", "agent": "anjali", "day": 0.2926640546781995, "seconds": 5.617, "tokens": 90}
+{"purpose": "thought", "agent": "anjali", "day": 0.2926640546781995, "seconds": 4.063, "tokens": 110}
+{"purpose": "appraisal", "agent": "anjali", "day": 0.2926640546781995, "seconds": 5.56, "tokens": 96}
+{"purpose": "appraisal", "agent": "kai", "day": 0.2926640546781995, "seconds": 4.922, "tokens": 98}
+{"purpose": "appraisal", "agent": "john", "day": 0.2926640546781995, "seconds": 4.915, "tokens": 99}
+{"purpose": "appraisal", "agent": "vikram", "day": 0.2926640546781995, "seconds": 6.555, "tokens": 131}
+{"purpose": "thought", "agent": "vikram", "day": 0.2933379509093302, "seconds": 6.001, "tokens": 103}
+{"purpose": "thought", "agent": "vikram", "day": 0.2933379509093302, "seconds": 3.689, "tokens": 98}
+{"purpose": "thought", "agent": "arjun", "day": 0.2934442601307852, "seconds": 4.638, "tokens": 88}
+{"purpose": "appraisal", "agent": "arjun", "day": 0.2934442601307852, "seconds": 5.377, "tokens": 107}
+{"purpose": "appraisal", "agent": "arjun", "day": 0.2934442601307852, "seconds": 5.785, "tokens": 120}
+{"purpose": "appraisal", "agent": "mehta", "day": 0.29398224766917974, "seconds": 6.224, "tokens": 119}
+{"purpose": "thought", "agent": "arjun", "day": 0.2941271344951338, "seconds": 5.076, "tokens": 83}
+{"purpose": "semantic_recall", "agent": "anjali", "day": 0.2953274097346774, "seconds": 7.103, "tokens": 50}
+{"purpose": "signatures", "agent": "anjali", "day": 0.2953274097346774, "seconds": 30.065, "tokens": 845}
+{"purpose": "situation", "agent": "anjali", "day": 0.2953274097346774, "seconds": 10.366, "tokens": 222}
+{"purpose": "action", "agent": "anjali", "day": 0.2953274097346774, "seconds": 7.75, "tokens": 145}
+{"purpose": "appraisal", "agent": "anjali", "day": 0.2953274097346774, "seconds": 6.605, "tokens": 122}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 119, in <module>
+    main()
+    ~~~~^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 104, in main
+    controller.run(args.until_day, args.out / 'world.json')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 474, in run
+    return self._run_events(until, checkpoint)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 605, in _run_events
+    self._process_background_or_world(kind, key)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 668, in _process_background_or_world
+    household.step(self,key)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/household.py", line 447, in step
+    deliver(controller,event_id,'A conversation turn is observed; spoken claims are not world facts.',observations,action_id,
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            routine=choice in ('listen','leave'))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/household.py", line 238, in deliver
+    observations={p:engine.appraise(p,o,api=controller.api,model=controller.model,routine=routine) for p,o in observations.items()}
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 1285, in appraise
+    result = validated_json(system, context, validate_appraisal, api, model, 400)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 200, in validated_json
+    result = request_json(system, supplied, api, model, max_tokens)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 46, in recorded
+    result = request_json(system, context, api, model, max_tokens)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 76, in request_json
+    return _request_json_once(system, context, api, model, max_tokens)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 123, in _request_json_once
+    with urlopen(request, timeout=180) as response:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.14/urllib/request.py", line 1350, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 1325, in do_open
+    r = h.getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+KeyboardInterrupt

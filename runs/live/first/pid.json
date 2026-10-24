@@ -1,0 +1,22 @@
+{
+  "pid": 1885836,
+  "out": "/srv/gpu-home/kanishk/developmental-agent-simulator/runs/live/first/run",
+  "command": [
+    "/usr/bin/python3",
+    "-m",
+    "devsim.run_live",
+    "--world",
+    "/srv/gpu-home/kanishk/developmental-agent-simulator/work/designs/teest/compiled/initial.json",
+    "--policy",
+    "/srv/gpu-home/kanishk/developmental-agent-simulator/work/designs/teest/compiled/policy.json",
+    "--until-day",
+    "1",
+    "--out",
+    "/srv/gpu-home/kanishk/developmental-agent-simulator/runs/live/first/run",
+    "--api",
+    "http://127.0.0.1:8081",
+    "--pace",
+    "1"
+  ],
+  "started": 1792335217.8726234
+}

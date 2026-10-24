@@ -1,0 +1,166 @@
+{"purpose": "thought", "agent": "kai", "day": 0.30869574591972326, "seconds": 4.816, "tokens": 91}
+{"purpose": "appraisal", "agent": "kai", "day": 0.30869574591972326, "seconds": 4.733, "tokens": 87}
+{"purpose": "appraisal", "agent": "kai", "day": 0.30869574591972326, "seconds": 4.427, "tokens": 79}
+{"purpose": "thought", "agent": "john", "day": 0.3171267699628647, "seconds": 5.031, "tokens": 100}
+{"purpose": "appraisal", "agent": "john", "day": 0.3171267699628647, "seconds": 4.966, "tokens": 95}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3171267699628647, "seconds": 5.756, "tokens": 111}
+{"purpose": "appraisal", "agent": "kai", "day": 0.31911241258638995, "seconds": 6.376, "tokens": 128}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.3197543062920358, "seconds": 4.426, "tokens": 49}
+{"purpose": "signatures", "agent": "john", "day": 0.3197543062920358, "seconds": 27.653, "tokens": 775}
+{"purpose": "situation", "agent": "john", "day": 0.3197543062920358, "seconds": 9.579, "tokens": 208}
+{"purpose": "action", "agent": "john", "day": 0.3197543062920358, "seconds": 7.702, "tokens": 160}
+{"purpose": "appraisal", "agent": "john", "day": 0.3197543062920358, "seconds": 5.691, "tokens": 106}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3197543062920358, "seconds": 6.2, "tokens": 115}
+{"purpose": "consolidation", "agent": "kai", "day": 0.3197543062920358, "seconds": 13.278, "tokens": 300}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.3266209695765343, "seconds": 5.358, "tokens": 32}
+{"purpose": "signatures", "agent": "kai", "day": 0.3266209695765343, "seconds": 33.323, "tokens": 907}
+{"purpose": "situation", "agent": "kai", "day": 0.3266209695765343, "seconds": 9.989, "tokens": 193}
+{"purpose": "action", "agent": "kai", "day": 0.3266209695765343, "seconds": 8.07, "tokens": 145}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3266209695765343, "seconds": 7.223, "tokens": 127}
+{"purpose": "appraisal", "agent": "john", "day": 0.3266209695765343, "seconds": 8.324, "tokens": 179}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.3298466464542089, "seconds": 5.053, "tokens": 40}
+{"purpose": "situation", "agent": "john", "day": 0.3298466464542089, "seconds": 11.553, "tokens": 253}
+{"purpose": "action", "agent": "john", "day": 0.3298466464542089, "seconds": 9.083, "tokens": 186}
+{"purpose": "appraisal", "agent": "john", "day": 0.3298466464542089, "seconds": 6.97, "tokens": 130}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3298466464542089, "seconds": 7.822, "tokens": 147}
+{"purpose": "consolidation", "agent": "john", "day": 0.3298466464542089, "seconds": 13.167, "tokens": 287}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.33415919396878885, "seconds": 6.913, "tokens": 59}
+{"purpose": "situation", "agent": "kai", "day": 0.33415919396878885, "seconds": 10.45, "tokens": 201}
+{"purpose": "action", "agent": "kai", "day": 0.33415919396878885, "seconds": 9.116, "tokens": 172}
+{"purpose": "appraisal", "agent": "kai", "day": 0.33415919396878885, "seconds": 7.084, "tokens": 120}
+{"purpose": "appraisal", "agent": "john", "day": 0.33415919396878885, "seconds": 9.392, "tokens": 187}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.33773628448931675, "seconds": 6.857, "tokens": 59}
+{"purpose": "situation", "agent": "john", "day": 0.33773628448931675, "seconds": 11.135, "tokens": 221}
+{"purpose": "action", "agent": "john", "day": 0.33773628448931675, "seconds": 9.003, "tokens": 165}
+{"purpose": "action", "agent": "john", "day": 0.33773628448931675, "seconds": 5.673, "tokens": 153}
+{"purpose": "appraisal", "agent": "john", "day": 0.33773628448931675, "seconds": 7.145, "tokens": 116}
+{"purpose": "appraisal", "agent": "kai", "day": 0.33773628448931675, "seconds": 8.707, "tokens": 169}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.34237563105230706, "seconds": 7.447, "tokens": 59}
+{"purpose": "situation", "agent": "kai", "day": 0.34237563105230706, "seconds": 11.058, "tokens": 213}
+{"purpose": "action", "agent": "kai", "day": 0.34237563105230706, "seconds": 8.808, "tokens": 157}
+{"purpose": "appraisal", "agent": "kai", "day": 0.34237563105230706, "seconds": 8.268, "tokens": 149}
+{"purpose": "appraisal", "agent": "john", "day": 0.34237563105230706, "seconds": 9.458, "tokens": 179}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.34825047672618065, "seconds": 7.378, "tokens": 59}
+{"purpose": "situation", "agent": "john", "day": 0.34825047672618065, "seconds": 10.291, "tokens": 190}
+{"purpose": "action", "agent": "john", "day": 0.34825047672618065, "seconds": 10.529, "tokens": 209}
+{"purpose": "appraisal", "agent": "john", "day": 0.34825047672618065, "seconds": 7.102, "tokens": 113}
+{"purpose": "appraisal", "agent": "kai", "day": 0.34825047672618065, "seconds": 8.524, "tokens": 161}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.35188986692963653, "seconds": 8.12, "tokens": 59}
+{"purpose": "situation", "agent": "kai", "day": 0.35188986692963653, "seconds": 11.552, "tokens": 228}
+{"purpose": "action", "agent": "kai", "day": 0.35188986692963653, "seconds": 9.557, "tokens": 176}
+{"purpose": "appraisal", "agent": "kai", "day": 0.35188986692963653, "seconds": 7.99, "tokens": 136}
+{"purpose": "appraisal", "agent": "john", "day": 0.35188986692963653, "seconds": 10.013, "tokens": 189}
+{"purpose": "consolidation", "agent": "kai", "day": 0.35188986692963653, "seconds": 12.144, "tokens": 245}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.35430961060195004, "seconds": 8.078, "tokens": 59}
+{"purpose": "situation", "agent": "john", "day": 0.35430961060195004, "seconds": 11.476, "tokens": 220}
+{"purpose": "action", "agent": "john", "day": 0.35430961060195004, "seconds": 10.9, "tokens": 213}
+{"purpose": "appraisal", "agent": "john", "day": 0.35430961060195004, "seconds": 8.561, "tokens": 154}
+{"purpose": "appraisal", "agent": "kai", "day": 0.35430961060195004, "seconds": 9.964, "tokens": 192}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.35685992468828637, "seconds": 7.425, "tokens": 59}
+{"purpose": "situation", "agent": "kai", "day": 0.35685992468828637, "seconds": 12.604, "tokens": 263}
+{"purpose": "action", "agent": "kai", "day": 0.35685992468828637, "seconds": 10.175, "tokens": 189}
+{"purpose": "appraisal", "agent": "kai", "day": 0.35685992468828637, "seconds": 8.36, "tokens": 140}
+{"purpose": "appraisal", "agent": "john", "day": 0.35685992468828637, "seconds": 9.177, "tokens": 158}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.36281777821515326, "seconds": 7.612, "tokens": 59}
+{"purpose": "situation", "agent": "john", "day": 0.36281777821515326, "seconds": 12.041, "tokens": 237}
+{"purpose": "action", "agent": "john", "day": 0.36281777821515326, "seconds": 9.738, "tokens": 176}
+{"purpose": "appraisal", "agent": "john", "day": 0.36281777821515326, "seconds": 8.449, "tokens": 145}
+{"purpose": "appraisal", "agent": "kai", "day": 0.36281777821515326, "seconds": 9.715, "tokens": 178}
+{"purpose": "consolidation", "agent": "john", "day": 0.36281777821515326, "seconds": 14.339, "tokens": 308}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.36847879445261594, "seconds": 7.45, "tokens": 59}
+{"purpose": "situation", "agent": "kai", "day": 0.36847879445261594, "seconds": 11.954, "tokens": 242}
+{"purpose": "action", "agent": "kai", "day": 0.36847879445261594, "seconds": 10.049, "tokens": 184}
+{"purpose": "appraisal", "agent": "kai", "day": 0.36847879445261594, "seconds": 8.878, "tokens": 152}
+{"purpose": "appraisal", "agent": "john", "day": 0.36847879445261594, "seconds": 10.316, "tokens": 184}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.3710443645301889, "seconds": 7.507, "tokens": 61}
+{"purpose": "situation", "agent": "john", "day": 0.3710443645301889, "seconds": 11.104, "tokens": 214}
+{"purpose": "action", "agent": "john", "day": 0.3710443645301889, "seconds": 10.084, "tokens": 179}
+{"purpose": "appraisal", "agent": "john", "day": 0.3710443645301889, "seconds": 8.115, "tokens": 130}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3710443645301889, "seconds": 9.157, "tokens": 160}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.37676695907038515, "seconds": 7.518, "tokens": 61}
+{"purpose": "situation", "agent": "kai", "day": 0.37676695907038515, "seconds": 11.818, "tokens": 240}
+{"purpose": "action", "agent": "kai", "day": 0.37676695907038515, "seconds": 10.009, "tokens": 183}
+{"purpose": "appraisal", "agent": "kai", "day": 0.37676695907038515, "seconds": 8.994, "tokens": 151}
+{"purpose": "appraisal", "agent": "john", "day": 0.37676695907038515, "seconds": 10.331, "tokens": 182}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.3842916603253435, "seconds": 7.392, "tokens": 62}
+{"purpose": "situation", "agent": "john", "day": 0.3842916603253435, "seconds": 11.71, "tokens": 234}
+{"purpose": "action", "agent": "john", "day": 0.3842916603253435, "seconds": 10.708, "tokens": 199}
+{"purpose": "appraisal", "agent": "john", "day": 0.3842916603253435, "seconds": 7.757, "tokens": 124}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3842916603253435, "seconds": 8.61, "tokens": 150}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.3877909842560551, "seconds": 7.545, "tokens": 62}
+{"purpose": "situation", "agent": "kai", "day": 0.3877909842560551, "seconds": 11.439, "tokens": 227}
+{"purpose": "action", "agent": "kai", "day": 0.3877909842560551, "seconds": 8.136, "tokens": 127}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3877909842560551, "seconds": 8.591, "tokens": 151}
+{"purpose": "appraisal", "agent": "john", "day": 0.3877909842560551, "seconds": 9.814, "tokens": 188}
+{"purpose": "thought", "agent": "kai", "day": 0.3880555875928612, "seconds": 6.15, "tokens": 84}
+{"purpose": "thought", "agent": "kai", "day": 0.3903885172564692, "seconds": 5.963, "tokens": 84}
+{"purpose": "thought", "agent": "kai", "day": 0.3916414972722064, "seconds": 6.916, "tokens": 112}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3916414972722064, "seconds": 7.336, "tokens": 127}
+{"purpose": "appraisal", "agent": "kai", "day": 0.3916414972722064, "seconds": 6.359, "tokens": 108}
+{"purpose": "thought", "agent": "kai", "day": 0.40754330107802694, "seconds": 6.786, "tokens": 103}
+{"purpose": "appraisal", "agent": "kai", "day": 0.4124748306055397, "seconds": 7.556, "tokens": 134}
+{"purpose": "thought", "agent": "kai", "day": 0.41328962430428223, "seconds": 6.381, "tokens": 93}
+{"purpose": "thought", "agent": "kai", "day": 0.41702208942858804, "seconds": 6.218, "tokens": 92}
+{"purpose": "thought", "agent": "kai", "day": 0.4316370838456214, "seconds": 6.144, "tokens": 92}
+{"purpose": "thought", "agent": "john", "day": 0.44268058819167283, "seconds": 5.884, "tokens": 82}
+{"purpose": "appraisal", "agent": "john", "day": 0.44268058819167283, "seconds": 6.298, "tokens": 98}
+{"purpose": "appraisal", "agent": "kai", "day": 0.44268058819167283, "seconds": 6.681, "tokens": 110}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.449189178978472, "seconds": 7.369, "tokens": 61}
+{"purpose": "situation", "agent": "john", "day": 0.449189178978472, "seconds": 11.219, "tokens": 229}
+{"purpose": "action", "agent": "john", "day": 0.449189178978472, "seconds": 7.586, "tokens": 124}
+{"purpose": "appraisal", "agent": "john", "day": 0.449189178978472, "seconds": 7.748, "tokens": 146}
+{"purpose": "appraisal", "agent": "kai", "day": 0.449189178978472, "seconds": 8.834, "tokens": 176}
+{"purpose": "consolidation", "agent": "john", "day": 0.449189178978472, "seconds": 16.523, "tokens": 383}
+{"purpose": "consolidation", "agent": "kai", "day": 0.449189178978472, "seconds": 14.659, "tokens": 331}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.4515615913809582, "seconds": 7.309, "tokens": 61}
+{"purpose": "situation", "agent": "kai", "day": 0.4515615913809582, "seconds": 11.011, "tokens": 214}
+{"purpose": "action", "agent": "kai", "day": 0.4515615913809582, "seconds": 11.656, "tokens": 254}
+{"purpose": "appraisal", "agent": "kai", "day": 0.4515615913809582, "seconds": 8.617, "tokens": 158}
+{"purpose": "appraisal", "agent": "john", "day": 0.4515615913809582, "seconds": 10.252, "tokens": 197}
+{"purpose": "consolidation", "agent": "kai", "day": 0.4515615913809582, "seconds": 14.671, "tokens": 320}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.45485695031989737, "seconds": 7.33, "tokens": 60}
+{"purpose": "situation", "agent": "john", "day": 0.45485695031989737, "seconds": 11.099, "tokens": 217}
+{"purpose": "action", "agent": "john", "day": 0.45485695031989737, "seconds": 9.526, "tokens": 185}
+{"purpose": "appraisal", "agent": "john", "day": 0.45485695031989737, "seconds": 7.837, "tokens": 138}
+{"purpose": "appraisal", "agent": "kai", "day": 0.45485695031989737, "seconds": 11.229, "tokens": 241}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.45908933801045326, "seconds": 7.138, "tokens": 60}
+{"purpose": "situation", "agent": "kai", "day": 0.45908933801045326, "seconds": 12.437, "tokens": 261}
+{"purpose": "action", "agent": "kai", "day": 0.45908933801045326, "seconds": 9.429, "tokens": 180}
+{"purpose": "appraisal", "agent": "kai", "day": 0.45908933801045326, "seconds": 8.468, "tokens": 160}
+{"purpose": "appraisal", "agent": "john", "day": 0.45908933801045326, "seconds": 10.61, "tokens": 202}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.46128424132595286, "seconds": 7.506, "tokens": 61}
+{"purpose": "situation", "agent": "john", "day": 0.46128424132595286, "seconds": 11.624, "tokens": 230}
+{"purpose": "action", "agent": "john", "day": 0.46128424132595286, "seconds": 11.247, "tokens": 230}
+{"purpose": "action", "agent": "john", "day": 0.46128424132595286, "seconds": 8.217, "tokens": 235}
+{"purpose": "appraisal", "agent": "john", "day": 0.46128424132595286, "seconds": 8.466, "tokens": 149}
+{"purpose": "appraisal", "agent": "kai", "day": 0.46128424132595286, "seconds": 9.862, "tokens": 195}
+{"purpose": "semantic_recall", "agent": "kai", "day": 0.46459003460290726, "seconds": 7.443, "tokens": 60}
+{"purpose": "situation", "agent": "kai", "day": 0.46459003460290726, "seconds": 10.7, "tokens": 213}
+{"purpose": "action", "agent": "kai", "day": 0.46459003460290726, "seconds": 10.77, "tokens": 216}
+{"purpose": "appraisal", "agent": "kai", "day": 0.46459003460290726, "seconds": 9.17, "tokens": 167}
+{"purpose": "appraisal", "agent": "john", "day": 0.46459003460290726, "seconds": 9.598, "tokens": 171}
+{"purpose": "semantic_recall", "agent": "john", "day": 0.4721201362560878, "seconds": 7.344, "tokens": 61}
+{"purpose": "situation", "agent": "john", "day": 0.4721201362560878, "seconds": 12.158, "tokens": 253}
+{"purpose": "action", "agent": "john", "day": 0.4721201362560878, "seconds": 10.93, "tokens": 215}
+{"purpose": "appraisal", "agent": "john", "day": 0.4721201362560878, "seconds": 7.916, "tokens": 132}
+{"purpose": "appraisal", "agent": "kai", "day": 0.4721201362560878, "seconds": 9.09, "tokens": 160}
+{"purpose": "consolidation", "agent": "kai", "day": 0.4721201362560878, "seconds": 17.128, "tokens": 407}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 119, in <module>
+    main()
+    ~~~~^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 104, in main
+    controller.run(args.until_day, args.out / 'world.json')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 474, in run
+    return self._run_events(until, checkpoint)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 599, in _run_events
+    if self.pace and not self._wait_until(day):
+                         ~~~~~~~~~~~~~~~~^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 420, in _wait_until
+    time.sleep(min(1.0, (day - now) * 86400 / self.pace))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

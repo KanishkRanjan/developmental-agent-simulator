@@ -1,0 +1,467 @@
+{
+  "description": "Earth family: authored scenario. All rates, probabilities, valences, ages and facet percentiles are scenario assumptions, not measured values.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "kai_own",
+      "actor": "kai",
+      "situation": "You are in the kitchen, staring at a bowl of extremely spicy curry. Your stomach is churning, but you need the heat to feel alert before your evening practice. You want to finish it quickly to get to the strip, but the spice is making you sweat and irritate you.",
+      "rate_per_year": 150,
+      "room": "sharam_kitchen",
+      "hours": [
+        19,
+        20
+      ],
+      "goal_id": "become_number_one_in_swo",
+      "options": [
+        {
+          "id": "o0",
+          "label": "Gulp the rest of the curry down quickly",
+          "success_probability": 0.6,
+          "valence_success": 0.8,
+          "valence_failure": -0.5,
+          "success_text": "You down the bowl in one go. The burn feels like power. You wipe your mouth and head out, feeling sharp and ready to dominate.",
+          "failure_text": "You choke on the heat. You spend ten minutes coughing and drinking water, losing your focus and feeling sluggish for the next session.",
+          "progress_gain": 0.1,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "o1",
+          "label": "Leave the food and go to the gym now",
+          "success_probability": 0.9,
+          "valence_success": 0.5,
+          "valence_failure": -0.2,
+          "success_text": "You abandon the plate. You arrive at the gym hungry but focused. Your mind is clear, and you cut through your drills with precision.",
+          "failure_text": "You leave the food, but the hunger and lack of fuel make you feel weak during the first ten minutes of training.",
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    }
+  ],
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 8
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "cognition": {
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "graphiti_retrieval": true,
+    "semantic_matching": true,
+    "affect_from_traits": true,
+    "verbatim_days": 1,
+    "recall_beta": 2,
+    "mood_encoding_weight": 0.5,
+    "rumination_per_year": 12,
+    "rumination_neuroticism": 1
+  },
+  "consolidation_batch_size": 8,
+  "inner_thoughts": {
+    "mean_minutes": 3
+  },
+  "relationship_learning": {},
+  "situational_personality": {
+    "recovery_half_life_days": 1
+  },
+  "horizon_days": 30.0,
+  "living": {},
+  "household": {
+    "rooms": {
+      "sharam_kai_room": {
+        "label": "Kai's bedroom",
+        "kind": "bedroom",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen",
+          "sharam_living_room"
+        ]
+      },
+      "sharam_john_room": {
+        "label": "John's bedroom",
+        "kind": "bedroom",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen",
+          "sharam_living_room"
+        ]
+      },
+      "sharam_vikram_room": {
+        "label": "Vikram and Anjali's bedroom",
+        "kind": "bedroom",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen",
+          "sharam_living_room"
+        ]
+      },
+      "sharam_kitchen": {
+        "label": "Sharam kitchen",
+        "kind": "kitchen",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_living_room"
+        ]
+      },
+      "sharam_living_room": {
+        "label": "Sharam living room",
+        "kind": "living_room",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen"
+        ]
+      },
+      "sharam_bathroom": {
+        "label": "Sharam bathroom",
+        "kind": "bathroom",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen",
+          "sharam_living_room"
+        ]
+      },
+      "mehta_flat_mehta_room": {
+        "label": "Coach Mehta's bedroom",
+        "kind": "bedroom",
+        "site": "mehta_flat",
+        "audible_to": [
+          "mehta_flat_kitchen",
+          "mehta_flat_living_room"
+        ]
+      },
+      "mehta_flat_kitchen": {
+        "label": "Coach Mehta's flat kitchen",
+        "kind": "kitchen",
+        "site": "mehta_flat",
+        "audible_to": [
+          "mehta_flat_living_room"
+        ]
+      },
+      "mehta_flat_living_room": {
+        "label": "Coach Mehta's flat living room",
+        "kind": "living_room",
+        "site": "mehta_flat",
+        "audible_to": [
+          "mehta_flat_kitchen"
+        ]
+      },
+      "mehta_flat_bathroom": {
+        "label": "Coach Mehta's flat bathroom",
+        "kind": "bathroom",
+        "site": "mehta_flat",
+        "audible_to": [
+          "mehta_flat_kitchen",
+          "mehta_flat_living_room"
+        ]
+      },
+      "arjun_home_arjun_room": {
+        "label": "Arjun's bedroom",
+        "kind": "bedroom",
+        "site": "arjun_home",
+        "audible_to": [
+          "arjun_home_kitchen",
+          "arjun_home_living_room"
+        ]
+      },
+      "arjun_home_kitchen": {
+        "label": "Arjun's home kitchen",
+        "kind": "kitchen",
+        "site": "arjun_home",
+        "audible_to": [
+          "arjun_home_living_room"
+        ]
+      },
+      "arjun_home_living_room": {
+        "label": "Arjun's home living room",
+        "kind": "living_room",
+        "site": "arjun_home",
+        "audible_to": [
+          "arjun_home_kitchen"
+        ]
+      },
+      "arjun_home_bathroom": {
+        "label": "Arjun's home bathroom",
+        "kind": "bathroom",
+        "site": "arjun_home",
+        "audible_to": [
+          "arjun_home_kitchen",
+          "arjun_home_living_room"
+        ]
+      },
+      "hill_classroom": {
+        "label": "Hill classroom",
+        "kind": "classroom",
+        "site": "hill",
+        "audible_to": []
+      },
+      "hill_cafeteria": {
+        "label": "Hill cafeteria",
+        "kind": "cafeteria",
+        "site": "hill",
+        "audible_to": []
+      },
+      "hill_lab": {
+        "label": "Hill lab",
+        "kind": "lab",
+        "site": "hill",
+        "audible_to": []
+      },
+      "the_office_office": {
+        "label": "the office office",
+        "kind": "office",
+        "site": "the_office",
+        "audible_to": []
+      },
+      "the_partk_outdoors": {
+        "label": "the park park",
+        "kind": "outdoors",
+        "site": "the_partk",
+        "audible_to": []
+      }
+    },
+    "locations": {
+      "kai": "sharam_kai_room",
+      "john": "sharam_john_room",
+      "vikram": "sharam_vikram_room",
+      "anjali": "sharam_vikram_room",
+      "mehta": "mehta_flat_mehta_room",
+      "arjun": "arjun_home_arjun_room"
+    },
+    "routines": {
+      "kai": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      },
+      "john": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      },
+      "vikram": {
+        "available_hours": [
+          [
+            6.5,
+            22.5
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      },
+      "anjali": {
+        "available_hours": [
+          [
+            6,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      },
+      "mehta": {
+        "available_hours": [
+          [
+            6.5,
+            22.5
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      },
+      "arjun": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      }
+    },
+    "routes": [
+      {
+        "a": "sharam_kai_room",
+        "b": "hill_classroom",
+        "minutes": 58
+      },
+      {
+        "a": "sharam_kai_room",
+        "b": "the_office_office",
+        "minutes": 84
+      },
+      {
+        "a": "sharam_kai_room",
+        "b": "the_partk_outdoors",
+        "minutes": 20
+      },
+      {
+        "a": "mehta_flat_mehta_room",
+        "b": "hill_classroom",
+        "minutes": 15
+      },
+      {
+        "a": "mehta_flat_mehta_room",
+        "b": "the_office_office",
+        "minutes": 20
+      },
+      {
+        "a": "mehta_flat_mehta_room",
+        "b": "the_partk_outdoors",
+        "minutes": 20
+      },
+      {
+        "a": "arjun_home_arjun_room",
+        "b": "hill_classroom",
+        "minutes": 25
+      },
+      {
+        "a": "arjun_home_arjun_room",
+        "b": "the_office_office",
+        "minutes": 20
+      },
+      {
+        "a": "arjun_home_arjun_room",
+        "b": "the_partk_outdoors",
+        "minutes": 20
+      }
+    ],
+    "groups": {
+      "hill_class": {
+        "label": "Hill class",
+        "place": "hill_classroom",
+        "members": [
+          "arjun",
+          "john",
+          "kai"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 8.5,
+          "duration_hours": 6.5,
+          "every_days": 1,
+          "topic": [
+            "The school day",
+            "A surprise quiz",
+            "Plans for the weekend",
+            "Something funny online",
+            "Homework",
+            "The cafeteria food"
+          ],
+          "max_turns": 40
+        }
+      },
+      "the_office_staff": {
+        "label": "the office staff",
+        "place": "the_office_office",
+        "members": [
+          "vikram"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 8.5,
+          "duration_hours": 8.0,
+          "every_days": 1,
+          "topic": "The working day",
+          "max_turns": 40
+        }
+      },
+      "hill_staff": {
+        "label": "Hill staff",
+        "place": "hill_classroom",
+        "members": [
+          "mehta"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 8.5,
+          "duration_hours": 8.0,
+          "every_days": 1,
+          "topic": "The working day",
+          "max_turns": 40
+        }
+      }
+    },
+    "channels": {
+      "sharam_chat": {
+        "label": "Sharam family chat",
+        "members": [
+          "kai",
+          "john",
+          "vikram",
+          "anjali"
+        ]
+      }
+    }
+  },
+  "hormones": {},
+  "attention": {},
+  "sleep": {},
+  "skills": {},
+  "society_layer": {
+    "overrides": {
+      "grid": 8
+    }
+  },
+  "background_expansion": {
+    "default": {
+      "mode": "generative",
+      "id": "personal-history-v1",
+      "min_age": 18,
+      "fields": [
+        "education",
+        "residence",
+        "occupation",
+        "interests"
+      ]
+    }
+  }
+}

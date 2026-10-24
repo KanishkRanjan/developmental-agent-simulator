@@ -1,0 +1,79 @@
+{"purpose": "thought", "agent": "anjali", "day": 0.2524390895813375, "seconds": 4.558, "tokens": 79}
+{"purpose": "thought", "agent": "anjali", "day": 0.2539516134907512, "seconds": 5.072, "tokens": 90}
+{"purpose": "thought", "agent": "anjali", "day": 0.25538954581292994, "seconds": 5.325, "tokens": 91}
+{"purpose": "thought", "agent": "anjali", "day": 0.258134527335394, "seconds": 5.236, "tokens": 83}
+{"purpose": "thought", "agent": "anjali", "day": 0.260325859726166, "seconds": 5.765, "tokens": 97}
+{"purpose": "thought", "agent": "anjali", "day": 0.26089600762763787, "seconds": 5.798, "tokens": 97}
+{"purpose": "thought", "agent": "anjali", "day": 0.26089600762763787, "seconds": 3.312, "tokens": 83}
+{"purpose": "thought", "agent": "anjali", "day": 0.2616131238633317, "seconds": 5.502, "tokens": 85}
+{"purpose": "thought", "agent": "anjali", "day": 0.2616131238633317, "seconds": 3.672, "tokens": 94}
+{"purpose": "thought", "agent": "anjali", "day": 0.2627723424992625, "seconds": 5.821, "tokens": 94}
+{"purpose": "thought", "agent": "anjali", "day": 0.2627723424992625, "seconds": 3.495, "tokens": 88}
+{"purpose": "thought", "agent": "anjali", "day": 0.2643497526752912, "seconds": 5.588, "tokens": 88}
+{"purpose": "thought", "agent": "anjali", "day": 0.2643497526752912, "seconds": 3.61, "tokens": 92}
+{"purpose": "thought", "agent": "anjali", "day": 0.2650152975491998, "seconds": 6.144, "tokens": 104}
+{"purpose": "thought", "agent": "anjali", "day": 0.2650203924851847, "seconds": 6.067, "tokens": 103}
+{"purpose": "thought", "agent": "anjali", "day": 0.2650203924851847, "seconds": 3.743, "tokens": 96}
+{"purpose": "appraisal", "agent": "anjali", "day": 0.2650203924851847, "seconds": 5.486, "tokens": 89}
+{"purpose": "appraisal", "agent": "anjali", "day": 0.2650203924851847, "seconds": 5.451, "tokens": 93}
+{"purpose": "thought", "agent": "anjali", "day": 0.2652706401020669, "seconds": 5.745, "tokens": 92}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 119, in <module>
+    main()
+    ~~~~^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 104, in main
+    controller.run(args.until_day, args.out / 'world.json')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 474, in run
+    return self._run_events(until, checkpoint)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 605, in _run_events
+    self._process_background_or_world(kind, key)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 671, in _process_background_or_world
+    self._think(key)
+    ~~~~~~~~~~~^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 394, in _think
+    choice, about = cognition.think(engine, owner, f'@thought:{owner}:{n}', api=self.api, model=self.model, options=options)
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/cognition.py", line 433, in think
+    result = validated_json(system, context, check, api, model, 400)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 200, in validated_json
+    result = request_json(system, supplied, api, model, max_tokens)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 46, in recorded
+    result = request_json(system, context, api, model, max_tokens)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 76, in request_json
+    return _request_json_once(system, context, api, model, max_tokens)
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 123, in _request_json_once
+    with urlopen(request, timeout=180) as response:
+         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/usr/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.14/urllib/request.py", line 1350, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/urllib/request.py", line 1325, in do_open
+    r = h.getresponse()
+  File "/usr/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/socket.py", line 725, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+KeyboardInterrupt

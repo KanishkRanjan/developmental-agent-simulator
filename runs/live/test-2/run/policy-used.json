@@ -1,0 +1,259 @@
+{
+  "description": "Earth: authored scenario. All rates, probabilities, valences, ages and facet percentiles are scenario assumptions, not measured values.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "kai_own",
+      "actor": "kai",
+      "situation": "You are in the school cafeteria during lunch rush. You spot a plate of the school's infamous 'Hellfire' spicy noodles. Your stomach growls, but your pride demands you eat it without flinching to prove your toughness to the room.",
+      "rate_per_year": 150,
+      "room": "hill_cafeteria",
+      "hours": [
+        12,
+        13
+      ],
+      "goal_id": "he_want_to_be_number_one",
+      "options": [
+        {
+          "id": "o0",
+          "label": "Eat the entire plate quickly to show off",
+          "success_probability": 0.4,
+          "valence_success": 0.8,
+          "valence_failure": -0.6,
+          "success_text": "You shovel the noodles down in minutes, sweating but standing tall. The room goes quiet, impressed by your raw, aggressive appetite.",
+          "failure_text": "You choke on the spice and cough violently, turning red-faced and sputtering. Everyone laughs at your lack of control.",
+          "progress_gain": 0.1,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "o1",
+          "label": "Add extra chili oil and eat it slowly",
+          "success_probability": 0.7,
+          "valence_success": 0.5,
+          "valence_failure": -0.3,
+          "success_text": "You add a generous splash of oil and eat with a smug grin, enduring the burn with a stoic expression that looks like pure confidence.",
+          "failure_text": "The extra heat makes your eyes water, and you have to wipe your face, looking less like a warrior and more like a crying child.",
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    }
+  ],
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 8
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "cognition": {
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "graphiti_retrieval": true,
+    "semantic_matching": true,
+    "affect_from_traits": true,
+    "verbatim_days": 1,
+    "recall_beta": 2,
+    "mood_encoding_weight": 0.5,
+    "rumination_per_year": 12,
+    "rumination_neuroticism": 1
+  },
+  "consolidation_batch_size": 8,
+  "inner_thoughts": {
+    "mean_minutes": 20
+  },
+  "relationship_learning": {},
+  "situational_personality": {
+    "recovery_half_life_days": 1
+  },
+  "horizon_days": 30.0,
+  "living": {},
+  "household": {
+    "rooms": {
+      "sharam_kai_room": {
+        "label": "kai's bedroom",
+        "kind": "bedroom",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen",
+          "sharam_living_room"
+        ]
+      },
+      "sharam_john_room": {
+        "label": "John's bedroom",
+        "kind": "bedroom",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen",
+          "sharam_living_room"
+        ]
+      },
+      "sharam_kitchen": {
+        "label": "Sharam kitchen",
+        "kind": "kitchen",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_living_room"
+        ]
+      },
+      "sharam_living_room": {
+        "label": "Sharam living room",
+        "kind": "living_room",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen"
+        ]
+      },
+      "sharam_bathroom": {
+        "label": "Sharam bathroom",
+        "kind": "bathroom",
+        "site": "sharam",
+        "audible_to": [
+          "sharam_kitchen",
+          "sharam_living_room"
+        ]
+      },
+      "hill_classroom": {
+        "label": "Hill classroom",
+        "kind": "classroom",
+        "site": "hill",
+        "audible_to": []
+      },
+      "hill_cafeteria": {
+        "label": "Hill cafeteria",
+        "kind": "cafeteria",
+        "site": "hill",
+        "audible_to": []
+      },
+      "hill_lab": {
+        "label": "Hill lab",
+        "kind": "lab",
+        "site": "hill",
+        "audible_to": []
+      },
+      "the_office_office": {
+        "label": "the office office",
+        "kind": "office",
+        "site": "the_office",
+        "audible_to": []
+      },
+      "the_partk_outdoors": {
+        "label": "the partk park",
+        "kind": "outdoors",
+        "site": "the_partk",
+        "audible_to": []
+      }
+    },
+    "locations": {
+      "kai": "sharam_kai_room",
+      "john": "sharam_john_room"
+    },
+    "routines": {
+      "kai": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      },
+      "john": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      }
+    },
+    "routes": [
+      {
+        "a": "sharam_kai_room",
+        "b": "hill_classroom",
+        "minutes": 58
+      },
+      {
+        "a": "sharam_kai_room",
+        "b": "the_office_office",
+        "minutes": 84
+      },
+      {
+        "a": "sharam_kai_room",
+        "b": "the_partk_outdoors",
+        "minutes": 20
+      }
+    ],
+    "groups": {
+      "hill_class": {
+        "label": "Hill class",
+        "place": "hill_classroom",
+        "members": [
+          "john",
+          "kai"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 8.5,
+          "duration_hours": 6.5,
+          "every_days": 1,
+          "topic": [
+            "The school day",
+            "A surprise quiz",
+            "Plans for the weekend",
+            "Something funny online",
+            "Homework",
+            "The cafeteria food"
+          ],
+          "max_turns": 40
+        }
+      }
+    },
+    "channels": {
+      "sharam_chat": {
+        "label": "Sharam family chat",
+        "members": [
+          "kai",
+          "john"
+        ]
+      }
+    }
+  },
+  "hormones": {},
+  "attention": {},
+  "sleep": {},
+  "skills": {},
+  "society_layer": {
+    "overrides": {
+      "grid": 8
+    }
+  },
+  "background_expansion": {
+    "default": {
+      "mode": "generative",
+      "id": "personal-history-v1",
+      "min_age": 18,
+      "fields": [
+        "education",
+        "residence",
+        "occupation",
+        "interests"
+      ]
+    }
+  }
+}

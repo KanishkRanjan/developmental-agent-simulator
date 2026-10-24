@@ -1,0 +1,554 @@
+{
+  "description": "New School, Small Apartment: authored scenario. All rates, probabilities, valences, ages and facet percentiles are scenario assumptions, not measured values.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "cafeteria_social",
+      "actor": "priya",
+      "situation": "You are in the cafeteria. Kiara's table is nearby. You want to join them but fear rejection.",
+      "rate_per_year": 120,
+      "room": "school_cafeteria",
+      "hours": [
+        12,
+        13
+      ],
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "approach_kiara",
+          "label": "Approach Kiara's table",
+          "success_probability": 0.3,
+          "valence_success": 0.8,
+          "valence_failure": -0.7,
+          "success_text": "Kiara smiles and makes room for you. You feel included.",
+          "failure_text": "Kiara rolls her eyes and whispers to her friends. You feel humiliated.",
+          "contact": "kiara",
+          "contact_text": "Priya tried to join our table. It was awkward.",
+          "importance": 0.8,
+          "arousal": 0.9,
+          "progress_gain": 0.15,
+          "duration_hours": 0.5,
+          "effects_success": {
+            "facts": {
+              "priya": {
+                "social_status": "accepted"
+              }
+            }
+          },
+          "effects_failure": {
+            "facts": {
+              "priya": {
+                "social_status": "rejected"
+              }
+            }
+          }
+        },
+        {
+          "id": "eat_alone",
+          "label": "Eat alone quietly",
+          "success_probability": 1.0,
+          "valence_success": 0.1,
+          "valence_failure": 0.0,
+          "success_text": "You eat your lunch in peace, avoiding attention.",
+          "failure_text": "You eat your lunch in peace.",
+          "importance": 0.2,
+          "arousal": 0.2,
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    },
+    {
+      "id": "club_interaction",
+      "actor": "priya",
+      "situation": "You are in the robotics club. Rohan is dominating the conversation. Dev looks unsure.",
+      "rate_per_year": 52,
+      "room": "school_lab",
+      "hours": [
+        15.5,
+        17.5
+      ],
+      "goal_id": "join_club",
+      "options": [
+        {
+          "id": "speak_up",
+          "label": "Speak up with an idea",
+          "success_probability": 0.4,
+          "valence_success": 0.7,
+          "valence_failure": -0.5,
+          "success_text": "Ms. Okafor nods at your suggestion. Rohan looks annoyed but listens.",
+          "failure_text": "Rohan interrupts you and takes credit for your idea. You feel silenced.",
+          "contact": "rohan",
+          "contact_text": "Priya tried to contribute. I had to cut her off to keep the project on track.",
+          "importance": 0.7,
+          "arousal": 0.8,
+          "progress_gain": 0.15,
+          "duration_hours": 0.5,
+          "effects_success": {
+            "facts": {
+              "priya": {
+                "club_confidence": "boosted"
+              }
+            }
+          },
+          "effects_failure": {
+            "facts": {
+              "priya": {
+                "club_confidence": "lowered"
+              }
+            }
+          },
+          "requires": {
+            "facts": {
+              "priya": {
+                "member_robotics_club": true
+              }
+            }
+          }
+        },
+        {
+          "id": "support_dev",
+          "label": "Whisper support to Dev",
+          "success_probability": 0.8,
+          "valence_success": 0.5,
+          "valence_failure": 0.1,
+          "success_text": "Dev smiles at your encouragement. You feel a connection.",
+          "failure_text": "Dev doesn't notice you. You feel isolated.",
+          "contact": "dev",
+          "contact_text": "Priya encouraged me. It helped.",
+          "importance": 0.5,
+          "arousal": 0.4,
+          "progress_gain": 0.15,
+          "duration_hours": 0.5,
+          "effects_success": {
+            "facts": {
+              "priya": {
+                "friendship_dev": "strengthened"
+              }
+            }
+          },
+          "requires": {
+            "facts": {
+              "priya": {
+                "member_robotics_club": true
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 8
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "cognition": {
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "graphiti_retrieval": true,
+    "semantic_matching": true,
+    "affect_from_traits": true,
+    "verbatim_days": 1,
+    "recall_beta": 2,
+    "mood_encoding_weight": 0.5,
+    "rumination_per_year": 12,
+    "rumination_neuroticism": 1
+  },
+  "consolidation_batch_size": 8,
+  "situational_personality": {
+    "recovery_half_life_days": 1
+  },
+  "horizon_days": 62.0925,
+  "household": {
+    "rooms": {
+      "priya_bedroom": {
+        "label": "Priya's Bedroom",
+        "audible_to": [
+          "living_room",
+          "kitchen"
+        ]
+      },
+      "arun_bedroom": {
+        "label": "Arun's Bedroom",
+        "audible_to": [
+          "living_room",
+          "kitchen"
+        ]
+      },
+      "living_room": {
+        "label": "Living Room",
+        "audible_to": [
+          "priya_bedroom",
+          "arun_bedroom",
+          "kitchen"
+        ]
+      },
+      "kitchen": {
+        "label": "Kitchen",
+        "audible_to": [
+          "living_room",
+          "priya_bedroom",
+          "arun_bedroom"
+        ]
+      },
+      "school_cafeteria": {
+        "label": "School Cafeteria",
+        "audible_to": []
+      },
+      "school_lab": {
+        "label": "School Lab",
+        "audible_to": []
+      },
+      "hospital": {
+        "label": "Hospital",
+        "audible_to": []
+      }
+    },
+    "locations": {
+      "priya": "priya_bedroom",
+      "arun": "arun_bedroom",
+      "meera": "living_room",
+      "kiara": "school_cafeteria",
+      "rohan": "school_lab",
+      "dev": "school_lab",
+      "ms_okafor": "school_lab"
+    },
+    "routines": {
+      "priya": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          5,
+          15
+        ],
+        "in_person_response_minutes": [
+          1,
+          5
+        ]
+      },
+      "arun": {
+        "available_hours": [
+          [
+            0,
+            1
+          ],
+          [
+            14,
+            24
+          ]
+        ],
+        "response_minutes": [
+          10,
+          30
+        ],
+        "in_person_response_minutes": [
+          1,
+          5
+        ]
+      },
+      "meera": {
+        "available_hours": [
+          [
+            6,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          1,
+          3
+        ]
+      },
+      "kiara": {
+        "available_hours": [
+          [
+            8,
+            16
+          ]
+        ],
+        "response_minutes": [
+          1,
+          5
+        ],
+        "in_person_response_minutes": [
+          1,
+          2
+        ]
+      },
+      "rohan": {
+        "available_hours": [
+          [
+            8,
+            18
+          ]
+        ],
+        "response_minutes": [
+          1,
+          5
+        ],
+        "in_person_response_minutes": [
+          1,
+          2
+        ]
+      },
+      "dev": {
+        "available_hours": [
+          [
+            8,
+            18
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          1,
+          3
+        ]
+      },
+      "ms_okafor": {
+        "available_hours": [
+          [
+            8,
+            18
+          ]
+        ],
+        "response_minutes": [
+          5,
+          15
+        ],
+        "in_person_response_minutes": [
+          1,
+          3
+        ]
+      }
+    },
+    "routes": [
+      {
+        "a": "priya_bedroom",
+        "b": "school_cafeteria",
+        "minutes": 20
+      },
+      {
+        "a": "priya_bedroom",
+        "b": "school_lab",
+        "minutes": 20
+      },
+      {
+        "a": "arun_bedroom",
+        "b": "hospital",
+        "minutes": 15
+      },
+      {
+        "a": "school_cafeteria",
+        "b": "school_lab",
+        "minutes": 2
+      }
+    ],
+    "groups": {
+      "school_class": {
+        "label": "School Class",
+        "place": "school_cafeteria",
+        "members": [
+          "priya",
+          "kiara",
+          "rohan",
+          "dev"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 8.5,
+          "duration_hours": 6.5,
+          "every_days": 1,
+          "topic": [
+            "School Day",
+            "A surprise quiz announced for Friday",
+            "Plans for the weekend",
+            "The school dance next month",
+            "The food in the cafeteria",
+            "A video everyone has been sharing",
+            "Group project partners for history",
+            "How the move to a new school is going"
+          ],
+          "max_turns": 4
+        }
+      },
+      "robotics_club": {
+        "label": "Robotics Club",
+        "place": "school_lab",
+        "members": [
+          "ms_okafor",
+          "rohan",
+          "dev"
+        ],
+        "meetings": {
+          "first_day": 11,
+          "start_hour": 15.5,
+          "duration_hours": 2,
+          "every_days": 7,
+          "topic": [
+            "Robotics Project",
+            "Choosing a competition entry",
+            "Fixing a broken sensor",
+            "Splitting up tasks before the deadline"
+          ],
+          "max_turns": 10
+        }
+      }
+    },
+    "channels": {
+      "family_chat": {
+        "label": "Family Group Chat",
+        "members": [
+          "priya",
+          "arun",
+          "meera"
+        ]
+      }
+    },
+    "invitations": [
+      {
+        "id": "club_invite",
+        "day": 10,
+        "group": "robotics_club",
+        "invitee": "priya",
+        "inviter": "ms_okafor"
+      }
+    ],
+    "conversations": [
+      {
+        "id": "meera_talk",
+        "day": 28,
+        "room": "kitchen",
+        "participants": [
+          "meera",
+          "priya"
+        ],
+        "topic": "How school is going",
+        "max_turns": 10
+      },
+      {
+        "id": "family_chat_3",
+        "day": 3.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_10",
+        "day": 10.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_17",
+        "day": 17.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_24",
+        "day": 24.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_31",
+        "day": 31.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_38",
+        "day": 38.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_45",
+        "day": 45.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_52",
+        "day": 52.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      },
+      {
+        "id": "family_chat_59",
+        "day": 59.8,
+        "channel": "family_chat",
+        "participants": [
+          "arun",
+          "priya",
+          "meera"
+        ],
+        "topic": "How was your day?",
+        "max_turns": 6
+      }
+    ]
+  },
+  "sleep": {},
+  "society_layer": {},
+  "attention": {}
+}

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 116, in <module>
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 101, in main
+    runtime = engine.state['runtime']
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 471, in run
+    engine = self.engine
+               ^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 594, in _run_events
+    break
+    
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 417, in _wait_until
+    self.engine.advance(now)
+    ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyboardInterrupt

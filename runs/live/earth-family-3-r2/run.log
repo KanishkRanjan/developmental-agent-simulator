@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 119, in <module>
+    main()
+    ~~~~^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 104, in main
+    controller.run(args.until_day, args.out / 'world.json')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 474, in run
+    return self._run_events(until, checkpoint)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 605, in _run_events
+    self._process_background_or_world(kind, key)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 684, in _process_background_or_world
+    household.meet(self,key)
+    ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/household.py", line 633, in meet
+    arrival=travel(controller,owner,group['place'],f'group-{group_id}-{n}-{owner}')
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/household.py", line 592, in travel
+    deliver(controller,reservation+':depart','A person sets off on a journey.',observations,routine=True)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/household.py", line 238, in deliver
+    observations={p:engine.appraise(p,o,api=controller.api,model=controller.model,routine=routine) for p,o in observations.items()}
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 1216, in appraise
+    context = self.context(owner, observation['text'])
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/engine.py", line 1152, in context
+    context['physical_environment']['you_are'] = doing['verb']
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object does not support item assignment

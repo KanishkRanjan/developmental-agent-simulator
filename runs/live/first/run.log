@@ -1,0 +1,20 @@
+{"purpose": "appraisal", "agent": "pirya", "day": 0.0026751616718167434, "seconds": 5.547, "tokens": 126}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 116, in <module>
+    main()
+    ~~~~^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/run_live.py", line 101, in main
+    controller.run(args.until_day, args.out / 'world.json')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 471, in run
+    return self._run_events(until, checkpoint)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 594, in _run_events
+    if self.pace and not self._wait_until(day):
+                         ~~~~~~~~~~~~~~~~^^^^^
+  File "/srv/gpu-home/kanishk/developmental-agent-simulator/devsim/lifetime.py", line 417, in _wait_until
+    time.sleep(min(1.0, (day - now) * 86400 / self.pace))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

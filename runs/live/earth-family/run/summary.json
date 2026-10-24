@@ -1,0 +1,28 @@
+{
+  "model": "/data/downloads/kanishk-persona/qwen38-27b/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-Q4_K_P.gguf",
+  "started_utc": "2026-10-18T20:15:47.103935+00:00",
+  "provider": "local_model_api",
+  "sampling": "event_driven",
+  "personality_expression": "behavioral_language_v1",
+  "pace": 1.0,
+  "status": "stopped",
+  "error": "KeyboardInterrupt: ",
+  "seconds": 833.773,
+  "requests": {
+    "action": 1,
+    "appraisal": 20,
+    "consolidation": 0,
+    "signatures": 1,
+    "situation": 1,
+    "semantic_recall": 1,
+    "reflection": 0,
+    "background": 0,
+    "retrieval_query": 0,
+    "goal_planning": 0,
+    "thought": 68,
+    "news": 0
+  },
+  "final_day": 0.2953274097346774,
+  "ticks": 0,
+  "new_actions": 1
+}

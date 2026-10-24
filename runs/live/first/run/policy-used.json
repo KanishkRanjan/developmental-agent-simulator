@@ -1,0 +1,207 @@
+{
+  "description": "Teest: authored scenario. All rates, probabilities, valences, ages and facet percentiles are scenario assumptions, not measured values.",
+  "sampling": "event_driven",
+  "opportunities": [
+    {
+      "id": "pirya_own",
+      "actor": "pirya",
+      "situation": "You are sitting alone in your bedroom, staring at a half-finished project on your screen. You feel isolated and want to connect with someone who shares your interest in technology, so you decide to post a detailed question about your code on a local online forum, hoping to spark a conversation.",
+      "rate_per_year": 150,
+      "room": "pirya_home_pirya_room",
+      "hours": [
+        20,
+        22
+      ],
+      "goal_id": "make_friends",
+      "options": [
+        {
+          "id": "o0",
+          "label": "Post a detailed technical question on the forum",
+          "success_probability": 0.7,
+          "valence_success": 0.8,
+          "valence_failure": -0.2,
+          "success_text": "A few people reply with helpful tips and ask about your project, leading to a lively discussion where you feel genuinely connected.",
+          "failure_text": "You get no replies for hours, and the silence makes you feel even more isolated and invisible.",
+          "progress_gain": 0.1,
+          "duration_hours": 0.5
+        },
+        {
+          "id": "o1",
+          "label": "Invite a classmate to your room to show them your code",
+          "success_probability": 0.4,
+          "valence_success": 0.9,
+          "valence_failure": -0.5,
+          "success_text": "Your classmate is fascinated by your work, and you spend the evening debugging together, laughing and bonding over the challenge.",
+          "failure_text": "Your classmate seems bored and distracted, checking their phone constantly, which makes you feel like a burden.",
+          "progress_gain": 0.0,
+          "duration_hours": 0.5
+        }
+      ]
+    }
+  ],
+  "planning": {
+    "calendar_mode": "elapsed",
+    "hours_per_day": 8
+  },
+  "expression": {
+    "age_appropriate_actions": true
+  },
+  "cognition": {
+    "semantic_recall": true,
+    "indexed_retrieval": true,
+    "graphiti_retrieval": true,
+    "semantic_matching": true,
+    "affect_from_traits": true,
+    "verbatim_days": 1,
+    "recall_beta": 2,
+    "mood_encoding_weight": 0.5,
+    "rumination_per_year": 12,
+    "rumination_neuroticism": 1
+  },
+  "consolidation_batch_size": 8,
+  "inner_thoughts": {
+    "mean_minutes": 20
+  },
+  "relationship_learning": {},
+  "situational_personality": {
+    "recovery_half_life_days": 1
+  },
+  "horizon_days": 30.0,
+  "living": {},
+  "household": {
+    "rooms": {
+      "hospital_ward": {
+        "label": "Hospital ward",
+        "kind": "ward",
+        "site": "hospital",
+        "audible_to": []
+      },
+      "pirya_home_pirya_room": {
+        "label": "Pirya's bedroom",
+        "kind": "bedroom",
+        "site": "pirya_home",
+        "audible_to": [
+          "pirya_home_kitchen",
+          "pirya_home_living_room"
+        ]
+      },
+      "pirya_home_kitchen": {
+        "label": "Pirya home kitchen",
+        "kind": "kitchen",
+        "site": "pirya_home",
+        "audible_to": [
+          "pirya_home_living_room"
+        ]
+      },
+      "pirya_home_living_room": {
+        "label": "Pirya home living room",
+        "kind": "living_room",
+        "site": "pirya_home",
+        "audible_to": [
+          "pirya_home_kitchen"
+        ]
+      },
+      "pirya_home_bathroom": {
+        "label": "Pirya home bathroom",
+        "kind": "bathroom",
+        "site": "pirya_home",
+        "audible_to": [
+          "pirya_home_kitchen",
+          "pirya_home_living_room"
+        ]
+      },
+      "the_minds_classroom": {
+        "label": "The minds classroom",
+        "kind": "classroom",
+        "site": "the_minds",
+        "audible_to": []
+      },
+      "the_minds_cafeteria": {
+        "label": "The minds cafeteria",
+        "kind": "cafeteria",
+        "site": "the_minds",
+        "audible_to": []
+      },
+      "the_minds_lab": {
+        "label": "The minds lab",
+        "kind": "lab",
+        "site": "the_minds",
+        "audible_to": []
+      }
+    },
+    "locations": {
+      "pirya": "pirya_home_pirya_room"
+    },
+    "routines": {
+      "pirya": {
+        "available_hours": [
+          [
+            7,
+            22
+          ]
+        ],
+        "response_minutes": [
+          2,
+          10
+        ],
+        "in_person_response_minutes": [
+          0.05,
+          0.2
+        ]
+      }
+    },
+    "routes": [
+      {
+        "a": "pirya_home_pirya_room",
+        "b": "hospital_ward",
+        "minutes": 32
+      },
+      {
+        "a": "pirya_home_pirya_room",
+        "b": "the_minds_classroom",
+        "minutes": 20
+      }
+    ],
+    "groups": {
+      "the_minds_class": {
+        "label": "The minds class",
+        "place": "the_minds_classroom",
+        "members": [
+          "pirya"
+        ],
+        "meetings": {
+          "first_day": 0,
+          "start_hour": 8.5,
+          "duration_hours": 6.5,
+          "every_days": 1,
+          "topic": [
+            "The school day",
+            "A surprise quiz",
+            "Plans for the weekend",
+            "Something funny online",
+            "Homework",
+            "The cafeteria food"
+          ],
+          "max_turns": 40
+        }
+      }
+    }
+  },
+  "hormones": {},
+  "attention": {},
+  "sleep": {},
+  "skills": {},
+  "background_expansion": {
+    "default": {
+      "mode": "generative",
+      "id": "personal-history-v1",
+      "min_age": 18,
+      "fields": [
+        "education",
+        "residence",
+        "occupation",
+        "interests"
+      ]
+    }
+  }
+}
